@@ -84,76 +84,76 @@ hardware-basics/
 ├── index.md
 │
 ├── 00-начните-здесь/
-│   └── 01-overview.md
+│   └── 01-введение.md
 │
 ├── 01-основы-электроники/
-│   ├── 01-load-current-calculation-24v.md
-│   ├── 02-mosfet-module.md
-│   ├── 03-triac.md
-│   └── 04-ssr-relay.md
+│   ├── 01-расчет-тока-нагрузки-24v.md
+│   ├── 02-модуль-mosfet.md
+│   ├── 03-симистор.md
+│   └── 04-твердотельное-реле-ssr.md
 │
 ├── 02-контроллеры/
-│   ├── 01-what-is-esp32.md
-│   ├── 02-what-is-arduino.md
-│   ├── 03-what-is-rp2040.md
-│   ├── 04-stm32-basics.md
-│   ├── 05-klipper-mcu-basics.md
-│   ├── 06-what-is-uart.md
-│   ├── 07-what-is-i2c.md
-│   ├── 08-what-is-spi.md
-│   ├── 09-what-is-can.md
-│   ├── 10-usb-uart-adapters.md
-│   └── 11-flashing-firmware.md
+│   ├── 01-контроллер-esp32.md
+│   ├── 02-контроллер-arduino.md
+│   ├── 03-контроллер-rp2040.md
+│   ├── 04-контроллеры-stm32.md
+│   ├── 05-mcu-в-клипер.md
+│   ├── 06-интерфейс-uart.md
+│   ├── 07-интерфейс-i2c.md
+│   ├── 08-интерфейс-spi.md
+│   ├── 09-интерфейс-can.md
+│   ├── 10-usb-uart-адаптеры.md
+│   └── 11-прошивка-контроллера.md
 │
 ├── 03-компоненты/
-│   ├── 01-overview.md
-│   ├── 02-heaters.md
-│   ├── 03-fans.md
-│   ├── 04-thermistors.md
-│   ├── 05-led-strips.md
-│   ├── 06-servos.md
-│   ├── 07-load-cells.md
-│   ├── 08-oled-display.md
-│   ├── 09-touch-screen.md
-│   └── 10-rfid-basics.md
+│   ├── 01-обзор.md
+│   ├── 02-нагреватели.md
+│   ├── 03-вентиляторы.md
+│   ├── 04-термисторы.md
+│   ├── 05-светодиодные-ленты.md
+│   ├── 06-сервоприводы.md
+│   ├── 07-тензодатчики.md
+│   ├── 08-oled-дисплей.md
+│   ├── 09-сенсорный-экран.md
+│   └── 10-rfid-и-nfc.md
 │
 ├── 04-физика-тепла-и-материалов/
-│   ├── 01-overview.md
-│   ├── 02-thermal-conductivity.md
-│   ├── 03-material-safety.md
-│   └── 04-convection-and-airflow.md
+│   ├── 01-обзор.md
+│   ├── 02-теплопроводность.md
+│   ├── 03-безопасность-материалов.md
+│   └── 04-конвекция-и-воздушный-поток.md
 │
 ├── 05-инструменты/
-│   ├── 01-overview.md
-│   ├── 02-multimeter-basics.md
-│   ├── 03-usb-ttl.md
-│   ├── 04-soldering-basics.md
-│   ├── 05-crimping-connectors.md
-│   ├── 06-stlink.md
-│   └── 07-oscilloscope-basics.md
+│   ├── 01-обзор.md
+│   ├── 02-мультиметр.md
+│   ├── 03-usb-ttl-адаптер.md
+│   ├── 04-пайка.md
+│   ├── 05-обжим-разъемов.md
+│   ├── 06-st-link.md
+│   └── 07-осциллограф.md
 │
 ├── 06-практические-инструкции/
-│   ├── 01-connect-fan.md
-│   ├── 02-check-thermistor.md
-│   ├── 03-connect-servo.md
-│   ├── 04-connect-load-cell.md
-│   └── 05-connect-rfid-reader.md
+│   ├── 01-подключение-вентилятора.md
+│   ├── 02-проверка-термистора.md
+│   ├── 03-подключение-сервопривода.md
+│   ├── 04-подключение-тензодатчика.md
+│   └── 05-подключение-rfid-считывателя.md
 │
 ├── 07-3d-печать/
-│   ├── 01-overview.md
-│   ├── 02-stl-basics.md
-│   ├── 03-petg-vs-abs.md
-│   ├── 04-heat-resistant-materials.md
-│   ├── 05-enclosure-design.md
-│   └── 06-why-pla-is-risky.md
+│   ├── 01-обзор.md
+│   ├── 02-что-такое-stl.md
+│   ├── 03-материалы-petg-abs-asa.md
+│   ├── 04-термостойкие-материалы.md
+│   ├── 05-проектирование-корпуса.md
+│   └── 06-почему-pla-рискованный-выбор.md
 │
 └── 08-типовые-ошибки/
-    ├── 01-overview.md
-    ├── 02-power-mistakes.md
-    ├── 03-wiring-mistakes.md
-    ├── 04-controller-mistakes.md
-    ├── 05-heater-and-ssr-mistakes.md
-    └── 06-debugging-checklist.md
+    ├── 01-обзор.md
+    ├── 02-ошибки-питания.md
+    ├── 03-ошибки-проводки.md
+    ├── 04-ошибки-контроллеров.md
+    ├── 05-ошибки-нагревателей-и-ssr.md
+    └── 06-чеклист-диагностики.md
 
 ⸻
 
@@ -258,7 +258,7 @@ USB-UART Adapters
 
 ⸻
 
-Common Components
+Компоненты
 
 Каждый компонент должен отвечать на вопросы:
 
@@ -271,19 +271,19 @@ Common Components
 
 Обязательно:
 
-* heaters
-* fans
-* servos
-* thermistors
-* LED strips
-* OLED display
-* TFT / touch screen
-* load cells
-* RFID basics
+* нагреватели
+* вентиляторы
+* сервоприводы
+* термисторы
+* светодиодные ленты
+* OLED-дисплей
+* TFT / сенсорный экран
+* тензодатчики
+* RFID/NFC
 
 ⸻
 
-Practical Guides
+Практические инструкции
 
 Это самый важный раздел.
 
@@ -303,16 +303,16 @@ Practical Guides
 * почему USB отваливается
 * как проверить термистор
 * как подключить сервопривод
-* как подключить load cell
-* как подключить RFID reader
+* как подключить тензодатчик
+* как подключить RFID-считыватель
 
 ⸻
 
-Tools
+Инструменты
 
 Обязательно:
 
-Multimeter Basics
+Мультиметр
 
 * как измерять напряжение
 * как проверять continuity
@@ -320,7 +320,7 @@ Multimeter Basics
 
 ⸻
 
-Oscilloscope Basics
+Осциллограф
 
 * только практическое использование
 * как проверить PWM
@@ -344,7 +344,7 @@ USB-TTL
 
 ⸻
 
-Soldering Basics
+Пайка
 
 * пайка проводов
 * пайка JST
@@ -353,21 +353,21 @@ Soldering Basics
 
 ⸻
 
-3D Printing
+3D-печать
 
 Тоже обязательно:
 
-* STL basics
-* PETG vs ABS
-* heat resistant materials
-* enclosure design
-* почему PLA для heater enclosure — плохая идея
+* что такое STL
+* PETG, ABS и ASA
+* термостойкие материалы
+* проектирование корпуса
+* почему PLA для корпуса с нагревом - плохая идея
 
 ⸻
 
 Отдельный обязательный раздел
 
-Common Mistakes
+Типовые ошибки
 
 Это будет один из самых читаемых разделов.
 
