@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder: MOSFET module low-side wiring</title>
+  <desc id="desc">Placeholder image for a future diagram showing a controller, MOSFET module, 24V power supply, load, signal wire and common ground.</desc>
+  <rect width="1200" height="675" fill="#ffffff"/>
+  <rect x="40" y="40" width="1120" height="595" fill="#f8fafc" stroke="#94a3b8" stroke-width="3" stroke-dasharray="14 10"/>
+  <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="95" y="250" width="220" height="120" rx="10"/>
+    <rect x="490" y="250" width="240" height="120" rx="10"/>
+    <rect x="885" y="250" width="220" height="120" rx="10"/>
+    <rect x="490" y="90" width="240" height="100" rx="10"/>
+    <path d="M730 135 H995 V250"/>
+    <path d="M995 370 V500 H610 V370"/>
+    <path d="M490 315 H315"/>
+    <path d="M315 345 H490"/>
+    <path d="M610 190 V250"/>
+    <path d="M205 370 V500 H610"/>
+  </g>
+  <g fill="#0f172a" font-family="Arial, sans-serif" font-weight="700" font-size="28">
+    <text x="205" y="320" text-anchor="middle">Controller</text>
+    <text x="610" y="320" text-anchor="middle">MOSFET Module</text>
+    <text x="995" y="320" text-anchor="middle">Load</text>
+    <text x="610" y="150" text-anchor="middle">24V PSU</text>
+  </g>
+  <g fill="#1d4ed8" font-family="Arial, sans-serif" font-weight="700" font-size="24">
+    <text x="405" y="292" text-anchor="middle">Signal</text>
+    <text x="405" y="540" text-anchor="middle">GND</text>
+    <text x="820" y="120" text-anchor="middle">+</text>
+    <text x="810" y="535" text-anchor="middle">GND</text>
+    <text x="470" y="245" text-anchor="middle">Gate</text>
+    <text x="610" y="235" text-anchor="middle">Drain</text>
+    <text x="610" y="405" text-anchor="middle">Source</text>
+  </g>
+</svg>

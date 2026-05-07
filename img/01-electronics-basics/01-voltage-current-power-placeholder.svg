@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder: voltage, current, power</title>
+  <desc id="desc">Placeholder image for a future diagram explaining voltage, current and power for a 24V load.</desc>
+  <rect width="1200" height="675" fill="#ffffff"/>
+  <rect x="40" y="40" width="1120" height="595" fill="#f8fafc" stroke="#94a3b8" stroke-width="3" stroke-dasharray="14 10"/>
+  <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="165" y="390" width="220" height="110" rx="10"/>
+    <rect x="815" y="390" width="220" height="110" rx="10"/>
+    <path d="M385 430 H815"/>
+    <path d="M815 460 H385"/>
+    <path d="M760 405 L815 430 L760 455"/>
+  </g>
+  <text x="275" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#0f172a">
+    24V PSU
+  </text>
+  <text x="925" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#0f172a">
+    Load
+  </text>
+  <text x="600" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#1d4ed8">
+    Current
+  </text>
+  <text x="600" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" font-weight="700" fill="#0f172a">
+    P = U * I
+  </text>
+</svg>

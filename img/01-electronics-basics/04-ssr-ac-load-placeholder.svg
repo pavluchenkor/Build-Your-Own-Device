@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder: SSR AC load wiring</title>
+  <desc id="desc">Placeholder image for a future diagram showing controller input side and AC load output side of an SSR.</desc>
+  <rect width="1200" height="675" fill="#ffffff"/>
+  <rect x="40" y="40" width="1120" height="595" fill="#f8fafc" stroke="#94a3b8" stroke-width="3" stroke-dasharray="14 10"/>
+  <line x1="455" y1="80" x2="455" y2="595" stroke="#ef4444" stroke-width="4" stroke-dasharray="12 10"/>
+  <text x="240" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">Low Voltage</text>
+  <text x="820" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">Mains AC</text>
+  <g fill="none" stroke="#2563eb" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="105" y="270" width="220" height="120" rx="10"/>
+    <rect x="520" y="230" width="250" height="200" rx="10"/>
+    <rect x="965" y="270" width="150" height="120" rx="10"/>
+    <path d="M325 315 H520"/>
+    <path d="M325 360 H520"/>
+    <path d="M770 290 H965"/>
+    <path d="M1040 210 V270"/>
+    <path d="M770 370 H965"/>
+    <path d="M1040 390 V470 H650 V430"/>
+  </g>
+  <g fill="#0f172a" font-family="Arial, sans-serif" font-weight="700" font-size="28">
+    <text x="215" y="340" text-anchor="middle">Controller</text>
+    <text x="645" y="330" text-anchor="middle">SSR</text>
+    <text x="1040" y="340" text-anchor="middle">AC Load</text>
+  </g>
+  <g fill="#1d4ed8" font-family="Arial, sans-serif" font-weight="700" font-size="24">
+    <text x="420" y="300" text-anchor="middle">Input</text>
+    <text x="840" y="275" text-anchor="middle">Output</text>
+    <text x="850" y="205" text-anchor="middle">AC Line</text>
+    <text x="850" y="485" text-anchor="middle">AC Neutral</text>
+  </g>
+</svg>
