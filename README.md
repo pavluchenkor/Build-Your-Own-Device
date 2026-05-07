@@ -75,10 +75,11 @@ hardware-basics/
 │   ├── 01-electronics-basics/
 │   ├── 02-controllers/
 │   ├── 03-common-components/
-│   ├── 04-tools/
-│   ├── 05-practical-guides/
-│   ├── 06-3d-printing/
-│   └── 07-common-mistakes/
+│   ├── 04-thermal-physics-and-materials/
+│   ├── 05-tools/
+│   ├── 06-practical-guides/
+│   ├── 07-3d-printing/
+│   └── 08-common-mistakes/
 │
 ├── index.md
 │
@@ -116,7 +117,13 @@ hardware-basics/
 │   ├── 09-touch-screen.md
 │   └── 10-rfid-basics.md
 │
-├── 04-инструменты/
+├── 04-физика-тепла-и-материалов/
+│   ├── 01-overview.md
+│   ├── 02-thermal-conductivity.md
+│   ├── 03-material-safety.md
+│   └── 04-convection-and-airflow.md
+│
+├── 05-инструменты/
 │   ├── 01-overview.md
 │   ├── 02-multimeter-basics.md
 │   ├── 03-usb-ttl.md
@@ -125,14 +132,14 @@ hardware-basics/
 │   ├── 06-stlink.md
 │   └── 07-oscilloscope-basics.md
 │
-├── 05-практические-инструкции/
+├── 06-практические-инструкции/
 │   ├── 01-connect-fan.md
 │   ├── 02-check-thermistor.md
 │   ├── 03-connect-servo.md
 │   ├── 04-connect-load-cell.md
 │   └── 05-connect-rfid-reader.md
 │
-├── 06-3d-печать/
+├── 07-3d-печать/
 │   ├── 01-overview.md
 │   ├── 02-stl-basics.md
 │   ├── 03-petg-vs-abs.md
@@ -140,7 +147,7 @@ hardware-basics/
 │   ├── 05-enclosure-design.md
 │   └── 06-why-pla-is-risky.md
 │
-└── 07-типовые-ошибки/
+└── 08-типовые-ошибки/
     ├── 01-overview.md
     ├── 02-power-mistakes.md
     ├── 03-wiring-mistakes.md

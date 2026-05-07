@@ -10,10 +10,11 @@
 - `01-electronics-basics/`
 - `02-controllers/`
 - `03-common-components/`
-- `04-tools/`
-- `05-practical-guides/`
-- `06-3d-printing/`
-- `07-common-mistakes/`
+- `04-thermal-physics-and-materials/`
+- `05-tools/`
+- `06-practical-guides/`
+- `07-3d-printing/`
+- `08-common-mistakes/`
 
 Рекомендации по именам:
 
@@ -27,7 +28,8 @@
 - `01-electronics-basics/01-load-current-24v-formula.png`
 - `01-electronics-basics/02-mosfet-low-side-wiring.png`
 - `03-common-components/03-fan-2pin-3pin-4pin.png`
-- `05-practical-guides/01-connect-fan-wiring.png`
+- `04-thermal-physics-and-materials/04-heater-airflow.png`
+- `06-practical-guides/01-connect-fan-wiring.png`
 
 Форматы:
 
