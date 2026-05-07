@@ -82,16 +82,16 @@ hardware-basics/
 │
 ├── index.md
 │
-├── 00-start-here/
+├── 00-начните-здесь/
 │   └── 01-overview.md
 │
-├── 01-electronics-basics/
+├── 01-основы-электроники/
 │   ├── 01-load-current-calculation-24v.md
 │   ├── 02-mosfet-module.md
 │   ├── 03-triac.md
 │   └── 04-ssr-relay.md
 │
-├── 02-controllers/
+├── 02-контроллеры/
 │   ├── 01-what-is-esp32.md
 │   ├── 02-what-is-arduino.md
 │   ├── 03-what-is-rp2040.md
@@ -104,7 +104,7 @@ hardware-basics/
 │   ├── 10-usb-uart-adapters.md
 │   └── 11-flashing-firmware.md
 │
-├── 03-common-components/
+├── 03-компоненты/
 │   ├── 01-overview.md
 │   ├── 02-heaters.md
 │   ├── 03-fans.md
@@ -116,7 +116,7 @@ hardware-basics/
 │   ├── 09-touch-screen.md
 │   └── 10-rfid-basics.md
 │
-├── 04-tools/
+├── 04-инструменты/
 │   ├── 01-overview.md
 │   ├── 02-multimeter-basics.md
 │   ├── 03-usb-ttl.md
@@ -125,14 +125,14 @@ hardware-basics/
 │   ├── 06-stlink.md
 │   └── 07-oscilloscope-basics.md
 │
-├── 05-practical-guides/
+├── 05-практические-инструкции/
 │   ├── 01-connect-fan.md
 │   ├── 02-check-thermistor.md
 │   ├── 03-connect-servo.md
 │   ├── 04-connect-load-cell.md
 │   └── 05-connect-rfid-reader.md
 │
-├── 06-3d-printing/
+├── 06-3d-печать/
 │   ├── 01-overview.md
 │   ├── 02-stl-basics.md
 │   ├── 03-petg-vs-abs.md
@@ -140,7 +140,7 @@ hardware-basics/
 │   ├── 05-enclosure-design.md
 │   └── 06-why-pla-is-risky.md
 │
-└── 07-common-mistakes/
+└── 07-типовые-ошибки/
     ├── 01-overview.md
     ├── 02-power-mistakes.md
     ├── 03-wiring-mistakes.md
