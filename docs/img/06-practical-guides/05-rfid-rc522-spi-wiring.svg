@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="450" viewBox="0 0 960 450" role="img" aria-labelledby="title desc">
+  <title id="title">Подключение RFID RC522 по SPI</title>
+  <desc id="desc">Схема показывает контроллер 3.3V и RFID-модуль RC522 с линиями VCC, GND, SCK, MOSI, MISO, CS и RST.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .box { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 10; }
+      .rfid { fill: #f0fdf4; stroke: #15803d; stroke-width: 2; rx: 10; }
+      .tag { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; rx: 10; }
+      .wire-power { fill: none; stroke: #dc2626; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-gnd { fill: none; stroke: #334155; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-spi { fill: none; stroke: #2563eb; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .wire-rst { fill: none; stroke: #9333ea; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .label { font-family: Arial, sans-serif; font-size: 18px; fill: #0f172a; }
+      .small { font-family: Arial, sans-serif; font-size: 14px; fill: #334155; }
+      .pin { fill: #e2e8f0; stroke: #475569; stroke-width: 1.5; }
+      .antenna { fill: none; stroke: #15803d; stroke-width: 3; rx: 8; }
+    </style>
+  </defs>
+
+  <rect x="70" y="75" width="220" height="285" class="box"/>
+  <text x="180" y="118" text-anchor="middle" class="label">Controller</text>
+  <text x="180" y="143" text-anchor="middle" class="small">3.3V logic preferred</text>
+  <circle cx="265" cy="175" r="8" class="pin"/><text x="215" y="180" class="small">3.3V</text>
+  <circle cx="265" cy="210" r="8" class="pin"/><text x="225" y="215" class="small">GND</text>
+  <circle cx="265" cy="245" r="8" class="pin"/><text x="223" y="250" class="small">SCK</text>
+  <circle cx="265" cy="275" r="8" class="pin"/><text x="213" y="280" class="small">MOSI</text>
+  <circle cx="265" cy="305" r="8" class="pin"/><text x="216" y="310" class="small">MISO</text>
+  <circle cx="265" cy="335" r="8" class="pin"/><text x="230" y="340" class="small">CS</text>
+
+  <rect x="585" y="70" width="250" height="300" class="rfid"/>
+  <text x="710" y="112" text-anchor="middle" class="label">RC522 RFID</text>
+  <text x="710" y="136" text-anchor="middle" class="small">13.56 MHz, SPI</text>
+  <rect x="650" y="160" width="120" height="120" class="antenna"/>
+  <rect x="670" y="180" width="80" height="80" class="antenna"/>
+  <text x="710" y="303" text-anchor="middle" class="small">keep antenna away from metal</text>
+
+  <circle cx="605" cy="175" r="8" class="pin"/><text x="622" y="180" class="small">VCC</text>
+  <circle cx="605" cy="210" r="8" class="pin"/><text x="622" y="215" class="small">GND</text>
+  <circle cx="605" cy="245" r="8" class="pin"/><text x="622" y="250" class="small">SCK</text>
+  <circle cx="605" cy="275" r="8" class="pin"/><text x="622" y="280" class="small">MOSI</text>
+  <circle cx="605" cy="305" r="8" class="pin"/><text x="622" y="310" class="small">MISO</text>
+  <circle cx="605" cy="335" r="8" class="pin"/><text x="622" y="340" class="small">SDA/SS</text>
+  <circle cx="605" cy="145" r="8" class="pin"/><text x="622" y="150" class="small">RST</text>
+
+  <path class="wire-power" d="M265 175 H605"/>
+  <path class="wire-gnd" d="M265 210 H605"/>
+  <path class="wire-spi" d="M265 245 H605"/>
+  <path class="wire-spi" d="M265 275 H605"/>
+  <path class="wire-spi" d="M605 305 H265"/>
+  <path class="wire-spi" d="M265 335 H605"/>
+  <path class="wire-rst" d="M205 155 V50 H545 V145 H605"/>
+
+  <rect x="380" y="380" width="250" height="42" class="tag"/>
+  <text x="505" y="407" text-anchor="middle" class="small">Do not use 5V unless the module explicitly supports it</text>
+</svg>

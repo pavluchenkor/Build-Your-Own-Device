@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="470" viewBox="0 0 980 470" role="img" aria-labelledby="title desc">
+  <title id="title">AC SSR load wiring</title>
+  <desc id="desc">Controller drives the input side of an SSR, while the SSR output switches the AC line to a heater load. Fuse and independent thermal protection are shown in series with the load.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937"/>
+    </marker>
+    <style>
+      .box { fill: #f8fafc; stroke: #1f2937; stroke-width: 2; rx: 12; }
+      .danger { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; rx: 12; }
+      .safe { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; rx: 12; }
+      .label { font: 18px Arial, sans-serif; fill: #111827; }
+      .small { font: 14px Arial, sans-serif; fill: #374151; }
+      .wire { fill: none; stroke: #1f2937; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .signal { fill: none; stroke: #2563eb; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .line { fill: none; stroke: #dc2626; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .neutral { fill: none; stroke: #4b5563; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .isolation { stroke: #64748b; stroke-width: 2; stroke-dasharray: 10 8; }
+    </style>
+  </defs>
+
+  <rect width="980" height="470" fill="#ffffff"/>
+
+  <text x="40" y="44" class="label">Low voltage control side</text>
+  <text x="610" y="44" class="label">AC load side</text>
+  <line x1="500" y1="70" x2="500" y2="420" class="isolation"/>
+  <text x="514" y="247" class="small">galvanic isolation inside SSR</text>
+
+  <rect x="60" y="145" width="210" height="155" class="safe"/>
+  <text x="100" y="190" class="label">Controller</text>
+  <text x="100" y="220" class="small">GPIO output</text>
+  <text x="100" y="246" class="small">GND / logic power</text>
+
+  <rect x="360" y="115" width="220" height="215" class="box"/>
+  <text x="450" y="155" text-anchor="middle" class="label">AC SSR</text>
+  <rect x="382" y="190" width="72" height="74" class="safe"/>
+  <text x="418" y="222" text-anchor="middle" class="small">Input</text>
+  <text x="418" y="244" text-anchor="middle" class="small">3-32V DC</text>
+  <rect x="486" y="190" width="72" height="74" class="danger"/>
+  <text x="522" y="222" text-anchor="middle" class="small">Output</text>
+  <text x="522" y="244" text-anchor="middle" class="small">AC load</text>
+
+  <path d="M270 205 H380" class="signal"/>
+  <path d="M380 247 H270" class="wire"/>
+  <text x="295" y="192" class="small">control signal</text>
+  <text x="305" y="272" class="small">return</text>
+
+  <rect x="680" y="105" width="95" height="52" class="danger"/>
+  <text x="728" y="137" text-anchor="middle" class="small">Fuse</text>
+
+  <rect x="690" y="205" width="180" height="74" class="danger"/>
+  <text x="780" y="235" text-anchor="middle" class="label">Heater</text>
+  <text x="780" y="260" text-anchor="middle" class="small">AC load</text>
+
+  <rect x="680" y="320" width="205" height="68" class="danger"/>
+  <text x="783" y="348" text-anchor="middle" class="small">Independent</text>
+  <text x="783" y="371" text-anchor="middle" class="small">thermal cutoff</text>
+
+  <text x="612" y="93" class="small">AC Line</text>
+  <path d="M610 130 H680" class="line"/>
+  <path d="M775 130 H915 V242 H870" class="line"/>
+  <path d="M690 242 H558" class="line"/>
+  <path d="M486 242 H450" class="line"/>
+
+  <path d="M522 264 V354 H680" class="line"/>
+  <path d="M885 354 H925 V130" class="line"/>
+
+  <text x="610" y="430" class="small">AC Neutral</text>
+  <path d="M610 410 H925 V279 H870" class="neutral"/>
+
+  <text x="56" y="392" class="small">Controller never powers the heater directly.</text>
+  <text x="610" y="454" class="small">Mains wiring must be enclosed and built to local safety rules.</text>
+</svg>

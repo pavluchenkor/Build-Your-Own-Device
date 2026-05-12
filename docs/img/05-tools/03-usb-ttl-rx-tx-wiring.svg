@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" role="img" aria-labelledby="title desc">
+  <title id="title">USB-TTL adapter wiring to microcontroller — RX/TX cross-connection</title>
+  <desc id="desc">USB-TTL adapter with TX connected to MCU RX, RX connected to MCU TX, GND to GND. Common mistake: connecting TX to TX is shown as wrong.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <style>
+      .adapter { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2; }
+      .mcu { fill: #dcfce7; stroke: #15803d; stroke-width: 2; }
+      .wire-tx { stroke: #dc2626; stroke-width: 3; fill: none; }
+      .wire-rx { stroke: #2563eb; stroke-width: 3; fill: none; }
+      .wire-gnd { stroke: #1e293b; stroke-width: 3; fill: none; }
+      .wire-vcc { stroke: #ea580c; stroke-width: 3; fill: none; }
+      .wire-wrong { stroke: #dc2626; stroke-width: 3; fill: none; stroke-dasharray: 8 4; }
+      .label { font: bold 17px Arial, sans-serif; fill: #1e293b; }
+      .pin { font: bold 14px Arial, sans-serif; fill: #1e293b; }
+      .text { font: 14px Arial, sans-serif; fill: #334155; }
+      .small { font: 13px Arial, sans-serif; fill: #64748b; }
+      .ok { fill: #15803d; font: bold 14px Arial, sans-serif; }
+      .bad { fill: #dc2626; font: bold 14px Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" class="label" font-size="20">USB-TTL → Microcontroller: RX/TX Cross-Connection</text>
+
+  <!-- USB-TTL Adapter -->
+  <rect x="60" y="70" width="200" height="220" rx="10" class="adapter"/>
+  <text x="160" y="98" text-anchor="middle" class="label">USB-TTL</text>
+  <text x="160" y="118" text-anchor="middle" class="text">CH340 / CP2102</text>
+
+  <!-- USB-TTL pins (right side) -->
+  <text x="220" y="158" text-anchor="start" class="pin" fill="#ea580c">VCC</text>
+  <text x="220" y="193" text-anchor="start" class="pin" fill="#dc2626">TX →</text>
+  <text x="220" y="228" text-anchor="start" class="pin" fill="#2563eb">← RX</text>
+  <text x="220" y="263" text-anchor="start" class="pin" fill="#1e293b">GND</text>
+
+  <!-- Pin dots left side of adapter -->
+  <circle cx="260" cy="154" r="6" fill="#ea580c"/>
+  <circle cx="260" cy="189" r="6" fill="#dc2626"/>
+  <circle cx="260" cy="224" r="6" fill="#2563eb"/>
+  <circle cx="260" cy="259" r="6" fill="#1e293b"/>
+
+  <!-- MCU Block -->
+  <rect x="620" y="70" width="200" height="220" rx="10" class="mcu"/>
+  <text x="720" y="98" text-anchor="middle" class="label">MCU</text>
+  <text x="720" y="118" text-anchor="middle" class="text">ESP32 / Arduino</text>
+
+  <!-- MCU pins (left side) -->
+  <text x="655" y="158" text-anchor="end" class="pin" fill="#ea580c">3.3V / 5V</text>
+  <text x="655" y="193" text-anchor="end" class="pin" fill="#2563eb">← RX</text>
+  <text x="655" y="228" text-anchor="end" class="pin" fill="#dc2626">TX →</text>
+  <text x="655" y="263" text-anchor="end" class="pin" fill="#1e293b">GND</text>
+
+  <!-- Pin dots right side of MCU -->
+  <circle cx="622" cy="154" r="6" fill="#ea580c"/>
+  <circle cx="622" cy="189" r="6" fill="#2563eb"/>
+  <circle cx="622" cy="224" r="6" fill="#dc2626"/>
+  <circle cx="622" cy="259" r="6" fill="#1e293b"/>
+
+  <!-- VCC wire (optional, dashed) -->
+  <path d="M260 154 L440 154 L440 154 L622 154" class="wire-vcc" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="441" y="147" text-anchor="middle" class="small" fill="#ea580c">optional</text>
+
+  <!-- TX → RX wire (cross!) -->
+  <path d="M260 189 L441 189 L441 224 L622 224" class="wire-tx" marker-end="url(#arrow)"/>
+
+  <!-- RX ← TX wire (cross!) -->
+  <path d="M622 189 L500 189 L500 224 L260 224" class="wire-rx" marker-end="url(#arrow)"/>
+
+  <!-- GND wire -->
+  <path d="M260 259 L622 259" class="wire-gnd" marker-end="url(#arrow)"/>
+
+  <!-- Cross labels -->
+  <rect x="385" y="175" width="110" height="80" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+  <text x="440" y="198" text-anchor="middle" class="label" font-size="14" fill="#b45309">CROSS!</text>
+  <text x="440" y="218" text-anchor="middle" class="text" fill="#92400e">TX → RX</text>
+  <text x="440" y="238" text-anchor="middle" class="text" fill="#92400e">RX ← TX</text>
+
+  <!-- Common mistake box -->
+  <rect x="60" y="320" width="780" height="60" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="90" y="345" class="bad">✗ Common mistake:</text>
+  <text x="90" y="365" class="text">connecting TX → TX and RX → RX causes no communication — both sides transmit on the same wire.</text>
+
+  <!-- GND label -->
+  <text x="441" y="278" text-anchor="middle" class="small" fill="#1e293b">common GND required</text>
+</svg>

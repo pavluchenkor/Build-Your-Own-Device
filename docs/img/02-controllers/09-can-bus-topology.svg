@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500" role="img" aria-labelledby="title desc">
+  <title id="title">CAN bus topology</title>
+  <desc id="desc">A CAN bus drawn as a line with CANH and CANL twisted pair, two 120 ohm terminators at the physical ends, and multiple nodes connected through CAN transceivers.</desc>
+  <defs>
+    <style>
+      .node { fill: #f8fafc; stroke: #1f2937; stroke-width: 2; rx: 12; }
+      .term { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; rx: 8; }
+      .label { font: 18px Arial, sans-serif; fill: #111827; }
+      .small { font: 14px Arial, sans-serif; fill: #374151; }
+      .canh { fill: none; stroke: #dc2626; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .canl { fill: none; stroke: #2563eb; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .gnd { fill: none; stroke: #4b5563; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 8 8; }
+      .stub { stroke: #1f2937; stroke-width: 3; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <rect width="980" height="500" fill="#ffffff"/>
+
+  <path d="M130 205 H850" class="canh"/>
+  <path d="M130 255 H850" class="canl"/>
+  <path d="M130 310 H850" class="gnd"/>
+  <text x="70" y="211" class="small">CANH</text>
+  <text x="70" y="261" class="small">CANL</text>
+  <text x="70" y="315" class="small">GND / reference</text>
+
+  <rect x="70" y="170" width="70" height="115" class="term"/>
+  <text x="105" y="214" text-anchor="middle" class="small">120</text>
+  <text x="105" y="239" text-anchor="middle" class="small">Ohm</text>
+  <line x1="130" y1="205" x2="130" y2="255" class="stub"/>
+
+  <rect x="840" y="170" width="70" height="115" class="term"/>
+  <text x="875" y="214" text-anchor="middle" class="small">120</text>
+  <text x="875" y="239" text-anchor="middle" class="small">Ohm</text>
+  <line x1="850" y1="205" x2="850" y2="255" class="stub"/>
+
+  <rect x="210" y="55" width="170" height="95" class="node"/>
+  <text x="295" y="91" text-anchor="middle" class="label">USB-CAN</text>
+  <text x="295" y="118" text-anchor="middle" class="small">host adapter</text>
+  <line x1="295" y1="150" x2="295" y2="205" class="stub"/>
+  <line x1="310" y1="150" x2="310" y2="255" class="stub"/>
+  <line x1="325" y1="150" x2="325" y2="310" class="stub"/>
+
+  <rect x="430" y="350" width="170" height="95" class="node"/>
+  <text x="515" y="386" text-anchor="middle" class="label">Toolhead MCU</text>
+  <text x="515" y="413" text-anchor="middle" class="small">CAN transceiver</text>
+  <line x1="500" y1="350" x2="500" y2="205" class="stub"/>
+  <line x1="515" y1="350" x2="515" y2="255" class="stub"/>
+  <line x1="530" y1="350" x2="530" y2="310" class="stub"/>
+
+  <rect x="650" y="55" width="170" height="95" class="node"/>
+  <text x="735" y="91" text-anchor="middle" class="label">Chamber MCU</text>
+  <text x="735" y="118" text-anchor="middle" class="small">CAN transceiver</text>
+  <line x1="720" y1="150" x2="720" y2="205" class="stub"/>
+  <line x1="735" y1="150" x2="735" y2="255" class="stub"/>
+  <line x1="750" y1="150" x2="750" y2="310" class="stub"/>
+
+  <text x="80" y="458" class="small">CAN should be a line with two terminators at the physical ends. Keep stubs short.</text>
+</svg>

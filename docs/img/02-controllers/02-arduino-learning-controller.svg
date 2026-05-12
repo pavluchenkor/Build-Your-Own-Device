@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500" role="img" aria-labelledby="title desc">
+  <title id="title">Arduino learning controller wiring concept</title>
+  <desc id="desc">Arduino is shown as a learning controller connected to sensors and external drivers. Loads use separate power and are not powered from GPIO.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937"/>
+    </marker>
+    <style>
+      .arduino { fill: #ecfeff; stroke: #0e7490; stroke-width: 2; rx: 12; }
+      .module { fill: #f8fafc; stroke: #1f2937; stroke-width: 2; rx: 12; }
+      .driver { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; rx: 12; }
+      .load { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; rx: 12; }
+      .label { font: 18px Arial, sans-serif; fill: #111827; }
+      .small { font: 14px Arial, sans-serif; fill: #374151; }
+      .wire { fill: none; stroke: #1f2937; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .signal { fill: none; stroke: #2563eb; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .power { fill: none; stroke: #dc2626; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .gnd { fill: none; stroke: #4b5563; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect width="980" height="500" fill="#ffffff"/>
+
+  <rect x="375" y="150" width="230" height="180" class="arduino"/>
+  <text x="490" y="193" text-anchor="middle" class="label">Arduino Uno / Nano</text>
+  <text x="490" y="222" text-anchor="middle" class="small">learning controller</text>
+  <text x="490" y="247" text-anchor="middle" class="small">5V logic on classic boards</text>
+  <text x="490" y="272" text-anchor="middle" class="small">GPIO / ADC / PWM / I2C / SPI</text>
+
+  <rect x="70" y="80" width="185" height="82" class="module"/>
+  <text x="163" y="114" text-anchor="middle" class="label">Button / sensor</text>
+  <text x="163" y="140" text-anchor="middle" class="small">GPIO or ADC</text>
+
+  <rect x="70" y="230" width="185" height="82" class="module"/>
+  <text x="163" y="264" text-anchor="middle" class="label">OLED / RFID</text>
+  <text x="163" y="290" text-anchor="middle" class="small">I2C / SPI</text>
+
+  <rect x="70" y="380" width="185" height="62" class="load"/>
+  <text x="163" y="405" text-anchor="middle" class="label">USB / 7-12V</text>
+  <text x="163" y="430" text-anchor="middle" class="small">board power</text>
+
+  <rect x="725" y="95" width="185" height="76" class="driver"/>
+  <text x="818" y="127" text-anchor="middle" class="label">MOSFET driver</text>
+  <text x="818" y="152" text-anchor="middle" class="small">fan / LED / DC load</text>
+
+  <rect x="725" y="232" width="185" height="76" class="driver"/>
+  <text x="818" y="264" text-anchor="middle" class="label">Relay / SSR</text>
+  <text x="818" y="289" text-anchor="middle" class="small">isolated load control</text>
+
+  <rect x="725" y="370" width="185" height="76" class="load"/>
+  <text x="818" y="402" text-anchor="middle" class="label">External power</text>
+  <text x="818" y="427" text-anchor="middle" class="small">for motors and loads</text>
+
+  <path d="M255 121 C315 121 320 180 375 202" class="wire"/>
+  <path d="M255 271 H375" class="wire"/>
+  <path d="M255 411 C318 411 320 310 375 300" class="power"/>
+
+  <path d="M605 205 C660 180 675 135 725 133" class="signal"/>
+  <path d="M605 260 H725" class="signal"/>
+  <path d="M818 370 V308" class="power"/>
+  <path d="M725 408 H625 V330" class="gnd"/>
+
+  <text x="379" y="380" class="small">GPIO gives commands. Drivers switch power.</text>
+  <text x="608" y="456" class="small">Use common GND for low-voltage driver circuits.</text>
+</svg>

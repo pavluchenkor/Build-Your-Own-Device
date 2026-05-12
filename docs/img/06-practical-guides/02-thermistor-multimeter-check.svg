@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" role="img" aria-labelledby="title desc">
+  <title id="title">Проверка NTC 100K термистора мультиметром</title>
+  <desc id="desc">Схема показывает отсоединённый от платы термистор, подключённый к мультиметру в режиме измерения сопротивления.</desc>
+  <defs>
+    <style>
+      .box { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 10; }
+      .meter { fill: #eff6ff; stroke: #1d4ed8; stroke-width: 2; rx: 12; }
+      .sensor { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; }
+      .wire-red { fill: none; stroke: #dc2626; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-black { fill: none; stroke: #334155; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-open { fill: none; stroke: #94a3b8; stroke-width: 3; stroke-dasharray: 8 8; stroke-linecap: round; }
+      .label { font-family: Arial, sans-serif; font-size: 18px; fill: #0f172a; }
+      .small { font-family: Arial, sans-serif; font-size: 14px; fill: #334155; }
+      .screen { fill: #dbeafe; stroke: #1e40af; stroke-width: 1.5; rx: 6; }
+      .pin { fill: #e2e8f0; stroke: #475569; stroke-width: 1.5; }
+      .warning { fill: #fef2f2; stroke: #b91c1c; stroke-width: 1.5; rx: 8; }
+    </style>
+  </defs>
+
+  <rect x="70" y="70" width="210" height="280" class="meter"/>
+  <text x="175" y="112" text-anchor="middle" class="label">Multimeter</text>
+  <rect x="110" y="135" width="130" height="55" class="screen"/>
+  <text x="175" y="170" text-anchor="middle" class="label">~100 kOhm</text>
+  <circle cx="135" cy="285" r="18" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="135" y="291" text-anchor="middle" class="small">COM</text>
+  <circle cx="215" cy="285" r="18" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="215" y="291" text-anchor="middle" class="small">Ohm</text>
+  <text x="175" y="225" text-anchor="middle" class="small">mode: resistance</text>
+
+  <rect x="595" y="125" width="190" height="140" class="box"/>
+  <text x="690" y="165" text-anchor="middle" class="label">NTC 100K</text>
+  <text x="690" y="190" text-anchor="middle" class="small">disconnected</text>
+  <text x="690" y="212" text-anchor="middle" class="small">from board</text>
+  <circle cx="645" cy="245" r="8" class="pin"/>
+  <circle cx="735" cy="245" r="8" class="pin"/>
+  <ellipse cx="690" cy="245" rx="18" ry="12" class="sensor"/>
+  <path d="M645 245 H672 M708 245 H735" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+
+  <path class="wire-black" d="M135 285 C270 370, 510 330, 645 245"/>
+  <path class="wire-red" d="M215 285 C340 210, 520 200, 735 245"/>
+  <text x="430" y="350" text-anchor="middle" class="small">measure across the two thermistor wires</text>
+
+  <rect x="580" y="300" width="240" height="62" class="warning"/>
+  <text x="700" y="326" text-anchor="middle" class="small">Power OFF before</text>
+  <text x="700" y="347" text-anchor="middle" class="small">resistance measurement</text>
+
+  <rect x="380" y="70" width="150" height="85" class="box"/>
+  <text x="455" y="105" text-anchor="middle" class="label">Controller</text>
+  <text x="455" y="130" text-anchor="middle" class="small">not connected</text>
+  <path class="wire-open" d="M530 120 C575 120, 600 145, 625 170"/>
+  <text x="568" y="96" text-anchor="middle" class="small">disconnect for check</text>
+</svg>

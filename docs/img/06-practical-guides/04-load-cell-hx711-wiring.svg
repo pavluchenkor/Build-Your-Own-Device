@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="450" viewBox="0 0 960 450" role="img" aria-labelledby="title desc">
+  <title id="title">Подключение тензодатчика через HX711</title>
+  <desc id="desc">Схема показывает тензодатчик, модуль HX711 и контроллер с линиями E+, E-, A+, A-, VCC, GND, DT и SCK.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .box { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 10; }
+      .cell { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; rx: 8; }
+      .hx { fill: #ecfeff; stroke: #0e7490; stroke-width: 2; rx: 10; }
+      .wire-red { fill: none; stroke: #dc2626; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-black { fill: none; stroke: #334155; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-green { fill: none; stroke: #16a34a; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-white { fill: none; stroke: #94a3b8; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-blue { fill: none; stroke: #2563eb; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .label { font-family: Arial, sans-serif; font-size: 18px; fill: #0f172a; }
+      .small { font-family: Arial, sans-serif; font-size: 14px; fill: #334155; }
+      .pin { fill: #e2e8f0; stroke: #475569; stroke-width: 1.5; }
+      .metal { fill: #e5e7eb; stroke: #6b7280; stroke-width: 2; rx: 6; }
+    </style>
+  </defs>
+
+  <rect x="60" y="150" width="250" height="80" class="cell"/>
+  <text x="185" y="132" text-anchor="middle" class="label">Load Cell</text>
+  <rect x="80" y="178" width="210" height="24" class="metal"/>
+  <circle cx="115" cy="190" r="7" fill="#6b7280"/>
+  <circle cx="255" cy="190" r="7" fill="#6b7280"/>
+  <path d="M185 158 V122" stroke="#c2410c" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <text x="185" y="105" text-anchor="middle" class="small">load direction</text>
+
+  <rect x="390" y="80" width="200" height="260" class="hx"/>
+  <text x="490" y="120" text-anchor="middle" class="label">HX711</text>
+  <text x="490" y="143" text-anchor="middle" class="small">load cell amplifier / ADC</text>
+
+  <circle cx="410" cy="185" r="8" class="pin"/><text x="430" y="190" class="small">E+</text>
+  <circle cx="410" cy="220" r="8" class="pin"/><text x="430" y="225" class="small">E-</text>
+  <circle cx="410" cy="255" r="8" class="pin"/><text x="430" y="260" class="small">A+</text>
+  <circle cx="410" cy="290" r="8" class="pin"/><text x="430" y="295" class="small">A-</text>
+
+  <circle cx="570" cy="165" r="8" class="pin"/><text x="525" y="170" class="small">VCC</text>
+  <circle cx="570" cy="200" r="8" class="pin"/><text x="525" y="205" class="small">GND</text>
+  <circle cx="570" cy="235" r="8" class="pin"/><text x="533" y="240" class="small">DT</text>
+  <circle cx="570" cy="270" r="8" class="pin"/><text x="526" y="275" class="small">SCK</text>
+
+  <rect x="700" y="115" width="200" height="190" class="box"/>
+  <text x="800" y="158" text-anchor="middle" class="label">Controller</text>
+  <circle cx="720" cy="190" r="8" class="pin"/><text x="742" y="195" class="small">VCC</text>
+  <circle cx="720" cy="225" r="8" class="pin"/><text x="742" y="230" class="small">GND</text>
+  <circle cx="720" cy="260" r="8" class="pin"/><text x="742" y="265" class="small">GPIO</text>
+  <circle cx="720" cy="285" r="8" class="pin"/><text x="742" y="290" class="small">GPIO</text>
+
+  <path class="wire-red" d="M310 170 H360 V185 H410"/>
+  <path class="wire-black" d="M310 205 H350 V220 H410"/>
+  <path class="wire-green" d="M310 240 H350 V255 H410"/>
+  <path class="wire-white" d="M310 275 H360 V290 H410"/>
+  <text x="332" y="156" class="small">E+</text>
+  <text x="332" y="219" class="small">E-</text>
+  <text x="332" y="251" class="small">A+</text>
+  <text x="332" y="289" class="small">A-</text>
+
+  <path class="wire-red" d="M570 165 H655 V190 H720"/>
+  <path class="wire-black" d="M570 200 H655 V225 H720"/>
+  <path class="wire-blue" d="M570 235 H680 V260 H720"/>
+  <path class="wire-blue" d="M570 270 H665 V285 H720"/>
+  <text x="640" y="150" text-anchor="middle" class="small">power + data</text>
+
+  <text x="490" y="375" text-anchor="middle" class="small">Keep analog load-cell wires short and away from heater power wires</text>
+</svg>

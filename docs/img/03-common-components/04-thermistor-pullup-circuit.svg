@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="460" viewBox="0 0 900 460" role="img" aria-labelledby="title desc">
+  <title id="title">NTC thermistor pull-up resistor circuit for MCU ADC</title>
+  <desc id="desc">3.3V rail connected through 10kΩ pull-up resistor to ADC pin and to NTC thermistor to GND. Shows voltage divider principle and ADC reading.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <style>
+      .mcu { fill: #dcfce7; stroke: #15803d; stroke-width: 2; }
+      .resistor-box { fill: #fef3c7; stroke: #b45309; stroke-width: 2; }
+      .thermistor-box { fill: #fee2e2; stroke: #b91c1c; stroke-width: 2; }
+      .wire { stroke: #334155; stroke-width: 3; fill: none; }
+      .wire-vcc { stroke: #dc2626; stroke-width: 3; fill: none; }
+      .wire-gnd { stroke: #1e293b; stroke-width: 3; fill: none; }
+      .wire-adc { stroke: #7c3aed; stroke-width: 3; fill: none; }
+      .label { font: bold 17px Arial, sans-serif; fill: #1e293b; }
+      .text { font: 14px Arial, sans-serif; fill: #334155; }
+      .small { font: 13px Arial, sans-serif; fill: #64748b; }
+      .formula { fill: #ede9fe; stroke: #7c3aed; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" class="label" font-size="20">NTC Thermistor: Pull-up Resistor Voltage Divider</text>
+
+  <!-- 3.3V rail -->
+  <line x1="280" y1="70" x2="280" y2="100" class="wire-vcc"/>
+  <text x="280" y="62" text-anchor="middle" class="label" fill="#dc2626">3.3V</text>
+
+  <!-- Pull-up resistor -->
+  <rect x="240" y="100" width="80" height="100" rx="8" class="resistor-box"/>
+  <text x="280" y="140" text-anchor="middle" class="label">10kΩ</text>
+  <text x="280" y="162" text-anchor="middle" class="small">pull-up</text>
+  <text x="280" y="180" text-anchor="middle" class="small">R_ref</text>
+
+  <!-- Wire from resistor to junction -->
+  <line x1="280" y1="200" x2="280" y2="250" class="wire"/>
+
+  <!-- Junction dot -->
+  <circle cx="280" cy="250" r="7" fill="#7c3aed"/>
+
+  <!-- Wire from junction to ADC pin -->
+  <path d="M280 250 L560 250" class="wire-adc" marker-end="url(#arrow)"/>
+  <text x="410" y="240" text-anchor="middle" class="small" fill="#7c3aed">ADC pin reads V_mid</text>
+
+  <!-- NTC Thermistor -->
+  <line x1="280" y1="250" x2="280" y2="290" class="wire"/>
+  <rect x="240" y="290" width="80" height="100" rx="8" class="thermistor-box"/>
+  <text x="280" y="330" text-anchor="middle" class="label">NTC</text>
+  <text x="280" y="352" text-anchor="middle" class="small">100K @ 25°C</text>
+  <text x="280" y="370" text-anchor="middle" class="small">R_thermistor</text>
+
+  <!-- Wire to GND -->
+  <line x1="280" y1="390" x2="280" y2="430" class="wire-gnd"/>
+  <text x="280" y="448" text-anchor="middle" class="label" fill="#1e293b">GND</text>
+
+  <!-- MCU block -->
+  <rect x="560" y="150" width="220" height="200" rx="10" class="mcu"/>
+  <text x="670" y="185" text-anchor="middle" class="label">MCU</text>
+  <text x="670" y="210" text-anchor="middle" class="text">ESP32 / STM32</text>
+
+  <!-- ADC pin label -->
+  <circle cx="560" cy="250" r="7" fill="#7c3aed"/>
+  <text x="590" y="253" class="text" fill="#7c3aed">ADC pin</text>
+  <text x="590" y="275" class="small">0…3.3V → 0…4095</text>
+
+  <!-- GND on MCU -->
+  <circle cx="560" cy="320" r="6" fill="#1e293b"/>
+  <text x="590" y="323" class="text">GND</text>
+  <!-- GND connection -->
+  <path d="M560 320 L500 320 L500 430 L340 430" class="wire-gnd"/>
+  <circle cx="340" cy="430" r="5" fill="#1e293b"/>
+  <line x1="280" y1="430" x2="340" y2="430" class="wire-gnd"/>
+
+  <!-- Formula box -->
+  <rect x="570" y="360" width="290" height="80" rx="8" class="formula"/>
+  <text x="715" y="385" text-anchor="middle" class="label" fill="#7c3aed">V_mid = 3.3V × R_NTC / (R_ref + R_NTC)</text>
+  <text x="715" y="410" text-anchor="middle" class="text" fill="#5b21b6">Firmware converts V_mid → temperature</text>
+  <text x="715" y="430" text-anchor="middle" class="small">using Beta formula or lookup table</text>
+
+  <!-- Behaviour note -->
+  <rect x="30" y="310" width="190" height="110" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="125" y="332" text-anchor="middle" class="label" font-size="13">NTC behaviour:</text>
+  <text x="125" y="353" text-anchor="middle" class="small">25°C → ~100kΩ</text>
+  <text x="125" y="372" text-anchor="middle" class="small">100°C → ~6–7kΩ</text>
+  <text x="125" y="391" text-anchor="middle" class="small">200°C → ~0.7–1kΩ</text>
+  <text x="125" y="410" text-anchor="middle" class="small">↑ temp → ↓ R (NTC)</text>
+</svg>

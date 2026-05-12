@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560" role="img" aria-labelledby="title desc">
+  <title id="title">Нагреватель без обдува, со слабым и с правильным потоком</title>
+  <desc id="desc">Три панели показывают локальный перегрев без вентилятора, слабый поток мимо нагревателя и правильный поток через нагреватель в камеру.</desc>
+  <defs>
+    <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#d84a2b"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2f72b7"/>
+    </marker>
+    <radialGradient id="hotSpot" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#f05a34" stop-opacity="0.85"/>
+      <stop offset="0.55" stop-color="#f4a261" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1080" height="560" fill="#f7f9fc"/>
+  <text x="540" y="48" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#1d2733">Один нагреватель, три разных результата</text>
+
+  <g transform="translate(40 92)">
+    <rect x="0" y="0" width="310" height="390" rx="16" fill="#ffffff" stroke="#d7dee8"/>
+    <text x="155" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#1d2733">Без обдува</text>
+    <rect x="48" y="82" width="214" height="210" rx="12" fill="#eef3f9" stroke="#c5cfdd"/>
+    <circle cx="155" cy="187" r="105" fill="url(#hotSpot)"/>
+    <rect x="125" y="147" width="60" height="80" rx="8" fill="#e85b36"/>
+    <path d="M140 166 C158 148, 172 171, 154 188 C142 200, 166 205, 174 219" fill="none" stroke="#fff2d6" stroke-width="5" stroke-linecap="round"/>
+    <path d="M96 132 C74 102, 110 86, 116 112" fill="none" stroke="#d84a2b" stroke-width="4" marker-end="url(#arrow-red)"/>
+    <path d="M216 245 C246 268, 238 300, 210 286" fill="none" stroke="#d84a2b" stroke-width="4" marker-end="url(#arrow-red)"/>
+    <text x="155" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#5a6472">горячая зона остаётся рядом</text>
+    <text x="155" y="356" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#5a6472">с нагревателем</text>
+  </g>
+
+  <g transform="translate(385 92)">
+    <rect x="0" y="0" width="310" height="390" rx="16" fill="#ffffff" stroke="#d7dee8"/>
+    <text x="155" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#1d2733">Слабый поток</text>
+    <rect x="48" y="82" width="214" height="210" rx="12" fill="#eef3f9" stroke="#c5cfdd"/>
+    <circle cx="156" cy="187" r="88" fill="url(#hotSpot)"/>
+
+    <circle cx="84" cy="187" r="28" fill="#dfe6ef" stroke="#7f8b9b" stroke-width="3"/>
+    <path d="M84 162 L92 187 L84 212 L76 187 Z" fill="#7f8b9b"/>
+    <path d="M62 187 L106 187" stroke="#7f8b9b" stroke-width="3"/>
+
+    <rect x="160" y="150" width="58" height="76" rx="8" fill="#e85b36"/>
+    <path d="M174 168 C190 150, 204 172, 188 188 C176 200, 200 207, 208 219" fill="none" stroke="#fff2d6" stroke-width="5" stroke-linecap="round"/>
+
+    <path d="M112 170 C142 150, 160 144, 188 146" fill="none" stroke="#2f72b7" stroke-width="5" marker-end="url(#arrow-blue)"/>
+    <path d="M112 206 C150 232, 188 236, 230 216" fill="none" stroke="#2f72b7" stroke-width="5" marker-end="url(#arrow-blue)"/>
+    <path d="M210 150 C236 124, 248 110, 254 86" fill="none" stroke="#d84a2b" stroke-width="4" marker-end="url(#arrow-red)"/>
+
+    <text x="155" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#5a6472">часть воздуха проходит мимо</text>
+    <text x="155" y="356" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#5a6472">и горячая зона остаётся</text>
+  </g>
+
+  <g transform="translate(730 92)">
+    <rect x="0" y="0" width="310" height="390" rx="16" fill="#ffffff" stroke="#d7dee8"/>
+    <text x="155" y="38" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#1d2733">Правильный поток</text>
+    <rect x="48" y="82" width="214" height="210" rx="12" fill="#eef3f9" stroke="#c5cfdd"/>
+
+    <circle cx="82" cy="187" r="28" fill="#dfe6ef" stroke="#7f8b9b" stroke-width="3"/>
+    <path d="M82 162 L90 187 L82 212 L74 187 Z" fill="#7f8b9b"/>
+    <path d="M60 187 L104 187" stroke="#7f8b9b" stroke-width="3"/>
+
+    <rect x="142" y="142" width="58" height="90" rx="8" fill="#e85b36"/>
+    <path d="M156 160 C172 142, 186 164, 170 182 C158 196, 184 203, 190 221" fill="none" stroke="#fff2d6" stroke-width="5" stroke-linecap="round"/>
+
+    <path d="M110 160 C134 144, 150 144, 170 160" fill="none" stroke="#2f72b7" stroke-width="6" marker-end="url(#arrow-blue)"/>
+    <path d="M110 187 C138 187, 166 187, 206 187" fill="none" stroke="#2f72b7" stroke-width="6" marker-end="url(#arrow-blue)"/>
+    <path d="M110 214 C136 232, 168 232, 218 214" fill="none" stroke="#2f72b7" stroke-width="6" marker-end="url(#arrow-blue)"/>
+    <path d="M204 168 C230 154, 244 154, 260 168" fill="none" stroke="#d84a2b" stroke-width="4" marker-end="url(#arrow-red)"/>
+    <path d="M204 210 C230 226, 244 226, 260 210" fill="none" stroke="#d84a2b" stroke-width="4" marker-end="url(#arrow-red)"/>
+
+    <text x="155" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#5a6472">воздух проходит через нагрев</text>
+    <text x="155" y="356" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#5a6472">и уносит тепло в камеру</text>
+  </g>
+
+  <g transform="translate(336 518)">
+    <line x1="0" y1="0" x2="56" y2="0" stroke="#2f72b7" stroke-width="6" marker-end="url(#arrow-blue)"/>
+    <text x="72" y="5" font-family="Arial, sans-serif" font-size="15" fill="#394655">поток воздуха</text>
+    <line x1="196" y1="0" x2="252" y2="0" stroke="#d84a2b" stroke-width="4" marker-end="url(#arrow-red)"/>
+    <text x="268" y="5" font-family="Arial, sans-serif" font-size="15" fill="#394655">перенос тепла</text>
+  </g>
+</svg>

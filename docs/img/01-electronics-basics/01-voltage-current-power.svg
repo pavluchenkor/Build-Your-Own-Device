@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="title desc">
+  <title id="title">Связь напряжения, тока и мощности нагрузки</title>
+  <desc id="desc">Схема показывает блок питания 24V, нагрузку, ток в цепи и формулу P = U * I.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <style>
+      .box { fill: #fff; stroke: #222; stroke-width: 2; }
+      .psu { fill: #e0f2fe; stroke: #0369a1; stroke-width: 2; }
+      .load { fill: #fee2e2; stroke: #b91c1c; stroke-width: 2; }
+      .formula { fill: #fef3c7; stroke: #b45309; stroke-width: 2; }
+      .wire { stroke: #222; stroke-width: 5; fill: none; }
+      .current { stroke: #1976d2; stroke-width: 5; fill: none; marker-end: url(#arrow); }
+      .label { font: 23px Arial, sans-serif; font-weight: 700; fill: #222; }
+      .text { font: 18px Arial, sans-serif; fill: #222; }
+      .small { font: 15px Arial, sans-serif; fill: #555; }
+    </style>
+  </defs>
+
+  <rect x="70" y="145" width="220" height="150" rx="12" class="psu"/>
+  <text x="180" y="190" text-anchor="middle" class="label">24V PSU</text>
+  <text x="180" y="225" text-anchor="middle" class="text">Power supply</text>
+  <text x="125" y="270" class="text">+V</text>
+  <text x="225" y="270" class="text">GND</text>
+
+  <rect x="710" y="145" width="220" height="150" rx="12" class="load"/>
+  <text x="820" y="190" text-anchor="middle" class="label">Load</text>
+  <text x="820" y="225" text-anchor="middle" class="text">heater / fan / LED</text>
+  <text x="760" y="270" class="text">+V</text>
+  <text x="860" y="270" class="text">GND</text>
+
+  <path d="M290 190 L710 190" class="wire"/>
+  <path d="M710 260 L290 260" class="wire"/>
+  <path d="M345 165 L655 165" class="current"/>
+  <text x="500" y="145" text-anchor="middle" class="text" fill="#1976d2">Current I</text>
+
+  <rect x="350" y="335" width="300" height="105" rx="12" class="formula"/>
+  <text x="500" y="380" text-anchor="middle" class="label">P = U * I</text>
+  <text x="500" y="415" text-anchor="middle" class="text">I = P / U</text>
+
+  <text x="500" y="480" text-anchor="middle" class="small">Power, wires, connectors and switch must be rated for the calculated current.</text>
+</svg>

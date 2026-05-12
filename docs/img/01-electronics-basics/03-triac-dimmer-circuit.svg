@@ -1,0 +1,111 @@
+<?xml version="1.0" standalone="no"?>
+<svg viewBox="0 0 1024 768" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke-linecap="round" stroke-linejoin="round" fill-rule="evenodd" xml:space="preserve" >
+<defs >
+<clipPath id="clipId0" >
+<path d="M0,768 1024,768 1024,0 0,0 z" />
+</clipPath>
+</defs>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.1" />
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.5" >
+<polyline points="231.711,155.22 607.189,155.22 " />
+<polyline points="603.145,523.434 231.711,523.434 " />
+<polyline points="607.189,155.22 607.189,252.137 " />
+</g>
+<g clip-path="url(#clipId0)" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" stroke-width="1" >
+<path d="M446.705,428.665 474.801,412.444 446.705,396.223 446.705,399.092 z" />
+<path d="M573.572,252.137 589.793,280.232 606.013,252.137 z" />
+<path d="M633.569,280.232 617.349,252.137 601.128,280.232 z" />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.25" >
+<polyline points="570.683,252.137 635.606,252.137 " />
+<polyline points="573.572,252.137 589.793,280.232 606.013,252.137 573.572,252.137 " />
+<polyline points="633.569,280.232 617.349,252.137 601.128,280.232 633.569,280.232 " />
+<polyline points="570.683,280.232 635.606,280.232 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.5" >
+<polyline points="603.145,280.232 603.145,361.754 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.25" >
+<polyline points="603.145,361.754 630.939,361.754 " />
+<polyline points="630.939,374.56 603.145,374.56 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.5" >
+<polyline points="603.145,374.56 603.145,523.434 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.25" >
+<path d="M634.04,368.157  A8.16112,8.16112 0 1,0 630.939,361.754 " />
+<path d="M630.939,374.56  A8.16112,8.16112 0 1,0 634.04,368.157 " />
+<circle cx="634.04" cy="368.157" r="24.5866" />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.5" >
+<polyline points="356.339,523.434 356.339,468.535 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.25" >
+<polyline points="356.339,468.535 356.339,466.521 " />
+<polyline points="356.339,466.521 356.339,462.989 " />
+<polyline points="356.339,462.989 356.339,457.952 " />
+<polyline points="380.071,457.952 332.608,457.952 " />
+<polyline points="380.071,451.149 332.608,451.149 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.5" >
+<polyline points="356.339,451.149 356.339,370.678 " />
+<polyline points="356.339,318.547 356.339,260.624 " />
+<polyline points="356.339,208.493 356.339,155.22 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.25" >
+<polyline points="362.851,370.678 349.827,370.678 349.827,318.547 362.851,318.547 362.851,370.678 " />
+<polyline points="362.851,260.624 349.827,260.624 349.827,208.493 362.851,208.493 362.851,260.624 " />
+<polyline points="342.405,368.71 372.306,326.414 " />
+</g>
+<g clip-path="url(#clipId0)" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" stroke-width="0.25" >
+<polygon points="376.419,329.322 377.343,319.289 368.192,323.506 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.25" >
+<polyline points="376.419,329.322 377.343,319.289 368.192,323.506 376.419,329.322 " />
+<polyline points="596.911,280.232 596.911,290.981 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.5" >
+<polyline points="596.911,290.981 572.679,302.469 " />
+<polyline points="572.679,302.469 572.679,330.435 " />
+<polyline points="572.679,330.435 572.679,399.092 " />
+<polyline points="572.679,399.092 474.801,399.092 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.25" >
+<polyline points="446.705,431.553 446.705,366.631 " />
+<polyline points="446.705,428.665 474.801,412.444 446.705,396.223 446.705,428.665 " />
+</g>
+<g clip-path="url(#clipId0)" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" stroke-width="0.25" >
+<polygon points="474.801,368.667 446.705,384.888 474.801,401.109 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.25" >
+<polyline points="474.801,368.667 446.705,384.888 474.801,401.109 474.801,368.667 " />
+<polyline points="474.801,431.553 474.801,366.631 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.5" >
+<polyline points="446.705,399.092 356.339,399.092 " />
+<polyline points="231.711,155.22 231.711,311.74 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.25" >
+<circle cx="231.711" cy="339.327" r="27.5867" />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.5" >
+<polyline points="231.711,366.914 231.711,523.434 " />
+</g>
+<g clip-path="url(#clipId0)" fill="none" stroke="rgb(0,0,0)" stroke-width="0.25" >
+<path d="M231.711,339.327  A9.77709,9.77709 0 0,0 212.156,339.327 " />
+<path d="M231.711,339.327  A9.77709,9.77709 0 0,0 251.265,339.327 " />
+</g>
+<g clip-path="url(#clipId0)" fill="rgb(0,0,0)" stroke="rgb(0,0,0)" stroke-width="0" >
+<text transform="matrix(11.0069 0 -0 11.0069 137.089 340.484)" font-family="Arial,'sans-serif'" font-size="1.39636" >230VAC</text>
+<text transform="matrix(11.0069 0 -0 11.0069 136.836 359.016)" font-family="Arial,'sans-serif'" font-size="1.39636" >SUPPLY</text>
+<text transform="matrix(11.0069 0 -0 11.0069 381.632 229.605)" font-family="Arial,'sans-serif'" font-size="1.39636" >3.9K</text>
+<text transform="matrix(11.0069 0 -0 11.0069 382.084 339.66)" font-family="Arial,'sans-serif'" font-size="1.39636" >470K</text>
+<text transform="matrix(11.0069 0 -0 11.0069 381.093 358.191)" font-family="Arial,'sans-serif'" font-size="1.39636" >POT</text>
+<text transform="matrix(11.0069 0 -0 11.0069 652.637 267.975)" font-family="Arial,'sans-serif'" font-size="1.39636" >TRIAC</text>
+<text transform="matrix(11.0069 0 -0 11.0069 662.468 371.225)" font-family="Arial,'sans-serif'" font-size="1.39636" >LAMP</text>
+<text transform="matrix(11.0069 0 -0 11.0069 442.024 447.55)" font-family="Arial,'sans-serif'" font-size="1.39636" >DIAC</text>
+<text transform="matrix(11.0069 0 -0 11.0069 387.822 459.654)" font-family="Arial,'sans-serif'" font-size="1.39636" >100nF</text>
+<text transform="matrix(11.0069 0 -0 11.0069 613.382 242.787)" font-family="Arial,'sans-serif'" font-size="1.39636" >A2</text>
+<text transform="matrix(11.0069 0 -0 11.0069 609.337 297.419)" font-family="Arial,'sans-serif'" font-size="1.39636" >A1</text>
+</g>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="430" viewBox="0 0 980 430" role="img" aria-labelledby="title desc">
+  <title id="title">UART TX RX GND wiring</title>
+  <desc id="desc">Two devices connected over UART. TX from each side crosses to RX on the other side, and grounds are connected together.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937"/>
+    </marker>
+    <style>
+      .device { fill: #f8fafc; stroke: #1f2937; stroke-width: 2; rx: 12; }
+      .pin { fill: #eef2ff; stroke: #4338ca; stroke-width: 2; rx: 8; }
+      .label { font: 20px Arial, sans-serif; fill: #111827; }
+      .small { font: 15px Arial, sans-serif; fill: #374151; }
+      .tx { fill: none; stroke: #2563eb; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .rx { fill: none; stroke: #0891b2; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .gnd { fill: none; stroke: #4b5563; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect width="980" height="430" fill="#ffffff"/>
+
+  <rect x="90" y="85" width="250" height="250" class="device"/>
+  <text x="215" y="130" text-anchor="middle" class="label">Device A</text>
+  <text x="215" y="158" text-anchor="middle" class="small">controller / adapter</text>
+
+  <rect x="640" y="85" width="250" height="250" class="device"/>
+  <text x="765" y="130" text-anchor="middle" class="label">Device B</text>
+  <text x="765" y="158" text-anchor="middle" class="small">module / MCU</text>
+
+  <rect x="260" y="190" width="58" height="34" class="pin"/>
+  <text x="289" y="213" text-anchor="middle" class="small">TX</text>
+  <rect x="260" y="238" width="58" height="34" class="pin"/>
+  <text x="289" y="261" text-anchor="middle" class="small">RX</text>
+  <rect x="260" y="286" width="58" height="34" class="pin"/>
+  <text x="289" y="309" text-anchor="middle" class="small">GND</text>
+
+  <rect x="662" y="190" width="58" height="34" class="pin"/>
+  <text x="691" y="213" text-anchor="middle" class="small">RX</text>
+  <rect x="662" y="238" width="58" height="34" class="pin"/>
+  <text x="691" y="261" text-anchor="middle" class="small">TX</text>
+  <rect x="662" y="286" width="58" height="34" class="pin"/>
+  <text x="691" y="309" text-anchor="middle" class="small">GND</text>
+
+  <path d="M318 207 C430 207 520 207 662 207" class="tx"/>
+  <path d="M662 255 C520 255 430 255 318 255" class="rx"/>
+  <path d="M318 303 H662" class="gnd"/>
+
+  <text x="490" y="193" text-anchor="middle" class="small">TX -> RX</text>
+  <text x="490" y="242" text-anchor="middle" class="small">RX &lt;- TX</text>
+  <text x="490" y="327" text-anchor="middle" class="small">common ground</text>
+
+  <text x="100" y="382" class="small">Check voltage levels before connecting: 3.3V UART and 5V UART are not always compatible.</text>
+</svg>

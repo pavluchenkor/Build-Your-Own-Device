@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="540" viewBox="0 0 980 540" role="img" aria-labelledby="title desc">
+  <title id="title">Klipper host and multiple MCU architecture</title>
+  <desc id="desc">Klipper host communicates with a main MCU and an extra chamber MCU. Each MCU owns its pins and controls drivers or reads sensors.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937"/>
+    </marker>
+    <style>
+      .host { fill: #f8fafc; stroke: #1f2937; stroke-width: 2; rx: 12; }
+      .main { fill: #eef2ff; stroke: #4338ca; stroke-width: 2; rx: 12; }
+      .extra { fill: #ecfdf5; stroke: #047857; stroke-width: 2; rx: 12; }
+      .device { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; rx: 12; }
+      .label { font: 18px Arial, sans-serif; fill: #111827; }
+      .small { font: 14px Arial, sans-serif; fill: #374151; }
+      .link { fill: none; stroke: #7c3aed; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .signal { fill: none; stroke: #2563eb; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .power { fill: none; stroke: #dc2626; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="980" height="540" fill="#ffffff"/>
+
+  <rect x="55" y="190" width="230" height="150" class="host"/>
+  <text x="170" y="230" text-anchor="middle" class="label">Klipper host</text>
+  <text x="170" y="258" text-anchor="middle" class="small">Linux computer</text>
+  <text x="170" y="284" text-anchor="middle" class="small">printer.cfg</text>
+  <text x="170" y="310" text-anchor="middle" class="small">schedules actions</text>
+
+  <rect x="390" y="80" width="225" height="145" class="main"/>
+  <text x="503" y="118" text-anchor="middle" class="label">Main MCU</text>
+  <text x="503" y="146" text-anchor="middle" class="small">printer board</text>
+  <text x="503" y="172" text-anchor="middle" class="small">owns printer pins</text>
+  <text x="503" y="198" text-anchor="middle" class="small">[mcu]</text>
+
+  <rect x="390" y="315" width="225" height="145" class="extra"/>
+  <text x="503" y="353" text-anchor="middle" class="label">Extra MCU</text>
+  <text x="503" y="381" text-anchor="middle" class="small">RP2040 / STM32 board</text>
+  <text x="503" y="407" text-anchor="middle" class="small">owns chamber pins</text>
+  <text x="503" y="433" text-anchor="middle" class="small">[mcu chamber]</text>
+
+  <path d="M285 240 C335 190 340 152 390 152" class="link"/>
+  <path d="M285 300 C335 350 340 388 390 388" class="link"/>
+  <text x="306" y="212" class="small">USB / UART / CAN</text>
+  <text x="306" y="345" class="small">USB / UART / CAN</text>
+
+  <rect x="735" y="58" width="185" height="70" class="device"/>
+  <text x="828" y="88" text-anchor="middle" class="label">Printer outputs</text>
+  <text x="828" y="112" text-anchor="middle" class="small">motors / fans / sensors</text>
+
+  <rect x="735" y="175" width="185" height="70" class="device"/>
+  <text x="828" y="205" text-anchor="middle" class="label">Heater hardware</text>
+  <text x="828" y="229" text-anchor="middle" class="small">driver + safety layers</text>
+
+  <rect x="735" y="328" width="185" height="70" class="device"/>
+  <text x="828" y="358" text-anchor="middle" class="label">Chamber sensors</text>
+  <text x="828" y="382" text-anchor="middle" class="small">temperature / door</text>
+
+  <rect x="735" y="442" width="185" height="70" class="device"/>
+  <text x="828" y="472" text-anchor="middle" class="label">Filter / fan</text>
+  <text x="828" y="496" text-anchor="middle" class="small">MOSFET / driver</text>
+
+  <path d="M615 130 C675 105 690 92 735 92" class="signal"/>
+  <path d="M615 184 C675 198 690 210 735 210" class="power"/>
+  <path d="M615 370 H735" class="signal"/>
+  <path d="M615 425 C675 445 690 476 735 477" class="power"/>
+
+  <text x="390" y="508" class="small">Use prefixes like chamber:gpio15 for pins on an extra MCU.</text>
+</svg>

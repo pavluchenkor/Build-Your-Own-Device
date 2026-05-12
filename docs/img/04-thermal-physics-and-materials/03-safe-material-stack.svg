@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="540" viewBox="0 0 980 540" role="img" aria-labelledby="title desc">
+  <title id="title">Слои безопасной стенки рядом с нагревом</title>
+  <desc id="desc">Схема показывает нагреватель, внутренний металлический экран, воздушный зазор или утеплитель, внешний корпус, провода вне горячей зоны и независимую термозащиту.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#d84a2b"/>
+    </marker>
+    <pattern id="insulation" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M1 14 C7 2, 14 24, 20 8" fill="none" stroke="#9f8d56" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <rect width="980" height="540" fill="#f7f9fc"/>
+  <text x="490" y="48" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#1d2733">Материалы рядом с нагревом лучше разделять слоями</text>
+
+  <g transform="translate(90 105)">
+    <rect x="0" y="0" width="800" height="330" rx="16" fill="#ffffff" stroke="#d7dee8"/>
+
+    <rect x="58" y="116" width="82" height="98" rx="10" fill="#e85b36"/>
+    <path d="M76 142 C102 116, 118 146, 96 166 C82 180, 108 190, 116 204" fill="none" stroke="#fff2d6" stroke-width="6" stroke-linecap="round"/>
+    <text x="99" y="244" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#334152">Нагреватель</text>
+
+    <rect x="200" y="72" width="58" height="220" rx="6" fill="#cfd8e3" stroke="#8f9aaa" stroke-width="2"/>
+    <text x="229" y="186" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#2f3b4a" transform="rotate(-90 229 186)">Металл / экран</text>
+
+    <rect x="286" y="72" width="76" height="220" rx="6" fill="#eef4fb" stroke="#c7d3e1" stroke-width="2"/>
+    <text x="324" y="176" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#3b4a5c" transform="rotate(-90 324 176)">Зазор</text>
+
+    <rect x="390" y="72" width="140" height="220" rx="6" fill="url(#insulation)" stroke="#b7a66a" stroke-width="2"/>
+    <text x="460" y="186" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#5c4d20">Утеплитель</text>
+
+    <rect x="558" y="72" width="74" height="220" rx="6" fill="#e6ebf2" stroke="#9ca7b6" stroke-width="2"/>
+    <text x="595" y="186" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#324052" transform="rotate(-90 595 186)">Корпус</text>
+
+    <path d="M142 165 C164 150, 178 150, 198 165" fill="none" stroke="#d84a2b" stroke-width="5" marker-end="url(#arrow)"/>
+    <path d="M258 165 C278 154, 294 154, 314 165" fill="none" stroke="#d84a2b" stroke-width="4" marker-end="url(#arrow)"/>
+    <path d="M362 165 C382 154, 398 154, 418 165" fill="none" stroke="#d84a2b" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <g transform="translate(660 92)">
+      <rect x="0" y="0" width="90" height="46" rx="8" fill="#fff6e8" stroke="#d78a3a" stroke-width="2"/>
+      <text x="45" y="29" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#71420d">Термозащита</text>
+      <path d="M-28 22 L0 22" stroke="#d78a3a" stroke-width="3"/>
+    </g>
+
+    <path d="M664 252 C694 228, 718 228, 750 252" fill="none" stroke="#4c6986" stroke-width="5"/>
+    <path d="M664 272 C694 248, 718 248, 750 272" fill="none" stroke="#4c6986" stroke-width="5"/>
+    <text x="708" y="305" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#4e5b6a">провода вне горячей зоны</text>
+  </g>
+
+  <g transform="translate(126 468)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#1d2733">Идея:</text>
+    <text x="62" y="0" font-family="Arial, sans-serif" font-size="16" fill="#394655">горючий или чувствительный материал не должен быть первым слоем рядом с нагревателем.</text>
+  </g>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
+  <title id="title">Подключение I2C OLED-дисплея к контроллеру</title>
+  <desc id="desc">Схема показывает контроллер, OLED-дисплей, линии VCC, GND, SDA и SCL, а также предупреждение о напряжении питания и уровне логики.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <style>
+      .box { fill: #fff; stroke: #222; stroke-width: 2; }
+      .screen { fill: #071827; stroke: #0f766e; stroke-width: 4; }
+      .pixel { fill: #a7f3d0; }
+      .label { font: 22px Arial, sans-serif; font-weight: 700; fill: #222; }
+      .text { font: 17px Arial, sans-serif; fill: #222; }
+      .note { font: 15px Arial, sans-serif; fill: #555; }
+      .vcc { stroke: #d32f2f; stroke-width: 5; fill: none; marker-end: url(#arrow); }
+      .gnd { stroke: #222; stroke-width: 5; fill: none; marker-end: url(#arrow); }
+      .sda { stroke: #1976d2; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .scl { stroke: #7b1fa2; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="85" y="105" width="285" height="280" rx="12" class="box"/>
+  <text x="227" y="150" text-anchor="middle" class="label">Контроллер</text>
+  <text x="227" y="182" text-anchor="middle" class="text">ESP32 / MCU / плата</text>
+  <text x="130" y="245" class="text">3.3V или 5V</text>
+  <text x="130" y="285" class="text">GND</text>
+  <text x="130" y="325" class="text">SDA</text>
+  <text x="130" y="365" class="text">SCL</text>
+
+  <rect x="605" y="85" width="300" height="315" rx="12" class="box"/>
+  <text x="755" y="127" text-anchor="middle" class="label">I2C OLED</text>
+  <rect x="655" y="155" width="200" height="112" rx="8" class="screen"/>
+  <rect x="680" y="180" width="85" height="10" class="pixel"/>
+  <rect x="680" y="204" width="145" height="10" class="pixel"/>
+  <rect x="680" y="228" width="105" height="10" class="pixel"/>
+  <text x="755" y="300" text-anchor="middle" class="text">SSD1306 / SH1106</text>
+  <text x="690" y="340" class="text">VCC</text>
+  <text x="690" y="366" class="text">GND</text>
+  <text x="690" y="392" class="text">SDA</text>
+  <text x="690" y="418" class="text">SCL</text>
+
+  <path d="M255 240 C390 210 520 300 690 338" class="vcc"/>
+  <text x="486" y="244" text-anchor="middle" class="text" fill="#d32f2f">питание по модулю</text>
+
+  <path d="M178 282 C345 315 500 350 690 365" class="gnd"/>
+  <text x="430" y="345" text-anchor="middle" class="text">общая земля</text>
+
+  <path d="M178 323 C345 285 520 315 690 391" class="sda"/>
+  <text x="430" y="292" text-anchor="middle" class="text" fill="#1976d2">SDA</text>
+
+  <path d="M178 363 C350 410 520 435 690 417" class="scl"/>
+  <text x="430" y="430" text-anchor="middle" class="text" fill="#7b1fa2">SCL</text>
+
+  <text x="490" y="470" text-anchor="middle" class="note">Проверь напряжение питания, уровень логики, I2C-адрес и наличие подтяжек на модуле.</text>
+</svg>

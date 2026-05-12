@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="500" viewBox="0 0 980 500" role="img" aria-labelledby="title desc">
+  <title id="title">RP2040 as Klipper MCU</title>
+  <desc id="desc">Klipper host connects by USB to Raspberry Pi Pico. Pico provides GPIO, PWM, ADC, I2C and SPI signals to external drivers and sensors.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937"/>
+    </marker>
+    <style>
+      .host { fill: #f8fafc; stroke: #1f2937; stroke-width: 2; rx: 12; }
+      .pico { fill: #f0fdf4; stroke: #15803d; stroke-width: 2; rx: 12; }
+      .module { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; rx: 12; }
+      .load { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; rx: 12; }
+      .label { font: 18px Arial, sans-serif; fill: #111827; }
+      .small { font: 14px Arial, sans-serif; fill: #374151; }
+      .usb { fill: none; stroke: #7c3aed; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .signal { fill: none; stroke: #2563eb; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .power { fill: none; stroke: #dc2626; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .gnd { fill: none; stroke: #4b5563; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect width="980" height="500" fill="#ffffff"/>
+
+  <rect x="60" y="170" width="230" height="150" class="host"/>
+  <text x="175" y="212" text-anchor="middle" class="label">Klipper host</text>
+  <text x="175" y="240" text-anchor="middle" class="small">Linux SBC / mini PC</text>
+  <text x="175" y="266" text-anchor="middle" class="small">printer.cfg</text>
+  <text x="175" y="292" text-anchor="middle" class="small">high-level control</text>
+
+  <rect x="390" y="150" width="230" height="190" class="pico"/>
+  <text x="505" y="192" text-anchor="middle" class="label">Raspberry Pi Pico</text>
+  <text x="505" y="220" text-anchor="middle" class="small">RP2040 Klipper MCU</text>
+  <text x="505" y="246" text-anchor="middle" class="small">3.3V GPIO</text>
+  <text x="505" y="272" text-anchor="middle" class="small">PWM / ADC / I2C / SPI / UART</text>
+  <text x="505" y="298" text-anchor="middle" class="small">BOOTSEL + UF2 flashing</text>
+
+  <path d="M290 245 H390" class="usb"/>
+  <text x="321" y="232" class="small">USB</text>
+
+  <rect x="735" y="65" width="185" height="76" class="module"/>
+  <text x="828" y="97" text-anchor="middle" class="label">Sensors</text>
+  <text x="828" y="122" text-anchor="middle" class="small">ADC / I2C / SPI</text>
+
+  <rect x="735" y="205" width="185" height="76" class="module"/>
+  <text x="828" y="237" text-anchor="middle" class="label">MOSFET driver</text>
+  <text x="828" y="262" text-anchor="middle" class="small">fan / LED / DC load</text>
+
+  <rect x="735" y="345" width="185" height="76" class="load"/>
+  <text x="828" y="377" text-anchor="middle" class="label">SSR / relay</text>
+  <text x="828" y="402" text-anchor="middle" class="small">isolated load control</text>
+
+  <path d="M620 205 C675 175 685 105 735 103" class="signal"/>
+  <path d="M620 245 H735" class="signal"/>
+  <path d="M620 290 C675 320 685 378 735 383" class="signal"/>
+
+  <path d="M828 281 V345" class="power"/>
+  <path d="M725 438 H640 V340" class="gnd"/>
+
+  <text x="392" y="392" class="small">Pico expands pins. Drivers switch real power.</text>
+  <text x="612" y="462" class="small">Use common GND for low-voltage drivers.</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
+  <title id="title">Правильное и неправильное крепление балочного тензодатчика</title>
+  <desc id="desc">Сравнение: слева одна сторона датчика закреплена на базе, другая несёт платформу с зазором; справа датчик зажат между двумя жёсткими деталями и не может нормально изгибаться.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="8" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,0 L5,9 z" fill="#d32f2f"/>
+    </marker>
+    <style>
+      .title { font: 24px Arial, sans-serif; font-weight: 700; fill: #222; }
+      .label { font: 17px Arial, sans-serif; fill: #222; }
+      .small { font: 14px Arial, sans-serif; fill: #555; }
+      .base { fill: #e5e7eb; stroke: #222; stroke-width: 2; }
+      .platform { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2; }
+      .cell { fill: #fef3c7; stroke: #92400e; stroke-width: 3; }
+      .hole { fill: #fff; stroke: #92400e; stroke-width: 2; }
+      .gap { stroke: #64748b; stroke-width: 2; stroke-dasharray: 7 6; }
+      .force { stroke: #d32f2f; stroke-width: 5; marker-end: url(#arrow); }
+      .ok { fill: #15803d; font: 20px Arial, sans-serif; font-weight: 700; }
+      .bad { fill: #b91c1c; font: 20px Arial, sans-serif; font-weight: 700; }
+    </style>
+  </defs>
+
+  <text x="245" y="42" text-anchor="middle" class="title">Правильно</text>
+  <text x="735" y="42" text-anchor="middle" class="title">Неправильно</text>
+
+  <text x="70" y="86" class="ok">OK: датчик может изгибаться</text>
+  <rect x="70" y="360" width="360" height="42" class="base"/>
+  <text x="250" y="388" text-anchor="middle" class="label">неподвижная база</text>
+
+  <rect x="105" y="255" width="285" height="50" rx="10" class="cell"/>
+  <circle cx="150" cy="280" r="13" class="hole"/>
+  <circle cx="345" cy="280" r="13" class="hole"/>
+  <text x="247" y="286" text-anchor="middle" class="label">балочный load cell</text>
+
+  <rect x="82" y="310" width="135" height="50" class="base"/>
+  <text x="150" y="342" text-anchor="middle" class="small">крепление</text>
+
+  <rect x="285" y="178" width="170" height="48" class="platform"/>
+  <text x="370" y="208" text-anchor="middle" class="label">платформа</text>
+  <line x1="370" y1="226" x2="370" y2="255" class="force"/>
+  <text x="395" y="250" class="small">нагрузка</text>
+  <line x1="218" y1="335" x2="285" y2="335" class="gap"/>
+  <text x="252" y="326" text-anchor="middle" class="small">зазор</text>
+
+  <text x="86" y="445" class="small">Одна сторона закреплена, другая несёт нагрузку.</text>
+  <text x="86" y="468" class="small">Корпус не мешает рабочему изгибу балки.</text>
+
+  <text x="560" y="86" class="bad">Ошибка: датчик зажат</text>
+  <rect x="560" y="360" width="360" height="42" class="base"/>
+  <text x="740" y="388" text-anchor="middle" class="label">нижняя деталь</text>
+
+  <rect x="595" y="255" width="285" height="50" rx="10" class="cell"/>
+  <circle cx="640" cy="280" r="13" class="hole"/>
+  <circle cx="835" cy="280" r="13" class="hole"/>
+  <text x="737" y="286" text-anchor="middle" class="label">балочный load cell</text>
+
+  <rect x="570" y="192" width="340" height="45" class="platform"/>
+  <text x="740" y="221" text-anchor="middle" class="label">верхняя жёсткая деталь</text>
+  <rect x="607" y="305" width="246" height="55" class="base"/>
+  <text x="730" y="339" text-anchor="middle" class="small">обе стороны прижаты</text>
+  <line x1="740" y1="150" x2="740" y2="192" class="force"/>
+  <text x="765" y="178" class="small">нагрузка</text>
+
+  <text x="576" y="445" class="small">Балка не деформируется как задумано.</text>
+  <text x="576" y="468" class="small">Показания будут нестабильными или неверными.</text>
+</svg>

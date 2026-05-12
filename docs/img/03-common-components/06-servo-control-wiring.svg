@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="450" viewBox="0 0 940 450" role="img" aria-labelledby="title desc">
+  <title id="title">Servo motor control wiring with external power supply</title>
+  <desc id="desc">Servo connected to MCU signal pin for PWM control, with external 5V supply for servo power and common GND between MCU, servo and external PSU.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <style>
+      .mcu { fill: #dcfce7; stroke: #15803d; stroke-width: 2; }
+      .servo { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2; }
+      .psu { fill: #fee2e2; stroke: #b91c1c; stroke-width: 2; }
+      .wire-sig { stroke: #f59e0b; stroke-width: 3; fill: none; }
+      .wire-vcc { stroke: #dc2626; stroke-width: 3; fill: none; }
+      .wire-gnd { stroke: #1e293b; stroke-width: 3; fill: none; }
+      .wire-bad { stroke: #dc2626; stroke-width: 3; fill: none; stroke-dasharray: 8 4; }
+      .label { font: bold 17px Arial, sans-serif; fill: #1e293b; }
+      .text { font: 14px Arial, sans-serif; fill: #334155; }
+      .small { font: 13px Arial, sans-serif; fill: #64748b; }
+      .pin-label { font: bold 13px Arial, sans-serif; }
+      .note { fill: #fef3c7; stroke: #b45309; stroke-width: 1.5; }
+      .bad-note { fill: #fef2f2; stroke: #dc2626; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="470" y="38" text-anchor="middle" class="label" font-size="20">Servo Motor: Control Signal + External Power</text>
+
+  <!-- MCU block -->
+  <rect x="50" y="80" width="200" height="200" rx="10" class="mcu"/>
+  <text x="150" y="110" text-anchor="middle" class="label">MCU</text>
+  <text x="150" y="132" text-anchor="middle" class="text">ESP32 / STM32</text>
+
+  <!-- MCU pins -->
+  <circle cx="250" cy="175" r="7" fill="#f59e0b"/>
+  <text x="260" y="179" class="pin-label" fill="#f59e0b">PWM pin</text>
+
+  <circle cx="250" cy="230" r="7" fill="#1e293b"/>
+  <text x="260" y="234" class="pin-label" fill="#1e293b">GND</text>
+
+  <!-- 5V PSU block -->
+  <rect x="50" y="310" width="200" height="110" rx="10" class="psu"/>
+  <text x="150" y="345" text-anchor="middle" class="label">5V PSU</text>
+  <text x="150" y="368" text-anchor="middle" class="text">external power</text>
+
+  <circle cx="250" cy="350" r="7" fill="#dc2626"/>
+  <text x="260" y="354" class="pin-label" fill="#dc2626">+5V</text>
+
+  <circle cx="250" cy="390" r="7" fill="#1e293b"/>
+  <text x="260" y="394" class="pin-label" fill="#1e293b">GND</text>
+
+  <!-- Servo block -->
+  <rect x="580" y="120" width="220" height="220" rx="10" class="servo"/>
+  <text x="690" y="155" text-anchor="middle" class="label">SERVO</text>
+  <text x="690" y="178" text-anchor="middle" class="text">SG90 / MG995 / etc.</text>
+
+  <!-- Servo wire colors -->
+  <text x="690" y="220" text-anchor="middle" class="small">Wire colors:</text>
+  <text x="610" y="248" class="small" fill="#f59e0b">● Yellow / White</text>
+  <text x="690" y="266" text-anchor="middle" class="small">(signal)</text>
+  <text x="610" y="290" class="small" fill="#dc2626">● Red</text>
+  <text x="690" y="308" text-anchor="middle" class="small">(power +5V)</text>
+  <text x="610" y="330" class="small" fill="#1e293b">● Brown / Black</text>
+  <text x="690" y="348" text-anchor="middle" class="small">(GND)</text>
+
+  <!-- Servo pins (left side) -->
+  <circle cx="580" cy="245" r="7" fill="#f59e0b"/>
+  <circle cx="580" cy="290" r="7" fill="#dc2626"/>
+  <circle cx="580" cy="335" r="7" fill="#1e293b"/>
+
+  <!-- Signal wire: MCU PWM → Servo signal -->
+  <path d="M250 175 L415 175 L415 245 L580 245" class="wire-sig" marker-end="url(#arrow)"/>
+  <text x="415" y="165" text-anchor="middle" class="small" fill="#f59e0b">PWM 50Hz, 1–2ms pulse</text>
+
+  <!-- Power wire: PSU +5V → Servo +5V -->
+  <path d="M250 350 L415 350 L415 290 L580 290" class="wire-vcc" marker-end="url(#arrow)"/>
+
+  <!-- GND: PSU GND to junction -->
+  <line x1="250" y1="390" x2="415" y2="390" class="wire-gnd"/>
+
+  <!-- Common GND junction -->
+  <circle cx="415" cy="390" r="7" fill="#1e293b"/>
+
+  <!-- GND to servo -->
+  <path d="M415 390 L415 335 L580 335" class="wire-gnd" marker-end="url(#arrow)"/>
+
+  <!-- GND from MCU to junction -->
+  <path d="M250 230 L415 230 L415 390" class="wire-gnd"/>
+
+  <!-- Common GND dot at MCU connection -->
+  <circle cx="415" cy="230" r="5" fill="#1e293b"/>
+
+  <!-- Common GND label -->
+  <text x="415" y="408" text-anchor="middle" class="small" fill="#1e293b">common GND</text>
+
+  <!-- Bad example: power from MCU 3.3V/5V pin -->
+  <rect x="50" y="430" width="870" height="12" rx="0" fill="none"/>
+
+  <!-- Notes -->
+  <rect x="50" y="420" width="870" height="0" rx="0" fill="none"/>
+
+  <!-- Warning box -->
+  <rect x="50" y="420" width="420" height="0" rx="0" fill="none"/>
+
+  <!-- Note at bottom -->
+  <rect x="50" y="415" width="870" height="28" rx="6" class="bad-note"/>
+  <text x="70" y="433" class="text" fill="#7f1d1d" font-size="13">Do not power servo from MCU 3.3V/5V pin — servo current spikes cause reboots and can damage the MCU.</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="560" viewBox="0 0 1040 560" role="img" aria-labelledby="title desc">
+  <title id="title">Low-side подключение MOSFET-модуля к DC-нагрузке</title>
+  <desc id="desc">Схема показывает контроллер, MOSFET-модуль, блок питания 24V, нагрузку, общий GND и управляющий сигнал.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <style>
+      .box { fill: #fff; stroke: #222; stroke-width: 2; }
+      .psu { fill: #e0f2fe; stroke: #0369a1; stroke-width: 2; }
+      .load { fill: #fee2e2; stroke: #b91c1c; stroke-width: 2; }
+      .mosfet { fill: #fef3c7; stroke: #b45309; stroke-width: 2; }
+      .ctrl { fill: #dcfce7; stroke: #15803d; stroke-width: 2; }
+      .label { font: 22px Arial, sans-serif; font-weight: 700; fill: #222; }
+      .text { font: 16px Arial, sans-serif; fill: #222; }
+      .small { font: 14px Arial, sans-serif; fill: #555; }
+      .vcc { stroke: #d32f2f; stroke-width: 5; fill: none; marker-end: url(#arrow); }
+      .gnd { stroke: #222; stroke-width: 5; fill: none; marker-end: url(#arrow); }
+      .signal { stroke: #1976d2; stroke-width: 4; fill: none; stroke-dasharray: 10 7; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="70" y="80" width="220" height="130" rx="12" class="psu"/>
+  <text x="180" y="125" text-anchor="middle" class="label">24V PSU</text>
+  <text x="110" y="175" class="text">+24V</text>
+  <text x="220" y="175" class="text">GND</text>
+
+  <rect x="710" y="80" width="230" height="130" rx="12" class="load"/>
+  <text x="825" y="125" text-anchor="middle" class="label">Load</text>
+  <text x="825" y="155" text-anchor="middle" class="text">fan / LED / heater</text>
+  <text x="750" y="190" class="text">+</text>
+  <text x="895" y="190" class="text">-</text>
+
+  <rect x="455" y="300" width="220" height="145" rx="12" class="mosfet"/>
+  <text x="565" y="340" text-anchor="middle" class="label">MOSFET Module</text>
+  <text x="492" y="388" class="text">Drain</text>
+  <text x="585" y="388" class="text">Source</text>
+  <text x="505" y="420" class="text">Signal</text>
+  <text x="595" y="420" class="text">GND</text>
+
+  <rect x="95" y="325" width="210" height="120" rx="12" class="ctrl"/>
+  <text x="200" y="368" text-anchor="middle" class="label">Controller</text>
+  <text x="135" y="415" class="text">GPIO</text>
+  <text x="235" y="415" class="text">GND</text>
+
+  <path d="M125 175 C280 40 585 50 750 185" class="vcc"/>
+  <text x="465" y="58" text-anchor="middle" class="text" fill="#d32f2f">+24V goes directly to load</text>
+
+  <path d="M895 190 C895 265 650 255 502 386" class="gnd"/>
+  <text x="800" y="272" text-anchor="middle" class="small">load minus through MOSFET</text>
+
+  <path d="M610 420 C520 505 330 490 250 415" class="gnd"/>
+  <text x="430" y="515" text-anchor="middle" class="text">common GND</text>
+
+  <path d="M230 175 C300 245 380 320 600 420" class="gnd"/>
+  <text x="360" y="288" text-anchor="middle" class="small">PSU GND</text>
+
+  <path d="M140 415 C260 355 375 350 510 420" class="signal"/>
+  <text x="320" y="342" text-anchor="middle" class="text" fill="#1976d2">GPIO/PWM signal</text>
+
+  <text x="520" y="535" text-anchor="middle" class="small">Use only with DC loads within module voltage/current limits. Do not use this module for 110-230V AC.</text>
+</svg>

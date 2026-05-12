@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="580" viewBox="0 0 1040 580" role="img" aria-labelledby="title desc">
+  <title id="title">Классы сенсорных экранов и кто рисует интерфейс</title>
+  <desc id="desc">Схема сравнивает четыре класса сенсорных экранов: raw TFT, smart UART HMI, принтерный TFT и HDMI/DSI экран для Linux-хоста.</desc>
+  <defs>
+    <style>
+      .title { font: 25px Arial, sans-serif; font-weight: 700; fill: #222; }
+      .head { font: 20px Arial, sans-serif; font-weight: 700; fill: #222; }
+      .text { font: 15px Arial, sans-serif; fill: #222; }
+      .small { font: 13px Arial, sans-serif; fill: #555; }
+      .card { fill: #fff; stroke: #222; stroke-width: 2; }
+      .mcu { fill: #e0f2fe; stroke: #0369a1; stroke-width: 2; }
+      .screen { fill: #111827; stroke: #14b8a6; stroke-width: 3; }
+      .linux { fill: #fef3c7; stroke: #b45309; stroke-width: 2; }
+      .printer { fill: #f3e8ff; stroke: #7e22ce; stroke-width: 2; }
+      .wire { stroke: #333; stroke-width: 3; fill: none; }
+      .label { font: 14px Arial, sans-serif; font-weight: 700; fill: #333; }
+    </style>
+  </defs>
+
+  <text x="520" y="42" text-anchor="middle" class="title">Сенсорный экран: сначала понять архитектуру</text>
+
+  <rect x="40" y="80" width="455" height="210" rx="12" class="card"/>
+  <text x="267" y="115" text-anchor="middle" class="head">Raw TFT + touch</text>
+  <rect x="78" y="150" width="125" height="82" rx="8" class="mcu"/>
+  <text x="140" y="181" text-anchor="middle" class="text">MCU</text>
+  <text x="140" y="205" text-anchor="middle" class="small">рисует UI</text>
+  <rect x="330" y="140" width="120" height="92" rx="8" class="screen"/>
+  <text x="390" y="178" text-anchor="middle" class="text" fill="#d1fae5">TFT</text>
+  <text x="390" y="202" text-anchor="middle" class="small" fill="#d1fae5">touch отдельно</text>
+  <path d="M203 185 L330 185" class="wire"/>
+  <text x="266" y="176" text-anchor="middle" class="label">SPI + touch</text>
+  <text x="73" y="258" class="small">Гибко, но нужны драйверы, память, код меню и калибровка.</text>
+
+  <rect x="545" y="80" width="455" height="210" rx="12" class="card"/>
+  <text x="772" y="115" text-anchor="middle" class="head">Smart UART / HMI</text>
+  <rect x="583" y="150" width="125" height="82" rx="8" class="mcu"/>
+  <text x="645" y="181" text-anchor="middle" class="text">MCU</text>
+  <text x="645" y="205" text-anchor="middle" class="small">логика устройства</text>
+  <rect x="835" y="140" width="120" height="92" rx="8" class="screen"/>
+  <text x="895" y="176" text-anchor="middle" class="text" fill="#d1fae5">HMI</text>
+  <text x="895" y="202" text-anchor="middle" class="small" fill="#d1fae5">рисует UI сам</text>
+  <path d="M708 185 L835 185" class="wire"/>
+  <text x="771" y="176" text-anchor="middle" class="label">UART</text>
+  <text x="578" y="258" class="small">Экран хранит страницы, но появляется отдельный редактор и протокол.</text>
+
+  <rect x="40" y="325" width="455" height="210" rx="12" class="card"/>
+  <text x="267" y="360" text-anchor="middle" class="head">3D-printer TFT</text>
+  <rect x="78" y="395" width="125" height="82" rx="8" class="printer"/>
+  <text x="140" y="426" text-anchor="middle" class="text">Плата</text>
+  <text x="140" y="450" text-anchor="middle" class="small">Marlin/MCU</text>
+  <rect x="330" y="385" width="120" height="92" rx="8" class="screen"/>
+  <text x="390" y="421" text-anchor="middle" class="text" fill="#d1fae5">BTT TFT</text>
+  <text x="390" y="445" text-anchor="middle" class="small" fill="#d1fae5">dual mode</text>
+  <path d="M203 430 L330 430" class="wire"/>
+  <text x="266" y="421" text-anchor="middle" class="label">UART / EXP</text>
+  <text x="73" y="503" class="small">Удобно для принтерных плат, но совместимость зависит от прошивки.</text>
+
+  <rect x="545" y="325" width="455" height="210" rx="12" class="card"/>
+  <text x="772" y="360" text-anchor="middle" class="head">HDMI/DSI + USB touch</text>
+  <rect x="583" y="395" width="125" height="82" rx="8" class="linux"/>
+  <text x="645" y="426" text-anchor="middle" class="text">Linux host</text>
+  <text x="645" y="450" text-anchor="middle" class="small">KlipperScreen</text>
+  <rect x="835" y="385" width="120" height="92" rx="8" class="screen"/>
+  <text x="895" y="421" text-anchor="middle" class="text" fill="#d1fae5">Monitor</text>
+  <text x="895" y="445" text-anchor="middle" class="small" fill="#d1fae5">touch device</text>
+  <path d="M708 430 L835 430" class="wire"/>
+  <text x="771" y="421" text-anchor="middle" class="label">HDMI/DSI + USB</text>
+  <text x="578" y="503" class="small">Подходит для Raspberry Pi/Linux, не для прямого подключения к GPIO как модуль.</text>
+</svg>

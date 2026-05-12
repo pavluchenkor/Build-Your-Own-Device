@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
+  <title id="title">PLA heat deformation risk compared to PETG, ABS and ASA</title>
+  <desc id="desc">Temperature scale showing PLA softening at 50-60°C against typical heater enclosure temperatures, and PETG/ABS/ASA safe range above 80°C.</desc>
+  <defs>
+    <style>
+      .bar-pla { fill: #fca5a5; stroke: #dc2626; stroke-width: 2; }
+      .bar-petg { fill: #86efac; stroke: #16a34a; stroke-width: 2; }
+      .bar-abs { fill: #93c5fd; stroke: #2563eb; stroke-width: 2; }
+      .bar-asa { fill: #c4b5fd; stroke: #7c3aed; stroke-width: 2; }
+      .bar-danger { fill: #fef2f2; stroke: #dc2626; stroke-width: 1.5; stroke-dasharray: 6 4; }
+      .axis { stroke: #334155; stroke-width: 2; fill: none; }
+      .grid { stroke: #e2e8f0; stroke-width: 1; fill: none; }
+      .label { font: bold 16px Arial, sans-serif; fill: #1e293b; }
+      .text { font: 14px Arial, sans-serif; fill: #334155; }
+      .small { font: 12px Arial, sans-serif; fill: #64748b; }
+      .warn { font: bold 14px Arial, sans-serif; fill: #dc2626; }
+      .ok { font: bold 14px Arial, sans-serif; fill: #16a34a; }
+      .temp-label { font: bold 13px Arial, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="36" text-anchor="middle" class="label" font-size="20">Heat Deformation Temperature by Material</text>
+
+  <!-- Y-axis (temperature) -->
+  <line x1="140" y1="60" x2="140" y2="360" class="axis"/>
+  <!-- X-axis -->
+  <line x1="140" y1="360" x2="830" y2="360" class="axis"/>
+
+  <!-- Temperature scale marks and grid -->
+  <!-- 0°C -->
+  <line x1="135" y1="360" x2="830" y2="360" class="grid" stroke="#e2e8f0"/>
+  <text x="128" y="364" text-anchor="end" class="temp-label">0°C</text>
+  <!-- 25°C (room temp) -->
+  <line x1="135" y1="320" x2="830" y2="320" class="grid"/>
+  <text x="128" y="324" text-anchor="end" class="temp-label">25°C</text>
+  <!-- 50°C (PLA danger zone) -->
+  <line x1="135" y1="280" x2="830" y2="280" class="grid" stroke="#fca5a5" stroke-width="2"/>
+  <text x="128" y="284" text-anchor="end" class="temp-label" fill="#dc2626">50°C</text>
+  <!-- 60°C -->
+  <line x1="135" y1="260" x2="830" y2="260" class="grid" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="128" y="264" text-anchor="end" class="temp-label" fill="#dc2626">60°C</text>
+  <!-- 80°C -->
+  <line x1="135" y1="220" x2="830" y2="220" class="grid"/>
+  <text x="128" y="224" text-anchor="end" class="temp-label">80°C</text>
+  <!-- 100°C -->
+  <line x1="135" y1="180" x2="830" y2="180" class="grid"/>
+  <text x="128" y="184" text-anchor="end" class="temp-label">100°C</text>
+  <!-- 130°C -->
+  <line x1="135" y1="128" x2="830" y2="128" class="grid"/>
+  <text x="128" y="132" text-anchor="end" class="temp-label">130°C</text>
+  <!-- 160°C -->
+  <line x1="135" y1="76" x2="830" y2="76" class="grid"/>
+  <text x="128" y="80" text-anchor="end" class="temp-label">160°C</text>
+
+  <!-- Y-axis label -->
+  <text x="30" y="215" text-anchor="middle" class="label" transform="rotate(-90 30 215)">Temperature</text>
+
+  <!-- Scale: 0°C = y=360, 160°C = y=76 → ratio: (360-76)/160 = 1.775 px/°C -->
+  <!-- At 50°C: y = 360 - 50*1.775 = 360-88.75 = 271.25 ≈ 271 -->
+  <!-- At 60°C: y = 360 - 60*1.775 = 360-106.5 = 253.5 ≈ 254 -->
+  <!-- At 80°C: y = 360 - 80*1.775 = 360-142 = 218 -->
+  <!-- At 100°C: y = 360 - 100*1.775 = 360-177.5 = 182.5 ≈ 183 -->
+  <!-- At 130°C: y = 360 - 130*1.775 = 360-230.75 = 129.25 ≈ 129 -->
+  <!-- At 160°C: y = 360 - 160*1.775 = 360-284 = 76 -->
+
+  <!-- DANGER ZONE: heater enclosure typical temp 40-80°C (marked) -->
+  <rect x="142" y="218" width="686" height="62" class="bar-danger"/>
+  <text x="480" y="243" text-anchor="middle" class="warn">Typical heater enclosure: 40–80°C</text>
+  <text x="480" y="268" text-anchor="middle" class="text" fill="#991b1b">PLA starts deforming in this range</text>
+
+  <!-- PLA bar: softens 50-60°C, vicat ~56°C, HDT ~52°C -->
+  <rect x="165" y="254" width="90" height="106" rx="6" class="bar-pla"/>
+  <text x="210" y="310" text-anchor="middle" class="warn" font-size="16">PLA</text>
+  <text x="210" y="330" text-anchor="middle" class="small" fill="#7f1d1d">softens</text>
+  <text x="210" y="345" text-anchor="middle" class="small" fill="#7f1d1d">50–60°C</text>
+  <!-- Arrow up showing unsafe -->
+  <text x="210" y="245" text-anchor="middle" class="warn">✗</text>
+  <text x="210" y="232" text-anchor="middle" class="small" fill="#dc2626">unsafe</text>
+
+  <!-- PETG bar: HDT ~72-80°C, vicat ~78°C -->
+  <rect x="310" y="218" width="90" height="142" rx="6" class="bar-petg"/>
+  <text x="355" y="280" text-anchor="middle" class="ok" font-size="16">PETG</text>
+  <text x="355" y="305" text-anchor="middle" class="small" fill="#14532d">HDT</text>
+  <text x="355" y="322" text-anchor="middle" class="small" fill="#14532d">72–80°C</text>
+  <text x="355" y="340" text-anchor="middle" class="small" fill="#14532d">safe for most</text>
+  <text x="355" y="357" text-anchor="middle" class="small" fill="#14532d">enclosures</text>
+  <text x="355" y="208" text-anchor="middle" class="ok">✓</text>
+
+  <!-- ABS bar: HDT ~90-100°C, vicat ~100°C -->
+  <rect x="460" y="183" width="90" height="177" rx="6" class="bar-abs"/>
+  <text x="505" y="256" text-anchor="middle" class="label" fill="#1d4ed8" font-size="16">ABS</text>
+  <text x="505" y="280" text-anchor="middle" class="small" fill="#1e3a8a">HDT</text>
+  <text x="505" y="297" text-anchor="middle" class="small" fill="#1e3a8a">90–100°C</text>
+  <text x="505" y="172" text-anchor="middle" class="ok">✓</text>
+
+  <!-- ASA bar: HDT ~95-105°C, UV resistant -->
+  <rect x="610" y="175" width="90" height="185" rx="6" class="bar-asa"/>
+  <text x="655" y="248" text-anchor="middle" class="label" fill="#7c3aed" font-size="16">ASA</text>
+  <text x="655" y="272" text-anchor="middle" class="small" fill="#4c1d95">HDT</text>
+  <text x="655" y="289" text-anchor="middle" class="small" fill="#4c1d95">95–105°C</text>
+  <text x="655" y="309" text-anchor="middle" class="small" fill="#4c1d95">+ UV stable</text>
+  <text x="655" y="164" text-anchor="middle" class="ok">✓</text>
+
+  <!-- Bottom note -->
+  <rect x="30" y="378" width="840" height="36" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+  <text x="450" y="398" text-anchor="middle" class="text" fill="#92400e">HDT values depend on test load and printing parameters — treat as approximate. Measure actual enclosure temperature before choosing material.</text>
+</svg>

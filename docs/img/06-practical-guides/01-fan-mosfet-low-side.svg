@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" role="img" aria-labelledby="title desc">
+  <title id="title">Low-side подключение 24V вентилятора через MOSFET-модуль</title>
+  <desc id="desc">Схема показывает блок питания 24V, вентилятор, MOSFET-модуль и контроллер с общей землей.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .box { fill: #f8fafc; stroke: #334155; stroke-width: 2; rx: 10; }
+      .module { fill: #ecfeff; stroke: #0e7490; stroke-width: 2; rx: 10; }
+      .load { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; rx: 10; }
+      .wire-pos { fill: none; stroke: #dc2626; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-neg { fill: none; stroke: #334155; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .wire-sig { fill: none; stroke: #2563eb; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .label { font-family: Arial, sans-serif; font-size: 18px; fill: #0f172a; }
+      .small { font-family: Arial, sans-serif; font-size: 14px; fill: #334155; }
+      .pin { fill: #e2e8f0; stroke: #475569; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <rect x="50" y="70" width="170" height="110" class="box"/>
+  <text x="135" y="112" text-anchor="middle" class="label">24V PSU</text>
+  <circle cx="80" cy="150" r="9" class="pin"/>
+  <text x="80" y="155" text-anchor="middle" class="small">+</text>
+  <circle cx="190" cy="150" r="9" class="pin"/>
+  <text x="190" y="155" text-anchor="middle" class="small">-</text>
+
+  <rect x="390" y="60" width="170" height="130" class="load"/>
+  <text x="475" y="105" text-anchor="middle" class="label">24V Fan</text>
+  <circle cx="430" cy="160" r="9" class="pin"/>
+  <text x="430" y="165" text-anchor="middle" class="small">+</text>
+  <circle cx="520" cy="160" r="9" class="pin"/>
+  <text x="520" y="165" text-anchor="middle" class="small">-</text>
+  <circle cx="475" cy="132" r="24" fill="none" stroke="#c2410c" stroke-width="2"/>
+  <path d="M475 132 L492 119 M475 132 L459 117 M475 132 L472 153" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+
+  <rect x="630" y="220" width="210" height="120" class="module"/>
+  <text x="735" y="265" text-anchor="middle" class="label">MOSFET Module</text>
+  <circle cx="660" cy="310" r="9" class="pin"/>
+  <text x="660" y="315" text-anchor="middle" class="small">V-</text>
+  <circle cx="735" cy="310" r="9" class="pin"/>
+  <text x="735" y="315" text-anchor="middle" class="small">GND</text>
+  <circle cx="810" cy="310" r="9" class="pin"/>
+  <text x="810" y="315" text-anchor="middle" class="small">SIG</text>
+
+  <rect x="90" y="250" width="190" height="100" class="box"/>
+  <text x="185" y="292" text-anchor="middle" class="label">Controller</text>
+  <circle cx="135" cy="320" r="9" class="pin"/>
+  <text x="135" y="325" text-anchor="middle" class="small">GND</text>
+  <circle cx="235" cy="320" r="9" class="pin"/>
+  <text x="235" y="325" text-anchor="middle" class="small">GPIO</text>
+
+  <path class="wire-pos" d="M80 150 H430"/>
+  <text x="255" y="138" text-anchor="middle" class="small">+24V directly to fan</text>
+
+  <path class="wire-neg" d="M520 160 V310 H660"/>
+  <text x="590" y="198" class="small">fan minus through MOSFET</text>
+
+  <path class="wire-neg" d="M190 150 V380 H735 V310"/>
+  <path class="wire-neg" d="M135 320 V380 H735"/>
+  <text x="420" y="402" text-anchor="middle" class="small">common GND: PSU minus, controller GND, MOSFET GND</text>
+
+  <path class="wire-sig" d="M235 320 H590 V355 H810 V320"/>
+  <text x="430" y="306" text-anchor="middle" class="small">control signal</text>
+</svg>

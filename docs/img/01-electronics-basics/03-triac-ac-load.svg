@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560" role="img" aria-labelledby="title desc">
+  <title id="title">Управление AC-нагрузкой через оптосимистор и TRIAC</title>
+  <desc id="desc">Схема показывает низковольтный контроллер, оптосимистор, изоляционный барьер, сетевую часть, TRIAC и AC-нагрузку.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <style>
+      .box { fill: #fff; stroke: #222; stroke-width: 2; }
+      .ctrl { fill: #dcfce7; stroke: #15803d; stroke-width: 2; }
+      .opto { fill: #e0f2fe; stroke: #0369a1; stroke-width: 2; }
+      .mains { fill: #fee2e2; stroke: #b91c1c; stroke-width: 2; }
+      .triac { fill: #fef3c7; stroke: #b45309; stroke-width: 2; }
+      .label { font: 21px Arial, sans-serif; font-weight: 700; fill: #222; }
+      .text { font: 16px Arial, sans-serif; fill: #222; }
+      .small { font: 14px Arial, sans-serif; fill: #555; }
+      .signal { stroke: #1976d2; stroke-width: 4; fill: none; marker-end: url(#arrow); }
+      .ac { stroke: #b91c1c; stroke-width: 5; fill: none; marker-end: url(#arrow); }
+      .neutral { stroke: #222; stroke-width: 5; fill: none; marker-end: url(#arrow); }
+      .barrier { stroke: #64748b; stroke-width: 4; stroke-dasharray: 10 9; }
+    </style>
+  </defs>
+
+  <text x="540" y="42" text-anchor="middle" class="label">TRIAC AC load control</text>
+
+  <rect x="55" y="125" width="190" height="120" rx="12" class="ctrl"/>
+  <text x="150" y="172" text-anchor="middle" class="label">Controller</text>
+  <text x="150" y="205" text-anchor="middle" class="text">GPIO signal</text>
+
+  <rect x="330" y="125" width="180" height="120" rx="12" class="opto"/>
+  <text x="420" y="170" text-anchor="middle" class="label">Optotriac</text>
+  <text x="420" y="202" text-anchor="middle" class="text">isolation</text>
+
+  <line x1="555" y1="80" x2="555" y2="470" class="barrier"/>
+  <text x="535" y="500" text-anchor="end" class="small">low voltage</text>
+  <text x="575" y="500" class="small">mains side</text>
+
+  <rect x="625" y="125" width="160" height="120" rx="12" class="triac"/>
+  <text x="705" y="173" text-anchor="middle" class="label">TRIAC</text>
+  <text x="705" y="204" text-anchor="middle" class="text">AC switch</text>
+
+  <rect x="870" y="125" width="165" height="120" rx="12" class="mains"/>
+  <text x="952" y="172" text-anchor="middle" class="label">AC Load</text>
+  <text x="952" y="204" text-anchor="middle" class="text">heater</text>
+
+  <rect x="625" y="315" width="410" height="95" rx="12" class="mains"/>
+  <text x="830" y="352" text-anchor="middle" class="label">110-230V AC area</text>
+  <text x="830" y="382" text-anchor="middle" class="text">fuse, terminals, enclosure, clearances</text>
+
+  <path d="M245 185 L330 185" class="signal"/>
+  <text x="287" y="170" text-anchor="middle" class="small">signal</text>
+
+  <path d="M510 185 L625 185" class="signal"/>
+  <text x="568" y="170" text-anchor="middle" class="small">optical drive</text>
+
+  <path d="M625 340 C690 300 690 245 705 245" class="ac"/>
+  <path d="M785 185 L870 185" class="ac"/>
+  <text x="830" y="170" text-anchor="middle" class="small">AC Line</text>
+
+  <path d="M625 385 C760 455 900 455 952 245" class="neutral"/>
+  <text x="800" y="462" text-anchor="middle" class="small">AC Neutral / return</text>
+
+  <text x="540" y="535" text-anchor="middle" class="small">This is an architecture diagram, not a complete safe mains wiring plan.</text>
+</svg>

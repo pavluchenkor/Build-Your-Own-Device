@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" viewBox="0 0 960 480" role="img" aria-labelledby="title desc">
+  <title id="title">Зоны печатного корпуса устройства с нагревом</title>
+  <desc id="desc">Схема показывает горячую зону, зону электроники, силовую проводку, вентиляцию и зону пользователя в печатном корпусе.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .outer { fill: #f8fafc; stroke: #334155; stroke-width: 3; rx: 16; }
+      .hot { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; rx: 10; }
+      .elec { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; rx: 10; }
+      .power { fill: #fef2f2; stroke: #b91c1c; stroke-width: 2; rx: 10; }
+      .user { fill: #f0fdf4; stroke: #15803d; stroke-width: 2; rx: 10; }
+      .wire { fill: none; stroke: #b91c1c; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .air { fill: none; stroke: #2563eb; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .label { font-family: Arial, sans-serif; font-size: 18px; fill: #0f172a; }
+      .small { font-family: Arial, sans-serif; font-size: 14px; fill: #334155; }
+      .part { fill: #e5e7eb; stroke: #6b7280; stroke-width: 2; rx: 6; }
+    </style>
+  </defs>
+
+  <rect x="70" y="60" width="820" height="350" class="outer"/>
+  <text x="480" y="38" text-anchor="middle" class="label">Printed enclosure: think in zones</text>
+
+  <rect x="105" y="105" width="250" height="230" class="hot"/>
+  <text x="230" y="138" text-anchor="middle" class="label">Hot zone</text>
+  <rect x="145" y="185" width="90" height="45" class="part"/>
+  <text x="190" y="213" text-anchor="middle" class="small">heater</text>
+  <circle cx="285" cy="207" r="28" fill="none" stroke="#c2410c" stroke-width="3"/>
+  <path d="M285 207 L306 190 M285 207 L266 190 M285 207 L285 234" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/>
+  <text x="285" y="262" text-anchor="middle" class="small">fan / airflow</text>
+
+  <rect x="405" y="105" width="190" height="120" class="elec"/>
+  <text x="500" y="138" text-anchor="middle" class="label">Electronics</text>
+  <rect x="445" y="165" width="110" height="35" class="part"/>
+  <text x="500" y="188" text-anchor="middle" class="small">controller</text>
+
+  <rect x="405" y="255" width="190" height="80" class="power"/>
+  <text x="500" y="288" text-anchor="middle" class="label">Power wiring</text>
+  <text x="500" y="312" text-anchor="middle" class="small">fuse / terminals</text>
+
+  <rect x="650" y="105" width="200" height="230" class="user"/>
+  <text x="750" y="138" text-anchor="middle" class="label">User zone</text>
+  <rect x="690" y="180" width="120" height="60" class="part"/>
+  <text x="750" y="204" text-anchor="middle" class="small">display</text>
+  <text x="750" y="225" text-anchor="middle" class="small">buttons / access</text>
+
+  <path class="air" d="M280 170 C355 120, 610 120, 665 175"/>
+  <path class="air" d="M665 260 C565 360, 320 360, 235 255"/>
+  <text x="470" y="92" text-anchor="middle" class="small">air path must stay open</text>
+
+  <path class="wire" d="M235 230 C315 305, 350 315, 405 295"/>
+  <text x="325" y="326" text-anchor="middle" class="small">keep hot/power wiring controlled</text>
+
+  <text x="480" y="450" text-anchor="middle" class="small">Keep heat, electronics, power wiring and user-touch areas separated and serviceable.</text>
+</svg>

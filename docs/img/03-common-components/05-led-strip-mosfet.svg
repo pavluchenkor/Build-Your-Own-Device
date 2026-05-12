@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
+  <title id="title">Подключение одноцветной LED-ленты через MOSFET-модуль</title>
+  <desc id="desc">Схема показывает блок питания, контроллер, MOSFET-модуль, LED-ленту, общий GND и управляющий сигнал.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <style>
+      .box { fill: #fff; stroke: #222; stroke-width: 2; rx: 10; }
+      .small { font: 16px Arial, sans-serif; fill: #222; }
+      .label { font: 18px Arial, sans-serif; font-weight: 700; fill: #222; }
+      .note { font: 14px Arial, sans-serif; fill: #555; }
+      .power { stroke: #d32f2f; stroke-width: 5; fill: none; marker-end: url(#arrow); }
+      .gnd { stroke: #222; stroke-width: 5; fill: none; marker-end: url(#arrow); }
+      .signal { stroke: #1976d2; stroke-width: 4; fill: none; stroke-dasharray: 10 7; marker-end: url(#arrow); }
+      .led { fill: #fff7cc; stroke: #c28a00; stroke-width: 2; }
+      .led-dot { fill: #ffd54f; stroke: #9e6f00; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <rect x="40" y="65" width="210" height="150" class="box"/>
+  <text x="145" y="105" text-anchor="middle" class="label">Блок питания</text>
+  <text x="145" y="135" text-anchor="middle" class="small">12V или 24V DC</text>
+  <text x="70" y="180" class="small">+V</text>
+  <text x="190" y="180" class="small">GND</text>
+
+  <rect x="390" y="60" width="500" height="95" class="led"/>
+  <text x="640" y="95" text-anchor="middle" class="label">Одноцветная LED-лента</text>
+  <text x="640" y="125" text-anchor="middle" class="small">ток идёт от блока питания, не от GPIO</text>
+  <circle cx="435" cy="107" r="12" class="led-dot"/>
+  <circle cx="490" cy="107" r="12" class="led-dot"/>
+  <circle cx="545" cy="107" r="12" class="led-dot"/>
+  <circle cx="600" cy="107" r="12" class="led-dot"/>
+  <circle cx="655" cy="107" r="12" class="led-dot"/>
+  <circle cx="710" cy="107" r="12" class="led-dot"/>
+  <circle cx="765" cy="107" r="12" class="led-dot"/>
+  <circle cx="820" cy="107" r="12" class="led-dot"/>
+  <text x="410" y="180" class="small">+</text>
+  <text x="860" y="180" class="small">-</text>
+
+  <rect x="560" y="285" width="230" height="145" class="box"/>
+  <text x="675" y="325" text-anchor="middle" class="label">MOSFET-модуль</text>
+  <text x="675" y="355" text-anchor="middle" class="small">DC load switch</text>
+  <text x="590" y="397" class="small">VIN-/GND</text>
+  <text x="705" y="397" class="small">OUT-</text>
+  <text x="590" y="420" class="note">SIG</text>
+
+  <rect x="80" y="305" width="220" height="125" class="box"/>
+  <text x="190" y="345" text-anchor="middle" class="label">Контроллер</text>
+  <text x="190" y="375" text-anchor="middle" class="small">ESP32 / плата принтера</text>
+  <text x="110" y="415" class="small">GPIO</text>
+  <text x="235" y="415" class="small">GND</text>
+
+  <path d="M85 176 C190 35 300 50 410 176" class="power"/>
+  <text x="260" y="48" text-anchor="middle" class="small" fill="#d32f2f">+V к ленте</text>
+
+  <path d="M860 185 C860 245 755 245 735 285" class="gnd"/>
+  <text x="845" y="248" text-anchor="middle" class="small">минус ленты через MOSFET</text>
+
+  <path d="M205 185 C250 255 410 330 560 395" class="gnd"/>
+  <text x="380" y="318" text-anchor="middle" class="small">GND питания</text>
+
+  <path d="M240 415 C340 465 465 455 590 420" class="gnd"/>
+  <text x="405" y="480" text-anchor="middle" class="small">общая земля с контроллером</text>
+
+  <path d="M125 415 C255 385 420 380 590 420" class="signal"/>
+  <text x="350" y="362" text-anchor="middle" class="small" fill="#1976d2">управляющий PWM/GPIO сигнал</text>
+
+  <text x="490" y="498" text-anchor="middle" class="note">Провода питания, MOSFET, разъёмы и предохранитель выбирают по току всей ленты.</text>
+</svg>

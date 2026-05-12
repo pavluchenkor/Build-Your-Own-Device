@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="500" viewBox="0 0 1040 500" role="img" aria-labelledby="title desc">
+  <title id="title">2-pin, 3-pin и 4-pin вентиляторы</title>
+  <desc id="desc">Схема сравнивает провода 2-pin, 3-pin и 4-pin вентиляторов: питание, земля, тахометр и PWM.</desc>
+  <defs>
+    <style>
+      .title { font: 25px Arial, sans-serif; font-weight: 700; fill: #222; }
+      .card { fill: #fff; stroke: #222; stroke-width: 2; }
+      .fan { fill: #e0f2fe; stroke: #0369a1; stroke-width: 2; }
+      .hub { fill: #fff; stroke: #0369a1; stroke-width: 2; }
+      .label { font: 21px Arial, sans-serif; font-weight: 700; fill: #222; }
+      .text { font: 16px Arial, sans-serif; fill: #222; }
+      .note { font: 14px Arial, sans-serif; fill: #555; }
+      .gnd { stroke: #222; stroke-width: 5; }
+      .vcc { stroke: #d32f2f; stroke-width: 5; }
+      .tach { stroke: #f59e0b; stroke-width: 5; }
+      .pwm { stroke: #1976d2; stroke-width: 5; }
+    </style>
+  </defs>
+
+  <text x="520" y="42" text-anchor="middle" class="title">Типы проводов вентилятора</text>
+
+  <rect x="55" y="85" width="280" height="330" rx="12" class="card"/>
+  <text x="195" y="125" text-anchor="middle" class="label">2-pin</text>
+  <rect x="115" y="155" width="160" height="130" rx="18" class="fan"/>
+  <circle cx="195" cy="220" r="30" class="hub"/>
+  <path d="M195 190 C225 165 245 185 225 210" fill="#bfdbfe"/>
+  <path d="M225 220 C255 245 230 270 205 248" fill="#bfdbfe"/>
+  <path d="M185 250 C150 260 145 225 175 215" fill="#bfdbfe"/>
+  <line x1="125" y1="330" x2="265" y2="330" class="vcc"/>
+  <line x1="125" y1="365" x2="265" y2="365" class="gnd"/>
+  <text x="285" y="335" class="text">+V</text>
+  <text x="285" y="370" class="text">GND</text>
+  <text x="90" y="395" class="note">Только питание. Обычно полный ход или управление питанием.</text>
+
+  <rect x="380" y="85" width="280" height="330" rx="12" class="card"/>
+  <text x="520" y="125" text-anchor="middle" class="label">3-pin</text>
+  <rect x="440" y="155" width="160" height="130" rx="18" class="fan"/>
+  <circle cx="520" cy="220" r="30" class="hub"/>
+  <path d="M520 190 C550 165 570 185 550 210" fill="#bfdbfe"/>
+  <path d="M550 220 C580 245 555 270 530 248" fill="#bfdbfe"/>
+  <path d="M510 250 C475 260 470 225 500 215" fill="#bfdbfe"/>
+  <line x1="450" y1="315" x2="590" y2="315" class="vcc"/>
+  <line x1="450" y1="350" x2="590" y2="350" class="gnd"/>
+  <line x1="450" y1="385" x2="590" y2="385" class="tach"/>
+  <text x="610" y="320" class="text">+V</text>
+  <text x="610" y="355" class="text">GND</text>
+  <text x="610" y="390" class="text">TACH</text>
+  <text x="415" y="415" class="note">Третий провод сообщает обороты, но не управляет скоростью.</text>
+
+  <rect x="705" y="85" width="280" height="330" rx="12" class="card"/>
+  <text x="845" y="125" text-anchor="middle" class="label">4-pin PWM</text>
+  <rect x="765" y="155" width="160" height="130" rx="18" class="fan"/>
+  <circle cx="845" cy="220" r="30" class="hub"/>
+  <path d="M845 190 C875 165 895 185 875 210" fill="#bfdbfe"/>
+  <path d="M875 220 C905 245 880 270 855 248" fill="#bfdbfe"/>
+  <path d="M835 250 C800 260 795 225 825 215" fill="#bfdbfe"/>
+  <line x1="775" y1="300" x2="915" y2="300" class="gnd"/>
+  <line x1="775" y1="330" x2="915" y2="330" class="vcc"/>
+  <line x1="775" y1="360" x2="915" y2="360" class="tach"/>
+  <line x1="775" y1="390" x2="915" y2="390" class="pwm"/>
+  <text x="935" y="305" class="text">GND</text>
+  <text x="935" y="335" class="text">+V</text>
+  <text x="935" y="365" class="text">TACH</text>
+  <text x="935" y="395" class="text">PWM</text>
+  <text x="735" y="430" class="note">Питание постоянно, скорость задаётся отдельным PWM-сигналом.</text>
+</svg>

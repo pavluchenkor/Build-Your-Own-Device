@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="540" viewBox="0 0 980 540" role="img" aria-labelledby="title desc">
+  <title id="title">SPI bus with chip select lines</title>
+  <desc id="desc">A controller shares SCK, MOSI, and MISO lines with two SPI devices. Each device has a separate chip select line.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937"/>
+    </marker>
+    <style>
+      .ctrl { fill: #eef2ff; stroke: #4338ca; stroke-width: 2; rx: 12; }
+      .dev { fill: #f8fafc; stroke: #1f2937; stroke-width: 2; rx: 12; }
+      .label { font: 18px Arial, sans-serif; fill: #111827; }
+      .small { font: 14px Arial, sans-serif; fill: #374151; }
+      .sck { fill: none; stroke: #7c3aed; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .mosi { fill: none; stroke: #2563eb; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .miso { fill: none; stroke: #0891b2; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .cs { fill: none; stroke: #dc2626; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .gnd { fill: none; stroke: #4b5563; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .tap { stroke: #1f2937; stroke-width: 3; }
+    </style>
+  </defs>
+
+  <rect width="980" height="540" fill="#ffffff"/>
+
+  <rect x="60" y="160" width="220" height="210" class="ctrl"/>
+  <text x="170" y="204" text-anchor="middle" class="label">Controller</text>
+  <text x="170" y="232" text-anchor="middle" class="small">SPI controller</text>
+  <text x="170" y="260" text-anchor="middle" class="small">ESP32 / RP2040 / STM32</text>
+
+  <rect x="720" y="115" width="190" height="105" class="dev"/>
+  <text x="815" y="152" text-anchor="middle" class="label">RFID RC522</text>
+  <text x="815" y="180" text-anchor="middle" class="small">CS1</text>
+
+  <rect x="720" y="315" width="190" height="105" class="dev"/>
+  <text x="815" y="352" text-anchor="middle" class="label">Display / sensor</text>
+  <text x="815" y="380" text-anchor="middle" class="small">CS2</text>
+
+  <path d="M280 205 H680" class="sck"/>
+  <path d="M280 250 H680" class="mosi"/>
+  <path d="M680 295 H280" class="miso"/>
+  <path d="M280 340 H680" class="gnd"/>
+
+  <text x="310" y="190" class="small">SCK clock</text>
+  <text x="310" y="236" class="small">MOSI controller to device</text>
+  <text x="310" y="284" class="small">MISO device to controller</text>
+  <text x="310" y="365" class="small">GND common</text>
+
+  <line x1="760" y1="220" x2="760" y2="205" class="tap"/>
+  <line x1="790" y1="220" x2="790" y2="250" class="tap"/>
+  <line x1="820" y1="220" x2="820" y2="295" class="tap"/>
+  <line x1="850" y1="220" x2="850" y2="340" class="tap"/>
+
+  <line x1="760" y1="315" x2="760" y2="205" class="tap"/>
+  <line x1="790" y1="315" x2="790" y2="250" class="tap"/>
+  <line x1="820" y1="315" x2="820" y2="295" class="tap"/>
+  <line x1="850" y1="315" x2="850" y2="340" class="tap"/>
+
+  <path d="M280 115 H720" class="cs"/>
+  <text x="310" y="101" class="small">CS1 selects RFID</text>
+  <path d="M280 455 H720" class="cs"/>
+  <text x="310" y="441" class="small">CS2 selects display/sensor</text>
+
+  <text x="60" y="494" class="small">Shared SCK/MOSI/MISO. Separate CS line for each SPI device.</text>
+</svg>

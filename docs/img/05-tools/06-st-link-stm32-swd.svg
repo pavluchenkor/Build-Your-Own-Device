@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
+  <title id="title">ST-Link to STM32 SWD connection</title>
+  <desc id="desc">ST-Link programmer connected to STM32 via SWD interface: SWDIO, SWCLK, GND, and optional 3.3V power.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <style>
+      .stlink { fill: #ede9fe; stroke: #7c3aed; stroke-width: 2; }
+      .stm32 { fill: #dcfce7; stroke: #15803d; stroke-width: 2; }
+      .usb { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2; }
+      .wire-swdio { stroke: #7c3aed; stroke-width: 3; fill: none; }
+      .wire-swclk { stroke: #f59e0b; stroke-width: 3; fill: none; }
+      .wire-gnd { stroke: #1e293b; stroke-width: 3; fill: none; }
+      .wire-vcc { stroke: #dc2626; stroke-width: 3; fill: none; stroke-dasharray: 8 4; }
+      .wire-nrst { stroke: #64748b; stroke-width: 3; fill: none; stroke-dasharray: 6 4; }
+      .label { font: bold 17px Arial, sans-serif; fill: #1e293b; }
+      .pin { font: bold 14px Arial, sans-serif; }
+      .text { font: 14px Arial, sans-serif; fill: #334155; }
+      .small { font: 13px Arial, sans-serif; fill: #64748b; }
+      .note { font: 13px Arial, sans-serif; fill: #92400e; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" class="label" font-size="20">ST-Link v2 → STM32 SWD Wiring</text>
+
+  <!-- USB plug -->
+  <rect x="30" y="150" width="60" height="80" rx="6" class="usb"/>
+  <text x="60" y="196" text-anchor="middle" class="small">USB</text>
+  <text x="60" y="213" text-anchor="middle" class="small">to PC</text>
+
+  <!-- ST-Link block -->
+  <rect x="90" y="100" width="200" height="220" rx="10" class="stlink"/>
+  <text x="190" y="130" text-anchor="middle" class="label">ST-Link v2</text>
+  <text x="190" y="152" text-anchor="middle" class="text">programmer</text>
+
+  <!-- ST-Link pin labels (right side) -->
+  <text x="258" y="185" text-anchor="start" class="pin" fill="#dc2626">3.3V</text>
+  <text x="258" y="215" text-anchor="start" class="pin" fill="#7c3aed">SWDIO</text>
+  <text x="258" y="245" text-anchor="start" class="pin" fill="#f59e0b">SWCLK</text>
+  <text x="258" y="275" text-anchor="start" class="pin" fill="#64748b">nRST</text>
+  <text x="258" y="305" text-anchor="start" class="pin" fill="#1e293b">GND</text>
+
+  <!-- ST-Link pin dots -->
+  <circle cx="290" cy="181" r="6" fill="#dc2626"/>
+  <circle cx="290" cy="211" r="6" fill="#7c3aed"/>
+  <circle cx="290" cy="241" r="6" fill="#f59e0b"/>
+  <circle cx="290" cy="271" r="6" fill="#64748b"/>
+  <circle cx="290" cy="301" r="6" fill="#1e293b"/>
+
+  <!-- STM32 block -->
+  <rect x="580" y="100" width="220" height="220" rx="10" class="stm32"/>
+  <text x="690" y="130" text-anchor="middle" class="label">STM32</text>
+  <text x="690" y="152" text-anchor="middle" class="text">target board</text>
+
+  <!-- STM32 SWD pin labels (left side) -->
+  <text x="612" y="185" text-anchor="start" class="pin" fill="#dc2626">3.3V</text>
+  <text x="612" y="215" text-anchor="start" class="pin" fill="#7c3aed">SWDIO</text>
+  <text x="612" y="245" text-anchor="start" class="pin" fill="#f59e0b">SWCLK</text>
+  <text x="612" y="275" text-anchor="start" class="pin" fill="#64748b">nRST</text>
+  <text x="612" y="305" text-anchor="start" class="pin" fill="#1e293b">GND</text>
+
+  <!-- STM32 pin dots -->
+  <circle cx="610" cy="181" r="6" fill="#dc2626"/>
+  <circle cx="610" cy="211" r="6" fill="#7c3aed"/>
+  <circle cx="610" cy="241" r="6" fill="#f59e0b"/>
+  <circle cx="610" cy="271" r="6" fill="#64748b"/>
+  <circle cx="610" cy="301" r="6" fill="#1e293b"/>
+
+  <!-- Wires -->
+  <!-- 3.3V (optional, dashed) -->
+  <path d="M290 181 L610 181" class="wire-vcc" marker-end="url(#arrow)"/>
+  <!-- SWDIO -->
+  <path d="M290 211 L610 211" class="wire-swdio" marker-end="url(#arrow)"/>
+  <!-- SWCLK -->
+  <path d="M290 241 L610 241" class="wire-swclk" marker-end="url(#arrow)"/>
+  <!-- nRST (optional) -->
+  <path d="M290 271 L610 271" class="wire-nrst" marker-end="url(#arrow)"/>
+  <!-- GND -->
+  <path d="M290 301 L610 301" class="wire-gnd" marker-end="url(#arrow)"/>
+
+  <!-- Wire labels in the middle -->
+  <text x="450" y="175" text-anchor="middle" class="small" fill="#dc2626">optional (if board unpowered)</text>
+  <text x="450" y="265" text-anchor="middle" class="small" fill="#64748b">optional (reset)</text>
+  <text x="450" y="319" text-anchor="middle" class="small" fill="#1e293b">required</text>
+
+  <!-- Notes -->
+  <rect x="30" y="345" width="840" height="60" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+  <text x="60" y="367" class="note" font-weight="bold">Minimum connection: SWDIO + SWCLK + GND.</text>
+  <text x="60" y="388" class="note">If the board is self-powered, do not connect 3.3V from ST-Link. Boot / DFU mode is not needed for SWD flashing.</text>
+</svg>

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480" role="img" aria-labelledby="title desc">
+  <title id="title">Multimeter probe jacks and DC voltage measurement</title>
+  <desc id="desc">Multimeter with COM, V/Ω/mA and A jacks, black probe in COM, red probe in V jack, measuring DC voltage across a 24V load.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+    <style>
+      .box { fill: #f8fafc; stroke: #334155; stroke-width: 2; }
+      .meter { fill: #e2e8f0; stroke: #334155; stroke-width: 2; }
+      .screen { fill: #1e293b; stroke: #334155; stroke-width: 2; }
+      .psu { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2; }
+      .load { fill: #fee2e2; stroke: #b91c1c; stroke-width: 2; }
+      .jack-com { fill: #1e293b; stroke: #334155; stroke-width: 2; }
+      .jack-v { fill: #dc2626; stroke: #991b1b; stroke-width: 2; }
+      .jack-a { fill: #ea580c; stroke: #9a3412; stroke-width: 2; }
+      .probe-red { stroke: #dc2626; stroke-width: 4; fill: none; }
+      .probe-black { stroke: #1e293b; stroke-width: 4; fill: none; }
+      .wire-pos { stroke: #dc2626; stroke-width: 3; fill: none; }
+      .wire-neg { stroke: #1e293b; stroke-width: 3; fill: none; }
+      .label { font: bold 17px Arial, sans-serif; fill: #1e293b; }
+      .text { font: 15px Arial, sans-serif; fill: #334155; }
+      .small { font: 13px Arial, sans-serif; fill: #64748b; }
+      .ok { fill: #16a34a; font: bold 14px Arial, sans-serif; }
+      .warn { fill: #dc2626; font: bold 14px Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Multimeter body -->
+  <rect x="50" y="60" width="220" height="360" rx="18" class="meter"/>
+  <!-- Screen -->
+  <rect x="75" y="80" width="170" height="70" rx="8" class="screen"/>
+  <text x="160" y="126" text-anchor="middle" font="bold 28px Arial, sans-serif" fill="#4ade80" font-size="28" font-family="Arial" font-weight="bold">24.3 V</text>
+  <!-- Dial area -->
+  <circle cx="160" cy="235" r="50" fill="#cbd5e1" stroke="#334155" stroke-width="2"/>
+  <text x="160" y="228" text-anchor="middle" class="label">DC V</text>
+  <text x="160" y="248" text-anchor="middle" class="small">mode</text>
+
+  <!-- Jacks -->
+  <!-- COM jack -->
+  <circle cx="110" cy="370" r="13" class="jack-com"/>
+  <text x="110" y="375" text-anchor="middle" font="bold 11px Arial" fill="white" font-size="11" font-family="Arial" font-weight="bold">COM</text>
+  <!-- V/Ohm jack -->
+  <circle cx="160" cy="370" r="13" class="jack-v"/>
+  <text x="160" y="375" text-anchor="middle" font="9px Arial" fill="white" font-size="9" font-family="Arial">V/Ω</text>
+  <!-- A jack -->
+  <circle cx="215" cy="370" r="13" class="jack-a"/>
+  <text x="215" y="375" text-anchor="middle" font="bold 11px Arial" fill="white" font-size="11" font-family="Arial" font-weight="bold">A</text>
+
+  <!-- Jack labels -->
+  <text x="110" y="398" text-anchor="middle" class="small">black</text>
+  <text x="160" y="398" text-anchor="middle" class="small">red ✓</text>
+  <text x="215" y="398" text-anchor="middle" class="small">current</text>
+
+  <!-- Black probe wire -->
+  <path d="M110 383 L110 440 L350 440 L350 330" class="probe-black" marker-end="url(#arrow)"/>
+  <!-- Red probe wire -->
+  <path d="M160 383 L160 460 L620 460 L620 330" class="probe-red" marker-end="url(#arrow)"/>
+
+  <!-- PSU block -->
+  <rect x="340" y="100" width="160" height="120" rx="10" class="psu"/>
+  <text x="420" y="145" text-anchor="middle" class="label">24V PSU</text>
+  <text x="420" y="170" text-anchor="middle" class="text">+V  GND</text>
+  <text x="370" y="200" class="small">+</text>
+  <text x="460" y="200" class="small">−</text>
+
+  <!-- Load block -->
+  <rect x="580" y="100" width="160" height="120" rx="10" class="load"/>
+  <text x="660" y="145" text-anchor="middle" class="label">Load</text>
+  <text x="660" y="170" text-anchor="middle" class="text">heater / fan</text>
+  <text x="600" y="200" class="small">+</text>
+  <text x="725" y="200" class="small">−</text>
+
+  <!-- Power wires PSU to Load -->
+  <path d="M500 140 L580 140" class="wire-pos"/>
+  <path d="M500 175 L580 175" class="wire-neg"/>
+
+  <!-- Black probe tip on GND -->
+  <circle cx="350" cy="330" r="7" fill="#1e293b"/>
+  <text x="325" y="350" text-anchor="middle" class="small" fill="#1e293b">GND</text>
+
+  <!-- Red probe tip on +V -->
+  <circle cx="620" cy="330" r="7" fill="#dc2626"/>
+  <text x="645" y="350" text-anchor="middle" class="small" fill="#dc2626">+V</text>
+
+  <!-- Probe lines from load -->
+  <path d="M350 330 L350 215" class="probe-black"/>
+  <path d="M620 330 L620 215" class="probe-red"/>
+
+  <!-- Warning: A jack -->
+  <rect x="50" y="415" width="220" height="50" rx="6" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="160" y="436" text-anchor="middle" class="warn">! After measuring current</text>
+  <text x="160" y="455" text-anchor="middle" class="small">return red probe to V/Ω jack</text>
+
+  <!-- Step annotations -->
+  <text x="310" y="62" class="label">DC Voltage Measurement</text>
+  <text x="310" y="88" class="text">1. Black → COM jack</text>
+  <text x="310" y="108" class="text">2. Red → V/Ω jack</text>
+  <text x="310" y="128" class="text">3. Mode: DC V (─)</text>
+  <text x="310" y="148" class="text">4. Black tip → GND</text>
+  <text x="310" y="168" class="text">5. Red tip → +V</text>
+  <text x="310" y="195" class="ok">Correct: parallel measurement</text>
+</svg>
