@@ -1,4 +1,4 @@
-# Hardware Basics
+# Build Your Own iDryer
 
 ## Назначение
 
