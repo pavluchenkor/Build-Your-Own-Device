@@ -1,212 +1,212 @@
 # Arduino 控制器
 
-Arduino 不是一個特定的微控制器，而是板、庫、示例和開發環境的生態系統。當初學者說 "Arduino" 時，他們通常指的是 Arduino Uno、Nano 或基於 ATmega328P 的兼容板。
+Arduino 不是一个特定的微控制器，而是板、库、示例和开发环境的生态系统。当初学者说 "Arduino" 时，他们通常指的是 Arduino Uno、Nano 或基于 ATmega328P 的兼容板。
 
-對於教育，Arduino 仍然非常有用：容易理解 GPIO、按鈕、LED、PWM、模擬輸入、I2C、SPI 和簡單的傳感器。但對於 3D 打印機周圍的新設備，Arduino Uno/Nano 並不總是最佳選擇。
+对于教育，Arduino 仍然非常有用：容易理解 GPIO、按钮、LED、PWM、模拟输入、I2C、SPI 和简单的传感器。但对于 3D 打印机周围的新设备，Arduino Uno/Nano 并不总是最佳选择。
 
-## Arduino 為何受歡迎
+## Arduino 为何受欢迎
 
-Arduino 的優勢：
+Arduino 的优势：
 
-- 大量的教育資料
-- 簡單的 Arduino IDE
-- 許多現成的庫
-- 易於理解的例子，如 Blink
-- 方便快速測試桌子上的傳感器
-- 容易找到兼容的模塊
-- 舊板文檔充分
+- 大量的教育资料
+- 简单的 Arduino IDE
+- 许多现成的库
+- 易于理解的例子，如 Blink
+- 方便快速测试桌子上的传感器
+- 容易找到兼容的模块
+- 旧板文档充分
 
-如果目標是理解微控制器的基礎，Arduino 很好。它降低了進入門檻，讓您快速看到結果。
+如果目标是理解微控制器的基础，Arduino 很好。它降低了进入门槛，让您快速看到结果。
 
-## 作為教育板的 Arduino
+## 作为教育板的 Arduino
 
-Arduino 便於：
+Arduino 便于：
 
-- 快速測試按鈕、限制開關或傳感器
-- 通過電壓分壓器進行簡單的熱敏電阻測試
-- 測試 I2C OLED
-- 測試 SPI RFID 模塊
-- 為小型測試生成 PWM
-- 讀取模擬電壓
-- 麵包板上的快速實驗
+- 快速测试按钮、限制开关或传感器
+- 通过电压分压器进行简单的热敏电阻测试
+- 测试 I2C OLED
+- 测试 SPI RFID 模块
+- 为小型测试生成 PWM
+- 读取模拟电压
+- 面包板上的快速实验
 
-在此模式中，Arduino 是一個優秀的實驗室工具。您不需要在其上構建最終設備：您可以首先理解電路和傳感器，然後將解決方案轉移到 ESP32、RP2040、STM32 或打印機板。
+在此模式中，Arduino 是一个优秀的实验室工具。您不需要在其上构建最终设备：您可以首先理解电路和传感器，然后将解决方案转移到 ESP32、RP2040、STM32 或打印机板。
 
-## Uno 和 Nano 簡明扼要
+## Uno 和 Nano 简明扼要
 
-經典 Arduino Uno 和 Nano 通常基於 ATmega328P。
+经典 Arduino Uno 和 Nano 通常基于 ATmega328P。
 
 典型特性：
 
-- `5V` 邏輯
-- 16 MHz 時鐘
-- 32 KB 閃存
+- `5V` 逻辑
+- 16 MHz 时钟
+- 32 KB 闪存
 - 2 KB SRAM
-- 14 個數字引腳
-- Uno/Nano 等級上的 6 個 PWM 引腳
-- Uno 上 6 個類比輸入，Nano 上 8 個
-- 用於刷新和為板供電的 USB
+- 14 个数字引脚
+- Uno/Nano 等级上的 6 个 PWM 引脚
+- Uno 上 6 个模拟输入，Nano 上 8 个
+- 用于刷新和为板供电的 USB
 
-這對於教育草圖和簡單的獨立任務是足夠的，但對於複雜的邏輯、網絡、Web 介面、大型庫和現代系統的方便集成是不夠的。
+这对于教育草图和简单的独立任务是足够的，但对于复杂的逻辑、网络、Web 界面、大型库和现代系统的方便集成是不够的。
 
 ## 原始、克隆和 Arduino 兼容
 
-您需要區分：
+您需要区分：
 
 - 原始 Arduino 板
-- 廉價 Uno/Nano 克隆
-- 基於其他微控制器的 Arduino 相容板
-- 具有 Wi-Fi、USB-C、Arm 芯片和其他邏輯的現代 Arduino 板
+- 廉价 Uno/Nano 克隆
+- 基于其他微控制器的 Arduino 兼容板
+- 具有 Wi-Fi、USB-C、Arm 芯片和其他逻辑的现代 Arduino 板
 
-幾美元的 Nano 克隆可以適合實驗，但 USB-UART、調節器、焊接和引導載入器的品質可能會有所不同。有時對於 Arduino IDE 中的 Nano 克隆，您需要選擇舊的引導載入器或不同的處理器。
+几美元的 Nano 克隆可以适合实验，但 USB-UART、调节器、焊接和引导加载器的品质可能会有所不同。有时对于 Arduino IDE 中的 Nano 克隆，您需要选择旧的引导加载器或不同的处理器。
 
-如果設備必須長時間無人監管，板質量、調節器、連接器和文檔比最低價格更重要。
+如果设备必须长时间无人监管，板质量、调节器、连接器和文档比最低价格更重要。
 
-## 5V 邏輯
+## 5V 逻辑
 
-舊的 Arduino Uno/Nano 使用 `5V` 邏輯。
+旧的 Arduino Uno/Nano 使用 `5V` 逻辑。
 
-這對於某些舊模塊很方便，但對於 `3.3V` 設備很危險：
+这对于某些旧模块很方便，但对于 `3.3V` 设备很危险：
 
 - ESP32 通常不能容忍 GPIO 上的 `5V`
-- 許多 OLED、RFID、傳感器和無線電模塊設計用於 `3.3V`
-- I2C 上拉至 `5V` 可能會損壞 `3.3V` 設備
-- 某些模塊輸入與 `5V` 相容，但這需要在文檔中檢查
+- 许多 OLED、RFID、传感器和无线电模块设计用于 `3.3V`
+- I2C 上拉至 `5V` 可能会损坏 `3.3V` 设备
+- 某些模块输入与 `5V` 兼容，但这需要在文档中检查
 
-如果 Arduino 連接到 `3.3V` 模塊，您需要電平轉換器或已知兼容級別的電路。
+如果 Arduino 连接到 `3.3V` 模块，您需要电平转换器或已知兼容级别的电路。
 
-## GPIO 不向負載供電
+## GPIO 不向负载供电
 
-Arduino 引腳可以通過電阻點亮 LED 或提供控制信號。它不應直接為風扇、加熱器、伺服、繼電器或 LED 燈條供電。
+Arduino 引脚可以通过电阻点亮 LED 或提供控制信号。它不应直接为风扇、加热器、伺服、继电器或 LED 灯条供电。
 
-典型電路：
+典型电路：
 
-![帶 ATmega328P 微控制器的 Arduino Uno Rev3](../../../img/02-controllers/02-arduino-uno-rev3.jpg)
+![带 ATmega328P 微控制器的 Arduino Uno Rev3](../../../img/02-controllers/02-arduino-uno-rev3.jpg)
 
-*來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arduino_Uno_Rev3_with_Atmega328P.jpg)、HonCode、CC0 Public Domain*
+*来源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arduino_Uno_Rev3_with_Atmega328P.jpg)、HonCode、CC0 Public Domain*
 
-對於負載，您需要：
+对于负载，您需要：
 
-- 直流風扇、LED 條帶或直流加熱器的 MOSFET 或驅動器
-- 繼電器線圈的晶體管驅動器和保護二極體
-- 用於 AC 網絡負載的 SSR 或繼電器
-- 伺服的獨立電源
-- 低壓電路在需要時的公共 GND
+- 直流风扇、LED 条带或直流加热器的 MOSFET 或驱动器
+- 继电器线圈的晶体管驱动器和保护二极管
+- 用于 AC 网络负载的 SSR 或继电器
+- 伺服的独立电源
+- 低压电路在需要时的公共 GND
 
-GPIO 是一個命令，而不是電源輸出。
+GPIO 是一个命令，而不是电源输出。
 
 ## PWM 和 analogWrite
 
-在 Arduino 中，Uno/Nano 上的 `analogWrite()` 通常意味著 PWM，而不是真實的類比輸出。電路板快速切換引腳、開啟和關閉，改變信號占空比。
+在 Arduino 中，Uno/Nano 上的 `analogWrite()` 通常意味着 PWM，而不是真实的模拟输出。电路板快速切换引脚、开启和关闭，改变信号占空比。
 
-這適合於：
+这适合于：
 
 - LED 亮度
-- 驅動器輸入的控制
-- 風扇或 MOSFET 模塊的簡單 PWM
-- 教育實驗
+- 驱动器输入的控制
+- 风扇或 MOSFET 模块的简单 PWM
+- 教育实验
 
 但有限制：
 
-- PWM 不適用於所有引腳
-- PWM 頻率是固定的或以非顯而易見的方式改變
-- `analogWrite()` 和 `analogRead()` 是不同的東西
-- 4 引腳 PC 風扇可能需要不同的頻率和適當的開集/開漏方法
-- 加熱器和 SSR 不能在不了解電源部分的情況下使用任何快速 PWM
+- PWM 不适用于所有引脚
+- PWM 频率是固定的或以非显而易见的方式改变
+- `analogWrite()` 和 `analogRead()` 是不同的东西
+- 4 引脚 PC 风扇可能需要不同的频率和适当的开集/开漏方法
+- 加热器和 SSR 不能在不了解电源部分的情况下使用任何快速 PWM
 
-## 類比輸入
+## 模拟输入
 
-Arduino Uno/Nano 便於簡單的類比測量：
+Arduino Uno/Nano 便于简单的模拟测量：
 
-- 電位計
-- 通過電壓分壓器的熱敏電阻
-- 光傳感器
-- 通過電壓分壓器的簡單電壓傳感器
+- 电位计
+- 通过电压分压器的热敏电阻
+- 光传感器
+- 通过电压分压器的简单电压传感器
 
-但類比輸入不應看到超過其安全範圍的電壓。對於 Uno/Nano，這通常是相對於 `5V` 電源或所選 `AREF` 的範圍。如果測量更高的電壓，您需要分壓器和保護。
+但模拟输入不应看到超过其安全范围的电压。对于 Uno/Nano，这通常是相对于 `5V` 电源或所选 `AREF` 的范围。如果测量更高的电压，您需要分压器和保护。
 
-對於精確的溫度測量，您不僅需要 `analogRead()`，還需要：
+对于精确的温度测量，您不仅需要 `analogRead()`，还需要：
 
-- 正確的電壓分壓器電路
-- 電阻值
-- 熱敏電阻表或 Beta 參數
-- 穩定的電源/參考電壓
-- 雜訊濾波
-- 與物體的機械傳感器接觸
+- 正确的电压分压器电路
+- 电阻值
+- 热敏电阻表或 Beta 参数
+- 稳定的电源/参考电压
+- 噪声滤波
+- 与物体的机械传感器接触
 
 ## Arduino 和 Klipper
 
-一些舊的 AVR 板在歷史上可能會在 3D 打印機附近找到，但對於 Klipper 周圍的新設備，最好不要從 Uno/Nano 開始。
+一些旧的 AVR 板在历史上可能会在 3D 打印机附近找到，但对于 Klipper 周围的新设备，最好不要从 Uno/Nano 开始。
 
 原因：
 
-- 記憶有限
-- 性能較弱
-- 5V 邏輯可能會干擾現代 `3.3V` 模塊
-- 沒有附加模塊的網絡
-- 不是新 Klipper MCU 的最實用路徑
+- 记忆有限
+- 性能较弱
+- 5V 逻辑可能会干扰现代 `3.3V` 模块
+- 没有附加模块的网络
+- 不是新 Klipper MCU 的最实用路径
 
-如果您需要 Klipper 的其他 MCU，通常更實用的是查看 RP2040、STM32 或現成的 3D 打印機板。Arduino 可以保留用於教育、麵包板和單個傳感器測試。
+如果您需要 Klipper 的其他 MCU，通常更实用的是查看 RP2040、STM32 或现成的 3D 打印机板。Arduino 可以保留用于教育、面包板和单个传感器测试。
 
-## Arduino 何時仍然合適
+## Arduino 何时仍然合适
 
-Arduino 適合於：
+Arduino 适合于：
 
-- 您需要快速測試一個想法
-- 您需要解釋某些事情如何運作
-- 設備非常簡單，不需要網絡
-- 您已經有一個有效的草圖
-- 清晰度比緊湊性和性能更重要
-- 這是一個教育板，而不是最終的電力電子學
+- 您需要快速测试一个想法
+- 您需要解释某些事情如何运作
+- 设备非常简单，不需要网络
+- 您已经有一个有效的草图
+- 清晰度比紧凑性和性能更重要
+- 这是一个教育板，而不是最终的电力电子学
 
-Arduino 如果不是好的選擇：
+Arduino 如果不是好的选择：
 
-- 您需要開箱即用的 Wi-Fi
-- 您需要與 Klipper 的緊密集成
-- 您需要大量記憶
-- 您需要許多現代 `3.3V` 傳感器
-- 設備必須小巧、長壽且在工業上整潔
-- 有一個電源部分，其中獨立保護很重要
+- 您需要开箱即用的 Wi-Fi
+- 您需要与 Klipper 的紧密集成
+- 您需要大量记忆
+- 您需要许多现代 `3.3V` 传感器
+- 设备必须小巧、长寿且在工业上整洁
+- 有一个电源部分，其中独立保护很重要
 
-## 購買前檢查
+## 购买前检查
 
-購買 Arduino 相容板之前，檢查：
+购买 Arduino 兼容板之前，检查：
 
-- 它是原始的、克隆的還是相容的板
-- 安裝了哪個微控制器
-- `5V` 或 `3.3V` 邏輯
-- 使用哪個 USB-UART 芯片
-- 您的計算機是否有驅動程序
-- 需要哪個引導載入器
-- 多少閃存和 SRAM
-- 多少個 PWM 和類比輸入
-- 是否有原理圖和引腳圖
-- 電源調節器和連接器的質量
-- 板是否適合最終任務
+- 它是原始的、克隆的还是兼容的板
+- 安装了哪个微控制器
+- `5V` 或 `3.3V` 逻辑
+- 使用哪个 USB-UART 芯片
+- 您的计算机是否有驱动程序
+- 需要哪个引导加载器
+- 多少闪存和 SRAM
+- 多少个 PWM 和模拟输入
+- 是否有原理图和引脚图
+- 电源调节器和连接器的质量
+- 板是否适合最终任务
 
-## 常見錯誤
+## 常见错误
 
-- 認為 Arduino 是一個特定的板
-- 將 `5V` Arduino 直接連接到 `3.3V` 模塊
-- 從 GPIO 為負載供電
-- 從 `5V` 引腳為伺服供電並獲得重置
-- 將 `analogWrite()` 用作真實類比輸出
-- 為 Nano 克隆選擇錯誤的引導載入器
-- 未安裝 USB-UART 的驅動程序
-- 嘗試在沒有理由的情況下在 Uno 上構建現代網絡設備
-- 將教育麵包板轉移到沒有修改電源、配線和保護的封閉電力設備
+- 认为 Arduino 是一个特定的板
+- 将 `5V` Arduino 直接连接到 `3.3V` 模块
+- 从 GPIO 为负载供电
+- 从 `5V` 引脚为伺服供电并获得重置
+- 将 `analogWrite()` 用作真实模拟输出
+- 为 Nano 克隆选择错误的引导加载器
+- 未安装 USB-UART 的驱动程序
+- 尝试在没有理由的情况下在 Uno 上构建现代网络设备
+- 将教育面包板转移到没有修改电源、配线和保护的封闭电力设备
 
-## 關鍵要點
+## 关键要点
 
-Arduino 是一個很好的教育生態系統，是快速測試的便利工具。它非常適合理解 GPIO、PWM、ADC 和傳感器。
+Arduino 是一个很好的教育生态系统，是快速测试的便利工具。它非常适合理解 GPIO、PWM、ADC 和传感器。
 
-但經典 Uno/Nano 是老 `5V` 板，記憶有限，沒有網絡。對於 3D 打印機周圍的新設備，ESP32、RP2040、STM32 或現成的打印機板通常更實用，讓 Arduino 成為教育和診斷工具。
+但经典 Uno/Nano 是老 `5V` 板，记忆有限，没有网络。对于 3D 打印机周围的新设备，ESP32、RP2040、STM32 或现成的打印机板通常更实用，让 Arduino 成为教育和诊断工具。
 
-## 相關資料
+## 相关资料
 
-- [Arduino Docs: UNO R3](https://docs.arduino.cc/hardware/uno-rev3) — 官方 Uno R3 規格：ATmega328P、`5V`、引腳、PWM、類比輸入和電路板資源
-- [Arduino Store: UNO Rev3 Tech Specs](https://store.arduino.cc/collections/arduino/products/arduino-uno-rev3) — 包含電壓、GPIO 電流、記憶、頻率和電路板尺寸的表格
-- [Arduino Store: Arduino Nano](https://store-usa.arduino.cc/products/arduino-nano) — Nano 規格、電源、記憶、數字和類比引腳
-- [Arduino Help Center: Select the right processor for Arduino Nano](https://support.arduino.cc/hc/en-us/articles/4401874304274-Select-the-right-processor-for-Arduino-Nano) — 為什麼 Nano 和 Nano 克隆可能有不同的引導載入器
-- [Arduino Language Reference](https://docs.arduino.cc/language-reference/) — `pinMode`、`digitalWrite`、`analogRead`、`analogWrite`、PWM 和基本功能的官方參考
-- [Arduino Help Center: Use PWM output with Arduino](https://support.arduino.cc/hc/en-us/articles/9350537961500-Use-PWM-output-with-Arduino) — 常見板的 PWM 引腳列表和 `analogWrite()` 的限制
+- [Arduino Docs: UNO R3](https://docs.arduino.cc/hardware/uno-rev3) — 官方 Uno R3 规格：ATmega328P、`5V`、引脚、PWM、模拟输入和电路板资源
+- [Arduino Store: UNO Rev3 Tech Specs](https://store.arduino.cc/collections/arduino/products/arduino-uno-rev3) — 包含电压、GPIO 电流、记忆、频率和电路板尺寸的表格
+- [Arduino Store: Arduino Nano](https://store-usa.arduino.cc/products/arduino-nano) — Nano 规格、电源、记忆、数字和模拟引脚
+- [Arduino Help Center: Select the right processor for Arduino Nano](https://support.arduino.cc/hc/en-us/articles/4401874304274-Select-the-right-processor-for-Arduino-Nano) — 为什么 Nano 和 Nano 克隆可能有不同的引导加载器
+- [Arduino Language Reference](https://docs.arduino.cc/language-reference/) — `pinMode`、`digitalWrite`、`analogRead`、`analogWrite`、PWM 和基本功能的官方参考
+- [Arduino Help Center: Use PWM output with Arduino](https://support.arduino.cc/hc/en-us/articles/9350537961500-Use-PWM-output-with-Arduino) — 常见板的 PWM 引脚列表和 `analogWrite()` 的限制

@@ -1,173 +1,173 @@
 # STM32 控制器
 
-STM32 是意法半導體公司基於 Arm Cortex-M 核心的 32 位微控制器系列。它不是單個電路板或芯片：在 STM32 名稱下有數十個系列和數百個型號。
+STM32 是意法半导体公司基于 Arm Cortex-M 核心的 32 位微控制器系列。它不是单个电路板或芯片：在 STM32 名称下有数十个系列和数百个型号。
 
-在 3D 打印機世界中，STM32 非常普遍。許多現成的打印機電路板、擴展板、CAN 板和控制器都使用 STM32。對於 Klipper 和打印機外圍設備，如果您準備與特定電路板合作，它是最實用的選項之一。
+在 3D 打印机世界中，STM32 非常普遍。许多现成的打印机电路板、扩展板、CAN 板和控制器都使用 STM32。对于 Klipper 和打印机外围设备，如果您准备与特定电路板合作，它是最实用的选项之一。
 
-## STM32 何時有用
+## STM32 何时有用
 
-STM32 適用於：
+STM32 适用于：
 
-- 主 3D 打印機電路板；
+- 主 3D 打印机电路板；
 - Klipper 中的附加 MCU；
-- 風扇、傳感器和輸出控制板；
-- CAN 板或工具頭板；
-- 更嚴肅的自訂電路板；
-- 需要計時器、PWM、ADC、UART、SPI、I2C、CAN 或 USB 的任務；
-- 需要現成工業生態系統和文檔的項目。
+- 风扇、传感器和输出控制板；
+- CAN 板或工具头板；
+- 更严肃的自定义电路板；
+- 需要计时器、PWM、ADC、UART、SPI、I2C、CAN 或 USB 的任务；
+- 需要现成工业生态系统和文档的项目。
 
-如果 RP2040 是簡單而清晰的起點，STM32 是一個廣闊的控制器世界，您可以為幾乎任何任務選擇芯片。但靈活性是以複雜性為代價的。
+如果 RP2040 是简单而清晰的起点，STM32 是一个广阔的控制器世界，您可以为几乎任何任务选择芯片。但灵活性是以复杂性为代价的。
 
-## STM32 是一個系列
+## STM32 是一个系列
 
-您不能說「我得到了 STM32」並停止選擇。您需要知道確切的型號。
+您不能说"我得到了 STM32"并停止选择。您需要知道确切的型号。
 
 系列示例：
 
-- **STM32F0 / STM32C0 / STM32G0** — 預算和大眾市場系列；
-- **STM32F1** — 老但非常著名的系列，經常在 Blue Pill 和舊電路板上發現；
-- **STM32F4** — 更強大的系列，在控制器中很受歡迎；
-- **STM32G4** — 對於控制、計時器和模擬外圍設備任務很有趣；
-- **STM32H7** — 強大的高端控制器；
-- **STM32L / STM32U** — 專注於低功耗的系列。
+- **STM32F0 / STM32C0 / STM32G0** — 预算和大众市场系列；
+- **STM32F1** — 老但非常著名的系列，经常在 Blue Pill 和旧电路板上发现；
+- **STM32F4** — 更强大的系列，在控制器中很受欢迎；
+- **STM32G4** — 对于控制、计时器和模拟外围设备任务很有趣；
+- **STM32H7** — 强大的高端控制器；
+- **STM32L / STM32U** — 专注于低功耗的系列。
 
-對於典型用戶，重要的不是系列的營銷，而是具體的事情：
+对于典型用户，重要的不是系列的营销，而是具体的事情：
 
-- 需要的固件中是否有支援；
-- 電路板上實際暴露了多少 GPIO；
+- 需要的固件中是否有支持；
+- 电路板上实际暴露了多少 GPIO；
 - 它是否具有 USB、CAN、UART、I2C、SPI；
-- 閃存和 RAM 的數量；
+- 闪存和 RAM 的数量；
 - 如何刷新它；
-- 是否有適當的引腳圖和原理圖。
+- 是否有适当的引脚图和原理图。
 
-## 電路板比芯片名稱更重要
+## 电路板比芯片名称更重要
 
-相同的 STM32 可能在非常不同的電路板上。
+相同的 STM32 可能在非常不同的电路板上。
 
-常見變體：
+常见变体：
 
-- **Blue Pill / Black Pill** — 便宜的小型電路板，通常採用 STM32F103 或 STM32F4 級別，但克隆品質不同；
-- **STM32 Nucleo** — 具有內置 ST-LINK 的官方 ST 開發電路板；
-- **現成的 3D 打印機電路板** — 已經具有驅動程序、連接器、MOSFET 輸出、熱敏電阻輸入、保險絲和電源連接器；
-- **工具頭/CAN 板** — 用於打印機頭或遠程模塊的專用板；
-- **自訂電路板** — 需要完整的電源、USB、SWD、保護和佈線設計。
+- **Blue Pill / Black Pill** — 便宜的小型电路板，通常采用 STM32F103 或 STM32F4 级别，但克隆品质不同；
+- **STM32 Nucleo** — 具有内置 ST-LINK 的官方 ST 开发电路板；
+- **现成的 3D 打印机电路板** — 已经具有驱动程序、连接器、MOSFET 输出、热敏电阻输入、保险丝和电源连接器；
+- **工具头/CAN 板** — 用于打印机头或远程模块的专用板；
+- **自定义电路板** — 需要完整的电源、USB、SWD、保护和布线设计。
 
-對於第一個實際項目，通常更容易獲得帶有文檔的現成電路板，而不是裸露的 STM32 或沒有原理圖的隨機克隆。
+对于第一个实际项目，通常更容易获得带有文档的现成电路板，而不是裸露的 STM32 或没有原理图的随机克隆。
 
 ## STM32 和 Klipper
 
-STM32 是 Klipper MCU 的主要路徑之一。
+STM32 是 Klipper MCU 的主要路径之一。
 
-典型架構：
+典型架构：
 
 ![STMicroelectronics 的 STM8 和 STM32 Nucleo 板](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
-*來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nucleo-board.jpg), Avandalen, CC BY-SA 4.0*
+*来源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nucleo-board.jpg), Avandalen, CC BY-SA 4.0*
 
-Klipper 主機在 Linux 設備上運行，STM32 電路板物理控制引腳：切換 MOSFET 輸出、讀取熱敏電阻、控制風扇、接收限位開關信號並通過 USB、UART 或 CAN 與主機通信。
+Klipper 主机在 Linux 设备上运行，STM32 电路板物理控制引脚：切换 MOSFET 输出、读取热敏电阻、控制风扇、接收限位开关信号并通过 USB、UART 或 CAN 与主机通信。
 
-對於類似 iDryer 的外圍設備，STM32 有意義如果：
+对于类似 iDryer 的外围设备，STM32 有意义如果：
 
-- 設備應該是 Klipper 配置的一部分；
-- 您需要一個具有電力輸出的現成打印機電路板；
+- 设备应该是 Klipper 配置的一部分；
+- 您需要一个具有电力输出的现成打印机电路板；
 - 您需要 CAN；
-- 您需要更多的工業板方法；
-- 您已經有一個 STM32 電路板和已知的配置。
+- 您需要更多的工业板方法；
+- 您已经有一个 STM32 电路板和已知的配置。
 
-如果您需要快速添加幾個引腳和傳感器，RP2040 通常更簡單。如果您需要一個帶有連接器和驅動程序的現成強大電路板，STM32 電路板可能會更好。
+如果您需要快速添加几个引脚和传感器，RP2040 通常更简单。如果您需要一个带有连接器和驱动程序的现成强大电路板，STM32 电路板可能会更好。
 
 ## 刷新：USB、DFU、UART、SWD、ST-LINK
 
-STM32 沒有一個適用於所有電路板的通用刷新方法。
+STM32 没有一个适用于所有电路板的通用刷新方法。
 
-選項：
+选项：
 
-- **USB 引導加載程序 / DFU** — 如果電路板和芯片支援，通過內置 USB 引導加載程序刷新；
-- **UART 引導加載程序** — 以正確的 BOOT 模式通過串行引腳刷新；
-- **SWD via ST-LINK** — 通過編程器刷新和調試的可靠方式；
-- **Nucleo 上的內置 ST-LINK** — 便於開發；
-- **打印機電路板上的引導加載程序** — 有時刷新通過 SD 卡、USB 或製造商的特殊引導加載程序進行。
+- **USB 引导加载程序 / DFU** — 如果电路板和芯片支持，通过内置 USB 引导加载程序刷新；
+- **UART 引导加载程序** — 以正确的 BOOT 模式通过串行引脚刷新；
+- **SWD via ST-LINK** — 通过编程器刷新和调试的可靠方式；
+- **Nucleo 上的内置 ST-LINK** — 便于开发；
+- **打印机电路板上的引导加载程序** — 有时刷新通过 SD 卡、USB 或制造商的特殊引导加载程序进行。
 
-因此，在購買電路板之前，您不僅需要查找芯片數據表，還需要查找該特定電路板的說明。對於 Klipper，特別重要的是閱讀現成電路板配置中的評論和製造商的說明。
+因此，在购买电路板之前，您不仅需要查找芯片数据表，还需要查找该特定电路板的说明。对于 Klipper，特别重要的是阅读现成电路板配置中的评论和制造商的说明。
 
-## Nucleo、Blue Pill 和打印機電路板
+## Nucleo、Blue Pill 和打印机电路板
 
-**STM32 Nucleo** 電路板便於學習和原型製作。它們通常具有內置 ST-LINK、Arduino Uno V3 連接器和提供對更多信號訪問的 ST morpho 引腳。如果您想學習 STM32 並有官方刷新工具，這是一個不錯的選擇。
+**STM32 Nucleo** 电路板便于学习和原型制作。它们通常具有内置 ST-LINK、Arduino Uno V3 连接器和提供对更多信号访问的 ST morpho 引脚。如果您想学习 STM32 并有官方刷新工具，这是一个不错的选择。
 
-**Blue Pill / Black Pill** 在價格和尺寸上很有吸引力，但克隆品往往有問題：錯誤的芯片、弱弱的調節器、糟糕的 USB、沒有適當的原理圖、奇怪的引導加載程序。對於實驗，它們是有用的，對於可靠的設備——只有在驗證之後。
+**Blue Pill / Black Pill** 在价格和尺寸上很有吸引力，但克隆品往往有问题：错误的芯片、弱弱的调节器、糟糕的 USB、没有适当的原理图、奇怪的引导加载程序。对于实验，它们是有用的，对于可靠的设备——只有在验证之后。
 
-**現成的 3D 打印機電路板**對於加熱器、風扇和傳感器通常更實用，因為電源部分已經佈線：有端子、MOSFET 輸出、熱敏電阻輸入、電源、保險絲或它們的空間。但即使是現成的電路板也需要檢查電流、連接器、冷卻和安全性。
+**现成的 3D 打印机电路板**对于加热器、风扇和传感器通常更实用，因为电源部分已经布线：有端子、MOSFET 输出、热敏电阻输入、电源、保险丝或它们的空间。但即使是现成的电路板也需要检查电流、连接器、冷却和安全性。
 
-## 3.3V 邏輯和 GPIO
+## 3.3V 逻辑和 GPIO
 
-大多數 STM32 使用 `3.3V` 邏輯工作。
+大多数 STM32 使用 `3.3V` 逻辑工作。
 
 重要：
 
-- 除非芯片數據表明確指出該引腳接受 `5V`，否則不要向引腳施加 `5V`；
-- Nucleo 上的 Arduino 屏蔽兼容性並不意味著所有信號都像在 `5V` Arduino Uno 上一樣安全；
+- 除非芯片数据表明确指出该引脚接受 `5V`，否则不要向引脚施加 `5V`；
+- Nucleo 上的 Arduino 屏蔽兼容性并不意味着所有信号都像在 `5V` Arduino Uno 上一样安全；
 - I2C 上拉通常是 `3.3V`；
-- GPIO 不應直接為負載供電；
-- 風扇、LED 條、加熱器、繼電器和伺服通過驅動器和單獨的電源連接。
+- GPIO 不应直接为负载供电；
+- 风扇、LED 条、加热器、继电器和伺服通过驱动器和单独的电源连接。
 
-即使某些 STM32 引腳接受 `5V`，這也不是連接所有東西的許可。您需要檢查特定芯片的引腳圖表和電氣特性。
+即使某些 STM32 引脚接受 `5V`，这也不是连接所有东西的许可。您需要检查特定芯片的引脚图表和电气特性。
 
-## 為什麼 STM32 經常被選擇用於打印機
+## 为什么 STM32 经常被选择用于打印机
 
-STM32 對 3D 打印機電路板很好，因為它有許多有用的外圍設備：
+STM32 对 3D 打印机电路板很好，因为它有许多有用的外围设备：
 
-- 用於風扇、加熱器和信號的計時器和 PWM；
-- 用於熱敏電阻和傳感器的 ADC；
-- 用於步進驅動程序和模塊的 UART/SPI；
-- 用於顯示器和傳感器的 I2C；
-- 與主機通信的 USB；
-- 某些系列和電路板中的 CAN；
-- 足夠的實時 MCU 任務性能。
+- 用于风扇、加热器和信号的计时器和 PWM；
+- 用于热敏电阻和传感器的 ADC；
+- 用于步进驱动程序和模块的 UART/SPI；
+- 用于显示器和传感器的 I2C；
+- 与主机通信的 USB；
+- 某些系列和电路板中的 CAN；
+- 足够的实时 MCU 任务性能。
 
-但微控制器本身不會使電路板安全。加熱器、電源 MOSFET、SSR、保險絲、連接器和熱保護仍然是單獨的工程任務。
+但微控制器本身不会使电路板安全。加热器、电源 MOSFET、SSR、保险丝、连接器和热保护仍然是单独的工程任务。
 
-## 購買前要檢查的事項
+## 购买前要检查的事项
 
-購買 STM32 電路板之前，請檢查：
+购买 STM32 电路板之前，请检查：
 
-- 確切的微控制器型號；
-- Klipper 或需要的固件中是否有支援；
-- 閃存和 RAM 的數量；
-- 電路板如何刷新；
+- 确切的微控制器型号；
+- Klipper 或需要的固件中是否有支持；
+- 闪存和 RAM 的数量；
+- 电路板如何刷新；
 - 它是否具有 USB、CAN、UART 或其他需要的接口；
-- 是否有官方引腳圖和原理圖；
-- LED、USB、振蕩器、啟動模式或 SWD 佔用的引腳；
-- 哪些引腳是 5V 容限的，哪些不是；
-- 電路板上的電源輸出以及它們的額定電流；
-- 是否有保險絲、端子和適當的電源；
-- 製造商的文檔有多容易理解。
+- 是否有官方引脚图和原理图；
+- LED、USB、振荡器、启动模式或 SWD 占用的引脚；
+- 哪些引脚是 5V 容限的，哪些不是；
+- 电路板上的电源输出以及它们的额定电流；
+- 是否有保险丝、端子和适当的电源；
+- 制造商的文档有多容易理解。
 
-如果電路板只用漂亮的照片出售，沒有原理圖，那麼它不是帶加熱器的設備的良好基礎。
+如果电路板只用漂亮的照片出售，没有原理图，那么它不是带加热器的设备的良好基础。
 
-## 常見錯誤
+## 常见错误
 
-- 認為 STM32 是一個特定的電路板；
-- 購買 Blue Pill 克隆並期望官方電路板行為；
-- 不檢查確切的芯片型號；
-- 不了解如何刷新電路板；
+- 认为 STM32 是一个特定的电路板；
+- 购买 Blue Pill 克隆并期望官方电路板行为；
+- 不检查确切的芯片型号；
+- 不了解如何刷新电路板；
 - 混淆 DFU、BOOT0、UART 和 ST-LINK；
-- 將 `5V` 模塊連接到 `5V` 不容限的引腳；
-- 將 SWD 引腳用作常規 GPIO 並失去閃新/調試的能力；
-- 認為 GPIO 是電源輸出；
-- 為加熱器選擇沒有原理圖的電路板；
-- 在購買前不檢查現成的 Klipper 配置。
+- 将 `5V` 模块连接到 `5V` 不容限的引脚；
+- 将 SWD 引脚用作常规 GPIO 并失去闪新/调试的能力；
+- 认为 GPIO 是电源输出；
+- 为加热器选择没有原理图的电路板；
+- 在购买前不检查现成的 Klipper 配置。
 
-## 要點
+## 要点
 
-STM32 是一個強大而實用的微控制器系列，特別是對於 3D 打印機電路板和 Klipper MCU。但您需要選擇不是「一般 STM32」，而是特定的電路板、特定的芯片、引腳圖、刷新方法和文檔。
+STM32 是一个强大而实用的微控制器系列，特别是对于 3D 打印机电路板和 Klipper MCU。但您需要选择不是"一般 STM32"，而是特定的电路板、特定的芯片、引脚图、刷新方法和文档。
 
-對於第一個簡單的控制器，RP2040 通常更容易。對於現成的打印機電子產品、CAN 板和更嚴肅的外圍設備，STM32 通常是正確的選擇。
+对于第一个简单的控制器，RP2040 通常更容易。对于现成的打印机电子产品、CAN 板和更严肃的外围设备，STM32 通常是正确的选择。
 
-## 相關資料
+## 相关资料
 
 - [STMicroelectronics: STM32 32-bit Arm Cortex MCUs](https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html) — STM32 系列、系列、性能和工具的官方概述。
-- [STMicroelectronics: STM32 Mainstream MCUs](https://www.st.com/en/microcontrollers-microprocessors/stm32-mainstream-mcus.html) — 大眾市場系列 STM32C0、G0、F0、F1、G4 的概述及其定位。
-- [STMicroelectronics: STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html) — 通過 ST-LINK/SWD、UART、USB DFU、I2C、SPI 和 CAN 引導加載程序的官方 STM32 刷新工具。
-- [STMicroelectronics: NUCLEO-F103RB](https://www.st.com/en/product/nucleo-f103rb) — 具有內置 ST-LINK、Arduino Uno V3 連接器和 ST morpho 引腳的官方 Nucleo 板的示例。
-- [ST UM1724: STM32 Nucleo-64 boards user manual](https://www.st.com/resource/en/user_manual/dm00105823-stlink-v2-in-circuit-debugger-programmer-for-stm8-and-stm32-stmicroelectronics.pdf) — Nucleo-64、連接器、ST-LINK 和關於 `3.3V` I/O 的警告的文檔。
-- [Klipper: Code overview](https://www.klipper3d.org/Code_Overview.html) — Klipper 架構和 MCU 後端上下文，包括源樹中的 STM32。
+- [STMicroelectronics: STM32 Mainstream MCUs](https://www.st.com/en/microcontrollers-microprocessors/stm32-mainstream-mcus.html) — 大众市场系列 STM32C0、G0、F0、F1、G4 的概述及其定位。
+- [STMicroelectronics: STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html) — 通过 ST-LINK/SWD、UART、USB DFU、I2C、SPI 和 CAN 引导加载程序的官方 STM32 刷新工具。
+- [STMicroelectronics: NUCLEO-F103RB](https://www.st.com/en/product/nucleo-f103rb) — 具有内置 ST-LINK、Arduino Uno V3 连接器和 ST morpho 引脚的官方 Nucleo 板的示例。
+- [ST UM1724: STM32 Nucleo-64 boards user manual](https://www.st.com/resource/en/user_manual/dm00105823-stlink-v2-in-circuit-debugger-programmer-for-stm8-and-stm32-stmicroelectronics.pdf) — Nucleo-64、连接器、ST-LINK 和关于 `3.3V` I/O 的警告的文档。
+- [Klipper: Code overview](https://www.klipper3d.org/Code_Overview.html) — Klipper 架构和 MCU 后端上下文，包括源树中的 STM32。

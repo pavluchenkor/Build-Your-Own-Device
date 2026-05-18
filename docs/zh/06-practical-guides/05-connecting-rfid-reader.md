@@ -1,8 +1,8 @@
-# 連接RFID讀卡器
+# 连接RFID读卡器
 
-RFID/NFC讀卡器讓你可以不用有線接觸就能讀取卡、標籤或鑰匙扣。
+RFID/NFC读卡器让你可以不用有线接触就能读取卡、标签或钥匙扣。
 
-在類似iDryer的設備中，這對於線軸標識、材料配置選擇、服務訪問或消耗品追蹤實驗很有用。
+在类似iDryer的设备中，这对于线轴标识、材料配置选择、服务访问或消耗品追踪实验很有用。
 
 Main mistake: buy an "RFID module" and assume any card will read from any distance on any controller. In reality, you need to verify frequency, tag type, interface, power, logic levels, and antenna placement.
 

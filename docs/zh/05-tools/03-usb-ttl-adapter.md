@@ -1,32 +1,32 @@
 # USB-TTL
 
-USB-TTL適配器或USB-UART適配器，讓你的電腦通過USB與微控制器通過UART通信。
+USB-TTL适配器或USB-UART适配器，让你的电脑通过USB与微控制器通过UART通信。
 
-你需要它用於：
+你需要它用于：
 
 - 刷新某些板；
-- 讀取日誌；
-- 調試UART通信；
-- 配置模組；
-- 當常規USB不工作時恢復板；
-- 連接到沒有內置USB-UART的設備。
+- 读取日志；
+- 调试UART通信；
+- 配置模块；
+- 当常规USB不工作时恢复板；
+- 连接到没有内置USB-UART的设备。
 
-常見的適配器使用CH340、CP2102、FT232等芯片。
+常见的适配器使用CH340、CP2102、FT232等芯片。
 
 ## USB-TTL或USB-UART
 
-消費者描述通常說USB-TTL。
+消费者描述通常说USB-TTL。
 
-從技術上講，它通常意味著具有TTL邏輯電平的USB-UART適配器。
+从技术上讲，它通常意味着具有TTL逻辑电平的USB-UART适配器。
 
 主要的事情是理解：
 
-- USB側連接到電腦；
-- UART側連接到微控制器；
-- 適配器不是所有板的程序員；
-- 如果你需要通過SWD刷新STM32，適配器不會替代ST-Link。
+- USB侧连接到电脑；
+- UART侧连接到微控制器；
+- 适配器不是所有板的程序员；
+- 如果你需要通过SWD刷新STM32，适配器不会替代ST-Link。
 
-## 主要引腳
+## 主要引脚
 
 通常有：
 
@@ -34,8 +34,8 @@ USB-TTL適配器或USB-UART適配器，讓你的電腦通過USB與微控制器�
 - `TX`；
 - `RX`；
 - `VCC`或`3V3`/`5V`；
-- 有時`DTR`；
-- 有時`CTS`、`RTS`。
+- 有时`DTR`；
+- 有时`CTS`、`RTS`。
 
 最小通信：
 
@@ -43,11 +43,11 @@ USB-TTL適配器或USB-UART適配器，讓你的電腦通過USB與微控制器�
 - `TX`；
 - `RX`。
 
-只有在你確定適配器應該為板供電時，才連接電源。
+只有在你确定适配器应该为板供电时，才连接电源。
 
-## TX和RX是交叉連接
+## TX和RX是交叉连接
 
-UART連接如下：
+UART连接如下：
 
 ```text
 adapter TX -> board RX
@@ -55,89 +55,89 @@ adapter RX -> board TX
 adapter GND -> board GND
 ```
 
-`TX`是發送。
+`TX`是发送。
 
 `RX`是接收。
 
-一個設備的發送器必須連接到另一個的接收器。
+一个设备的发送器必须连接到另一个的接收器。
 
-如果你連接`TX`到`TX`，通信通常無法進行。
+如果你连接`TX`到`TX`，通信通常无法进行。
 
-![UART連接中的交叉連接TX/RX](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![UART连接中的交叉连接TX/RX](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 
 ## 公共接地
 
-適配器`GND`和板`GND`必須連接。
+适配器`GND`和板`GND`必须连接。
 
-沒有公共接地，UART可能無法工作或不穩定。
+没有公共接地，UART可能无法工作或不稳定。
 
-即使板由單獨的電源供電，接地仍然需要作為公共信號電平。
+即使板由单独的电源供电，接地仍然需要作为公共信号电平。
 
-## 3.3V和5V邏輯電平
+## 3.3V和5V逻辑电平
 
-這是最重要的要點之一。
+这是最重要的要点之一。
 
-適配器可以工作的邏輯：
+适配器可以工作的逻辑：
 
 - `3.3V`；
 - `5V`；
-- 可切換`3.3V/5V`。
+- 可切换`3.3V/5V`。
 
-許多現代板和模組使用3.3V邏輯：ESP32、RP2040、許多STM32。
+许多现代板和模块使用3.3V逻辑：ESP32、RP2040、许多STM32。
 
-如果你將5V UART信號應用於3.3V輸入，你可能會損壞引腳或整個板。
+如果你将5V UART信号应用于3.3V输入，你可能会损坏引脚或整个板。
 
-連接前，驗證：
+连接前，验证：
 
-- 板使用什麼邏輯電平；
-- 適配器使用什麼邏輯電平；
-- 3.3V/5V跳線做什麼；
-- 跳線是否只改變`VCC`電源或也改變`TX/RX`電平。
+- 板使用什么逻辑电平；
+- 适配器使用什么逻辑电平；
+- 3.3V/5V跳线做什么；
+- 跳线是否只改变`VCC`电源或也改变`TX/RX`电平。
 
-某些適配器提供5V電源但3.3V邏輯信號。其他的同時改變電源和電平。檢查特定適配器文檔。
+某些适配器提供5V电源但3.3V逻辑信号。其他的同时改变电源和电平。检查特定适配器文档。
 
-## 來自適配器的電源
+## 来自适配器的电源
 
-你不總是需要連接`VCC`。
+你不总是需要连接`VCC`。
 
-通常，只連接是更安全的：
+通常，只连接是更安全的：
 
 - `GND`；
 - `TX`；
 - `RX`。
 
-從其正常來源為板供電。
+从其正常来源为板供电。
 
-你可以連接適配器的`VCC`，如果：
+你可以连接适配器的`VCC`，如果：
 
-- 板額定為該電壓；
-- 板電流在適配器能力範圍內；
-- 同時沒有其他電源；
-- 板文檔允許通過此引腳供電。
+- 板额定为该电压；
+- 板电流在适配器能力范围内；
+- 同时没有其他电源；
+- 板文档允许通过此引脚供电。
 
-一個危險的錯誤是同時從USB-UART適配器和單獨的電源供電，導致源衝突。
+一个危险的错误是同时从USB-UART适配器和单独的电源供电，导致源冲突。
 
-## DTR和自動重置
+## DTR和自动重置
 
-某些板使用`DTR`進行刷新期間的自動重置。
+某些板使用`DTR`进行刷新期间的自动重置。
 
-例如，Arduino Pro Mini和類似的板可以通過電容器使用DTR進行自動重置。
+例如，Arduino Pro Mini和类似的板可以通过电容器使用DTR进行自动重置。
 
-如果刷新不會自動啟動，可能是因為：
+如果刷新不会自动启动，可能是因为：
 
-- DTR未連接；
-- 需要手動重置；
-- 選擇了錯誤的適配器；
-- 選擇了錯誤的引導加載程序；
-- IDE中的速度或板選擇不正確。
+- DTR未连接；
+- 需要手动重置；
+- 选择了错误的适配器；
+- 选择了错误的引导加载程序；
+- IDE中的速度或板选择不正确。
 
-對於簡單的日誌閱讀，DTR通常不需要。
+对于简单的日志阅读，DTR通常不需要。
 
-## 如何檢查適配器是否對系統可見
+## 如何检查适配器是否对系统可见
 
-在macOS和Linux上，適配器通常在`/dev`中显示为設備。
+在macOS和Linux上，适配器通常在`/dev`中显示为设备。
 
 示例：
 
@@ -152,53 +152,53 @@ ls /dev/ttyACM*
 
 如果端口未显示：
 
-- 檢查USB電纜；
-- 嘗試不同的USB端口；
-- 檢查驅動程序；
-- 驗證它不只是一根充電電纜；
-- 查看適配器上的芯片：CH340、CP2102、FT232。
+- 检查USB电缆；
+- 尝试不同的USB端口；
+- 检查驱动程序；
+- 验证它不只是一根充电电缆；
+- 查看适配器上的芯片：CH340、CP2102、FT232。
 
-便宜的適配器有時需要單獨的驅動程序，尤其是在Windows上。
+便宜的适配器有时需要单独的驱动程序，尤其是在Windows上。
 
-## 環路測試
+## 环路测试
 
-檢查適配器的簡單方法：
+检查适配器的简单方法：
 
-1. 連接適配器的`TX`和`RX`。
-2. 打開序列終端。
-3. 選擇端口和速度。
-4. 輸入文本。
+1. 连接适配器的`TX`和`RX`。
+2. 打开序列终端。
+3. 选择端口和速度。
+4. 输入文本。
 
-如果你輸入的字符返回，適配器和端口可能工作。
+如果你输入的字符返回，适配器和端口可能工作。
 
-測試後，移除`TX`和`RX`之間的跳線。
+测试后，移除`TX`和`RX`之间的跳线。
 
-## 常見錯誤
+## 常见错误
 
-- `TX`連接到`TX`，`RX`到`RX`；
-- 忘記公共`GND`；
-- 為3.3V板選擇了5V電平；
-- 連接了`VCC`，儘管板已由單獨供電；
-- USB電纜是充電專用；
-- CH340/CP210x/FTDI驅動未安裝；
-- 選擇了錯誤的COM端口；
+- `TX`连接到`TX`，`RX`到`RX`；
+- 忘记公共`GND`；
+- 为3.3V板选择了5V电平；
+- 连接了`VCC`，尽管板已由单独供电；
+- USB电缆是充电专用；
+- CH340/CP210x/FTDI驱动未安装；
+- 选择了错误的COM端口；
 - UART速度不匹配；
-- 期望USB-UART通過SWD刷新STM32；
-- 混淆了刷新期間的啟動模式或重置。
+- 期望USB-UART通过SWD刷新STM32；
+- 混淆了刷新期间的启动模式或重置。
 
-## 要點
+## 要点
 
-- USB-UART適配器是電腦和板之間UART通信所需的。
+- USB-UART适配器是电脑和板之间UART通信所需的。
 - 最小通信：`GND`、`TX`、`RX`。
-- 適配器`TX`進入板`RX`，適配器`RX`進入板`TX`。
-- 連接前檢查3.3V/5V邏輯電平。
-- `VCC`僅在你絕對需要適配器的電源時才連接。
-- 如果適配器不可見，檢查電纜、驅動程序和USB端口。
+- 适配器`TX`进入板`RX`，适配器`RX`进入板`TX`。
+- 连接前检查3.3V/5V逻辑电平。
+- `VCC`仅在你绝对需要适配器的电源时才连接。
+- 如果适配器不可见，检查电缆、驱动程序和USB端口。
 
-## 參考資料
+## 参考资料
 
-- [SparkFun: Serial Basic Hookup Guide](https://learn.sparkfun.com/tutorials/serial-basic-hookup-guide) - USB轉序列適配器、TX/RX/GND、VCC、DTR和3.3V/5V切換。
-- [SparkFun: Serial Basic CH340C Hookup Guide](https://learn.sparkfun.com/tutorials/sparkfun-serial-basic-ch340c-hookup-guide/serial-basic-overview) - 現代CH340C USB-UART適配器、引腳、LED和電壓選擇。
-- [SparkFun: Serial Communication](https://learn.sparkfun.com/tutorials/serial-communication) - UART基礎、TX/RX和序列通信。
-- [Silicon Labs: CP210x USB to UART Bridge VCP Drivers](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers) - 官方CP210x虛擬COM端口驅動程序。
-- [Adafruit FTDI TTL-232 USB Type C Cable](https://www.adafruit.com/product/4364) - 具有5V電源和3.3V邏輯的電纜示例，顯示為什麼需要單獨讀取電源和信號電平。
+- [SparkFun: Serial Basic Hookup Guide](https://learn.sparkfun.com/tutorials/serial-basic-hookup-guide) - USB转序列适配器、TX/RX/GND、VCC、DTR和3.3V/5V切换。
+- [SparkFun: Serial Basic CH340C Hookup Guide](https://learn.sparkfun.com/tutorials/sparkfun-serial-basic-ch340c-hookup-guide/serial-basic-overview) - 现代CH340C USB-UART适配器、引脚、LED和电压选择。
+- [SparkFun: Serial Communication](https://learn.sparkfun.com/tutorials/serial-communication) - UART基础、TX/RX和序列通信。
+- [Silicon Labs: CP210x USB to UART Bridge VCP Drivers](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers) - 官方CP210x虚拟COM端口驱动程序。
+- [Adafruit FTDI TTL-232 USB Type C Cable](https://www.adafruit.com/product/4364) - 具有5V电源和3.3V逻辑的电缆示例，显示为什么需要单独读取电源和信号电平。

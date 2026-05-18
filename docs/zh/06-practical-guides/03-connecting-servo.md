@@ -1,8 +1,8 @@
-# 連接伺服
+# 连接伺服
 
-伺服是一個帶有齒輪箱和控制電子元件的小馬達。你可以告訴它將軸旋轉到什麼位置。
+伺服是一个带有齿轮箱和控制电子元件的小马达。你可以告诉它将轴旋转到什么位置。
 
-在類似iDryer的設備中，伺服可以打開阻尼器、移動小插銷、按下機械開關或重新定向氣流。
+在类似iDryer的设备中，伺服可以打开阻尼器、移动小插销、按下机械开关或重新定向气流。
 
 The main mistake with servos: thinking it is a "small thing" and you can power it from any 5V pin on the controller. A servo can draw significant current, especially at startup, sudden movement, or when the mechanism binds.
 

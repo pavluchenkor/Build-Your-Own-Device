@@ -1,8 +1,8 @@
-# 連接負載傳感器
+# 连接负载传感器
 
-負載傳感器通過金屬梁、按鈕或平台的微小變形來測量力或重量。
+负载传感器通过金属梁、按钮或平台的微小变形来测量力或重量。
 
-在類似iDryer的設備中，負載傳感器可以估計線軸重量、剩餘細絲或機制負載。
+在类似iDryer的设备中，负载传感器可以估计线轴重量、剩余细丝或机制负载。
 
 Main point: a load cell is almost never connected directly to a controller. Its signal is too small. Usually, an HX711 module or similar amplifier/ADC is placed between the sensor and controller.
 

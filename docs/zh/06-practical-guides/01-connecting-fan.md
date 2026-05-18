@@ -1,8 +1,8 @@
-# 連接風扇
+# 连接风扇
 
-風扇看起來像一個簡單的組件：施加電源，它就會旋轉。
+风扇看起来像一个简单的组件：施加电源，它就会旋转。
 
-實際上，問題來自四件事：
+实际上，问题来自四件事：
 
 - selecting a fan with the wrong voltage;
 - connecting it to a weak controller output;

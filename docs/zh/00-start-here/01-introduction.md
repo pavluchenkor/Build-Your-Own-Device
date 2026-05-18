@@ -1,62 +1,62 @@
-# 開始使用
+# 入门指南
 
-您已經在3D打印機上列印，並想製造一個絲材烘乾機。但當您打開電路圖時，問題立即出現：選擇哪個電源、接地應該在哪裡、MOSFET或SSR、為什麼需要散熱片。本部分逐步回答這些問題——從第一次電流計算到工作正常的設備。
+您已经在3D打印机上打印，并想制造一个灯丝烘干机。但当您打开电路图时，问题立即出现：选择哪个电源、接地应该在哪里、MOSFET或SSR、为什么需要散热片。本部分逐步回答这些问题——从第一次电流计算到工作正常的设备。
 
-完成本部分後，您將了解您要構建什麼、為什麼採用這種方式、可能存在的危險在哪裡，以及如何在通電前檢查設備。
+完成本部分后，您将了解您要构建什么、为什么采用这种方式、可能存在的危险在哪里，以及如何在通电前检查设备。
 
-部分逐漸從簡單的概念引導至實際結果。
+部分逐渐从简单的概念引导至实际结果。
 
-這裡的路徑從簡單到複雜：
+这里的路径从简单到复杂：
 
-1. 首先理解電力、電流、負載和基本安全。
-2. 然後確定存在哪些控制器以及選擇哪個。
-3. 然後理解基本元件：加熱器、風扇、感測器、顯示器、RFID和負載單元格。
-4. 然後學習使用最少工具：萬用表、USB-UART、焊槍、壓線鉗。
-5. 然後進行實用連接。
-6. 然後考慮外殼和3D列印件。
-7. 最後，準備一份常見錯誤清單和診斷檢查清單。
+1. 首先理解电力、电流、负载和基本安全。
+2. 然后确定存在哪些控制器以及选择哪个。
+3. 然后理解基本元件：加热器、风扇、传感器、显示器、RFID和负载单元格。
+4. 然后学习使用最少工具：万用表、USB-UART、焊枪、压线钳。
+5. 然后进行实用连接。
+6. 然后考虑外壳和3D打印件。
+7. 最后，准备一份常见错误清单和诊断检查清单。
 
 主要想法：
 
-您不需要一次理解所有電子知識。逐步進行，每次理解下一個小步驟就足夠了。
+您不需要一次理解所有电子知识。逐步进行，每次理解下一个小步骤就足够了。
 
-本部分應提供的內容：
+本部分应提供的内容：
 
-- 對低電壓`12V`/`24V DC`電路如何不同於商用電源`110-230V AC`的理解；
-- 粗略計算負載電流的能力；
-- 理解何時需要MOSFET、SSR或繼電器；
-- 理解ESP32、Arduino、RP2040和STM32在實際中的區別；
-- 理解為什麼對於Klipper MCU，最好查看RP2040或STM32；
-- 對感測器、風扇、加熱器和顯示器的基本理解；
-- 最少的萬用表診斷技能；
-- 理解哪些列印件可以放在熱源附近；
-- 更好不重複的錯誤列表。
+- 对低电压`12V`/`24V DC`电路如何不同于商用电源`110-230V AC`的理解；
+- 粗略计算负载电流的能力；
+- 理解何时需要MOSFET、SSR或继电器；
+- 理解ESP32、Arduino、RP2040和STM32在实际中的区别；
+- 理解为什么对于Klipper MCU，最好查看RP2040或STM32；
+- 对传感器、风扇、加热器和显示器的基本理解；
+- 最少的万用表诊断技能；
+- 理解哪些打印件可以放在热源附近；
+- 更好不重复的错误列表。
 
 本部分不做的事：
 
-- 在使用`110-230V AC`時不能取代電工；
-- 不教授深層電路設計；
-- 不試圖解釋所有物理；
-- 不允許在不理解安全的情況下組裝危險設備。
+- 在使用`110-230V AC`时不能取代电工；
+- 不教授深层电路设计；
+- 不试图解释所有物理；
+- 不允许在不理解安全的情况下组装危险设备。
 
-如何閱讀：
+如何阅读：
 
-- 如果主題是新的——按順序進行；
-- 如果您已經製造過設備——作為參考打開所需部分；
-- 如果設備不工作——首先查看`07-common-mistakes`；
-- 如果您使用`110-230V AC`——首先閱讀與安全、SSR、電線、端子和保護接地相關的所有內容。
+- 如果主题是新的——按顺序进行；
+- 如果您已经制造过设备——作为参考打开所需部分；
+- 如果设备不工作——首先查看`07-common-mistakes`；
+- 如果您使用`110-230V AC`——首先阅读与安全、SSR、电线、端子和保护接地相关的所有内容。
 
-## 參考資料
+## 参考资料
 
-- [SparkFun: Voltage, Current, Resistance, and Ohm's Law](https://learn.sparkfun.com/tutorials/voltage-current-resistance-and-ohms-law) - 電壓、電流、電阻、閉路和歐姆定律的基本概念。
-- [SparkFun: Troubleshooting Tips](https://learn.sparkfun.com/tutorials/sparkfun-troubleshooting-tips/all) - 初始診斷的實用順序：電力、連接、極性、焊點、電纜和電壓降。
-- [Fluke: How to Measure Resistance with a Digital Multimeter](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-measure-resistance) - 為什麼在斷電狀態下進行電阻測量，以及為什麼需要萬用表檢查元件。
-- [OSHA: Electrical Incidents - Grounding](https://www.osha.gov/etools/construction/electrical-incidents/grounding) - 為什麼需要保護接地，以及為什麼使用商用電壓需要單獨的安全規範。
+- [SparkFun: Voltage, Current, Resistance, and Ohm's Law](https://learn.sparkfun.com/tutorials/voltage-current-resistance-and-ohms-law) - 电压、电流、电阻、闭路和欧姆定律的基本概念。
+- [SparkFun: Troubleshooting Tips](https://learn.sparkfun.com/tutorials/sparkfun-troubleshooting-tips/all) - 初始诊断的实用顺序：电力、连接、极性、焊点、电缆和电压降。
+- [Fluke: How to Measure Resistance with a Digital Multimeter](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-measure-resistance) - 为什么在断电状态下进行电阻测量，以及为什么需要万用表检查元件。
+- [OSHA: Electrical Incidents - Grounding](https://www.osha.gov/etools/construction/electrical-incidents/grounding) - 为什么需要保护接地，以及为什么使用商用电压需要单独的安全规范。
 
-## 另請參閱
+## 另请参阅
 
-- [Load calculation 24V](../01-electronics-basics/01-load-calculation-24v.md) - 關於電壓、電流、電力和電源容量的第一個實用主題。
-- [Common components](../03-common-components/01-overview.md) - 在簡單設備中最常見的零件地圖。
-- [Tools](../05-tools/01-overview.md) - 檢查、閃存、焊接和診斷所需的內容。
-- [Practical guides](../06-practical-guides/01-connecting-fan.md) - 通過控制器進行第一次安全負載連接的例子。
-- [Common mistakes](../08-common-mistakes/01-overview.md) - 當設備不開啟、發熱、發出噪音或行為不穩定時要查看的內容。
+- [Load calculation 24V](../01-electronics-basics/01-load-calculation-24v.md) - 关于电压、电流、电力和电源容量的第一个实用主题。
+- [Common components](../03-common-components/01-overview.md) - 在简单设备中最常见的零件地图。
+- [Tools](../05-tools/01-overview.md) - 检查、刷新、焊接和诊断所需的内容。
+- [Practical guides](../06-practical-guides/01-connecting-fan.md) - 通过控制器进行第一次安全负载连接的例子。
+- [Common mistakes](../08-common-mistakes/01-overview.md) - 当设备不开启、发热、发出噪音或行为不稳定时要查看的内容。

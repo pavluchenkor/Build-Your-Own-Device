@@ -1,8 +1,8 @@
 # ST-Link
 
-ST-Link是STM32微控制器的程序員和調試器。
+ST-Link是STM32微控制器的程序员和调试器。
 
-在簡單設備的背景下，它用於：
+在简单设备的背景下，它用于：
 
 - flash an STM32 board;
 - recover a board after a failed flash;
