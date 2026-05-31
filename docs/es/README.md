@@ -1,4 +1,11 @@
-# Fundamentos de hardware
+---
+title: "Construir tu propio secador de filamento"
+description: "Documentación práctica para construir un secador de filamento, una cámara calefactada y módulos para impresora 3D: electrónica, calefacción, flujo de aire, carcasa y seguridad."
+---
+
+# Construir tu propio secador de filamento
+
+Esta sección ayuda a diseñar y construir un secador de filamento o una cámara calefactada activa para una impresora 3D. Cubre electrónica básica, selección de controlador, calentadores, ventiladores, sensores, diseño de carcasa y errores comunes antes del primer montaje.
 
 Esta sección cubre todo lo que necesitas para construir un secador de filamento desde cero — desde fundamentos de electrónica hasta guías prácticas de cableado.
 

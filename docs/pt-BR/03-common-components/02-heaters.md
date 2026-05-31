@@ -1,4 +1,11 @@
-# Aquecedores
+---
+title: "Aquecedores para secadores de filamento e câmaras aquecidas"
+description: "Como escolher um aquecedor para secador de filamento ou câmara ativa de impressora 3D: 12V, 24V, rede elétrica, potência, controlo e segurança."
+---
+
+# Aquecedores para secadores de filamento e câmaras aquecidas
+
+O aquecedor define a velocidade de aquecimento e os limites de segurança do secador ou da câmara. Esta página explica tipos de aquecedores, potência, controlo por MOSFET ou SSR e erros que podem causar sobreaquecimento.
 
 A heater is a load that converts electrical energy into heat. In a simple DIY device, this is the most dangerous component: an error in a fan usually results in poor airflow, but a heater error can cause overheating, a melted enclosure, damaged wiring, or fire risk.
 

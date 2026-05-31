@@ -1,4 +1,11 @@
-# Como escolher um controlador
+---
+title: "Como escolher um controlador para um secador de filamento DIY"
+description: "Comparação de ESP32, Arduino, RP2040, STM32 e Klipper MCU para secador de filamento, câmara aquecida, iluminação, sensores e outros módulos de impressora 3D."
+---
+
+# Como escolher um controlador para um secador de filamento DIY
+
+O controlador define como o secador de filamento ou a câmara aquecida controla aquecimento, ventoinhas, iluminação, sensores e comunicação com a impressora. Esta página ajuda a escolher a plataforma certa.
 
 Esta seção descreve quatro famílias de controladores: ESP32, Arduino, RP2040 e STM32. Todos eles podem controlar ventiladores, ler sensores e comutar cargas. A diferença é para o que cada um é melhor adequado.
 

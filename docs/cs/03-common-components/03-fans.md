@@ -1,4 +1,11 @@
-# Ventilátory
+---
+title: "Ventilátory a proudění vzduchu v sušičce filamentu"
+description: "Proč je proudění vzduchu důležité v sušičce filamentu a vyhřívané komoře: výběr ventilátoru, průtok, statický tlak, hluk a rovnoměrný ohřev."
+---
+
+# Ventilátory a proudění vzduchu v sušičce filamentu
+
+Ventilátor nejen pohybuje vzduchem: rozvádí teplo, omezuje lokální horká místa a pomáhá sušit filament rovnoměrně. Tato stránka pomáhá vybrat ventilátor a pochopit vliv proudění na skříň, topení a teplotní senzor.
 
 A fan is a motor with an impeller that moves air. In devices around a 3D printer, you need it not just "to blow", but to push air through the right zone: a heater, spool, filter, radiator, chamber or electronics compartment.
 

@@ -1,4 +1,11 @@
-# Proč je PLA riskantní
+---
+title: "Proč je PLA rizikové v horkých skříních a sušičkách"
+description: "Proč je PLA špatná volba v blízkosti topení, sušičky filamentu nebo aktivní vyhřívané komory: měknutí, deformace a rizika."
+---
+
+# Proč je PLA rizikové v horkých skříních a sušičkách
+
+PLA je vhodné pro rychlé prototypy, ale špatně se hodí pro díly u topení nebo uvnitř teplé komory. Tato stránka vysvětluje, kdy se PLA začíná deformovat a kdy zvolit PETG, ABS, ASA nebo odolnější materiál.
 
 PLA je skvělý materiál na začátek.
 

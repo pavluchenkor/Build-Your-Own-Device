@@ -1,4 +1,11 @@
-# Návrh pouzdra
+---
+title: "Skříň sušičky filamentu a aktivní vyhřívaná komora"
+description: "Jak navrhnout skříň sušičky filamentu nebo vyhřívanou komoru 3D tiskárny: izolace, proudění vzduchu, materiály, bezpečnost a údržba."
+---
+
+# Skříň sušičky filamentu a aktivní vyhřívaná komora
+
+Skříň určuje, jak rovnoměrně zařízení drží teplotu, jak bezpečně jsou umístěny topení a elektronika a jak snadno se sušička servisuje. Stránka popisuje zásady návrhu pro sušičky filamentu, aktivní komory a podobné topné moduly.
 
 Pouzdro zařízení není jen krabice kolem komponent.
 

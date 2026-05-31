@@ -1,4 +1,11 @@
-# Why PLA is risky
+---
+title: "Why PLA is risky for hot enclosures and dryers"
+description: "Why PLA is a poor choice near a heater, filament dryer, or active heated chamber: softening temperature, deformation, and risk."
+---
+
+# Why PLA is risky for hot enclosures and dryers
+
+PLA is convenient for quick prototypes, but it is a poor choice for parts that work near a heater or inside a warm chamber. This page explains where PLA starts to deform and when PETG, ABS, ASA, or a more heat-resistant material is a better choice.
 
 PLA is a great material to start with.
 

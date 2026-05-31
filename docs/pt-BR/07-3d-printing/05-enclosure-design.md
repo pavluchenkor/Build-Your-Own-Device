@@ -1,4 +1,11 @@
-# Design do invólucro
+---
+title: "Caixa do secador de filamento e câmara aquecida ativa"
+description: "Como projetar uma caixa para secador de filamento ou câmara aquecida de impressora 3D: isolamento, fluxo de ar, materiais, segurança e manutenção."
+---
+
+# Caixa do secador de filamento e câmara aquecida ativa
+
+A caixa define a estabilidade da temperatura, a segurança do aquecedor e da eletrónica e a facilidade de manutenção. Esta página descreve princípios de projeto para secadores de filamento, câmaras ativas e módulos aquecidos semelhantes.
 
 Um invólucro de dispositivo não é apenas uma caixa em torno de componentes.
 

@@ -1,4 +1,11 @@
-# Ventiladores
+---
+title: "Ventoinhas e fluxo de ar num secador de filamento"
+description: "Porque o fluxo de ar é importante num secador de filamento e numa câmara aquecida: escolha da ventoinha, caudal, pressão estática, ruído e aquecimento uniforme."
+---
+
+# Ventoinhas e fluxo de ar num secador de filamento
+
+Uma ventoinha não serve apenas para mover ar: distribui calor, reduz pontos quentes e ajuda o filamento a secar de forma uniforme. Esta página ajuda a escolher a ventoinha e a perceber o efeito do fluxo de ar na caixa, aquecedor e sensor.
 
 A fan is a motor with an impeller that moves air. In devices around a 3D printer, you need it not just "to blow", but to push air through the right zone: a heater, spool, filter, radiator, chamber or electronics compartment.
 

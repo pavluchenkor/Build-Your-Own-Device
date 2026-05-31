@@ -1,4 +1,11 @@
-# Getting Started
+---
+title: "Where to start building a filament dryer"
+description: "A clear path for a first project: how to approach a filament dryer build, choose electronics, heating, airflow, enclosure parts, and avoid safety gaps."
+---
+
+# Where to start building a filament dryer
+
+If you want to build your own filament dryer, printer heated chamber, or separate heating module, start here. This page explains how to read the documentation and which decisions should be made before buying components.
 
 You already print on a 3D printer and want to build a filament dryer. But when you open the schematic, questions appear immediately: which power supply, where does ground go, MOSFET or SSR, why do you need a heatsink. This section answers these questions step by step — from the first current calculation to a working device.
 

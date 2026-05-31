@@ -1,4 +1,11 @@
-# Les bases du matériel
+---
+title: "Construire son propre sécheur de filament"
+description: "Documentation pratique pour construire un sécheur de filament, une chambre chauffée et des modules pour imprimante 3D: électronique, chauffage, ventilation, boîtier et sécurité."
+---
+
+# Construire son propre sécheur de filament
+
+Cette section aide à concevoir et construire un sécheur de filament ou une chambre chauffée active pour imprimante 3D. Elle couvre les bases de l’électronique, le choix du contrôleur, les chauffages, ventilateurs, capteurs, le boîtier et les erreurs à éviter avant le premier montage.
 
 Cette section couvre tout ce dont vous avez besoin pour construire un séchoir à filament à partir de zéro — des bases de l'électronique aux guides de câblage pratiques.
 

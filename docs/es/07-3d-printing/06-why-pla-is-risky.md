@@ -1,4 +1,11 @@
-# Por qué PLA es arriesgado
+---
+title: "Por qué el PLA es arriesgado en carcasas calientes"
+description: "Por qué el PLA no es buena opción cerca de un calentador, secador de filamento o cámara calefactada: ablandamiento, deformación y riesgo."
+---
+
+# Por qué el PLA es arriesgado en carcasas calientes
+
+El PLA es cómodo para prototipos rápidos, pero no es adecuado para piezas cerca de un calentador o dentro de una cámara caliente. Esta página explica cuándo se deforma y cuándo conviene usar PETG, ABS, ASA u otro material más resistente al calor.
 
 PLA es un material excelente para comenzar.
 

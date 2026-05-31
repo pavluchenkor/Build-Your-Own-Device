@@ -1,4 +1,11 @@
-# Primeros pasos
+---
+title: "Por dónde empezar a construir un secador de filamento"
+description: "Ruta clara para un primer proyecto: cómo plantear un secador de filamento, elegir electrónica, calefacción, flujo de aire, carcasa y evitar fallos de seguridad."
+---
+
+# Por dónde empezar a construir un secador de filamento
+
+Si quieres construir tu propio secador de filamento, una cámara calefactada para impresora o un módulo de calefacción independiente, empieza aquí. Esta página explica cómo leer la documentación y qué decisiones tomar antes de comprar componentes.
 
 Ya está imprimiendo en una impresora 3D y desea construir un secador de filamentos. Pero cuando abre el esquema, las preguntas aparecen inmediatamente: qué fuente de alimentación, dónde va la masa, MOSFET o SSR, por qué necesita un disipador de calor. Esta sección responde estas preguntas paso a paso — desde el primer cálculo de corriente hasta un dispositivo funcional.
 

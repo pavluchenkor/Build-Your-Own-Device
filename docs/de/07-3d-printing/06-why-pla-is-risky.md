@@ -1,4 +1,11 @@
-# Warum PLA riskant ist
+---
+title: "Warum PLA für heiße Gehäuse und Trockner riskant ist"
+description: "Warum PLA in der Nähe von Heizung, Filamenttrockner oder aktiver Heizkammer ungeeignet ist: Erweichungstemperatur, Verformung und Risiko."
+---
+
+# Warum PLA für heiße Gehäuse und Trockner riskant ist
+
+PLA ist praktisch für schnelle Prototypen, eignet sich aber schlecht für Teile in der Nähe einer Heizung oder in einer warmen Kammer. Diese Seite erklärt, wann PLA sich verformt und wann PETG, ABS, ASA oder hitzebeständigere Materialien besser sind.
 
 PLA ist ein großartiges Material zum Anfangen.
 

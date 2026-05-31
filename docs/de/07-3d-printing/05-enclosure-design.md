@@ -1,4 +1,11 @@
-# Gehäusedesign
+---
+title: "Gehäuse für Filamenttrockner und aktive Heizkammer"
+description: "Gehäuse für Filamenttrockner oder beheizte 3D-Drucker-Kammer entwerfen: Isolierung, Luftstrom, Materialien, Sicherheit und Wartung."
+---
+
+# Gehäuse für Filamenttrockner und aktive Heizkammer
+
+Das Gehäuse bestimmt, wie gleichmäßig das Gerät die Temperatur hält, wie sicher Heizung und Elektronik platziert sind und wie gut sich der Trockner warten lässt. Diese Seite beschreibt Entwurfsprinzipien für Filamenttrockner, aktive Kammern und ähnliche Heizmodule.
 
 Ein Gerätegehäuse ist nicht einfach eine Kiste um Komponenten.
 

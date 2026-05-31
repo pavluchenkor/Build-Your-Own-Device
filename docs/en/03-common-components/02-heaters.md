@@ -1,4 +1,11 @@
-# Heaters
+---
+title: "Heaters for filament dryers and heated chambers"
+description: "How to choose a heater for a filament dryer or active 3D printer chamber: 12V, 24V, mains heaters, power, control, and safety."
+---
+
+# Heaters for filament dryers and heated chambers
+
+The heater defines the warm-up speed and safety limits of the whole filament dryer or heated chamber. This page explains heater types, power selection, MOSFET or SSR control, and mistakes that can cause overheating.
 
 A heater is a load that converts electrical energy into heat. In a simple DIY device, this is the most dangerous component: an error in a fan usually results in poor airflow, but a heater error can cause overheating, a melted enclosure, damaged wiring, or fire risk.
 

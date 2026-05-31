@@ -1,4 +1,11 @@
-# Topidla
+---
+title: "Topná tělesa pro sušičky filamentu a vyhřívané komory"
+description: "Jak vybrat topné těleso pro sušičku filamentu nebo aktivní komoru 3D tiskárny: 12V, 24V, síťové napájení, výkon, řízení a bezpečnost."
+---
+
+# Topná tělesa pro sušičky filamentu a vyhřívané komory
+
+Topení určuje rychlost ohřevu i bezpečnostní limity celé sušičky nebo komory. Tato stránka vysvětluje typy topných těles, volbu výkonu, řízení přes MOSFET nebo SSR a chyby vedoucí k přehřátí.
 
 A heater is a load that converts electrical energy into heat. In a simple DIY device, this is the most dangerous component: an error in a fan usually results in poor airflow, but a heater error can cause overheating, a melted enclosure, damaged wiring, or fire risk.
 

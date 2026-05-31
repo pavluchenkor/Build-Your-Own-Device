@@ -1,374 +1,321 @@
 # Build Your Own iDryer
 
-## Назначение
+## Purpose
 
-Этот раздел предназначен для пользователей, которые хотят собрать собственное устройство с использованием экосистемы iDryer.
+This repository contains practical documentation for people who want to build their own device using the iDryer ecosystem.
 
-Главная задача:
+The main goal is simple:
 
-Дать человеку без инженерного образования достаточно понимания, чтобы безопасно собрать, подключить и обслуживать рабочее устройство.
+Help a person without an engineering background understand enough to safely build, connect, and maintain a working device.
 
-Это **не** академический курс по электронике.
+This is **not** an academic electronics course.
 
-Все материалы должны быть:
+The documentation should be:
 
-* практичными
-* понятными без специальной подготовки
-* применимыми сразу
-* написанными для обычного пользователя, а не для инженера
+- practical;
+- clear without special training;
+- usable immediately;
+- written for a regular user, not only for an engineer.
 
-⸻
+---
 
-## Для кого этот раздел
+## Who This Is For
 
-Раздел адресован пользователям, которые:
+This section is for users who:
 
-* почти не разбираются в электронике
-* хотят собрать своё устройство самостоятельно
-* не уверены в программировании и железе
-* предпочитают пошаговые инструкции
+- have little or no electronics experience;
+- want to build their own device;
+- are not confident with programming or hardware;
+- prefer step-by-step instructions.
 
-⸻
+---
 
-## Основные принципы
+## Core Principles
 
-Все материалы раздела строятся на следующих принципах:
+All pages in this section follow these principles:
 
-1. Объясняем только нужное
+1. Explain only what is needed.
 
-* без лишней теории
-* только то, что реально пригодится
+- no unnecessary theory;
+- only what is useful for the build.
 
-2. Всегда показываем практику
+2. Always show practical use.
 
-* схемы из практики
-* реальные подключения
-* типичные ошибки пользователей
+- practical wiring examples;
+- real connections;
+- common user mistakes.
 
-3. Безопасность важнее всего
+3. Safety comes first.
 
-Особенно для:
+This is especially important for:
 
-* 220V
-* нагревателей
-* SSR
-* блоков питания
-* сетевого напряжения
+- mains voltage;
+- heaters;
+- SSR modules;
+- power supplies;
+- wiring and insulation.
 
-4. Читается с первого раза
+4. The text should be clear on the first read.
 
-* без сложных формулировок
-* без избыточных объяснений ради самих объяснений
+- no complicated wording;
+- no long explanations that do not help the build.
 
-5. Одна страница — одна тема
+5. One page covers one topic.
 
-⸻
+---
 
-## Структура раздела
+## Documentation Structure
 
-```
-hardware-basics/
-│
-├── img/
-│   ├── 00-start-here/
-│   ├── 01-electronics-basics/
-│   ├── 02-controllers/
-│   ├── 03-common-components/
-│   ├── 04-thermal-physics-and-materials/
-│   ├── 05-tools/
-│   ├── 06-practical-guides/
-│   ├── 07-3d-printing/
-│   └── 08-common-mistakes/
-│
-├── index.md
-├── 00-карта-раздела.md
-│
-├── 00-начните-здесь/
-│   └── 01-введение.md
-│
-├── 01-основы-электроники/
-│   ├── 01-расчет-тока-нагрузки-24v.md
-│   ├── 02-модуль-mosfet.md
-│   ├── 03-симистор.md
-│   └── 04-твердотельное-реле-ssr.md
-│
-├── 02-контроллеры/
-│   ├── 01-контроллер-esp32.md
-│   ├── 02-контроллер-arduino.md
-│   ├── 03-контроллер-rp2040.md
-│   ├── 04-контроллеры-stm32.md
-│   ├── 05-mcu-в-клипер.md
-│   ├── 06-интерфейс-uart.md
-│   ├── 07-интерфейс-i2c.md
-│   ├── 08-интерфейс-spi.md
-│   ├── 09-интерфейс-can.md
-│   ├── 10-usb-uart-адаптеры.md
-│   └── 11-прошивка-контроллера.md
-│
-├── 03-компоненты/
-│   ├── 01-обзор.md
-│   ├── 02-нагреватели.md
-│   ├── 03-вентиляторы.md
-│   ├── 04-термисторы.md
-│   ├── 05-светодиодные-ленты.md
-│   ├── 06-сервоприводы.md
-│   ├── 07-тензодатчики.md
-│   ├── 08-oled-дисплей.md
-│   ├── 09-сенсорный-экран.md
-│   └── 10-rfid-и-nfc.md
-│
-├── 04-физика-тепла-и-материалов/
-│   ├── 01-обзор.md
-│   ├── 02-теплопроводность.md
-│   ├── 03-безопасность-материалов.md
-│   └── 04-конвекция-и-воздушный-поток.md
-│
-├── 05-инструменты/
-│   ├── 01-обзор.md
-│   ├── 02-мультиметр.md
-│   ├── 03-usb-ttl-адаптер.md
-│   ├── 04-пайка.md
-│   ├── 05-обжим-разъемов.md
-│   ├── 06-st-link.md
-│   └── 07-осциллограф.md
-│
-├── 06-практические-инструкции/
-│   ├── 01-подключение-вентилятора.md
-│   ├── 02-проверка-термистора.md
-│   ├── 03-подключение-сервопривода.md
-│   ├── 04-подключение-тензодатчика.md
-│   └── 05-подключение-rfid-считывателя.md
-│
-├── 07-3d-печать/
-│   ├── 01-обзор.md
-│   ├── 02-что-такое-stl.md
-│   ├── 03-материалы-petg-abs-asa.md
-│   ├── 04-термостойкие-материалы.md
-│   ├── 05-проектирование-корпуса.md
-│   └── 06-почему-pla-рискованный-выбор.md
-│
-└── 08-типовые-ошибки/
-    ├── 01-обзор.md
-    ├── 02-ошибки-питания.md
-    ├── 03-ошибки-проводки.md
-    ├── 04-ошибки-контроллеров.md
-    ├── 05-ошибки-нагревателей-и-ssr.md
-    └── 06-чеклист-диагностики.md
+The documentation is stored in language folders:
+
+```text
+docs/
+├── ru/
+├── en/
+├── de/
+├── fr/
+├── es/
+├── cs/
+├── ja/
+├── pt/
+├── pt-BR/
+├── zh/
+└── zh-Hant/
 ```
 
-⸻
+Russian (`docs/ru`) is the source language. Other languages are translated from it.
 
-## Что обязательно должно быть раскрыто
+The main content sections are:
 
-### Основы электроники
+```text
+00-start-here/
+01-electronics-basics/
+02-controllers/
+03-common-components/
+04-thermal-physics-and-materials/
+05-tools/
+06-practical-guides/
+07-3d-printing/
+08-common-mistakes/
+```
 
-Базовая электрика:
+There is also a local planning file:
 
-* напряжение
-* ток
-* мощность
-* сопротивление
-* AC и DC
-* почему нельзя путать 24V и 220V
-* как выбрать блок питания
-* почему важна мощность с запасом
-* что такое пусковые токи
+```text
+00-карта-раздела.md
+```
 
-⸻
+It is a working map of the Russian section. It is useful for planning and review, but it is not part of the published documentation site.
 
-### Реле, SSR, MOSFET
+---
 
-* чем отличаются
-* когда что использовать
-* почему SSR нужен не всегда
-* почему MOSFET не заменяет SSR
-* почему реле может залипнуть
-* почему SSR может греться
+## Required Topics
 
-⸻
+### Electronics Basics
 
-### Безопасность при работе с 220В
+The basics should cover:
 
-Критически важный раздел:
+- voltage;
+- current;
+- power;
+- resistance;
+- AC and DC;
+- why 24V and mains voltage must not be confused;
+- how to choose a power supply;
+- why power margin matters;
+- what inrush current is.
 
-* почему 220V опасно
-* как правильно подключать нагрузку
-* заземление
-* предохранители
-* автомат защиты
-* сечение проводов
-* клеммы
-* изоляция
-* ошибки, которые реально убивают оборудование
+---
 
-⸻
+### Relays, SSR, and MOSFETs
 
-### Контроллеры
+The documentation should explain:
+
+- how they differ;
+- when to use each one;
+- why an SSR is not always needed;
+- why a MOSFET does not replace an SSR;
+- why a relay can stick;
+- why an SSR can heat up.
+
+---
+
+### Mains Voltage Safety
+
+This is a critical topic.
+
+It should cover:
+
+- why mains voltage is dangerous;
+- how to connect loads safely;
+- grounding;
+- fuses;
+- circuit breakers;
+- wire cross-section;
+- terminals;
+- insulation;
+- mistakes that can destroy equipment or create real danger.
+
+---
+
+### Controllers
 
 #### ESP32
 
 Espressif Systems ESP32:
 
-* зачем нужен
-* Wi-Fi
-* GPIO
-* PWM
-* ADC
-* почему он удобен
-
-⸻
+- what it is used for;
+- Wi-Fi;
+- GPIO;
+- PWM;
+- ADC;
+- why it is convenient.
 
 #### Arduino
 
-* почему его все знают
-* чем отличается от ESP32
-* когда он нужен
-* когда уже лучше ESP32
-
-⸻
+- why it is widely known;
+- how it differs from ESP32;
+- when it is useful;
+- when ESP32 is a better choice.
 
 #### STM32
 
 STMicroelectronics STM32:
 
-* где используется
-* почему он "серьёзнее"
-* зачем нужен загрузчик
-* что такое DFU / Boot / ST-Link
+- where it is used;
+- why it is more advanced;
+- why a bootloader matters;
+- what DFU, Boot, and ST-Link mean.
 
-⸻
+---
 
-### USB-UART адаптеры
+### USB-UART Adapters
 
-* что это
-* зачем нужен
-* как подключать
-* RX/TX ошибки
-* уровни 3.3V / 5V
-* почему можно сжечь ESP
+The documentation should explain:
 
-⸻
+- what a USB-UART adapter is;
+- why it is needed;
+- how to connect it;
+- common RX/TX mistakes;
+- 3.3V and 5V logic levels;
+- how an ESP can be damaged.
 
-### Компоненты
+---
 
-Каждый компонент должен отвечать на вопросы:
+### Components
 
-* что это
-* зачем нужно
-* как подключается
-* что чаще всего ломают
+Each component page should answer:
 
-Обязательно:
+- what it is;
+- why it is needed;
+- how it connects;
+- what users most often break.
 
-* нагреватели
-* вентиляторы
-* сервоприводы
-* термисторы
-* светодиодные ленты
-* OLED-дисплей
-* TFT / сенсорный экран
-* тензодатчики
-* RFID/NFC
+Required components:
 
-⸻
+- heaters;
+- fans;
+- servos;
+- thermistors;
+- LED strips;
+- OLED displays;
+- TFT / touch screens;
+- load cells;
+- RFID/NFC.
 
-### Практические инструкции
+---
 
-Пошаговые инструкции для:
+### Practical Guides
 
-* подключения SSR к ESP32
-* безопасного подключения нагревателя
-* совмещения 24V и 220V
-* подключения вентилятора
-* выбора блока питания
-* правильного соединения с землёй
-* борьбы с EMI
-* диагностики отваливающегося USB
-* проверки термистора
-* подключения сервопривода
-* подключения тензодатчика
-* подключения RFID-считывателя
+Step-by-step guides should cover:
 
-⸻
+- connecting an SSR to ESP32;
+- connecting a heater safely;
+- using 24V and mains voltage in one device;
+- connecting a fan;
+- choosing a power supply;
+- correct grounding;
+- handling EMI;
+- diagnosing unstable USB;
+- checking a thermistor;
+- connecting a servo;
+- connecting a load cell;
+- connecting an RFID reader.
 
-### Инструменты
+---
 
-#### Мультиметр
+### Tools
 
-* как измерять напряжение
-* как проверять прозвонку
-* как не сжечь мультиметр
+#### Multimeter
 
-⸻
+- how to measure voltage;
+- how to use continuity mode;
+- how not to damage the multimeter.
 
-#### Осциллограф
+#### Oscilloscope
 
-* только практическое использование
-* как проверить PWM
-* как проверить UART
-* как смотреть шумы
-
-⸻
+- practical use only;
+- how to check PWM;
+- how to check UART;
+- how to inspect noise.
 
 #### ST-Link
 
-* зачем нужен
-* когда нужен
-* как прошивать STM32
-
-⸻
+- why it is needed;
+- when it is needed;
+- how to flash STM32.
 
 #### USB-TTL
 
-* как использовать
-* как не перепутать RX/TX
+- how to use it;
+- how not to swap RX and TX.
 
-⸻
+#### Soldering
 
-#### Пайка
+- soldering wires;
+- soldering JST connectors;
+- soldering thermistors;
+- common mistakes.
 
-* пайка проводов
-* пайка JST
-* пайка термисторов
-* типичные ошибки
+---
 
-⸻
+### 3D Printing
 
-### 3D-печать
+This section should cover:
 
-* что такое STL
-* PETG, ABS и ASA
-* термостойкие материалы
-* проектирование корпуса
-* почему PLA для корпуса с нагревом — плохая идея
+- what STL is;
+- PETG, ABS, and ASA;
+- heat-resistant materials;
+- enclosure design;
+- why PLA is a poor choice for heated enclosures.
 
-⸻
+---
 
-### Типовые ошибки
+### Common Mistakes
 
-Отдельный раздел в собственной папке:
+This section should explain:
 
-* почему не работает USB
-* почему ESP32 перезагружается
-* почему SSR сильно греется
-* почему вентилятор создаёт помехи
-* почему термистор показывает бред
-* почему экран не включается
-* почему сервопривод ломает питание
-* почему устройство работает нестабильно
+- why USB does not work;
+- why ESP32 restarts;
+- why an SSR gets very hot;
+- why a fan creates interference;
+- why a thermistor shows nonsense;
+- why a display does not turn on;
+- why a servo breaks the power supply;
+- why the device behaves unstably.
 
-⸻
+---
 
-## Полезные внешние источники
+## Useful External Sources
 
-* **Alex Gyver** — обучающие видео на русском языке: Arduino, ESP32, PWM, реле, сервоприводы, OLED, датчики.
-* **GreatScott!** — англоязычные видео с инженерным взглядом на практическую электронику.
-* **STMicroelectronics** — официальная документация по STM32.
-* **Espressif Systems** — официальная документация по ESP32.
-* **Arduino** — документация и примеры для начинающих по работе с микроконтроллерами.
+- **Alex Gyver** — Russian-language educational videos about Arduino, ESP32, PWM, relays, servos, OLED displays, and sensors.
+- **GreatScott!** — English-language videos with a practical engineering view of electronics.
+- **STMicroelectronics** — official STM32 documentation.
+- **Espressif Systems** — official ESP32 documentation.
+- **Arduino** — documentation and beginner examples for microcontrollers.
 
-⸻
+---
 
-## Главная цель
+## Main Goal
 
-После изучения раздела пользователь должен понимать, что и зачем он делает, а не запутываться сильнее.
+After reading this section, the user should understand what they are doing and why, instead of becoming more confused.

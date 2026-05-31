@@ -1,4 +1,11 @@
-# Diseño de carcasa
+---
+title: "Carcasa de secador de filamento y cámara calefactada activa"
+description: "Diseño de carcasa para secador de filamento o cámara calefactada de impresora 3D: aislamiento, flujo de aire, materiales, seguridad y mantenimiento."
+---
+
+# Carcasa de secador de filamento y cámara calefactada activa
+
+La carcasa define la estabilidad de la temperatura, la seguridad del calentador y la electrónica, y la facilidad de mantenimiento. Esta página describe principios de diseño para secadores de filamento, cámaras activas y módulos calefactados similares.
 
 Una carcasa de dispositivo no es solo una caja alrededor de componentes.
 

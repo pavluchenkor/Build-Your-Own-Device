@@ -1,4 +1,11 @@
-# Ventiladores
+---
+title: "Ventiladores y flujo de aire en un secador de filamento"
+description: "Por qué importa el flujo de aire en un secador de filamento y una cámara calefactada: elección del ventilador, caudal, presión estática, ruido y calentamiento uniforme."
+---
+
+# Ventiladores y flujo de aire en un secador de filamento
+
+Un ventilador no solo mueve aire: reparte el calor, reduce puntos calientes y ayuda a secar el filamento de forma uniforme. Esta página ayuda a elegir un ventilador y entender su efecto en la carcasa, el calentador y el sensor.
 
 Un ventilador es un motor con un impulsor que mueve aire. En dispositivos alrededor de una impresora 3D, lo necesitas no solo para "soplar", sino para empujar aire a través de la zona correcta: un calentador, bobina, filtro, radiador, cámara o compartimento de electrónica.
 

@@ -1,4 +1,11 @@
-# Radiateurs
+---
+title: "Chauffages pour sécheur de filament et chambre chauffée"
+description: "Choisir un chauffage pour sécheur de filament ou chambre active d’imprimante 3D: 12V, 24V, secteur, puissance, commande et sécurité."
+---
+
+# Chauffages pour sécheur de filament et chambre chauffée
+
+Le chauffage définit la vitesse de montée en température et les limites de sécurité du sécheur ou de la chambre chauffée. Cette page explique les types de chauffages, la puissance, la commande par MOSFET ou SSR et les erreurs pouvant provoquer une surchauffe.
 
 Un radiateur est une charge qui convertit l'énergie électrique en chaleur. Dans un appareil DIY simple, c'est le composant le plus dangereux : une erreur de ventilateur entraîne généralement un faible flux d'air, mais une erreur de radiateur peut causer une surchauffe, une fusion du boîtier, des dommages au câblage ou un risque d'incendie.
 

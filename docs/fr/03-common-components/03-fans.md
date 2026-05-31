@@ -1,4 +1,11 @@
-# Ventilateurs
+---
+title: "Ventilateurs et flux d’air dans un sécheur de filament"
+description: "Pourquoi le flux d’air compte dans un sécheur de filament et une chambre chauffée: choix du ventilateur, débit, pression statique, bruit et chauffage homogène."
+---
+
+# Ventilateurs et flux d’air dans un sécheur de filament
+
+Un ventilateur ne fait pas que déplacer l’air: il répartit la chaleur, réduit les points chauds et aide à sécher le filament de façon homogène. Cette page aide à choisir un ventilateur et à comprendre son effet sur le boîtier, le chauffage et le capteur.
 
 Un ventilateur est un moteur avec une roue qui déplace l'air. Dans les appareils autour d'une imprimante 3D, vous en avez besoin non seulement pour « souffler », mais pour pousser l'air à travers la bonne zone : un radiateur, une bobine, un filtre, un radiateur, une chambre ou un compartiment d'électronique.
 

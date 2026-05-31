@@ -1,4 +1,11 @@
-# Enclosure design
+---
+title: "Filament dryer enclosure and active heated chamber"
+description: "How to design a filament dryer enclosure or 3D printer heated chamber: insulation, airflow, materials, safety, and maintenance."
+---
+
+# Filament dryer enclosure and active heated chamber
+
+The enclosure defines how evenly the device holds temperature, how safely the heater and electronics are placed, and how easy the dryer is to service. This page explains enclosure design principles for filament dryers, active chambers, and similar heating modules.
 
 A device enclosure is not just a box around components.
 

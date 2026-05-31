@@ -1,4 +1,11 @@
-# Heizer
+---
+title: "Heizungen für Filamenttrockner und beheizte Kammern"
+description: "Heizung für Filamenttrockner oder aktive 3D-Drucker-Kammer auswählen: 12V, 24V, Netzspannung, Leistung, Steuerung und Sicherheit."
+---
+
+# Heizungen für Filamenttrockner und beheizte Kammern
+
+Die Heizung bestimmt Aufheizgeschwindigkeit und Sicherheitsgrenzen des Filamenttrockners oder der beheizten Kammer. Diese Seite erklärt Heizertypen, Leistungswahl, Steuerung über MOSFET oder SSR und Fehler, die Überhitzung verursachen können.
 
 Ein Heizer ist eine Last, die elektrische Energie in Wärme umwandelt. In einem einfachen DIY-Gerät ist dies die gefährlichste Komponente: Ein Fehler bei einem Lüfter führt normalerweise zu schlechtem Luftstrom, aber ein Heizer-Fehler kann zu Überhitzung, geschmolzenem Gehäuse, beschädigter Verdrahtung oder Brandrisiko führen.
 

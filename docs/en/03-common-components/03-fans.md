@@ -1,4 +1,11 @@
-# Fans
+---
+title: "Fans and airflow in a filament dryer"
+description: "Why airflow matters in a filament dryer and heated chamber: fan choice, airflow, static pressure, noise, and even heating."
+---
+
+# Fans and airflow in a filament dryer
+
+A fan does more than move air: it spreads heat, reduces local hot spots, and helps filament dry evenly. This page helps you choose a fan and understand how airflow affects the enclosure, heater, and temperature sensor.
 
 A fan is a motor with an impeller that moves air. In devices around a 3D printer, you need it not just "to blow", but to push air through the right zone: a heater, spool, filter, radiator, chamber or electronics compartment.
 

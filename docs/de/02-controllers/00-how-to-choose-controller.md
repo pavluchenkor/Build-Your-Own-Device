@@ -1,4 +1,11 @@
-# Wie wählt man einen Controller
+---
+title: "Controller für einen DIY-Filamenttrockner auswählen"
+description: "Vergleich von ESP32, Arduino, RP2040, STM32 und Klipper MCU für Filamenttrockner, beheizte Kammer, Beleuchtung, Sensoren und weitere 3D-Drucker-Module."
+---
+
+# Controller für einen DIY-Filamenttrockner auswählen
+
+Der Controller bestimmt, wie ein Filamenttrockner oder eine beheizte Kammer Heizung, Lüfter, Beleuchtung, Sensoren und die Kommunikation mit dem Drucker steuert. Diese Seite hilft bei der Wahl der Plattform für einfache Module, Wi-Fi-Geräte, Klipper MCU oder erweiterbare Projekte.
 
 Dieser Abschnitt beschreibt vier Familien von Controllern: ESP32, Arduino, RP2040 und STM32. Alle können Lüfter steuern, Sensoren auslesen und Lasten schalten. Der Unterschied liegt darin, wofür jeder am besten geeignet ist.
 

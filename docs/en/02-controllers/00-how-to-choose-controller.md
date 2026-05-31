@@ -1,4 +1,11 @@
-# How to choose a controller
+---
+title: "How to choose a controller for a DIY filament dryer"
+description: "A comparison of ESP32, Arduino, RP2040, STM32, and Klipper MCU options for a filament dryer, heated chamber, lighting, sensors, and other 3D printer modules."
+---
+
+# How to choose a controller for a DIY filament dryer
+
+The controller defines how a filament dryer or heated chamber controls heating, fans, lighting, sensors, and communication with the printer. This page helps you choose a platform for a simple standalone module, a Wi-Fi device, a Klipper MCU, or an expandable project.
 
 This section describes four families of controllers: ESP32, Arduino, RP2040, and STM32. All of them can control fans, read sensors, and switch loads. The difference is what each one is best suited for.
 

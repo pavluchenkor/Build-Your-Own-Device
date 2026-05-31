@@ -1,4 +1,11 @@
-# Calentadores
+---
+title: "Calentadores para secadores de filamento y cámaras calefactadas"
+description: "Cómo elegir un calentador para un secador de filamento o cámara activa de impresora 3D: 12V, 24V, red eléctrica, potencia, control y seguridad."
+---
+
+# Calentadores para secadores de filamento y cámaras calefactadas
+
+El calentador define la velocidad de calentamiento y los límites de seguridad del secador o la cámara. Esta página explica tipos de calentadores, potencia, control con MOSFET o SSR y errores que pueden causar sobrecalentamiento.
 
 Un calentador es una carga que convierte energía eléctrica en calor. En un dispositivo DIY simple, es el componente más peligroso: un error en un ventilador generalmente resulta en pobre flujo de aire, pero un error en un calentador puede causar sobrecalentamiento, carcasa fundida, cableado dañado, o riesgo de incendio.
 

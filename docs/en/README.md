@@ -1,4 +1,11 @@
-# Hardware Basics
+---
+title: "Build your own filament dryer"
+description: "Practical documentation for building a filament dryer, heated chamber, and support modules for a 3D printer: electronics, heating, airflow, enclosure, and safety."
+---
+
+# Build your own filament dryer
+
+This section helps you design and build your own filament dryer or active heated chamber for a 3D printer. It covers electronics basics, controller choice, heaters, fans, sensors, enclosure design, and common mistakes worth fixing before the first build.
 
 This section covers everything you need to build a filament dryer from scratch — from electronics fundamentals to practical wiring guides.
 

@@ -1,4 +1,11 @@
-# Začínáme
+---
+title: "Kde začít se stavbou sušičky filamentu"
+description: "Jasný postup pro první projekt: jak připravit stavbu sušičky filamentu, vybrat elektroniku, ohřev, proudění vzduchu, skříň a bezpečně začít."
+---
+
+# Kde začít se stavbou sušičky filamentu
+
+Pokud chcete postavit vlastní sušičku filamentu, vyhřívanou komoru pro tiskárnu nebo samostatný topný modul, začněte zde. Stránka vysvětluje, jak dokumentaci číst a jaká rozhodnutí udělat před nákupem součástek.
 
 Už tisknete na 3D tiskárně a chcete si postavit sušičku filamentu. Ale když otevřete schéma, hned se objeví otázky: jaký zdroj, kam jde zem, MOSFET nebo SSR, proč je třeba chladič. Tato sekce odpovídá na tyto otázky postupně — od prvního výpočtu proudu až k funkčnímu zařízení.
 

@@ -1,4 +1,11 @@
-# Jak zvolit řídící prvek
+---
+title: "Jak vybrat řadič pro domácí sušičku filamentu"
+description: "Srovnání ESP32, Arduino, RP2040, STM32 a Klipper MCU pro sušičku filamentu, vyhřívanou komoru, osvětlení, senzory a další moduly 3D tiskárny."
+---
+
+# Jak vybrat řadič pro domácí sušičku filamentu
+
+Řadič určuje, jak sušička filamentu nebo vyhřívaná komora ovládá topení, ventilátory, osvětlení, senzory a komunikaci s tiskárnou. Tato stránka pomáhá vybrat vhodnou platformu pro konkrétní typ projektu.
 
 Tato část popisuje čtyři rodiny řídících prvků: ESP32, Arduino, RP2040 a STM32. Všechny z nich mohou ovládat ventilátory, číst senzory a přepínat zátěže. Rozdíl je v tom, na co je každá nejlépe vhodná.
 

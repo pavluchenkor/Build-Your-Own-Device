@@ -1,4 +1,11 @@
-# Erste Schritte
+---
+title: "Einstieg in den Bau eines Filamenttrockners"
+description: "Ein klarer Einstieg für das erste Projekt: Filamenttrockner planen, Elektronik, Heizung, Luftstrom und Gehäuse auswählen und Sicherheitslücken vermeiden."
+---
+
+# Einstieg in den Bau eines Filamenttrockners
+
+Wenn du einen eigenen Filamenttrockner, eine beheizte Druckerkammer oder ein separates Heizmodul bauen möchtest, beginne hier. Diese Seite erklärt die Reihenfolge der Dokumentation und welche Entscheidungen vor dem Kauf von Komponenten wichtig sind.
 
 Du druckst bereits auf einem 3D-Drucker und möchtest einen Filamenttrockner bauen. Aber wenn du das Schaltplan öffnest, entstehen sofort Fragen: Welches Netzteil, wo geht die Masse hin, MOSFET oder SSR, warum brauchst du einen Kühlkörper. Dieser Abschnitt beantwortet diese Fragen Schritt für Schritt — von der ersten Stromberechnung bis zum funktionierenden Gerät.
 

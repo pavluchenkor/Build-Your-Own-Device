@@ -1,4 +1,11 @@
-# Conception de boîtier
+---
+title: "Boîtier de sécheur de filament et chambre chauffée active"
+description: "Concevoir un boîtier de sécheur de filament ou une chambre chauffée d’imprimante 3D: isolation, flux d’air, matériaux, sécurité et maintenance."
+---
+
+# Boîtier de sécheur de filament et chambre chauffée active
+
+Le boîtier détermine la stabilité de température, la sécurité du chauffage et de l’électronique, et la facilité d’entretien. Cette page décrit les principes de conception pour sécheurs de filament, chambres actives et modules chauffants similaires.
 
 Un boîtier d'appareil n'est pas juste une boîte autour des composants.
 

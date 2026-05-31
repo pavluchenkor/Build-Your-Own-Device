@@ -1,4 +1,11 @@
-# Hardware-Grundlagen
+---
+title: "Filamenttrockner selbst bauen"
+description: "Praktische Dokumentation zum Bau eines Filamenttrockners, einer beheizten Kammer und von Zusatzmodulen für 3D-Drucker: Elektronik, Heizung, Luftstrom, Gehäuse und Sicherheit."
+---
+
+# Filamenttrockner selbst bauen
+
+Dieser Abschnitt hilft dir, einen eigenen Filamenttrockner oder eine aktive beheizte Kammer für einen 3D-Drucker zu planen und zu bauen. Er behandelt Elektronikgrundlagen, Controller-Auswahl, Heizungen, Lüfter, Sensoren, Gehäusedesign und typische Fehler vor dem ersten Aufbau.
 
 Dieser Abschnitt behandelt alles was Sie brauchen um einen Filament-Trockner von Grund auf zu bauen — von Elektronik-Grundlagen bis zu praktischen Verdrahtungs-Leitfäden.
 

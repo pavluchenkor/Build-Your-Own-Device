@@ -1,4 +1,11 @@
-# Lüfter
+---
+title: "Lüfter und Luftstrom im Filamenttrockner"
+description: "Warum Luftstrom im Filamenttrockner und in der beheizten Kammer wichtig ist: Lüfterwahl, Luftstrom, statischer Druck, Geräusch und gleichmäßige Erwärmung."
+---
+
+# Lüfter und Luftstrom im Filamenttrockner
+
+Ein Lüfter bewegt nicht nur Luft: Er verteilt Wärme, reduziert lokale Hotspots und hilft, Filament gleichmäßig zu trocknen. Diese Seite hilft bei der Lüfterwahl und erklärt den Einfluss des Luftstroms auf Gehäuse, Heizung und Temperatursensor.
 
 Ein Lüfter ist ein Motor mit einer Schaufel, die Luft bewegt. Bei Geräten rund um einen 3D-Drucker benötigen Sie ihn nicht nur "zum Blasen", sondern um Luft durch die richtige Zone zu drücken: einen Heizer, eine Spule, einen Filter, einen Radiator, eine Kammer oder ein Elektronikfach.
 

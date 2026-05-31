@@ -1,4 +1,11 @@
-# Comment choisir un contrôleur
+---
+title: "Choisir un contrôleur pour un sécheur de filament DIY"
+description: "Comparaison ESP32, Arduino, RP2040, STM32 et Klipper MCU pour sécheur de filament, chambre chauffée, éclairage, capteurs et modules d’imprimante 3D."
+---
+
+# Choisir un contrôleur pour un sécheur de filament DIY
+
+Le contrôleur définit comment le sécheur de filament ou la chambre chauffée pilote le chauffage, les ventilateurs, l’éclairage, les capteurs et la communication avec l’imprimante. Cette page aide à choisir une plateforme selon le projet.
 
 Cette section décrit quatre familles de contrôleurs : ESP32, Arduino, RP2040 et STM32. Tous peuvent contrôler les ventilateurs, lire les capteurs et commuter les charges. La différence est celle pour laquelle chacun est le mieux adapté.
 

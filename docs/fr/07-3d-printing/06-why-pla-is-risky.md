@@ -1,4 +1,11 @@
-# Pourquoi le PLA est risqué
+---
+title: "Pourquoi le PLA est risqué dans les boîtiers chauds"
+description: "Pourquoi le PLA convient mal près d’un chauffage, d’un sécheur de filament ou d’une chambre chauffée: ramollissement, déformation et risques."
+---
+
+# Pourquoi le PLA est risqué dans les boîtiers chauds
+
+Le PLA est pratique pour les prototypes rapides, mais il convient mal aux pièces proches d’un chauffage ou placées dans une chambre chaude. Cette page explique quand le PLA se déforme et quand choisir PETG, ABS, ASA ou un matériau plus résistant à la chaleur.
 
 Le PLA est un excellent matériau pour commencer.
 

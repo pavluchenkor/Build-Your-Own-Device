@@ -1,4 +1,11 @@
-# Por que PLA é arriscado
+---
+title: "Porque o PLA é arriscado em caixas quentes"
+description: "Porque o PLA é uma má escolha perto de um aquecedor, secador de filamento ou câmara aquecida: amolecimento, deformação e risco."
+---
+
+# Porque o PLA é arriscado em caixas quentes
+
+O PLA é prático para protótipos rápidos, mas é fraco para peças perto de aquecedores ou dentro de câmaras quentes. Esta página explica quando o PLA começa a deformar e quando escolher PETG, ABS, ASA ou material mais resistente ao calor.
 
 PLA é um óptimo material para começar.
 

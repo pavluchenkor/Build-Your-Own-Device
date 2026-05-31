@@ -1,4 +1,11 @@
-# Premiers pas
+---
+title: "Par où commencer pour construire un sécheur de filament"
+description: "Un parcours clair pour un premier projet: préparer un sécheur de filament, choisir l’électronique, le chauffage, le flux d’air, le boîtier et éviter les oublis de sécurité."
+---
+
+# Par où commencer pour construire un sécheur de filament
+
+Si vous voulez construire un sécheur de filament, une chambre chauffée pour imprimante ou un module de chauffage séparé, commencez ici. Cette page explique comment lire la documentation et quelles décisions prendre avant d’acheter les composants.
 
 Vous imprimez déjà sur une imprimante 3D et souhaitez construire un séchoir à filament. Mais quand vous ouvrez le schéma, des questions apparaissent immédiatement : quel alimentation électrique, où va la masse, MOSFET ou SSR, pourquoi avez-vous besoin d'un dissipateur thermique. Cette section répond à ces questions étape par étape — du premier calcul de courant au dispositif fonctionnant.
 
