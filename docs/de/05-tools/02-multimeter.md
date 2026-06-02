@@ -50,7 +50,7 @@ Verfahren:
 
 Wenn ein Minuszeichen vor der Zahl auf dem Display erscheint, sind die Sonden vertauscht. Dies ist nützlich: Sie können Polarität so bestimmen.
 
-![Digital-Multimeter mit Sonden](../../../img/04-tools/02-digital-multimeter.jpg)
+![Digital-Multimeter mit Sonden](../../../img/05-tools/02-digital-multimeter.jpg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 

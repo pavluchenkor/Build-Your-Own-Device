@@ -87,7 +87,7 @@ Even if the heater does not touch the plastic, a part can be:
 
 Therefore, you cannot assess safety with just the phrase "the part does not touch the heater". You need to understand what temperature will be in that location during extended operation.
 
-![Zones in a printed enclosure for a heated device](../../../img/06-3d-printing/01-printed-device-zones.svg)
+![Zones in a printed enclosure for a heated device](../../../img/07-3d-printing/01-printed-device-zones.svg)
 
 ## Strength depends on layer direction
 

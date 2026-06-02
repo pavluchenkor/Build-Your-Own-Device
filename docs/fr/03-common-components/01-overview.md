@@ -49,5 +49,5 @@ Fichiers proposés :
 - [Radiateurs](02-heaters.md) - le type de charge le plus risqué : puissance, température, SSR/MOSFET et protection indépendante.
 - [Ventilateurs](03-fans.md) - débit d'air, pression statique, 2-broche/3-broche/4-broche et puissance.
 - [Thermistances](04-thermistors.md) - capteur de température comme base de rétroaction du radiateur.
-- [Connexion d'un ventilateur](../06-practical-guides/01-connecting-a-fan.md) - exemple pratique de connexion de composant via un commutateur de puissance.
+- [Connexion d'un ventilateur](../06-practical-guides/01-connecting-fan.md) - exemple pratique de connexion de composant via un commutateur de puissance.
 - [Erreurs de radiateur et SSR](../08-common-mistakes/05-heater-ssr-mistakes.md) - erreurs courantes avec les charges haute puissance et les charges secteur.

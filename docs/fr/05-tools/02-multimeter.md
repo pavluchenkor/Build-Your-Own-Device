@@ -50,7 +50,7 @@ Procédure :
 
 Si un signe moins apparaît avant le nombre sur l'affichage, les sondes sont inversées. C'est utile : vous pouvez déterminer la polarité de cette façon.
 
-![Multimètre numérique avec sondes](../../../img/04-tools/02-digital-multimeter.jpg)
+![Multimètre numérique avec sondes](../../../img/05-tools/02-digital-multimeter.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 

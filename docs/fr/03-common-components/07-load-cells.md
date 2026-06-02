@@ -33,7 +33,7 @@ Chaîne typique :
 capteur de charge -> HX711 -> contrôleur
 ```
 
-Un diagramme de connexion détaillé se trouve dans la section pratique : [Connexion d'un capteur de charge](../05-practical-guides/04-connecting-a-load-cell.md).
+Un diagramme de connexion détaillé se trouve dans la section pratique : [Connexion d'un capteur de charge](../06-practical-guides/04-connecting-load-cell.md).
 
 ## Quels types de capteurs de charge existent
 

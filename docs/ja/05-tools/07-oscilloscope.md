@@ -4,13 +4,13 @@
 
 マルチメーターは「約3.3V」または「周波数がある」を示すことができます。オシロスコープは信号形状を示します。パルス、エッジ、ドロップ、ノイズ、バウンス、UARTパケット、PWM。
 
-![デジタルオシロスコープのスクリーン](../../../img/04-tools/07-digital-oscilloscope.jpg)
+![デジタルオシロスコープのスクリーン](../../../img/05-tools/07-digital-oscilloscope.jpg)
 
 *出典: [ウィキメディア・コモンズ](https://commons.wikimedia.org/wiki/File:Digital_oscilloscope.jpg)、premek.v、パブリックドメイン*
 
 オシロスコープのスクリーン上のPWM信号は次のようになります。
 
-![PWMのアニメーション。デューティサイクルの変更と信号波形](../../../img/04-tools/07-pwm-signal-waveform.gif)
+![PWMのアニメーション。デューティサイクルの変更と信号波形](../../../img/05-tools/07-pwm-signal-waveform.gif)
 
 *出典: [ウィキメディア・コモンズ](https://commons.wikimedia.org/wiki/File:Pwm.gif)、Mik81、CC0パブリックドメイン*
 

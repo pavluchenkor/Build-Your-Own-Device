@@ -4,13 +4,13 @@ Ein Oszilloskop zeigt, wie sich ein Signal über die Zeit verändert.
 
 Ein Multimeter kann "etwa 3.3V" zeigen oder "es gibt Frequenz". Ein Oszilloskop zeigt Signalform: Pulse, Kanten, Sag, Rauschen, Bounce, UART-Pakete, PWM.
 
-![Bildschirm eines digitalen Oszilloskops](../../../img/04-tools/07-digital-oscilloscope.jpg)
+![Bildschirm eines digitalen Oszilloskops](../../../img/05-tools/07-digital-oscilloscope.jpg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Digital_oscilloscope.jpg), premek.v, Public Domain*
 
 Ein PWM Signal auf dem Oszilloskop-Bildschirm sieht so aus:
 
-![Animation von PWM: Tastverhältnis-Änderung und Signal-Wellenform](../../../img/04-tools/07-pwm-signal-waveform.gif)
+![Animation von PWM: Tastverhältnis-Änderung und Signal-Wellenform](../../../img/05-tools/07-pwm-signal-waveform.gif)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pwm.gif), Mik81, CC0 Public Domain*
 

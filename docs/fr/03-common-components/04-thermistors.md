@@ -123,7 +123,7 @@ Le choix du boîtier dépend de ce qui est mesuré et de la façon dont le capte
 
 ## Vérification du multimètre
 
-La vérification de base peut être effectuée avec un multimètre en mode résistance. La procédure détaillée se trouve dans l'article pratique : [Vérifier une thermistance](../05-practical-guides/02-checking-a-thermistor.md).
+La vérification de base peut être effectuée avec un multimètre en mode résistance. La procédure détaillée se trouve dans l'article pratique : [Vérifier une thermistance](../06-practical-guides/02-checking-thermistor.md).
 
 Pour une thermistance `100K` NTC typique à température ambiante autour de `25°C`, vous vous attendez à environ `100 kOhm`. La valeur exacte dépend de la température et de la tolérance.
 

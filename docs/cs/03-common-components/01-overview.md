@@ -49,5 +49,5 @@ Navrhované soubory:
 - [Topidla](02-heaters.md) - nejobjektivnější typ zátěže: napájení, teplota, SSR/MOSFET a nezávislá ochrana.
 - [Ventilátory](03-fans.md) - průtok vzduchu, statický tlak, 2-pin/3-pin/4-pin a napájení.
 - [Termistory](04-thermistors.md) - teplotní senzor jako základ pro zpětnou vazbu topidla.
-- [Připojení ventilátoru](../05-practical-guides/01-connecting-a-fan.md) - praktický příklad připojení součástky přes výkonový spínač.
-- [Chyby topidla a SSR](../07-common-mistakes/05-heater-and-ssr-errors.md) - běžné chyby s vysokovýkonem a sítě zátěží.
+- [Připojení ventilátoru](../06-practical-guides/01-connecting-fan.md) - praktický příklad připojení součástky přes výkonový spínač.
+- [Chyby topidla a SSR](../08-common-mistakes/05-heater-ssr-mistakes.md) - běžné chyby s vysokovýkonem a sítě zátěží.

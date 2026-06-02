@@ -4,13 +4,13 @@ An oscilloscope shows how a signal changes over time.
 
 A multimeter can show "about 3.3V" or "there is frequency". An oscilloscope shows signal shape: pulses, edges, sag, noise, bounce, UART packets, PWM.
 
-![Screen of a digital oscilloscope](../../../img/04-tools/07-digital-oscilloscope.jpg)
+![Screen of a digital oscilloscope](../../../img/05-tools/07-digital-oscilloscope.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Digital_oscilloscope.jpg), premek.v, Public Domain*
 
 A PWM signal on the oscilloscope screen looks like this:
 
-![Animation of PWM: duty cycle change and signal waveform](../../../img/04-tools/07-pwm-signal-waveform.gif)
+![Animation of PWM: duty cycle change and signal waveform](../../../img/05-tools/07-pwm-signal-waveform.gif)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pwm.gif), Mik81, CC0 Public Domain*
 

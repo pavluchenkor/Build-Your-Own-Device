@@ -34,7 +34,7 @@ Couleurs de fil courantes :
 
 Vous ne pouvez pas faire confiance aveuglément aux couleurs. Différents fabricants utilisent des schémas de couleurs différents. Avant de connecter, vérifiez les marquages, la page produit ou la description technique.
 
-Un diagramme de connexion détaillé avec alimentation séparée se trouve dans la section pratique : [Connexion d'un moteur servo](../05-practical-guides/03-connecting-a-servo-motor.md).
+Un diagramme de connexion détaillé avec alimentation séparée se trouve dans la section pratique : [Connexion d'un moteur servo](../06-practical-guides/03-connecting-servo.md).
 
 ## Ce que « Moteur servo » signifie
 

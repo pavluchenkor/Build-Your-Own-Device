@@ -193,4 +193,4 @@ If heater depends on fan, fan failure must be a separate emergency scenario, not
 
 ## See Also
 
-- [iDryer docs: Connecting a Fan](../05-practical-guides/01-connecting-a-fan.md) - local instruction on fan power, MOSFET, common GND, and Klipper examples.
+- [iDryer docs: Connecting a Fan](../06-practical-guides/01-connecting-fan.md) - local instruction on fan power, MOSFET, common GND, and Klipper examples.

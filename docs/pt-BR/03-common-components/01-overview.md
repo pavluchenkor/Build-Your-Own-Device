@@ -49,5 +49,5 @@ Arquivos propostos:
 - [Aquecedores](02-heaters.md) - o tipo de carga mais arriscado: potência, temperatura, SSR/MOSFET e proteção independente.
 - [Ventiladores](03-fans.md) - fluxo de ar, pressão estática, 2-pin/3-pin/4-pin e potência.
 - [Termistores](04-thermistors.md) - sensor de temperatura como base para realimentação do aquecedor.
-- [Conectar um ventilador](../05-practical-guides/01-connecting-a-fan.md) - exemplo prático de conexão de componente através de um interruptor de potência.
-- [Erros de aquecedor e SSR](../07-common-mistakes/05-heater-and-ssr-errors.md) - erros comuns com cargas de alta potência e rede.
+- [Conectar um ventilador](../06-practical-guides/01-connecting-fan.md) - exemplo prático de conexão de componente através de um interruptor de potência.
+- [Erros de aquecedor e SSR](../08-common-mistakes/05-heater-ssr-mistakes.md) - erros comuns com cargas de alta potência e rede.

@@ -69,46 +69,46 @@ No prior electronics experience required. Each article focuses on a specific top
 | `04-thermal-physics-and-materials/03-material-safety.md` | Flammability, fumes, toxicity, PIR/XPS/EPS, safety data sheets (SDS/MSDS). |
 | `04-thermal-physics-and-materials/04-convection-and-airflow.md` | Convection, 100W heater with no airflow vs. weak vs. proper airflow, heat transfer. |
 
-### 05. Tools (was 04 in EN folder structure — note: folder is `04-tools/`)
+### 05. Tools (was 04 in EN folder structure — note: folder is `05-tools/`)
 
 | File | What's inside |
 |---|---|
-| `04-tools/01-overview.md` | Tool list: multimeter, USB-TTL, soldering, crimping, ST-Link, oscilloscope. |
-| `04-tools/02-multimeter.md` | Voltage, continuity, resistance, measurement safety. |
-| `04-tools/03-usb-ttl-adapter.md` | USB-TTL/USB-UART, flashing, serial logs, RX/TX, voltage levels. |
-| `04-tools/04-soldering.md` | Soldering wires, JST connectors, thermistors, common mistakes. |
-| `04-tools/05-crimping-connectors.md` | Crimping terminals and connectors, contact quality, bad crimp joints. |
-| `04-tools/06-st-link.md` | ST-Link, STM32, SWD interface, recovery after a failed flash. |
-| `04-tools/07-oscilloscope.md` | PWM, UART, noise, voltage sag, mains voltage safety, frequency measurement. |
+| `05-tools/01-overview.md` | Tool list: multimeter, USB-TTL, soldering, crimping, ST-Link, oscilloscope. |
+| `05-tools/02-multimeter.md` | Voltage, continuity, resistance, measurement safety. |
+| `05-tools/03-usb-ttl-adapter.md` | USB-TTL/USB-UART, flashing, serial logs, RX/TX, voltage levels. |
+| `05-tools/04-soldering.md` | Soldering wires, JST connectors, thermistors, common mistakes. |
+| `05-tools/05-crimping-connectors.md` | Crimping terminals and connectors, contact quality, bad crimp joints. |
+| `05-tools/06-st-link.md` | ST-Link, STM32, SWD interface, recovery after a failed flash. |
+| `05-tools/07-oscilloscope.md` | PWM, UART, noise, voltage sag, mains voltage safety, frequency measurement. |
 
-### 06. Practical Guides (folder: `05-practical-guides/`)
-
-| File | What's inside |
-|---|---|
-| `05-practical-guides/01-connecting-fan.md` | Fan wiring, voltage, controller-side control, noise. |
-| `05-practical-guides/02-checking-thermistor.md` | Thermistor check with a multimeter, resistance, wiring, firmware readings. |
-| `05-practical-guides/03-connecting-servo.md` | Servo power supply, signal line, peak current, controller resets. |
-| `05-practical-guides/04-connecting-load-cell.md` | Load cell, HX711 amplifier, power, signal wires, calibration. |
-| `05-practical-guides/05-connecting-rfid-reader.md` | RFID reader, power, SPI/UART/I2C, common mistakes. |
-
-### 07. 3D Printing (folder: `06-3d-printing/`)
+### 06. Practical Guides (folder: `06-practical-guides/`)
 
 | File | What's inside |
 |---|---|
-| `06-3d-printing/01-overview.md` | Why a section on printed parts, enclosures, ducts, and mounts. |
-| `06-3d-printing/02-what-is-stl.md` | STL format, limitations, why one STL file isn't enough for assembly. |
-| `06-3d-printing/03-materials-petg-abs-asa.md` | PETG, ABS, ASA — where to use, limits near heat sources. |
-| `06-3d-printing/04-heat-resistant-materials.md` | Materials for parts near heat, deformation, temperature margin. |
-| `06-3d-printing/05-enclosure-design.md` | Enclosure design, ventilation, mounts, clearance from heater, service access. |
-| `06-3d-printing/06-why-pla-is-risky.md` | PLA near heat sources, softening, deformation, enclosure failure risk. |
+| `06-practical-guides/01-connecting-fan.md` | Fan wiring, voltage, controller-side control, noise. |
+| `06-practical-guides/02-checking-thermistor.md` | Thermistor check with a multimeter, resistance, wiring, firmware readings. |
+| `06-practical-guides/03-connecting-servo.md` | Servo power supply, signal line, peak current, controller resets. |
+| `06-practical-guides/04-connecting-load-cell.md` | Load cell, HX711 amplifier, power, signal wires, calibration. |
+| `06-practical-guides/05-connecting-rfid-reader.md` | RFID reader, power, SPI/UART/I2C, common mistakes. |
 
-### 08. Common Mistakes (folder: `07-common-mistakes/`)
+### 07. 3D Printing (folder: `07-3d-printing/`)
 
 | File | What's inside |
 |---|---|
-| `07-common-mistakes/01-overview.md` | List of typical mistakes and the logic behind the diagnostics section. |
-| `07-common-mistakes/02-power-mistakes.md` | Weak power supplies, voltage sag, power headroom, bad terminals. |
-| `07-common-mistakes/03-wiring-mistakes.md` | Swapped wires, missing ground, RX/TX, thin wires, bad connections. |
-| `07-common-mistakes/04-controller-mistakes.md` | 3.3V/5V mismatch, wrong board, firmware, signal levels. |
-| `07-common-mistakes/05-heater-ssr-mistakes.md` | Heaters, SSR, 110–230V AC, heatsinks, wrong relay type. |
-| `07-common-mistakes/06-diagnostic-checklist.md` | Quick step-by-step device diagnostic sequence. |
+| `07-3d-printing/01-overview.md` | Why a section on printed parts, enclosures, ducts, and mounts. |
+| `07-3d-printing/02-what-is-stl.md` | STL format, limitations, why one STL file isn't enough for assembly. |
+| `07-3d-printing/03-materials-petg-abs-asa.md` | PETG, ABS, ASA — where to use, limits near heat sources. |
+| `07-3d-printing/04-heat-resistant-materials.md` | Materials for parts near heat, deformation, temperature margin. |
+| `07-3d-printing/05-enclosure-design.md` | Enclosure design, ventilation, mounts, clearance from heater, service access. |
+| `07-3d-printing/06-why-pla-is-risky.md` | PLA near heat sources, softening, deformation, enclosure failure risk. |
+
+### 08. Common Mistakes (folder: `08-common-mistakes/`)
+
+| File | What's inside |
+|---|---|
+| `08-common-mistakes/01-overview.md` | List of typical mistakes and the logic behind the diagnostics section. |
+| `08-common-mistakes/02-power-mistakes.md` | Weak power supplies, voltage sag, power headroom, bad terminals. |
+| `08-common-mistakes/03-wiring-mistakes.md` | Swapped wires, missing ground, RX/TX, thin wires, bad connections. |
+| `08-common-mistakes/04-controller-mistakes.md` | 3.3V/5V mismatch, wrong board, firmware, signal levels. |
+| `08-common-mistakes/05-heater-ssr-mistakes.md` | Heaters, SSR, 110–230V AC, heatsinks, wrong relay type. |
+| `08-common-mistakes/06-diagnostic-checklist.md` | Quick step-by-step device diagnostic sequence. |

@@ -87,7 +87,7 @@ I když se topný prvek nedotýká plastu, část může být:
 
 Proto nemůžete posoudit bezpečnost pouze frází "součást se nedotýká topného prvku". Musíte pochopit, jaká bude teplota na daném místě během dlouhodobého provozu.
 
-![Zóny v tištěném pouzdru pro ohřívané zařízení](../../../img/06-3d-printing/01-printed-device-zones.svg)
+![Zóny v tištěném pouzdru pro ohřívané zařízení](../../../img/07-3d-printing/01-printed-device-zones.svg)
 
 ## Síla závisí na směru vrstvy
 

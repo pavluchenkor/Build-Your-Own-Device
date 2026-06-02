@@ -182,7 +182,7 @@ Para el RC522, generalmente necesita:
 - `RST`;
 - a veces `IRQ`, pero en proyectos simples frecuentemente no se usa.
 
-Un diagrama detallado se encuentra en el artículo práctico: [Conexión de un lector RFID](../05-practical-guides/05-connecting-rfid-reader.md).
+Un diagrama detallado se encuentra en el artículo práctico: [Conexión de un lector RFID](../06-practical-guides/05-connecting-rfid-reader.md).
 
 ## Qué verificar antes de conectar
 

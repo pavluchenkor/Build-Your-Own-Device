@@ -123,7 +123,7 @@ Package choice depends on what is being measured and how the sensor will be serv
 
 ## Multimetr Check
 
-Basic checking can be done with a multimeter in resistance mode. Detailed procedure is in the practical article: [Checking a thermistor](../05-practical-guides/02-checking-a-thermistor.md).
+Basic checking can be done with a multimeter in resistance mode. Detailed procedure is in the practical article: [Checking a thermistor](../06-practical-guides/02-checking-thermistor.md).
 
 For a typical NTC `100K` at room temperature around `25°C`, you expect about `100 kOhm`. The exact value depends on temperature and tolerance.
 

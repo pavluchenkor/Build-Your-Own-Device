@@ -50,7 +50,7 @@ DCは直流（一定）電圧です。私たちのデバイスではこれは通
 
 ディスプレイ上の数字の前にマイナス記号が表示される場合、プローブが入れ替わっています。これは有用です。このように極性を判定することができます。
 
-![デジタルマルチメーターとプローブ](../../../img/04-tools/02-digital-multimeter.jpg)
+![デジタルマルチメーターとプローブ](../../../img/05-tools/02-digital-multimeter.jpg)
 
 *出典: [ウィキメディア・コモンズ](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg)、引退した電気技師、CC0パブリックドメイン*
 

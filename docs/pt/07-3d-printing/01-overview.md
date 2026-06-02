@@ -87,7 +87,7 @@ Mesmo que o aquecedor não toque no plástico, uma peça pode estar:
 
 Portanto, você não pode avaliar segurança com apenas a frase "a peça não toca o aquecedor". Você precisa compreender que temperatura haverá nesse local durante funcionamento estendido.
 
-![Zonas num invólucro impresso para um dispositivo aquecido](../../../img/06-3d-printing/01-printed-device-zones.svg)
+![Zonas num invólucro impresso para um dispositivo aquecido](../../../img/07-3d-printing/01-printed-device-zones.svg)
 
 ## A força depende da direcção da camada
 

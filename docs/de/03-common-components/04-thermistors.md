@@ -123,7 +123,7 @@ Die Paketauswahl hängt davon ab, was gemessen wird und wie der Sensor gewartet 
 
 ## Multimeter-Überprüfung
 
-Die grundlegende Überprüfung kann mit einem Multimeter im Widerstandsmodus durchgeführt werden. Das detaillierte Verfahren befindet sich im praktischen Artikel: [Überprüfung eines Thermistors](../05-practical-guides/02-checking-a-thermistor.md).
+Die grundlegende Überprüfung kann mit einem Multimeter im Widerstandsmodus durchgeführt werden. Das detaillierte Verfahren befindet sich im praktischen Artikel: [Überprüfung eines Thermistors](../06-practical-guides/02-checking-thermistor.md).
 
 Für einen typischen NTC `100K` bei Raumtemperatur um `25°C` erwarten Sie etwa `100 kOhm`. Der exakte Wert hängt von Temperatur und Toleranz ab.
 

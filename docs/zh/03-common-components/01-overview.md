@@ -50,4 +50,4 @@
 - [风扇](03-fans.md) - 气流、静压、2 针/3 针/4 针和电源。
 - [热敏电阻](04-thermistors.md) - 作为加热器反馈基础的温度传感器。
 - [连接风扇](../06-practical-guides/01-connecting-fan.md) - 通过电源开关的组件连接的实用示例。
-- [加热器和 SSR 错误](../08-common-mistakes/05-heater-ssr-mistakes.md) - 大功率和市电负载的常见错误。
+- 加热器和 SSR 错误 - 大功率和市电负载的常见错误。

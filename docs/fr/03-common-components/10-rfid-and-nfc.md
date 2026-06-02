@@ -145,7 +145,7 @@ UART :
 - pratique pour certains lecteurs prêts à l'emploi ;
 - a besoin d'une vitesse et d'un protocole correspondants.
 
-La connexion RC522 SPI détaillée se trouve dans la section pratique : [Connexion d'un lecteur RFID](../05-practical-guides/05-connecting-an-rfid-reader.md).
+La connexion RC522 SPI détaillée se trouve dans la section pratique : [Connexion d'un lecteur RFID](../06-practical-guides/05-connecting-rfid-reader.md).
 
 ## Antenne et boîtier
 

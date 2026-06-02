@@ -69,46 +69,46 @@ Keine bisherige Elektronik-Erfahrung benötigt. Jeder Artikel konzentriert sich 
 | `04-thermal-physics-and-materials/03-material-safety.md` | Entzündlichkeit, Dämpfe, Toxizität, PIR/XPS/EPS, Sicherheits-Datenblätter (SDS/MSDS). |
 | `04-thermal-physics-and-materials/04-convection-and-airflow.md` | Konvektion, 100W Heizer mit kein Luftstrom vs. schwach vs. richtig Luftstrom, Wärme-Transfer. |
 
-### 05. Werkzeuge (war 04 in EN Ordner-Struktur — Hinweis: Ordner ist `04-tools/`)
+### 05. Werkzeuge (war 04 in EN Ordner-Struktur — Hinweis: Ordner ist `05-tools/`)
 
 | Datei | Was ist drin |
 |---|---|
-| `04-tools/01-overview.md` | Werkzeug-Liste: Multimeter, USB-TTL, Löten, Krimpen, ST-Link, Oszilloskop. |
-| `04-tools/02-multimeter.md` | Spannung, Kontinuität, Widerstand, Mess-Sicherheit. |
-| `04-tools/03-usb-ttl-adapter.md` | USB-TTL/USB-UART, Flashen, serielle Logs, RX/TX, Spannungs-Pegel. |
-| `04-tools/04-soldering.md` | Löt-Drähte, JST Steckverbinder, Thermistoren, häufige Fehler. |
-| `04-tools/05-crimping-connectors.md` | Krimpen von Anschlüssen und Steckverbindern, Kontakt-Qualität, schlechte Krimpverbindungen. |
-| `04-tools/06-st-link.md` | ST-Link, STM32, SWD Schnittstelle, Wiederherstellung nach fehlgeschlagenem Flash. |
-| `04-tools/07-oscilloscope.md` | PWM, UART, Lärmm, Spannungs-Sag, Netzspannung-Sicherheit, Frequenz-Messung. |
+| `05-tools/01-overview.md` | Werkzeug-Liste: Multimeter, USB-TTL, Löten, Krimpen, ST-Link, Oszilloskop. |
+| `05-tools/02-multimeter.md` | Spannung, Kontinuität, Widerstand, Mess-Sicherheit. |
+| `05-tools/03-usb-ttl-adapter.md` | USB-TTL/USB-UART, Flashen, serielle Logs, RX/TX, Spannungs-Pegel. |
+| `05-tools/04-soldering.md` | Löt-Drähte, JST Steckverbinder, Thermistoren, häufige Fehler. |
+| `05-tools/05-crimping-connectors.md` | Krimpen von Anschlüssen und Steckverbindern, Kontakt-Qualität, schlechte Krimpverbindungen. |
+| `05-tools/06-st-link.md` | ST-Link, STM32, SWD Schnittstelle, Wiederherstellung nach fehlgeschlagenem Flash. |
+| `05-tools/07-oscilloscope.md` | PWM, UART, Lärmm, Spannungs-Sag, Netzspannung-Sicherheit, Frequenz-Messung. |
 
-### 06. Praktische Leitfäden (Ordner: `05-practical-guides/`)
-
-| Datei | Was ist drin |
-|---|---|
-| `05-practical-guides/01-connecting-fan.md` | Lüfter-Verdrahtung, Spannung, Controller-seitige Steuerung, Lärmm. |
-| `05-practical-guides/02-checking-thermistor.md` | Thermistor-Überprüfung mit Multimeter, Widerstand, Verdrahtung, Firmware-Ablesungen. |
-| `05-practical-guides/03-connecting-servo.md` | Servo-Stromversorgung, Signal-Leitung, Spitzenstrom, Controller-Neustarts. |
-| `05-practical-guides/04-connecting-load-cell.md` | Last-Zelle, HX711 Verstärker, Kraft, Signal-Drähte, Kalibrierung. |
-| `05-practical-guides/05-connecting-rfid-reader.md` | RFID-Lesegerät, Kraft, SPI/UART/I2C, häufige Fehler. |
-
-### 07. 3D-Druck (Ordner: `06-3d-printing/`)
+### 06. Praktische Leitfäden (Ordner: `06-practical-guides/`)
 
 | Datei | Was ist drin |
 |---|---|
-| `06-3d-printing/01-overview.md` | Warum ein Abschnitt auf gedruckten Teilen, Gehäuse, Kanälen und Mounts. |
-| `06-3d-printing/02-what-is-stl.md` | STL Format, Begrenzungen, warum eine STL Datei nicht genug ist für Montage. |
-| `06-3d-printing/03-materials-petg-abs-asa.md` | PETG, ABS, ASA — wo nutzen, Grenzen in Nähe Wärmequellen. |
-| `06-3d-printing/04-heat-resistant-materials.md` | Materialien für Teile in der Nähe von Wärme, Verformung, Temperatur-Spielraum. |
-| `06-3d-printing/05-enclosure-design.md` | Gehäuse-Design, Belüftung, Mounts, Abstand vom Heizer, Service-Zugang. |
-| `06-3d-printing/06-why-pla-is-risky.md` | PLA in der Nähe von Wärme-Quellen, Erweichung, Verformung, Gehäuse-Fehler-Risiko. |
+| `06-practical-guides/01-connecting-fan.md` | Lüfter-Verdrahtung, Spannung, Controller-seitige Steuerung, Lärmm. |
+| `06-practical-guides/02-checking-thermistor.md` | Thermistor-Überprüfung mit Multimeter, Widerstand, Verdrahtung, Firmware-Ablesungen. |
+| `06-practical-guides/03-connecting-servo.md` | Servo-Stromversorgung, Signal-Leitung, Spitzenstrom, Controller-Neustarts. |
+| `06-practical-guides/04-connecting-load-cell.md` | Last-Zelle, HX711 Verstärker, Kraft, Signal-Drähte, Kalibrierung. |
+| `06-practical-guides/05-connecting-rfid-reader.md` | RFID-Lesegerät, Kraft, SPI/UART/I2C, häufige Fehler. |
 
-### 08. Häufige Fehler (Ordner: `07-common-mistakes/`)
+### 07. 3D-Druck (Ordner: `07-3d-printing/`)
 
 | Datei | Was ist drin |
 |---|---|
-| `07-common-mistakes/01-overview.md` | Liste von typischen Fehlern und die Logik hinter dem Diagnose-Abschnitt. |
-| `07-common-mistakes/02-power-mistakes.md` | Schwache Stromversorgungen, Spannungs-Sag, Strom-Kopfraum, schlechte Anschlüsse. |
-| `07-common-mistakes/03-wiring-mistakes.md` | Getauschte Drähte, fehlende Erdung, RX/TX, dünne Drähte, schlechte Verbindungen. |
-| `07-common-mistakes/04-controller-mistakes.md` | 3.3V/5V Niveaus nicht passen, falsches Board, Firmware, Signal-Pegel. |
-| `07-common-mistakes/05-heater-ssr-mistakes.md` | Heizer, SSR, 110–230V AC, Kühlkörper, falscher Relais-Typ. |
-| `07-common-mistakes/06-diagnostic-checklist.md` | Schnelle Schritt-für-Schritt Geräte-Diagnose-Abfolge. |
+| `07-3d-printing/01-overview.md` | Warum ein Abschnitt auf gedruckten Teilen, Gehäuse, Kanälen und Mounts. |
+| `07-3d-printing/02-what-is-stl.md` | STL Format, Begrenzungen, warum eine STL Datei nicht genug ist für Montage. |
+| `07-3d-printing/03-materials-petg-abs-asa.md` | PETG, ABS, ASA — wo nutzen, Grenzen in Nähe Wärmequellen. |
+| `07-3d-printing/04-heat-resistant-materials.md` | Materialien für Teile in der Nähe von Wärme, Verformung, Temperatur-Spielraum. |
+| `07-3d-printing/05-enclosure-design.md` | Gehäuse-Design, Belüftung, Mounts, Abstand vom Heizer, Service-Zugang. |
+| `07-3d-printing/06-why-pla-is-risky.md` | PLA in der Nähe von Wärme-Quellen, Erweichung, Verformung, Gehäuse-Fehler-Risiko. |
+
+### 08. Häufige Fehler (Ordner: `08-common-mistakes/`)
+
+| Datei | Was ist drin |
+|---|---|
+| `08-common-mistakes/01-overview.md` | Liste von typischen Fehlern und die Logik hinter dem Diagnose-Abschnitt. |
+| `08-common-mistakes/02-power-mistakes.md` | Schwache Stromversorgungen, Spannungs-Sag, Strom-Kopfraum, schlechte Anschlüsse. |
+| `08-common-mistakes/03-wiring-mistakes.md` | Getauschte Drähte, fehlende Erdung, RX/TX, dünne Drähte, schlechte Verbindungen. |
+| `08-common-mistakes/04-controller-mistakes.md` | 3.3V/5V Niveaus nicht passen, falsches Board, Firmware, Signal-Pegel. |
+| `08-common-mistakes/05-heater-ssr-mistakes.md` | Heizer, SSR, 110–230V AC, Kühlkörper, falscher Relais-Typ. |
+| `08-common-mistakes/06-diagnostic-checklist.md` | Schnelle Schritt-für-Schritt Geräte-Diagnose-Abfolge. |

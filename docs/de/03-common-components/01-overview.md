@@ -49,5 +49,5 @@ Geplante Dateien:
 - [Heizer](02-heaters.md) - der riskanteste Ladentyp: Leistung, Temperatur, SSR/MOSFET und unabhängiger Schutz.
 - [Lüfter](03-fans.md) - Luftstrom, Gegendruck, 2-polig/3-polig/4-polig und Stromversorgung.
 - [Thermistoren](04-thermistors.md) - Temperatursensor als Grundlage für die Heizer-Rückmeldung.
-- [Einen Lüfter anschließen](../05-practical-guides/01-connecting-a-fan.md) - praktisches Beispiel für den Komponentenanschluss durch einen Schalter.
-- [Heizer- und SSR-Fehler](../07-common-mistakes/05-heater-and-ssr-errors.md) - häufige Fehler bei hochwertiger und Netzlasten.
+- [Einen Lüfter anschließen](../06-practical-guides/01-connecting-fan.md) - praktisches Beispiel für den Komponentenanschluss durch einen Schalter.
+- [Heizer- und SSR-Fehler](../08-common-mistakes/05-heater-ssr-mistakes.md) - häufige Fehler bei hochwertiger und Netzlasten.

@@ -49,5 +49,5 @@ Archivos propuestos:
 - [Calentadores](02-heaters.md) - el tipo de carga más riesgoso: potencia, temperatura, SSR/MOSFET y protección independiente.
 - [Ventiladores](03-fans.md) - flujo de aire, presión estática, 2 pines/3 pines/4 pines y potencia.
 - [Termistores](04-thermistors.md) - sensor de temperatura como base para retroalimentación de calentador.
-- [Conectar un ventilador](../05-practical-guides/01-connecting-a-fan.md) - ejemplo práctico de conexión de componentes a través de un interruptor de potencia.
-- [Errores de calentador y SSR](../07-common-mistakes/05-heater-and-ssr-errors.md) - errores comunes con cargas de alta potencia y red.
+- [Conectar un ventilador](../06-practical-guides/01-connecting-fan.md) - ejemplo práctico de conexión de componentes a través de un interruptor de potencia.
+- [Errores de calentador y SSR](../08-common-mistakes/05-heater-ssr-mistakes.md) - errores comunes con cargas de alta potencia y red.

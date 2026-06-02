@@ -4,13 +4,13 @@ Un osciloscopio muestra cómo cambia una señal con el tiempo.
 
 Un multímetro puede mostrar "alrededor de 3.3V" o "hay frecuencia". Un osciloscopio muestra la forma de la señal: pulsos, bordes, caída, ruido, rebote, paquetes UART, PWM.
 
-![Pantalla de un osciloscopio digital](../../../img/04-tools/07-digital-oscilloscope.jpg)
+![Pantalla de un osciloscopio digital](../../../img/05-tools/07-digital-oscilloscope.jpg)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Digital_oscilloscope.jpg), premek.v, Public Domain*
 
 Una señal PWM en la pantalla del osciloscopio se ve así:
 
-![Animación de PWM: cambio de ciclo de trabajo y forma de onda de señal](../../../img/04-tools/07-pwm-signal-waveform.gif)
+![Animación de PWM: cambio de ciclo de trabajo y forma de onda de señal](../../../img/05-tools/07-pwm-signal-waveform.gif)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pwm.gif), Mik81, CC0 Public Domain*
 

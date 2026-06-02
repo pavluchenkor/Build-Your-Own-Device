@@ -145,7 +145,7 @@ UART:
 - convenient for some ready-made readers;
 - needs matching speed and protocol.
 
-Detailed RC522 SPI connection is in the practical section: [Connecting an RFID reader](../05-practical-guides/05-connecting-an-rfid-reader.md).
+Detailed RC522 SPI connection is in the practical section: [Connecting an RFID reader](../06-practical-guides/05-connecting-rfid-reader.md).
 
 ## Antenna and Case
 

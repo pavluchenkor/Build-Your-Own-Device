@@ -182,7 +182,7 @@ RC522 には通常以下が必要です:
 - `RST`;
 - `IRQ` が必要な場合もありますが、シンプルなプロジェクトでは多くの場合使用されません。
 
-詳細な配線図は実践的な記事にあります: [RFID リーダーの接続](../05-practical-guides/05-connecting-rfid-reader.md)。
+詳細な配線図は実践的な記事にあります: [RFID リーダーの接続](../06-practical-guides/05-connecting-rfid-reader.md)。
 
 ## 接続前に確認すること
 

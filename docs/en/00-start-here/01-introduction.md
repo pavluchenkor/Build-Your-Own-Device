@@ -50,7 +50,7 @@ How to read:
 
 - if the topic is new — go in order;
 - if you have already built devices — open the needed section as a reference;
-- if the device does not work — first look at `07-common-mistakes`;
+- if the device does not work — first look at `08-common-mistakes`;
 - if you work with `110-230V AC` — first read everything related to safety, SSR, wires, terminals and protective grounding.
 
 ## Reference materials
@@ -64,6 +64,6 @@ How to read:
 
 - [Load calculation 24V](../01-electronics-basics/01-load-calculation-24v.md) - first practical topic about voltage, current, power and power supply headroom.
 - [Common components](../03-common-components/01-overview.md) - map of parts that are most often found in simple devices.
-- [Tools](../04-tools/01-overview.md) - what you need to check, flash, solder and diagnose.
-- [Practical guides](../05-practical-guides/01-connecting-a-fan.md) - example of first safe load connection through controller.
-- [Common mistakes](../07-common-mistakes/01-overview.md) - what to look for if the device does not turn on, heats up, makes noise or behaves unstably.
+- [Tools](../05-tools/01-overview.md) - what you need to check, flash, solder and diagnose.
+- [Practical guides](../06-practical-guides/01-connecting-fan.md) - example of first safe load connection through controller.
+- [Common mistakes](../08-common-mistakes/01-overview.md) - what to look for if the device does not turn on, heats up, makes noise or behaves unstably.

@@ -49,5 +49,5 @@ Proposed files:
 - [Heaters](02-heaters.md) - the riskiest type of load: power, temperature, SSR/MOSFET and independent protection.
 - [Fans](03-fans.md) - airflow, static pressure, 2-pin/3-pin/4-pin and power.
 - [Thermistors](04-thermistors.md) - temperature sensor as the basis for heater feedback.
-- [Connecting a fan](../05-practical-guides/01-connecting-a-fan.md) - practical example of component connection through a power switch.
-- [Heater and SSR errors](../07-common-mistakes/05-heater-and-ssr-errors.md) - common mistakes with high-power and mains loads.
+- [Connecting a fan](../06-practical-guides/01-connecting-fan.md) - practical example of component connection through a power switch.
+- [Heater and SSR errors](../08-common-mistakes/05-heater-ssr-mistakes.md) - common mistakes with high-power and mains loads.

@@ -65,5 +65,5 @@ Como ler:
 - [Cálculo de carga 24V](../01-electronics-basics/01-load-calculation-24v.md) - primeiro tópico prático sobre tensão, corrente, potência e margem da fonte de alimentação.
 - [Componentes comuns](../03-common-components/01-overview.md) - mapa de peças que mais se encontram em dispositivos simples.
 - [Ferramentas](../05-tools/01-overview.md) - o que precisa para verificar, carregar, soldar e diagnosticar.
-- [Guias práticos](../06-practical-guides/01-connecting-a-fan.md) - exemplo de primeira ligação segura de carga através do controlador.
+- [Guias práticos](../06-practical-guides/01-connecting-fan.md) - exemplo de primeira ligação segura de carga através do controlador.
 - [Erros comuns](../08-common-mistakes/01-overview.md) - o que procurar se o dispositivo não ligar, aquecer, fazer barulho ou comportar-se de forma instável.

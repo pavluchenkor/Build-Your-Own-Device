@@ -193,4 +193,4 @@ Wenn Heizer auf Lüfter verlässt, muss Lüfterausfall separates Notfallszenario
 
 ## Siehe auch
 
-- [iDryer-Dokumentation: Lüfter anschließen](../05-practical-guides/01-connecting-a-fan.md) - lokale Anleitung zu Lüfter-Leistung, MOSFET, gemeinsamem GND und Klipper-Beispielen.
+- [iDryer-Dokumentation: Lüfter anschließen](../06-practical-guides/01-connecting-fan.md) - lokale Anleitung zu Lüfter-Leistung, MOSFET, gemeinsamem GND und Klipper-Beispielen.

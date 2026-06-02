@@ -65,5 +65,5 @@ Jak číst:
 - [Výpočet zátěže 24V](../01-electronics-basics/01-load-calculation-24v.md) - první praktické téma o napětí, proudu, výkonu a rezervě zdroje.
 - [Běžné součástky](../03-common-components/01-overview.md) - přehled dílů, které se nejčastěji vyskytují v jednoduchých zařízeních.
 - [Nástroje](../05-tools/01-overview.md) - co potřebujete ke kontrole, nahrání, pájení a diagnostice.
-- [Praktické příručky](../06-practical-guides/01-connecting-a-fan.md) - příklad prvního bezpečného připojení zátěže přes řadič.
+- [Praktické příručky](../06-practical-guides/01-connecting-fan.md) - příklad prvního bezpečného připojení zátěže přes řadič.
 - [Běžné chyby](../08-common-mistakes/01-overview.md) - na co se podívat, pokud se zařízení nezapne, přehřívá se, dělá hluk nebo se chová nestabilně.

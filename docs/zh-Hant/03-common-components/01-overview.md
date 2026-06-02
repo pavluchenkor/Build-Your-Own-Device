@@ -50,4 +50,4 @@
 - [風扇](03-fans.md) - 氣流、靜壓、2 腳/3 腳/4 腳和電源。
 - [溫度計](04-thermistors.md) - 作為加熱器反饋基礎的溫度感應器。
 - [連接風扇](../06-practical-guides/01-connecting-fan.md) - 透過電源開關連接元件的實務示例。
-- [加熱器和 SSR 錯誤](../08-common-mistakes/05-heater-ssr-mistakes.md) - 高功率和市電負載的常見錯誤。
+- 加熱器和 SSR 錯誤 - 高功率和市電負載的常見錯誤。

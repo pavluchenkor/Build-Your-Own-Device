@@ -182,7 +182,7 @@ Für RC522 werden typischerweise benötigt:
 - `RST`;
 - manchmal `IRQ`, in einfachen Projekten jedoch oft nicht verwendet.
 
-Ein detailliertes Schaltbild befindet sich im praktischen Artikel: [RFID-Lesegerät anschließen](../05-practical-guides/05-connecting-rfid-reader.md).
+Ein detailliertes Schaltbild befindet sich im praktischen Artikel: [RFID-Lesegerät anschließen](../06-practical-guides/05-connecting-rfid-reader.md).
 
 ## Was vor dem Anschluss zu prüfen ist
 

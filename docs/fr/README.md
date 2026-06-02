@@ -69,46 +69,46 @@ Aucune expérience en électronique préalable n'est requise. Chaque article se 
 | `04-thermal-physics-and-materials/03-material-safety.md` | Inflammabilité, fumées, toxicité, PIR/XPS/EPS, fiches de sécurité des matériaux (SDS/MSDS). |
 | `04-thermal-physics-and-materials/04-convection-and-airflow.md` | Convection, chauffage 100W sans flux d'air vs faible vs flux approprié, transfert de chaleur. |
 
-### 05. Outils (était 04 dans la structure du dossier EN — note : le dossier est `04-tools/`)
+### 05. Outils (était 04 dans la structure du dossier EN — note : le dossier est `05-tools/`)
 
 | Fichier | Contenu |
 |---|---|
-| `04-tools/01-overview.md` | Liste des outils : multimètre, USB-TTL, soudage, sertissage, ST-Link, oscilloscope. |
-| `04-tools/02-multimeter.md` | Tension, continuité, résistance, sécurité de mesure. |
-| `04-tools/03-usb-ttl-adapter.md` | Adaptateur USB-TTL/USB-UART, flashage, logs série, RX/TX, niveaux de tension. |
-| `04-tools/04-soldering.md` | Soudage de fils, connecteurs JST, thermistors, erreurs courantes. |
-| `04-tools/05-crimping-connectors.md` | Sertissage de bornes et connecteurs, qualité de contact, mauvaises soudures sertis. |
-| `04-tools/06-st-link.md` | ST-Link, STM32, interface SWD, récupération après le flashage échoué. |
-| `04-tools/07-oscilloscope.md` | PWM, UART, bruit, affaissement de tension, sécurité de tension secteur, mesure de fréquence. |
+| `05-tools/01-overview.md` | Liste des outils : multimètre, USB-TTL, soudage, sertissage, ST-Link, oscilloscope. |
+| `05-tools/02-multimeter.md` | Tension, continuité, résistance, sécurité de mesure. |
+| `05-tools/03-usb-ttl-adapter.md` | Adaptateur USB-TTL/USB-UART, flashage, logs série, RX/TX, niveaux de tension. |
+| `05-tools/04-soldering.md` | Soudage de fils, connecteurs JST, thermistors, erreurs courantes. |
+| `05-tools/05-crimping-connectors.md` | Sertissage de bornes et connecteurs, qualité de contact, mauvaises soudures sertis. |
+| `05-tools/06-st-link.md` | ST-Link, STM32, interface SWD, récupération après le flashage échoué. |
+| `05-tools/07-oscilloscope.md` | PWM, UART, bruit, affaissement de tension, sécurité de tension secteur, mesure de fréquence. |
 
-### 06. Guides pratiques (dossier : `05-practical-guides/`)
-
-| Fichier | Contenu |
-|---|---|
-| `05-practical-guides/01-connecting-fan.md` | Câblage du ventilateur, tension, contrôle côté contrôleur, bruit. |
-| `05-practical-guides/02-checking-thermistor.md` | Vérification du thermisteur avec un multimètre, résistance, câblage, lectures du firmware. |
-| `05-practical-guides/03-connecting-servo.md` | Alimentation du servo, ligne de signal, courant de pic, redémarrages du contrôleur. |
-| `05-practical-guides/04-connecting-load-cell.md` | Cellule de charge, amplificateur HX711, puissance, fils de signal, étalonnage. |
-| `05-practical-guides/05-connecting-rfid-reader.md` | Lecteur RFID, puissance, SPI/UART/I2C, erreurs courantes. |
-
-### 07. Impression 3D (dossier : `06-3d-printing/`)
+### 06. Guides pratiques (dossier : `06-practical-guides/`)
 
 | Fichier | Contenu |
 |---|---|
-| `06-3d-printing/01-overview.md` | Pourquoi une section sur les pièces imprimées, les boîtiers, les conduits et les montages. |
-| `06-3d-printing/02-what-is-stl.md` | Format STL, limitations, pourquoi un fichier STL n'est pas suffisant pour l'assemblage. |
-| `06-3d-printing/03-materials-petg-abs-asa.md` | PETG, ABS, ASA — où l'utiliser, limites près des sources de chaleur. |
-| `06-3d-printing/04-heat-resistant-materials.md` | Matériaux pour les pièces près de la chaleur, déformation, marge de température. |
-| `06-3d-printing/05-enclosure-design.md` | Conception de boîtier, ventilation, montages, espace libre du chauffage, accès au service. |
-| `06-3d-printing/06-why-pla-is-risky.md` | PLA près des sources de chaleur, ramollissement, déformation, risque d'échec du boîtier. |
+| `06-practical-guides/01-connecting-fan.md` | Câblage du ventilateur, tension, contrôle côté contrôleur, bruit. |
+| `06-practical-guides/02-checking-thermistor.md` | Vérification du thermisteur avec un multimètre, résistance, câblage, lectures du firmware. |
+| `06-practical-guides/03-connecting-servo.md` | Alimentation du servo, ligne de signal, courant de pic, redémarrages du contrôleur. |
+| `06-practical-guides/04-connecting-load-cell.md` | Cellule de charge, amplificateur HX711, puissance, fils de signal, étalonnage. |
+| `06-practical-guides/05-connecting-rfid-reader.md` | Lecteur RFID, puissance, SPI/UART/I2C, erreurs courantes. |
 
-### 08. Erreurs courantes (dossier : `07-common-mistakes/`)
+### 07. Impression 3D (dossier : `07-3d-printing/`)
 
 | Fichier | Contenu |
 |---|---|
-| `07-common-mistakes/01-overview.md` | Liste des erreurs typiques et la logique derrière la section diagnostic. |
-| `07-common-mistakes/02-power-mistakes.md` | Alimentations faibles, affaissement de tension, marge d'alimentation, mauvaises bornes. |
-| `07-common-mistakes/03-wiring-mistakes.md` | Fils échangés, mise à la terre manquante, RX/TX, fils minces, mauvaises connexions. |
-| `07-common-mistakes/04-controller-mistakes.md` | Incompatibilité 3.3V/5V, mauvaise carte, firmware, niveaux de signal. |
-| `07-common-mistakes/05-heater-ssr-mistakes.md` | Chauffages, SSR, courant alternatif 110-230V, dissipateurs thermiques, type de relais incorrect. |
-| `07-common-mistakes/06-diagnostic-checklist.md` | Séquence de diagnostic d'appareil rapide et étape par étape. |
+| `07-3d-printing/01-overview.md` | Pourquoi une section sur les pièces imprimées, les boîtiers, les conduits et les montages. |
+| `07-3d-printing/02-what-is-stl.md` | Format STL, limitations, pourquoi un fichier STL n'est pas suffisant pour l'assemblage. |
+| `07-3d-printing/03-materials-petg-abs-asa.md` | PETG, ABS, ASA — où l'utiliser, limites près des sources de chaleur. |
+| `07-3d-printing/04-heat-resistant-materials.md` | Matériaux pour les pièces près de la chaleur, déformation, marge de température. |
+| `07-3d-printing/05-enclosure-design.md` | Conception de boîtier, ventilation, montages, espace libre du chauffage, accès au service. |
+| `07-3d-printing/06-why-pla-is-risky.md` | PLA près des sources de chaleur, ramollissement, déformation, risque d'échec du boîtier. |
+
+### 08. Erreurs courantes (dossier : `08-common-mistakes/`)
+
+| Fichier | Contenu |
+|---|---|
+| `08-common-mistakes/01-overview.md` | Liste des erreurs typiques et la logique derrière la section diagnostic. |
+| `08-common-mistakes/02-power-mistakes.md` | Alimentations faibles, affaissement de tension, marge d'alimentation, mauvaises bornes. |
+| `08-common-mistakes/03-wiring-mistakes.md` | Fils échangés, mise à la terre manquante, RX/TX, fils minces, mauvaises connexions. |
+| `08-common-mistakes/04-controller-mistakes.md` | Incompatibilité 3.3V/5V, mauvaise carte, firmware, niveaux de signal. |
+| `08-common-mistakes/05-heater-ssr-mistakes.md` | Chauffages, SSR, courant alternatif 110-230V, dissipateurs thermiques, type de relais incorrect. |
+| `08-common-mistakes/06-diagnostic-checklist.md` | Séquence de diagnostic d'appareil rapide et étape par étape. |

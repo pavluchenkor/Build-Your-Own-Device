@@ -193,4 +193,4 @@ Si el calentador depende del ventilador, la falla del ventilador debe ser un esc
 
 ## Ver También
 
-- [iDryer docs: Connecting a Fan](../05-practical-guides/01-connecting-a-fan.md) - instrucción local sobre potencia del ventilador, MOSFET, GND común y ejemplos de Klipper.
+- [iDryer docs: Connecting a Fan](../06-practical-guides/01-connecting-fan.md) - instrucción local sobre potencia del ventilador, MOSFET, GND común y ejemplos de Klipper.

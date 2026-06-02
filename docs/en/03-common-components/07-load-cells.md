@@ -33,7 +33,7 @@ Typical chain:
 load cell -> HX711 -> controller
 ```
 
-Detailed connection diagram is in the practical section: [Connecting a load cell](../05-practical-guides/04-connecting-a-load-cell.md).
+Detailed connection diagram is in the practical section: [Connecting a load cell](../06-practical-guides/04-connecting-load-cell.md).
 
 ## What Types of Load Cells Exist
 

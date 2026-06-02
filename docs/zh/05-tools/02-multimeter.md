@@ -50,7 +50,7 @@
 
 如果显示屏上的数字前出现负号，探针交换了。这很有用：你可以用这种方式确定极性。
 
-![数字万用表与探针](../../../img/04-tools/02-digital-multimeter.jpg)
+![数字万用表与探针](../../../img/05-tools/02-digital-multimeter.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 

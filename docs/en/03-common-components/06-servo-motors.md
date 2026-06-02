@@ -34,7 +34,7 @@ Common wire colors:
 
 You can't blindly trust colors. Different manufacturers use different color schemes. Before connecting, check the markings, product page or technical description.
 
-A detailed connection diagram with separate power is in the practical section: [Connecting a servo motor](../05-practical-guides/03-connecting-a-servo-motor.md).
+A detailed connection diagram with separate power is in the practical section: [Connecting a servo motor](../06-practical-guides/03-connecting-servo.md).
 
 ## What "Servo Motor" Means
 

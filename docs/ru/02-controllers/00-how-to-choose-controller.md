@@ -34,8 +34,8 @@ Arduino подойдёт для простого прототипа или уч�
 
 ## Что читать дальше
 
-- [ESP32](./01-контроллер-esp32.md) — Wi-Fi, датчики, веб-интерфейс
-- [Arduino](./02-контроллер-arduino.md) — старт и эксперименты
-- [RP2040](./03-контроллер-rp2040.md) — Klipper MCU, простая прошивка
-- [STM32](./04-контроллеры-stm32.md) — принтерные платы, CAN, SWD
-- [MCU в Klipper](./05-mcu-в-клипер.md) — как MCU встраивается в Klipper-систему
+- [ESP32](./01-esp32-controller.md) — Wi-Fi, датчики, веб-интерфейс
+- [Arduino](./02-arduino-controller.md) — старт и эксперименты
+- [RP2040](./03-rp2040-controller.md) — Klipper MCU, простая прошивка
+- [STM32](./04-stm32-controllers.md) — принтерные платы, CAN, SWD
+- [MCU в Klipper](./05-mcu-in-klipper.md) — как MCU встраивается в Klipper-систему

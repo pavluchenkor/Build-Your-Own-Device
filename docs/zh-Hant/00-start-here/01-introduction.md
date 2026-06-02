@@ -50,7 +50,7 @@ description: "第一个项目的清晰路线：如何规划耗材干燥箱，选
 
 - 如果主題是新的——按順序進行；
 - 如果您已經製造過設備——作為參考打開所需部分；
-- 如果設備不工作——首先查看`07-common-mistakes`；
+- 如果設備不工作——首先查看`08-common-mistakes`；
 - 如果您使用`110-230V AC`——首先閱讀與安全、SSR、電線、端子和保護接地相關的所有內容。
 
 ## 參考資料
@@ -66,4 +66,4 @@ description: "第一个项目的清晰路线：如何规划耗材干燥箱，选
 - [Common components](../03-common-components/01-overview.md) - 在簡單設備中最常見的零件地圖。
 - [Tools](../05-tools/01-overview.md) - 檢查、閃存、焊接和診斷所需的內容。
 - [Practical guides](../06-practical-guides/01-connecting-fan.md) - 通過控制器進行第一次安全負載連接的例子。
-- [Common mistakes](../08-common-mistakes/01-overview.md) - 當設備不開啟、發熱、發出噪音或行為不穩定時要查看的內容。
+- Common mistakes - 當設備不開啟、發熱、發出噪音或行為不穩定時要查看的內容。
