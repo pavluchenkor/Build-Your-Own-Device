@@ -28,7 +28,7 @@ Minimale Verbindung:
 
 TX eines Geräts wird mit RX des anderen verbunden:
 
-![Kreuzweise verbundene TX/RX und gemeinsame GND in UART-Verbindung](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![Kreuzweise verbundene TX/RX und gemeinsame GND in UART-Verbindung](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *Quelle: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 

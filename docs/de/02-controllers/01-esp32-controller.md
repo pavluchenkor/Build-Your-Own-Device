@@ -24,7 +24,7 @@ ESP32 ist geeignet, wenn das Gerät separat vom Drucker betrieben werden und Dat
 
 ESP32 versorgt Lasten nicht direkt mit Strom. Er gibt Steuersignale aus, und separate Module übernehmen die Leistungsarbeit.
 
-![ESP32-Entwicklungsplatine mit GPIO-Pins](../../../img/02-controllers/01-esp32-dev-board.jpg)
+![ESP32-Entwicklungsplatine mit GPIO-Pins](../../img/02-controllers/01-esp32-dev-board.jpg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:ESP32_Dev_Board.jpg), Edwiyanto, CC BY-SA 4.0*
 

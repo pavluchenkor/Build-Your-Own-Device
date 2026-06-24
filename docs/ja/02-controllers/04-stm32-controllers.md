@@ -60,7 +60,7 @@ STM32 は Klipper MCU の主なパスの 1 つです。
 
 典型的なアーキテクチャ:
 
-![STMicroelectronics の STM8 および STM32 用 Nucleo ボード](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![STMicroelectronics の STM8 および STM32 用 Nucleo ボード](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
 *ソース: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nucleo-board.jpg), Avandalen, CC BY-SA 4.0*
 

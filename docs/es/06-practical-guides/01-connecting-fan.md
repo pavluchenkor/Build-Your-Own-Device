@@ -41,7 +41,7 @@ La lógica correcta es:
 - el controlador solo gestiona encendido/apagado o velocidad;
 - si se utiliza un módulo MOSFET externo, la `GND` de la fuente de alimentación y la `GND` del controlador deben ser comunes.
 
-![MOSFET de canal N en modo de conmutación (lado bajo) para control de carga](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![MOSFET de canal N en modo de conmutación (lado bajo) para control de carga](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 

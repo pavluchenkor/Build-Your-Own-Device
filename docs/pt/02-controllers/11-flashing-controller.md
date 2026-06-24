@@ -36,7 +36,7 @@ Não é possível adivinhar as definições do firmware. Para o Klipper, o tipo 
 
 Placas diferentes gravam-se de forma diferente:
 
-![Caminhos principais para gravação do controlador](../../../img/02-controllers/11-controller-flashing-paths.svg)
+![Caminhos principais para gravação do controlador](../../img/02-controllers/11-controller-flashing-paths.svg)
 
 Variantes comuns:
 

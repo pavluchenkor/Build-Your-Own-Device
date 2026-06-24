@@ -105,7 +105,7 @@ LED 灯带有不同的电压：
 
 对于白色 `12V` 或 `24V` 灯带，通常使用低端 MOSFET：灯带的加号连接到电源加号，灯带的减号由 MOSFET 模块开关。
 
-![LED 灯带与 SMD 二极管的特写](../../../img/03-common-components/05-led-strip-closeup.jpg)
+![LED 灯带与 SMD 二极管的特写](../../img/03-common-components/05-led-strip-closeup.jpg)
 
 *来源: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:LED_strip_closeup.jpg), Akbermamps, CC BY 4.0*
 

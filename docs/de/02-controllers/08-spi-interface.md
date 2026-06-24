@@ -32,7 +32,7 @@ Ein typischer SPI-Bus verwendet:
 
 Schaltbild mit zwei Geräten:
 
-![SPI: basic exchange operation between master and slave device](../../../img/02-controllers/08-spi-basic-operation.png)
+![SPI: basic exchange operation between master and slave device](../../img/02-controllers/08-spi-basic-operation.png)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SPI_basic_operation,_single_Main_%26_Sub.svg), Em3rgent0rdr, CC0 Public Domain*
 

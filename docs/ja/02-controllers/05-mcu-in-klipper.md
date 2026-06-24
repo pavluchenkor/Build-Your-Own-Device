@@ -25,7 +25,7 @@ MCU は「プリンタ全体のように考える」わけではありません�
 
 簡略化されたスキーム:
 
-![Klipper ホストと複数の MCU](../../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
+![Klipper ホストと複数の MCU](../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
 
 ホストは USB、UART、または CAN 経由で MCU と通信します。Klipper 設定では、各 MCU は独自のセクションを取得し、その MCU のピンはファン、センサー、ヒーター、出力、およびその他のモジュール設定で使用されます。
 

@@ -25,7 +25,7 @@ MCU не "думает как весь принтер". Она выполняе�
 
 Упрощённая схема:
 
-![Хост Klipper и несколько MCU](../../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
+![Хост Klipper и несколько MCU](../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
 
 Хост общается с MCU по USB, UART или CAN. В конфигурации Klipper каждая MCU получает свою секцию, а пины этой MCU потом используются в настройках вентиляторов, датчиков, нагревателей, выходов и других модулей.
 

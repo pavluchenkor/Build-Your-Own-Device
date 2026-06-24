@@ -98,7 +98,7 @@ Un module MOSFET typique pour Arduino/ESP32 ne peut pas être utilisé comme com
 
 Un radiateur ne peut pas être conçu comme « le contrôleur l'allume - le contrôleur l'éteint ». Vous avez besoin de plusieurs couches de protection.
 
-![Couches de commande de radiateur sûre](../../../img/03-common-components/02-heater-safety-stack.svg)
+![Couches de commande de radiateur sûre](../../img/03-common-components/02-heater-safety-stack.svg)
 
 Logique minimale :
 

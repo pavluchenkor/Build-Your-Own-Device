@@ -50,7 +50,7 @@
 
 如果顯示屏上的數字前出現負號，探針交換了。這很有用：你可以用這種方式確定極性。
 
-![數字萬用表與探針](../../../img/05-tools/02-digital-multimeter.jpg)
+![數字萬用表與探針](../../img/05-tools/02-digital-multimeter.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 

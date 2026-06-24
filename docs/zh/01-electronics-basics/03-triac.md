@@ -40,7 +40,7 @@ TRIAC方法不是「更好」，也不是「更简单」。这是一种不同的
 
 典型的安全架构如下所示：
 
-![AC调光电路（带TRIAC）](../../../img/01-electronics-basics/03-triac-dimmer-circuit.svg)
+![AC调光电路（带TRIAC）](../../img/01-electronics-basics/03-triac-dimmer-circuit.svg)
 
 *来源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:TRIAC_based_dimmer_circuit.svg)、Osbertjoel、CC BY-SA 4.0*
 

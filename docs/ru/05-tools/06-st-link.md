@@ -45,7 +45,7 @@ ST-Link 3.3V/VTref -> 3.3V цели, если это требуется конк
 
 Перед подключением проверь документацию конкретного ST-Link и платы.
 
-![Платы Nucleo для STM32 со встроенным ST-Link отладчиком](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![Платы Nucleo для STM32 со встроенным ST-Link отладчиком](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:STM32_Nucleo_boards.jpg), Avandalen, CC BY-SA 4.0*
 

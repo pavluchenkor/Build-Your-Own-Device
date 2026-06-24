@@ -29,7 +29,7 @@ Zařízení může na obrazovce ukazovat `45°C`, ale vedle topidla, svorky nebo
 
 Teplo se přenáší třemi hlavními způsoby:
 
-![Tři mechanismy přenosu tepla: vedení, konvekce a záření](../../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
+![Tři mechanismy přenosu tepla: vedení, konvekce a záření](../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
 
 *Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kettle-convection-conduction-radiation.png), P.wormer, CC BY-SA 3.0*
 

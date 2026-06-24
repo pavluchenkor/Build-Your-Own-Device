@@ -45,7 +45,7 @@ Deska STM32 je často napájena z normálního napájení nebo USB.
 
 Před připojením zkontrolujte dokumentaci pro váš konkrétní ST-Link a desku.
 
-![Nucleo desky pro STM32 s vestavěným ST-Link debuggerem](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![Nucleo desky pro STM32 s vestavěným ST-Link debuggerem](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
 *Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:STM32_Nucleo_boards.jpg), Avandalen, CC BY-SA 4.0*
 

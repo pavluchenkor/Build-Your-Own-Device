@@ -71,7 +71,7 @@ Antes de comprar, verifique as linhas `Input`, `Output`, `Load voltage`, `Load c
 
 O SSR é geralmente colocado na ruptura da linha de alimentação da carga. O controlador conecta-se apenas à entrada do SSR, enquanto o circuito de rede passa pela saída do SSR.
 
-![Estrutura interna do relé de estado sólido SSR](../../../img/01-electronics-basics/04-ssr-internal-structure.png)
+![Estrutura interna do relé de estado sólido SSR](../../img/01-electronics-basics/04-ssr-internal-structure.png)
 
 *Fonte: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SSR.png), Thomas Verdyck, CC BY-SA 3.0*
 

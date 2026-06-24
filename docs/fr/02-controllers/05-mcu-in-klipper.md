@@ -25,7 +25,7 @@ Un MCU ne « pense pas comme l'imprimante entière ». Il exécute les commandes
 
 Schéma simplifié :
 
-![Klipper hôte et plusieurs MCU](../../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
+![Klipper hôte et plusieurs MCU](../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
 
 L'hôte communique avec le MCU via USB, UART ou CAN. Dans la configuration Klipper, chaque MCU obtient sa propre section, et les broches de ce MCU sont ensuite utilisées dans les paramètres de ventilateur, capteur, radiateur, sortie et autre module.
 

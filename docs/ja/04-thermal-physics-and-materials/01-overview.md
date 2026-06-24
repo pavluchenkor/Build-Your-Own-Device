@@ -29,7 +29,7 @@
 
 熱は3つの主な方法で転移します：
 
-![熱転移の3つのメカニズム：伝導、対流、放射](../../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
+![熱転移の3つのメカニズム：伝導、対流、放射](../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
 
 *出典：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kettle-convection-conduction-radiation.png)、P.wormer、CC BY-SA 3.0*
 

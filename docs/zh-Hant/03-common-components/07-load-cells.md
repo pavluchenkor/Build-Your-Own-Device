@@ -72,7 +72,7 @@
 
 負載傳感器必須按照製造商的意圖完全變形。如果負載繞過工作區，傳感器將顯示不穩定的讀數或幾乎沒有。
 
-![小型 S 樑負載傳感器](../../../img/03-common-components/07-miniature-load-cell.jpg)
+![小型 S 樑負載傳感器](../../img/03-common-components/07-miniature-load-cell.jpg)
 
 *來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Miniature_S-beam_load_cell.jpg), FUTEK Advanced Sensor Technology, CC BY-SA 4.0*
 

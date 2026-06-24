@@ -50,7 +50,7 @@ Procedimiento:
 
 Si aparece un signo menos antes del número en la pantalla, las sondas están intercambiadas. Esto es útil: puede determinar la polaridad de esta manera.
 
-![Multímetro digital con sondas](../../../img/05-tools/02-digital-multimeter.jpg)
+![Multímetro digital con sondas](../../img/05-tools/02-digital-multimeter.jpg)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 

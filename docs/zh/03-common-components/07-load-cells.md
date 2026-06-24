@@ -72,7 +72,7 @@
 
 应变片必须完全按照制造商的意图变形。如果负载绕过工作区，应变片会显示不稳定的读数或几乎没有。
 
-![微型 S 型梁应变片](../../../img/03-common-components/07-miniature-load-cell.jpg)
+![微型 S 型梁应变片](../../img/03-common-components/07-miniature-load-cell.jpg)
 
 *来源: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Miniature_S-beam_load_cell.jpg), FUTEK Advanced Sensor Technology, CC BY-SA 4.0*
 

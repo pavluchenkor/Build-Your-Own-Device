@@ -41,7 +41,7 @@ The correct logic is:
 - the controller only manages on/off or speed;
 - if an external MOSFET module is used, the power supply `GND` and controller `GND` must be common.
 
-![N-channel MOSFET in switching mode (low-side) for load control](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![N-channel MOSFET in switching mode (low-side) for load control](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 

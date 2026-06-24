@@ -32,7 +32,7 @@ Contacts typiques :
 
 Schéma de connexion :
 
-![Adaptateur USB-UART sur puce CH340T](../../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
+![Adaptateur USB-UART sur puce CH340T](../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
 
 *Source : [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:15938_-_USBtoSerial_1.jpg), SparkFun Electronics, CC BY 2.0*
 

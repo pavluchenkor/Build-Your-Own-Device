@@ -56,7 +56,7 @@ RP2040 是 Klipper 附加 MCU 的良好候选者。
 
 典型方案：
 
-![带有 RP2040 芯片的 Raspberry Pi Pico](../../../img/02-controllers/03-rp2040-pico-photo.jpg)
+![带有 RP2040 芯片的 Raspberry Pi Pico](../../img/02-controllers/03-rp2040-pico-photo.jpg)
 
 *来源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Raspberry_Pi_Pico_oblique.jpg)、Phiarc、CC BY-SA 4.0*
 

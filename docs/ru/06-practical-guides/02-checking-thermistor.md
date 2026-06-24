@@ -55,7 +55,7 @@
 4. Подожди, пока показание стабилизируется.
 5. Запиши значение.
 
-![Цифровой мультиметр для измерения сопротивления термистора](../../../img/05-tools/02-digital-multimeter.jpg)
+![Цифровой мультиметр для измерения сопротивления термистора](../../img/05-tools/02-digital-multimeter.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 

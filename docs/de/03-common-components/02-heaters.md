@@ -98,7 +98,7 @@ Ein typisches MOSFET-Modul für Arduino/ESP32 kann nicht als `110-230V AC`-Schal
 
 Ein Heizer kann nicht als "Regler schaltet ihn ein - Regler schaltet ihn aus" ausgelegt sein. Sie benötigen mehrere Schutzebenen.
 
-![Ebenen der sicheren Heizer-Steuerung](../../../img/03-common-components/02-heater-safety-stack.svg)
+![Ebenen der sicheren Heizer-Steuerung](../../img/03-common-components/02-heater-safety-stack.svg)
 
 Minimale Logik:
 

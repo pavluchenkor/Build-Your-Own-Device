@@ -30,7 +30,7 @@ CAN は、ノードがホストやメインボードから離れており、近�
 
 簡略図：
 
-![複数のノードとターミネーターを持つ高速 CAN ISO 11898-2 バス](../../../img/02-controllers/09-can-iso11898-2-network.png)
+![複数のノードとターミネーターを持つ高速 CAN ISO 11898-2 バス](../../img/02-controllers/09-can-iso11898-2-network.png)
 
 *出典：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:CAN_ISO11898-2_Network.png)、EE JRW、CC BY-SA 4.0*
 

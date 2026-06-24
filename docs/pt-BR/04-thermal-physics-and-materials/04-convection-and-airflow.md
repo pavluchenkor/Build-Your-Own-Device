@@ -8,7 +8,7 @@ A heater by itself only converts electrical power into heat. The fan and air duc
 
 The same `100 W` heater can work completely differently.
 
-![Convection cells: warm air rises, cold air falls](../../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
+![Convection cells: warm air rises, cold air falls](../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Convection_cells.svg), McSush, CC BY-SA 3.0*
 

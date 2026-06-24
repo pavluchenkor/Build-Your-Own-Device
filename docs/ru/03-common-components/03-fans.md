@@ -56,7 +56,7 @@ description: "Зачем нужен обдув в сушилке филамен�
 
 Вентиляторы часто различаются по числу проводов.
 
-![3-pin разъём компьютерного вентилятора](../../../img/03-common-components/03-fan-3pin-connector.jpg)
+![3-pin разъём компьютерного вентилятора](../../img/03-common-components/03-fan-3pin-connector.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Three-pin_connector_on_a_computer_fan.jpg), Dsimic, CC BY-SA 4.0*
 

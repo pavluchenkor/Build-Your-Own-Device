@@ -40,7 +40,7 @@ TRIAC方法は「より良い」、「より簡単」ではありません。異
 
 一般的な安全なアーキテクチャは次のようになります：
 
-![AC調光回路（TRIAC付き）](../../../img/01-electronics-basics/03-triac-dimmer-circuit.svg)
+![AC調光回路（TRIAC付き）](../../img/01-electronics-basics/03-triac-dimmer-circuit.svg)
 
 *出典：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:TRIAC_based_dimmer_circuit.svg)、Osbertjoel、CC BY-SA 4.0*
 

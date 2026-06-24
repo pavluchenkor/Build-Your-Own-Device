@@ -29,7 +29,7 @@ A device may show `45°C` on the screen, but next to the heater, terminal, or in
 
 Heat transfers in three main ways:
 
-![Three mechanisms of heat transfer: conduction, convection, and radiation](../../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
+![Three mechanisms of heat transfer: conduction, convection, and radiation](../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kettle-convection-conduction-radiation.png), P.wormer, CC BY-SA 3.0*
 

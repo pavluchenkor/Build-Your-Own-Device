@@ -98,7 +98,7 @@ A typical MOSFET module for Arduino/ESP32 cannot be used as a `110-230V AC` swit
 
 A heater cannot be designed as "controller turns it on - controller turns it off". You need multiple layers of protection.
 
-![Layers of safe heater control](../../../img/03-common-components/02-heater-safety-stack.svg)
+![Layers of safe heater control](../../img/03-common-components/02-heater-safety-stack.svg)
 
 Minimum logic:
 

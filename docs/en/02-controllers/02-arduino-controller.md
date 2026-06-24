@@ -81,7 +81,7 @@ An Arduino pin can light an LED through a resistor or provide a control signal. 
 
 Typical circuit:
 
-![Arduino Uno Rev3 with ATmega328P microcontroller](../../../img/02-controllers/02-arduino-uno-rev3.jpg)
+![Arduino Uno Rev3 with ATmega328P microcontroller](../../img/02-controllers/02-arduino-uno-rev3.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arduino_Uno_Rev3_with_Atmega328P.jpg), HonCode, CC0 Public Domain*
 

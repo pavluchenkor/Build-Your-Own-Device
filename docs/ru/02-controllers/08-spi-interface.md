@@ -32,7 +32,7 @@ SPI обычно быстрее I2C, но требует больше прово
 
 Схема с двумя устройствами:
 
-![SPI: основная операция обмена между главным и подчинённым устройством](../../../img/02-controllers/08-spi-basic-operation.png)
+![SPI: основная операция обмена между главным и подчинённым устройством](../../img/02-controllers/08-spi-basic-operation.png)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SPI_basic_operation,_single_Main_%26_Sub.svg), Em3rgent0rdr, CC0 Public Domain*
 

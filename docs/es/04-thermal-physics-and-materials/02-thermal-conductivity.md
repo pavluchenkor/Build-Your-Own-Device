@@ -40,7 +40,7 @@ La conclusión principal: el metal y el aislamiento no difieren por un factor de
 
 Un puente térmico es una vía a través de la cual el calor escapa más fácilmente que a través del resto de la estructura.
 
-![Puente térmico clásico a través de un recinto](../../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
+![Puente térmico clásico a través de un recinto](../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pont_thermique_classique.png), AmisDeLaThermique, CC BY-SA 3.0*
 

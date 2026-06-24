@@ -32,7 +32,7 @@ Un SPI típico utiliza:
 
 Diagrama con dos dispositivos:
 
-![SPI: operación básica de intercambio entre dispositivo maestro y esclavo](../../../img/02-controllers/08-spi-basic-operation.png)
+![SPI: operación básica de intercambio entre dispositivo maestro y esclavo](../../img/02-controllers/08-spi-basic-operation.png)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SPI_basic_operation,_single_Main_%26_Sub.svg), Em3rgent0rdr, CC0 Public Domain*
 

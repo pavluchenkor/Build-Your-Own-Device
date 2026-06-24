@@ -98,7 +98,7 @@ Arduino/ESP32 用の典型的な MOSFET モジュールは `110-230V AC` スイ�
 
 ヒーターは「制御器がそれをオンにする - 制御器がそれをオフにする」として設計することはできません。複数の保護層が必要です。
 
-![安全なヒーター制御のレイヤー](../../../img/03-common-components/02-heater-safety-stack.svg)
+![安全なヒーター制御のレイヤー](../../img/03-common-components/02-heater-safety-stack.svg)
 
 最小限のロジック:
 

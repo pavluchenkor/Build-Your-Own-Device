@@ -8,7 +8,7 @@ Un calentador por sí solo solo convierte potencia eléctrica en calor. El venti
 
 El mismo calentador de `100 W` puede funcionar completamente diferente.
 
-![Celdas de convección: el aire cálido sube, el aire frío baja](../../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
+![Celdas de convección: el aire cálido sube, el aire frío baja](../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Convection_cells.svg), McSush, CC BY-SA 3.0*
 

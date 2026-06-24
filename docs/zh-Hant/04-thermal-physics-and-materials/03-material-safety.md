@@ -83,7 +83,7 @@ PIR/聚異氰脲酸酯在個別產品中可能有更高的允許範圍，但這�
 
 對於加熱的室室，通常更好地考慮不是「牆材料」而是層。
 
-![靠近熱的材料層示例](../../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
+![靠近熱的材料層示例](../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
 
 更合理的邏輯示例：
 

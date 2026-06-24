@@ -40,7 +40,7 @@
 
 熱橋は、熱が構造の他の部分より簡単に逃げるパスです。
 
-![エンクロージャを通る古典的な熱橋](../../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
+![エンクロージャを通る古典的な熱橋](../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
 
 *出典：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pont_thermique_classique.png)、AmisDeLaThermique、CC BY-SA 3.0*
 

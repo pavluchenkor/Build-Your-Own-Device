@@ -83,7 +83,7 @@ PIR/polyiso may have a higher permissible range in individual products, but this
 
 For a heated chamber, it is often better to think not of a "wall material" but of layers.
 
-![Example of material layers next to heat](../../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
+![Example of material layers next to heat](../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
 
 Example of more sound logic:
 

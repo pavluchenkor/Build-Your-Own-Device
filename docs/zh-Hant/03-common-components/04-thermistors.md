@@ -41,7 +41,7 @@
 
 溫度計通常透過帶上拉電阻的分壓器連接到類比輸入。控制器測量電壓，將其轉換為電阻，然後使用查詢表或公式獲取溫度。
 
-![用於溫度測量的溫度計分壓器](../../../img/03-common-components/04-thermistor-voltage-divider.svg)
+![用於溫度測量的溫度計分壓器](../../img/03-common-components/04-thermistor-voltage-divider.svg)
 
 *來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Thermistor_potential_divider.svg), Sjlegg, Public Domain*
 

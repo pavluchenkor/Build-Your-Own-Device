@@ -99,7 +99,7 @@ P = U * I
 I = P / U
 ```
 
-![オームの法則：電圧源、電流、および抵抗を備えた回路](../../../img/01-electronics-basics/01-ohms-law-circuit.svg)
+![オームの法則：電圧源、電流、および抵抗を備えた回路](../../img/01-electronics-basics/01-ohms-law-circuit.svg)
 
 *出典：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ohm%27s_Law_with_Voltage_source_TeX.svg)、GorillaWarfare、CC0 Public Domain*
 

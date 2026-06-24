@@ -44,7 +44,7 @@ Wenn Sie die Last direkt mit GPIO verbinden, können Sie den Controller beschäd
 
 Die häufigste Variante für N-Kanal-MOSFET-Modul ist die Niederseitige Umschaltung, d.h. Schalten über die Minuslinie.
 
-![N-Kanal-MOSFET im Niederseitige-Umschaltung-Modus](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![N-Kanal-MOSFET im Niederseitige-Umschaltung-Modus](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 

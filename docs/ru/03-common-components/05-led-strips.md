@@ -105,7 +105,7 @@ GPIO контроллера - это сигнальный выход, а не и
 
 Для белой `12V` или `24V` ленты часто используют low-side MOSFET: плюс ленты подключён к плюсу питания, а минус ленты коммутируется MOSFET-модулем.
 
-![Крупный план LED-ленты с SMD-диодами](../../../img/03-common-components/05-led-strip-closeup.jpg)
+![Крупный план LED-ленты с SMD-диодами](../../img/03-common-components/05-led-strip-closeup.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:LED_strip_closeup.jpg), Akbermamps, CC BY 4.0*
 

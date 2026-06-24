@@ -98,7 +98,7 @@ Arduino/ESP32 的典型 MOSFET 模組不能用作 `110-230V AC` 開關。如果�
 
 加熱器無法設計為「控制器開啟 - 控制器關閉」。你需要多層保護。
 
-![安全加熱器控制的層](../../../img/03-common-components/02-heater-safety-stack.svg)
+![安全加熱器控制的層](../../img/03-common-components/02-heater-safety-stack.svg)
 
 最小邏輯：
 

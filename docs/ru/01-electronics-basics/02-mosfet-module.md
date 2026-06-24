@@ -44,7 +44,7 @@ GPIO может управлять:
 
 Самый частый вариант для N-channel MOSFET-модуля - low-side switching, то есть коммутация по минусу.
 
-![N-channel MOSFET в режиме переключения (low-side)](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![N-channel MOSFET в режиме переключения (low-side)](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 

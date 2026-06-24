@@ -36,7 +36,7 @@ You cannot guess firmware settings. For Klipper, the microcontroller type, bootl
 
 Different boards flash differently:
 
-![Main paths for flashing the controller](../../../img/02-controllers/11-controller-flashing-paths.svg)
+![Main paths for flashing the controller](../../img/02-controllers/11-controller-flashing-paths.svg)
 
 Common variants:
 

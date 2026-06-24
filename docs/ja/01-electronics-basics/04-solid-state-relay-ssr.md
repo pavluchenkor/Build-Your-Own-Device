@@ -71,7 +71,7 @@ Output: 24-380V AC
 
 SSRは通常、負荷の電力ラインの断裂に配置されます。コントローラはSSR入力にのみ接続し、商用回路はSSR出力を通じます。
 
-![ソリッドステートリレーSSRの内部構造](../../../img/01-electronics-basics/04-ssr-internal-structure.png)
+![ソリッドステートリレーSSRの内部構造](../../img/01-electronics-basics/04-ssr-internal-structure.png)
 
 *出典：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SSR.png)、Thomas Verdyck、CC BY-SA 3.0*
 

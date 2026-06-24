@@ -32,7 +32,7 @@ USB-UART 轉接器適用於以下情況：
 
 接線圖：
 
-![基於 CH340T 晶片的 USB-UART 轉接器](../../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
+![基於 CH340T 晶片的 USB-UART 轉接器](../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
 
 *來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:15938_-_USBtoSerial_1.jpg)，SparkFun Electronics，CC BY 2.0*
 

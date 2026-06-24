@@ -40,7 +40,7 @@ Přístup přes TRIAC není "lepší" a není "jednodušší". Je to jiný kompr
 
 Typická bezpečná architektura vypadá takto:
 
-![Obvod AC dimeru s TRIAC](../../../img/01-electronics-basics/03-triac-dimmer-circuit.svg)
+![Obvod AC dimeru s TRIAC](../../img/01-electronics-basics/03-triac-dimmer-circuit.svg)
 
 *Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:TRIAC_based_dimmer_circuit.svg), Osbertjoel, CC BY-SA 4.0*
 

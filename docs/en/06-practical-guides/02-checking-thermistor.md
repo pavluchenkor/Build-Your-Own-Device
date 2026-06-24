@@ -55,7 +55,7 @@ Then:
 4. Wait for the reading to stabilize.
 5. Record the value.
 
-![Digital multimeter for measuring thermistor resistance](../../../img/05-tools/02-digital-multimeter.jpg)
+![Digital multimeter for measuring thermistor resistance](../../img/05-tools/02-digital-multimeter.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 

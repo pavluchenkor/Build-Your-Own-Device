@@ -71,7 +71,7 @@ Output: 24-380V AC
 
 SSR通常放在负荷电源线的断裂处。控制器仅连接到SSR输入，而商用电路通过SSR输出。
 
-![固态继电器SSR的内部结构](../../../img/01-electronics-basics/04-ssr-internal-structure.png)
+![固态继电器SSR的内部结构](../../img/01-electronics-basics/04-ssr-internal-structure.png)
 
 *来源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SSR.png)、Thomas Verdyck、CC BY-SA 3.0*
 

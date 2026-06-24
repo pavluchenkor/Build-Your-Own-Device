@@ -55,7 +55,7 @@ Puis:
 4. Attendre que la lecture se stabilise.
 5. Enregistrer la valeur.
 
-![Multimètre numérique pour mesurer la résistance de thermistance](../../../img/05-tools/02-digital-multimeter.jpg)
+![Multimètre numérique pour mesurer la résistance de thermistance](../../img/05-tools/02-digital-multimeter.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Électricien à la retraite, CC0 Domaine public*
 

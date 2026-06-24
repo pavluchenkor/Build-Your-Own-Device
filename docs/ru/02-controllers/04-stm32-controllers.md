@@ -60,7 +60,7 @@ STM32 - один из главных путей для Klipper MCU.
 
 Типовая архитектура такая:
 
-![Платы Nucleo для STM8 и STM32 от STMicroelectronics](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![Платы Nucleo для STM8 и STM32 от STMicroelectronics](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nucleo-board.jpg), Avandalen, CC BY-SA 4.0*
 

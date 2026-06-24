@@ -41,7 +41,7 @@ Die Phrase "100K-Thermistor" reicht also nicht immer aus. Für die Firmware ist 
 
 Ein Thermistor wird normalerweise über einen Spannungsteiler mit Pullup-Widerstand an einen analogen Eingang angeschlossen. Der Regler misst die Spannung, konvertiert sie in Widerstand und verwendet dann eine Nachschlagetabelle oder Formel, um die Temperatur zu erhalten.
 
-![Spannungsteiler mit Thermistor zur Temperaturmessung](../../../img/03-common-components/04-thermistor-voltage-divider.svg)
+![Spannungsteiler mit Thermistor zur Temperaturmessung](../../img/03-common-components/04-thermistor-voltage-divider.svg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Thermistor_potential_divider.svg), Sjlegg, Public Domain*
 

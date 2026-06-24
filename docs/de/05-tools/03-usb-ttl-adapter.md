@@ -63,7 +63,7 @@ Der Sender eines Geräts muss mit dem Empfänger des anderen verbunden sein.
 
 Wenn Sie `TX` mit `TX` verbinden, funktioniert Kommunikation normalerweise nicht.
 
-![Kreuzverbundene TX/RX in UART-Verbindung](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![Kreuzverbundene TX/RX in UART-Verbindung](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *Quelle: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 

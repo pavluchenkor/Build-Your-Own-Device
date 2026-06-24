@@ -32,7 +32,7 @@ USB-UART 适配器适用于：
 
 接线图：
 
-![CH340T 芯片 USB-UART 适配器](../../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
+![CH340T 芯片 USB-UART 适配器](../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
 
 *来源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:15938_-_USBtoSerial_1.jpg)，SparkFun Electronics，CC BY 2.0*
 

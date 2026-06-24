@@ -83,7 +83,7 @@ PIR/poliiso pode ter um intervalo permissível mais alto em produtos individuais
 
 Para uma câmara aquecida, é frequentemente melhor pensar não em "material de parede" mas em camadas.
 
-![Exemplo de camadas de material perto de calor](../../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
+![Exemplo de camadas de material perto de calor](../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
 
 Exemplo de lógica mais sólida:
 

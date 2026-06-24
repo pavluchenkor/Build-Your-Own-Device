@@ -50,7 +50,7 @@ Procedure:
 
 If a minus sign appears before the number on the display, the probes are swapped. This is useful: you can determine polarity this way.
 
-![Digital multimeter with probes](../../../img/05-tools/02-digital-multimeter.jpg)
+![Digital multimeter with probes](../../img/05-tools/02-digital-multimeter.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 

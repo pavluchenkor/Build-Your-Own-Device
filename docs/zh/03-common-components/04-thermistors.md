@@ -41,7 +41,7 @@
 
 热敏电阻通常通过带上拉电阻的分压器连接到模拟输入。控制器测量电压，将其转换为电阻，然后使用查找表或公式获得温度。
 
-![用热敏电阻分压器进行温度测量](../../../img/03-common-components/04-thermistor-voltage-divider.svg)
+![用热敏电阻分压器进行温度测量](../../img/03-common-components/04-thermistor-voltage-divider.svg)
 
 *来源: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Thermistor_potential_divider.svg), Sjlegg, Public Domain*
 

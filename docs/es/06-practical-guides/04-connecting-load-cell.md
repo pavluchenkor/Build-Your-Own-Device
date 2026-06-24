@@ -36,7 +36,7 @@ HX711 generalmente tiene dos lados:
 - entrada de célula de carga: `E+`, `E-`, `A+`, `A-` o similar;
 - conexión al controlador: `VCC`, `GND`, `DT`/`DOUT`, `SCK`/`CLK`.
 
-![Diagrama de conexión de HX711 y célula de carga](../../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
+![Diagrama de conexión de HX711 y célula de carga](../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
 
 *Fuente: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/load-cell-amplifier-hx711-breakout-hookup-guide/all), CC BY-SA 4.0*
 

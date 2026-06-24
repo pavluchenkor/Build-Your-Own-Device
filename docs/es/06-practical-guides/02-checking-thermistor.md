@@ -55,7 +55,7 @@ Luego:
 4. Espere a que la lectura se estabilice.
 5. Registre el valor.
 
-![Multímetro digital para medir la resistencia de termistancia](../../../img/05-tools/02-digital-multimeter.jpg)
+![Multímetro digital para medir la resistencia de termistancia](../../img/05-tools/02-digital-multimeter.jpg)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Electricista jubilado, CC0 Dominio público*
 

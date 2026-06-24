@@ -56,7 +56,7 @@ RP2040 - хороший кандидат для дополнительной MCU
 
 Типовая схема:
 
-![Raspberry Pi Pico с чипом RP2040](../../../img/02-controllers/03-rp2040-pico-photo.jpg)
+![Raspberry Pi Pico с чипом RP2040](../../img/02-controllers/03-rp2040-pico-photo.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Raspberry_Pi_Pico_oblique.jpg), Phiarc, CC BY-SA 4.0*
 

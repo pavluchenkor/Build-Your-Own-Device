@@ -63,7 +63,7 @@ adapter GND -> board GND
 
 `TX` を `TX` に接続した場合、通信は通常機能しません。
 
-![UART接続におけるクロス接続されたTX/RX](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![UART接続におけるクロス接続されたTX/RX](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *出典: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all)、CC BY-SA 4.0*
 

@@ -8,7 +8,7 @@
 
 相同的 `100 W` 加熱器可以完全不同的工作。
 
-![對流單元：溫暖空氣上升，冷空氣下降](../../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
+![對流單元：溫暖空氣上升，冷空氣下降](../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
 
 *來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Convection_cells.svg), McSush, CC BY-SA 3.0*
 

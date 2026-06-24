@@ -57,7 +57,7 @@ SPI 模組通常需要更多線：
 
 I2C 線路更簡單，對狀態、溫度和簡單菜單通常足夠。SPI 更快，如果屏幕經常重繪會更好，但對於小狀態顯示，這很少至關重要。
 
-![將 I2C OLED 顯示器連接到控制器](../../../img/03-common-components/08-oled-i2c-wiring.jpg)
+![將 I2C OLED 顯示器連接到控制器](../../img/03-common-components/08-oled-i2c-wiring.jpg)
 
 *來源：[Adafruit Learning System](https://learn.adafruit.com/adafruit-128x64-oled-featherwing/), CC BY-SA 3.0*
 

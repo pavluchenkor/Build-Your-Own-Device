@@ -34,7 +34,7 @@ The correct logic is:
 - the servo is powered by a 5V/6V source that can handle its current;
 - the controller ground and servo power ground are connected together.
 
-![Servo wire color code](../../../img/03-common-components/06-servo-color-code.jpg)
+![Servo wire color code](../../img/03-common-components/06-servo-color-code.jpg)
 
 *Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/all), CC BY-SA 4.0*
 

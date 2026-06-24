@@ -30,7 +30,7 @@ I2C モジュールは通常 4 つの接点を持ちます:
 
 複数のデバイスを持つ回路は次のようになります:
 
-![I2C バス: 1 つのマスターと 3 つのデバイス (共通 SDA/SCL)](../../../img/02-controllers/07-i2c-bus-topology.svg)
+![I2C バス: 1 つのマスターと 3 つのデバイス (共通 SDA/SCL)](../../img/02-controllers/07-i2c-bus-topology.svg)
 
 *ソース: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:I2C.svg), Cburnett, CC BY-SA 3.0*
 

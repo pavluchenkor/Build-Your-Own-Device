@@ -4,13 +4,13 @@ Un oscilloscope montre comment un signal change au fil du temps.
 
 Un multimètre peut afficher « environ 3.3V » ou « il y a de la fréquence ». Un oscilloscope montre la forme du signal : impulsions, fronts, affaissement, bruit, rebond, paquets UART, PWM.
 
-![Écran d'un oscilloscope numérique](../../../img/05-tools/07-digital-oscilloscope.jpg)
+![Écran d'un oscilloscope numérique](../../img/05-tools/07-digital-oscilloscope.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Digital_oscilloscope.jpg), premek.v, Public Domain*
 
 Un signal PWM sur l'écran d'oscilloscope ressemble à ceci :
 
-![Animation de PWM : changement du cycle de travail et forme d'onde du signal](../../../img/05-tools/07-pwm-signal-waveform.gif)
+![Animation de PWM : changement du cycle de travail et forme d'onde du signal](../../img/05-tools/07-pwm-signal-waveform.gif)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pwm.gif), Mik81, CC0 Public Domain*
 

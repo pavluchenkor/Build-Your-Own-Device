@@ -72,7 +72,7 @@ Colors are not guaranteed. If there's a technical description of the specific ce
 
 A load cell must deform exactly as the manufacturer intended. If the load goes around the working zone, the cell will show unstable readings or almost nothing.
 
-![Miniature S-beam load cell](../../../img/03-common-components/07-miniature-load-cell.jpg)
+![Miniature S-beam load cell](../../img/03-common-components/07-miniature-load-cell.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Miniature_S-beam_load_cell.jpg), FUTEK Advanced Sensor Technology, CC BY-SA 4.0*
 

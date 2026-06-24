@@ -81,7 +81,7 @@ Une broche Arduino peut allumer une LED via une résistance ou fournir un signal
 
 Circuit typique :
 
-![Arduino Uno Rev3 avec microcontrôleur ATmega328P](../../../img/02-controllers/02-arduino-uno-rev3.jpg)
+![Arduino Uno Rev3 avec microcontrôleur ATmega328P](../../img/02-controllers/02-arduino-uno-rev3.jpg)
 
 *Source : [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arduino_Uno_Rev3_with_Atmega328P.jpg), HonCode, CC0 Domaine public*
 

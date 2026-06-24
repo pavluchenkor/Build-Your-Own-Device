@@ -28,7 +28,7 @@ UART 很方便，因为它需要很少的电线，非常适合简单的文本、
 
 一个设备的 TX 连接到另一个设备的 RX：
 
-![UART 连接中的交叉连接 TX/RX 和共同 GND](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![UART 连接中的交叉连接 TX/RX 和共同 GND](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *来源：[SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 

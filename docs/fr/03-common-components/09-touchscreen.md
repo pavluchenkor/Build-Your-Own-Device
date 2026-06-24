@@ -24,7 +24,7 @@ Avant d'acheter, répondez à la question principale : où vit l'interface utili
 
 Il y a plusieurs classes d'écran différentes :
 
-![Classes d'écrans tactiles et qui dessine l'interface](../../../img/03-common-components/09-touchscreen-classes.svg)
+![Classes d'écrans tactiles et qui dessine l'interface](../../img/03-common-components/09-touchscreen-classes.svg)
 
 TFT brut est un simple écran avec un contrôleur comme `ILI9341`, `ILI9488`, `ST7789`, plus un contrôleur tactile séparé comme `XPT2046` ou `FT5x06`. Votre microcontrôleur ou micrologiciel dessine l'interface. C'est flexible mais nécessite du code, de la mémoire, des pilotes et un étalonnage.
 

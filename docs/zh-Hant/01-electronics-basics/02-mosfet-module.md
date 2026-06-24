@@ -44,7 +44,7 @@ GPIO可以控制：
 
 N-channel MOSFET模組最常見的變體是低側開關，即通過負線開關。
 
-![低側開關模式下的N-channel MOSFET](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![低側開關模式下的N-channel MOSFET](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG)、KjellElec、CC BY-SA 4.0*
 

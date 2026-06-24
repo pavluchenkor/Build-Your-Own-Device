@@ -99,7 +99,7 @@ P = U * I
 I = P / U
 ```
 
-![歐姆定律：帶電源、電流和電阻的電路](../../../img/01-electronics-basics/01-ohms-law-circuit.svg)
+![歐姆定律：帶電源、電流和電阻的電路](../../img/01-electronics-basics/01-ohms-law-circuit.svg)
 
 *來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ohm%27s_Law_with_Voltage_source_TeX.svg)、GorillaWarfare、CC0 Public Domain*
 

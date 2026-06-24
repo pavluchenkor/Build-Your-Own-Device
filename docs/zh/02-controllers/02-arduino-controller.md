@@ -81,7 +81,7 @@ Arduino 引脚可以通过电阻点亮 LED 或提供控制信号。它不应直�
 
 典型电路：
 
-![带 ATmega328P 微控制器的 Arduino Uno Rev3](../../../img/02-controllers/02-arduino-uno-rev3.jpg)
+![带 ATmega328P 微控制器的 Arduino Uno Rev3](../../img/02-controllers/02-arduino-uno-rev3.jpg)
 
 *来源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arduino_Uno_Rev3_with_Atmega328P.jpg)、HonCode、CC0 Public Domain*
 

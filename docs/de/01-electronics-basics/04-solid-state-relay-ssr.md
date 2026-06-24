@@ -71,7 +71,7 @@ Das bedeutet:
 
 SSR wird normalerweise in der Stromleitung der Last unterbrochen. Der Controller verbindet sich nur mit dem SSR-Eingang, während der Stromkreis der Last durch den SSR-Ausgang geht.
 
-![Interne Struktur des Halbleiterrelais SSR](../../../img/01-electronics-basics/04-ssr-internal-structure.png)
+![Interne Struktur des Halbleiterrelais SSR](../../img/01-electronics-basics/04-ssr-internal-structure.png)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SSR.png), Thomas Verdyck, CC BY-SA 3.0*
 

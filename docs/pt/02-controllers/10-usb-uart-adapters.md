@@ -32,7 +32,7 @@ Typical contacts:
 
 Connection diagram:
 
-![USB-UART adapter on CH340T chip](../../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
+![USB-UART adapter on CH340T chip](../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:15938_-_USBtoSerial_1.jpg), SparkFun Electronics, CC BY 2.0*
 

@@ -30,7 +30,7 @@ Un module I2C dispose généralement de 4 contacts :
 
 Un circuit avec plusieurs appareils ressemble à ceci :
 
-![Bus I2C : un maître et trois appareils sur SDA/SCL communs](../../../img/02-controllers/07-i2c-bus-topology.svg)
+![Bus I2C : un maître et trois appareils sur SDA/SCL communs](../../img/02-controllers/07-i2c-bus-topology.svg)
 
 *Source : [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:I2C.svg), Cburnett, CC BY-SA 3.0*
 

@@ -57,7 +57,7 @@ SPI 模块通常需要更多线路：
 
 I2C 更简单接线，通常足以显示状态、温度和简单菜单。SPI 更快，如果屏幕经常重绘会更好，但对于小型状态显示，这很少是关键。
 
-![将 I2C OLED 显示屏连接到控制器](../../../img/03-common-components/08-oled-i2c-wiring.jpg)
+![将 I2C OLED 显示屏连接到控制器](../../img/03-common-components/08-oled-i2c-wiring.jpg)
 
 *来源: [Adafruit Learning System](https://learn.adafruit.com/adafruit-128x64-oled-featherwing/), CC BY-SA 3.0*
 

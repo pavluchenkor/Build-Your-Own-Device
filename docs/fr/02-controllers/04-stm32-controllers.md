@@ -60,7 +60,7 @@ STM32 est l'un des principaux chemins pour un MCU Klipper.
 
 Architecture typique :
 
-![Cartes Nucleo pour STM8 et STM32 de STMicroelectronics](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![Cartes Nucleo pour STM8 et STM32 de STMicroelectronics](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
 *Source : [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nucleo-board.jpg), Avandalen, CC BY-SA 4.0*
 

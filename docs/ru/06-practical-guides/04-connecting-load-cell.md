@@ -36,7 +36,7 @@ HX711 подключается к контроллеру цифровыми пр
 - вход от тензодатчика: `E+`, `E-`, `A+`, `A-` или похожие обозначения;
 - подключение к контроллеру: `VCC`, `GND`, `DT`/`DOUT`, `SCK`/`CLK`.
 
-![Схема подключения HX711 и тензодатчика](../../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
+![Схема подключения HX711 и тензодатчика](../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
 
 *Источник: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/load-cell-amplifier-hx711-breakout-hookup-guide/all), CC BY-SA 4.0*
 

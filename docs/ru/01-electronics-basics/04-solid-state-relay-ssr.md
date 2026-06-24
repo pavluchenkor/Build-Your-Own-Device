@@ -71,7 +71,7 @@ Output: 24-380V AC
 
 SSR обычно ставят в разрыв силовой линии нагрузки. Контроллер подключается только к входу SSR, а сетевая цепь проходит через выход SSR.
 
-![Внутренняя структура твердотельного реле SSR](../../../img/01-electronics-basics/04-ssr-internal-structure.png)
+![Внутренняя структура твердотельного реле SSR](../../img/01-electronics-basics/04-ssr-internal-structure.png)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SSR.png), Thomas Verdyck, CC BY-SA 3.0*
 

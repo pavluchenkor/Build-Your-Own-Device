@@ -63,7 +63,7 @@ The transmitter of one device must connect to the receiver of the other.
 
 If you connect `TX` to `TX`, communication usually won't work.
 
-![Cross-connected TX/RX in UART connection](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![Cross-connected TX/RX in UART connection](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 

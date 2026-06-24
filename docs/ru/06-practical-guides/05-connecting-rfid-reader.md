@@ -48,7 +48,7 @@ RFID/NFC-считыватель позволяет читать карту, ме
 - `RST` - reset;
 - `IRQ` - interrupt, часто не используется в простых проектах.
 
-![Модуль RFID RC522 (MFRC522) для чтения карт 13.56 МГц](../../../img/06-practical-guides/05-rfid-rc522-module.jpg)
+![Модуль RFID RC522 (MFRC522) для чтения карт 13.56 МГц](../../img/06-practical-guides/05-rfid-rc522-module.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:RFID-RC522_photo.jpg), Giacomo Alessandroni, CC BY-SA 4.0*
 

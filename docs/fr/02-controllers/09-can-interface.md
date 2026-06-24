@@ -31,7 +31,7 @@ Le signal est transmis comme la différence entre `CANH` et `CANL`. C'est pourqu
 
 Schéma simplifié :
 
-![Bus CAN haute vitesse ISO 11898-2 avec plusieurs nœuds et terminateurs](../../../img/02-controllers/09-can-iso11898-2-network.png)
+![Bus CAN haute vitesse ISO 11898-2 avec plusieurs nœuds et terminateurs](../../img/02-controllers/09-can-iso11898-2-network.png)
 
 *Source : [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:CAN_ISO11898-2_Network.png), EE JRW, CC BY-SA 4.0*
 

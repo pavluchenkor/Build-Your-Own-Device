@@ -8,7 +8,7 @@
 
 同じ`100 W`ヒータはまったく異なる方法で動作することができます。
 
-![対流セル：温かい空気は上昇し、冷たい空気は落ちる](../../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
+![対流セル：温かい空気は上昇し、冷たい空気は落ちる](../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
 
 *出典：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Convection_cells.svg)、McSush、CC BY-SA 3.0*
 

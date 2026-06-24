@@ -45,7 +45,7 @@ STM32ボードは通常、通常の電源またはUSBから電力を供給され
 
 接続する前に、特定のST-Linkとボードのドキュメンテーションを確認してください。
 
-![STM32用のNucleauボードに組み込まれたST-Linkデバッガー](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![STM32用のNucleauボードに組み込まれたST-Linkデバッガー](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
 *出典: [ウィキメディア・コモンズ](https://commons.wikimedia.org/wiki/File:STM32_Nucleo_boards.jpg)、Avandalen、CC BY-SA 4.0*
 

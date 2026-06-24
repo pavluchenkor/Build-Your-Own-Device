@@ -24,7 +24,7 @@ ESP32 is good when the device should live separately from the printer and exchan
 
 ESP32 does not power loads directly. It outputs control signals, and separate modules do the power work.
 
-![ESP32 development board with GPIO pins](../../../img/02-controllers/01-esp32-dev-board.jpg)
+![ESP32 development board with GPIO pins](../../img/02-controllers/01-esp32-dev-board.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:ESP32_Dev_Board.jpg), Edwiyanto, CC BY-SA 4.0*
 

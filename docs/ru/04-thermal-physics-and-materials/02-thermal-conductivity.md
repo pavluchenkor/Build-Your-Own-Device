@@ -40,7 +40,7 @@
 
 Тепловой мост - это путь, по которому тепло уходит легче, чем через остальную конструкцию.
 
-![Классический тепловой мост через ограждающую конструкцию](../../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
+![Классический тепловой мост через ограждающую конструкцию](../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pont_thermique_classique.png), AmisDeLaThermique, CC BY-SA 3.0*
 

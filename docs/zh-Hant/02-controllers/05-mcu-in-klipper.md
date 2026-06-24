@@ -25,7 +25,7 @@ MCU 不会"像整个打印机一样思考"。它执行主机发送的低级命�
 
 简化方案：
 
-![Klipper 主机和多个 MCU](../../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
+![Klipper 主机和多个 MCU](../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
 
 主机通过 USB、UART 或 CAN 与 MCU 通信。在 Klipper 配置中，每个 MCU 获得自己的部分，该 MCU 的引脚然后在风扇、传感器、加热器、输出和其他模块设置中使用。
 

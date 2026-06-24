@@ -40,7 +40,7 @@ Die Haupterkenntnis: Metall und Isolierung unterscheiden sich nicht um einen Fak
 
 Eine Wärmebrücke ist ein Pfad, durch den Wärme leichter entweicht als durch den Rest der Struktur.
 
-![Klassische Wärmebrücke durch ein Gehäuse](../../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
+![Klassische Wärmebrücke durch ein Gehäuse](../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pont_thermique_classique.png), AmisDeLaThermique, CC BY-SA 3.0*
 

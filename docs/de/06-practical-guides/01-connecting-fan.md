@@ -41,7 +41,7 @@ Die korrekte Logik:
 - der Controller verwaltet nur Ein/Aus oder Geschwindigkeit;
 - wenn ein externes MOSFET-Modul verwendet wird, müssen die Stromversorgung `GND` und Controller `GND` gemeinsam sein.
 
-![N-Kanal-MOSFET im Schaltmodus (low-side) zur Laststeuerung](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![N-Kanal-MOSFET im Schaltmodus (low-side) zur Laststeuerung](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 

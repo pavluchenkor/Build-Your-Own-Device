@@ -36,7 +36,7 @@ The HX711 usually has two sides:
 - input from load cell: `E+`, `E-`, `A+`, `A-`, or similar;
 - connection to controller: `VCC`, `GND`, `DT`/`DOUT`, `SCK`/`CLK`.
 
-![HX711 and load cell connection diagram](../../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
+![HX711 and load cell connection diagram](../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
 
 *Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/load-cell-amplifier-hx711-breakout-hookup-guide/all), CC BY-SA 4.0*
 

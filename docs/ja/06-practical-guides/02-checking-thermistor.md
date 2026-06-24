@@ -55,7 +55,7 @@
 4. 読み取りが安定するまで待ちます。
 5. 値を記録します。
 
-![サーミスタ抵抗を測定するためのデジタルマルチメーター](../../../img/05-tools/02-digital-multimeter.jpg)
+![サーミスタ抵抗を測定するためのデジタルマルチメーター](../../img/05-tools/02-digital-multimeter.jpg)
 
 *出典: [ウィキメディア・コモンズ](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg)、引退した電気技師、CC0パブリックドメイン*
 

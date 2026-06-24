@@ -4,13 +4,13 @@
 
 万用表可以显示"约3.3V"或"有频率"。示波器显示信号形状：脉冲、边缘、下垂、噪声、弹跳、UART数据包、PWM。
 
-![Screen of a digital oscilloscope](../../../img/05-tools/07-digital-oscilloscope.jpg)
+![Screen of a digital oscilloscope](../../img/05-tools/07-digital-oscilloscope.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Digital_oscilloscope.jpg), premek.v, Public Domain*
 
 A PWM signal on the oscilloscope screen looks like this:
 
-![Animation of PWM: duty cycle change and signal waveform](../../../img/05-tools/07-pwm-signal-waveform.gif)
+![Animation of PWM: duty cycle change and signal waveform](../../img/05-tools/07-pwm-signal-waveform.gif)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pwm.gif), Mik81, CC0 Public Domain*
 

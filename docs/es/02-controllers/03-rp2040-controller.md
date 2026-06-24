@@ -56,7 +56,7 @@ RP2040 es un buen candidato como MCU adicional en Klipper.
 
 Esquema típico:
 
-![Raspberry Pi Pico con chip RP2040](../../../img/02-controllers/03-rp2040-pico-photo.jpg)
+![Raspberry Pi Pico con chip RP2040](../../img/02-controllers/03-rp2040-pico-photo.jpg)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Raspberry_Pi_Pico_oblique.jpg), Phiarc, CC BY-SA 4.0*
 

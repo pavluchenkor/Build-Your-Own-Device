@@ -36,7 +36,7 @@
 
 異なるボードは異なる方法でフラッシュされます:
 
-![コントローラーをフラッシュするメインパス](../../../img/02-controllers/11-controller-flashing-paths.svg)
+![コントローラーをフラッシュするメインパス](../../img/02-controllers/11-controller-flashing-paths.svg)
 
 一般的なバリエーション:
 

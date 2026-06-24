@@ -25,7 +25,7 @@ Un MCU no "piensa como la impresora completa". Ejecuta comandos de bajo nivel en
 
 Esquema simplificado:
 
-![Host de Klipper y múltiples MCU](../../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
+![Host de Klipper y múltiples MCU](../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
 
 El host se comunica con el MCU a través de USB, UART o CAN. En la configuración de Klipper, cada MCU obtiene su propia sección, y los pines de ese MCU se usan en ventilador, sensor, calentador, salida y otras configuraciones de módulo.
 

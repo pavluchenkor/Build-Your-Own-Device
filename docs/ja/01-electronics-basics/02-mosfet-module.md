@@ -44,7 +44,7 @@ GPIOは制御できます：
 
 N-channelMOSFETモジュールの最も一般的なバリアントはロサイドスイッチング、つまり負のラインを通じたスイッチングです。
 
-![ロサイドスイッチングモードのN-channel MOSFET](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![ロサイドスイッチングモードのN-channel MOSFET](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *出典：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG)、KjellElec、CC BY-SA 4.0*
 

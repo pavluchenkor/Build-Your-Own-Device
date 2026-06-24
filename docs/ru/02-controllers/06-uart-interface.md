@@ -28,7 +28,7 @@ UART удобен тем, что требует мало проводов и х�
 
 TX одного устройства подключают к RX другого:
 
-![Перекрёстное подключение TX/RX и общий GND при UART-соединении](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![Перекрёстное подключение TX/RX и общий GND при UART-соединении](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *Источник: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 

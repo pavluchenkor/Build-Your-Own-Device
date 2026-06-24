@@ -41,7 +41,7 @@ iDryerのようなデバイスでは、ファンは通常、空気循環、ヒ�
 - コントローラーはオン/オフのみまたは速度を管理します
 - 外部MOSFETモジュールを使用する場合、電源 `GND` とコントローラー `GND` は共通である必要があります
 
-![スイッチング モード (ロー サイド) での Nチャネル MOSFET による負荷制御](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![スイッチング モード (ロー サイド) での Nチャネル MOSFET による負荷制御](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *出典: [ウィキメディア・コモンズ](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG)、KjellElec、CC BY-SA 4.0*
 

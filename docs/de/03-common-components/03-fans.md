@@ -56,7 +56,7 @@ Für freie Zirkulation in einer Kammer ist ein Axiallüfter normalerweise bequem
 
 Lüfter unterscheiden sich oft in der Anzahl der Drähte.
 
-![3-poliger Stecker auf einem Computerlüfter](../../../img/03-common-components/03-fan-3pin-connector.jpg)
+![3-poliger Stecker auf einem Computerlüfter](../../img/03-common-components/03-fan-3pin-connector.jpg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Three-pin_connector_on_a_computer_fan.jpg), Dsimic, CC BY-SA 4.0*
 

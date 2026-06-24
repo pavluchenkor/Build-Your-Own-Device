@@ -34,7 +34,7 @@ La logique correcte est :
 - le servo est alimenté par une source 5V/6V qui peut gérer son courant ;
 - la masse du contrôleur et la masse de l'alimentation du servo sont connectées ensemble.
 
-![Code de couleur du fil du servo](../../../img/03-common-components/06-servo-color-code.jpg)
+![Code de couleur du fil du servo](../../img/03-common-components/06-servo-color-code.jpg)
 
 *Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/all), CC BY-SA 4.0*
 

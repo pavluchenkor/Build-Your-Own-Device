@@ -34,7 +34,7 @@ iDryerのようなデバイスでは、サーボはダンパーを開く、小�
 - サーボは、現在のサーボを処理できる5V/6V ソースから電力を供給されます
 - コントローラー接地とサーボ電力グラウンドが接続されます
 
-![サーボワイヤーカラーコード](../../../img/03-common-components/06-servo-color-code.jpg)
+![サーボワイヤーカラーコード](../../img/03-common-components/06-servo-color-code.jpg)
 
 *出典: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/all)、CC BY-SA 4.0*
 

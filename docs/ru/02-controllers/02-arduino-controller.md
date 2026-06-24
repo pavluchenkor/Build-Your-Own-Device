@@ -81,7 +81,7 @@ Arduino удобно использовать для:
 
 Типовая схема такая:
 
-![Arduino Uno Rev3 с микроконтроллером ATmega328P](../../../img/02-controllers/02-arduino-uno-rev3.jpg)
+![Arduino Uno Rev3 с микроконтроллером ATmega328P](../../img/02-controllers/02-arduino-uno-rev3.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arduino_Uno_Rev3_with_Atmega328P.jpg), HonCode, CC0 Public Domain*
 

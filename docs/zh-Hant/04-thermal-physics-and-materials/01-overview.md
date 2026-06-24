@@ -29,7 +29,7 @@
 
 熱以三種主要方式轉移：
 
-![熱轉移的三種機制：傳導、對流和輻射](../../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
+![熱轉移的三種機制：傳導、對流和輻射](../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
 
 *資料來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kettle-convection-conduction-radiation.png)、P.wormer、CC BY-SA 3.0*
 

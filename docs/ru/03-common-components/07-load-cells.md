@@ -72,7 +72,7 @@
 
 Тензодатчик должен деформироваться именно там и так, как задумал производитель. Если нагрузка идёт мимо рабочей зоны, датчик будет показывать нестабильно или почти ничего не покажет.
 
-![Миниатюрный S-образный тензодатчик](../../../img/03-common-components/07-miniature-load-cell.jpg)
+![Миниатюрный S-образный тензодатчик](../../img/03-common-components/07-miniature-load-cell.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Miniature_S-beam_load_cell.jpg), FUTEK Advanced Sensor Technology, CC BY-SA 4.0*
 

@@ -29,7 +29,7 @@
 
 Тепло передаётся тремя основными способами:
 
-![Три механизма теплопередачи: теплопроводность, конвекция и излучение](../../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
+![Три механизма теплопередачи: теплопроводность, конвекция и излучение](../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kettle-convection-conduction-radiation.png), P.wormer, CC BY-SA 3.0*
 

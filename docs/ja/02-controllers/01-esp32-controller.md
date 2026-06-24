@@ -24,7 +24,7 @@ ESP32は、デバイスがプリンタから独立して生活し、ネットワ
 
 ESP32は負荷に直接電力を供給しません。制御信号を出力し、別のモジュールが電力を行います。
 
-![GPIO ピン付き ESP32 開発ボード](../../../img/02-controllers/01-esp32-dev-board.jpg)
+![GPIO ピン付き ESP32 開発ボード](../../img/02-controllers/01-esp32-dev-board.jpg)
 
 *出典: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:ESP32_Dev_Board.jpg)、Edwiyanto、CC BY-SA 4.0*
 

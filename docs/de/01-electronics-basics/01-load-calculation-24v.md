@@ -99,7 +99,7 @@ Um den Strom zu finden:
 I = P / U
 ```
 
-![Ohmsches Gesetz: Schaltung mit Spannungsquelle, Strom und Widerstand](../../../img/01-electronics-basics/01-ohms-law-circuit.svg)
+![Ohmsches Gesetz: Schaltung mit Spannungsquelle, Strom und Widerstand](../../img/01-electronics-basics/01-ohms-law-circuit.svg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ohm%27s_Law_with_Voltage_source_TeX.svg), GorillaWarfare, CC0 Public Domain*
 

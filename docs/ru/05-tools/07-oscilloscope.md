@@ -4,13 +4,13 @@
 
 Мультиметр может показать "около 3.3V" или "есть частота". Осциллограф показывает форму сигнала: импульсы, фронты, просадки, шум, дребезг, UART-пакеты, PWM.
 
-![Экран цифрового осциллографа](../../../img/05-tools/07-digital-oscilloscope.jpg)
+![Экран цифрового осциллографа](../../img/05-tools/07-digital-oscilloscope.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Digital_oscilloscope.jpg), premek.v, Public Domain*
 
 PWM-сигнал на экране осциллографа выглядит так:
 
-![Анимация PWM: изменение скважности и форма сигнала](../../../img/05-tools/07-pwm-signal-waveform.gif)
+![Анимация PWM: изменение скважности и форма сигнала](../../img/05-tools/07-pwm-signal-waveform.gif)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pwm.gif), Mik81, CC0 Public Domain*
 

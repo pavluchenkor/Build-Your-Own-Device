@@ -71,7 +71,7 @@ Avant d'acheter, vérifiez les lignes `Input`, `Output`, `Load voltage`, `Load c
 
 SSR est généralement placé dans la rupture de la ligne de puissance de la charge. Le contrôleur se connecte uniquement à l'entrée SSR, tandis que le circuit de charge passe par la sortie SSR.
 
-![Structure interne du relais de semi-conducteurs SSR](../../../img/01-electronics-basics/04-ssr-internal-structure.png)
+![Structure interne du relais de semi-conducteurs SSR](../../img/01-electronics-basics/04-ssr-internal-structure.png)
 
 *Source : [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SSR.png), Thomas Verdyck, CC BY-SA 3.0*
 

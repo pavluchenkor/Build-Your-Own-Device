@@ -29,7 +29,7 @@ Un dispositivo puede mostrar `45°C` en la pantalla, pero al lado del calentador
 
 El calor se transfiere de tres formas principales:
 
-![Tres mecanismos de transferencia de calor: conducción, convección y radiación](../../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
+![Tres mecanismos de transferencia de calor: conducción, convección y radiación](../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kettle-convection-conduction-radiation.png), P.wormer, CC BY-SA 3.0*
 

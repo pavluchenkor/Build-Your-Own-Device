@@ -34,7 +34,7 @@ La lógica correcta es:
 - el servo es alimentado por una fuente de 5V/6V que puede manejar su corriente;
 - la tierra del controlador y la tierra de potencia del servo están conectadas juntas.
 
-![Código de color de cable de servo](../../../img/03-common-components/06-servo-color-code.jpg)
+![Código de color de cable de servo](../../img/03-common-components/06-servo-color-code.jpg)
 
 *Fuente: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/all), CC BY-SA 4.0*
 

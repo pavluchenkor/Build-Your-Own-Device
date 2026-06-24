@@ -105,7 +105,7 @@ Logique correcte :
 
 Pour une bande blanche `12V` ou `24V`, un MOSFET bas est souvent utilisé : le plus de la bande est connecté au plus d'alimentation, et le moins de la bande est commuté par le module MOSFET.
 
-![Gros plan d'une bande LED avec des diodes SMD](../../../img/03-common-components/05-led-strip-closeup.jpg)
+![Gros plan d'une bande LED avec des diodes SMD](../../img/03-common-components/05-led-strip-closeup.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:LED_strip_closeup.jpg), Akbermamps, CC BY 4.0*
 

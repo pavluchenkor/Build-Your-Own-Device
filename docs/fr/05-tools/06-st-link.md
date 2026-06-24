@@ -45,7 +45,7 @@ La carte STM32 est souvent alimentée depuis son alimentation normale ou USB.
 
 Avant de connecter, vérifiez la documentation pour votre ST-Link et carte spécifiques.
 
-![Cartes Nucleo pour STM32 avec débogueur ST-Link intégré](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![Cartes Nucleo pour STM32 avec débogueur ST-Link intégré](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:STM32_Nucleo_boards.jpg), Avandalen, CC BY-SA 4.0*
 

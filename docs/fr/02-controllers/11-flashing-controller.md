@@ -36,7 +36,7 @@ Vous ne pouvez pas deviner les paramètres du firmware. Pour Klipper, le type de
 
 Les différentes cartes flashent différemment :
 
-![Chemins principaux pour flasher le contrôleur](../../../img/02-controllers/11-controller-flashing-paths.svg)
+![Chemins principaux pour flasher le contrôleur](../../img/02-controllers/11-controller-flashing-paths.svg)
 
 Variantes courantes :
 

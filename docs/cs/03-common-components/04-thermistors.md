@@ -41,7 +41,7 @@ So the phrase "100K thermistor" is not always enough. For the firmware, a specif
 
 A thermistor is usually connected to an analog input through a voltage divider with a pull-up resistor. The controller measures voltage, converts it to resistance, then uses a lookup table or formula to get temperature.
 
-![Voltage divider with thermistor for temperature measurement](../../../img/03-common-components/04-thermistor-voltage-divider.svg)
+![Voltage divider with thermistor for temperature measurement](../../img/03-common-components/04-thermistor-voltage-divider.svg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Thermistor_potential_divider.svg), Sjlegg, Public Domain*
 

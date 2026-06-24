@@ -57,7 +57,7 @@ SPI モジュールは通常、より多くのラインが必要です:
 
 I2C はワイヤリングがより簡単で、通常、ステータス、温度、シンプルなメニューに十分です。SPI はより高速で、画面がしばしば再描画される場合に良いですが、小さなステータス表示では、これはめったに重要ではありません。
 
-![制御器への I2C OLED ディスプレイの接続](../../../img/03-common-components/08-oled-i2c-wiring.jpg)
+![制御器への I2C OLED ディスプレイの接続](../../img/03-common-components/08-oled-i2c-wiring.jpg)
 
 *出所: [Adafruit Learning System](https://learn.adafruit.com/adafruit-128x64-oled-featherwing/), CC BY-SA 3.0*
 

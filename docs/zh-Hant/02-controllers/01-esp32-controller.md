@@ -24,7 +24,7 @@ ESP32 是 Espressif 微控制器系列，具有 Wi-Fi、藍牙和一整套外設
 
 ESP32 不直接為負載供電。它輸出控制信號，單獨的模塊進行電源工作。
 
-![帶 GPIO 引腳的 ESP32 開發板](../../../img/02-controllers/01-esp32-dev-board.jpg)
+![帶 GPIO 引腳的 ESP32 開發板](../../img/02-controllers/01-esp32-dev-board.jpg)
 
 *來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:ESP32_Dev_Board.jpg)，Edwiyanto，CC BY-SA 4.0*
 

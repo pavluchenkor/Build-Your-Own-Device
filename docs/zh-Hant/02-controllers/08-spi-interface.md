@@ -32,7 +32,7 @@ SPI 通常比 I2C 更快，但需要更多線路和更仔細的腳位選擇。
 
 包含兩個設備的圖示：
 
-![SPI: 主設備和從設備之間的基本交換操作](../../../img/02-controllers/08-spi-basic-operation.png)
+![SPI: 主設備和從設備之間的基本交換操作](../../img/02-controllers/08-spi-basic-operation.png)
 
 *來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SPI_basic_operation,_single_Main_%26_Sub.svg), Em3rgent0rdr, CC0 Public Domain*
 

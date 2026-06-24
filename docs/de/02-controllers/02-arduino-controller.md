@@ -81,7 +81,7 @@ Ein Arduino-Pin kann eine LED über einen Widerstand ansteuern oder ein Steuersi
 
 Typische Schaltung:
 
-![Arduino Uno Rev3 mit ATmega328P-Mikrocontroller](../../../img/02-controllers/02-arduino-uno-rev3.jpg)
+![Arduino Uno Rev3 mit ATmega328P-Mikrocontroller](../../img/02-controllers/02-arduino-uno-rev3.jpg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arduino_Uno_Rev3_with_Atmega328P.jpg), HonCode, CC0 Public Domain*
 

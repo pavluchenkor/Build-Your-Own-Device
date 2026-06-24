@@ -30,7 +30,7 @@ I2C хорошо подходит для коротких соединений �
 
 Схема с несколькими устройствами выглядит так:
 
-![I2C-шина: один мастер и три устройства на общих SDA/SCL](../../../img/02-controllers/07-i2c-bus-topology.svg)
+![I2C-шина: один мастер и три устройства на общих SDA/SCL](../../img/02-controllers/07-i2c-bus-topology.svg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:I2C.svg), Cburnett, CC BY-SA 3.0*
 

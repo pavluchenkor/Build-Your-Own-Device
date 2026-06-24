@@ -98,7 +98,7 @@ Un módulo MOSFET típico para Arduino/ESP32 no puede usarse como interruptor `1
 
 Un calentador no puede ser diseñado como "controlador lo enciende - controlador lo apaga". Necesitas múltiples capas de protección.
 
-![Capas de control seguro del calentador](../../../img/03-common-components/02-heater-safety-stack.svg)
+![Capas de control seguro del calentador](../../img/03-common-components/02-heater-safety-stack.svg)
 
 Lógica mínima:
 

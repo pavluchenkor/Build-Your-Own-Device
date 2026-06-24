@@ -30,7 +30,7 @@ La señal se transmite como la diferencia entre `CANH` y `CANL`. Por eso CAN man
 
 Diagrama simplificado:
 
-![Bus CAN de alta velocidad ISO 11898-2 con múltiples nodos y terminadores](../../../img/02-controllers/09-can-iso11898-2-network.png)
+![Bus CAN de alta velocidad ISO 11898-2 con múltiples nodos y terminadores](../../img/02-controllers/09-can-iso11898-2-network.png)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:CAN_ISO11898-2_Network.png), EE JRW, CC BY-SA 4.0*
 

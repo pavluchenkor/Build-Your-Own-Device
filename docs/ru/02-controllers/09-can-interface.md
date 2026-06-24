@@ -30,7 +30,7 @@ CAN особенно полезен, когда узел находится да
 
 Упрощённая схема:
 
-![CAN-шина высокоскоростная ISO 11898-2 с несколькими узлами и терминаторами](../../../img/02-controllers/09-can-iso11898-2-network.png)
+![CAN-шина высокоскоростная ISO 11898-2 с несколькими узлами и терминаторами](../../img/02-controllers/09-can-iso11898-2-network.png)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:CAN_ISO11898-2_Network.png), EE JRW, CC BY-SA 4.0*
 

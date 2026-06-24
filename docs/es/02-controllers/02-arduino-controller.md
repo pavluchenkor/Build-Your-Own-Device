@@ -81,7 +81,7 @@ Un pin de Arduino puede encender un LED a través de una resistencia o proporcio
 
 Circuito típico:
 
-![Arduino Uno Rev3 con microcontrolador ATmega328P](../../../img/02-controllers/02-arduino-uno-rev3.jpg)
+![Arduino Uno Rev3 con microcontrolador ATmega328P](../../img/02-controllers/02-arduino-uno-rev3.jpg)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arduino_Uno_Rev3_with_Atmega328P.jpg), HonCode, CC0 Public Domain*
 

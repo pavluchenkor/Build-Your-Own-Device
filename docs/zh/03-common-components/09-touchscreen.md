@@ -24,7 +24,7 @@
 
 有几种不同的屏幕类：
 
-![触摸屏的类及谁绘制界面](../../../img/03-common-components/09-touchscreen-classes.svg)
+![触摸屏的类及谁绘制界面](../../img/03-common-components/09-touchscreen-classes.svg)
 
 原始 TFT 是带有 `ILI9341`、`ILI9488`、`ST7789` 等控制器的简单屏幕，加上 `XPT2046` 或 `FT5x06` 等单独的触摸控制器。你的微控制器或固件绘制界面。这很灵活但需要代码、内存、驱动程序和标定。
 

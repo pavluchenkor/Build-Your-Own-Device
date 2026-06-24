@@ -40,7 +40,7 @@ The main conclusion: metal and insulation differ not by a factor of two, but by 
 
 A thermal bridge is a path through which heat escapes more easily than through the rest of the structure.
 
-![Classic thermal bridge through an enclosure](../../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
+![Classic thermal bridge through an enclosure](../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pont_thermique_classique.png), AmisDeLaThermique, CC BY-SA 3.0*
 

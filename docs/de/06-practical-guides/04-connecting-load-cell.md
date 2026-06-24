@@ -36,7 +36,7 @@ HX711 hat normalerweise zwei Seiten:
 - Eingang von Wägezelle: `E+`, `E-`, `A+`, `A-` oder ähnlich;
 - Verbindung zum Controller: `VCC`, `GND`, `DT`/`DOUT`, `SCK`/`CLK`.
 
-![HX711 und Wägezellen-Verbindungsdiagramm](../../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
+![HX711 und Wägezellen-Verbindungsdiagramm](../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
 
 *Quelle: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/load-cell-amplifier-hx711-breakout-hookup-guide/all), CC BY-SA 4.0*
 

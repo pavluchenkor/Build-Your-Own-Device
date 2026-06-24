@@ -98,7 +98,7 @@ AC SSR 和 DC SSR 是不同的设备。错误的类型可能无法关闭加热�
 
 加热器不能设计为"控制器打开它-控制器关闭它"。你需要多个保护层。
 
-![安全加热器控制的层](../../../img/03-common-components/02-heater-safety-stack.svg)
+![安全加热器控制的层](../../img/03-common-components/02-heater-safety-stack.svg)
 
 最少的逻辑：
 

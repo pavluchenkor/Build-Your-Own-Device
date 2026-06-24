@@ -71,7 +71,7 @@ Před nákupem zkontrolujte řádky `Input`, `Output`, `Load voltage`, `Load cur
 
 SSR se obvykle umisťuje do rozříznuté линии napájení zátěže. Řídící prvek se připojuje pouze na vstup SSR, zatímco síť prochází výstupem SSR.
 
-![Vnitřní struktura polovodičového relé SSR](../../../img/01-electronics-basics/04-ssr-internal-structure.png)
+![Vnitřní struktura polovodičového relé SSR](../../img/01-electronics-basics/04-ssr-internal-structure.png)
 
 *Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SSR.png), Thomas Verdyck, CC BY-SA 3.0*
 

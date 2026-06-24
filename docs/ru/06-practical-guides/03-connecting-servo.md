@@ -34,7 +34,7 @@
 - сервопривод питается от 5V/6V источника, который выдерживает его ток;
 - земля контроллера и земля питания сервопривода соединены вместе.
 
-![Цветовая маркировка проводов сервопривода](../../../img/03-common-components/06-servo-color-code.jpg)
+![Цветовая маркировка проводов сервопривода](../../img/03-common-components/06-servo-color-code.jpg)
 
 *Источник: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/all), CC BY-SA 4.0*
 

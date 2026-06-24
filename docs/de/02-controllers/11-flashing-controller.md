@@ -36,7 +36,7 @@ Du kannst die Firmware-Einstellungen nicht erraten. Bei Klipper sind der Mikroco
 
 Unterschiedliche Boards flashen unterschiedlich:
 
-![Hauptwege zum Flashing des Controllers](../../../img/02-controllers/11-controller-flashing-paths.svg)
+![Hauptwege zum Flashing des Controllers](../../img/02-controllers/11-controller-flashing-paths.svg)
 
 Häufige Varianten:
 

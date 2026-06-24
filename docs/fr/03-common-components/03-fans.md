@@ -56,7 +56,7 @@ Pour la circulation libre à l'intérieur d'une chambre, un ventilateur axial es
 
 Les ventilateurs diffèrent souvent par le nombre de fils.
 
-![Connecteur 3 broches sur un ventilateur informatique](../../../img/03-common-components/03-fan-3pin-connector.jpg)
+![Connecteur 3 broches sur un ventilateur informatique](../../img/03-common-components/03-fan-3pin-connector.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Three-pin_connector_on_a_computer_fan.jpg), Dsimic, CC BY-SA 4.0*
 

@@ -60,7 +60,7 @@ STM32 ist einer der Hauptwege für eine Klipper-MCU.
 
 Typische Architektur:
 
-![Nucleo-Platinen für STM8 und STM32 von STMicroelectronics](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![Nucleo-Platinen für STM8 und STM32 von STMicroelectronics](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nucleo-board.jpg), Avandalen, CC BY-SA 4.0*
 

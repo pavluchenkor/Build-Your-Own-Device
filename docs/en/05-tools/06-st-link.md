@@ -45,7 +45,7 @@ The STM32 board is often powered from its normal power or USB.
 
 Before connecting, check the documentation for your specific ST-Link and board.
 
-![Nucleo boards for STM32 with built-in ST-Link debugger](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![Nucleo boards for STM32 with built-in ST-Link debugger](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:STM32_Nucleo_boards.jpg), Avandalen, CC BY-SA 4.0*
 

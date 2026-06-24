@@ -25,7 +25,7 @@ An MCU does not "think like the whole printer." It executes low-level commands s
 
 Simplified scheme:
 
-![Klipper host and multiple MCUs](../../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
+![Klipper host and multiple MCUs](../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
 
 The host communicates with the MCU via USB, UART, or CAN. In the Klipper configuration, each MCU gets its own section, and the pins of that MCU are then used in fan, sensor, heater, output, and other module settings.
 

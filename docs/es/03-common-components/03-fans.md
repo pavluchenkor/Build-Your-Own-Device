@@ -56,7 +56,7 @@ For free circulation inside a chamber, an axial fan is usually convenient. For a
 
 Fans often differ in the number of wires.
 
-![3-pin connector on a computer fan](../../../img/03-common-components/03-fan-3pin-connector.jpg)
+![3-pin connector on a computer fan](../../img/03-common-components/03-fan-3pin-connector.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Three-pin_connector_on_a_computer_fan.jpg), Dsimic, CC BY-SA 4.0*
 

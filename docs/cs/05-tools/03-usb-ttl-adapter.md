@@ -63,7 +63,7 @@ Vysílač jednoho zařízení musí být připojen k přijímači druhého.
 
 Pokud připojíte `TX` na `TX`, komunikace obvykle nefunguje.
 
-![Křížově připojené TX/RX v připojení UART](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![Křížově připojené TX/RX v připojení UART](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *Zdroj: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 

@@ -36,7 +36,7 @@ HX711は通常、2つの側面を持っています。
 - ロードセルからの入力。`E+`、`E-`、`A+`、`A-` など
 - コントローラーへの接続。`VCC`、`GND`、`DT`/`DOUT`、`SCK`/`CLK`
 
-![HX711とロードセル接続図](../../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
+![HX711とロードセル接続図](../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
 
 *出典: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/load-cell-amplifier-hx711-breakout-hookup-guide/all)、CC BY-SA 4.0*
 

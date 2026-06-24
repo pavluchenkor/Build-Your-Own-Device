@@ -45,7 +45,7 @@ La placa STM32 a menudo se alimenta desde su potencia normal o USB.
 
 Antes de conectar, consulte la documentación de su ST-Link y placa específicos.
 
-![Placas Nucleo para STM32 con depurador ST-Link incorporado](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![Placas Nucleo para STM32 con depurador ST-Link incorporado](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:STM32_Nucleo_boards.jpg), Avandalen, CC BY-SA 4.0*
 

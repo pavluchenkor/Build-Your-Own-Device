@@ -24,7 +24,7 @@ Before buying, answer the main question: where does the user interface live.
 
 There are several different screen classes:
 
-![Classes of touchscreens and who draws the interface](../../../img/03-common-components/09-touchscreen-classes.svg)
+![Classes of touchscreens and who draws the interface](../../img/03-common-components/09-touchscreen-classes.svg)
 
 Raw TFT is a simple screen with a controller like `ILI9341`, `ILI9488`, `ST7789`, plus a separate touch controller like `XPT2046` or `FT5x06`. Your microcontroller or firmware draws the interface. This is flexible but requires code, memory, drivers and calibration.
 

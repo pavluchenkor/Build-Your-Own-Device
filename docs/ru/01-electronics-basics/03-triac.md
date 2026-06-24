@@ -40,7 +40,7 @@ MOSFET-модуль из предыдущей статьи обычно испо
 
 Типовая безопасная архитектура выглядит так:
 
-![Схема диммера переменного тока на TRIAC](../../../img/01-electronics-basics/03-triac-dimmer-circuit.svg)
+![Схема диммера переменного тока на TRIAC](../../img/01-electronics-basics/03-triac-dimmer-circuit.svg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:TRIAC_based_dimmer_circuit.svg), Osbertjoel, CC BY-SA 4.0*
 

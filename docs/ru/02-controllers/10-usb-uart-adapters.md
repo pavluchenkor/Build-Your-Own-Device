@@ -32,7 +32,7 @@ USB-UART адаптер полезен для:
 
 Схема подключения:
 
-![USB-UART адаптер на чипе CH340T](../../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
+![USB-UART адаптер на чипе CH340T](../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:15938_-_USBtoSerial_1.jpg), SparkFun Electronics, CC BY 2.0*
 

@@ -40,7 +40,7 @@ The controller is usually not connected to the TRIAC directly.
 
 A typical safe architecture looks like this:
 
-![AC dimmer circuit with TRIAC](../../../img/01-electronics-basics/03-triac-dimmer-circuit.svg)
+![AC dimmer circuit with TRIAC](../../img/01-electronics-basics/03-triac-dimmer-circuit.svg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:TRIAC_based_dimmer_circuit.svg), Osbertjoel, CC BY-SA 4.0*
 

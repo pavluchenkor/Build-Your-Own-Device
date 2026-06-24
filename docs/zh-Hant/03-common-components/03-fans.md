@@ -56,7 +56,7 @@ description: "为什么气流对耗材干燥箱和加热腔很重要：风扇选
 
 風扇通常在線的數量上有所不同。
 
-![電腦風扇上的 3 腳連接器](../../../img/03-common-components/03-fan-3pin-connector.jpg)
+![電腦風扇上的 3 腳連接器](../../img/03-common-components/03-fan-3pin-connector.jpg)
 
 *來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Three-pin_connector_on_a_computer_fan.jpg), Dsimic, CC BY-SA 4.0*
 

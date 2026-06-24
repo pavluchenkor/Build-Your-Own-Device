@@ -44,7 +44,7 @@ Si conecta la carga directamente a GPIO, puede dañar el controlador, obtener re
 
 La variante más común para el módulo MOSFET de canal N es la conmutación de lado bajo, es decir, conmutación a través de la línea negativa.
 
-![MOSFET canal N en modo de conmutación de lado bajo](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![MOSFET canal N en modo de conmutación de lado bajo](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 

@@ -30,7 +30,7 @@ I2C 模块通常有 4 个接点：
 
 有多个设备的电路如下所示：
 
-![I2C 总线：一个主设备和三个设备在共同的 SDA/SCL](../../../img/02-controllers/07-i2c-bus-topology.svg)
+![I2C 总线：一个主设备和三个设备在共同的 SDA/SCL](../../img/02-controllers/07-i2c-bus-topology.svg)
 
 *来源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:I2C.svg), Cburnett, CC BY-SA 3.0*
 

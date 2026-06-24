@@ -28,7 +28,7 @@ UART は少ないワイヤーが必要で、シンプルなテキスト、コマ
 
 1 つのデバイスの TX は他のデバイスの RX に接続します:
 
-![UART 接続でのクロス接続された TX/RX および共通 GND](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![UART 接続でのクロス接続された TX/RX および共通 GND](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *ソース: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 

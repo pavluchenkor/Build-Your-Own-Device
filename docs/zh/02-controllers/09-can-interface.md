@@ -30,7 +30,7 @@ CAN 来自汽车和工业电子产品，但在 3D 打印机中，它因用于工
 
 简化的接线图：
 
-![高速 CAN ISO 11898-2 总线与多个节点和终端](../../../img/02-controllers/09-can-iso11898-2-network.png)
+![高速 CAN ISO 11898-2 总线与多个节点和终端](../../img/02-controllers/09-can-iso11898-2-network.png)
 
 *来源: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:CAN_ISO11898-2_Network.png), EE JRW, CC BY-SA 4.0*
 

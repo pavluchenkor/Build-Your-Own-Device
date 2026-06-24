@@ -25,7 +25,7 @@ Ein MCU „denkt nicht wie der gesamte Drucker." Er führt Low-Level-Befehle aus
 
 Vereinfachtes Schema:
 
-![Klipper-Host und mehrere MCUs](../../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
+![Klipper-Host und mehrere MCUs](../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
 
 Der Host kommuniziert mit dem MCU über USB, UART oder CAN. In der Klipper-Konfiguration erhält jeder MCU einen eigenen Abschnitt, und die Pins dieses MCU werden dann in den Einstellungen für Lüfter, Sensoren, Heizungen, Ausgänge und andere Module verwendet.
 

@@ -87,7 +87,7 @@ Selbst wenn der Heizer das Kunststoff nicht berührt, kann ein Teil sein:
 
 Daher kannst du die Sicherheit nicht mit der Aussage „das Teil berührt den Heizer nicht" beurteilen. Du musst verstehen, welche Temperatur an diesem Ort während des längeren Betriebs sein wird.
 
-![Zonen in einem gedruckten Gehäuse für ein beheiztes Gerät](../../../img/07-3d-printing/01-printed-device-zones.svg)
+![Zonen in einem gedruckten Gehäuse für ein beheiztes Gerät](../../img/07-3d-printing/01-printed-device-zones.svg)
 
 ## Festigkeit hängt von der Schichtrichtung ab
 

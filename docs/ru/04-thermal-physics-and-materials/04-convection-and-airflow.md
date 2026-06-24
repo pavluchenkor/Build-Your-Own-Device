@@ -8,7 +8,7 @@
 
 Один и тот же нагреватель на `100 W` может работать совершенно по-разному.
 
-![Ячейки конвекции: тёплый воздух поднимается, холодный опускается](../../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
+![Ячейки конвекции: тёплый воздух поднимается, холодный опускается](../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Convection_cells.svg), McSush, CC BY-SA 3.0*
 

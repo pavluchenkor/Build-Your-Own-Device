@@ -8,7 +8,7 @@ Ein Heizer selbst konvertiert nur elektrische Leistung in Wärme. Der Lüfter un
 
 Derselbe `100 W` Heizer kann völlig unterschiedlich funktionieren.
 
-![Konvektionszellen: warme Luft steigt, kalte fällt](../../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
+![Konvektionszellen: warme Luft steigt, kalte fällt](../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Convection_cells.svg), McSush, CC BY-SA 3.0*
 

@@ -55,7 +55,7 @@ Dann:
 4. Warten Sie, bis sich der Messwert stabilisiert.
 5. Notieren Sie den Wert.
 
-![Digitales Multimeter zur Messung der Thermistorwiderstand](../../../img/05-tools/02-digital-multimeter.jpg)
+![Digitales Multimeter zur Messung der Thermistorwiderstand](../../img/05-tools/02-digital-multimeter.jpg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Ruhestand Elektriker, CC0 Public Domain*
 

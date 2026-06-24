@@ -48,7 +48,7 @@ Typische Leitungen:
 - `RST` - Zurücksetzen;
 - `IRQ` - Unterbrechung, oft in einfachen Projekten ungenutzt.
 
-![RFID RC522 (MFRC522) Modul zum Lesen von 13.56 MHz Karten](../../../img/06-practical-guides/05-rfid-rc522-module.jpg)
+![RFID RC522 (MFRC522) Modul zum Lesen von 13.56 MHz Karten](../../img/06-practical-guides/05-rfid-rc522-module.jpg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:RFID-RC522_photo.jpg), Giacomo Alessandroni, CC BY-SA 4.0*
 

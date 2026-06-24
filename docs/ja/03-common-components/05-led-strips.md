@@ -105,7 +105,7 @@ LED ストリップを直接マイクロコントローラー ピンに接続す
 
 白 `12V` または `24V` ストリップの場合、ローサイド MOSFET がよく使用されます: ストリップのプラスが電源プラスに接続され、ストリップのマイナスは MOSFET モジュールで切り替えられます。
 
-![SMD ダイオード付き LED ストリップのクローズアップ](../../../img/03-common-components/05-led-strip-closeup.jpg)
+![SMD ダイオード付き LED ストリップのクローズアップ](../../img/03-common-components/05-led-strip-closeup.jpg)
 
 *出所: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:LED_strip_closeup.jpg), Akbermamps, CC BY 4.0*
 

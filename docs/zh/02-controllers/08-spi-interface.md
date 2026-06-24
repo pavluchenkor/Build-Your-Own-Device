@@ -32,7 +32,7 @@ SPI 通常比 I2C 快，但需要更多的线路和更谨慎的引脚选择。
 
 两个设备的接线图：
 
-![SPI: 主从设备之间的基本交换操作](../../../img/02-controllers/08-spi-basic-operation.png)
+![SPI: 主从设备之间的基本交换操作](../../img/02-controllers/08-spi-basic-operation.png)
 
 *来源: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SPI_basic_operation,_single_Main_%26_Sub.svg), Em3rgent0rdr, CC0 Public Domain*
 

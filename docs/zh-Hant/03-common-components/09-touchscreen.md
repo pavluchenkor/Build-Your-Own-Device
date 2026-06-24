@@ -24,7 +24,7 @@
 
 有幾個不同的屏幕類別：
 
-![觸控屏類別和誰繪製介面](../../../img/03-common-components/09-touchscreen-classes.svg)
+![觸控屏類別和誰繪製介面](../../img/03-common-components/09-touchscreen-classes.svg)
 
 原始 TFT 是一個簡單的屏幕，帶有控制器如 `ILI9341`、`ILI9488`、`ST7789`，加上單獨的觸摸控制器如 `XPT2046` 或 `FT5x06`。你的微控制器或韌體繪製介面。這很靈活但需要代碼、記憶體、驅動程式和校準。
 

@@ -40,7 +40,7 @@
 
 熱橋是熱比結構其他部分更容易逃逸的路徑。
 
-![外殼通過經典熱橋](../../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
+![外殼通過經典熱橋](../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
 
 *來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pont_thermique_classique.png), AmisDeLaThermique, CC BY-SA 3.0*
 

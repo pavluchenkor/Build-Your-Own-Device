@@ -56,7 +56,7 @@ iDryer のようなプロジェクトでは、ファンは以下に使用され�
 
 ファンはしばしばワイヤーの数が異なります。
 
-![コンピューターファンの 3 ピンコネクタ](../../../img/03-common-components/03-fan-3pin-connector.jpg)
+![コンピューターファンの 3 ピンコネクタ](../../img/03-common-components/03-fan-3pin-connector.jpg)
 
 *出所: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Three-pin_connector_on_a_computer_fan.jpg), Dsimic, CC BY-SA 4.0*
 

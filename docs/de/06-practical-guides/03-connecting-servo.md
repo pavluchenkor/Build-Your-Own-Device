@@ -34,7 +34,7 @@ Die richtige Logik ist:
 - das Servo wird von einer 5V/6V-Quelle versorgt, die seinen Strom bewältigen kann;
 - der Controller-GND und der Servo-Stromversorgungs-GND sind verbunden.
 
-![Servo-Drahtkodierung](../../../img/03-common-components/06-servo-color-code.jpg)
+![Servo-Drahtkodierung](../../img/03-common-components/06-servo-color-code.jpg)
 
 *Quelle: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/all), CC BY-SA 4.0*
 

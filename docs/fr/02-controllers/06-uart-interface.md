@@ -28,7 +28,7 @@ Connexion minimale :
 
 TX d'un appareil se connecte à RX de l'autre :
 
-![TX/RX entrecroisés et GND commun dans la connexion UART](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![TX/RX entrecroisés et GND commun dans la connexion UART](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *Source : [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 

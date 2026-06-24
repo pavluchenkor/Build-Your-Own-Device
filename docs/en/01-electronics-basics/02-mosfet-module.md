@@ -44,7 +44,7 @@ If you connect the load directly to GPIO, you can damage the controller, get reb
 
 The most common variant for N-channel MOSFET module is low-side switching, that is, switching via the negative line.
 
-![N-channel MOSFET in low-side switching mode](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![N-channel MOSFET in low-side switching mode](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 

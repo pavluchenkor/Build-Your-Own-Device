@@ -29,7 +29,7 @@ Ein Gerät kann auf dem Display `45°C` anzeigen, aber neben dem Heizer, Termina
 
 Wärme überträgt sich auf drei Hauptwegen:
 
-![Drei Wärmeübertragungsmechanismen: Leitung, Konvektion und Strahlung](../../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
+![Drei Wärmeübertragungsmechanismen: Leitung, Konvektion und Strahlung](../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kettle-convection-conduction-radiation.png), P.wormer, CC BY-SA 3.0*
 

@@ -81,7 +81,7 @@ Arduino ピンは抵抗器を通して LED を点灯させるか、制御信号�
 
 典型的な回路:
 
-![ATmega328P マイクロコントローラ付き Arduino Uno Rev3](../../../img/02-controllers/02-arduino-uno-rev3.jpg)
+![ATmega328P マイクロコントローラ付き Arduino Uno Rev3](../../img/02-controllers/02-arduino-uno-rev3.jpg)
 
 *出典: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arduino_Uno_Rev3_with_Atmega328P.jpg)、HonCode、CC0 Public Domain*
 

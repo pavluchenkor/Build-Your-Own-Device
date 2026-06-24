@@ -36,7 +36,7 @@ Nemůžete uhodnout nastavení firmwaru. Pro Klipper jsou zvláště důležité
 
 Různé desky se nahrávají jinak:
 
-![Hlavní cesty pro nahrání kontroléru](../../../img/02-controllers/11-controller-flashing-paths.svg)
+![Hlavní cesty pro nahrání kontroléru](../../img/02-controllers/11-controller-flashing-paths.svg)
 
 Běžné varianty:
 

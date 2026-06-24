@@ -72,7 +72,7 @@ Les couleurs ne sont pas garanties. S'il y a une description technique de la cel
 
 Un capteur de charge doit se déformer exactement comme le fabricant l'a prévu. Si la charge contourne la zone de travail, la cellule affichera des lectures instables ou presque rien.
 
-![Capteur de charge de type S miniature](../../../img/03-common-components/07-miniature-load-cell.jpg)
+![Capteur de charge de type S miniature](../../img/03-common-components/07-miniature-load-cell.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Miniature_S-beam_load_cell.jpg), FUTEK Advanced Sensor Technology, CC BY-SA 4.0*
 

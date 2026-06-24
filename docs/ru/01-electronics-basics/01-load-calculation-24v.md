@@ -99,7 +99,7 @@ P = U * I
 I = P / U
 ```
 
-![Закон Ома: схема с источником напряжения, током и сопротивлением](../../../img/01-electronics-basics/01-ohms-law-circuit.svg)
+![Закон Ома: схема с источником напряжения, током и сопротивлением](../../img/01-electronics-basics/01-ohms-law-circuit.svg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ohm%27s_Law_with_Voltage_source_TeX.svg), GorillaWarfare, CC0 Public Domain*
 

@@ -63,7 +63,7 @@ Le transmetteur d'un appareil doit se connecter au récepteur de l'autre.
 
 Si vous connectez `TX` à `TX`, la communication ne fonctionnera généralement pas.
 
-![TX/RX interconnectés dans connexion UART](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![TX/RX interconnectés dans connexion UART](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 

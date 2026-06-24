@@ -41,7 +41,7 @@
 
 Термистор обычно подключён к аналоговому входу через делитель напряжения с pull-up резистором. Контроллер измеряет напряжение, переводит его в сопротивление, а затем по таблице или формуле получает температуру.
 
-![Делитель напряжения с термистором для измерения температуры](../../../img/03-common-components/04-thermistor-voltage-divider.svg)
+![Делитель напряжения с термистором для измерения температуры](../../img/03-common-components/04-thermistor-voltage-divider.svg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Thermistor_potential_divider.svg), Sjlegg, Public Domain*
 

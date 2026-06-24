@@ -99,7 +99,7 @@ Para encontrar la corriente:
 I = P / U
 ```
 
-![Ley de Ohm: circuito con fuente de voltaje, corriente y resistencia](../../../img/01-electronics-basics/01-ohms-law-circuit.svg)
+![Ley de Ohm: circuito con fuente de voltaje, corriente y resistencia](../../img/01-electronics-basics/01-ohms-law-circuit.svg)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ohm%27s_Law_with_Voltage_source_TeX.svg), GorillaWarfare, CC0 Public Domain*
 

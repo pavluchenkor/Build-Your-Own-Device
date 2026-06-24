@@ -48,7 +48,7 @@ iDryerのようなデバイスでは、これはスプール識別、素材プ�
 - `RST` - リセット
 - `IRQ` - 割り込み、シンプルなプロジェクトではしばしば未使用
 
-![13.56MHzカードを読むためのRFID RC522 (MFRC522) モジュール](../../../img/06-practical-guides/05-rfid-rc522-module.jpg)
+![13.56MHzカードを読むためのRFID RC522 (MFRC522) モジュール](../../img/06-practical-guides/05-rfid-rc522-module.jpg)
 
 *出典: [ウィキメディア・コモンズ](https://commons.wikimedia.org/wiki/File:RFID-RC522_photo.jpg)、Giacomo Alessandroni、CC BY-SA 4.0*
 

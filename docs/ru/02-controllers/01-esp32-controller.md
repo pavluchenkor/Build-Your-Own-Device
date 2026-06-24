@@ -24,7 +24,7 @@ ESP32 хорош, когда устройство должно жить отде
 
 ESP32 не питает нагрузки напрямую. Он выдаёт управляющие сигналы, а силовую работу делают отдельные модули.
 
-![Плата разработки ESP32 с GPIO-пинами](../../../img/02-controllers/01-esp32-dev-board.jpg)
+![Плата разработки ESP32 с GPIO-пинами](../../img/02-controllers/01-esp32-dev-board.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:ESP32_Dev_Board.jpg), Edwiyanto, CC BY-SA 4.0*
 

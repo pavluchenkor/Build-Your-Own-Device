@@ -24,7 +24,7 @@ L'ESP32 est bon quand l'appareil doit vivre séparément de l'imprimante et éch
 
 L'ESP32 n'alimente pas les charges directement. Il sort des signaux de contrôle, et les modules séparés font le travail de puissance.
 
-![Carte de développement ESP32 avec broches GPIO](../../../img/02-controllers/01-esp32-dev-board.jpg)
+![Carte de développement ESP32 avec broches GPIO](../../img/02-controllers/01-esp32-dev-board.jpg)
 
 *Source : [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:ESP32_Dev_Board.jpg), Edwiyanto, CC BY-SA 4.0*
 

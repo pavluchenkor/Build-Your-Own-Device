@@ -57,7 +57,7 @@ SPI-модуль обычно требует больше линий:
 
 I2C проще по проводке и обычно достаточно для статуса, температуры и простого меню. SPI быстрее и лучше подходит, если экран часто перерисовывается, но для маленького статусного дисплея это редко критично.
 
-![Подключение I2C OLED-дисплея к контроллеру](../../../img/03-common-components/08-oled-i2c-wiring.jpg)
+![Подключение I2C OLED-дисплея к контроллеру](../../img/03-common-components/08-oled-i2c-wiring.jpg)
 
 *Источник: [Adafruit Learning System](https://learn.adafruit.com/adafruit-128x64-oled-featherwing/), CC BY-SA 3.0*
 

@@ -29,7 +29,7 @@ Un appareil peut afficher `45°C` sur l'écran, mais à côté du radiateur, de 
 
 La chaleur se transfère de trois façons principales :
 
-![Trois mécanismes de transfert de chaleur : conduction, convection et rayonnement](../../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
+![Trois mécanismes de transfert de chaleur : conduction, convection et rayonnement](../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kettle-convection-conduction-radiation.png), P.wormer, CC BY-SA 3.0*
 

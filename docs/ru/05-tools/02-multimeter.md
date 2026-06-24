@@ -50,7 +50,7 @@ DC - это постоянное напряжение. В наших устро�
 
 Если на экране минус перед числом, щупы перепутаны местами. Это полезно: так можно понять полярность.
 
-![Цифровой мультиметр с щупами](../../../img/05-tools/02-digital-multimeter.jpg)
+![Цифровой мультиметр с щупами](../../img/05-tools/02-digital-multimeter.jpg)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 

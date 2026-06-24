@@ -30,7 +30,7 @@ Ein I2C-Modul hat typischerweise 4 Anschlüsse:
 
 Eine Schaltung mit mehreren Geräten sieht so aus:
 
-![I2C bus: one master and three devices on common SDA/SCL](../../../img/02-controllers/07-i2c-bus-topology.svg)
+![I2C bus: one master and three devices on common SDA/SCL](../../img/02-controllers/07-i2c-bus-topology.svg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:I2C.svg), Cburnett, CC BY-SA 3.0*
 

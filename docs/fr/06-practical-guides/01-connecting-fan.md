@@ -41,7 +41,7 @@ La logique correcte est :
 - le contrôleur ne gère que marche/arrêt ou vitesse;
 - si un module MOSFET externe est utilisé, l'alimentation `GND` et le contrôleur `GND` doivent être communs.
 
-![MOSFET canal N en mode commutation (bas-côté) pour le contrôle de charge](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![MOSFET canal N en mode commutation (bas-côté) pour le contrôle de charge](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *Source : [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 

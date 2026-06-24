@@ -63,7 +63,7 @@ adapter GND -> board GND
 
 如果你连接`TX`到`TX`，通信通常无法进行。
 
-![UART连接中的交叉连接TX/RX](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![UART连接中的交叉连接TX/RX](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 

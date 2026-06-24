@@ -83,7 +83,7 @@ PIR/polyiso může mít v jednotlivých produktech vyšší přípustný rozsah,
 
 Pro ohřevanou komoru je často lepší myslet ne na „materiál stěny" ale na vrstvy.
 
-![Příklad vrstev materiálu vedle tepla](../../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
+![Příklad vrstev materiálu vedle tepla](../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
 
 Příklad zdařilejší logiky:
 

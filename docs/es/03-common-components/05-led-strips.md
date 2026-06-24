@@ -105,7 +105,7 @@ Correct logic:
 
 For a white `12V` or `24V` strip, a low-side MOSFET is often used: the strip's plus is connected to the power plus, and the strip's minus is switched by the MOSFET module.
 
-![Close-up of LED strip with SMD diodes](../../../img/03-common-components/05-led-strip-closeup.jpg)
+![Close-up of LED strip with SMD diodes](../../img/03-common-components/05-led-strip-closeup.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:LED_strip_closeup.jpg), Akbermamps, CC BY 4.0*
 

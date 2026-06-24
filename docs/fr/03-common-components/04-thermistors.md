@@ -41,7 +41,7 @@ Donc, l'expression « thermistance 100K » ne suffit pas toujours. Pour le micro
 
 Une thermistance est généralement connectée à une entrée analogique via un diviseur de tension avec une résistance de pull-up. Le contrôleur mesure la tension, la convertit en résistance, puis utilise un tableau de consultation ou une formule pour obtenir la température.
 
-![Diviseur de tension avec thermistance pour la mesure de température](../../../img/03-common-components/04-thermistor-voltage-divider.svg)
+![Diviseur de tension avec thermistance pour la mesure de température](../../img/03-common-components/04-thermistor-voltage-divider.svg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Thermistor_potential_divider.svg), Sjlegg, Public Domain*
 

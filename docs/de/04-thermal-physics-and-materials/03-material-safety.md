@@ -83,7 +83,7 @@ PIR/Polyiso kann in einzelnen Produkten einen höheren zulässigen Bereich haben
 
 Für eine geheizte Kammer ist es oft besser, nicht von "Wandmaterial" sondern von Schichten zu denken.
 
-![Beispiel von Materialschichten neben Wärme](../../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
+![Beispiel von Materialschichten neben Wärme](../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
 
 Beispiel für solidere Logik:
 

@@ -29,7 +29,7 @@
 
 热以三种主要方式传递：
 
-![热传递的三种机制：传导、对流和辐射](../../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
+![热传递的三种机制：传导、对流和辐射](../../img/04-thermal-physics-and-materials/01-heat-transfer-kettle.png)
 
 *来源: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Kettle-convection-conduction-radiation.png), P.wormer, CC BY-SA 3.0*
 

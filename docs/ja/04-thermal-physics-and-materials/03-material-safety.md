@@ -83,7 +83,7 @@ PIR/ポリイソは個々の製品でより高い許可範囲を持つ可能性�
 
 加熱チャンバの場合、「壁材料」を考えるよりも層を考える方が良いです。
 
-![熱の次の材料層の例](../../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
+![熱の次の材料層の例](../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
 
 より健全なロジックの例：
 

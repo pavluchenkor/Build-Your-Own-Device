@@ -30,7 +30,7 @@ Signal is transmitted as the difference between `CANH` and `CANL`. That's why CA
 
 Simplified diagram:
 
-![High-speed CAN ISO 11898-2 bus with multiple nodes and terminators](../../../img/02-controllers/09-can-iso11898-2-network.png)
+![High-speed CAN ISO 11898-2 bus with multiple nodes and terminators](../../img/02-controllers/09-can-iso11898-2-network.png)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:CAN_ISO11898-2_Network.png), EE JRW, CC BY-SA 4.0*
 

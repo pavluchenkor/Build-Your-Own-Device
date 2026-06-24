@@ -72,7 +72,7 @@ HX711 では、通常、マーキングが表示されます:
 
 ロード セルは、製造業者が意図した通りに正確に変形する必要があります。ロードが動作ゾーンの周りを移動する場合、セルは不安定な読み取り値またはほぼ何も表示しません。
 
-![ミニチュア S ビーム ロード セル](../../../img/03-common-components/07-miniature-load-cell.jpg)
+![ミニチュア S ビーム ロード セル](../../img/03-common-components/07-miniature-load-cell.jpg)
 
 *出所: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Miniature_S-beam_load_cell.jpg), FUTEK Advanced Sensor Technology, CC BY-SA 4.0*
 

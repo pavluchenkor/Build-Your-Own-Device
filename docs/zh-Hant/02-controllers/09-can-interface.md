@@ -30,7 +30,7 @@ CAN 源自汽車與工業電子領域，但在 3D 印表機中因工具頭板、
 
 簡化示意圖：
 
-![高速 CAN ISO 11898-2 匯流排，含多個節點與終端電阻](../../../img/02-controllers/09-can-iso11898-2-network.png)
+![高速 CAN ISO 11898-2 匯流排，含多個節點與終端電阻](../../img/02-controllers/09-can-iso11898-2-network.png)
 
 *來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:CAN_ISO11898-2_Network.png)，EE JRW，CC BY-SA 4.0*
 

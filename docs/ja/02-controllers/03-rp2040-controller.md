@@ -56,7 +56,7 @@ RP2040 は Klipper の追加 MCU の候補としては良い選択肢です。
 
 典型的なスキーム:
 
-![RP2040 チップ付き Raspberry Pi Pico](../../../img/02-controllers/03-rp2040-pico-photo.jpg)
+![RP2040 チップ付き Raspberry Pi Pico](../../img/02-controllers/03-rp2040-pico-photo.jpg)
 
 *出典: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Raspberry_Pi_Pico_oblique.jpg)、Phiarc、CC BY-SA 4.0*
 

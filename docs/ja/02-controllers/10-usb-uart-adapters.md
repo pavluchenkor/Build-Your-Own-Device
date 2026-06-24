@@ -32,7 +32,7 @@ USB-UART アダプターが役立つ場面：
 
 接続図：
 
-![CH340T チップ搭載 USB-UART アダプター](../../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
+![CH340T チップ搭載 USB-UART アダプター](../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
 
 *出典: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:15938_-_USBtoSerial_1.jpg), SparkFun Electronics, CC BY 2.0*
 

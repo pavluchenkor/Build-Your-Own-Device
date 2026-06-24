@@ -63,7 +63,7 @@ El transmisor de un dispositivo debe conectarse al receptor del otro.
 
 Si conecta `TX` a `TX`, la comunicación generalmente no funcionará.
 
-![TX/RX conectado en cruzado en conexión UART](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![TX/RX conectado en cruzado en conexión UART](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *Fuente: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 

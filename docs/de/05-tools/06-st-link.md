@@ -45,7 +45,7 @@ Die STM32 Platine wird oft von ihrer normalen Stromversorgung oder USB versorgt.
 
 Vor dem Verbinden überprüfen Sie die Dokumentation für Ihren spezifischen ST-Link und die Platine.
 
-![Nucleo Platinen für STM32 mit eingebautem ST-Link Debugger](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![Nucleo Platinen für STM32 mit eingebautem ST-Link Debugger](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:STM32_Nucleo_boards.jpg), Avandalen, CC BY-SA 4.0*
 

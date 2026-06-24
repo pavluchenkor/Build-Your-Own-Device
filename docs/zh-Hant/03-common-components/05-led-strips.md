@@ -105,7 +105,7 @@ LED 燈條有兩種主要類型。
 
 對於白色 `12V` 或 `24V` 燈條，通常使用低端 MOSFET：燈條的加號連接到電源加號，燈條的減號由 MOSFET 模組開啟/關閉。
 
-![LED 燈條帶 SMD 二極體的特寫](../../../img/03-common-components/05-led-strip-closeup.jpg)
+![LED 燈條帶 SMD 二極體的特寫](../../img/03-common-components/05-led-strip-closeup.jpg)
 
 *來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:LED_strip_closeup.jpg), Akbermamps, CC BY 4.0*
 

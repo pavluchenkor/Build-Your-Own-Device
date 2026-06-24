@@ -60,7 +60,7 @@ STM32 是 Klipper MCU 的主要路径之一。
 
 典型架构：
 
-![STMicroelectronics 的 STM8 和 STM32 Nucleo 板](../../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![STMicroelectronics 的 STM8 和 STM32 Nucleo 板](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
 *来源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nucleo-board.jpg), Avandalen, CC BY-SA 4.0*
 

@@ -71,7 +71,7 @@ Before purchasing, check `Input`, `Output`, `Load voltage`, `Load current` lines
 
 SSR is usually placed in the break of the load power line. The controller connects only to the SSR input, while the mains circuit goes through the SSR output.
 
-![Internal structure of solid-state relay SSR](../../../img/01-electronics-basics/04-ssr-internal-structure.png)
+![Internal structure of solid-state relay SSR](../../img/01-electronics-basics/04-ssr-internal-structure.png)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SSR.png), Thomas Verdyck, CC BY-SA 3.0*
 

@@ -48,7 +48,7 @@ Líneas típicas:
 - `RST` - reinicio;
 - `IRQ` - interrupción, a menudo no usada en proyectos simples.
 
-![Módulo RFID RC522 (MFRC522) para leer tarjetas de 13.56 MHz](../../../img/06-practical-guides/05-rfid-rc522-module.jpg)
+![Módulo RFID RC522 (MFRC522) para leer tarjetas de 13.56 MHz](../../img/06-practical-guides/05-rfid-rc522-module.jpg)
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:RFID-RC522_photo.jpg), Giacomo Alessandroni, CC BY-SA 4.0*
 

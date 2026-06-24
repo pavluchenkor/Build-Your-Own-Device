@@ -36,7 +36,7 @@
 
 不同的板刷入方式不同：
 
-![刷微控制器的主要路径](../../../img/02-controllers/11-controller-flashing-paths.svg)
+![刷微控制器的主要路径](../../img/02-controllers/11-controller-flashing-paths.svg)
 
 常见的变体：
 

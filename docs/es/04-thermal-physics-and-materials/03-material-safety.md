@@ -83,7 +83,7 @@ PIR/polisocianuro puede tener un rango permisible más alto en productos individ
 
 Para una cámara calentada, a menudo es mejor pensar no en un "material de pared" sino en capas.
 
-![Ejemplo de capas de material junto al calor](../../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
+![Ejemplo de capas de material junto al calor](../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
 
 Ejemplo de lógica más sólida:
 

@@ -44,7 +44,7 @@ Si vous connectez la charge directement à GPIO, vous risquez d'endommager le co
 
 La variante la plus courante pour un module MOSFET canal N est la commutation du côté faible, c'est-à-dire la commutation via la ligne négative.
 
-![MOSFET canal N en mode de commutation du côté faible](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![MOSFET canal N en mode de commutation du côté faible](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 

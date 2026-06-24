@@ -87,7 +87,7 @@ Incluso si el calentador no toca el plástico, una pieza puede estar:
 
 Por lo tanto, no puedes evaluar la seguridad solo con la frase "la pieza no toca el calentador". Necesitas entender qué temperatura habrá en esa ubicación durante la operación prolongada.
 
-![Zonas en una carcasa impresa para un dispositivo calentado](../../../img/07-3d-printing/01-printed-device-zones.svg)
+![Zonas en una carcasa impresa para un dispositivo calentado](../../img/07-3d-printing/01-printed-device-zones.svg)
 
 ## La resistencia depende de la dirección de las capas
 

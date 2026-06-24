@@ -57,7 +57,7 @@ An SPI module usually needs more lines:
 
 I2C is simpler to wire and usually enough for status, temperature and simple menu. SPI is faster and better if the screen redraws often, but for a small status display this is rarely critical.
 
-![Connecting I2C OLED display to controller](../../../img/03-common-components/08-oled-i2c-wiring.jpg)
+![Connecting I2C OLED display to controller](../../img/03-common-components/08-oled-i2c-wiring.jpg)
 
 *Source: [Adafruit Learning System](https://learn.adafruit.com/adafruit-128x64-oled-featherwing/), CC BY-SA 3.0*
 

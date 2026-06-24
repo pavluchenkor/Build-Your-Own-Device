@@ -41,7 +41,7 @@
 
 サーミスタは通常、プルアップ抵抗を伴う分圧器を通じてアナログ入力に接続されます。制御器は電圧を測定し、抵抗に変換してから、ルックアップテーブルまたは式を使用して温度を取得します。
 
-![温度測定用のサーミスタを使用した分圧器](../../../img/03-common-components/04-thermistor-voltage-divider.svg)
+![温度測定用のサーミスタを使用した分圧器](../../img/03-common-components/04-thermistor-voltage-divider.svg)
 
 *出所: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Thermistor_potential_divider.svg), Sjlegg, Public Domain*
 

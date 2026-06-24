@@ -99,7 +99,7 @@ To find current:
 I = P / U
 ```
 
-![Ohm's Law: circuit with voltage source, current and resistance](../../../img/01-electronics-basics/01-ohms-law-circuit.svg)
+![Ohm's Law: circuit with voltage source, current and resistance](../../img/01-electronics-basics/01-ohms-law-circuit.svg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ohm%27s_Law_with_Voltage_source_TeX.svg), GorillaWarfare, CC0 Public Domain*
 

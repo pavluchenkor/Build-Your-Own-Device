@@ -36,7 +36,7 @@
 
 不同的主板燒錄方式不同：
 
-![控制器的主要燒錄路徑](../../../img/02-controllers/11-controller-flashing-paths.svg)
+![控制器的主要燒錄路徑](../../img/02-controllers/11-controller-flashing-paths.svg)
 
 常見的變體：
 

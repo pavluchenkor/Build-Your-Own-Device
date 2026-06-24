@@ -87,7 +87,7 @@ Même si le chauffage ne touche pas le plastique, une pièce peut être :
 
 Par conséquent, vous ne pouvez pas évaluer la sécurité avec seulement la phrase « la pièce ne touche pas le chauffage ». Vous devez comprendre quelle température sera présente à cet endroit pendant une opération prolongée.
 
-![Zones dans un boîtier imprimé pour un appareil chauffé](../../../img/07-3d-printing/01-printed-device-zones.svg)
+![Zones dans un boîtier imprimé pour un appareil chauffé](../../img/07-3d-printing/01-printed-device-zones.svg)
 
 ## La résistance dépend de la direction des couches
 

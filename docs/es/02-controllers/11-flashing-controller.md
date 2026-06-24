@@ -36,7 +36,7 @@ No puedes adivinar configuraciones de firmware. Para Klipper, el tipo de microco
 
 Las diferentes placas flashean de diferentes formas:
 
-![Caminos principales para flashear el controlador](../../../img/02-controllers/11-controller-flashing-paths.svg)
+![Caminos principales para flashear el controlador](../../img/02-controllers/11-controller-flashing-paths.svg)
 
 Variantes comunes:
 

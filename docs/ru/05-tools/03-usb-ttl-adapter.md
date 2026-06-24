@@ -63,7 +63,7 @@ UART соединяют так:
 
 Если подключить `TX` к `TX`, связи обычно не будет.
 
-![Перекрёстное подключение TX/RX при UART-соединении](../../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![Перекрёстное подключение TX/RX при UART-соединении](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
 *Источник: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 

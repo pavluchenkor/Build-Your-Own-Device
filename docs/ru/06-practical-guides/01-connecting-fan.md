@@ -41,7 +41,7 @@ GPIO контроллера - это управляющий сигнал, а н�
 - контроллер только управляет включением или скоростью;
 - если используется внешний MOSFET-модуль, `GND` блока питания и `GND` контроллера должны быть общими.
 
-![N-channel MOSFET в режиме переключения (low-side) для управления нагрузкой](../../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![N-channel MOSFET в режиме переключения (low-side) для управления нагрузкой](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *Источник: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 
