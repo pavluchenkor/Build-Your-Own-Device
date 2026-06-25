@@ -1,29 +1,29 @@
 # O que é STL
 
-STL is a file containing the geometry of a 3D model.
+STL é um arquivo que contém a geometria de um modelo 3D.
 
-In simple terms: STL tells the slicer what shape to print. But STL says almost nothing about how to make that part strong, heat-resistant, and safe in a real device.
+Em termos simples: STL informa ao fatiador qual formato imprimir. Mas o STL não diz quase nada sobre como tornar essa peça forte, resistente ao calor e segura em um dispositivo real.
 
-Therefore, the statement "I have an STL file for an enclosure" does not mean you have a complete assembly instruction for building a device.
+Portanto, a afirmação "Tenho um arquivo STL para um gabinete" não significa que você tenha instruções de montagem completas para construir um dispositivo.
 
-## What STL stores
+## O que STL armazena
 
-STL describes the surface of a model as a set of triangles.
+STL descreve a superfície de um modelo como um conjunto de triângulos.
 
-The slicer takes this geometry and converts it into print paths.
+A segmentação de dados pega essa geometria e a converte em caminhos de impressão.
 
-STL is useful because:
+STL é útil porque:
 
 - almost all slicers understand it;
-- it can be exported from most CAD programs;
-- it is simple to exchange a model;
-- it is well-suited for one finished part with simple geometry.
+- pode ser exportado da maioria dos programas CAD;
+- é simples trocar um modelo;
+- é adequado para uma peça acabada com geometria simples.
 
-But STL's simplicity is also its limitation.
+Mas a simplicidade do STL é também a sua limitação.
 
-## What STL does not store
+## O que o STL não armazena
 
-A typical STL does not store:
+Um STL típico não armazena:
 
 - material;
 - color;
@@ -38,55 +38,55 @@ A typical STL does not store:
 - tolerances;
 - part purpose;
 - heat warnings;
-- information about where the part will be weaker.
+- informações sobre onde a peça será mais fraca.
 
-This means two people can print the same STL and get different parts.
+Isso significa que duas pessoas podem imprimir o mesmo STL e obter peças diferentes.
 
-One might print PLA quickly and nicely. Another might print ASA with more walls and the right orientation. The parts look similar externally, but next to heat they will behave differently.
+Pode-se imprimir PLA de forma rápida e adequada. Outro poderia imprimir ASA com mais paredes e a orientação correta. As peças parecem semelhantes externamente, mas próximas ao calor elas se comportarão de maneira diferente.
 
-## Why this matters for heated devices
+## Por que isso é importante para dispositivos aquecidos
 
-For a decorative cover, STL is often sufficient.
+Para uma capa decorativa, o STL costuma ser suficiente.
 
-For a part near a heater, it is not.
+Para uma peça perto de um aquecedor, não é.
 
-You need to know:
+Você precisa saber:
 
-- what material to print it from;
-- what temperature will be nearby;
-- will the part hold a load;
-- are there wires nearby;
-- will the sensor shift if the part deforms;
-- will the part block airflow;
-- will plastic get too close to a terminal or heater.
+- de que material imprimir;
+- que temperatura estará próxima;
+- a peça suportará uma carga;
+- há fios próximos;
+- o sensor mudará se a peça for deformada;
+- a peça bloqueará o fluxo de ar;
+- o plástico ficará muito perto de um terminal ou aquecedor.
 
-If an STL is downloaded without information about material and working conditions, it cannot be considered a ready solution for a dryer, printer chamber, or heating module.
+Se um STL for baixado sem informações sobre o material e as condições de trabalho, ele não poderá ser considerado uma solução pronta para um secador, câmara de impressora ou módulo de aquecimento.
 
 ## Print orientation changes strength
 
-FDM parts are made of layers.
+As peças FDM são feitas de camadas.
 
-Because of this, the same model can be:
+Por causa disso, o mesmo modelo pode ser:
 
 - strong at one orientation;
 - weak at another;
-- prone to delamination under load;
-- bad for screw fastening;
-- only good for decorative use.
+- propenso a delaminação sob carga;
+- ruim para fixação com parafusos;
+- só serve para uso decorativo.
 
-For example, a thin bracket can hold a load well if layers run along the direction of force. But the same bracket can break between layers if printed the other way.
+Por exemplo, um suporte fino pode suportar bem uma carga se as camadas correrem ao longo da direção da força. Mas o mesmo colchete pode quebrar entre as camadas se for impresso de outra maneira.
 
-STL itself does not say how to orient a part correctly.
+O próprio STL não diz como orientar uma peça corretamente.
 
 ## Slicer settings also matter
 
-Even with the right material and orientation, print settings affect the result.
+Mesmo com o material e a orientação corretos, as configurações de impressão afetam o resultado.
 
-For a functional part, these are important:
+Para uma parte funcional, são importantes:
 
 - number of perimeters;
 - wall thickness;
-- top and bottom layers;
+- camadas superior e inferior;
 - infill percentage;
 - print temperature;
 - cooling;
@@ -94,23 +94,23 @@ For a functional part, these are important:
 - line width;
 - interlayer adhesion quality.
 
-More infill does not always solve the problem. Often for an enclosure, bracket, or air duct, walls, perimeters, part shape, and load direction are more important.
+Mais preenchimento nem sempre resolve o problema. Freqüentemente, para um gabinete, suporte ou duto de ar, as paredes, os perímetros, o formato da peça e a direção da carga são mais importantes.
 
-## What you need before printing a working part
+## O que você precisa antes de imprimir uma peça funcional
 
-If a part will be part of a device, you need more than just the STL. You need a brief set of requirements:
+Se uma peça fizer parte de um dispositivo, você precisará de mais do que apenas o STL. Você precisa de um breve conjunto de requisitos:
 
 - material;
-- orientation on the bed;
-- recommended wall thickness and infill;
-- whether supports are needed;
-- what screws and inserts to use;
-- where the part cannot be placed near heat;
-- maximum working temperature of the zone;
-- how to check fit after printing;
-- what to do if the part deformed.
+- orientação na cama;
+- espessura de parede e preenchimento recomendados;
+- se são necessários apoios;
+- quais parafusos e inserções usar;
+- onde a peça não pode ser colocada perto do calor;
+- temperatura máxima de trabalho da zona;
+- como verificar o ajuste após a impressão;
+- o que fazer se a peça estiver deformada.
 
-This is especially important for:
+Isto é especialmente importante para:
 
 - heater bracket;
 - air duct;
@@ -120,53 +120,53 @@ This is especially important for:
 - terminal bracket;
 - parts near 110-230V AC.
 
-## STL, 3MF, and project files
+## STL, 3MF e arquivos de projeto
 
-STL is the simplest and most compatible format, but not the most complete.
+STL é o formato mais simples e compatível, mas não o mais completo.
 
-The 3MF format was created as a more modern format for 3D printing. It can store more data: not just geometry, but also some information about materials, colors, objects, and manufacturing settings.
+O formato 3MF foi criado como um formato mais moderno para impressão 3D. Ele pode armazenar mais dados: não apenas geometria, mas também algumas informações sobre materiais, cores, objetos e configurações de fabricação.
 
-Many slicers can also save a project file. Such a file is useful because it stores not just the model but also the orientation, print settings, modifiers, and placement on the bed.
+Muitas segmentações de dados também podem salvar um arquivo de projeto. Esse arquivo é útil porque armazena não apenas o modelo, mas também a orientação, configurações de impressão, modificadores e posicionamento na base.
 
-A practical rule:
+Uma regra prática:
 
-- STL is good for passing a shape;
-- 3MF or a slicer project is better for passing print intent;
-- text instructions are still needed if the part affects safety.
+- STL é bom para passar uma forma;
+- 3MF ou um projeto de segmentação de dados é melhor para passar a intenção de impressão;
+- instruções de texto ainda serão necessárias se a peça afetar a segurança.
 
-## How to evaluate a downloaded STL
+## Como avaliar um STL baixado
 
-Before printing a downloaded part, ask yourself:
+Antes de imprimir uma parte baixada, pergunte-se:
 
-1. Is it clear what material to print it from?
-2. Are there any temperature warnings?
-3. Can you see what orientation it was printed in?
-4. Are there photos of the real part in assembly?
-5. Are screws, nuts, inserts, and tolerances specified?
-6. Is it clear what load it will hold?
-7. Is there a risk that deformation could create a dangerous situation?
+1. Está claro de qual material imprimir?
+2. Há algum aviso de temperatura?
+3. Você consegue ver em que orientação foi impresso?
+4. Há fotos da peça real em montagem?
+5. Os parafusos, porcas, insertos e tolerâncias são especificados?
+6. Está claro qual carga ele suportará?
+7. Existe o risco de que a deformação possa criar uma situação perigosa?
 
-If you do not have answers, the part can be used as an idea or prototype, but not as a guaranteed safe working component.
+Se você não tiver respostas, a peça pode ser usada como uma ideia ou protótipo, mas não como um componente de funcionamento seguro garantido.
 
-## Common mistakes
+## Erros comuns
 
 - treating an STL as a complete instruction;
-- printing a working part from PLA just because it is easier;
-- not changing print orientation for load;
-- using too few walls and hoping high infill solves it;
-- not accounting for temperature inside the enclosure;
-- not checking gaps after printing;
-- screwing into thin posts without margin;
-- using a downloaded enclosure near heat without understanding the material;
-- not leaving access for maintenance after assembly.
+- imprimir uma peça funcional do PLA só porque é mais fácil;
+- não alterar a orientação da impressão durante o carregamento;
+- usar poucas paredes e esperar que o preenchimento alto resolva o problema;
+- não levar em conta a temperatura dentro do gabinete;
+- não verificar lacunas após a impressão;
+- aparafusar em postes finos sem margem;
+- usar um invólucro baixado próximo ao calor sem entender o material;
+- não deixando acesso para manutenção após a montagem.
 
 ## Key takeaways
 
-- STL stores shape, not a safe way to manufacture a part.
-- For a device, material, orientation, walls, fasteners, and working conditions matter.
-- One STL can result in a weak or strong part.
-- For parts near heat, you need information about material and temperature limits.
-- 3MF or slicer project files better convey settings, but do not replace engineering review.
+- STL armazena forma, não é uma forma segura de fabricar uma peça.
+- Para um dispositivo, o material, a orientação, as paredes, os fixadores e as condições de trabalho são importantes.
+- Um STL pode resultar em uma parte fraca ou forte.
+- Para peças próximas ao calor, você precisa de informações sobre materiais e limites de temperatura.
+- Os arquivos de projeto 3MF ou slicer transmitem melhor as configurações, mas não substituem a revisão de engenharia.
 
 ## References
 

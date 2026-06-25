@@ -1,24 +1,24 @@
 # Osciloscópio
 
-An oscilloscope shows how a signal changes over time.
+Um osciloscópio mostra como um sinal muda ao longo do tempo.
 
-A multimeter can show "about 3.3V" or "there is frequency". An oscilloscope shows signal shape: pulses, edges, sag, noise, bounce, UART packets, PWM.
+Um multímetro pode mostrar "cerca de 3,3 V" ou "há frequência". Um osciloscópio mostra a forma do sinal: pulsos, bordas, queda, ruído, salto, pacotes UART, PWM.
 
 ![Screen of a digital oscilloscope](../../img/05-tools/07-digital-oscilloscope.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Digital_oscilloscope.jpg), premek.v, Public Domain*
 
-A PWM signal on the oscilloscope screen looks like this:
+Um sinal PWM na tela do osciloscópio se parece com isto:
 
 ![Animation of PWM: duty cycle change and signal waveform](../../img/05-tools/07-pwm-signal-waveform.gif)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pwm.gif), Mik81, CC0 Public Domain*
 
-You don't need one for every simple build. But when a device behaves unstably, an oscilloscope can reveal in minutes what a multimeter cannot see.
+Você não precisa de um para cada construção simples. Mas quando um dispositivo se comporta de forma instável, um osciloscópio pode revelar em minutos o que um multímetro não consegue ver.
 
-## What you can see
+## O que você pode ver
 
-In iDryer-like devices, an oscilloscope is useful for viewing:
+Em dispositivos do tipo iDryer, um osciloscópio é útil para visualizar:
 
 - fan PWM;
 - MOSFET module PWM;
@@ -27,46 +27,46 @@ In iDryer-like devices, an oscilloscope is useful for viewing:
 - power supply noise;
 - button bounce;
 - tachometric fan signal;
-- brief glitches that a multimeter averages out.
+- breves falhas que um multímetro calcula.
 
-An oscilloscope answers not just "is there voltage" but "what is happening to the signal over time".
+Um osciloscópio responde não apenas "existe tensão", mas "o que está acontecendo com o sinal ao longo do tempo".
 
-## The most important warning
+## O aviso mais importante
 
-Most benchtop oscilloscopes have the probe ground connected to the mains protective earth.
+A maioria dos osciloscópios de bancada tem o aterramento da ponta de prova conectado ao aterramento de proteção da rede elétrica.
 
-This means: the ground clip of the probe is not "just another wire".
+Isto significa: o clipe de aterramento da sonda não é “apenas mais um fio”.
 
-If you attach the ground clip to a point that is not `GND` of the low-voltage circuit, you can create a short circuit through the oscilloscope.
+Se você conectar o clipe de aterramento a um ponto que não seja `GND` do circuito de baixa tensão, poderá criar um curto-circuito através do osciloscópio.
 
-It is especially dangerous to go into the mains 110-230V AC part, SSR, power supply or high-voltage sections with a normal oscilloscope.
+É especialmente perigoso entrar na parte da rede elétrica de 110-230 Vca, SSR, fonte de alimentação ou fontes de alta tensão com um osciloscópio normal.
 
-You cannot:
+Você não pode:
 
-- disconnect the oscilloscope earth for "floating" measurement;
-- connect the probe ground to phase or another voltage point;
-- measure mains voltage with a normal probe without understanding the circuit;
-- assume the two channels are completely independent: channel grounds are often connected together.
+- desconecte o terra do osciloscópio para medição "flutuante";
+- conecte o terra da sonda à fase ou outro ponto de tensão;
+- medir a tensão da rede com uma sonda normal sem entender o circuito;
+- suponha que os dois canais sejam completamente independentes: os aterramentos dos canais geralmente estão conectados entre si.
 
-For floating measurements, high-side measurements and high-voltage measurements, you need proper methods: differential probe, isolated device or another safe approach.
+Para medições flutuantes, medições do lado alto e medições de alta tensão, você precisa de métodos adequados: sonda diferencial, dispositivo isolado ou outra abordagem segura.
 
-## How to connect a probe
+## Como conectar uma sonda
 
-For low-voltage circuits:
+Para circuitos de baixa tensão:
 
-1. Connect the probe to the oscilloscope.
-2. Connect the probe ground to `GND` of the device.
-3. Connect the probe tip to the signal.
-4. Select the correct probe setting: `1x` or `10x`.
-5. Make sure the oscilloscope is set to the same factor.
+1. Conecte a ponta de prova ao osciloscópio.
+2. Conecte o terra da sonda ao `GND` do dispositivo.
+3. Conecte a ponta da sonda ao sinal.
+4. Selecione a configuração correta da sonda: `10x` ou `10x`.
+5. Certifique-se de que o osciloscópio esteja configurado para o mesmo fator.
 
-For most digital signals, use `10x`: the probe loads the circuit less and usually shows signal shape better.
+Para a maioria dos sinais digitais, use `10x`: a ponta de prova carrega menos o circuito e geralmente mostra melhor o formato do sinal.
 
 ## PWM
 
 PWM is a pulse signal.
 
-The oscilloscope shows:
+O osciloscópio mostra:
 
 - frequency;
 - duty cycle;
@@ -76,72 +76,72 @@ The oscilloscope shows:
 - jitter;
 - noise.
 
-For a fan or MOSFET this helps understand:
+Para um fã ou MOSFET isso ajuda a entender:
 
-- whether the pin outputs a signal at all;
-- whether 3.3V or 5V level is sufficient;
-- whether frequency matches the setting;
-- whether duty cycle changes on command;
-- whether signal doesn't sag when load is connected.
+- se o pino emite algum sinal;
+- se o nível de 3,3 V ou 5 V é suficiente;
+- se a frequência corresponde à configuração;
+- se o ciclo de trabalho muda sob comando;
+- se o sinal não cede quando a carga está conectada.
 
 ## UART
 
-UART on the oscilloscope looks like a sequence of pulses.
+O UART no osciloscópio parece uma sequência de pulsos.
 
-The oscilloscope helps see:
+O osciloscópio ajuda a ver:
 
-- whether there is activity on `TX`;
-- whether logic levels are not swapped;
-- what the idle level is;
-- whether there is strong noise;
+- se há atividade no `TX`;
+- se os níveis lógicos não são trocados;
+- qual é o nível de inatividade;
+- se há ruído forte;
 - whether baud rate roughly matches.
 
-For decoding text, a logic analyzer or USB-UART adapter is more convenient. But an oscilloscope quickly shows whether the signal is physically alive.
+Para decodificar texto, um analisador lógico ou adaptador USB-UART é mais conveniente. Mas um osciloscópio mostra rapidamente se o sinal está fisicamente ativo.
 
 ## Power supply sag
 
-A multimeter may not see a brief sag.
+Um multímetro pode não detectar uma breve queda.
 
-For example, when a servo starts, a 5V line might dip for a few milliseconds. The multimeter shows almost normal 5V, but the controller already rebooted.
+Por exemplo, quando um servo é iniciado, uma linha de 5V pode cair por alguns milissegundos. O multímetro mostra 5V quase normal, mas o driver já foi reiniciado.
 
 An oscilloscope lets you see:
 
-- how much voltage drops;
-- how long the sag lasts;
-- whether there are spikes;
+- quanta tensão cai;
+- quanto tempo dura a flacidez;
+- se há picos;
 - whether a capacitor helps;
-- whether the situation changes with a different power supply or wires.
+- se a situação muda com uma fonte de alimentação ou fios diferentes.
 
-This is especially useful for ESP32, servos, fans and DC-DC.
+Isto é especialmente útil para ESP32, servos, ventiladores e DC-DC.
 
-## Noise and interference
+## Ruído e interferência
 
-Noise on power or signal lines can break sensors and communication.
+O ruído nas linhas de energia ou de sinal pode interromper os sensores e a comunicação.
 
 An oscilloscope helps see:
 
 - DC-DC ripple;
 - motor spikes;
-- noise near the heater;
+- barulho próximo ao aquecedor;
 - button bounce;
-- interference on a long wire.
+- interferência em um fio longo.
 
-But understand the limits: poor probe ground connection can add noise to the display itself. A short probe ground spring or short ground wire often gives a more honest picture than a long clip.
+Mas entenda os limites: uma conexão de aterramento deficiente da sonda pode adicionar ruído ao próprio display. Uma mola de aterramento de sonda curta ou um fio de aterramento curto geralmente fornecem uma imagem mais honesta do que um clipe longo.
 
-## Multímetro with frequency measurement
+## Multímetro com medição de frequência
 
-Sometimes an oscilloscope is not needed for initial checks.
+Às vezes, um osciloscópio não é necessário para verificações iniciais.
 
-Some multimeters can measure signal frequency. In the specs this might be called `Hz`, `frequency` or `frequency counter`.
+Alguns multímetros podem medir a frequência do sinal. Nas especificações, isso pode ser chamado de `frequency`, `frequency counter` ou `frequency counter`.
 
-This is useful if you need to quickly understand:
+Isso é útil se você precisar entender rapidamente:
 
 - whether a PWM signal exists at all;
-- whether frequency changes with adjustment;
-- whether the controller output works;
-- whether there is activity on a simple digital line.
+- se a frequência muda com o ajuste;
+- se a saída do controlador funciona;
+- se há atividade em uma linha digital simples.
 
-For example, if a controller should output PWM to a fan or MOSFET module, a frequency-measuring multimeter can show that the signal exists and its frequency roughly matches the expected value.
+Por exemplo, se um controlador emitir PWM para um ventilador ou módulo MOSFET, um multímetro de medição de frequência pode mostrar que o sinal existe e sua frequência corresponde aproximadamente ao valor esperado.
 
 But a multimeter doesn't show signal shape. It won't show:
 
@@ -150,45 +150,45 @@ But a multimeter doesn't show signal shape. It won't show:
 - PWM duty cycle;
 - signal edges;
 - brief dips;
-- noise and interference;
+- ruído e interferência;
 - line distortion.
 
-So a frequency-measuring multimeter is a good tool for quick checks, but not a full oscilloscope replacement.
+Portanto, um multímetro de medição de frequência é uma boa ferramenta para verificações rápidas, mas não é um substituto completo do osciloscópio.
 
-## What to check before measuring
+## O que verificar antes de medir
 
-Before connecting a probe:
+Antes de conectar a probe:
 
-1. What is `GND` in the circuit?
-2. Is this point connected to mains protective earth?
-3. Is there no mains voltage?
-4. Is the probe rated for the voltage?
-5. Is `10x` selected if needed?
-6. Are the probe and channel set the same way?
-7. Don't channel grounds connect different circuit points?
-8. Can you first check the signal on the low-voltage side?
+1. O que é `GND` no circuito?
+2. Este ponto está conectado ao terra de proteção da rede elétrica?
+3. Não há tensão de rede?
+4. A sonda está classificada para a tensão?
+5. `10x` está selecionado se necessário?
+6. A sonda e o canal estão configurados da mesma maneira?
+7. Os aterramentos do canal não conectam diferentes pontos do circuito?
+8. Você pode primeiro verificar o sinal no lado de baixa tensão?
 
-If you have doubts about 110-230V AC, don't connect the oscilloscope.
+Se você tiver dúvidas sobre 110-230V AC, não conecte o osciloscópio.
 
-## Common errors
+## Erros comuns
 
-- ground clip attached to a voltage point, not `GND`;
-- trying to "disconnect" oscilloscope earth from the mains;
-- measuring mains voltage with a normal probe without a differential;
-- forgetting that channel grounds are connected;
-- probe set to `10x`, oscilloscope set to `1x`;
-- using long probe ground and seeing extra noise;
-- only looking with a multimeter and missing a brief sag;
-- thinking a UART problem is software when there is no physical signal on the line.
+- clipe de aterramento conectado a um ponto de tensão, não `GND`;
+- tentando “desconectar” o terra do osciloscópio da rede elétrica;
+- medir a tensão da rede com uma sonda normal sem diferencial;
+- esquecendo que os aterramentos do canal estão conectados;
+- sonda definida como `1x`, osciloscópio definido como `1x`;
+- usando sonda longa e vendo ruído extra;
+- apenas olhando com um multímetro e perdendo uma breve queda;
+- pensar que um problema UART é software quando não há sinal físico na linha.
 
-## The essentials
+## O essencial
 
 - An oscilloscope shows signal shape over time.
-- It is useful for PWM, UART, power sag, noise and brief glitches.
-- A normal benchtop oscilloscope ground is connected to mains protective earth.
-- You cannot connect the probe ground to an arbitrary circuit point.
-- For mains and floating measurements, special safe methods are needed.
-- A frequency-measuring multimeter is useful, but not an oscilloscope replacement.
+- É útil para PWM, UART, queda de energia, ruído e falhas breves.
+- Um aterramento normal do osciloscópio de bancada está conectado ao aterramento de proteção da rede elétrica.
+- Você não pode conectar o aterramento da sonda a um ponto arbitrário do circuito.
+- Para medições de rede e flutuantes, são necessários métodos especiais de segurança.
+- Um multímetro de medição de frequência é útil, mas não um substituto do osciloscópio.
 
 ## Reference materials
 

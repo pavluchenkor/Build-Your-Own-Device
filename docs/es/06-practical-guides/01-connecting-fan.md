@@ -45,7 +45,7 @@ La lógica correcta es:
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 
-## Opción más simple: ventilador de 2 pines
+## Opción más sencilla: ventilador de 2 pinos
 
 Un ventilador de 2 pines generalmente tiene solo:
 
@@ -54,7 +54,7 @@ Un ventilador de 2 pines generalmente tiene solo:
 
 Si es un ventilador de 24V, conéctelo a 24V. Si es un ventilador de 12V, conéctelo a 12V.
 
-Para control simple encendido/apagado, puede usar:
+Para controlar el encendido/apagado simple, puede usar:
 
 - una salida de ventilador dedicada en la placa, si se califica para el voltaje y corriente necesarios;
 - un módulo MOSFET externo para cargas DC;
@@ -89,7 +89,7 @@ La diferencia clave: la alimentación del ventilador se aplica continuamente, y 
 
 Esta es la forma correcta de controlar ventiladores PWM de computadora. No asuma que un ventilador de 4 pines debe controlarse conmutando constantemente la alimentación. Para un ventilador PWM apropiado, la señal de control debe ir a un pin PWM separado.
 
-Los ventiladores PWM de 4 pines de computadora a menudo tienen una entrada de control diseñada para señales open-collector/open-drain con pull-up interno, no para ningún voltaje de GPIO. No aplique `12V` o `24V` al pin PWM. Verifique la documentación del ventilador; si se requiere open-drain/open-collector, use una salida de transistor apropiada o modo GPIO.
+Los ventiladores PWM de 4 pines de computadora a menudo tienen una entrada de control diseñada para señales open-collector/open-drain con pull-up interno, no para ningún voltaje de GPIO. No aplique `24V` o `24V` al pin PWM. Verifique la documentación del ventilador; si se requiere drenaje abierto/colector abierto, use una salida de transistor apropiada o modo GPIO.
 
 Para muchos ventiladores PWM de 4 pines, la frecuencia PWM típica es alrededor de `25 kHz`. Algunos ventiladores operan en un rango cercano, pero a frecuencia demasiado baja o demasiado alta, pueden comportarse de manera impredecible: correr a velocidad máxima, detenerse o hacer ruido.
 
@@ -101,7 +101,7 @@ Si el ventilador es alimentado por una fuente de alimentación separada y la se�
 
 Sin un `GND` común, el controlador y el ventilador no tienen un nivel de referencia común. Como resultado, el PWM puede no funcionar o funcionar intermitentemente.
 
-Regla simple:
+Regla sencilla:
 
 - la alimentación positiva del ventilador proviene de una fuente de alimentación apropiada;
 - la alimentación negativa del ventilador está conectada al negativo de la fuente de alimentación;

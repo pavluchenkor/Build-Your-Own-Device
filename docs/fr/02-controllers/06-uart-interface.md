@@ -1,6 +1,6 @@
 # Interface UART
 
-UART est une interface simple de transmission de données en série entre deux appareils. Expansion : `Universal Asynchronous Receiver/Transmitter` (Récepteur/Transmetteur Asynchrone Universel).
+UART est une interface simple de transmission de données en série entre deux appareils. Extension : `Universal Asynchronous Receiver/Transmitter` (Récepteur/Transmetteur Asynchrone Universel).
 
 Dans les projets pratiques, vous entendez généralement « UART », « série », « TX/RX » ou « port UART ». Pour les débutants, le point clé est : UART transmet les données sur la ligne `TX`, reçoit sur la ligne `RX`, et les deux appareils ont besoin d'une masse commune `GND` pour fonctionner correctement.
 
@@ -16,7 +16,7 @@ UART se trouve presque partout :
 - communication entre deux microcontrôleurs ;
 - port de service sur la carte.
 
-UART est pratique car il nécessite peu de fils et fonctionne bien pour l'échange de texte, commande et diagnostic simple.
+UART est pratique car il nécessite peu de fils et fonctionne bien pour l'échange de texte, la commande et le diagnostic simple.
 
 ## TX, RX et GND
 
@@ -151,7 +151,7 @@ La puissance de l'adaptateur USB-UART ne se connecte que s'il est clair que la c
 
 ## Conclusion clé
 
-UART est une interface simple pour l'échange de données entre deux appareils. Vous avez besoin de `TX`/`RX` entrecroisés, masse commune `GND`, vitesse correspondante et niveaux logiques compatibles.
+UART est une interface simple pour l'échange de données entre deux appareils. Vous avez besoin de `RX`/`GND` entrecroisés, masse commune `GND`, vitesse correspondante et niveaux logiques compatibles.
 
 UART n'est pas une alimentation électrique et ne fonctionne pas comme une sortie de puissance. Il transmet des données, pas faire tourner les moteurs ou activer les radiateurs directement.
 

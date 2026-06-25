@@ -30,9 +30,9 @@ Por exemplo:
 230V 300W -> about 1.3A
 ```
 
-A `24V` são necessários fios grossos, fonte de alimentação potente, MOSFET robusto, terminais adequados e refrigeração. A `230V AC` a corrente é menor, mas existe tensão de rede perigosa e todos os requisitos de segurança elétrica.
+A `230V AC` são necessários fios grossos, fonte de alimentação potente, MOSFET robusto, terminais adequados e refrigeração. A `230V AC` a corrente é menor, mas existe tensão de rede perigosa e todos os requisitos de segurança elétrica.
 
-A abordagem com TRIAC não é "melhor" nem "mais simples". É um compromisso diferente: menos corrente no circuito de potência, mas requisitos muito mais elevados para isolamento, caixa, fusível, distâncias e qualificações.
+A abordagem com TRIAC não é "melhor" nem "mais simples". É um compromisso diferente: menos corrente no circuito de potência, mas requisitos muito mais elevados para isolamento, caixa, estrutura, distâncias e qualificações.
 
 ## Arquitetura típica
 
@@ -63,7 +63,7 @@ Um TRIAC optoisolador com passagem pelo zero liga a carga perto da passagem pelo
 
 Um TRIAC optoisolador sem passagem pelo zero é utilizado onde é necessário controlo de fase de potência, por exemplo um dimmer. Este circuito é mais complexo: é necessário detetar a passagem pelo zero, contar o atraso e ter em conta o ruído.
 
-Para um aquecedor num secador ou câmara, o controlo de nível dimmer normalmente não é necessário. Frequentemente é suficiente uma abordagem lenta de ligar/desligar ou controlo por rajadas, se for suportado pelo módulo escolhido e seguro para a carga.
+Para um aquecedor numa secadora ou câmara, o controle de nível do dimmer normalmente não é necessário. Freqüentemente é suficiente uma abordagem lenta de ligar/desligar ou controle por rajadas, se for suportado pelo módulo escolhido e seguro para a carga.
 
 ## Cargas adequadas
 
@@ -83,9 +83,9 @@ Use com precaução:
 - controladores eletrónicos;
 - cargas com corrente de arranque elevada.
 
-Uma carga indutiva desloca a fase da corrente em relação à tensão e pode interferir com o desligamento normal do TRIAC. Pode exigir outros tipos de TRIACs, circuito snubber, varistor ou um método de comutação diferente.
+Uma carga indutiva desloca a fase da corrente em relação à tensão e pode interferir no desligamento normal do TRIAC. Podem exigir outros tipos de TRIACs, circuito snubber, varistor ou um método de transmissão diferente.
 
-Uma fonte de alimentação ou controlador eletrónico não deve ser considerado uma carga resistiva normal. Se tiver eletrónica própria no interior, o controlo por TRIAC pode funcionar mal ou de forma perigosa.
+Uma fonte de alimentação ou controlador eletrônico não deve ser considerada uma carga resistiva normal. Se você tiver eletricidade própria no interior, o controle do TRIAC pode funcionar mal ou de forma perigosa.
 
 ## Circuito snubber
 
@@ -125,7 +125,7 @@ Na especificação técnica existem muitos parâmetros. Para uma primeira escolh
 
 Outros parâmetros (`IH`, `dV/dt`, `Tj`, `Rth`) são importantes para cálculo preciso ou quando existem problemas no circuito real.
 
-A classificação de corrente na especificação técnica é dada em determinadas condições de refrigeração. Numa caixa fechada e quente sem dissipador de calor, a corrente máxima real é inferior.
+A classificação de corrente na concepção técnica é dada em determinadas condições de refrigeração. Numa caixa fechada e quente sem dissipador de calor, a corrente máxima real é inferior.
 
 ## TRIAC e SSR
 

@@ -89,11 +89,11 @@ Portanto, você não pode avaliar segurança com apenas a frase "a peça não to
 
 ![Zonas em um invólucro impresso para um dispositivo aquecido](../../img/07-3d-printing/01-printed-device-zones.svg)
 
-## A força depende da direção da camada
+## A força depende da direção da seção
 
 Peças FDM não são igualmente fortes em todas as direções.
 
-A direção da camada afeta como uma peça se quebra:
+A direção da camada relativa a uma peça se quebra:
 
 - ao longo das linhas de plástico é geralmente mais forte;
 - entre camadas é frequentemente mais fraca;
@@ -143,7 +143,7 @@ A seção cobre vários tópicos práticos:
 - `03-materials-petg-abs-asa.md` - escolhas básicas entre PETG, ABS e ASA.
 - `04-heat-resistant-materials.md` - como pensar sobre peças perto de calor.
 - `05-enclosure-design.md` - zonas de invólucro, ventilação, fixação, acesso e fiação.
-- `06-why-pla-is-risky.md` - por que PLA é conveniente para protótipos mas arriscado perto de calor.
+- `06-why-pla-is-risky.md` - porque o PLA é conveniente para protótipos mas arriscados perto de calor.
 
 ## O que esta seção não faz
 

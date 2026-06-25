@@ -1,33 +1,33 @@
 # Adaptadores USB-UART
 
-A USB-UART adapter is needed so a computer or Linux host can communicate with a UART device via USB. It converts USB to regular serial lines `TX`, `RX`, and `GND`.
+Um adaptador USB-UART é necessário para que um computador ou host Linux possa se comunicar com um dispositivo UART via USB. Ele converte USB em linhas seriais regulares `RX`, `GND` e `GND`.
 
-Such an adapter is often needed for flashing, logs, diagnostics, and recovering boards without a proper USB connector.
+Esse adaptador geralmente é necessário para atualização, registros, diagnósticos e recuperação de placas sem um conector USB adequado.
 
-## Where it is needed
+## Onde é necessário
 
-USB-UART adapter is useful for:
+O adaptador USB-UART é útil para:
 
 - flashing some microcontroller boards;
 - reading serial logs;
 - accessing device console;
 - bootloader mode diagnostics;
-- connecting Arduino Pro Mini and some Nano clones;
-- working with boards without built-in USB;
-- recovery after failed flashing;
-- temporary MCU connection to host via serial.
+- conectando Arduino Pro Mini e alguns clones Nano;
+- trabalhar com placas sem USB integrado;
+- recuperação após falha no flash;
+- conexão temporária do MCU ao host via serial.
 
-If a board already has proper USB and appears as a serial device, a separate USB-UART adapter may not be needed.
+Se uma placa já tiver USB adequado e aparecer como um dispositivo serial, talvez não seja necessário um adaptador USB-UART separado.
 
-## What it has
+## O que tem
 
-Typical contacts:
+Contatos típicos:
 
-- `TX` or `TXO` - transmission from adapter to device;
-- `RX` or `RXI` - reception from device;
+- `TXO` ou `TXO` - transmissão do adaptador para o dispositivo;
+- `RXI` ou `RXI` - recepção do dispositivo;
 - `GND` - common ground;
-- `VCC`, `3V3`, or `5V` - power, if needed;
-- `DTR` - often used for auto-reset/flashing;
+- `3V3`, `5V` ou `5V` - alimentação, se necessário;
+- `DTR` - frequentemente usado para reinicialização/piscar automático;
 - `RTS`, `CTS` - flow control lines or boot/reset scenarios.
 
 Connection diagram:
@@ -36,11 +36,11 @@ Connection diagram:
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:15938_-_USBtoSerial_1.jpg), SparkFun Electronics, CC BY 2.0*
 
-For simple log reading, `TX`, `RX`, and `GND` are often sufficient. Power is only connected if it is clear the board should be powered from the adapter.
+Para leitura simples de log, `RX`, `GND` e `GND` geralmente são suficientes. A alimentação só será conectada se estiver claro que a placa deve ser alimentada pelo adaptador.
 
-## How to connect TX and RX
+## Como conectar TX e RX
 
-Connection is cross-connected:
+A conexão é cruzada:
 
 ```text
 TX adapter -> RX device
@@ -48,123 +48,123 @@ RX adapter <- TX device
 GND adapter -> GND device
 ```
 
-If there is no connection, the first check is: are `TX` and `RX` mixed up, is there a common `GND`, does the speed match, and is the correct COM/tty port selected.
+Se não houver conexão, a primeira verificação é: `RX` e `GND` estão misturados, existe um `GND` comum, a velocidade corresponde e a porta COM/tty correta está selecionada.
 
-## 3.3V and 5V
+## 3,3V e 5V
 
-USB-UART adapters come in:
+Os adaptadores USB-UART vêm em:
 
 - `3.3V` only;
 - `5V` only;
-- with `3.3V/5V` switch;
-- with jumper or solder jumper;
-- with `VCC` of one voltage, but signals of another level.
+- com interruptor `3.3V/5V`;
+- com jumper ou jumper de solda;
+- com `VCC` de uma tensão, mas sinais de outro nível.
 
-This matters: the level of `VCC` and the level of `TX/RX` are not always obvious from labels.
+Isso é importante: o nível de `TX/RX` e o nível de `TX/RX` nem sempre são óbvios nos rótulos.
 
-ESP32, RP2040, and STM32 typically use `3.3V` logic. Arduino Uno/Nano often uses `5V` logic. If you apply `5V` signal to a `3.3V` input, you can damage the board.
+ESP32, RP2040 e STM32 normalmente usam lógica `5V`. Arduino Uno/Nano geralmente usa lógica `5V`. Se você aplicar o sinal `3.3V` a uma entrada `3.3V`, poderá danificar a placa.
 
-Before connecting, check the adapter and board documentation. Do not rely only on jumper color or label on the case.
+Antes de conectar, verifique a documentação do adaptador e da placa. Não confie apenas na cor do jumper ou na etiqueta do gabinete.
 
-## TTL UART and RS-232
+## TTL UART e RS-232
 
-USB-UART adapter for microcontrollers usually outputs TTL/CMOS UART: `3.3V` or `5V`.
+O adaptador USB-UART para microcontroladores geralmente produz TTL/CMOS UART: `5V` ou `5V`.
 
-This is not the same as real RS-232.
+Isto não é o mesmo que o RS-232 real.
 
-RS-232 has different voltage levels and cannot be connected directly to a microcontroller GPIO. If you need to work with a real RS-232 port, you need a USB-RS232 adapter or level converter, not a regular USB-UART TTL.
+O RS-232 possui diferentes níveis de tensão e não pode ser conectado diretamente a um microcontrolador GPIO. Se você precisar trabalhar com uma porta RS-232 real, precisará de um adaptador USB-RS232 ou conversor de nível, não de um USB-UART TTL normal.
 
-## Power from adapter
+## Energia do adaptador
 
-The `VCC` pin on the adapter can be useful, but is often misused.
+O pino `VCC` no adaptador pode ser útil, mas geralmente é mal utilizado.
 
-Safe approach:
+Abordagem segura:
 
-- for logs and diagnostics, first connect only `TX`, `RX`, `GND`;
-- do not connect `VCC` if the board is already powered from USB, power supply, or other circuit;
-- do not power motors, servos, relays, heaters, and LED strips via USB-UART;
-- verify how much current the adapter can actually provide;
-- understand that `VCC` can be `3.3V` or `5V`.
+- para registros e diagnósticos, primeiro conecte apenas `RX`, `GND`, `GND`;
+- não conecte `VCC` se a placa já estiver alimentada por USB, fonte de alimentação ou outro circuito;
+- não alimente motores, servos, relés, aquecedores e faixas de LED via USB-UART;
+- verifique quanta corrente o adaptador pode realmente fornecer;
+- entenda que `3.3V` pode ser `5V` ou `5V`.
 
-If you connect two power sources without understanding the circuit, you can get reverse powering, instability, or board damage.
+Se você conectar duas fontes de alimentação sem entender o circuito, poderá obter alimentação reversa, instabilidade ou danos à placa.
 
-## DTR and RTS
+## DTR e RTS
 
-Some boards use `DTR` and `RTS` for auto-reset or bootloader entry.
+Algumas placas usam `RTS` e `RTS` para reinicialização automática ou entrada do bootloader.
 
-Examples:
+Exemplos:
 
-- Arduino Pro Mini often uses `DTR` through a capacitor for reset during flashing;
-- ESP32 boards may use `DTR`/`RTS` to auto-control `EN` and `BOOT`;
-- some bootloader scenarios require pressing a button manually if these lines are not connected.
+- O Arduino Pro Mini geralmente usa `DTR` por meio de um capacitor para reinicialização durante o flash;
+- As placas ESP32 podem usar `RTS`/`EN` para controlar automaticamente `BOOT` e `BOOT`;
+- alguns cenários de bootloader exigem o pressionamento manual de um botão se essas linhas não estiverem conectadas.
 
-If flashing does not start automatically, it is not always a `TX/RX` problem. It may be that `DTR`/`RTS` are not connected, wrong bootloader is selected, or `BOOT`/`RESET` must be pressed manually.
+Se o flash não começar automaticamente, nem sempre é um problema do `DTR`. Pode ser que `RTS`/`BOOT` não estejam conectados, o bootloader errado esteja selecionado ou `RESET`/`RESET` precise ser pressionado manualmente.
 
 ## CH340, CP2102, FTDI
 
 Popular USB-UART chips:
 
-- **CH340/CH341** - cheap and widespread adapters;
+- **CH340/CH341** - adaptadores baratos e difundidos;
 - **CP2102/CP210x** - common Silicon Labs USB-UART;
 - **FT232/FTDI** - classic option, often more expensive;
-- **PL2303** - found in old adapters and cables.
+- **PL2303** – encontrado em adaptadores e cabos antigos.
 
-On modern systems, the driver is often installed automatically, but not always. If the port does not appear, check:
+Em sistemas modernos, o driver geralmente é instalado automaticamente, mas nem sempre. Se a porta não aparecer, verifique:
 
-- USB cable is not charge-only;
-- device is detected by the system;
-- if a driver is needed;
-- if old driver is not conflicting;
-- if the port is not occupied by another program.
+- O cabo USB não é apenas para carga;
+- dispositivo é detectado pelo sistema;
+- se for necessário um driver;
+- se o driver antigo não estiver em conflito;
+- se a porta não estiver ocupada por outro programa.
 
-## How to test the adapter
+## Como testar o adaptador
 
-Simple loopback test:
+Teste de loopback simples:
 
-1. Connect adapter to computer.
-2. Connect `TX` of adapter to `RX` of adapter.
+1. Conecte o adaptador ao computador.
+2. Conecte `RX` do adaptador ao `RX` do adaptador.
 3. Open serial terminal.
-4. Select port and speed, for example `115200`.
+4. Selecione porta e velocidade, por exemplo `115200`.
 5. Type characters.
-6. If it works, characters are echoed back.
+6. Se funcionar, os caracteres serão repetidos.
 
-This tests the adapter itself, driver, cable, and terminal program without external board.
+Isso testa o próprio adaptador, driver, cabo e programa de terminal sem placa externa.
 
-## What to check before buying
+## O que verificar antes de comprar
 
-Before buying a USB-UART adapter, verify:
+Antes de comprar um adaptador USB-UART, verifique:
 
-- what `TX/RX` levels: `3.3V`, `5V`, or switchable;
-- how the level is selected;
-- what chip is used: CH340, CP2102, FTDI, or other;
-- if there are drivers for your system;
-- if `DTR` and `RTS` are present, if auto-flashing is needed;
-- what USB connector;
-- if pins `GND`, `TX`, `RX`, `VCC` are in convenient order;
-- if there is a schematic or good documentation;
-- how much current can be drawn from `VCC`, if needed.
+- quais níveis `3.3V`: `5V`, `5V` ou comutável;
+- como o nível é selecionado;
+- qual chip é usado: CH340, CP2102, FTDI ou outro;
+- se existem drivers para o seu sistema;
+- se `RTS` e `RTS` estiverem presentes, se o flash automático for necessário;
+- qual conector USB;
+- se os pinos `TX`, `RX`, `VCC`, `VCC` estiverem em ordem conveniente;
+- se existe um esquema ou boa documentação;
+- quanta corrente pode ser extraída de `VCC`, se necessário.
 
-For ESP32/RP2040/STM32 diagnostics, an adapter with `3.3V` signals and clear marking is more convenient.
+Para diagnósticos ESP32/RP2040/STM32, um adaptador com sinais `3.3V` e marcação clara é mais conveniente.
 
-## Typical mistakes
+## Erros típicos
 
-- connecting `TX` with `TX`, `RX` with `RX`;
+- conectando `TX` com `RX`, `RX` com `RX`;
 - forgetting common `GND`;
-- selecting `5V` level for `3.3V` board;
-- connecting `VCC` to an already-powered board;
+- selecionando o nível `3.3V` para a placa `3.3V`;
+- conectar `VCC` a uma placa já alimentada;
 - powering load via USB-UART adapter;
-- confusing USB-UART TTL with USB-RS232;
-- using a charge-only USB cable;
-- not installing CH340/CP2102/FTDI driver;
-- selecting wrong COM/tty port;
-- not connecting `DTR`/`RTS` when needed for auto-flashing;
-- leaving serial terminal open, then wondering why the flasher cannot open the port.
+- confundindo USB-UART TTL com USB-RS232;
+- usando um cabo USB somente para carga;
+- não instalar o driver CH340/CP2102/FTDI;
+- selecionando porta COM/tty errada;
+- não conectar `RTS`/`RTS` quando necessário para flash automático;
+- deixando o terminal serial aberto e me perguntando por que o pisca-pisca não consegue abrir a porta.
 
 ## Key takeaway
 
-USB-UART adapter is a bridge between computer USB and UART pins of a device. For minimal connection, you need cross-connected `TX/RX` and common `GND`.
+O adaptador USB-UART é uma ponte entre os pinos USB do computador e UART de um dispositivo. Para conexão mínima, você precisa de `GND` com conexão cruzada e `GND` comum.
 
-Main risks: wrong `3.3V/5V` level, unnecessary power connection, confusing TTL UART with RS-232, and missing `DTR`/`RTS` lines for flashing.
+Principais riscos: nível `DTR` errado, conexão de energia desnecessária, confundir TTL UART com RS-232 e falta de linhas `RTS`/`RTS` para piscar.
 
 ## Related materials
 

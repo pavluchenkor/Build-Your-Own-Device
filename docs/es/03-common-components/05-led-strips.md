@@ -1,231 +1,231 @@
 # Tiras LED
 
-An LED strip is a flexible board with LEDs and power traces. In a printer, dryer or small DIY device, it's usually used for chamber lighting, status indication, work area lighting or decorative enclosure lighting.
+Una tira de LED es una placa flexible con LED y líneas de alimentación. En una impresora, secadora o pequeño dispositivo de bricolaje, generalmente se usa para iluminación de cámaras, indicación de estado, iluminación del área de trabajo o iluminación decorativa de recintos.
 
-The main beginner mistake is treating an LED strip like a small LED. Even a short strip can draw more current than a fan, and a long strip becomes a full power load.
+El principal error del principiante es tratar una tira de LED como un LED pequeño. Incluso una tira corta puede consumir más corriente que un ventilador, y una tira larga se convierte en una carga de máxima potencia.
 
-## Dónde It's Used
+## Dónde se usa
 
-In DIY devices around a 3D printer, LED strips are useful for:
+En dispositivos de bricolaje alrededor de una impresora 3D, las tiras de LED son útiles para:
 
-- lighting the printer chamber;
-- lighting the filament dryer;
+- iluminar la cámara de la impresora;
+- encender el secador de filamentos;
 - status indication: heating, drying, error, waiting;
-- work area lighting inside the enclosure;
-- soft night lighting without main light;
-- visual signal when print finishes or error occurs.
+- iluminación del área de trabajo en el interior del recinto;
+- iluminación nocturna suave sin luz principal;
+- Señal visual cuando finaliza la impresión o se produce un error.
 
-For service lighting, a simple white strip is usually better. For mode indication, RGB or addressable strips are convenient, but they're more complex in power and control.
+Para la iluminación de servicio, suele ser mejor una simple franja blanca. Para la indicación de modo, las tiras RGB o direccionables son convenientes, pero son más complejas en potencia y control.
 
 ## Voltage: 5V, 12V or 24V
 
-LED strips come in different voltages:
+Las tiras de LED vienen en diferentes voltajes:
 
 - `5V` - often addressable strips like WS2812/NeoPixel;
-- `12V` - common white and RGB strips;
-- `24V` - convenient for longer sections and 24V systems.
+- `12V`: tiras blancas y RGB comunes;
+- `24V`: conveniente para secciones más largas y sistemas de 24 V.
 
-Strip voltage must match the power source. You can't connect a `12V` strip to `24V`. A `24V` strip on `12V` may dim or not work. A `5V` strip on `12V` or `24V` will almost certainly be damaged.
+El voltaje de la tira debe coincidir con la fuente de alimentación. No puede conectar una tira `24V` a `24V`. Una tira `12V` en `5V` puede atenuarse o no funcionar. Es casi seguro que una tira `12V` en `24V` o `24V` se dañará.
 
-If your printer already has `24V`, that doesn't mean any strip can connect to it. You need to buy exactly a `24V` strip or put a DC-DC converter for the right voltage.
+Si su impresora ya tiene `24V`, eso no significa que se pueda conectar cualquier tira. Necesitas comprar exactamente una tira `24V` o poner un convertidor DC-DC para el voltaje correcto.
 
-## Regular and Addressable Strips
+## Tiras regulares y direccionables
 
-There are two main types of LED strips.
+Hay dos tipos principales de tiras de LED.
 
-A regular strip lights up all at once. This could be:
+Una tira normal se enciende de repente. Esto podría ser:
 
 - single-color white;
 - warm/cold white;
-- RGB strip that changes color all along its length;
-- RGBW strip with separate white channel.
+- Tira RGB que cambia de color en toda su longitud;
+- Tira RGBW con canal blanco independiente.
 
-Such a strip has no microchip on each LED. Brightness is controlled by power switching or PWM through a MOSFET, LED controller or suitable board output.
+Una tira de este tipo no tiene microchip en cada LED. El brillo se controla mediante conmutación de energía o PWM a través de un MOSFET, un controlador LED o una salida de placa adecuada.
 
-An addressable strip has a control microchip for individual LEDs or LED groups. It lets you light different sections in different colors. Typical examples: WS2812B, SK6812, NeoPixel-compatible strips.
+Una tira direccionable tiene un microchip de control para LED individuales o grupos de LED. Te permite iluminar diferentes secciones con diferentes colores. Ejemplos típicos: WS2812B, SK6812, tiras compatibles con NeoPixel.
 
 Addressable strips require:
 
-- power at the right voltage;
-- common `GND` with controller;
+- potencia al voltaje correcto;
+- común `GND` con controlador;
 - data wire `DIN`;
-- correct data direction along the arrow on the strip;
+- dirección correcta de los datos a lo largo de la flecha de la tira;
 - often - 5V data signal level;
-- careful power without big drops.
+- Potencia cuidada y sin grandes caídas.
 
-For simple chamber lighting, an addressable strip is usually overkill. For nice indication and effects, it's convenient, but requires more attention to power.
+Para una iluminación de cámara sencilla, una tira direccionable suele ser excesiva. Para obtener indicaciones y efectos agradables, es conveniente, pero requiere más atención a la potencia.
 
-## Current and Power
+## Corriente y potencia
 
-Choose an LED strip not just by color and length. You need to know its power.
+Elija una tira de LED no solo por el color y la longitud. Necesitas conocer su poder.
 
-Product pages usually list:
+Las páginas de productos suelen incluir:
 
-- voltage: for example `12V` or `24V`;
-- power per meter: for example `4.8 W/m`, `9.6 W/m`, `14.4 W/m`;
-- number of LEDs per meter;
+- voltaje: por ejemplo `24V` o `24V`;
+- potencia por metro: por ejemplo `9.6 W/m`, `14.4 W/m`, `14.4 W/m`;
+- número de LED por metro;
 - LED type: for example `3528`, `5050`, `2835`;
 - strip width;
 - protection degree: bare, silicone jacket, IP65/IP67;
 - maximum length per section.
 
-Current is calculated simply:
+La corriente se calcula simplemente:
 
 ```text
 current = power / voltage
 ```
 
-Example: you have `2 m` of `24V` strip at `9.6 W/m` power.
+Ejemplo: tienes `24V` de la tira `9.6 W/m` a la potencia `9.6 W/m`.
 
 ```text
 total power = 2 m × 9.6 W/m = 19.2 W
 current = 19.2 W / 24 V = 0.8 A
 ```
 
-For such a strip, the power supply, MOSFET, wires and connector must comfortably handle over `0.8 A`. Practically, it's better to add at least `30-50%` margin, especially if the strip runs for long periods.
+Para una tira de este tipo, la fuente de alimentación, el MOSFET, los cables y el conector deben manejarse cómodamente sobre `30-50%`. En la práctica, es mejor agregar al menos un margen `30-50%`, especialmente si la tira funciona durante períodos prolongados.
 
-For RGB strips, you must account for maximum current of all channels. White on RGB usually means red, green and blue channels are on simultaneously.
+Para las tiras RGB, debes tener en cuenta la corriente máxima de todos los canales. El blanco en RGB generalmente significa que los canales rojo, verde y azul están encendidos simultáneamente.
 
-For addressable 5V strips, a rough estimate is up to `60 mA` per RGB pixel at full white. In real effects, current can be less, but you can't size the power supply and wiring for "usually not at full brightness".
+Para tiras direccionables de 5 V, una estimación aproximada es de hasta `60 mA` por píxel RGB en blanco total. En efectos reales, la corriente puede ser menor, pero no se puede dimensionar la fuente de alimentación y el cableado para que "generalmente no tengan el brillo máximo".
 
-## Por qué You Can't Power a Strip From GPIO
+## Por qué no se puede alimentar una regleta desde GPIO
 
-A controller's GPIO is a signal output, not a power source.
+El GPIO de un controlador es una salida de señal, no una fuente de alimentación.
 
-You cannot connect an LED strip directly to a microcontroller pin. GPIO is not rated for strip current. This can damage the board, cause reboots, unstable operation or trace overheating.
+No se puede conectar una tira de LED directamente a un pin de microcontrolador. GPIO no está clasificado para corriente de tira. Esto puede dañar la placa, provocar reinicios, funcionamiento inestable o rastros de sobrecalentamiento.
 
 Correct logic:
 
-- strip current comes from the power supply;
-- controller only manages on/off, brightness or data;
-- a MOSFET, LED driver, LED controller or board power output handles the power switching;
-- controller and supply grounds are connected if there's a control signal.
+- la corriente de tira proviene de la fuente de alimentación;
+- el controlador solo gestiona el encendido/apagado, el brillo o los datos;
+- un MOSFET, controlador LED, controlador LED o salida de alimentación de placa maneja la conmutación de energía;
+- El controlador y las tierras de suministro están conectados si hay una señal de control.
 
-## Connecting a Simple Single-Color Strip
+## Conexión de una tira simple de un solo color
 
-For a white `12V` or `24V` strip, a low-side MOSFET is often used: the strip's plus is connected to the power plus, and the strip's minus is switched by the MOSFET module.
+Para una tira blanca `24V` o `24V`, a menudo se usa un MOSFET de lado bajo: el plus de la tira está conectado al plus de alimentación y el módulo MOSFET conmuta el menos de la tira.
 
 ![Close-up of LED strip with SMD diodes](../../img/03-common-components/05-led-strip-closeup.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:LED_strip_closeup.jpg), Akbermamps, CC BY 4.0*
 
-Typical circuit:
+Circuito típico:
 
-1. Power supply `+V` goes to LED strip `+`.
-2. LED strip `-` goes to MOSFET module power output.
-3. Power supply `GND` goes to MOSFET module.
-4. Controller `GND` is connected to power supply `GND`.
-5. Controller control pin goes to MOSFET module input.
+1. La fuente de alimentación `+` va a la tira de LED `+`.
+2. La tira de LED `-` va a la salida de alimentación del módulo MOSFET.
+3. La fuente de alimentación `GND` va al módulo MOSFET.
+4. El controlador `GND` está conectado a la fuente de alimentación `GND`.
+5. El pin de control del controlador va a la entrada del módulo MOSFET.
 
-If the printer board already has a managed output for fans or LEDs, you can use it only if it's rated for the needed voltage and current. You cannot connect a long strip to any random connector without checking the output limit.
+Si la placa de la impresora ya tiene una salida administrada para ventiladores o LED, puede usarla solo si está clasificada para el voltaje y la corriente necesarios. No puede conectar una tira larga a ningún conector aleatorio sin verificar el límite de salida.
 
 ## RGB Strip
 
-A typical RGB strip usually has a common plus and three managed minuses:
+Una tira RGB típica suele tener un plus común y tres menos controlados:
 
 - `+V`;
 - `R`;
 - `G`;
 - `B`.
 
-Each color channel requires a separate MOSFET channel or a ready-made RGB controller. One MOSFET for the whole RGB strip can only turn it on and off, not change color.
+Cada canal de color requiere un canal MOSFET separado o un controlador RGB listo para usar. Un MOSFET para toda la tira RGB solo puede encenderlo y apagarlo, no cambiar de color.
 
-When selecting a MOSFET module for an RGB strip, look at current per channel and total current. The connector, terminal and wire must also handle the load.
+Al seleccionar un módulo MOSFET para una tira RGB, observe la corriente por canal y la corriente total. El conector, terminal y cable también deben soportar la carga.
 
 ## Addressable Strip
 
-An addressable strip usually has:
+Una regleta direccionable suele tener:
 
-- `+5V` or other power if it's not a 5V model;
+- `+5V` u otra potencia si no es un modelo de 5V;
 - `GND`;
 - `DIN` - data input;
-- sometimes `DOUT` - data output to the next section.
+- a veces `DOUT`: salida de datos a la siguiente sección.
 
-Important rules:
+Reglas importantes:
 
-- connect data toward the arrow on the strip;
-- controller and strip must have common ground;
-- for 5V addressable strips on a 3.3V controller, you often need a level converter;
-- before a long strip, an electrolytic capacitor across power is useful;
-- a resistor around `300-500 Ohm` is often placed in the data line near the strip input;
-- for a long strip, it's better to supply power not just at the start but at additional points.
+- conecte los datos hacia la flecha de la tira;
+- el controlador y la tira deben tener puntos en común;
+- para tiras direccionables de 5 V en un controlador de 3,3 V, a menudo se necesita un convertidor de nivel;
+- antes de una tira larga, es útil un condensador electrolítico de potencia;
+- a menudo se coloca una resistencia alrededor de `300-500 Ohm` en la línea de datos cerca de la entrada de la tira;
+- para una franja larga, es mejor suministrar energía no sólo al principio sino también en puntos adicionales.
 
-If an addressable strip is powered from a separate supply, you cannot apply only `DIN` without common `GND`. The data signal then has no proper reference level, and the strip will flicker randomly or not work.
+Si una regleta direccionable se alimenta desde una fuente separada, no puede aplicar solo `GND` sin `GND` común. La señal de datos entonces no tiene un nivel de referencia adecuado y la tira parpadeará aleatoriamente o no funcionará.
 
-## Voltage Drop and Multi-Point Power
+## Caída de voltaje y potencia multipunto
 
-A long LED strip may be bright at the start and noticeably dimmer at the end. This is not "bad controller", it's voltage drop on wires and the strip's copper traces.
+Una tira de LED larga puede ser brillante al principio y notablemente más tenue al final. Esto no es un "mal controlador", es una caída de voltaje en los cables y las trazas de cobre de la tira.
 
-The lower the voltage and higher the current, the worse the problem. So `5V` and `12V` strips more often need power from multiple points than `24V` strips of the same power.
+Cuanto menor sea el voltaje y mayor la corriente, peor será el problema. Por lo tanto, las tiras `12V` y `24V` necesitan con más frecuencia energía de múltiples puntos que las tiras `24V` de la misma potencia.
 
 Signs of voltage drop:
 
 - strip end is dimmer;
-- white on RGB shifts to yellow or red;
+- el blanco en RGB cambia a amarillo o rojo;
 - addressable strip flickers during bright effects;
-- controller reboots when brightening;
+- el controlador se reinicia cuando se ilumina;
 - wires, connector or strip start become hot.
 
 Solution:
 
-- use strip at appropriate voltage;
-- use wire with sufficient gauge;
-- apply power to the start and end of long sections;
-- split long strip into sections;
-- use fuse on the power line;
+- utilice una tira con el voltaje adecuado;
+- utilice alambre con calibre suficiente;
+- aplique energía al inicio y al final de secciones largas;
+- dividir la tira larga en secciones;
+- utilizar fusible en la línea eléctrica;
 - don't route all current through weak connector or thin traces.
 
-## Heat and Mounting
+## Calor y montaje
 
-An LED strip itself produces heat. This is especially noticeable for bright strips in silicone jacket and strips mounted inside a closed enclosure.
+Una tira de LED produce calor por sí misma. Esto es especialmente notable en el caso de tiras brillantes con cubierta de silicona y tiras montadas dentro de un recinto cerrado.
 
 Bad mounting locations:
 
 - next to a heater;
-- on soft PLA inside a warm chamber;
-- on a surface that doesn't dissipate heat;
-- where the strip touches moving parts;
-- on a cover that's often removed without a connector.
+- en PLA blando dentro de una cámara cálida;
+- sobre una superficie que no disipe el calor;
+- donde la tira toca las partes móviles;
+- en una cubierta que a menudo se retira sin conector.
 
-For long life, it's better to mount the strip on an aluminum profile or other surface that dissipates heat. If the strip is inside the printer chamber, account for chamber temperature and adhesive layer temperature.
+Para una mayor duración, es mejor montar la tira sobre un perfil de aluminio u otra superficie que disipe el calor. Si la tira está dentro de la cámara de la impresora, tenga en cuenta la temperatura de la cámara y la temperatura de la capa adhesiva.
 
-## Qué to Check Before Buying
+## Qué comprobar antes de comprar
 
-Before buying an LED strip, check:
+Antes de comprar una tira de LED, comprueba:
 
 - strip voltage;
 - power per meter;
 - total length;
 - color: white, RGB, RGBW, addressable;
 - control type;
-- strip width and mounting location;
+- ancho de la tira y ubicación de montaje;
 - installation location temperature;
 - whether you need an aluminum profile;
 - whether you need a MOSFET module or LED controller;
-- whether the power supply can handle the additional load;
-- whether there's a proper connector for servicing.
+- si la fuente de alimentación puede soportar la carga adicional;
+- si hay un conector adecuado para el servicio.
 
-For a printer chamber, a `24V` white strip is usually more practical if the whole system is already `24V`. For a small ESP32 indicator, a short `5V` addressable strip might be convenient. For long decorative RGB lighting, it's better to calculate current in advance and think about multi-point power.
+Para una cámara de impresora, una tira blanca `24V` suele ser más práctica si todo el sistema ya es `5V`. Para un indicador ESP32 pequeño, una tira direccionable `5V` corta podría ser conveniente. Para una iluminación RGB decorativa prolongada, es mejor calcular la corriente de antemano y pensar en la potencia multipunto.
 
 ## Típicos Errors
 
-- connected strip to wrong voltage;
-- powering strip from GPIO;
-- didn't calculate current for whole length;
-- selected MOSFET module without margin;
-- connected long strip with thin wire;
-- forgot common ground between controller and strip;
-- connected addressable strip data to `DOUT` instead of `DIN`;
-- didn't install a level converter for 5V addressable strip from 3.3V controller when needed;
-- powered only one end of a long strip;
-- installed strip in hot zone without temperature check;
-- left strip without connector on a removable cover.
+- tira conectada a voltaje incorrecto;
+- regleta de alimentación de GPIO;
+- no calculó la corriente para toda la longitud;
+- módulo MOSFET seleccionado sin margen;
+- tira larga conectada con un cable delgado;
+- olvidé puntos en común entre el controlador y la tira;
+- datos de tira direccionables conectados a `DIN` en lugar de `DIN`;
+- no instalé un convertidor de nivel para la tira direccionable de 5 V desde el controlador de 3,3 V cuando fue necesario;
+- alimentado solo un extremo de una tira larga;
+- tira instalada en zona caliente sin control de temperatura;
+- Regleta izquierda sin conector sobre funda extraíble.
 
 ## Principal Point
 
-An LED strip is not a signal LED, it's a load. First check voltage and power, then calculate current, select wire, MOSFET or controller, and only then connect to the board.
+Una tira de LED no es un LED de señal, es una carga. Primero verifique el voltaje y la potencia, luego calcule la corriente, seleccione el cable, MOSFET o controlador, y solo luego conéctelo a la placa.
 
-For simple lighting, choose a regular white strip at system voltage. For effects and indication, you can use an addressable strip, but power, common ground, signal level and voltage drop protection are especially important.
+Para una iluminación sencilla, elija una tira blanca normal al voltaje del sistema. Para efectos e indicaciones, puede utilizar una regleta direccionable, pero la alimentación, la tierra común, el nivel de señal y la protección contra caídas de voltaje son especialmente importantes.
 
 ## Referencia Materials
 

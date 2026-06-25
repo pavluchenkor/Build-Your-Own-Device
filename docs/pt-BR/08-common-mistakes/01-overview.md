@@ -1,125 +1,125 @@
 # Erros Comuns
 
-This section is not here to criticize you.
+Esta seção não está aqui para o criticar.
 
-It is here to help you quickly identify common errors in a DIY device: sagging power supply, loose wire, sensor showing garbage, controller restarting, heater behaving strangely.
+Está aqui para ajudá-lo a identificar rapidamente erros comuns num dispositivo DIY: fonte de alimentação a desfalecer, fio solto, sensor mostrando lixo, controlador reiniciando, aquecedor comportando-se estranhamente.
 
-The section format is straightforward:
+O formato da seção é directo:
 
-- symptom;
-- probable cause;
-- what to check;
-- what not to do;
-- how to fix safely.
+- sintoma;
+- causa provável;
+- o que verificar;
+- o que não fazer;
+- como corrigir com segurança.
 
-## The Main Rule of Diagnostics
+## A Regra Principal de Diagnóstico
 
-If the device behaves strangely, you do not immediately change firmware, resolder everything, or increase power.
+Se o dispositivo se comporta estranhamente, não altere imediatamente o firmware, ressoldou tudo ou aumente a potência.
 
-First, verify the basics:
+Primeiro, verifique o básico:
 
-1. power supply;
-2. polarity;
-3. common `GND`;
-4. terminals and connectors;
-5. sensors;
-6. power switches;
-7. firmware and configuration.
+1. fonte de alimentação;
+2. polaridade;
+3. `GND` comum;
+4. terminais e conectores;
+5. sensores;
+6. interruptores de alimentação;
+7. firmware e configuração.
 
-Most problems in simple devices turn out to be not "complex electronics", but power supply, wiring, or incorrect connections.
+A maioria dos problemas em dispositivos simples acaba por não ser "eletrônica complexa", mas fonte de alimentação, orientações ou conexões incorretas.
 
-## When to Stop
+## Quando Parar
 
-Immediately turn off power if:
+Desligue a alimentação imediatamente se:
 
-- burning smell appears;
-- wire is heating up;
-- terminal is heating up;
-- connector is darkening;
-- case has become hot in an unexpected place;
-- heater will not turn off;
-- breaker or fuse trips;
-- temperature sensor shows garbage;
-- device works only when you move the wire.
+- cheiro de queimado aparece;
+- fio está a aquecer;
+- terminal está a aquecer;
+- conector está a escurecer;
+- gabinete se tornou quente num lugar inesperado;
+- aquecedor não desliga;
+- disjuntor ou fusível salta;
+- sensor de temperatura mostra lixo;
+- dispositivo funciona apenas quando move o fio.
 
-Do not "turn it on one more time to look". If something is heating, smelling, or sparking, find the cause first without power.
+Não "ligue uma mais vez para olhar". Se algo está a aquecer, cheirar ou centelhar, procure a causa primeiro sem alimentação.
 
-## Main Groups of Errors
+## Principais Grupos de Erros
 
-In this section, errors are divided into groups:
+Nesta seção, os erros são divididos em grupos:
 
-- `02-power-mistakes.md` - weak power supply, incorrect voltage, sagging, thin wires, no margin.
-- `03-wiring-mistakes.md` - reversed polarity, poor terminals, no common ground, bad connectors.
-- `04-controller-mistakes.md` - unsuitable board, 3.3V/5V logic, GPIO instead of power output, incorrect firmware.
-- `05-heater-ssr-mistakes.md` - heaters, SSR, MOSFET, 110-230V AC, temperature sensor, heatsinks and protection.
-- `06-diagnostic-checklist.md` - general verification order when device does not work.
+- `02-power-mistakes.md` - fonte de alimentação fraca, tensão incorreta, desfalecimento, fios finos, sem margem.
+- `03-wiring-mistakes.md` - polaridade invertida, terminais fracos, sem terra comum, conectores defeituosos.
+- `04-controller-mistakes.md` - placa inadequada, lógica 3.3V/5V, GPIO em vez de saída de alimentação, firmware incorreto.
+- `05-heater-ssr-mistakes.md` - aquecedores, SSR, MOSFET, 110-230V AC, sensor de temperatura, dissipadores de calor e protecção.
+- `06-diagnostic-checklist.md` - ordem de verificação geral quando o dispositivo não funciona.
 
-## Why Power Supply is Checked First
+## Porque a Fonte de Alimentação é Verificada Primeiro
 
-Power supply affects almost everything.
+A fonte de alimentação afeta quase tudo.
 
-If the power supply is weak or the wires are thin, symptoms may look like a firmware issue:
+Se a fonte de alimentação for fraca ou os fios forem finos, os sintomas podem parecer um problema de firmware:
 
-- controller reboots;
-- Wi-Fi drops off;
-- screen flickers;
-- servo jerks;
-- fan does not start;
-- sensors show random values;
-- heater heats poorly.
+- controlador reinicia;
+- Wi-Fi cai;
+- display cintila;
+- servomotor se move aos solavancos;
+- ventoinha não arranca;
+- sensores mostram valores aleatórios;
+- aquecedor aquece mal.
 
-Until the power supply is checked with a multimeter under load, it is difficult to confidently diagnose everything else.
+Até que a fonte de alimentação seja verificada com um multímetro sob carga, é difícil diagnosticar com confiança tudo o resto.
 
-## Why Wiring is More Important Than It Seems
+## Porque a Fiação é Mais Importante do que Parece
 
-A poor connection can work "almost normally".
+Uma conexão pobre pode funcionar "quase normalmente".
 
-This is exactly what is dangerous:
+Isto é exactamente o que é perigoso:
 
-- today it works;
-- when vibrated it disconnects;
-- when heated, the contact gets worse;
-- terminal gradually darkens;
-- wire begins to heat up;
-- sensor appears and disappears.
+- hoje funciona;
+- quando vibrado desconecta;
+- quando aquecido, o contacto piora;
+- terminal gradualmente escurece;
+- fio começa a aquecer;
+- sensor aparece e desaparece.
 
-If the device changes behavior when you move the wire, this is not a software error. This is a connection problem.
+Se o dispositivo muda de comportamento quando move o fio, isto não é um erro de software. Este é um problema de conexão.
 
-## Why Protection Must Not Be Disabled
+## Porque a Protecção Não Deve Ser Desactivada
 
-Thermal runaway, `MINTEMP`, `MAXTEMP`, `heater not heating` and similar errors exist not to annoy the user.
+Fuga térmica, `MINTEMP`, `MAXTEMP`, `aquecedor não aquecendo` e erros similares não existem para aborrecê-lo.
 
-These are signs that the controller no longer trusts the temperature reading or sees dangerous heating behavior.
+Estes são sinais de que o controlador já não confia na leitura de temperatura ou vê comportamento de aquecimento perigoso.
 
-Bad idea:
+Má ideia:
 
-- disable thermal protection;
-- expand temperature limits without understanding the reason;
-- replace the fuse with a larger one;
-- short the thermostat directly;
-- short the protection "for testing".
+- desactivar protecção térmica;
+- expandir limites de temperatura sem compreender a razão;
+- substituir o fusível por um maior;
+- curto-circuitar o termóstato diretamente;
+- curto-circuitar a protecção "para teste".
 
-Right idea: find the reason for the protection to trigger.
+Ideia correta: procure a razão para a protecção disparar.
 
-## How to Read This Section
+## Como Ler Esta Seção
 
-If the device does not work at all, start with the diagnostic checklist.
+Se o dispositivo não funciona totalmente, comece com a lista de verificação de diagnóstico.
 
-If the symptom is clear, go to the relevant article:
+Se o sintoma for claro, vá para o artigo relevante:
 
-- reboots, flickering, weak heat - power supply;
-- works when you move the wire - wiring;
-- board not detected or pins not responding - controller;
-- heater will not turn off or SSR is heating - heater and SSR;
-- everything is unclear - general checklist.
+- reinicializações, cintilação, calor fraco - fonte de alimentação;
+- funciona quando move o fio - fiação;
+- placa não detectada ou pinos não respondendo - controlador;
+- aquecedor não desliga ou SSR está a aquecer - aquecedor e SSR;
+- tudo pouco claro - lista de verificação geral.
 
-## Key Points
+## Pontos-chave
 
-- Most errors start with power, wiring, and incorrect connections.
-- If something is heating, smelling, or darkening, turn off power.
-- Diagnostics proceed from simple to complex.
-- Firmware protection and hardware protection must not be disabled for convenience.
-- The AC mains 110-230V cannot be diagnosed "on the bench" without understanding electrical safety.
+- A maioria dos erros começa com alimentação, fiação e ligações incorretas.
+- Se algo está a aquecer, cheirar ou escurecer, desligue a alimentação.
+- O diagnóstico procede do simples para o complexo.
+- A protecção de firmware e a protecção de hardware não devem ser desactivadas por conveniência.
+- A rede AC 110-230V não pode ser diagnosticada "na bancada" sem compreender a segurança elétrica.
 
 ## References
 

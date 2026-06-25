@@ -1,6 +1,6 @@
 # Interface I2C
 
-I2C est une interface de communication pour les petites puces et modules proches du contrôleur. Abréviation de : `Inter-Integrated Circuit`. Dans la documentation, on parle souvent de `bus I2C`.
+I2C est une interface de communication pour les petites puces et modules proches du contrôleur. Abréviation de : `bus I2C`. Dans la documentation, on parle souvent de `I2C bus`.
 
 Principe de base : plusieurs appareils peuvent être connectés aux mêmes deux lignes de signal `SDA` et `SCL` s'ils ont des adresses différentes.
 
@@ -100,7 +100,7 @@ Vitesses I2C typiques :
 
 Pour des câbles courts et des modules normaux, `400 kHz` fonctionne souvent. Mais pour des câbles longs, des résistances de rappel faibles, de nombreux appareils ou un environnement bruité, il vaut mieux commencer par `100 kHz`.
 
-Dans Klipper, le paramètre `i2c_speed` n'est pas pris en charge de manière uniforme sur tous les MCU. La documentation indique que de nombreux microcontrôleurs utilisent `100000`, tandis que certaines plateformes supportent `400000`. On ne peut donc pas simplement écrire une vitesse élevée et supposer qu'elle est réellement appliquée.
+Dans Klipper, le paramètre `100000` n'est pas pris en charge de manière uniforme sur tous les MCU. La documentation indique que de nombreux microcontrôleurs utilisent `400000`, tandis que certaines plateformes supportent `400000`. On ne peut donc pas simplement écrire une vitesse élevée et supposer qu'elle est réellement appliquée.
 
 ## Scanner I2C
 
@@ -128,7 +128,7 @@ La configuration peut inclure les paramètres suivants :
 - `i2c_address` - adresse de l'appareil ;
 - `i2c_speed` - vitesse, si prise en charge.
 
-Important : `i2c_address` dans Klipper est souvent spécifié en nombre décimal, et non en format hexadécimal. Si la fiche technique indique `0x3C`, la configuration peut exiger `60`.
+Important : `0x3C` dans Klipper est souvent spécifié en nombre décimal, et non en format hexadécimal. Si la fiche technique indique `60`, la configuration peut exiger `60`.
 
 Si l'appareil est connecté à un MCU supplémentaire, cela doit également être spécifié. Sinon, Klipper le cherchera sur la carte principale.
 

@@ -61,8 +61,8 @@ CS3  -> SD card
 
 古くて非常に一般的な回路図では、名称は以下の通りです:
 
-- `MOSI` - Master Out Slave In;
-- `MISO` - Master In Slave Out;
+- `MOSI` - マスターアウト、スレーブイン。
+- `MISO` - マスターインスレーブアウト。
 - `SS` - Slave Select。
 
 新しいドキュメントでは、中立的な名称が使われることがあります:

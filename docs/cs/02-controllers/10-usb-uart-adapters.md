@@ -1,175 +1,175 @@
 # Adaptéry USB-UART
 
-A USB-UART adapter is needed so a computer or Linux host can communicate with a UART device via USB. It converts USB to regular serial lines `TX`, `RX`, and `GND`.
+USB-UART adaptér je potřebný, aby se počítač či Linux host mohl komunikovat se zařízeními UART přes USB. Převádí USB na běžné sériové linky `TX`, `RX` a `GND`.
 
-Such an adapter is often needed for flashing, logs, diagnostics, and recovering boards without a proper USB connector.
+Takový adaptér je často potřebný na nahrávání, logy, diagnostiku a obnovu desek bez správného USB konektoru.
 
-## Where it is needed
+## Kde se to potřebuje
 
-USB-UART adapter is useful for:
+USB-UART adaptér je užitečný na:
 
-- flashing some microcontroller boards;
-- reading serial logs;
-- accessing device console;
-- bootloader mode diagnostics;
-- connecting Arduino Pro Mini and some Nano clones;
-- working with boards without built-in USB;
-- recovery after failed flashing;
-- temporary MCU connection to host via serial.
+- nahrávání některých desek mikrokontroléru;
+- čtení sériových logů;
+- přístup na konzolu zařízení;
+- diagnostiku režimu bootloaderu;
+- připojení Arduino Pro Mini a některých klonů Nano;
+- práci s deskami bez vestavěného USB;
+- obnovu po selhání nahrávání;
+- dočasné spojení MCU k hostu přes sériový.
 
-If a board already has proper USB and appears as a serial device, a separate USB-UART adapter may not be needed.
+Pokud deska již má správný USB a objeví se jako sériové zařízení, oddělený USB-UART adaptér nemusí být potřebný.
 
-## What it has
+## Co to má
 
-Typical contacts:
+Typické kontakty:
 
-- `TX` or `TXO` - transmission from adapter to device;
-- `RX` or `RXI` - reception from device;
-- `GND` - common ground;
-- `VCC`, `3V3`, or `5V` - power, if needed;
-- `DTR` - often used for auto-reset/flashing;
-- `RTS`, `CTS` - flow control lines or boot/reset scenarios.
+- `TX` nebo `TXO` - vysílání z adaptéru do zařízení;
+- `RX` nebo `RXI` - přijímání ze zařízení;
+- `GND` - společná zem;
+- `VCC`, `3V3` nebo `5V` - napájení, pokud je potřebné;
+- `DTR` - často používané na auto-reset/nahrávání;
+- `RTS`, `CTS` - linky řízení toku či boot/reset scénáře.
 
-Connection diagram:
+Schéma zapojení:
 
-![USB-UART adapter on CH340T chip](../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
+![USB-UART adaptér na čipu CH340T](../../img/02-controllers/10-usb-uart-ch340-adapter.jpg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:15938_-_USBtoSerial_1.jpg), SparkFun Electronics, CC BY 2.0*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:15938_-_USBtoSerial_1.jpg), SparkFun Electronics, CC BY 2.0*
 
-For simple log reading, `TX`, `RX`, and `GND` are often sufficient. Power is only connected if it is clear the board should be powered from the adapter.
+Na jednoduché čtení logů stačí často jen `TX`, `RX` a `GND`. Napájení se přiojuje jen, pokud je jasné, že by měla být deska napájena z adaptéru.
 
-## How to connect TX and RX
+## Jak připojit TX a RX
 
-Connection is cross-connected:
+Spojení je křížem:
 
 ```text
-TX adapter -> RX device
-RX adapter <- TX device
-GND adapter -> GND device
+TX adaptéru -> RX zařízení
+RX adaptéru <- TX zařízení
+GND adaptéru -> GND zařízení
 ```
 
-If there is no connection, the first check is: are `TX` and `RX` mixed up, is there a common `GND`, does the speed match, and is the correct COM/tty port selected.
+Pokud není spojení, první kontrola je: nejsou `TX` a `RX` prohozeni, je tam společná `GND`, shoduje se rychlost a je vybraný správný COM/tty port.
 
-## 3.3V and 5V
+## 3.3V a 5V
 
-USB-UART adapters come in:
+USB-UART adaptéry přicházejí v:
 
-- `3.3V` only;
-- `5V` only;
-- with `3.3V/5V` switch;
-- with jumper or solder jumper;
-- with `VCC` of one voltage, but signals of another level.
+- `3.3V` jen;
+- `5V` jen;
+- s přepínačem `3.3V/5V`;
+- s jumperem či mostem;
+- s `VCC` jednoho napětí, ale signály jiné úrovně.
 
-This matters: the level of `VCC` and the level of `TX/RX` are not always obvious from labels.
+To záleží: napětí `VCC` a úroveň `TX/RX` nejsou vždy zřejmé z nálepek.
 
-ESP32, RP2040, and STM32 typically use `3.3V` logic. Arduino Uno/Nano often uses `5V` logic. If you apply `5V` signal to a `3.3V` input, you can damage the board.
+ESP32, RP2040 a STM32 typicky používají logiku `3.3V`. Arduino Uno/Nano často používá `5V`. Pokud aplikujete signál `5V` na vstup `3.3V`, můžete desku poškodit.
 
-Before connecting, check the adapter and board documentation. Do not rely only on jumper color or label on the case.
+Před připojením zkontrolujte dokumentaci adaptéru a desky. Nespoléhejte se jen na barvu jumpeřu či nálepku na pouzdru.
 
-## TTL UART and RS-232
+## TTL UART a RS-232
 
-USB-UART adapter for microcontrollers usually outputs TTL/CMOS UART: `3.3V` or `5V`.
+USB-UART adaptér na mikrokontroleéry obvykle vydává TTL/CMOS UART: `3.3V` nebo `5V`.
 
-This is not the same as real RS-232.
+To není totéž jako skutečný RS-232.
 
-RS-232 has different voltage levels and cannot be connected directly to a microcontroller GPIO. If you need to work with a real RS-232 port, you need a USB-RS232 adapter or level converter, not a regular USB-UART TTL.
+RS-232 má různé napěťové úrovně a nemůže se připojit přímo na GPIO mikrokontroléru. Pokud potřebujete pracovat se skutečným portem RS-232, potřebujete USB-RS232 adaptér či měnič úrovně, ne obyčejný USB-UART TTL.
 
-## Power from adapter
+## Napájení z adaptéru
 
-The `VCC` pin on the adapter can be useful, but is often misused.
+Pin `VCC` na adaptéru může být užitečný, ale často se zneužívá.
 
-Safe approach:
+Bezpečný přístup:
 
-- for logs and diagnostics, first connect only `TX`, `RX`, `GND`;
-- do not connect `VCC` if the board is already powered from USB, power supply, or other circuit;
-- do not power motors, servos, relays, heaters, and LED strips via USB-UART;
-- verify how much current the adapter can actually provide;
-- understand that `VCC` can be `3.3V` or `5V`.
+- na logy a diagnostiku napřed spojte jen `TX`, `RX`, `GND`;
+- nepřipojujte `VCC`, pokud je deska již napájena z USB, napájecího zdroje či jiného obvodu;
+- nenapájejte motory, servomotory, relé, topidla a LED pásky přes USB-UART;
+- ověřte, kolik proudu adaptér skutečně může poskytnout;
+- chápu, že `VCC` může být `3.3V` nebo `5V`.
 
-If you connect two power sources without understanding the circuit, you can get reverse powering, instability, or board damage.
+Pokud spojíte dva napájecí zdroje bez pochopení obvodu, můžete dostat zpětné napájení, nestabilitu či poškození desky.
 
-## DTR and RTS
+## DTR a RTS
 
-Some boards use `DTR` and `RTS` for auto-reset or bootloader entry.
+Některé desky používají `DTR` a `RTS` na auto-reset či vstup bootloaderu.
 
-Examples:
+Příklady:
 
-- Arduino Pro Mini often uses `DTR` through a capacitor for reset during flashing;
-- ESP32 boards may use `DTR`/`RTS` to auto-control `EN` and `BOOT`;
-- some bootloader scenarios require pressing a button manually if these lines are not connected.
+- Arduino Pro Mini často používá `DTR` přes kondenzátor na reset během nahrávání;
+- desky ESP32 mohou používat `DTR`/`RTS` na auto-ovládání `EN` a `BOOT`;
+- některé bootloader scénáře vyžadují ruční stisknutí tlačítka, pokud tyto linky nejsou spojeny.
 
-If flashing does not start automatically, it is not always a `TX/RX` problem. It may be that `DTR`/`RTS` are not connected, wrong bootloader is selected, or `BOOT`/`RESET` must be pressed manually.
+Pokud nahrávání nezačíná automaticky, nemusi to být problem `TX/RX`. Může být, že `DTR`/`RTS` nejsou spojeny, je vybrán špatný bootloader, nebo musíte `BOOT`/`RESET` ručně stisknout.
 
 ## CH340, CP2102, FTDI
 
-Popular USB-UART chips:
+Populární USB-UART čipy:
 
-- **CH340/CH341** - cheap and widespread adapters;
-- **CP2102/CP210x** - common Silicon Labs USB-UART;
-- **FT232/FTDI** - classic option, often more expensive;
-- **PL2303** - found in old adapters and cables.
+- **CH340/CH341** - levné a rozšířené adaptéry;
+- **CP2102/CP210x** - běžný USB-UART od Silicon Labs;
+- **FT232/FTDI** - klasická volba, často dražší;
+- **PL2303** - nalézá se ve starých adaptérech a kabelech.
 
-On modern systems, the driver is often installed automatically, but not always. If the port does not appear, check:
+Na moderních systémech se ovladač často instaluje automaticky, ale ne vždy. Pokud port se neobjevuje, zkontrolujte:
 
-- USB cable is not charge-only;
-- device is detected by the system;
-- if a driver is needed;
-- if old driver is not conflicting;
-- if the port is not occupied by another program.
+- USB kabel není jen nabíjecí;
+- zařízení je detekováno systémem;
+- zda je potřeba ovladač;
+- zda starý ovladač není v konfliktu;
+- zda port není obsazen jinou aplikací.
 
-## How to test the adapter
+## Jak testovat adaptér
 
-Simple loopback test:
+Jednoduchý loopback test:
 
-1. Connect adapter to computer.
-2. Connect `TX` of adapter to `RX` of adapter.
-3. Open serial terminal.
-4. Select port and speed, for example `115200`.
-5. Type characters.
-6. If it works, characters are echoed back.
+1. Připojte adaptér k počítači.
+2. Spojte `TX` adaptéru s `RX` adaptéru.
+3. Otevřete sériový terminál.
+4. Vyberte port a rychlost, například `115200`.
+5. Napište znaky.
+6. Pokud funguje, znaky se vrátí zpět.
 
-This tests the adapter itself, driver, cable, and terminal program without external board.
+To testuje sám adaptér, ovladač, kabel a terminální aplikaci bez externí desky.
 
-## What to check before buying
+## Co zkontrolovat před nákupem
 
-Before buying a USB-UART adapter, verify:
+Před nákupem USB-UART adaptéru ověřte:
 
-- what `TX/RX` levels: `3.3V`, `5V`, or switchable;
-- how the level is selected;
-- what chip is used: CH340, CP2102, FTDI, or other;
-- if there are drivers for your system;
-- if `DTR` and `RTS` are present, if auto-flashing is needed;
-- what USB connector;
-- if pins `GND`, `TX`, `RX`, `VCC` are in convenient order;
-- if there is a schematic or good documentation;
-- how much current can be drawn from `VCC`, if needed.
+- jaké jsou úrovně `TX/RX`: `3.3V`, `5V` či přepínatelné;
+- jak se úroveň vybírá;
+- jaký čip se používá: CH340, CP2102, FTDI či jiný;
+- zda existují ovladače pro váš systém;
+- zda jsou `DTR` a `RTS` přítomny, pokud je potřeba auto-nahrávání;
+- jaký USB konektor;
+- zda piny `GND`, `TX`, `RX`, `VCC` jsou v pohodlném pořadí;
+- zda existuje schéma či dobrá dokumentace;
+- kolik proudu lze brát z `VCC`, pokud je potřebné.
 
-For ESP32/RP2040/STM32 diagnostics, an adapter with `3.3V` signals and clear marking is more convenient.
+Na diagnostiku ESP32/RP2040/STM32 je adaptér s `3.3V` signály a jasným označením pohodlnější.
 
-## Typical mistakes
+## Typické chyby
 
-- connecting `TX` with `TX`, `RX` with `RX`;
-- forgetting common `GND`;
-- selecting `5V` level for `3.3V` board;
-- connecting `VCC` to an already-powered board;
-- powering load via USB-UART adapter;
-- confusing USB-UART TTL with USB-RS232;
-- using a charge-only USB cable;
-- not installing CH340/CP2102/FTDI driver;
-- selecting wrong COM/tty port;
-- not connecting `DTR`/`RTS` when needed for auto-flashing;
-- leaving serial terminal open, then wondering why the flasher cannot open the port.
+- připojení `TX` s `TX`, `RX` s `RX`;
+- zapomenutí společné `GND`;
+- výběr úrovně `5V` pro desku `3.3V`;
+- připojení `VCC` na již napájenou desku;
+- napájení zátěže přes USB-UART adaptér;
+- plení si TTL UART s USB-RS232;
+- používání nabíjecího USB kabelu;
+- neinstalace ovladače CH340/CP2102/FTDI;
+- výběr špatného COM/tty portu;
+- nepřipojení `DTR`/`RTS` potřebných pro auto-nahrávání;
+- ponechání sériového terminálu otevřeného, poté se divíte, proč nahrávač nemůže port otevřít.
 
-## Key takeaway
+## Klíčové pozorování
 
-USB-UART adapter is a bridge between computer USB and UART pins of a device. For minimal connection, you need cross-connected `TX/RX` and common `GND`.
+USB-UART adaptér je most mezi USB počítače a UART piny zařízení. Na minimální spojení potřebujete křížem propojené `TX/RX` a společnou `GND`.
 
-Main risks: wrong `3.3V/5V` level, unnecessary power connection, confusing TTL UART with RS-232, and missing `DTR`/`RTS` lines for flashing.
+Hlavní rizika: špatná úroveň `3.3V/5V`, zbytečné připojení napájení, plení si TTL UART s RS-232 a chybějící `DTR`/`RTS` linky na nahrávání.
 
 ## Related materials
 
-- [SparkFun: Serial Basic CH340C Hookup Guide](https://learn.sparkfun.com/tutorials/sparkfun-serial-basic-ch340c-hookup-guide) - practical guide to USB-UART CH340C, `DTR/RX/TX/VCC/CTS/GND` pins, voltage selection, and loopback test.
-- [SparkFun: Serial Basic Overview](https://learn.sparkfun.com/tutorials/sparkfun-serial-basic-ch340c-hookup-guide/serial-basic-overview) - pinout description and `3.3V/5V` switching on adapter.
-- [Adafruit: FT232H Serial UART](https://learn.adafruit.com/adafruit-ft232h-breakout/serial-uart) - example USB-serial adapter, `TX`/`RX`, flow-control lines, and connection to device.
-- [Silicon Labs: CP2102 USB to UART Bridge](https://www.silabs.com/interface/usb-bridges/classic/device.cp2102) - official example of USB-UART bridge chip and Virtual COM Port drivers.
-- [Klipper Configuration Reference: `[mcu]`](https://www.klipper3d.org/Config_Reference.html#mcu) - how serial MCU connection is described in Klipper via `serial`.
+- [SparkFun: Serial Basic CH340C Hookup Guide](https://learn.sparkfun.com/tutorials/sparkfun-serial-basic-ch340c-hookup-guide) - praktický průvodce USB-UART CH340C, `DTR/RX/TX/VCC/CTS/GND` piny, výběr napětí a loopback test.
+- [SparkFun: Serial Basic Overview](https://learn.sparkfun.com/tutorials/sparkfun-serial-basic-ch340c-hookup-guide/serial-basic-overview) - popis rozložení pinů a přepínání `3.3V/5V` na adaptéru.
+- [Adafruit: FT232H Serial UART](https://learn.adafruit.com/adafruit-ft232h-breakout/serial-uart) - příklad USB-serial adaptéru, `TX`/`RX`, linky řízení toku a připojení na zařízení.
+- [Silicon Labs: CP2102 USB to UART Bridge](https://www.silabs.com/interface/usb-bridges/classic/device.cp2102) - oficiální příklad USB-UART přemostovacího čipu a ovladačů Virtual COM Port.
+- [Klipper Configuration Reference: `[mcu]`](https://www.klipper3d.org/Config_Reference.html#mcu) - jak se sériové spojení MCU popisuje v Klipperu přes `serial`.

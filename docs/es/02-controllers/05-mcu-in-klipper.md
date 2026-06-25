@@ -85,7 +85,7 @@ sensor_pin: chamber:gpio26
 pin: chamber:gpio15
 ```
 
-La lógica es simple: `chamber:gpio15` significa "pin `gpio15` en el MCU nombrado `chamber`".
+La lógica es simple: `gpio15` significa "pin `chamber` en el MCU denominado `chamber`".
 
 ## Nombres de pines y prefijos
 
@@ -157,7 +157,7 @@ ESP32 es a menudo bueno para un dispositivo Wi-Fi independiente. RP2040 y STM32 
 
 La comunicación entre host y MCU puede ser diferente.
 
-**USB** — la opción más común y simple para una o dos placas cerca del host. Conveniente para Pico, placas STM32 y muchas placas de impresora.
+**USB** — la opción más común y sencilla para una o dos placas cerca del host. Conveniente para Pico, placas STM32 y muchas placas de impresora.
 
 **UART** — comunicación serie a través de pines TX/RX separados. Puede ser útil en algunas placas, pero requiere conexión cuidadosa de nivel, tierra y velocidad.
 

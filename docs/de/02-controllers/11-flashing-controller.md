@@ -2,7 +2,7 @@
 
 Firmware (`firmware`) ist ein Programm, das in den Flash-Speicher eines Mikrocontrollers geschrieben wird. Ohne Firmware weiß das Board nicht, was es mit Pins, Sensoren, Lüftern und Schnittstellen anfangen soll.
 
-Wichtig: Verwirre nicht Firmware und Konfiguration. Firmware wird in den Controller geschrieben. Klipper-Konfiguration lebt normalerweise auf dem Host in `printer.cfg` und teilt dem bereits geflashten MCU mit, welche Pins und Parameter zu verwenden sind.
+Wichtig: Verwirre nicht Firmware und Konfiguration. Firmware wird in den Controller geschrieben. Die Klipper-Konfiguration lebt normalerweise auf dem Host in `printer.cfg` und teilt dem bereits geflashten MCU mit, welche Pins und Parameter zu verwenden sind.
 
 ## Firmware, Bootloader, Konfiguration
 
@@ -25,7 +25,7 @@ Vor dem Flashing ist das normale Verfahren:
 5. Finde eine vorgefertigte Konfiguration oder ein Beispiel für dieses Board.
 6. Wähle die richtige Flashing-Methode.
 7. Baue oder lade die richtige Datei herunter.
-8. Versetze das Board in den Flashing-Modus.
+8. Versetzen Sie das Board in den Flashing-Modus.
 9. Schreibe die Firmware.
 10. Überprüfe, ob das Board im System erscheint.
 11. Überprüfe die Kommunikation mit dem Host und die grundlegenden Pins ohne Last.
@@ -100,7 +100,7 @@ In `make menuconfig` wählst du:
 - Kommunikationsschnittstelle: USB, seriell, CAN, usw.;
 - manchmal zusätzliche Parameter für spezifisches Board.
 
-Die korrekten Werte sind oft in Kommentaren am Anfang einer vorgefertigten Konfigurationsdatei für das Board geschrieben. Falls eine solche Konfiguration existiert, lies zuerst die Kommentare oben.
+Die korrekten Werte sind oft in Kommentaren am Anfang einer vorgefertigten Konfigurationsdatei für das Board geschrieben. Falls eine solche Konfiguration existiert, liegt zuerst die Kommentare oben.
 
 Nach dem Build erscheint die Firmware-Datei normalerweise in `~/klipper/out/`. Als nächstes wird sie mit der Methode geschrieben, die für das spezifische Board geeignet ist.
 
@@ -114,7 +114,7 @@ Nach dem Flashing musst du mehr als nur „Flasher hat erfolgreich geschrieben" 
 - ist `/dev/serial/by-id/...` vorhanden, wenn USB/seriell verwendet wird;
 - ist `canbus_uuid` sichtbar, wenn CAN verwendet wird;
 - passt der Pfad zu `printer.cfg`;
-- gibt es keine Kommunikationsfehler in Klipper;
+- Gibt es keine Kommunikationsfehler in Klipper;
 - stimmen die Pins mit dem Pinout dieses spezifischen Boards überein;
 - funktionieren grundlegende Ein-/Ausgänge ohne Lastversorgung;
 - sind Lüfter/MOSFET/SSR im sicheren Zustand ausgeschaltet.
@@ -178,7 +178,7 @@ Nach dem Flashing des Controllers, verbinde den Heizer nicht, ohne zu überprüf
 - falsch gewählter Bootloader-Offset;
 - Bootloader löschen, ohne die Konsequenzen zu verstehen;
 - Verwendung eines reinen USB-Ladekabels;
-- Board nicht in den Flashing-Modus versetzen;
+- Board nicht im Flashing-Modus versetzen;
 - CAN-Board in `/dev/serial/by-id` suchen;
 - USB-serielles Board über `canbus_uuid` suchen;
 - Power-Last verbinden, bevor Pins überprüft sind;

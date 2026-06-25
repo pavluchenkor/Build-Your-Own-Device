@@ -1,138 +1,138 @@
 # Tepelná vodivost
 
-Thermal conductivity shows how easily a material transfers heat through itself.
+Tepelná vodivost určuje, jak snadno se teplo šíří materiálem.
 
-For a homemade dryer, chamber, filter, air duct, or housing, this is not abstract physics. Thermal conductivity determines whether heat will escape outward, whether a hot spot will appear near the heater, how much the outer wall will heat up, and whether a printed part will soften.
+V homemade sušičce, komoře, filtru, vzduchochladu nebo krytu není jde o abstraktní fyziku. Tepelná vodivost určuje, zda teplo unikne ven, zda se objeví horká místa u topidla, jak moc se zahřeje vnější stěna a zda se vytisknutá součást nezmění.
 
-## Simple Idea
+## Jednoduché vysvětlení
 
-Heat always tends to escape from a hotter zone to a colder one. The higher the thermal conductivity of a material, the easier heat passes through it.
+Teplo vždy tenduje unikat z teplejší zóny do chladnější. Čím vyšší je tepelná vodivost materiálu, tím snadněji jím teplo prochází.
 
-The rate of heat transfer is affected by:
+Rychlost přenosu tepla je ovlivněna:
 
-- material;
-- wall thickness;
-- contact area;
-- temperature difference;
-- quality of contact between parts;
-- presence of air, gaps, and insulation.
+- materiálem;
+- tloušťkou stěny;
+- plochou kontaktu;
+- rozdílem teplot;
+- kvalitou kontaktu mezi díly;
+- přítomností vzduchu, mezer a izolace.
 
-A thin aluminum plate can quickly spread heat throughout the housing. A thick layer of mineral wool or foam insulation, on the contrary, prevents heat from escaping.
+Tenká hliníková deska může rychle rozšířit teplo po celém krytu. Silná vrstva minerální vlny nebo pěnové izolace naopak brání úniku tepla.
 
-## Material Reference Values
+## Referenční hodnoty materiálů
 
-The values below are only for understanding orders of magnitude. For a real build, check the datasheet of the specific material.
+Hodnoty níže slouží jen k pochopení řádů velikosti. Pro skutečnou stavbu si ověřte parametry konkrétního materiálu v jeho specifikaci.
 
-| Material | Approximate Thermal Conductivity, `W/(m*K)` | What It Means in Practice |
+| Materiál | Přibližná tepelná vodivost, `W/(m*K)` | Co to znamená v praxi |
 | --- | ---: | --- |
-| Copper | about `400` | excellent heat conductor, suitable for heat dissipation, but quickly transfers heat where it is not always needed |
-| Aluminum | about `200-240` | distributes heat well, useful as a plate, radiator, or heat spreader |
-| Steel | about `15-60` | conducts heat worse than aluminum, but screws and posts can still be thermal bridges |
-| Glass | about `1` | conducts heat much worse than metal, but is not insulation in the conventional sense |
-| Common plastics | about `0.1-0.5` | conduct heat poorly, but can soften and be flammable |
-| Mineral wool, fiberglass | about `0.04` | effectively reduces heat loss, but requires protection from dust, moisture, and mechanical damage |
-| Expanded polystyrene / polyurethane foam | about `0.03` | good insulation, but near heat, working temperature and fire properties are important |
-| Air | about `0.026` | conducts heat poorly by itself, but transfers heat via convection when moving |
+| Měď | cca `400` | vynikající tepelný vodič, vhodný pro odvod tepla, ale rychle vede teplo tam, kde není potřeba |
+| Hliník | cca `200-240` | dobře šíří teplo, vhodný jako deska, radiátor nebo tepelný rozvaděč |
+| Ocel | cca `15-60` | vede teplo hůře než hliník, ale šrouby a nosné prvky mohou být tepelnými mosty |
+| Sklo | cca `1` | vede teplo mnohem hůře než kov, ale není to izolace v klasickém slova smyslu |
+| Běžné plasty | cca `0.1-0.5` | vedou teplo špatně, ale mohou měknuty a hořet |
+| Minerální vlna, sklovlákno | cca `0.04` | efektivně snižuje tepelné ztráty, ale vyžaduje ochranu před prachem, vlhkostí a mechanickým poškozením |
+| Expandovaný polystyrén / polyuretanová pěna | cca `0.03` | dobrá izolace, ale blízko tepla jsou důležité pracovní teplota a požární vlastnosti |
+| Vzduch | cca `0.026` | sám o sobě vede teplo špatně, ale přenáší ho konvekcí při pohybu |
 
-The main conclusion: metal and insulation differ not by a factor of two, but by orders of magnitude. Therefore, even a small metal part can significantly change the thermal picture.
+Hlavní závěr: kov a izolace se liší ne o faktor dva, ale o řády. Proto i malý kovový prvek může výrazně změnit tepelný obraz.
 
-## Thermal Bridge
+## Tepelný most
 
-A thermal bridge is a path through which heat escapes more easily than through the rest of the structure.
+Tepelný most je cesta, kudy teplo uniká lépe než zbytkem konstrukce.
 
-![Classic thermal bridge through an enclosure](../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
+![Klasický tepelný most skrz obálkou](../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pont_thermique_classique.png), AmisDeLaThermique, CC BY-SA 3.0*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pont_thermique_classique.png), AmisDeLaThermique, CC BY-SA 3.0*
 
-Typical thermal bridges:
+Typické tepelné mosty:
 
-- metal screw through an insulated wall;
-- aluminum plate connected to the outer housing;
-- metal post between hot chamber and outer panel;
-- terminal block or fastener near the heater;
-- air duct that directly touches a hot part.
+- kovový šroub skrz izolovanou stěnu;
+- hliníková deska připojená k vnějšímu krytu;
+- kovový nosný prvek mezi horkou komorou a vnějším panelem;
+- svorkovnice nebo upevnění blízko topidla;
+- vzduchochod, který přímo dotýká horké části.
 
-A thermal bridge is not always bad. Sometimes it is needed to dissipate heat from a power switch, radiator, or hot node. The problem starts when the bridge is accidental: the chamber loses heat, the outer surface becomes hot, and plastic near the bridge heats up more than expected.
+Tepelný most není vždy špatný. Někdy je potřebný k odvodu tepla z vypínače, radiátoru nebo horkého uzlu. Problém začíná, když je most neúmyslný: komora ztrácí teplo, vnější povrch se zahřívá a plast blízko mostu se zahřívá více než očekáváno.
 
-## Metal: Heat Sink or Accidental Heating
+## Kov: Chladič nebo náhodné zahřívání
 
-Metal is convenient to use in heated devices:
+Kov se hodí k použití v topených zařízeních:
 
-- as a screen between heater and plastic;
-- as a heat distribution plate;
-- as a base for heater mounting;
-- as a radiator for power electronics;
-- as a non-flammable inner surface.
+- jako clona mezi topidlem a plastem;
+- jako deska pro rozložení tepla;
+- jako podklad pro upevnění topidla;
+- jako chladič elektroniky;
+- jako nehořlavý vnitřní povrch.
 
-But metal does not make a device safe automatically. If a metal plate touches a hot zone and the outer housing, it can conduct heat outward. If plastic is screwed to it, that plastic can heat up through the fastener. If wires pass through it, near the edge you need feedthroughs, protection from chafing, and temperature margin for insulation.
+Ale kov nezaručuje bezpečnost zařízení automaticky. Pokud kovová deska dotýká horké zóny i vnějšího krytu, může vést teplo ven. Pokud je k ní přišroubován plast, tento plast se může zahřát přes upevnění. Pokud skrz ní procházejí vodiče, u okrajů potřebujete průchodky, ochranu před otěrem a teplotní rezervu pro izolaci.
 
-## Insulation: Lower Loss, More Responsibility
+## Izolace: Nižší ztráty, větší zodpovědnost
 
-Insulation reduces heat loss, but it does not eliminate temperature control.
+Izolace snižuje tepelné ztráty, ale neodstraňuje kontrolu teploty.
 
-When you insulate a chamber:
+Když izolujete komoru:
 
-- it is easier for the heater to raise the temperature;
-- the housing may become colder on the outside;
-- cooling time increases;
-- local temperature near the heater may rise;
-- fan failure or stuck switch becomes more dangerous.
+- je pro topidlo snazší zvýšit teplotu;
+- vnější stěna se může stát chladnější;
+- zvyšuje se doba chladnutí;
+- místní teplota u topidla může vzrůst;
+- porucha ventilátoru nebo uvíznutý spínač se stává nebezpečnější.
 
-Therefore, insulation cannot be added as an "improvement" without testing again. After insulation, you need to remeasure temperatures inside the chamber, at the heater, at wires, at terminals, and on the outer surface.
+Proto izolaci nelze přidávat jako „vylepšení" bez opětovného testování. Po izolaci musíte znovu měřit teploty uvnitř komory, u topidla, u vodičů, u svorek a na vnějším povrchu.
 
-## Air Gap Also Works
+## Vzduchová mezera také funguje
 
-Stationary air conducts heat poorly. Therefore, air gaps, double walls, and foam materials can reduce heat transfer.
+Stojatý vzduch vede teplo špatně. Proto vzduchové mezery, dvojité stěny a pěnové materiály mohou snížit přenos tepla.
 
-But if air starts to move, convection kicks in. Then heat is transferred by the air stream, not just thermal conduction. Therefore, a gap through which a hot stream flows can heat the housing more than a thick wall without flow.
+Ale pokud se vzduch začne pohybovat, vejde v platnost konvekce. Pak je teplo přenášeno proudem vzduchu, ne jen vedením. Proto mezera, kudy prochází horký proud, může zahřívat kryt více než silná stěna bez proudu.
 
-In practice, this means:
+V praxi to znamená:
 
-- do not leave accidental gaps near the heater;
-- do not direct hot flow straight at plastic;
-- do not treat air gaps as protection if a stream passes through them;
-- check temperature in real operating mode, not just on a cold device.
+- nenechávejte náhodné mezery blízko topidla;
+- nevedete horký proud přímo na plast;
+- nezpracovávejte vzduchové mezery jako ochranu, pokud jimi prochází proud;
+- kontrolujte teplotu při skutečném provozu, ne jen na chladném zařízení.
 
-## What to Look for in Material Datasheet
+## Co hledat v listu technických dat materiálu
 
-For material near heat, thermal conductivity is not the only thing that matters.
+Pro materiál blízko tepla není tepelná vodivost jedinou důležitou věcí.
 
-Check:
+Zkontrolujte:
 
-- maximum continuous working temperature;
-- softening temperature or thermal deformation temperature;
-- flammability and fire behavior class;
-- permissibility of contact with hot air;
-- behavior of glue layer, foil, coating, or lamination;
-- manufacturer recommendations for use;
-- availability of SDS/safety datasheet if material can heat up or be processed.
+- maximální kontinuální pracovní teplotu;
+- teplotu měknutí nebo tepelné deformace;
+- třída hořlavosti a chování v ohni;
+- dovolení kontaktu s horkým vzduchem;
+- chování lepidla, fólie, nátěru nebo laminace;
+- doporučení výrobce k použití;
+- dostupnost SDS/bezpečnostního listu, pokud se materiál může zahřívat nebo zpracovávat.
 
-If a material has no clear documentation, do not place it near the heater and do not use it as the only protection.
+Pokud materiál nemá jasnou dokumentaci, neumisťujte jej blízko topidla a nepoužívejte jej jako jedinou ochranu.
 
-## Practical Verification Order
+## Praktický pořadí ověřování
 
-For housing, chamber, or dryer, it is convenient to proceed as follows:
+Pro kryt, komoru nebo sušičku je vhodné postupovat takto:
 
-1. Identify the hot zone: heater, air outlet, terminals, power switch.
-2. Separate the hot zone from plastic with metal, ceramics, or another suitable material.
-3. Check where the metal conducts heat.
-4. Add insulation only where it does not cover dangerous hot nodes.
-5. Measure temperature at several points after warm-up.
-6. Check fan failure mode if the heater depends on airflow.
-7. Add independent overheat protection where overheat is dangerous.
+1. Identifikujte horkou zónu: topidlo, výstup vzduchu, svorky, vypínač.
+2. Oddělte horkou zónu od plastu kovem, keramikou nebo jiným vhodným materiálem.
+3. Zkontrolujte, kam kov vede teplo.
+4. Přidejte izolaci pouze tam, kde nepokrývá nebezpečné horké uzly.
+5. Měřte teplotu na několika místech po zahřátí.
+6. Zkontrolujte režim selhání ventilátoru, pokud topidlo závisí na proudu vzduchu.
+7. Přidejte nezávislou ochranu před přehřátím tam, kde je to nebezpečné.
 
-One temperature sensor in the chamber does not show the entire thermal picture. You need measurements near the heater, on fasteners, on wires, on the housing, and on printed parts.
+Jeden teplotní senzor v komoře neukazuje úplný obraz tepla. Potřebujete měření blízko topidla, na upevnění, na vodičích, na krytu a na tištěných dílech.
 
-## Main Takeaway
+## Hlavní poznámka
 
-Thermal conductivity helps you understand where heat will really go. Metal can be a useful heat sink or an accidental thermal bridge. Insulation can improve efficiency, but at the same time amplify the consequences of failure.
+Tepelná vodivost vám pomáhá pochopit, kam teplo skutečně jde. Kov může být užitečný chladič nebo náhodný tepelný most. Izolace může zlepšit účinnost, ale zároveň zesílí důsledky selhání.
 
-Any change to the housing, insulation, fasteners, or air duct must be verified by measuring temperature in real operating mode.
+Jakékoli změny krytu, izolace, upevnění nebo vzduchochladu musí být ověřeny měřením teploty při skutečném provozu.
 
-## Materials on the Topic
+## Zdroje na téma
 
-- [Engineering ToolBox: Thermal Conductivity of Common Materials](https://www.engineeringtoolbox.com/thermal-conductivity-d_429.html) - reference values of thermal conductivity for metals, plastics, air, glass, and insulation.
-- [Engineering ToolBox: Conductive Heat Transfer](https://www.engineeringtoolbox.com/conductive-heat-transfer-d_428.html) - relationship between heat flow, material, wall thickness, area, and temperature difference.
-- [NASA Glenn Research Center: Heat Transfer](https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/heat-transfer-3/) - basic explanation of heat transfer from hot body to cold.
-- [U.S. Department of Energy: Principles of Heating and Cooling](https://www.energy.gov/energysaver/principles-heating-and-cooling) - simple explanation of thermal conduction, convection, radiation, and role of insulation.
-- [Prusa Knowledge Base: Material table](https://help.prusa3d.com/materials) - practical reference for temperature behavior of popular 3D printing materials.
+- [Engineering ToolBox: Tepelná vodivost běžných materiálů](https://www.engineeringtoolbox.com/thermal-conductivity-d_429.html) - referenční hodnoty tepelné vodivosti kovů, plastů, vzduchu, skla a izolace.
+- [Engineering ToolBox: Vedení tepla](https://www.engineeringtoolbox.com/conductive-heat-transfer-d_428.html) - vztah mezi průtokem tepla, materiálem, tloušťkou stěny, plochou a rozdílem teplot.
+- [NASA Glenn Research Center: Přenos tepla](https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/heat-transfer-3/) - základní vysvětlení přenosu tepla z horkého tělesa na studené.
+- [U.S. Department of Energy: Principy vytápění a chlazení](https://www.energy.gov/energysaver/principles-heating-and-cooling) - jednoduché vysvětlení vedení tepla, konvekce, radiace a role izolace.
+- [Prusa Knowledge Base: Tabulka materiálů](https://help.prusa3d.com/materials) - praktický odkaz na chování teploty populárních materiálů pro 3D tisk.

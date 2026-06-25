@@ -16,7 +16,7 @@ Besonders wenn es gibt:
 - Rauch;
 - seltsamer Laut;
 - Funken;
-- Heizer will nicht ausschalten;
+- Heizer lässt sich nicht ausschalten;
 - Schutzschalter oder Sicherung fliegt.
 
 Ändern Sie keine Drähte unter Stromversorgung.

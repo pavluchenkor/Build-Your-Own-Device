@@ -137,7 +137,7 @@ Desvantagens:
 - precisa de ambiente morno estável;
 - nem toda impressora é adequada.
 
-PC não é um material "iniciante". Se a impressão é instável, uma peça pode parecer normal mas ter força fraca entre camadas.
+PC não é um material "iniciante". Se a impressão for assustadora, uma peça pode parecer normal, mas ter força entre camadas.
 
 ## Compostos
 

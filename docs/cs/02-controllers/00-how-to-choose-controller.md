@@ -24,7 +24,7 @@ Klipper používá architekturu "host + MCU". Host je Raspberry Pi nebo podobný
 
 Pro MCU v Klipper se podívejte na **RP2040** nebo **STM32**: jsou dobře podporovány, lze je flashovat bez ST-Link a fungují přímo přes USB nebo CAN.
 
-ESP32 není nejlepší volbou jako MCU pro Klipper — nemá nativní podporu firmware Klipper stejným způsobem jako STM32 nebo RP2040.
+ESP32 není nejlepší volbou jako MCU pro Klipper — nemá nativní podporu firmwaru Klipper stejným způsobem jako STM32 nebo RP2040.
 
 ## Pokud budujete samostatné zařízení
 
@@ -35,7 +35,7 @@ Arduino je vhodné pro jednoduchý prototyp nebo vzdělávací projekt, ale jeho
 ## Co si dál přečíst
 
 - [ESP32](./01-esp32-controller.md) — Wi-Fi, senzory, webové rozhraní
-- [Arduino](./02-arduino-controller.md) — začínáme a experimenty
+- [Arduino](./02-arduino-controller.md) — začínáme experimentovat
 - [RP2040](./03-rp2040-controller.md) — MCU Klipper, jednoduchý firmware
 - [STM32](./04-stm32-controllers.md) — desky tiskárny, CAN, SWD
 - [MCU v Klipper](./05-mcu-in-klipper.md) — jak je MCU integrován do systému Klipper

@@ -1,163 +1,163 @@
 # Ligação de um Ventilador
 
-A fan seems like a simple component: apply power and it spins.
+Um ventilador parece um componente simples: aplica-se alimentação e ele gira.
 
-In practice, problems arise from four things:
+Na prática, os problemas surgem de quatro coisas:
 
-- selecting a fan with the wrong voltage;
-- connecting it to a weak controller output;
-- not understanding the difference between 2-pin, 3-pin, and 4-pin fans;
-- placing the fan where it lacks pressure due to a filter, grill, or duct.
+- seleccionar um ventilador com a tensão errada;
+- ligá-lo a uma saída fraca do controlador;
+- não compreender a diferença entre ventiladores de 2, 3 e 4 pinos;
+- colocar o ventilador onde falta pressão devido a filtro, grelha ou conduta.
 
-In iDryer-like devices, a fan is usually needed for air circulation, heater cooling, chamber exhaust, filtration, or electronics cooling.
+Em dispositivos semelhantes ao iDryer, o ventilador é normalmente usado para circulação de ar, arrefecimento do aquecedor, exaustão da câmara, filtragem ou arrefecimento da electrónica.
 
-## What to check before connecting
+## O que verificar antes da ligação
 
-Before connecting, find the fan parameters:
+Antes de ligar, procure os parâmetros do ventilador:
 
-- voltage: `5V`, `12V`, or `24V`;
-- current or power;
-- connector type: 2-pin, 3-pin, or 4-pin;
-- PWM control capability;
-- tachometric signal presence;
-- airflow;
-- static pressure;
-- noise level;
-- operating temperature.
+- tensão: `5V`, `12V`, ou `24V`;
+- corrente ou potência;
+- tipo de conector: 2-pin, 3-pin, ou 4-pin;
+- capacidade de controlo PWM;
+- presença de sinal taquométrico;
+- fluxo de ar;
+- pressão estática;
+- nível de ruído;
+- temperatura de funcionamento.
 
-This data is found on a label, product page, or in the technical datasheet.
+Estes dados encontram-se numa etiqueta, página de produto ou na ficha técnica.
 
-For example, a fan datasheet usually contains not just voltage and current, but also airflow, static pressure, noise `SPL dB(A)`, operating temperature, and service life. These are more useful than selecting a fan by size alone.
+Por exemplo, uma ficha técnica de um ventilador contém geralmente não apenas tensão e corrente, mas também fluxo de ar, pressão estática, ruído `SPL dB(A)`, temperatura de funcionamento e tempo de vida útil. Estes são mais úteis do que seleccionar um ventilador apenas pelo tamanho.
 
-## Do not power a fan from GPIO
+## Não alimente um ventilador a partir de GPIO
 
-GPIO of a controller is a control signal, not a power output.
+GPIO de um controlador é um sinal de controlo, não uma saída de alimentação.
 
-Never power a fan directly from GPIO. This can damage the controller or cause resets when the fan starts.
+Nunca alimente um ventilador directamente a partir de GPIO. Isto pode danificar o controlador ou causar resets quando o ventilador arranca.
 
-The correct logic is:
+A lógica correta é:
 
-- the fan receives power from a power supply or board power output;
-- the controller only manages on/off or speed;
-- if an external MOSFET module is used, the power supply `GND` and controller `GND` must be common.
+- o ventilador recebe alimentação de uma fonte de alimentação ou saída de alimentação da placa;
+- o controlador apenas gere ligado/desligado ou velocidade;
+- se for utilizado um módulo MOSFET externo, o `GND` da fonte de alimentação e o `GND` do driver devem ser comuns.
 
 ![N-channel MOSFET in switching mode (low-side) for load control](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 
-## Simplest option: 2-pin fan
+## Opção mais simples: ventilador de 2 pinos
 
-A 2-pin fan typically has only:
+Um ventilador de 2 pinos tipicamente tem apenas:
 
-- `+` power;
-- `-` power.
+- `+` alimentação;
+- `-` alimentação.
 
-If it is a 24V fan, connect it to 24V. If it is a 12V fan, connect it to 12V.
+Se for um ventilador de 24V, ligue-o a 24V. Se for um ventilador de 12V, ligue-o a 12V.
 
-For simple on/off control, you can use:
+Para controlo simples ligado/desligado, pode utilizar:
 
-- a dedicated fan output on the board, if rated for the needed voltage and current;
-- an external MOSFET module for DC loads;
-- a separate fan controller.
+- uma saída dedicada de ventilador na placa, se classificada para a tensão e corrente necessárias;
+- um módulo MOSFET externo para cargas DC;
+- um controlador de ventilador separado.
 
-If the fan should run continuously, it can be connected directly to an appropriate power supply through a fuse or protected power line. But in a device with a heater, it is often better for the fan to be controlled by the controller as part of safety logic.
+Se o ventilador deve funcionar continuamente, pode ser ligado directamente a uma fonte de alimentação apropriada através de um fusível ou linha de alimentação protegida. Mas num dispositivo com um aquecedor, é frequentemente melhor que o ventilador seja controlado pelo controlador como parte da lógica de segurança.
 
-## 3-pin fan
+## Ventilador de 3 pinos
 
-A 3-pin fan typically has:
+Um ventilador de 3 pinos tipicamente tem:
 
-- power;
-- ground;
-- tachometric signal.
+- alimentação;
+- massa;
+- sinal taquométrico.
 
-The tachometric signal allows you to monitor fan RPM. It does not control speed by itself.
+O sinal taquométrico permite-lhe monitorizar o RPM do ventilador. Não controla a velocidade por si só.
 
-A 3-pin fan's speed is usually changed by reducing supply voltage or PWM on the power line, if the specific board and fan support this. But this method may work worse than proper 4-pin PWM: the fan may squeal, fail to start at low speed, or operate unstably.
+A velocidade de um ventilador de 3 pinos é geralmente alterada a tensão de alimentação ou PWM na linha de alimentação, se a placa específica e o ventilador o suportarem. Mas este método pode funcionar pior do que um PWM adequado de 4 pinos: o ventilador pode gritar, falhar ao arrancar em baixa velocidade ou funcionar de forma assustadora.
 
-If speed control is not needed, a 3-pin fan can be used as a regular 2-pin: power and ground are connected, the tachometric wire is unused.
+Se o controle de velocidade não for necessário, um ventilador de 3 pinos pode ser usado como um normal de 2 pinos: a alimentação e a massa estão ligadas, o fio taquométrico não é usado.
 
-## 4-pin PWM fan
+## Ventilador PWM de 4 pinos
 
-A 4-pin PWM fan typically has:
+Um ventilador PWM de 4 pinos tipicamente tem:
 
-- ground;
-- power;
-- tachometric signal;
-- PWM control signal.
+- massa;
+- alimentação;
+- sinal taquométrico;
+- sinal de controlo PWM.
 
-The key difference: power to the fan is applied continuously, and speed is set by a separate PWM signal.
+A diferença fundamental: a alimentação do ventilador é aplicada continuamente, e a velocidade é definida por um sinal PWM separado.
 
-This is the correct way to control computer PWM fans. Do not assume a 4-pin fan needs to be controlled by constantly switching power on and off. For a proper PWM fan, the control signal should go to a separate PWM pin.
+Esta é a forma correcta de controlar ventiladores PWM de computador. Não assuma que um ventilador de 4 pinos precisa ser controlado através da comutação constante da alimentação. Para um ventilador PWM adequado, o sinal de controlo deve ir para um pino PWM separado.
 
-Computer 4-pin PWM fans often have a control input designed for open-collector/open-drain signals with internal pull-up, not any voltage from GPIO. Do not apply `12V` or `24V` to the PWM pin. Check fan documentation; if open-drain/open-collector is required, use an appropriate transistor output or GPIO mode.
+Os ventiladores PWM de computador de 4 pinos frequentemente têm uma entrada de controle concebida para sinais open-collector/open-drain com pull-up interno, sem qualquer tensão de GPIO. Não aplique `24V` ou `24V` ao pino PWM. Verifique a documentação do ventilador; se open-drain/open-collector for necessário, utilize uma saída de transistor correspondente ou modo GPIO.
 
-For many 4-pin PWM fans, typical PWM frequency is around `25 kHz`. Some fans operate in a nearby range, but at too low or too high frequency they may behave unpredictably: run at full speed, stop, or make noise.
+Para muitos ventiladores PWM de 4 pinos, a frequência PWM típica é cerca de `25 kHz`. Alguns ventiladores funcionam numa gama próxima, mas com uma frequência demasiado baixa ou alta podem comportar-se de forma imprevisível: funcionar a velocidade máxima, parar ou fazer ruído.
 
-If the PWM wire is not connected, many 4-pin fans run at full speed.
+Se o fio PWM não estiver ligado, muitos ventiladores de 4 pinos funcionam a velocidade máxima.
 
-## Common GND / common negative
+## GND comum / negativo comum
 
-If the fan is powered by a separate power supply and the PWM signal comes from the controller, a common `GND` / common negative is needed.
+Se o ventilador for alimentado por uma fonte de alimentação separada e o sinal PWM vem do controlador, é necessário um `GND` comum / negativo comum.
 
-Without a common `GND`, the controller and fan have no common reference level. As a result, PWM may not work or may work intermittently.
+Sem um `GND` comum, o controlador e o ventilador não têm um nível de referência comum. Como resultado, o PWM pode não funcionar ou pode funcionar intermitentemente.
 
-Simple rule:
+Regra simples:
 
-- the fan's positive power comes from an appropriate power supply;
-- the fan's negative power is connected to the power supply's negative;
-- the controller's `GND` is connected to the same negative;
-- the control signal only works with a common ground.
+- a alimentação positiva do ventilador vem de uma fonte de alimentação apropriada;
+- a alimentação negativa do ventilador está ligada ao negativo da fonte de alimentação;
+- a `GND` do controlador está ligada ao mesmo negativo;
+- o sinal de controlo só funciona com uma massa comum.
 
-## Selecting a fan for the task
+## Seleccionar um ventilador para a tarefa
 
-For open cooling, airflow matters.
+Para arrefecimento aberto, o fluxo de ar é importante.
 
-For a filter, heatsink, tight grill, long duct, or narrow channel, static pressure is more important.
+Para um filtro, dissipador de calor, grelha apertada, conduta longa ou canal estreito, a pressão estática é mais importante.
 
-So for a printer chamber filter, an ordinary quiet case fan may be weak. It will blow well in free air but barely push air through a HEPA filter, charcoal layer, or narrow channel.
+Portanto, para um filtro de câmara de impressora, um ventilador de caixa silencioso ordinário pode ser fraco. Sopra bem em ar livre mas mal consegue fazer passar ar através de um filtro HEPA, camada de carvão ou canal estreito.
 
-Guidelines:
+Linhas de orientação:
 
-- for free air circulation look at `CFM` or `m³/h`;
-- for filters, heatsinks, and ducts, static pressure is essential;
-- for quiet operation look not just at `dB(A)` but also at mounting, grill, and vibration;
-- for a heated chamber look at the fan's operating temperature.
+- para circulação livre de ar procure `CFM` ou `m³/h`;
+- para filtros, dissipadores de calor e condutas, a pressão estática é essencial;
+- para funcionamento silencioso procure não apenas `dB(A)` mas também montagem, grelha e vibração;
+- para uma câmara aquecida procure a temperatura de funcionamento do ventilador.
 
-## Starting current and margin
+## Corrente de arranque e margem
 
-When a fan starts, it may briefly draw more current than during normal operation.
+Quando um ventilador arranca, pode atrair brevemente mais corrente do que durante o funcionamento normal.
 
-If multiple fans are connected to one output, their currents add up.
+Se vários ventiladores estiverem ligados a uma saída, as suas correntes somam-se.
 
-Check:
+Verifique:
 
-- maximum output current of the board;
-- current of one fan;
-- total current of all fans;
-- at least 50% margin;
-- heating of terminals, wires, and MOSFET module during prolonged operation.
+- corrente de saída máxima da placa;
+- corrente de um ventilador;
+- corrente total de todos os ventiladores;
+- pelo menos 50% de margem;
+- aquecimento de terminais, fios e módulo MOSFET durante funcionamento prolongado.
 
-For example, if one fan draws `0.25A`, four such fans draw about `1A` without accounting for starting current.
+Por exemplo, se um ventilador desenha `0.25A`, quatro ventiladores assim desenham cerca de `1A` sem contabilizar a corrente de arranque.
 
-## Example: connecting via MOSFET module
+## Exemplo: ligação através de módulo MOSFET
 
-Typical circuit for a 12V or 24V fan:
+Circuito típico para um ventilador de 12V ou 24V:
 
-1. The positive of the power supply goes to the positive of the fan.
-2. The negative of the fan goes to the power output of the MOSFET module.
-3. The negative of the power supply goes to the MOSFET module.
-4. The controller's `GND` is connected to the power supply's negative.
-5. The controller's control pin goes to the MOSFET module input.
+1. O positivo da fonte de alimentação vai para o positivo do ventilador.
+2. O negativo do ventilador vai para a saída de alimentação do módulo MOSFET.
+3. O negativo da fonte de alimentação vai para o módulo MOSFET.
+4. A `GND` do controlador está ligada ao negativo da fonte de alimentação.
+5. O pino de controlo do controlador vai para a entrada do módulo MOSFET.
 
-This is called low-side switching: the MOSFET breaks the negative of the load.
+Isto chama-se comutação de baixo lado: o MOSFET quebra o negativo da carga.
 
-For a simple 2-pin fan this is a standard and clear option if the MOSFET module is rated for the needed voltage and current. For a 3-pin/4-pin fan with a tachometer or separate PWM input, "cutting the negative" is not always good: monitoring RPM and native PWM control usually require a constant common `GND`.
+Para um ventilador simples de 2 pinos isto é uma opção padrão e claro se o módulo MOSFET for classificado para a tensão e corrente elétrica. Para um ventilador de 3 pinos/4 pinos com taquômetro ou entrada PWM separada, "cortar o negativo" nem sempre é bom: a monitorização de RPM e controle PWM nativo geralmente desabilita um `GND` comum constante.
 
-## Example Klipper configuration
+## Exemplo de configuração Klipper
 
-Pin names in examples are not universal. Before copying, check your board's pinout: a wrong `pin` may activate the wrong output.
+Os nomes de pinos nos exemplos não são universais. Antes de copiar, verifique o esquema de pinos da sua placa: um `pin` incorrecta pode activar a saída errada.
 
-If the fan is connected to a controlled output and should be controlled manually:
+Se o ventilador está ligado a uma saída controlada e deve ser controlado manualmente:
 
 ```ini
 [fan_generic chamber_fan]
@@ -176,7 +176,7 @@ SET_FAN_SPEED FAN=chamber_fan SPEED=0.4
 SET_FAN_SPEED FAN=chamber_fan SPEED=0
 ```
 
-If the fan should turn on based on chamber temperature:
+Se o ventilador deve ligar com base na temperatura da câmara:
 
 ```ini
 [temperature_fan chamber_exhaust]
@@ -193,50 +193,50 @@ target_temp: 45
 control: watermark
 ```
 
-Pin names here are typical. In a real device, check your board's pinout.
+Os nomes de pinos aqui são típicos. Num dispositivo real, verifique o esquema de pinos da sua placa.
 
-## What to check after connecting
+## O que verificar após a ligação
 
-Before prolonged operation, verify:
+Antes do funcionamento prolongado, verifique:
 
-- the fan rotates in the correct direction;
-- voltage matches the fan;
-- the MOSFET module does not overheat;
-- terminals do not overheat;
-- wires are not too thin for the chosen current;
-- the fan starts after a complete stop;
-- no squealing or stalling at low speed;
-- airflow passes through the needed area, not past it;
-- the grill, filter, or housing does not choke the flow more than expected.
+- o ventilador roda na direcção correcta;
+- a tensão corresponde ao ventilador;
+- o módulo MOSFET não sobreaquece;
+- os terminais não se sobrequentem;
+- os fios não são demasiado finos para a corrente escolhida;
+- o ventilador arranca após uma paragem completa;
+- sem gritaria ou travamento a baixa velocidade;
+- o fluxo de ar passa através da área necessária, não para além dela;
+- a grelha, filtro ou invólucro não sufoca o fluxo mais do que esperado.
 
-If the fan is near a heater, test it at real chamber temperature. A fan that works fine on the bench may degrade quickly in a hot enclosure.
+Se o ventilador está perto de um aquecedor, teste-o à temperatura real da câmara. Um ventilador que funciona bem na bancada pode degradar-se rapidamente num invólucro quente.
 
-## Common mistakes
+## Erros comuns
 
-- connecting a 12V fan to 24V;
-- connecting a 24V fan to 12V and deciding it is broken;
-- powering a fan from GPIO;
-- forgetting common ground between controller and external power;
-- expecting PWM control from a 3-pin fan;
-- controlling a 4-pin PWM fan by cutting power instead of using the PWM pin;
-- not accounting for total current of multiple fans;
-- choosing a fan by size without checking static pressure;
-- putting a quiet fan on a dense filter and getting near-zero flow;
-- not checking flow direction after installation;
-- leaving wires unsecured and getting fraying against the impeller or housing.
+- ligar um ventilador de 12V a 24V;
+- ligar um ventilador de 24V a 12V e decidir que está quebrado;
+- alimentar um ventilador a partir de GPIO;
+- esquecer massa comum entre controlador e alimentação externa;
+- esperar controlo PWM de um ventilador de 3 pinos;
+- controlar um ventilador PWM de 4 pinos cortando a alimentação em vez de utilizar o pino PWM;
+- não contabilizar a corrente total de vários ventiladores;
+- escolher um ventilador por tamanho sem verificar a pressão estática;
+- colocar um ventilador silencioso num filtro denso e obter fluxo quase nulo;
+- não verificar a direcção do fluxo após a instalação;
+- deixar fios não fixados e obter desfibramento contra o rotor ou invólucro.
 
-## Key points
+## Pontos-chave
 
-- Fan voltage must match the power supply.
-- GPIO does not power a fan, only controls it.
-- For external power, a common ground with the controller is required.
-- A 2-pin fan is easiest to control via a power output or MOSFET.
-- 3-pin adds a tachometer but not a separate PWM input.
-- 4-pin PWM is best controlled by a separate PWM signal, not power switching.
-- For filters and ducts, static pressure matters more than a nice `CFM` number.
-- After assembly, check not just rotation but actual flow through the construction.
+- A tensão do ventilador deve corresponder à fonte de alimentação.
+- GPIO não alimenta um ventilador, apenas o controla.
+- Para alimentação externa, é necessária uma massa comum com o controlador.
+- Um ventilador de 2 pinos é mais fácil de controlar através de uma saída de alimentação ou MOSFET.
+- 3 pinos acrescenta um taquómetro mas não uma entrada PWM separada.
+- PWM de 4 pinos é melhor controlado por um sinal PWM separado, não por comutação de alimentação.
+- Para filtros e condutas, a pressão estática é mais importante do que um número de `CFM` bonito.
+- Após montagem, verifique não apenas a rotação mas o fluxo real através da construção.
 
-## Related reading
+## Leitura relacionada
 
 - [Noctua: PWM setup and RPM monitoring of a fan with microcontrollers](https://www.noctua.at/en/support/faqs/microcontroller-guide-pwm-setup-and-rpm-monitoring) - practical explanation of 4-pin PWM, RPM signal, common ground, and typical PWM frequency.
 - [Klipper Configuration Reference: Fans](https://www.klipper3d.org/Config_Reference.html#fans) - official sections `fan`, `heater_fan`, `controller_fan`, `temperature_fan`, and `fan_generic`.

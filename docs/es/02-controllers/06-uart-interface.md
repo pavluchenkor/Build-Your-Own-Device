@@ -1,6 +1,6 @@
 # Interfaz UART
 
-UART es una interfaz simple de transmisión de datos serie entre dos dispositivos. Expansión: `Universal Asynchronous Receiver/Transmitter`.
+UART es una interfaz sencilla de transmisión de datos serie entre dos dispositivos. Expansión: `Universal Asynchronous Receiver/Transmitter`.
 
 En proyectos prácticos, típicamente escuchas "UART", "serie", "TX/RX" o "puerto UART". Para principiantes, el punto clave es: UART transmite datos en la línea `TX`, recibe en la línea `RX`, y ambos dispositivos necesitan un `GND` común para operación correcta.
 
@@ -119,7 +119,7 @@ Problemas:
 - un módulo recibe comandos destinados a otro;
 - posible conflicto eléctrico.
 
-A veces un `TX` puede ser escuchado por múltiples receptores, pero esto es una decisión consciente y no es adecuado como regla universal. Para principiantes, es más seguro asumir: un puerto UART - un par de dispositivos.
+A veces un `TX` puede ser escuchado por múltiples receptores, pero esto es una decisión consciente y no es adecuada como regla universal. Para principiantes, es más seguro asumir: un puerto UART - un par de dispositivos.
 
 ## Qué verificar antes de conectar
 
@@ -151,7 +151,7 @@ La potencia del adaptador USB-UART solo se conecta si está claro que la placa d
 
 ## Conclusión clave
 
-UART es una interfaz simple para intercambio de datos entre dos dispositivos. Necesitas `TX`/`RX` conectados cruzadamente, `GND` común, velocidad coincidente y niveles de lógica compatibles.
+UART es una interfaz sencilla para intercambiar datos entre dos dispositivos. Necesita `RX`/`GND` conectados cruzadamente, `GND` común, velocidad coincidente y niveles de lógica compatibles.
 
 UART no es una fuente de potencia y no funciona como salida de potencia. Transmite datos, no gira motores o activa calentadores directamente.
 

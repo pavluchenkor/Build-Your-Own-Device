@@ -1,177 +1,177 @@
 # Co je STL
 
-STL is a file containing the geometry of a 3D model.
+STL je soubor obsahující geometrii 3D modelu.
 
-In simple terms: STL tells the slicer what shape to print. But STL says almost nothing about how to make that part strong, heat-resistant, and safe in a real device.
+Jednoduše řečeno: STL řekne sliceru, jaký tvar se má tisknout. Ale STL téměř nic neříká o tom, jak dělat součást silnou, odolnou vůči teplu a bezpečnou v reálném zařízení.
 
-Therefore, the statement "I have an STL file for an enclosure" does not mean you have a complete assembly instruction for building a device.
+Proto tvrzení "mám STL soubor pouzdra" neznamená, že máte úplný návod na stavbu zařízení.
 
-## What STL stores
+## Co STL ukládá
 
-STL describes the surface of a model as a set of triangles.
+STL popisuje povrch modelu jako sadu trojúhelníků.
 
-The slicer takes this geometry and converts it into print paths.
+Slicer vezme tuto geometrii a převede ji na cesty tisku.
 
-STL is useful because:
+STL je užitečný, protože:
 
-- almost all slicers understand it;
-- it can be exported from most CAD programs;
-- it is simple to exchange a model;
-- it is well-suited for one finished part with simple geometry.
+- téměř všechny slicery jej rozumějí;
+- lze jej exportovat z nejvíce CAD programů;
+- je jednoduché vyměnit model;
+- je dobře vhodný pro jednu hotovou součást s jednoduchou geometrií.
 
-But STL's simplicity is also its limitation.
+Ale jednoduchost STL je také jeho limitace.
 
-## What STL does not store
+## Co STL neukládá
 
-A typical STL does not store:
+Typický STL neukládá:
 
-- material;
-- color;
-- print orientation;
-- layer height;
-- infill;
-- number of walls;
-- temperature settings;
-- support type;
-- fasteners;
-- assembly instructions;
-- tolerances;
-- part purpose;
-- heat warnings;
-- information about where the part will be weaker.
+- materiál;
+- barvu;
+- orientaci tisku;
+- výšku vrstvy;
+- výplň;
+- počet stěn;
+- nastavení teploty;
+- typ podpory;
+- upevnění;
+- pokyny na montáž;
+- tolerance;
+- účel součásti;
+- tepelná varování;
+- informace o tom, kde bude součást slabší.
 
-This means two people can print the same STL and get different parts.
+To znamená, že dva lidé mohou tisknout stejný STL a získat různé součásti.
 
-One might print PLA quickly and nicely. Another might print ASA with more walls and the right orientation. The parts look similar externally, but next to heat they will behave differently.
+Jeden by mohl vytisknout CHKO rychle a hezky. Druhý by mohl vytisknout ASA s více stěnami a správnou orientací. Součásti vypadají podobně zvenčí, ale vedle tepla se budou chovat odlišně.
 
-## Why this matters for heated devices
+## Proč to záleží pro topená zařízení
 
-For a decorative cover, STL is often sufficient.
+Pro ozdobný kryt je STL často dostačující.
 
-For a part near a heater, it is not.
+Pro součást blízko topidla není.
 
-You need to know:
+Potřebujete vědět:
 
-- what material to print it from;
-- what temperature will be nearby;
-- will the part hold a load;
-- are there wires nearby;
-- will the sensor shift if the part deforms;
-- will the part block airflow;
-- will plastic get too close to a terminal or heater.
+- z jakého materiálu jej tisknout;
+- jaká teplota bude v okolí;
+- bude součást držet zátěž;
+- budou vodiče v okolí;
+- změní se senzor, pokud se součást deformuje;
+- bude součást blokovat průtok vzduchu;
+- bude plast příliš blízko svorce nebo topidla.
 
-If an STL is downloaded without information about material and working conditions, it cannot be considered a ready solution for a dryer, printer chamber, or heating module.
+Pokud je STL stažený bez informací o materiálu a pracovních podmínkách, nelze jej považovat za připravené řešení pro sušičku, tiskárenské komoru nebo topný modul.
 
-## Print orientation changes strength
+## Orientace tisku změní pevnost
 
-FDM parts are made of layers.
+FDM součásti jsou složeny z vrstev.
 
-Because of this, the same model can be:
+Kvůli tomu může být stejný model:
 
-- strong at one orientation;
-- weak at another;
-- prone to delamination under load;
-- bad for screw fastening;
-- only good for decorative use.
+- silný v jedné orientaci;
+- slabý v jiné;
+- náchylný k oddělení mezi vrstvami pod zátěží;
+- špatný pro šroubové upevnění;
+- pouze vhodný pro dekorativní použití.
 
-For example, a thin bracket can hold a load well if layers run along the direction of force. But the same bracket can break between layers if printed the other way.
+Například tenká konzola může dobře držet zátěž, pokud vrstvy běží podél směru síly. Ale stejná konzola se může zlomit mezi vrstvami, pokud je tištěna jinak.
 
-STL itself does not say how to orient a part correctly.
+STL sám o sobě neříká, jak správně orientovat součást.
 
-## Slicer settings also matter
+## Nastavení sliceru také záleží
 
-Even with the right material and orientation, print settings affect the result.
+I se správným materiálem a orientací, nastavení tisku ovlivňují výsledek.
 
-For a functional part, these are important:
+Pro funkční součást jsou důležité:
 
-- number of perimeters;
-- wall thickness;
-- top and bottom layers;
-- infill percentage;
-- print temperature;
-- cooling;
-- supports;
-- line width;
-- interlayer adhesion quality.
+- počet perimetrů;
+- tloušťka stěny;
+- horní a spodní vrstvy;
+- procento výplně;
+- teplota tisku;
+- chlazení;
+- podpory;
+- šířka čáry;
+- kvalita mezivrstevní adheze.
 
-More infill does not always solve the problem. Often for an enclosure, bracket, or air duct, walls, perimeters, part shape, and load direction are more important.
+Vyšší výplň ne vždy řeší problém. Často pro kryt, konzolu nebo vzduchochod jsou důležitější stěny, perimetry, tvar součásti a směr zátěže.
 
-## What you need before printing a working part
+## Co potřebujete před tiskem pracovní součásti
 
-If a part will be part of a device, you need more than just the STL. You need a brief set of requirements:
+Pokud bude součást součástí zařízení, potřebujete víc než jen STL. Potřebujete krátkou sadu požadavků:
 
-- material;
-- orientation on the bed;
-- recommended wall thickness and infill;
-- whether supports are needed;
-- what screws and inserts to use;
-- where the part cannot be placed near heat;
-- maximum working temperature of the zone;
-- how to check fit after printing;
-- what to do if the part deformed.
+- materiál;
+- orientaci na tiskové desce;
+- doporučenou tloušťku stěny a výplň;
+- zda jsou potřebné podpory;
+- jaké šrouby a vložky usar;
+- kde součást nemůže být blízko tepla;
+- maximální pracovní teplota zóny;
+- jak zkontrolovat přesnost po tisku;
+- co dělat, pokud se součást deformuje.
 
-This is especially important for:
+To je zvláště důležité pro:
 
-- heater bracket;
-- air duct;
-- fan mount;
-- temperature sensor holder;
-- electronics enclosure;
-- terminal bracket;
-- parts near 110-230V AC.
+- konzolu topidla;
+- vzduchochod;
+- montáž ventilátoru;
+- držák senzoru teploty;
+- kryt elektroniky;
+- konzolu svorky;
+- součásti blízko 110-230V AC.
 
-## STL, 3MF, and project files
+## STL, 3MF a projektové soubory
 
-STL is the simplest and most compatible format, but not the most complete.
+STL je nejjednodušší a nejkompatibilnější formát, ale ne nejúplnější.
 
-The 3MF format was created as a more modern format for 3D printing. It can store more data: not just geometry, but also some information about materials, colors, objects, and manufacturing settings.
+Formát 3MF byl vytvořen jako modernější formát pro 3D tisk. Může ukládat více dat: nejen geometrii, ale i některé informace o materiálech, barvách, objektech a výrobních nastaveních.
 
-Many slicers can also save a project file. Such a file is useful because it stores not just the model but also the orientation, print settings, modifiers, and placement on the bed.
+Mnoho slicerů může také uložit projektový soubor. Takový soubor je užitečný, protože ukládá nejen model, ale i orientaci, nastavení tisku, modifikátory a umístění na tiskové desce.
 
-A practical rule:
+Praktické pravidlo:
 
-- STL is good for passing a shape;
-- 3MF or a slicer project is better for passing print intent;
-- text instructions are still needed if the part affects safety.
+- STL je dobré pro předání tvaru;
+- 3MF nebo projektový soubor sliceru je lepší pro předání záměru tisku;
+- textové pokyny jsou stále potřeba, pokud součást ovlivňuje bezpečnost.
 
-## How to evaluate a downloaded STL
+## Jak vyhodnotit stažený STL
 
-Before printing a downloaded part, ask yourself:
+Před tiskem staženého dílu si položte otázku:
 
-1. Is it clear what material to print it from?
-2. Are there any temperature warnings?
-3. Can you see what orientation it was printed in?
-4. Are there photos of the real part in assembly?
-5. Are screws, nuts, inserts, and tolerances specified?
-6. Is it clear what load it will hold?
-7. Is there a risk that deformation could create a dangerous situation?
+1. Je jasné, z jakého materiálu jej tisknout?
+2. Jsou tam nějaká tepelná varování?
+3. Můžete vidět, v jaké orientaci byl tištěn?
+4. Jsou tam fotografie skutečné součásti v montáži?
+5. Jsou určeny šrouby, matice, vložky a tolerance?
+6. Je jasné, jakou zátěž bude součást držet?
+7. Existuje riziko, že by deformace mohla vytvořit nebezpečnou situaci?
 
-If you do not have answers, the part can be used as an idea or prototype, but not as a guaranteed safe working component.
+Pokud nemáte odpovědi, součást lze použít jako nápadu nebo prototyp, ale ne jako zaručené bezpečné pracovní součásti.
 
-## Common mistakes
+## Běžné chyby
 
-- treating an STL as a complete instruction;
-- printing a working part from PLA just because it is easier;
-- not changing print orientation for load;
-- using too few walls and hoping high infill solves it;
-- not accounting for temperature inside the enclosure;
-- not checking gaps after printing;
-- screwing into thin posts without margin;
-- using a downloaded enclosure near heat without understanding the material;
-- not leaving access for maintenance after assembly.
+- zacházení se STL jako s kompletním návodem;
+- tisk pracovní součásti z PLA, jen proto, že je snazší;
+- nezměnění orientace tisku pro zátěž;
+- použití příliš málo stěn a doufání, že vysoká výplň to vyřeší;
+- nezohlednění teploty v pouzdru;
+- nezkontrolování mezer po tisku;
+- zašroubování do tenkých sloupů bez rezervy;
+- použití staženého pouzdra blízko tepla bez pochopení materiálu;
+- neopuštění přístupu údržbě po montáži.
 
-## Key takeaways
+## Klíčové myšlenky
 
-- STL stores shape, not a safe way to manufacture a part.
-- For a device, material, orientation, walls, fasteners, and working conditions matter.
-- One STL can result in a weak or strong part.
-- For parts near heat, you need information about material and temperature limits.
-- 3MF or slicer project files better convey settings, but do not replace engineering review.
+- STL ukládá tvar, ne bezpečný způsob výroby součásti.
+- Pro zařízení záleží materiál, orientace, stěny, upevnění a pracovní podmínky.
+- Jeden STL může vést k slabé nebo silné součásti.
+- Pro součásti blízko tepla potřebujete informace o materiálu a mezích teploty.
+- Soubory 3MF nebo sliceru lépe sdělují nastavení, ale nenahrazují inženýrskou kontrolu.
 
-## References
+## Reference
 
-- [3MF Consortium: The File Format for 3D Printing](https://3mf.io/) - why 3MF was created and what limits of old formats it addresses.
-- [3MF Consortium FAQ: 3MF vs STL](https://3mf.io/resources/faq/) - brief comparison of STL and 3MF: materials, properties, topology, and extensibility.
-- [Prusa Knowledge Base: Supported file formats](https://help.prusa3d.com/article/supported-file-formats_1772) - which formats PrusaSlicer supports and why 3MF is used as the preferred project format.
-- [Xometry: STL File Format](https://www.xometry.com/resources/3d-printing/stl-file-format/) - practical description of STL and the data it does not store: material, color, print profile, and CAD history.
-- [Xometry: 3MF File Format](https://www.xometry.com/resources/3d-printing/3mf-file-format/) - overview of 3MF as a more modern container for manufacturing data.
+- [3MF Consortium: Formát souboru pro 3D tisk](https://3mf.io/) - proč byl 3MF vytvořen a jaké limity starých formátů řeší.
+- [3MF Consortium Časté otázky: 3MF vs STL](https://3mf.io/resources/faq/) - krátké srovnání STL a 3MF: materiály, vlastnosti, topologie a rozšiřitelnost.
+- [Prusa Knowledge Base: Podporované formáty souborů](https://help.prusa3d.com/article/supported-file-formats_1772) - které formáty podporuje PrusaSlicer a proč je 3MF používán jako upřednostňovaný formát projektů.
+- [Xometry: Formát souboru STL](https://www.xometry.com/resources/3d-printing/stl-file-format/) - praktický popis STL a data, která neukládá: materiál, barvu, profil tisku a historii CAD.
+- [Xometry: Formát souboru 3MF](https://www.xometry.com/resources/3d-printing/3mf-file-format/) - přehled 3MF jako modernějšího kontejneru pro výrobní data.

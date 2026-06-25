@@ -1,212 +1,212 @@
 # Řadič Arduino
 
-Arduino is not one specific microcontroller, but an ecosystem of boards, libraries, examples, and development environment. When a newcomer says "Arduino," they usually mean Arduino Uno, Nano, or a compatible board based on ATmega328P.
+Arduino není jeden konkrétní mikrokontroleér, ale ekosystém desek, knihoven, příkladů a vývojového prostředí. Když začátečník řekne "Arduino", obvykle myslí Arduino Uno, Nano nebo kompatibilní desku na bázi ATmega328P.
 
-For education, Arduino is still very useful: it is easy to understand GPIO, buttons, LEDs, PWM, analog input, I2C, SPI, and simple sensors. But for a new device around a 3D printer, Arduino Uno/Nano is not always the best choice.
+Pro vzdělání je Arduino stále velmi užitečné: lze snadno pochopit GPIO, tlačítka, LED, PWM, analogový vstup, I2C, SPI a jednoduché sensory. Ale pro nové zařízení kolem 3D tiskárny není Arduino Uno/Nano vždy nejlepší volba.
 
-## Why Arduino is popular
+## Proč je Arduino populární
 
-Strengths of Arduino:
+Přednosti Arduina:
 
-- lots of educational materials;
-- simple Arduino IDE;
-- many ready-made libraries;
-- understandable examples like Blink;
-- convenient to quickly test a sensor on the desk;
-- easy to find compatible modules;
-- old boards are well documented.
+- spoustu vzdělávacích materiálů;
+- jednoduché Arduino IDE;
+- mnoho hotových knihoven;
+- srozumitelné příklady jako Blink;
+- vhodné pro rychlé testování sensoru na stole;
+- snadné najít kompatibilní moduly;
+- staré desky jsou dobře zdokumentovány.
 
-If the goal is to understand the basics of microcontrollers, Arduino is good. It lowers the barrier to entry and lets you see results quickly.
+Pokud je cílem pochopit základy mikrokontroleérů, Arduino je vhodné. Snižuje bariéru vstupu a umožňuje vidět výsledky rychle.
 
-## Arduino as an educational board
+## Arduino jako vzdělávací deska
 
-Arduino is convenient for:
+Arduino je vhodné pro:
 
-- testing a button, limit switch, or sensor;
-- simple thermistor test via a voltage divider;
-- testing I2C OLED;
-- testing SPI RFID module;
-- generating PWM for a small test;
-- reading analog voltage;
-- quick experiments on a breadboard.
+- testování tlačítka, koncového spínače nebo sensoru;
+- jednoduché testování termistoru přes dělič napětí;
+- testování I2C OLED;
+- testování SPI RFID modulu;
+- generování PWM pro malý test;
+- čtení analogového napětí;
+- rychlé experimenty na breadboardu.
 
-In this mode, Arduino is an excellent lab tool. You don't need to build a final device on it: you can first understand the circuit and sensor, then transfer the solution to ESP32, RP2040, STM32, or a printer board.
+V tomto režimu je Arduino vynikajícím laboratorním nástrojem. Nemusíte na něm stavět finální zařízení: nejprve můžete pochopit obvod a senzor, poté přenést řešení na ESP32, RP2040, STM32 nebo desku tiskárny.
 
-## Uno and Nano in a nutshell
+## Uno a Nano v kostce
 
-Classic Arduino Uno and Nano are usually based on ATmega328P.
+Klasické Arduino Uno a Nano obvykle používají ATmega328P.
 
-Typical characteristics:
+Typické charakteristiky:
 
-- `5V` logic;
-- 16 MHz clock;
-- 32 KB flash memory;
+- `5V` logika;
+- 16 MHz hodinový signál;
+- 32 KB flash paměti;
 - 2 KB SRAM;
-- 14 digital pins;
-- 6 PWM pins on Uno/Nano class;
-- 6 analog inputs on Uno, 8 on Nano;
-- USB for flashing and powering the board.
+- 14 digitálních pinů;
+- 6 PWM pinů na třídě Uno/Nano;
+- 6 analogových vstupů na Uno, 8 na Nano;
+- USB pro nahrávání a napájení desky.
 
-This is enough for educational sketches and simple standalone tasks, but not enough for complex logic, networking, web interface, large libraries, and convenient integration with modern systems.
+To stačí na vzdělávací skicy a jednoduché samostatné úlohy, ale ne na komplexní logiku, síťování, webové rozhraní, velké knihovny a pohodlnou integraci s moderními systémy.
 
-## Original, clone, and Arduino-compatible
+## Originál, klon a Arduino-kompatibilní
 
-You need to distinguish:
+Musíte rozlišovat:
 
-- original Arduino boards;
-- cheap Uno/Nano clones;
-- Arduino-compatible boards based on other microcontrollers;
-- modern Arduino boards with Wi-Fi, USB-C, Arm chips, and other logic.
+- originální desky Arduino;
+- levné klony Uno/Nano;
+- Arduino-kompatibilní desky na bázi jiných mikrokontroleérů;
+- moderní desky Arduino s Wi-Fi, USB-C, Arm čipy a další logikou.
 
-A Nano clone for a few dollars can be fine for experiments, but the quality of the USB-UART, regulator, soldering, and bootloader may vary. Sometimes for a Nano clone in the Arduino IDE you need to select an old bootloader or a different processor.
+Klon Nano za pár dolarů může být v pořádku na experimenty, ale kvalita USB-UART, regulátoru, pájení a bootloaderu se může lišit. Někdy pro klon Nano v Arduino IDE musíte vybrat starší bootloader nebo jiný procesor.
 
-If the device must work for a long time without supervision, board quality, regulator, connectors, and documentation are more important than the lowest price.
+Pokud musí zařízení dlouho fungovat bez dozoru, kvalita desky, regulátor, konektory a dokumentace jsou důležitější než nejnižší cena.
 
-## 5V logic
+## Logika 5V
 
-Old Arduino Uno/Nano use `5V` logic.
+Staré Arduino Uno/Nano používají logiku `5V`.
 
-This is convenient with some old modules, but dangerous for `3.3V` devices:
+To je vhodné s některými starými moduly, ale nebezpečné pro zařízení `3.3V`:
 
-- ESP32 usually cannot tolerate `5V` on GPIO;
-- many OLED, RFID, sensors, and radio modules are designed for `3.3V`;
-- I2C pull-ups to `5V` can damage a `3.3V` device;
-- some module inputs are compatible with `5V`, but this needs to be checked in the documentation.
+- ESP32 obvykle nemůže tolerovat `5V` na GPIO;
+- mnoho OLED, RFID, senzorů a rádiových modulů je navrženo pro `3.3V`;
+- pull-up rezistory I2C na `5V` mohou poškodit zařízení `3.3V`;
+- některé vstupy modulů jsou kompatibilní s `5V`, ale to musí být ověřeno v dokumentaci.
 
-If Arduino is connected to a `3.3V` module, you need a level converter or a circuit where levels are known to be compatible.
+Pokud je Arduino připojeno k modulu `3.3V`, potřebujete měnič úrovně nebo obvod, kde jsou úrovně známy jako kompatibilní.
 
-## GPIO does not power loads
+## GPIO nenapájí zátěž
 
-An Arduino pin can light an LED through a resistor or provide a control signal. It should not power a fan, heater, servo, relay, or LED strip directly.
+Pin Arduino může rozsvítit přes rezistor nebo ovládat signál. Nemělo by se přímo napájet ventilátor, topidlo, servo, relé nebo LED pásku.
 
-Typical circuit:
+Typický obvod:
 
-![Arduino Uno Rev3 with ATmega328P microcontroller](../../img/02-controllers/02-arduino-uno-rev3.jpg)
+![Arduino Uno Rev3 s mikrokontrolerem ATmega328P](../../img/02-controllers/02-arduino-uno-rev3.jpg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arduino_Uno_Rev3_with_Atmega328P.jpg), HonCode, CC0 Public Domain*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arduino_Uno_Rev3_with_Atmega328P.jpg), HonCode, CC0 Public Domain*
 
-For loads you need:
+Na zátěž potřebujete:
 
-- MOSFET or driver for DC fan, LED strip, or DC heater;
-- transistor driver and protective diode for relay coil;
-- SSR or relay for AC network load;
-- separate power for servo;
-- common GND where required by the low-voltage circuit.
+- MOSFET nebo driver pro DC ventilátor, LED pásku nebo DC topidlo;
+- driver tranzistoru a ochrannou diodu pro cívku relé;
+- SSR nebo relé pro síťovou zátěž AC;
+- oddělené napájení pro servo;
+- společnou GND, kde to vyžaduje nízkonapěťový obvod.
 
-GPIO is a command, not a power output.
+GPIO je příkaz, nikoli výstup napájení.
 
-## PWM and analogWrite
+## PWM a analogWrite
 
-In Arduino, `analogWrite()` on Uno/Nano usually means PWM, not true analog output. The board quickly switches the pin on and off, changing the signal duty cycle.
+V Arduinu `analogWrite()` na Uno/Nano obvykle znamená PWM, nikoli skutečný analogový výstup. Deska rychle přepíná pin zapnuto a vypnuto a mění pracovní cyklus signálu.
 
-This is suitable for:
+To je vhodné pro:
 
-- LED brightness;
-- control input for a driver;
-- simple PWM for a fan or MOSFET module;
-- educational experiments.
+- jas LED;
+- vstup řízení driveru;
+- jednoduchý PWM pro ventilátor nebo MOSFET modul;
+- vzdělávací experimenty.
 
-But there are limitations:
+Ale existují omezení:
 
-- PWM is not available on all pins;
-- PWM frequency is fixed or changes in non-obvious ways;
-- `analogWrite()` and `analogRead()` are different things;
-- a 4-pin PC fan may require a different frequency and proper open-collector/open-drain approach;
-- heaters and SSRs cannot just use any fast PWM without understanding the power section.
+- PWM není dostupný na všech pinech;
+- PWM frekvence je pevná nebo se mění neobvyklým způsobem;
+- `analogWrite()` a `analogRead()` jsou různé věci;
+- čtyřpinový PC ventilátor může vyžadovat jinou frekvenci a správný přístup open-collector/open-drain;
+- topidla a SSR nemůžou právě tak používat libovolný rychlý PWM bez pochopení sekce napájení.
 
-## Analog inputs
+## Analogové vstupy
 
-Arduino Uno/Nano is convenient for simple analog measurements:
+Arduino Uno/Nano je vhodné na jednoduché analogové měření:
 
-- potentiometer;
-- thermistor via voltage divider;
-- light sensor;
-- simple voltage sensor via voltage divider.
+- potenciometr;
+- termistor přes dělič napětí;
+- snímač světla;
+- jednoduchý senzor napětí přes dělič napětí.
 
-But an analog input should not see voltage above its safe range. For Uno/Nano this is usually the range relative to `5V` power or selected `AREF`. If measuring higher voltage, you need a divider and protection.
+Ale analogový vstup by neměl vidět napětí nad svojí bezpečnou rozsahem. Pro Uno/Nano je to obvykle rozsah vztažený na napájení `5V` nebo vybranou `AREF`. Pokud měříte vyšší napětí, potřebujete dělič a ochranu.
 
-For accurate temperature measurements, you need not just `analogRead()`, but also:
+Na přesné měření teploty potřebujete nejen `analogRead()`, ale také:
 
-- correct voltage divider circuit;
-- resistor value;
-- thermistor table or Beta parameter;
-- stable power/reference voltage;
-- noise filtering;
-- mechanical sensor contact with the object.
+- správný obvod dělače napětí;
+- hodnotu rezistoru;
+- termistorovou tabulku nebo parametr Beta;
+- stabilní napájení/referenční napětí;
+- filtrování šumu;
+- mechanický kontakt sensoru s objektem.
 
-## Arduino and Klipper
+## Arduino a Klipper
 
-Some old AVR boards may historically be found near 3D printers, but for a new device around Klipper it is better not to start with Uno/Nano.
+Některé staré AVR desky se mohou historicky najít blízko 3D tiskáren, ale pro nové zařízení kolem Klipperu není dobré začínat s Uno/Nano.
 
-Reasons:
+Důvody:
 
-- limited memory;
-- weak performance;
-- 5V logic can interfere with modern `3.3V` modules;
-- no networking without additional modules;
-- not the most practical path for a new Klipper MCU.
+- omezená paměť;
+- slabý výkon;
+- logika `5V` může rušit moderní moduly `3.3V`;
+- bez síťování bez dodatečných modulů;
+- není to nejpraktičtější cesta pro nový MCU Klipperu.
 
-If you need an additional MCU for Klipper, it is usually more practical to look at RP2040, STM32, or a ready-made 3D printer board. Arduino can be kept for education, breadboarding, and testing individual sensors.
+Pokud potřebujete dodatečný MCU pro Klipper, je obvykle praktičtější podívat se na RP2040, STM32 nebo hotovou desku 3D tiskárny. Arduino lze ponechat pro vzdělání, breadboarding a testování jednotlivých senzorů.
 
-## When Arduino is still appropriate
+## Kdy je Arduino stále vhodné
 
-Arduino is appropriate if:
+Arduino je vhodné, pokud:
 
-- you need to quickly test an idea;
-- you need to explain how something works;
-- the device is very simple and does not need networking;
-- you already have a working sketch;
-- clarity is more important than compactness and performance;
-- this is an educational bench, not final power electronics.
+- potřebujete rychle testovat nápad;
+- potřebujete vysvětlit, jak něco funguje;
+- zařízení je velmi jednoduché a nepotřebuje síťování;
+- již máte pracující skic;
+- jasnost je důležitější než kompaktnost a výkon;
+- jedná se o vzdělávací pult, nikoli finální silovou elektroniku.
 
-Arduino is not a good choice if:
+Arduino není dobrá volba, pokud:
 
-- you need Wi-Fi out of the box;
-- you need tight integration with Klipper;
-- you need a lot of memory;
-- you need many modern `3.3V` sensors;
-- the device must be compact, long-lived, and industrially neat;
-- there is a power section with a heater where independent protections are important.
+- potřebujete Wi-Fi ze startovního balíčku;
+- potřebujete těsnou integraci s Klipperem;
+- potřebujete spoustu paměti;
+- potřebujete mnoho moderních senzorů `3.3V`;
+- zařízení musí být kompaktní, dlouhodobé a průmyslově čisté;
+- existuje silová sekce s topidlem, kde jsou důležité nezávislé ochrany.
 
-## What to check before buying
+## Co zkontrolovat před nákupem
 
-Before buying an Arduino-compatible board, check:
+Před nákupem Arduino-kompatibilní desky zkontrolujte:
 
-- whether it is an original, clone, or compatible board;
-- which microcontroller is installed;
-- `5V` or `3.3V` logic;
-- which USB-UART chip is used;
-- whether there is a driver for your computer;
-- which bootloader is needed;
-- how much flash and SRAM;
-- how many PWM and analog inputs;
-- whether there is a schematic and pinout;
-- quality of power regulator and connectors;
-- whether the board is suitable for the final task.
+- zda je to originál, klon nebo kompatibilní deska;
+- který mikrokontroleér je nainstalován;
+- logika `5V` nebo `3.3V`;
+- který USB-UART čip se používá;
+- zda existuje ovladač pro váš počítač;
+- který bootloader je potřebný;
+- kolik flash a SRAM;
+- kolik PWM a analogových vstupů;
+- zda existuje schéma a rozložení pinů;
+- kvalita regulátoru napájení a konektorů;
+- zda je deska vhodná pro finální úkol.
 
-## Common mistakes
+## Běžné chyby
 
-- thinking Arduino is one specific board;
-- connecting `5V` Arduino directly to `3.3V` module;
-- powering a load from GPIO;
-- powering a servo from the `5V` pin and getting resets;
-- using `analogWrite()` as a true analog output;
-- selecting the wrong bootloader for a Nano clone;
-- not installing a driver for the USB-UART;
-- trying to build a modern networked device on Uno without reason;
-- transferring an educational breadboard into a closed power device without reworking power, wiring, and protection.
+- myšlenka, že Arduino je jedna konkrétní deska;
+- přímé připojení Arduino `5V` k modulu `3.3V`;
+- napájení zátěže z GPIO;
+- napájení serva z pinu `5V` a získání resetů;
+- používání `analogWrite()` jako skutečného analogového výstupu;
+- výběr špatného bootloaderu pro klon Nano;
+- neinstalace ovladače pro USB-UART;
+- pokus vytvořit moderní síťované zařízení na Uno bez důvodu;
+- převod vzdělávacího breadboardu do uzavřeného silového zařízení bez přepracování napájení, zapojení a ochrany.
 
-## Key points
+## Klíčové body
 
-Arduino is a good educational ecosystem and a convenient tool for quick tests. It is great for understanding GPIO, PWM, ADC, and sensors.
+Arduino je dobrý ekosystém vzdělávání a vhodný nástroj na rychlé testy. Je skvělý na pochopení GPIO, PWM, ADC a senzorů.
 
-But classic Uno/Nano are old `5V` boards with limited memory and no networking. For a new device around a 3D printer, ESP32, RP2040, STM32, or a ready-made printer board is often more practical, leaving Arduino as an educational and diagnostic tool.
+Ale klasické Uno/Nano jsou staré desky `5V` s omezenou pamětí a bez síťování. Pro nové zařízení kolem 3D tiskárny je ESP32, RP2040, STM32 nebo hotová deska tiskárny často praktičtější, čímž se Arduino stává nástrojem na vzdělání a diagnostiku.
 
-## Related materials
+## Související materiály
 
-- [Arduino Docs: UNO R3](https://docs.arduino.cc/hardware/uno-rev3) — official Uno R3 specifications: ATmega328P, `5V`, pins, PWM, analog inputs, and board resources.
-- [Arduino Store: UNO Rev3 Tech Specs](https://store.arduino.cc/collections/arduino/products/arduino-uno-rev3) — table with voltage, GPIO current, memory, frequency, and board dimensions.
-- [Arduino Store: Arduino Nano](https://store-usa.arduino.cc/products/arduino-nano) — Nano specifications, power, memory, digital and analog pins.
-- [Arduino Help Center: Select the right processor for Arduino Nano](https://support.arduino.cc/hc/en-us/articles/4401874304274-Select-the-right-processor-for-Arduino-Nano) — why Nano and Nano clones may have different bootloaders.
-- [Arduino Language Reference](https://docs.arduino.cc/language-reference/) — official reference for `pinMode`, `digitalWrite`, `analogRead`, `analogWrite`, PWM, and basic functions.
-- [Arduino Help Center: Use PWM output with Arduino](https://support.arduino.cc/hc/en-us/articles/9350537961500-Use-PWM-output-with-Arduino) — list of PWM pins for popular boards and limitations of `analogWrite()`.
+- [Arduino Docs: UNO R3](https://docs.arduino.cc/hardware/uno-rev3) — oficiální specifikace Uno R3: ATmega328P, `5V`, piny, PWM, analogové vstupy a prostředky desky.
+- [Arduino Store: UNO Rev3 Tech Specs](https://store.arduino.cc/collections/arduino/products/arduino-uno-rev3) — tabulka s napětím, proudem GPIO, pamětí, frekvencí a rozměry desky.
+- [Arduino Store: Arduino Nano](https://store-usa.arduino.cc/products/arduino-nano) — specifikace Nano, napájení, paměť, digitální a analogové piny.
+- [Arduino Help Center: Select the right processor for Arduino Nano](https://support.arduino.cc/hc/en-us/articles/4401874304274-Select-the-right-processor-for-Arduino-Nano) — proč Nano a klony Nano mohou mít různé bootloadery.
+- [Arduino Language Reference](https://docs.arduino.cc/language-reference/) — oficiální reference pro `pinMode`, `digitalWrite`, `analogRead`, `analogWrite`, PWM a základní funkce.
+- [Arduino Help Center: Use PWM output with Arduino](https://support.arduino.cc/hc/en-us/articles/9350537961500-Use-PWM-output-with-Arduino) — seznam PWM pinů pro populární desky a omezení `analogWrite()`.

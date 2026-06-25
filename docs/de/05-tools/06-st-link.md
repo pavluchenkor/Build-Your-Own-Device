@@ -74,7 +74,7 @@ ST-Link ist nützlich wenn:
 - DFU nicht vorhanden ist;
 - der Bootloader ist beschädigt oder nicht verwendet;
 - Flashen deaktivierte USB;
-- die Platine wird nicht in normalen Flash-Modus eintreten;
+- die Platine wird nicht im normalen Flash-Modus eintreten;
 - Sie Speicher löschen müssen;
 - Sie STM32 Zugriff wiederherstellen müssen.
 

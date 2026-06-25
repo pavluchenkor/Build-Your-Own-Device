@@ -121,7 +121,7 @@ V technické specifikaci je mnoho parametrů. Pro první volbu stačí tři:
 
 - `IT(RMS)` — maximální efektivní proud přes TRIAC. Měl by být vyšší než proud zátěže s rezervou, při aktuálním chlazení.
 - `VDRM`/`VRRM` — maximální napětí v otevřeném stavu. Pro síť 230 V zvolte TRIAC s hodnocením 600 V a vyšší.
-- `IGT` — brána proud. Měl by odpovídat možnostem optoisolace TRIAC.
+- `IGT` — brána hrdá. Měl by odpovídat možnostem optoizolace TRIAC.
 
 Ostatní parametry (`IH`, `dV/dt`, `Tj`, `Rth`) jsou důležité pro přesný výpočet nebo když jsou problémy v reálném obvodu.
 

@@ -1,199 +1,199 @@
 # Osciloskop
 
-An oscilloscope shows how a signal changes over time.
+Osciloskop ukazuje, jak se signál mění v čase.
 
-A multimeter can show "about 3.3V" or "there is frequency". An oscilloscope shows signal shape: pulses, edges, sag, noise, bounce, UART packets, PWM.
+Multimetr může ukázat "asi 3.3V" nebo "je tam frekvence". Osciloskop ukazuje tvar signálu: pulsy, hrany, pokles, šum, odskok, pakety UART, PWM.
 
-![Screen of a digital oscilloscope](../../img/05-tools/07-digital-oscilloscope.jpg)
+![Obrazovka digitálního osciloskopu](../../img/05-tools/07-digital-oscilloscope.jpg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Digital_oscilloscope.jpg), premek.v, Public Domain*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Digital_oscilloscope.jpg), premek.v, Public Domain*
 
-A PWM signal on the oscilloscope screen looks like this:
+Signál PWM na obrazovce osciloskopu vypadá takto:
 
-![Animation of PWM: duty cycle change and signal waveform](../../img/05-tools/07-pwm-signal-waveform.gif)
+![Animace PWM: změna duty cycle a průběh signálu](../../img/05-tools/07-pwm-signal-waveform.gif)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pwm.gif), Mik81, CC0 Public Domain*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pwm.gif), Mik81, CC0 Public Domain*
 
-You don't need one for every simple build. But when a device behaves unstably, an oscilloscope can reveal in minutes what a multimeter cannot see.
+Nepotřebujete jej na každou jednoduchou stavbu. Ale když se zařízení chová nestabilně, osciloskop může v minutách odhalit, co multimetr nemůže vidět.
 
-## What you can see
+## Co můžete vidět
 
-In iDryer-like devices, an oscilloscope is useful for viewing:
+V zařízeních podobných iDryer-u je osciloskop užitečný pro prohlížení:
 
-- fan PWM;
-- MOSFET module PWM;
+- PWM ventilátoru;
+- PWM modulu MOSFET;
 - UART `TX/RX`;
-- 5V or 3.3V sag at servo startup;
-- power supply noise;
-- button bounce;
-- tachometric fan signal;
-- brief glitches that a multimeter averages out.
+- pokles 5V nebo 3.3V při spuštění servomotoru;
+- šum napájecího zdroje;
+- odskok tlačítka;
+- signál tachometru ventilátoru;
+- krátké poruchy, které multimetr zprůměruje.
 
-An oscilloscope answers not just "is there voltage" but "what is happening to the signal over time".
+Osciloskop odpovídá nejen "je tam napětí", ale "co se děje se signálem v čase".
 
-## The most important warning
+## Nejdůležitější varování
 
-Most benchtop oscilloscopes have the probe ground connected to the mains protective earth.
+Většina stolních osciloskapů má zem sondy připojenou k ochrannému uzemnění sítě.
 
-This means: the ground clip of the probe is not "just another wire".
+To znamená: clips zeme sondy není "jen další drát".
 
-If you attach the ground clip to a point that is not `GND` of the low-voltage circuit, you can create a short circuit through the oscilloscope.
+Pokud připojíte clips zeme sondy k bodu, který není `GND` nízkovoltážního obvodu, můžete vytvořit zkrat skrz osciloskop.
 
-It is especially dangerous to go into the mains 110-230V AC part, SSR, power supply or high-voltage sections with a normal oscilloscope.
+Je zvláště nebezpečné vstoupit do síťové části 110-230V AC, SSR, napájecího zdroje nebo vysokonapěťových sekcí s normálním osciloskapem.
 
-You cannot:
+Nemůžete:
 
-- disconnect the oscilloscope earth for "floating" measurement;
-- connect the probe ground to phase or another voltage point;
-- measure mains voltage with a normal probe without understanding the circuit;
-- assume the two channels are completely independent: channel grounds are often connected together.
+- odpojit zem osciloskopu pro "plovoucí" měření;
+- připojit clips zeme sondy k fázi nebo jinému napěťovému bodu;
+- měřit síťové napětí s normální sondou bez pochopení obvodu;
+- předpokládat, že dva kanály jsou zcela nezávislé: země kanálů jsou často propojeny.
 
-For floating measurements, high-side measurements and high-voltage measurements, you need proper methods: differential probe, isolated device or another safe approach.
+Pro plovoucí měření, měření vysoké strany a měření vysokého napětí potřebujete správné metody: diferenciální sondu, izolované zařízení nebo jiný bezpečný přístup.
 
-## How to connect a probe
+## Jak připojit sondu
 
-For low-voltage circuits:
+Pro nízkovoltážní obvody:
 
-1. Connect the probe to the oscilloscope.
-2. Connect the probe ground to `GND` of the device.
-3. Connect the probe tip to the signal.
-4. Select the correct probe setting: `1x` or `10x`.
-5. Make sure the oscilloscope is set to the same factor.
+1. Připojte sondu k osciloskopu.
+2. Připojte zem sondy k `GND` zařízení.
+3. Připojte špičku sondy k signálu.
+4. Vyberte správné nastavení sondy: `1x` nebo `10x`.
+5. Ujistěte se, že je osciloskop nastaven na stejný faktor.
 
-For most digital signals, use `10x`: the probe loads the circuit less and usually shows signal shape better.
+Pro většinu digitálních signálů použijte `10x`: sonda méně zatěžuje obvod a obvykle lépe zobrazuje tvar signálu.
 
 ## PWM
 
-PWM is a pulse signal.
+PWM je pulzní signál.
 
-The oscilloscope shows:
+Osciloskop ukazuje:
 
-- frequency;
+- frekvenci;
 - duty cycle;
-- logic high level;
-- logic low level;
-- edges;
+- úroveň logické jedničky;
+- úroveň logické nuly;
+- hrany;
 - jitter;
-- noise.
+- šum.
 
-For a fan or MOSFET this helps understand:
+Pro ventilátor nebo MOSFET to pomáhá pochopit:
 
-- whether the pin outputs a signal at all;
-- whether 3.3V or 5V level is sufficient;
-- whether frequency matches the setting;
-- whether duty cycle changes on command;
-- whether signal doesn't sag when load is connected.
+- zda výstup pinu vůbec signál vysílá;
+- zda je úroveň 3.3V nebo 5V dostatečná;
+- zda frekvence odpovídá nastavení;
+- zda se duty cycle mění podle příkazu;
+- zda signál nepadá, když je připojena zátěž.
 
 ## UART
 
-UART on the oscilloscope looks like a sequence of pulses.
+UART na osciloskopu vypadá jako sekvence pulsů.
 
-The oscilloscope helps see:
+Osciloskop pomáhá vidět:
 
-- whether there is activity on `TX`;
-- whether logic levels are not swapped;
-- what the idle level is;
-- whether there is strong noise;
-- whether baud rate roughly matches.
+- zda je aktivita na `TX`;
+- zda nejsou prohozeny logické úrovně;
+- jaká je úroveň v klidu;
+- zda je silný šum;
+- zda se přibližně shoduje přenosová rychlost.
 
-For decoding text, a logic analyzer or USB-UART adapter is more convenient. But an oscilloscope quickly shows whether the signal is physically alive.
+Pro dekódování textu je vhodněji logický analyzátor nebo USB-UART adaptér. Ale osciloskop rychle ukáže, zda je signál fyzicky živý.
 
-## Power supply sag
+## Pokles napájecího zdroje
 
-A multimeter may not see a brief sag.
+Multimetr nemusí vidět krátký pokles.
 
-For example, when a servo starts, a 5V line might dip for a few milliseconds. The multimeter shows almost normal 5V, but the controller already rebooted.
+Například když se servomotor spustí, linea 5V se může ponížit o několik milisekund. Multimetr ukazuje téměř normálních 5V, ale kontrolér se již restartoval.
 
-An oscilloscope lets you see:
+Osciloskop vám umožňuje vidět:
 
-- how much voltage drops;
-- how long the sag lasts;
-- whether there are spikes;
-- whether a capacitor helps;
-- whether the situation changes with a different power supply or wires.
+- kolik napětí padá;
+- jak dlouho pokles trvá;
+- zda jsou špičky;
+- zda kondenzátor pomáhá;
+- zda se situace změní s jiným napájecím zdrojem nebo vodiči.
 
-This is especially useful for ESP32, servos, fans and DC-DC.
+To je zvláště užitečné pro ESP32, servomotory, ventilátory a DC-DC.
 
-## Noise and interference
+## Šum a interference
 
-Noise on power or signal lines can break sensors and communication.
+Šum na napájecích nebo signálních vodičích může prolomit senzory a komunikaci.
 
-An oscilloscope helps see:
+Osciloskop pomáhá vidět:
 
-- DC-DC ripple;
-- motor spikes;
-- noise near the heater;
-- button bounce;
-- interference on a long wire.
+- zvlnění DC-DC;
+- motorové špičky;
+- šum blízko topidla;
+- odskok tlačítka;
+- interference na dlouhém vodiči.
 
-But understand the limits: poor probe ground connection can add noise to the display itself. A short probe ground spring or short ground wire often gives a more honest picture than a long clip.
+Ale rozumějte omezením: špatné připojení zeme sondy může přidat šum na samotný displej. Krátká pružina zeme sondy nebo krátký vodič zeme často dávají poctivější obraz než dlouhý clips.
 
-## Multimetr with frequency measurement
+## Multimetr s měřením frekvence
 
-Sometimes an oscilloscope is not needed for initial checks.
+Někdy osciloskop není na počáteční kontroly potřebný.
 
-Some multimeters can measure signal frequency. In the specs this might be called `Hz`, `frequency` or `frequency counter`.
+Některé multimetry mohou měřit frekvenci signálu. Ve specifikacích se to mohou nazývat `Hz`, `frekvence` nebo `čítač frekvence`.
 
-This is useful if you need to quickly understand:
+To je užitečné, pokud potřebujete rychle pochopit:
 
-- whether a PWM signal exists at all;
-- whether frequency changes with adjustment;
-- whether the controller output works;
-- whether there is activity on a simple digital line.
+- zda existuje PWM signál vůbec;
+- zda se frekvence mění s úpravou;
+- zda výstup kontroléru funguje;
+- zda je aktivita na jednoduchém digitálním vodiči.
 
-For example, if a controller should output PWM to a fan or MOSFET module, a frequency-measuring multimeter can show that the signal exists and its frequency roughly matches the expected value.
+Například pokud by kontrolér měl výstup PWM ventilátoru nebo modulu MOSFET, multimetr měřící frekvenci může ukázat, že signál existuje a jeho frekvence se přibližně shoduje s očekávanou hodnotou.
 
-But a multimeter doesn't show signal shape. It won't show:
+Ale multimetr neukazuje tvar signálu. Neukazuje:
 
-- logic high level;
-- pulse width;
-- PWM duty cycle;
-- signal edges;
-- brief dips;
-- noise and interference;
-- line distortion.
+- úroveň logické jedničky;
+- šířka pulsu;
+- duty cycle PWM;
+- hrany signálu;
+- krátké poklesy;
+- šum a interference;
+- zkreslení vedení.
 
-So a frequency-measuring multimeter is a good tool for quick checks, but not a full oscilloscope replacement.
+Takže multimetr měřící frekvenci je dobrý nástroj pro rychlé kontroly, ale není úplnou náhradou za osciloskop.
 
-## What to check before measuring
+## Co kontrolovat před měřením
 
-Before connecting a probe:
+Před připojením sondy:
 
-1. What is `GND` in the circuit?
-2. Is this point connected to mains protective earth?
-3. Is there no mains voltage?
-4. Is the probe rated for the voltage?
-5. Is `10x` selected if needed?
-6. Are the probe and channel set the same way?
-7. Don't channel grounds connect different circuit points?
-8. Can you first check the signal on the low-voltage side?
+1. Co je `GND` v obvodu?
+2. Je tento bod připojen k ochrannému uzemnění sítě?
+3. Není tam síťové napětí?
+4. Je sonda hodnocena na napětí?
+5. Je vybrán `10x`, pokud je to potřeba?
+6. Jsou sonda a kanál nastaveny stejně?
+7. Nejsou země kanálů připojeny k různým bodům obvodu?
+8. Můžete nejdřív zkontrolovat signál na straně nízkého napětí?
 
-If you have doubts about 110-230V AC, don't connect the oscilloscope.
+Pokud máte pochyby o 110-230V AC, nepřipojujte osciloskop.
 
-## Common errors
+## Běžné chyby
 
-- ground clip attached to a voltage point, not `GND`;
-- trying to "disconnect" oscilloscope earth from the mains;
-- measuring mains voltage with a normal probe without a differential;
-- forgetting that channel grounds are connected;
-- probe set to `10x`, oscilloscope set to `1x`;
-- using long probe ground and seeing extra noise;
-- only looking with a multimeter and missing a brief sag;
-- thinking a UART problem is software when there is no physical signal on the line.
+- clips zeme připojen k napěťovému bodu, ne `GND`;
+- pokus "odpojit" zem osciloskopu od sítě;
+- měření síťového napětí s normální sondou bez diferenciálu;
+- zapomenutí, že země kanálů jsou připojeny;
+- sonda nastavena na `10x`, osciloskop nastaven na `1x`;
+- použití dlouhé zeme sondy a vidění extra šumu;
+- pouze pohled s multimetrem a chybění krátkého poklesu;
+- myšlení, že problém UART je softwarový, když na vodiči není fyzický signál.
 
-## The essentials
+## Podstata
 
-- An oscilloscope shows signal shape over time.
-- It is useful for PWM, UART, power sag, noise and brief glitches.
-- A normal benchtop oscilloscope ground is connected to mains protective earth.
-- You cannot connect the probe ground to an arbitrary circuit point.
-- For mains and floating measurements, special safe methods are needed.
-- A frequency-measuring multimeter is useful, but not an oscilloscope replacement.
+- Osciloskop ukazuje tvar signálu v čase.
+- Je užitečný pro PWM, UART, pokles napájecího zdroje, šum a krátké poruchy.
+- Běžná stolní zem osciloskopu je připojena k ochrannému uzemnění sítě.
+- Nemůžete připojit zem sondy k libovolnému bodu obvodu.
+- Pro síťová a plovoucí měření jsou potřeba speciální bezpečné metody.
+- Multimetr měřící frekvenci je užitečný, ale není úplnou náhradou za osciloskop.
 
-## Reference materials
+## Referenční materiály
 
-- [SparkFun: How to Use an Oscilloscope](https://learn.sparkfun.com/tutorials/how-to-use-an-oscilloscope/introduction) - basic practical introduction to oscilloscopes, signals and controls.
-- [Tektronix: How to Use an Oscilloscope](https://www.tek.com.cn/documents/primer/how-to-use-an-oscilloscope) - grounding, setup, controls and basic oscilloscope use.
-- [Tektronix: ABCs of Probes Primer](https://www.tek.com/en/documents/whitepaper/abcs-probes-primer) - warnings about probe ground, mains earth and danger of floating measurements with a normal oscilloscope.
-- [Tektronix: Floating Oscilloscope Measurements and Operator Protection](https://www.tek.com/en/documents/technical-brief/floating-oscilloscope-measurements-and-operator-protection) - why disconnecting oscilloscope mains earth is dangerous and what safe alternatives exist.
-- [Keysight: Floating an oscilloscope](https://docs.keysight.com/kkbopen/how-can-i-float-an-infiniium-or-infiniivision-x-oscilloscope-isolating-it-from-mains-power-607258715.html) - Keysight does not recommend bypassing grounding and suggests differential probes.
+- [SparkFun: Jak používat osciloskop](https://learn.sparkfun.com/tutorials/how-to-use-an-oscilloscope/introduction) - základní praktický úvod do osciloskapů, signálů a ovládačů.
+- [Tektronix: Jak používat osciloskop](https://www.tek.com.cn/documents/primer/how-to-use-an-oscilloscope) - uzemňování, nastavení, ovládání a základní použití osciloskopu.
+- [Tektronix: Abeceda sond Primer](https://www.tek.com/en/documents/whitepaper/abcs-probes-primer) - varování o zemi sondy, síťové zemi a nebezpečí plovoucích měření s normálním osciloskapem.
+- [Tektronix: Plovoucí měření osciloskopu a ochrana operátora](https://www.tek.com/en/documents/technical-brief/floating-oscilloscope-measurements-and-operator-protection) - proč je odpojení sítě osciloskopu nebezpečné a jaké bezpečné alternativy existují.
+- [Keysight: Plavání osciloskopu](https://docs.keysight.com/kkbopen/how-can-i-float-an-infiniium-or-infiniivision-x-oscilloscope-isolating-it-from-mains-power-607258715.html) - Keysight nedoporučuje obcházení uzemňování a naznačuje diferenciální sondy.

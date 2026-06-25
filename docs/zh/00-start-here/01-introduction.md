@@ -66,4 +66,4 @@ description: "第一个项目的清晰路线：如何规划耗材干燥箱，选
 - [Common components](../03-common-components/01-overview.md) - 在简单设备中最常见的零件地图。
 - [Tools](../05-tools/01-overview.md) - 检查、刷新、焊接和诊断所需的内容。
 - [Practical guides](../06-practical-guides/01-connecting-fan.md) - 通过控制器进行第一次安全负载连接的例子。
-- Common mistakes - 当设备不开启、发热、发出噪音或行为不稳定时要查看的内容。
+- 常见错误 - 当设备不开启、发热、发出噪音或行为不稳定时要查看的内容。

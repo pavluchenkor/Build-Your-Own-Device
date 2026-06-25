@@ -1,233 +1,233 @@
 # Modul MOSFET
 
-A MOSFET module is a ready-made small board that works as a controlled power switch for DC loads. The controller supplies a weak control signal, and the MOSFET module turns the current from the power supply to the load on or off.
+Modul MOSFET je hotová malá deska, která funguje jako řízený výkonový spínač pro stejnosměrné zátěže. Řídící prvek poskytuje slabý řídicí signál a modul MOSFET zapíná nebo vypíná proud ze zdroje napětí k zátěži.
 
-In iDryer-like devices and 3D printer peripherals, a MOSFET module is used for fans, LED strips, low-voltage heaters, and other `12V`/`24V` loads, when the board's standard output is weak, occupied, or inconvenient.
+V zařízeních podobných iDryer a v periférii 3D tiskárny se modul MOSFET používá pro ventilátory, LED pásy, nízkovoltážní topidla a další zátěže `12V`/`24V`, když je standardní výstup desky slabý, obsazený nebo nepohodlný.
 
-## MOSFET and MOSFET module
+## MOSFET a modul MOSFET
 
-A MOSFET is a field-effect transistor. It has three main pins:
+MOSFET je tranzistor s efektem pole. Má tři hlavní vývody:
 
-- `Gate` - control input;
-- `Drain` - power output;
-- `Source` - power output.
+- `Gate` - řídicí vstup;
+- `Drain` - výstup výkonu;
+- `Source` - výstup výkonu.
 
-The gate does not power the load. It only controls. The main load current flows through the power part of the MOSFET between `Drain` and `Source`.
+Brána nepřipojuje zátěž. Pouze řídí. Hlavní proud zátěže protéká výkonnou částí MOSFET mezi `Drain` a `Source`.
 
-A MOSFET module is not just a single transistor. It is usually a board with a MOSFET, terminals, control input, and sometimes additional resistors, indicators, heatsink, or protection diode.
+Modul MOSFET není jen jeden tranzistor. Obvykle je to deska s MOSFET, svorkami, řídicím vstupem a někdy s dalšími rezistory, indikátory, chladičem nebo ochrannou diodou.
 
-The board is convenient for a prototype, but its specifications must be checked as carefully as any power node.
+Deska je vhodná pro prototyp, ale její specifikace musí být kontrolovány stejně pečlivě jako jakýkoli výkonový uzel.
 
-## Why it is needed
+## Proč je to potřebné
 
-GPIO of the controller should not power a heavy load.
+GPIO řídícího prvku by neměl napájet těžkou zátěž.
 
-GPIO can control:
+GPIO může ovládat:
 
-- input of MOSFET module;
-- input of relay;
-- input of SSR;
-- input of driver.
+- vstup modulu MOSFET;
+- vstup relé;
+- vstup SSR;
+- vstup ovladače.
 
-But GPIO should not directly power:
+Ale GPIO by neměl přímo napájet:
 
-- fan;
-- LED strip;
-- heater;
+- ventilátor;
+- LED pás;
+- topidlo;
 - motor;
 - solenoid;
-- servo drive.
+- servopohon.
 
-If you connect the load directly to GPIO, you can damage the controller, get reboots, overheat traces, or just get unstable operation.
+Pokud připojíte zátěž přímo k GPIO, můžete poškodit řídící prvek, dostat restarty, přehřát stopy nebo jen dostat nestabilní provoz.
 
-## Low-side switching
+## Spínání na nižší straně
 
-The most common variant for N-channel MOSFET module is low-side switching, that is, switching via the negative line.
+Nejběžnějším variantem pro modul N-kanálového MOSFET je spínání na nižší straně, to znamená spínání přes zápornou linku.
 
-![N-channel MOSFET in low-side switching mode](../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![N-kanálový MOSFET v režimu spínání na nižší straně](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 
-Typical logic:
+Typická logika:
 
-1. `+24V` from power supply goes directly to the load positive.
-2. Load negative goes to the power output of MOSFET module.
-3. MOSFET module connects or breaks the path from load negative to `GND`.
-4. `GND` of power supply and `GND` of controller are connected together.
-5. Controller control pin goes to the `Signal`, `IN`, `Gate` or similar input of the module.
+1. `+24V` ze zdroje napětí jde přímo na kladný pól zátěže.
+2. Záporný pól zátěže jde na výstup výkonu modulu MOSFET.
+3. Modul MOSFET připojuje nebo přerušuje cestu od záporného pólu zátěže k `GND`.
+4. `GND` zdroje napětí a `GND` řídícího prvku jsou spojeny dohromady.
+5. Kontrolní pin řídícího prvku jde na `Signal`, `IN`, `Gate` nebo podobný vstup modulu.
 
-Common `GND` / common negative is mandatory. Without it, the controller and MOSFET module do not have a common reference level for the control signal.
+Společný `GND` / společný záporný pól je povinný. Bez něj řídící prvek a modul MOSFET nemají společnou referenční úroveň pro řídicí signál.
 
-Low-side switching has a limitation: MOSFET breaks the load negative. While the switch is off, the load negative is not equal to common `GND`. For a simple 2-pin fan, strip, or heater this is usually fine. For a load with a tachometer, separate signal wire, sensor inside, or additional connection to another board, you need to check the schematic: sometimes it is better to control the standard input or use a different switching method.
+Spínání na nižší straně má omezení: MOSFET přerušuje záporný pól zátěže. Pokud je spínač vypnutý, záporný pól zátěže není roven společnému `GND`. Pro jednoduchý 2-pinový ventilátor, pás nebo topidlo je to obvykle v pořádku. Pro zátěž s tachometrem, samostatným signálním drátem, senzorem uvnitř nebo dalším připojením k další desce musíte zkontrolovat schéma: někdy je lépe ovládat standardní vstup nebo použít jinou metodu spínání.
 
-## Where to use
+## Kde se používá
 
-MOSFET module is suitable for DC loads if it is rated for their voltage and current:
+Modul MOSFET je vhodný pro stejnosměrné zátěže, pokud je hodnocen na jejich napětí a proud:
 
-- `12V`/`24V` fan;
-- single-color LED strip;
-- channel of standard RGB strip;
-- `12V`/`24V` heater;
-- small DC motor, if protected from spikes;
-- solenoid, if there is flyback diode or other protection.
+- `12V`/`24V` ventilátor;
+- jednobarevný LED pás;
+- kanál standardního RGB pásu;
+- `12V`/`24V` topidlo;
+- malý stejnosměrný motor, pokud je chráněn před skokům;
+- solenoid, pokud je tu zpětná dioda nebo jiná ochrana.
 
-For addressable LED strip, MOSFET usually does not control the data. It can disconnect power to the entire strip, but individual LEDs are controlled via the data line.
+Pro adresovatelný LED pás obvykle MOSFET neřídí data. Může odpojit napájení na celý pás, ale jednotlivé LED jsou ovládány přes datový vodič.
 
-For a servo drive, a MOSFET module is usually not needed to control position: the servo needs a separate control PWM signal and normal power.
+Pro servopohon obvykle není potřebný modul MOSFET k řízení polohy: servo potřebuje samostatný řídicí PWM signál a normální napájení.
 
-## What to check when choosing
+## Co kontrolovat při výběru
 
-Before purchasing or connecting, check:
+Před nákupem nebo připojením zkontrolujte:
 
-- load voltage rating;
-- maximum current rating;
-- real current of your load;
-- does the input work from `3.3V`;
-- is `Rds(on)` in the technical specification at the needed gate voltage;
-- does it need active logic `HIGH` or `LOW`;
-- is there common `GND`;
-- is there flyback diode for motors/solenoids;
-- terminal size and maximum terminal current;
-- board trace thickness and cooling;
-- is heatsink needed;
-- is there a schematic, technical specification, or normal documentation.
+- hodnocení napětí zátěže;
+- maximální hodnocení proudu;
+- skutečný proud vaší zátěže;
+- funguje vstup od `3.3V`;
+- je `Rds(on)` v technické specifikaci na potřebném napětí brány;
+- potřebuje aktivní logiku `HIGH` nebo `LOW`;
+- je tam společný `GND`;
+- je tam zpětná dioda pro motory/solenoidy;
+- velikost svorek a maximální proud svorek;
+- tloušťka cesty desky a chlazení;
+- je potřeba chladič;
+- je tam schéma, technická specifikace nebo normální dokumentace.
 
-If the description only says "MOSFET module for Arduino" without voltage, current, schematic, and MOSFET type, you cannot choose such a module for a heater or long LED strip.
+Pokud popis říká jen "MOSFET modul pro Arduino" bez napětí, proudu, schématu a typu MOSFET, nemůžete zvolit takový modul pro topidlo nebo dlouhý LED pás.
 
-## 3.3V and logic-level MOSFET
+## 3.3V a MOSFET na úrovni logiky
 
-Many modern controllers work with `3.3V` logic: ESP32, RP2040, many STM32.
+Mnoho moderních řídících prvků pracuje s logikou `3.3V`: ESP32, RP2040, mnoho STM32.
 
-Not every MOSFET fully opens from `3.3V`. If it does not open fully, its resistance remains high and it heats up.
+Ne všechny MOSFET se plně otevírají od `3.3V`. Pokud se plně neotevřou, jejich odpor zůstane vysoký a přehřívají se.
 
-Important terms:
+Důležité termíny:
 
-- `Vgs(th)` - threshold where MOSFET starts to open;
-- `Rds(on)` - resistance of the open channel;
-- logic-level MOSFET - MOSFET rated for control from logic levels.
+- `Vgs(th)` - prahová hodnota, kde se MOSFET začíná otevírat;
+- `Rds(on)` - odpor otevřeného kanálu;
+- MOSFET na úrovni logiky - MOSFET hodnocený pro řízení z logických úrovní.
 
-Common mistake: see in the technical specification `Vgs(th) = 2V` and decide that the MOSFET works fine from `3.3V`. That is not so. `Vgs(th)` does not mean "fully open". You need to check `Rds(on)` at `2.5V`, `3.3V`, `4.5V` or `5V`, depending on the controller.
+Běžná chyba: vidět v technické specifikaci `Vgs(th) = 2V` a rozhodnout, že MOSFET funguje dobře od `3.3V`. To není pravda. `Vgs(th)` neznamená "plně otevřeno". Musíte zkontrolovat `Rds(on)` na `2.5V`, `3.3V`, `4.5V` nebo `5V`, v závislosti na řídícím prvku.
 
-For ESP32/RP2040 it is better to choose a module that explicitly states `3.3V` control compatibility, or where the input circuit provides this. If the table has `Rds(on)` only at `10V`, and there is no data at `2.5V`/`3.3V`/`4.5V`, such a module is suspicious for a `3.3V` controller.
+Pro ESP32/RP2040 je lépe zvolit modul, který výslovně uvádí kompatibilitu s řízením `3.3V`, nebo kde to poskytuje vstupní obvod. Pokud tabulka obsahuje `Rds(on)` pouze na `10V` a není data na `2.5V`/`3.3V`/`4.5V`, je takový modul podezřelý pro řídící prvek `3.3V`.
 
-## Current and heating
+## Proud a ohřev
 
-A MOSFET in the open state still has resistance. Heat is generated across it.
+MOSFET v otevřeném stavu má stále odpor. Na něm se generuje teplo.
 
-The greater the current, the more important:
+Čím větší proud, tím důležitější:
 
-- low `Rds(on)`;
-- normal copper area on the board;
-- appropriately sized terminals;
-- heatsink, if needed;
-- enclosure ventilation;
-- current headroom;
-- temperature check after real operation.
+- nízké `Rds(on)`;
+- normální měděná plocha na desce;
+- vhodně dimenzované svorky;
+- chladič, je-li potřeba;
+- ventilace pouzdra;
+- rezerva proudu;
+- kontrola teploty po skutečném provozu.
 
-The "100A MOSFET" marking on the transistor package does not mean that a small module with thin traces and cheap terminals will withstand `100A`. The real limit is often the board, terminal block, wire, solder joint, and cooling.
+Značka "100A MOSFET" na pouzdru tranzistoru neznamená, že malý modul s tenkými stopami a levnými svorkami bude vydržet `100A`. Skutečný limit je často deska, svázkový blok, drát, svařovací spoj a chlazení.
 
-If the MOSFET module is so hot that it is difficult to hold in your hand, that is a reason to stop and recalculate the current, cooling, and connection quality.
+Pokud se modul MOSFET tak zahřívá, že je těžké ho držet v ruce, je to důvod zastavit se a přepočítat proud, chlazení a kvalitu připojení.
 
-## Motors, fans, and solenoids
+## Motory, ventilátory a solenoidy
 
-Inductive loads can produce voltage spikes when turned off.
+Induktivní zátěže mohou vytvářet přepěťové špičky, když se vypnou.
 
-Such loads include:
+Takové zátěže zahrnují:
 
-- DC motors;
-- fans;
-- solenoids;
-- relays;
-- electromagnets.
+- stejnosměrné motory;
+- ventilátory;
+- solenoidy;
+- relé;
+- elektromagnety.
 
-They often need protection:
+Často potřebují ochranu:
 
-- flyback diode;
-- TVS diode;
-- ready-made driver with protection;
-- module where protection is already installed.
+- zpětná dioda;
+- TVS dioda;
+- hotový ovladač s ochranou;
+- modul, kde je ochrana již nainstalována.
 
-If the module is only rated for LED strip or resistive load, you cannot automatically assume it is safe for a motor or solenoid.
+Pokud je modul hodnocen pouze pro LED pás nebo odporovou zátěž, nemůžete automaticky předpokládat, že je bezpečný pro motor nebo solenoid.
 
-For a heater, flyback diode is usually not needed, because the heater is close to a resistive load. But for a heater, current, terminals, fuse, and independent thermal protection are more important.
+Pro topidlo obvykle není potřebná zpětná dioda, protože topidlo je blízko odporové zátěži. Ale pro topidlo je důležitější proud, svorky, pojistka a nezávislá tepelná ochrana.
 
-## PWM control
+## Řízení PWM
 
-A MOSFET module can be used not only for on/off, but also for PWM power regulation.
+Modul MOSFET lze použít nejen pro zapnutí/vypnutí, ale také pro regulaci výkonu PWM.
 
-Typical examples:
+Typické příklady:
 
-- LED strip brightness;
-- speed of simple DC fan;
-- power of low-voltage heater.
+- jas LED pásu;
+- rychlost jednoduchého stejnosměrného ventilátoru;
+- výkon nízkovoltážního topidla.
 
-But PWM is not always the same:
+Ale PWM není vždy stejný:
 
-- 4-pin PWM fan is better controlled by a separate PWM pin of the fan, not by cutting power;
-- heater usually does not require high PWM frequency;
-- too high frequency can increase MOSFET heating;
-- too low frequency can cause LED flicker or motor noise.
+- 4-pinový PWM ventilátor je lépe ovládán samostatným PWM pinem ventilátoru, ne řezáním výkonu;
+- topidlo obvykle nevyžaduje vysokou frekvenci PWM;
+- příliš vysoká frekvence může zvýšit ohřev MOSFET;
+- příliš nízká frekvence může způsobit blikání LED nebo šum motoru.
 
-Choice of frequency depends on the load, module, and firmware.
+Volba frekvence závisí na zátěži, modulu a firmwaru.
 
-## MOSFET module is not for 110-230V AC
+## Modul MOSFET není pro 110-230V AC
 
-Standard MOSFET modules for Arduino/ESP32 are designed for DC loads: `5V`, `12V`, `24V`, sometimes more if explicitly specified.
+Standardní moduly MOSFET pro Arduino/ESP32 jsou navrženy pro stejnosměrné zátěže: `5V`, `12V`, `24V`, někdy více, pokud je výslovně uvedeno.
 
-They cannot be used as a switch for mains voltage `110-230V AC`.
+Nelze je použít jako spínač pro síťové napětí `110-230V AC`.
 
-For mains load you need different solutions:
+Pro síťovou zátěž potřebujete jiná řešení:
 
-- relay or SSR rated specifically for AC load;
-- normal terminals;
-- fuse;
-- enclosure;
-- insulation;
-- grounding where required;
-- understanding of electrical safety.
+- relé nebo SSR speciálně hodnocené pro AC zátěž;
+- normální svorky;
+- pojistka;
+- pouzdro;
+- izolace;
+- uzemňování, kde je vyžadováno;
+- pochopení elektrické bezpečnosti.
 
-If you are not sure that the module is intended for mains voltage, do not connect it to the mains.
+Pokud si nejste jisti, že je modul určen pro síťové napětí, nepřipojujte jej k síti.
 
-## What to check after connecting
+## Co kontrolovat po připojení
 
-Before long-term operation, check:
+Před dlouhodobým provozem zkontrolujte:
 
-- load gets correct voltage;
-- controller and power supply have common `GND`;
-- control signal actually turns the load on and off;
-- MOSFET module does not heat excessively;
-- terminals do not heat;
-- wires are suitable for current;
-- PWM works without strange noise, flicker, or reboots;
-- load is actually off when command is off;
-- for motor/solenoid there is spike protection;
-- for heater there is a fuse and independent thermal protection.
+- zátěž má správné napětí;
+- řídící prvek a zdroj napětí mají společný `GND`;
+- řídicí signál skutečně zapíná a vypíná zátěž;
+- modul MOSFET se neohřívá nadměrně;
+- svorky se neohřívají;
+- vodiče jsou vhodné pro proud;
+- PWM funguje bez podivného šumu, blikání nebo restartů;
+- zátěž je skutečně vypnuta, když je příkaz vypnutý;
+- pro motor/solenoid je ochrana proti skokům;
+- pro topidlo je pojistka a nezávislá tepelná ochrana.
 
-Do the first test of heavy load briefly and under observation.
+Proveďte první test těžké zátěže stručně a pod dohledem.
 
-## Common mistakes
+## Běžné chyby
 
-- powering load from GPIO;
-- forgetting common ground;
-- choosing module only by the pretty current number in the name;
-- not checking operation from `3.3V` logic;
-- using MOSFET that does not fully open;
-- connecting motor or solenoid without flyback protection;
-- connecting long LED strip through weak terminals;
-- using DC MOSFET module for `110-230V AC`;
-- not checking module heating in closed enclosure;
-- thinking MOSFET module itself limits load current.
+- napájení zátěže z GPIO;
+- zapomenutí společné země;
+- výběr modulu pouze podle pěkného čísla proudu v názvu;
+- nezkontrolování provozu od logiky `3.3V`;
+- používání MOSFET, který se plně neotvírá;
+- připojení motoru nebo solenoidu bez zpětné ochrany;
+- připojení dlouhého LED pásu přes slabé svorky;
+- používání stejnosměrného modulu MOSFET pro `110-230V AC`;
+- nezkontrolování ohřevu modulu v uzavřeném pouzdru;
+- myšlenka, že samotný modul MOSFET omezuje proud zátěže.
 
-## The main point
+## Hlavní bod
 
-A MOSFET module is a controlled power switch for DC loads. It does not create power and does not power the load from the controller. It only opens or closes the path for current from the power supply.
+Modul MOSFET je řízený výkonový spínač pro stejnosměrné zátěže. Nevytváří výkon a nepřipojuje zátěž z řídícího prvku. Pouze otevírá nebo zavírá cestu pro proud ze zdroje napětí.
 
-Check voltage, current, compatibility with `3.3V`/`5V` logic, common `GND`, heating, terminals, and protection for inductive loads. For mains voltage, standard Arduino/ESP32 MOSFET module is not suitable.
+Zkontrolujte napětí, proud, kompatibilitu s logikou `3.3V`/`5V`, společný `GND`, ohřev, svorky a ochranu pro induktivní zátěže. Pro síťové napětí není standardní modul Arduino/ESP32 MOSFET vhodný.
 
-## Reference materials
+## Referenční materiály
 
-- [SparkFun MOSFET Power Switch and Buck Regulator Hookup Guide](https://docs.sparkfun.com/SparkFun_MOSFET_Power_Switch_and_Buck_Regulator_Low-Side/single_page/) - example of ready-made low-side MOSFET module, load connection, thermal board limits and flyback diode.
-- [SparkFun MOSFET Power Switch product page](https://www.sparkfun.com/products/23979) - example of how manufacturer specifies voltage, current, low-side circuit, MOSFET and board limitations.
-- [Adafruit MOSFET Driver](https://learn.adafruit.com/adafruit-mosfet-driver) - practical explanation of why motors, solenoids, and powerful LEDs cannot be connected directly to GPIO and why spike protection is needed.
-- [DigiKey: How to Select a MOSFET](https://www.digikey.com/en/blog/how-to-select-a-mosfet-for-logic-circuits-or-gate-design) - selecting MOSFET by `Vgs`, `Rds(on)` and logic control level.
-- [Infineon: Logic level MOSFETs](https://www.infineon.com/products/power/mosfet/n-channel/optimos-strongirfet/optimos-ir-mosfet-logic-level) - explanation of logic-level MOSFET and control from microcontroller.
+- [SparkFun MOSFET Power Switch and Buck Regulator Hookup Guide](https://docs.sparkfun.com/SparkFun_MOSFET_Power_Switch_and_Buck_Regulator_Low-Side/single_page/) - příklad hotového modulu MOSFET na nižší straně, připojení zátěže, tepelné limity desky a zpětná dioda.
+- [SparkFun MOSFET Power Switch product page](https://www.sparkfun.com/products/23979) - příklad toho, jak výrobce specifikuje napětí, proud, obvod na nižší straně, MOSFET a omezení desky.
+- [Adafruit MOSFET Driver](https://learn.adafruit.com/adafruit-mosfet-driver) - praktické vysvětlení, proč nemohou být motory, solenoidy a výkonné LED připojeny přímo k GPIO a proč je potřebná ochrana proti skokům.
+- [DigiKey: How to Select a MOSFET](https://www.digikey.com/en/blog/how-to-select-a-mosfet-for-logic-circuits-or-gate-design) - výběr MOSFET podle `Vgs`, `Rds(on)` a úrovně logického řízení.
+- [Infineon: Logic level MOSFETs](https://www.infineon.com/products/power/mosfet/n-channel/optimos-strongirfet/optimos-ir-mosfet-logic-level) - vysvětlení MOSFET na úrovni logiky a řízení z mikrokontroléru.

@@ -37,7 +37,7 @@ Ein AC SSR enthält normalerweise:
 - Snubber-Schaltung oder anderen Spitzenschutz;
 - Leistungsanschlüsse für die Last.
 
-Einfach gesagt, es ist eine fertig montierte TRIAC-Schaltung in einem Gehäuse. Daher ist SSR praktisch, wenn Sie nicht den Optoisolator-TRIAC, den TRIAC, den Snubber, die Platinen-Abstände und den Netzbetrieb selbst berechnen möchten.
+Einfach gesagt, es handelt sich um eine fertig montierte TRIAC-Schaltung in einem Gehäuse. Daher ist SSR praktisch, wenn Sie nicht den Optoisolator-TRIAC, den TRIAC, den Snubber, die Platinen-Abstände und den Netzbetrieb selbst berechnen möchten.
 
 Ein fertig montiertes Gehäuse eliminiert nicht die Notwendigkeit der Überprüfung. Besonders wenn das SSR billig ist, keine technische Spezifikation hat oder eine verdächtig hohe Stromwertung auf dem Gehäuse hat.
 
@@ -69,7 +69,7 @@ Das bedeutet:
 
 ## Typisches Verbindungsdiagramm
 
-SSR wird normalerweise in der Stromleitung der Last unterbrochen. Der Controller verbindet sich nur mit dem SSR-Eingang, während der Stromkreis der Last durch den SSR-Ausgang geht.
+SSR wird normalerweise in der Stromleitung der letzten unterbrochen. Der Controller verbindet sich nur mit dem SSR-Eingang, während der Stromkreis der Last durch den SSR-Ausgang geht.
 
 ![Interne Struktur des Halbleiterrelais SSR](../../img/01-electronics-basics/04-ssr-internal-structure.png)
 
@@ -124,7 +124,7 @@ Sie müssen überprüfen:
 - Qualität des thermischen Kontakts zwischen SSR und Kühlkörper;
 - Temperatur von Anschlüssen und Drähten nach Test.
 
-Das Etikett `25A` oder `40A` bedeutet nicht, dass das SSR diesen Strom ohne Kühlkörper in einem geschlossenen Gehäuse neben einem Heizer verträgt. Hersteller geben normalerweise Strom unter spezifischen Kühlungsbedingungen an.
+Das Etikett `40A` oder `40A` bedeutet nicht, dass das SSR diesen Strom ohne Kühlkörper in einem geschlossenen Gehäuse neben einem Heizer verträgt. Hersteller geben normalerweise Strom unter spezifischen Kühlungsbedingungen an.
 
 Praktische Regel für ein einfaches Projekt: wählen Sie nicht SSR genau für Laststrom. Plan Reserve, verwenden Sie Kühlkörper, lesen Sie die technische Spezifikation, und überprüfen Sie Temperatur im echten Gehäuse. `50%` Reserve ist die untere Grenze für erste Schätzung, keine Garantie für jede Installation.
 
@@ -194,7 +194,7 @@ Wenn es keine Dokumentation gibt und das SSR einen Netzheizkörper steuern muss,
 - AC SSR an DC Heizer angeschlossen und waren überrascht, dass es nicht ausschaltet;
 - wählte SSR genau für Laststrom;
 - installiert SSR ohne Kühlkörper;
-- installiert SSR in geschlossenem, heißem Gehäuse;
+- installiertes SSR in geschlossenem, heißem Gehäuse;
 - nicht berücksichtigt Leckstrom;
 - benutzt SSR als einzige Möglichkeit zur Notfall-Abschaltung;
 - vergessen Sicherung;

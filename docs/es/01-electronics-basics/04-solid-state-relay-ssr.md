@@ -95,7 +95,7 @@ SSR AC viene con diferentes métodos de encendido.
 
 **SSR de encendido aleatorio** enciende la salida casi inmediatamente después de aplicar la señal de control. Este tipo se utiliza cuando se necesita lógica diferente, control de fase o requisitos específicos de carga.
 
-Para una cámara, secadora o calentador simple, generalmente no se necesita control rápido del atenuador. A menudo, el control lento es suficiente: por ejemplo, encender el calentador durante segundos, no cientos de veces por segundo.
+Para una cámara, secadora o calentador simple, generalmente no se necesita control rápido del atenuador. A menudo, el control lento es suficiente: por ejemplo, encienda el calentador durante segundos, no cientos de veces por segundo.
 
 No todos los SSR son adecuados para control de fase. Si necesita específicamente un regulador de potencia de fase, ese es un tipo de dispositivo separado y un tema separado con ruido, calentamiento y requisitos de carga.
 
@@ -126,7 +126,7 @@ Debe verificar:
 
 La etiqueta `25A` o `40A` no significa que el SSR soportará esa corriente sin disipador de calor en una carcasa cerrada y caliente junto a un calentador. Los fabricantes generalmente especifican corriente en condiciones específicas de refrigeración.
 
-Regla práctica para un proyecto simple: no elija SSR exactamente para corriente de carga. Plan margen, use disipador de calor, lea la especificación técnica y verifique la temperatura en la carcasa real. El margen del `50%` es el límite inferior para una estimación inicial, no una garantía para ninguna instalación.
+Regla práctica para un proyecto simple: no elija SSR exactamente para corriente de carga. Planifique el margen, use el disipador de calor, lea la especificación técnica y verifique la temperatura en la carcasa real. El margen del `50%` es el límite inferior para una estimación inicial, no una garantía para ninguna instalación.
 
 ## SSR no protege el calentador
 
@@ -178,7 +178,7 @@ Antes de comprar SSR, verifique:
 - corriente máxima con refrigeración necesaria;
 - ¿se necesita disipador de calor?;
 - ¿hay especificación técnica?;
-- ¿hay diagrama de conexión normal?;
+- ¿Hay diagrama de conexión normal?;
 - terminales y distancias de aislamiento;
 - calidad del fabricante;
 - dónde se coloca el fusible;
@@ -206,7 +206,7 @@ Si no hay documentación y el SSR debe controlar un calentador de red, esa es un
 
 SSR es conveniente para control de carga frecuente y silencioso, especialmente calentador de red. Pero SSR debe elegirse para tipo de carga, voltaje, corriente, método de encendido y punto operativo térmico.
 
-Para carga `110-230V AC`, SSR no elimina la seguridad eléctrica. Necesita carcasa, fusible, cableado normal, disipador de calor si es necesario y protección térmica independiente del calentador.
+Para cargar `110-230V AC`, SSR no elimina la seguridad eléctrica. Necesita carcasa, fusible, cableado normal, disipador de calor si es necesario y protección térmica independiente del calentador.
 
 ## Materiales de referencia
 

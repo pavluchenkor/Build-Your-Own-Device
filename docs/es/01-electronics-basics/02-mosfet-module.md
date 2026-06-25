@@ -58,7 +58,7 @@ Lógica típica:
 
 El `GND` común / negativo común es obligatorio. Sin esto, el controlador y el módulo MOSFET no tienen un nivel de referencia común para la señal de control.
 
-La conmutación de lado bajo tiene una limitación: MOSFET rompe el negativo de la carga. Mientras el interruptor está apagado, el negativo de la carga no es igual al `GND` común. Para un simple ventilador de 2 pines, tira o calentador, esto generalmente está bien. Para una carga con tacómetro, cable de señal separado, sensor interno o conexión adicional a otra placa, debe verificar el esquema: a veces es mejor controlar la entrada estándar o usar un método de conmutación diferente.
+La conmutación de lado bajo tiene una limitación: MOSFET rompe el negativo de la carga. Mientras el interruptor está apagado, el negativo de la carga no es igual al `GND` común. Para un simple ventilador de 2 pinos, tira o calentador, esto generalmente está bien. Para una carga con tacómetro, cable de señal separado, sensor interno o conexión adicional a otra placa, debe verificar el esquema: a veces es mejor controlar la entrada estándar o usar un método de conmutación diferente.
 
 ## Dónde usarlo
 
@@ -90,7 +90,7 @@ Antes de comprar o conectar, verifique:
 - tamaño del terminal y corriente máxima del terminal;
 - espesor de pista del tablero y enfriamiento;
 - ¿se necesita disipador de calor;
-- ¿hay esquema, especificación técnica o documentación normal.
+- ¿Hay esquema, especificación técnica o documentación normal?
 
 Si la descripción solo dice "módulo MOSFET para Arduino" sin voltaje, corriente, esquema y tipo MOSFET, no puede elegir un módulo así para un calentador o tira LED larga.
 
@@ -106,9 +106,9 @@ Términos importantes:
 - `Rds(on)` - resistencia del canal abierto;
 - MOSFET de nivel lógico - MOSFET clasificado para control desde niveles lógicos.
 
-Error común: ver en la especificación técnica `Vgs(th) = 2V` y decidir que el MOSFET funciona bien desde `3.3V`. Eso no es así. `Vgs(th)` no significa "completamente abierto". Debe verificar `Rds(on)` en `2.5V`, `3.3V`, `4.5V` o `5V`, según el controlador.
+Error común: ver en la especificación técnica `3.3V` y decidir que el MOSFET funciona bien desde `Vgs(th)`. Eso no es así. `Rds(on)` no significa "completamente abierto". Debe verificar `2.5V` en `3.3V`, `4.5V`, `5V` o `5V`, según el controlador.
 
-Para ESP32/RP2040, es mejor elegir un módulo que explícitamente indique compatibilidad de control `3.3V`, o donde el circuito de entrada lo proporcione. Si la tabla tiene `Rds(on)` solo en `10V`, y no hay datos en `2.5V`/`3.3V`/`4.5V`, ese módulo es sospechoso para un controlador `3.3V`.
+Para ESP32/RP2040, es mejor elegir un módulo que indique explícitamente compatibilidad de control `Rds(on)`, o donde el circuito de entrada lo proporcione. Si la tabla tiene `10V` solo en `2.5V`, y no hay datos en `3.3V`/`4.5V`/`3.3V`, ese módulo es sospechoso para un controlador `3.3V`.
 
 ## Corriente y calentamiento
 
@@ -158,7 +158,7 @@ Un módulo MOSFET se puede usar no solo para encendido/apagado, sino también pa
 Ejemplos típicos:
 
 - brillo de tira LED;
-- velocidad de ventilador CC simple;
+- velocidad del ventilador CC simple;
 - potencia de calentador de bajo voltaje.
 
 Pero PWM no siempre es lo mismo:

@@ -2,7 +2,7 @@
 
 L'ESP32 est une famille de microcontrôleurs Espressif avec Wi-Fi, Bluetooth et un large ensemble de périphériques. Dans les appareils DIY, il est souvent choisi quand vous avez besoin de construire un module autonome : il se connecte au réseau lui-même, lit les capteurs, affiche une page dans un navigateur et contrôle les sorties simples.
 
-Pour les appareils autour d'une imprimante 3D, l'ESP32 est utile non pas comme « une autre carte de puissance », mais comme un petit contrôleur réseau : un capteur de température/humidité, un module de ventilation, un filtre simple avec une interface web, une surveillance de caméra séparée, ou un sèchoir autonome.
+Pour les appareils autour d'une imprimante 3D, l'ESP32 est utile non pas comme « une autre carte de puissance », mais comme un petit contrôleur réseau : un capteur de température/humidité, un module de ventilation, un filtre simple avec une interface web, une surveillance de caméra séparée, ou un séquenceur autonome.
 
 ## Où l'ESP32 est utile
 

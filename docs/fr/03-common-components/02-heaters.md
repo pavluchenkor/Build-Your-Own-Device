@@ -7,7 +7,7 @@ description: "Choisir un chauffage pour sécheur de filament ou chambre active d
 
 Le chauffage définit la vitesse de montée en température et les limites de sécurité du sécheur ou de la chambre chauffée. Cette page explique les types de chauffages, la puissance, la commande par MOSFET ou SSR et les erreurs pouvant provoquer une surchauffe.
 
-Un radiateur est une charge qui convertit l'énergie électrique en chaleur. Dans un appareil DIY simple, c'est le composant le plus dangereux : une erreur de ventilateur entraîne généralement un faible flux d'air, mais une erreur de radiateur peut causer une surchauffe, une fusion du boîtier, des dommages au câblage ou un risque d'incendie.
+Un radiateur est une charge qui convertit l'énergie électrique en chaleur. Dans un appareil DIY simple, c'est le composant le plus dangereux : une erreur de ventilateur entraîne généralement un faible flux d'air, mais une erreur de radiateur peut provoquer une surchauffe, une fusion du boîtier, des dommages au câblage ou un risque d'incendie.
 
 Dans les imprimantes 3D et les appareils de type iDryer, on trouve des radiateurs dans la hotend, le lit, la chambre, le sécheur de filament, le conduit d'air ou un module de chauffage séparé.
 
@@ -111,7 +111,7 @@ Logique minimale :
 - le boîtier et les matériaux résistent à la température réelle ;
 - le premier test est effectué sous supervision.
 
-La protection thermique matérielle doit fonctionner indépendamment du contrôleur. Dans le cas simple, elle est placée en série dans le circuit d'alimentation du radiateur pour couper physiquement l'alimentation. Ce n'est pas seulement un autre capteur pour le micrologiciel.
+La protection thermique matérielle doit fonctionner selon le contrôleur. Dans le cas simple, elle est placée en série dans le circuit d'alimentation du radiateur pour couper physiquement l'alimentation. Ce n'est pas seulement un autre capteur pour le micrologiciel.
 
 Si le contrôleur se bloque, le capteur se détache, un MOSFET court-circuite ou un SSR colle, la protection doit couper l'alimentation du radiateur.
 

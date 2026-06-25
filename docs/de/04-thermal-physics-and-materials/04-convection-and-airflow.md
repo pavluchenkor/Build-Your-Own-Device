@@ -1,8 +1,8 @@
 # Konvektion und Luftstrom
 
-Konvektion ist die Wärmeübertragung durch Luftstrom. In einem Trockner, Druckerkammer, beheiztem Filter oder iHeater-ähnlichem Gerät bestimmt Luft oft, ob Wärme dort ankommt, wo sie benötigt wird.
+Konvektion ist die Wärmeübertragung durch Luftstrom. In einem Trockner, einer Druckerkammer, einem beheizten Filter oder einem iHeater-ähnlichen Gerät bestimmt Luft oft, ob dort Wärme ankommt, wo sie benötigt wird.
 
-Ein Heizer selbst konvertiert nur elektrische Leistung in Wärme. Der Lüfter und Luftkanal bestimmen, ob diese Wärme gleichmäßig über die Kammer verteilt ist oder ein kleiner gefährlicher Hotspot bleibt.
+Ein Heizer wandelt nur elektrische Leistung in Wärme um. Der Lüfter und Luftkanal bestimmen, ob diese Wärme gleichmäßig über die Kammer verteilt ist oder ein kleiner gefährlicher Hotspot bleibt.
 
 ## Drei Modi eines Heizers
 
@@ -15,14 +15,14 @@ Derselbe `100 W` Heizer kann völlig unterschiedlich funktionieren.
 Ohne Luftstrom:
 
 - Heizer heizt sich in lokaler Zone stark auf;
-- Luft in der Nähe heizt sich auf, aber durchmischt sich schlecht;
+- Luft in der Nähe heizt sich auf, durchmischt sich aber schlecht;
 - entfernter Kammerteil bleibt möglicherweise kalt;
-- Kunststoff, Terminals oder Isolierung in der Nähe können überhitzen;
+- Kunststoff, Anschlüsse oder Isolierung in der Nähe können überhitzen;
 - Temperatursensor zeigt möglicherweise nicht, was neben dem Heizer passiert.
 
 Mit schwachem oder falschem Luftstrom:
 
-- etwas Wärme geht in Kammer;
+- Etwas Wärme geht in Kammer;
 - Mischung erfolgt;
 - aber Strom kann Heizer umgehen;
 - Filter, Sieb oder enger Kanal können Luftstrom sehr reduzieren;
@@ -73,7 +73,7 @@ Für ein echtes Gerät sind wichtig:
 - Startstrom;
 - Drehzahlzähler oder Regelung.
 
-Der Katalog listet oft maximalen Strom und maximalen Gegendruck auf. In einem echten Gerät arbeitet der Lüfter nicht an diesen idealen Punkten. Filter, Sieb, enger Kanal, Luftkanalwendung und dichter Heizer erzeugen Widerstand, sodass der tatsächliche Strom viel niedriger sein kann.
+Der Katalog listet oft maximalen Strom und maximalen Gegendruck auf. In einem echten Gerät arbeitet der Lüfter nicht an diesen idealen Punkten. Filter, Sieb, enger Kanal, Luftkanalwendung und dichtere Heizer erzeugen Widerstand, sodass der tatsächliche Strom viel niedriger sein kann.
 
 Wenn Luft durch Filter, Radiator, Wabengitter oder enge Stelle gehen muss, benötigen Sie oft nicht nur "mehr CFM" sondern Lüfter oder Zentrifugalgebläse mit angemessenem Gegendruck.
 
@@ -105,7 +105,7 @@ Das Wichtigste ist, dass Strom nicht den einfachsten unnützen Weg vorbei am Hei
 Schlechte Optionen:
 
 - Sensor ist direkt am Heizer und sieht lokale Überhitzung;
-- Sensor ist in toter Zone und sieht kalte Ecke;
+- Sensor ist in totaler Zone und sieht kalte Ecke;
 - Sensor berührt Metallwand und misst Wand, nicht Luft;
 - Sensor ist vor Heizer, obwohl Temperatur danach zählt;
 - Sensor wird von Strom geblasen, der nicht Kammertemperatur widerspiegelt.
@@ -144,7 +144,7 @@ Daher benötigt Heizer, der auf Luftstrom verlässt, Maßnahmen:
 - Material mit Temperaturspielraum;
 - Abstand von Heizer zu Kunststoff und Isolierung;
 - Lüfter-Drehzahlkontrolle, wenn Lüfter kritisch;
-- Firmware-Check für Heizung, wenn Klipper oder ähnlich verwendet;
+- Firmware-Prüfung für Heizung, wenn Klipper oder ähnlich verwendet;
 - erster Test unter Beobachtung.
 
 Firmware hilft, aber ersetzt nicht körperlichen Schutz. MOSFET, SSR oder Relais können im EIN-Zustand ausfallen.
@@ -162,7 +162,7 @@ Nach Bau eines beheizten Geräts überprüfen:
 - Temperatur des Lüfters;
 - Verhalten bei teilweise blockiertem Filter;
 - schaltet Heizung aus, wenn Sensor ausfällt;
-- ploppt unabhängiger Überhitzungsschutz in gefährlichem Szenario.
+- Ploppt unabhängiger Überhitzungsschutz in gefährlichem Szenario.
 
 Erste Aufwärmung unter Beobachtung. Messungen sind besser nach Stabilisierung und nach längerer Betrieb, weil Gehäuse, Befestigungen und Isolierung langsamer heizen als Luft.
 
@@ -179,7 +179,7 @@ Dies ist kein komplettes Sicherheitsschema, aber gutes Kontrolllevel für Gerät
 
 ## Wichtigste Erkenntnis
 
-In beheiztem Gerät zählt nicht nur Heizer-Leistung sondern Luftweg. Guter Strom entfernt Wärme vom Heizer und bringt sie in Kammer. Schlechter Strom hinterlässt Hotspot, täuscht Sensor und erhöht Materialgefahr für Überhitzung.
+Bei beheiztem Gerät zählt nicht nur die Heizleistung, sondern der Luftweg. Guter Strom entfernt Wärme vom Heizer und bringt sie in die Kammer. Schlechter Strom hinterlässt Hotspot, täuscht Sensor und erhöhte Materialgefahr für Überhitzung.
 
 Wenn Heizer auf Lüfter verlässt, muss Lüfterausfall separates Notfallszenario sein, nicht Überraschung.
 

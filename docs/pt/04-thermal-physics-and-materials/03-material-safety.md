@@ -1,8 +1,8 @@
 # Materiais, Inflamabilidade e Emissões Nocivas
 
-O material para câmara, secador, filtro, carcaça ou conduto de ar não pode ser escolhido apenas pelo preço, espessura e facilidade de corte.
+Material para câmara, secador, filtro, carcaça ou conduto de ar não pode ser escolhido apenas pelo preço, espessura e facilidade de corte.
 
-Num dispositivo aquecido, o material deve suportar não apenas a operação normal, mas também falhas razoáveis: paragem do ventilador, erro do sensor, interruptor travado, mau contacto, terminal sobreaquecido ou fluxo de ar localizado quente.
+Num dispositivo aquecido, o material não deve suportar apenas a operação normal, mas também falhas ocasionais: parada do ventilador, erro do sensor, interruptor travado, mau contato, terminal sobreaquecido ou fluxo de ar localizado quente.
 
 ## O que "Adequado para Aquecimento" Significa
 
@@ -17,7 +17,7 @@ O material é adequado não porque "não derrete imediatamente". Para um disposi
 - comportamento em contacto com ar quente;
 - requisitos do fabricante para montagem.
 
-A temperatura de fusão por si só é quase inútil. O plástico pode perder rigidez e forma muito antes de derreter. O isolamento pode mudar de dimensões. A cola pode descolar. Uma peça impressa pode empenar sob carga.
+A temperatura de fusão por si só é quase inútil. O plástico pode perder muito e formar muito antes de derreter. O isolamento pode mudar de dimensões. A cola pode descolar. Uma peça impressa pode empenar sob carga.
 
 ## Temperatura de Funcionamento e Margem de Segurança
 
@@ -34,7 +34,7 @@ Primeiro, é necessário compreender qual será a temperatura não "em média na
 
 Se a câmara mantém `45°C`, não significa que todas as peças dentro também estão a `45°C`. Perto do aquecedor ou no conduto de ar pode ser significativamente mais quente.
 
-Regra prática: o material deve ter uma margem de segurança para a temperatura de funcionamento contínuo exatamente para o local onde está colocado. Para a zona junto ao aquecedor, a margem deve ser maior do que para o painel decorativo externo.
+Regra prática: o material deve ter uma margem de segurança para a temperatura de funcionamento contínuo exactamente para o local onde está colocado. Para a zona junto ao aquecedor, a margem deve ser maior do que para o painel decorativo externo.
 
 ## Inflamabilidade - Não É uma Única Palavra
 
@@ -67,15 +67,15 @@ Os materiais de isolamento de construção parecem frequentemente convenientes p
 | Material | Onde Pode Ser Apropriado | Riscos Principais | O Que Verificar |
 | --- | --- | --- | --- |
 | XPS, poliestireno extrudido | isolamento externo de zonas frias se separado da parte quente | temperatura de funcionamento limitada, deformação, inflamabilidade, fumo no fogo | descrição técnica, temperatura máxima, características de fogo, camada de proteção |
-| EPS, poliestireno expandido | apenas com cautela e longe de zonas quentes | baixa resistência térmica, inflamabilidade, deformação, fumo | folha de dados do material, sem aquecimento direto, cobrir com camada não inflamável |
-| PIR / poliiso | isolamento de tipo construção, às vezes com melhor comportamento ao fogo do que folhas de poliestireno | não automaticamente não inflamável, depende do revestimento e do produto específico | descrição técnica, temperatura de funcionamento, classe de reação ao fogo, limitações do fabricante |
-| Lã mineral | isolamento térmico onde as fibras são permissíveis e é necessária alta resistência térmica | pó, fibras, compressão, humidade, necessidade de selar o fluxo de ar | temperatura permissível, aglutinante, revestimento de proteção, montagem |
+| EPS, poliestireno expandido | apenas com cautela e longe de zonas quentes | baixa resistência térmica, inflamabilidade, deformação, fumo | folha de dados do material, sem aquecimento directo, cobrir com camada não inflamável |
+| PIR / poliiso | isolamento de tipo construção, às vezes com melhor comportamento ao fogo do que folhas de poliestireno | não automaticamente não inflamável, depende do revestimento e do produto específico | descrição técnica, temperatura de funcionamento, classe de reacção ao fogo, limitações do fabricante |
+| Lã mineral | isolamento térmico onde as fibras são permissíveis e é necessária alta resistência térmica | pó, fibras, compressão, humidade, necessidade de selar o fluxo de ar | temperatura permissível, aglutinante, revestimento de protecção, montagem |
 | Metal | tela, parede interna, dissipador de calor | pontes térmicas, superfície externa quente, arestas afiadas | aterramento para secção de rede, temperatura, isolamento de fios |
 | Plástico impresso em 3D | fixadores e coberturas fora da zona quente | amolecimento, fluência sob carga, inflamabilidade | material, temperatura de deformação, temperatura real da peça |
 
 Para XPS nos dados técnicos do fabricante, a temperatura máxima de serviço em torno de `74°C` (`165°F`) é frequentemente listada. Isto não significa que todos os XPS são iguais, mas mostra a ordem de limitação: este material não pode ser colocado automaticamente perto de um aquecedor ou ar quente.
 
-Para EPS, recomendações para manter as temperaturas de funcionamento em torno de `75°C` são encontradas; acima disto o material pode perder estabilidade dimensional. Novamente, o valor exato deve ser retirado da documentação do produto específico.
+Para EPS, recomendações para manter as temperaturas de funcionamento em torno de `75°C` são encontradas; acima disto o material pode perder estabilidade dimensional. Novamente, o valor exacto deve ser retirado da documentação do produto específico.
 
 PIR/poliiso pode ter um intervalo permissível mais alto em produtos individuais, mas isto não elimina a verificação de propriedades de fogo, revestimento, cola, fumo e recomendações do fabricante.
 
@@ -88,10 +88,10 @@ Para uma câmara aquecida, é frequentemente melhor pensar não em "material de 
 Exemplo de lógica mais sólida:
 
 - dentro da zona quente - metal, cerâmica, vidro ou outro material que suporte temperatura e não pegue fogo com sobreaquecimento local;
-- mais adiante - espaço de ar ou isolamento se realmente for necessário;
+- mais adiante - espaço de ar ou isolamento é realmente necessário;
 - fora - carcaça que não aquece para temperatura perigosa;
 - fios e terminais não tocam isolamento e não estão escondidos em zonas onde o sobreaquecimento passaria despercebido;
-- existe proteção independente contra sobreaquecimento se a falha de controlo pudesse levar a aquecimento perigoso.
+- existe protecção independente contra sobreaquecimento se a falha de controlo pudesse levar a aquecimento perigoso.
 
 O isolamento não deve ser o primeiro material que vê o aquecedor.
 
@@ -106,7 +106,7 @@ Riscos típicos:
 - ABS/ASA geralmente toleram melhor câmara morna, mas requerem verificação de temperatura real;
 - PC e materiais de engenharia podem suportar mais, mas requerem impressão adequada e ainda não eliminam avaliação de fogo.
 
-Para peças perto do aquecedor, não é possível confiar apenas no nome do plástico. Importantes são marca de filamento, configurações de impressão, espessura, carga, direção da camada, ventilação e temperatura real da peça.
+Para peças perto do aquecedor, não é possível confiar apenas no nome do plástico. Importantes são marca de filamento, configurações de impressão, espessura, carga, direcção da camada, ventilação e temperatura real da peça.
 
 ## O Que Ler Antes de Comprar
 
@@ -114,7 +114,7 @@ Procure documentos técnicos, não marketing:
 
 - descrição técnica ou folha de dados do produto;
 - SDS/MSDS se o material pode aquecer, ser cortado, lixado ou queimado;
-- classificação de fogo / reação ao fogo;
+- classificação de fogo / reacção ao fogo;
 - UL 94 ou outra classe de inflamabilidade para plásticos;
 - temperatura máxima de funcionamento contínuo;
 - limitações de montagem;
@@ -127,20 +127,20 @@ Se o material é vendido apenas como "folha de isolamento" sem folha de dados ad
 
 Soluções ruins:
 
-- colar espuma ou XPS diretamente perto do aquecedor;
+- colar espuma ou XPS directamente perto do aquecedor;
 - dirigir fluxo quente para plástico desconhecido;
 - cobrir terminais e fios com isolamento;
 - colocar material inflamável perto da secção de rede `110-230V AC`;
 - confiar num sensor de temperatura único;
 - tratar material de construção como seguro para câmara sem verificação;
-- usar "auto-extinguível" como substituto para proteção independente contra sobreaquecimento;
+- usar "auto-extinguível" como substituto para protecção independente contra sobreaquecimento;
 - fazer primeiro aquecimento sem observação e medições.
 
 ## Conclusão Principal
 
-A segurança dos materiais não é um parâmetro único. É necessário observar a temperatura de funcionamento, inflamabilidade, fumo, toxicidade dos produtos de combustão, colas, revestimentos e cenários de falha reais.
+A segurança dos materiais não é um parâmetro único. É necessário observar a temperatura de funcionamento, inflamabilidade, fumaça, toxicidade de produtos de combustão, colas, revestimentos e cenários de falhas reais.
 
-Se o material não tem documentação clara, não pode ser colocado perto do aquecedor como proteção primária. Se o material é inflamável, deve ser removido da zona quente, coberto com camada adequada e verificado por medição em modo operacional real.
+Se o material não tem documentação clara, não pode ser colocado perto do aquecedor como protecção primária. Se o material é inflamável, deve ser removido da zona quente, coberto com camada adequada e verificado por medição em modo operacional real.
 
 ## Materiais sobre o Tema
 

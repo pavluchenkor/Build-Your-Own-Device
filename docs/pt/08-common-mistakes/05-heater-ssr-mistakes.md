@@ -1,131 +1,131 @@
 # Erros de Aquecedor e SSR
 
-The heater is the most dangerous load in a simple DIY device.
+O aquecedor é a carga mais perigosa em um simples dispositivo DIY.
 
-A fan may not start. A sensor may give wrong readings. But a heater with an error can overheat the case, melt plastic, damage wiring, or create a fire risk.
+Um ventilador pode não ligar. Um sensor pode fornecer leituras erradas. Mas um aquecedor com erro pode superaquecer o gabinete, derreter o plástico, danificar a fiação ou criar risco de incêndio.
 
-If the device has 110-230V AC and you do not understand electrical safety, the right action is to stop and ask a specialist for help.
+Se o aparelho tiver 110-230V AC e você não entender de segurança elétrica, o correto é parar e pedir ajuda a um especialista.
 
 ## Symptoms
 
 Dangerous signs:
 
 - SSR heats up significantly;
-- heater will not turn off;
-- temperature rises though command is off;
+- o aquecedor não desliga;
+- a temperatura aumenta embora o comando esteja desligado;
 - temperature rises too fast or unreasonably;
-- temperature sensor shows wrong value;
+- sensor de temperatura mostra valor errado;
 - terminal darkened;
 - wire or connector heats up;
 - breaker or fuse trips;
-- case smells of plastic or burning;
-- device is dangerous to touch;
-- heating continues after controller error.
+- caso cheire a plástico ou queimado;
+- o dispositivo é perigoso ao toque;
+- o aquecimento continua após erro do controlador.
 
-If heater behaves not as expected, turn off the power.
+Se o aquecedor não se comportar conforme o esperado, desligue a energia.
 
-## AC SSR and DC SSR Mixed Up
+## AC SSR e DC SSR misturados
 
-SSRs come for different load types.
+Os SSRs vêm para diferentes tipos de carga.
 
-AC SSR is for alternating current. DC SSR is for direct current.
+AC SSR é para corrente alternada. DC SSR é para corrente contínua.
 
 Mistake:
 
 - AC SSR put on DC heater;
 - DC SSR put on 230V AC;
-- bought "SSR 40A" without understanding what is written on the case.
+- comprei "SSR 40A" sem entender o que está escrito na caixa.
 
-Wrong SSR type may not turn off the load or work dangerously.
+O tipo errado de SSR pode não desligar a carga ou funcionar perigosamente.
 
-Before connecting verify:
+Antes de conectar, verifique:
 
 - output type: AC or DC;
 - allowed load voltage;
 - allowed current;
 - control input voltage;
 - manufacturer connection diagram;
-- is heatsink needed.
+- é necessário dissipador de calor.
 
-## SSR Without Heatsink
+## SSR sem dissipador de calor
 
 SSR heats up during operation.
 
-Even if the case says large current, it does not mean the relay will handle it without a heatsink in a closed case.
+Mesmo que o gabinete indique corrente grande, isso não significa que o relé irá lidar com isso sem dissipador de calor em um gabinete fechado.
 
-Check:
+Verifique:
 
 - load current;
 - voltage drop across SSR;
 - dissipated power;
 - heatsink requirements;
-- SSR case temperature after operation;
+- Temperatura da caixa SSR após operação;
 - is there airflow.
 
-If SSR is so hot it is hard to hold by hand, this is reason to stop and figure out.
+Se o SSR estiver tão quente que é difícil segurá-lo com a mão, este é um motivo para parar e descobrir.
 
 ## MOSFET for 110-230V AC
 
-Regular MOSFET modules for Arduino/ESP32 are usually for DC loads: 12V or 24V.
+Módulos MOSFET regulares para Arduino/ESP32 são geralmente para cargas DC: 12V ou 24V.
 
-They cannot be used as a simple switch for AC mains 110-230V.
+Eles não podem ser usados como um simples interruptor para rede elétrica CA 110-230V.
 
-For mains load you need different components, different isolation, different terminals, grounding, fuses, and understanding of electrical safety.
+Para carga da rede elétrica, você precisa de componentes diferentes, isolamento diferente, terminais diferentes, aterramento, fusíveis e compreensão de segurança elétrica.
 
-If unsure the selected module is designed for mains load, do not connect it to mains.
+Se não tiver certeza de que o módulo selecionado foi projetado para carga de rede elétrica, não o conecte à rede elétrica.
 
 ## No Fuse
 
-A fuse does not make the device completely safe, but it limits the consequences of some failures.
+Um fusível não torna o dispositivo totalmente seguro, mas limita as consequências de algumas falhas.
 
 Bad ideas:
 
-- "I will add it later";
-- "power supply will protect itself";
+- “Vou adicionar mais tarde”;
+- “a fonte de alimentação se protegerá”;
 - "my heater is small";
-- "if fuse blows I will put a larger one".
+- "se o fusível queimar vou colocar um maior".
 
-Fuse is selected for the circuit, wiring, and load. It cannot be increased just because it trips.
+O fusível é selecionado para o circuito, fiação e carga. Não pode ser aumentado só porque tropeça.
 
-If fuse trips, find the cause.
+Se o fusível disparar, encontre a causa.
 
 ## No Independent Thermal Protection
 
-Firmware and temperature sensor are not the only protection.
+O firmware e o sensor de temperatura não são a única proteção.
 
-For heater, independent hardware protection is useful:
+Para aquecedores, a proteção de hardware independente é útil:
 
 - thermostat;
 - thermal fuse;
 - bimetallic switch;
 - separate emergency heater power cutoff.
 
-Such protection must work independently of the controller and firmware.
+Essa proteção deve funcionar independentemente do controlador e do firmware.
 
-If controller hangs, pin hangs in on state, SSR failed, or sensor disconnected, hardware protection can be the last line of defense.
+Se o controlador travar, o pino travar no estado ligado, o SSR falhar ou o sensor for desconectado, a proteção do hardware poderá ser a última linha de defesa.
 
 ## Temperature Sensor Poorly Mounted
 
-Heater is controlled by feedback from the sensor.
+O aquecedor é controlado pelo feedback do sensor.
 
-If sensor:
+Se sensor:
 
 - disconnected;
 - poorly pressed;
-- in wrong place;
+- no lugar errado;
 - has no thermal contact;
-- shows air temperature instead of heater;
-- wrong type selected in firmware;
+- mostra a temperatura do ar em vez do aquecedor;
+- tipo errado selecionado no firmware;
 
-controller may continue heating because it sees wrong temperature.
+o controlador pode continuar aquecendo porque detecta a temperatura errada.
 
-Poor thermal contact is one of the most dangerous mistakes in heating systems.
+O mau contato térmico é um dos erros mais perigosos nos sistemas de aquecimento.
 
-## Wrong Heater Power
+## Potência errada do aquecedor
 
-Heater power must be calculated before connecting.
+A potência do aquecedor deve ser calculada antes de conectar.
 
-Example:
+Exemplo:
 
 ```text
 24V 120W -> 5A
@@ -133,67 +133,67 @@ Example:
 230V 300W -> about 1.3A
 ```
 
-For low-voltage powerful heaters current quickly becomes large. This requires proper wires, terminals, MOSFET/SSR, and power supply.
+Para aquecedores potentes de baixa tensão, a corrente rapidamente se torna grande. Isso requer fios, terminais, MOSFET/SSR e fonte de alimentação adequados.
 
-For mains heaters current is less but shock hazard is much higher.
+Para aquecedores de rede, a corrente é menor, mas o risco de choque é muito maior.
 
-## Weak Terminals and Wires
+## Terminais e fios fracos
 
-A terminal that "sort of holds" can heat under current.
+Um terminal que "meio que segura" pode aquecer sob corrente.
 
 Reasons:
 
 - poor contact;
 - insulation clamped;
 - wire too thin;
-- terminal not rated for current;
-- stranded wire without ferrule frayed;
-- screw loosened by heat and vibration.
+- terminal não classificado para corrente;
+- fio trançado sem ponteira desgastada;
+- parafuso afrouxado pelo calor e vibração.
 
-Darkened terminal, smell, heating, or plastic softening around is reason to turn off device.
+Terminal escurecido, cheiro, aquecimento ou amolecimento de plástico ao redor são motivos para desligar o dispositivo.
 
-## What Not to Do
+## O que não fazer
 
-You cannot:
+Você não pode:
 
 - hold open mains part under power;
 - change wires under power;
-- use Arduino MOSFET module for 230V AC;
-- use SSR without heatsink if required;
+- usar módulo Arduino MOSFET para 230V AC;
+- utilize SSR sem dissipador de calor, se necessário;
 - disable thermal protection;
-- short the emergency thermostat;
-- increase fuse "so it does not blow";
-- leave heater unattended on first test;
-- use PLA mounting near heater.
+- curto o termostato de emergência;
+- aumentar o fusível “para não queimar”;
+- deixe o aquecedor sem vigilância no primeiro teste;
+- use montagem PLA perto do aquecedor.
 
-## What to Check
+## O que verificar
 
-Before first heating:
+Antes do primeiro aquecimento:
 
 1. Heater voltage.
-2. Power and current.
+2. Potência e corrente.
 3. Power switch type: MOSFET, AC SSR, DC SSR, relay.
 4. Current margin.
-5. SSR or MOSFET heatsink, if needed.
+5. Dissipador de calor SSR ou MOSFET, se necessário.
 6. Fuse.
-7. Grounding, if required.
-8. Terminals and wires.
+7. Aterramento, se necessário.
+8. Terminais e fios.
 9. Temperature sensor mounting.
-10. Correct `sensor_type` in firmware.
-11. `min_temp` and `max_temp`.
+10. Corrija `sensor_type` no firmware.
+11. `max_temp` e `max_temp`.
 12. Independent thermal protection.
-13. Behavior when controller is off.
-14. Terminal and SSR temperature after brief test.
+13. Comportamento quando o controlador está desligado.
+14. Temperatura terminal e SSR após breve teste.
 
 ## Key Points
 
-- Heater cannot be tested like an ordinary small load.
-- AC SSR and DC SSR are different devices.
+- O aquecedor não pode ser testado como uma pequena carga comum.
+- AC SSR e DC SSR são dispositivos diferentes.
 - SSR often requires heatsink.
-- MOSFET module for DC loads does not work for 110-230V AC.
-- Temperature sensor must be mounted firmly in correct place.
-- Hardware thermal protection must be independent of firmware.
-- If there is smell, terminal heating, or unusual heater behavior, turn off power.
+- O módulo MOSFET para cargas CC não funciona para 110-230V CA.
+- O sensor de temperatura deve ser montado firmemente no local correto.
+- A proteção térmica do hardware deve ser independente do firmware.
+- Se houver cheiro, aquecimento terminal ou comportamento incomum do aquecedor, desligue a energia.
 
 ## References
 

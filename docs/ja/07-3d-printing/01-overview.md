@@ -139,11 +139,11 @@ FDMパーツはすべての方向で同じ強度ではありません。
 
 このセクションは、いくつかの実践的なトピックをカバーしています。
 
-- `02-what-is-stl.md` - STLが素材、向き、強度、またはアセンブリ指示を含まない理由
+- `02-what-is-stl.md` - STLが素材、方向、強度、または発現を含まない理由
 - `03-materials-petg-abs-asa.md` - PETG、ABS、ASAの間の基本的な選択肢
 - `04-heat-resistant-materials.md` - 熱の近くの部品についての考え方
 - `05-enclosure-design.md` - エンクロージャーゾーン、換気、締め、アクセス、配線
-- `06-why-pla-is-risky.md` - PLAがプロトタイプには便利だが、熱の近くはリスクがある理由
+- `06-why-pla-is-risky.md` - PLAがプロトタイプには便利だが、熱の近くにはリスクがある理由
 
 ## このセクションが行わないこと
 

@@ -1,64 +1,64 @@
 # Células de Carga
 
-A load cell measures force through tiny metal deformation. Weighing a spool, monitoring remaining filament and simple weight platforms almost always use such sensors.
+Uma célula de carga mede a força através de pequenas deformações metálicas. Pesar um carretel, monitorar o filamento restante e plataformas de peso simples quase sempre usam esses sensores.
 
-Important to understand: a load cell doesn't "feel weight" by itself. It slightly bends or compresses under load, and electronics measure the microscopic resistance change in strain gauges. So two things are critical: correct mechanics and a normal amplifier/ADC.
+Entenda importante: uma célula de carga não “sente peso” por si só. Ele dobra ou comprime levemente sob carga, e a eletrônica mede a mudança microscópica da resistência nos extensômetros. Portanto, duas coisas são críticas: mecânica correta e um amplificador/ADC normal.
 
-## Where It's Used
+## Onde é usado
 
-In iDryer-like projects, a load cell can be used for:
+Em projetos do tipo iDryer, uma célula de carga pode ser usada para:
 
-- estimating spool weight with filament;
-- rough calculation of remaining plastic;
-- checking that the spool is installed;
+- estimar o peso do carretel com filamento;
+- cálculo aproximado do plástico restante;
+- verificando se o carretel está instalado;
 - detecting sudden weight change;
-- measuring load on a small mechanism;
+- medir a carga em um pequeno mecanismo;
 - experimental weight platform;
-- dosing control in DIY systems.
+- controle de dosagem em sistemas DIY.
 
-For simple "spool present/absent", sometimes a limit switch or optical sensor is enough. A load cell is needed when it's important to actually measure weight or force change.
+Para um simples "carretel presente/ausente", às vezes um interruptor de limite ou sensor óptico é suficiente. Uma célula de carga é necessária quando é importante medir realmente o peso ou a mudança de força.
 
-## Why HX711 Is Needed
+## Por que o HX711 é necessário
 
-A load cell signal is very weak. A typical analog input on ESP32, Arduino or a printer board usually doesn't work for direct connection.
+O sinal da célula de carga é muito fraco. Uma entrada analógica típica no ESP32, Arduino ou placa de impressora geralmente não funciona para conexão direta.
 
-So a load cell is usually connected through HX711 or a similar module. HX711 does two things:
+Portanto, uma célula de carga geralmente é conectada através do HX711 ou de um módulo similar. O HX711 faz duas coisas:
 
-- amplifies the weak differential bridge signal;
-- converts it to digital data for the controller.
+- amplifica o sinal fraco da ponte diferencial;
+- converte-os em dados digitais para o controlador.
 
-Typical chain:
+Cadeia típica:
 
 ```text
 load cell -> HX711 -> controller
 ```
 
-Detailed connection diagram is in the practical section: [Connecting a load cell](../06-practical-guides/04-connecting-load-cell.md).
+O diagrama de conexão detalhado está na seção prática: [Conectando uma célula de carga](../06-practical-guides/04-connecting-load-cell.md).
 
-## What Types of Load Cells Exist
+## Que tipos de células de carga existem
 
-In small projects, the most common are:
+Em pequenos projetos, os mais comuns são:
 
-- beam cell - convenient for small platforms and spool holders;
-- S-type cell - works in tension/compression, often used in hanging setups;
+- célula de feixe - conveniente para pequenas plataformas e porta-bobinas;
+- Célula tipo S - funciona em tensão/compressão, frequentemente utilizada em instalações suspensas;
 - button cell - measures compression at one point;
-- four cells on a platform - typical floor scale design;
-- single strain gauge elements - require proper bridge and mechanics, harder for beginners.
+- quatro células em uma plataforma - projeto típico de escala de piso;
+- elementos de extensômetro único - exigem ponte e mecânica adequadas, mais difíceis para iniciantes.
 
-For a DIY spool weight system, it's usually easier to start with a beam load cell on `5 kg`, `10 kg` or nearby range. But the range depends on spool mass, holder and possible jerks.
+Para um sistema de peso de carretel DIY, geralmente é mais fácil começar com uma célula de carga de feixe em `10 kg`, `10 kg` ou faixa próxima. Mas o alcance depende da massa do carretel, do suporte e de possíveis solavancos.
 
-## Wires and Bridge
+## Fios e Ponte
 
 Most common four-wire load cells have a bridge circuit.
 
-On HX711, you usually see markings:
+No HX711, você geralmente vê marcações:
 
 - `E+` or `VCC` - bridge power plus;
 - `E-` or `GND` - bridge power minus;
 - `A+`, `S+`, `O+` - positive measurement signal;
 - `A-`, `S-`, `O-` - negative measurement signal.
 
-Common color scheme:
+Esquema de cores comum:
 
 - red - `E+`;
 - black - `E-`;
@@ -66,133 +66,133 @@ Common color scheme:
 - white - `A-`;
 - yellow, foil or separate wire - shield.
 
-Colors are not guaranteed. If there's a technical description of the specific cell, it's more important than any internet table. If readings go the wrong way, often just swapping `A+` and `A-` or accounting for the sign in the program is enough.
+As cores não são garantidas. Se houver uma descrição técnica da célula específica, ela é mais importante do que qualquer tabela da internet. Se as leituras derem errado, muitas vezes basta trocar `A-` e `A-` ou contabilizar o sinal no programa.
 
 ## Mechanics Matter More Than Circuit
 
-A load cell must deform exactly as the manufacturer intended. If the load goes around the working zone, the cell will show unstable readings or almost nothing.
+Uma célula de carga deve deformar-se exatamente como o fabricante pretendia. Se a carga contornar a zona de trabalho, a célula apresentará leituras instáveis ​​ou quase nada.
 
 ![Miniature S-beam load cell](../../img/03-common-components/07-miniature-load-cell.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Miniature_S-beam_load_cell.jpg), FUTEK Advanced Sensor Technology, CC BY-SA 4.0*
 
-For a beam cell, the typical idea is:
+Para uma célula de feixe, a ideia típica é:
 
-- one side is firmly mounted to a fixed base;
+- um lado está firmemente montado em uma base fixa;
 - other side carries a platform or load;
-- there's clearance between the moving part and base;
-- screws and case don't block beam bending.
+- há folga entre a parte móvel e a base;
+- parafusos e caixa não bloqueiam a flexão da viga.
 
 Poor mechanics gives such symptoms:
 
-- readings drift without load;
-- weight depends on where you put the spool;
-- cell barely reacts to load;
-- after removing load, zero doesn't return;
-- touching the case changes readings sharply;
-- different assemblies show different weight with the same setup.
+- as leituras oscilam sem carga;
+- o peso depende de onde você coloca o carretel;
+- a célula mal reage à carga;
+- após retirar a carga, zero não retorna;
+- tocar na caixa altera drasticamente as leituras;
+- montagens diferentes mostram pesos diferentes com a mesma configuração.
 
-## Range and Overload
+## Alcance e sobrecarga
 
-A load cell's range is not the desired working weight, it's the limit it's rated for.
+A faixa de uma célula de carga não é o peso de trabalho desejado, mas o limite para o qual ela está classificada.
 
-Using a `1 kg` cell for a spool, holder and jerks over `1 kg` can drive it into nonlinearity or permanent deformation. Using a `100 kg` cell for a `1 kg` spool loses sensitivity, and mechanics must be much more careful.
+Usar uma célula `1 kg` como carretel, suporte e solavancos sobre `100 kg` pode levá-lo à não linearidade ou à deformação permanente. Usar uma célula `1 kg` para um carretel `1 kg` perde sensibilidade e a mecânica deve ser muito mais cuidadosa.
 
-When choosing range, consider:
+Ao escolher o intervalo, considere:
 
-- maximum weight of full spool;
-- holder and platform weight;
+- peso máximo do carretel cheio;
+- peso do suporte e da plataforma;
 - misalignment forces;
-- accidental jerks on mounting;
-- margin for the user;
+- solavancos acidentais na montagem;
+- margem para o usuário;
 - desired accuracy.
 
-For remaining filament, moderate margin is often more useful than huge range. For example, for a spool with holder weighing several kilos, a `5 kg` or `10 kg` cell is usually better than `50 kg` if mechanics allow.
+Para o filamento restante, uma margem moderada costuma ser mais útil do que uma faixa enorme. Por exemplo, para um carretel com suporte pesando vários quilos, uma célula `10 kg` ou `50 kg` geralmente é melhor que `50 kg` se a mecânica permitir.
 
-## Tare and Calibration
+## Tara e Calibração
 
-A load cell without calibration outputs raw numbers, not grams.
+Uma célula de carga sem calibração gera números brutos, não gramas.
 
-Typical process:
+Processo típico:
 
-1. Install the cell in real mechanics.
+1. Instale a célula em mecânica real.
 2. Put an empty platform or holder.
-3. Do tare - accept the current value as zero.
+3. Faça a tara - aceite o valor atual como zero.
 4. Put a known weight.
-5. Adjust the calibration coefficient.
-6. Check one or two more weights.
+5. Ajuste o coeficiente de calibração.
+6. Verifique mais um ou dois pesos.
 
-For spools, there's an extra problem: an empty spool also weighs differently. If you need to estimate just the plastic, you need to know the empty spool weight or store a profile for that specific spool.
+Para as bobinas, há um problema extra: uma bobina vazia também pesa de forma diferente. Se precisar estimar apenas o plástico, você precisa saber o peso do carretel vazio ou armazenar um perfil para aquele carretel específico.
 
-## Accuracy and Stability
+## Precisão e Estabilidade
 
-In practice, accuracy depends on more than HX711 and cell.
+Na prática, a precisão depende de mais do que o HX711 e a célula.
 
-Readings are affected by:
+As leituras são afetadas por:
 
 - case rigidity;
 - mounting play;
 - side load;
 - printer vibration or fan noise;
-- wire length and shielding;
+- comprimento e blindagem do fio;
 - measurement wires near power lines;
 - temperature;
-- material creep and plastic deformation;
-- cable or spool touching the case around the cell.
+- fluência do material e deformação plástica;
+- cabo ou carretel tocando a caixa ao redor da célula.
 
-If a load cell is in a printed plastic case, don't expect lab accuracy. For filament remaining estimates, stable readings and repeatability after calibration are often enough.
+Se uma célula de carga estiver em uma caixa plástica impressa, não espere precisão de laboratório. Para estimativas de filamentos restantes, leituras estáveis ​​e repetibilidade após a calibração costumam ser suficientes.
 
-## Power and Wiring
+## Energia e fiação
 
-HX711 measures a weak signal, so wiring should be careful.
+O HX711 mede um sinal fraco, portanto a fiação deve ser cuidadosa.
 
 Practical rules:
 
-- keep HX711 close to the load cell;
-- don't route cell wires near heaters, motors and power lines;
-- secure wires so they don't pull the platform;
-- use common `GND` with the controller;
-- power the module with voltage compatible to the controller;
-- don't use poor Dupont contacts in final assembly if the device should run long.
+- mantenha o HX711 próximo à célula de carga;
+- não passe fios de células perto de aquecedores, motores e linhas de energia;
+- prenda os fios para que não puxem a plataforma;
+- use `GND` comum com o driver;
+- alimentar o módulo com tensão compatível com o controlador;
+- não use contatos Dupont de baixa qualidade na montagem final se o dispositivo funcionar por muito tempo.
 
-On the controller side, HX711 usually connects through `DT`/`DOUT` and `SCK`/`CLK`. This is not regular I2C or SPI, but a separate simple interface.
+No lado do driver, o HX711 geralmente se conecta através de `SCK`/`CLK` e `SCK`/`CLK`. Este não é um I2C ou SPI normal, mas uma interface simples separada.
 
-## What to Check Before Buying
+## O que verificar antes de comprar
 
-Before buying, check:
+Antes de comprar, verifique:
 
 - cell type: beam, S-type, button, platform;
 - weight range;
 - load application direction;
-- dimensions and mounting holes;
-- availability of description or wire diagram;
-- whether one cell or four cells are needed;
+- dimensões e furos de montagem;
+- disponibilidade de descrição ou diagrama elétrico;
+- se são necessárias uma ou quatro células;
 - whether HX711 module fits your chosen cell;
-- whether there's room for proper clearance and mounting;
-- whether you can put a known weight for calibration;
-- whether load won't go through the case around the cell.
+- se há espaço para folga e montagem adequadas;
+- se é possível colocar um peso conhecido para calibração;
+- se a carga não passará pela caixa ao redor da célula.
 
-If mechanics aren't thought through yet, it's better to first sketch the mounting. Buying "any load cell" often ends with it being physically impossible to mount correctly.
+Se a mecânica ainda não foi pensada, é melhor primeiro esboçar a montagem. Comprar "qualquer célula de carga" geralmente resulta na impossibilidade física de montá-la corretamente.
 
-## Typical Errors
+## Erros típicos
 
-- connecting load cell directly to analog input;
-- confusing `E+`/`E-` and `A+`/`A-`;
-- trusting wire colors without description;
-- mounting both sides of beam cell to one rigid part;
-- blocking cell bending with screws or case;
-- overloading the cell;
-- choosing too large a range and losing sensitivity;
-- forgetting tare and calibration;
-- calibrating on the bench, then installing cell in different mechanics;
+- conectar a célula de carga diretamente à entrada analógica;
+- confundindo `E-`/`A+` e `A-`/`A-`;
+- confiar nas cores dos fios sem descrição;
+- montar ambos os lados da célula de feixe em uma peça rígida;
+- bloqueando a flexão das células com parafusos ou caixa;
+- sobrecarregar a célula;
+- escolher uma faixa muito grande e perder sensibilidade;
+- esquecendo a tara e a calibração;
+- calibrar na bancada e depois instalar a célula em diferentes mecânicas;
 - routing wires near heater power lines;
-- expecting gram-level accuracy from soft plastic case.
+- esperando precisão em nível de grama de uma caixa de plástico macio.
 
-## Main Point
+## Ponto Principal
 
-A load cell is a component where mechanics matter as much as electronics. HX711 helps read the weak signal, but won't fix crooked mounting, overload or load going around the cell.
+Uma célula de carga é um componente onde a mecânica é tão importante quanto a eletrônica. O HX711 ajuda a ler o sinal fraco, mas não conserta montagem torta, sobrecarga ou carga circulando pela célula.
 
-First choose the right type and range, then design the mounting, then connect HX711, and only then do tare and calibration.
+Primeiro escolha o tipo e a faixa corretos, depois projete a montagem, depois conecte o HX711 e só então faça a tara e a calibração.
 
 ## Reference Materials
 

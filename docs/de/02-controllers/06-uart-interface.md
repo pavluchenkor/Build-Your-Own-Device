@@ -2,7 +2,7 @@
 
 UART ist eine einfache serielle Datentransmissionsschnittstelle zwischen zwei Geräten. Erweiterung: `Universal Asynchronous Receiver/Transmitter`.
 
-In praktischen Projekten hörst du normalerweise „UART", „seriell", „TX/RX" oder „UART-Port". Der Schlüsselpunkt für Anfänger ist: UART überträgt Daten auf der `TX`-Leitung, empfängt auf der `RX`-Leitung, und beide Geräte benötigen eine gemeinsame `GND` für den ordnungsgemäßen Betrieb.
+In praktischen Projekten hörst du normalerweise „UART“, „seriell“, „TX/RX“ oder „UART-Port“. Der Schlüsselpunkt für Anfänger ist: UART überträgt Daten auf die `RX`-Leitung, empfängt auf der `GND`-Leitung, und beide Geräte benötigen einen gemeinsamen `GND` für den ordnungsgemäßen Betrieb.
 
 ## Wo UART verwendet wird
 
@@ -98,7 +98,7 @@ In 3D-Druckern erfüllt UART oft drei verschiedene Rollen.
 
 **Host- und Board-Kommunikation**
 
-Einige Boards können über seriell/UART mit dem Host kommunizieren. In Klipper wird dies im Abschnitt `[mcu]` über `serial` beschrieben.
+Einige Boards können über Seriell/UART mit dem Host kommunizieren. In Klipper wird dies im Abschnitt `serial` über `serial` beschrieben.
 
 **TMC-Treiberkonfiguration**
 

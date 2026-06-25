@@ -1,12 +1,12 @@
 # Servomotory
 
-A servo motor is a small drive with a motor, gearbox and internal electronics. You give it a position, and it tries to rotate the shaft to that position and hold it.
+Servomotor je malý pohon s motorem, převodovkou a vnitřní elektronikou. Dáte mu polohu a ono se pokusí otočit hřídel do této polohy a udržet ji.
 
-In simple devices, a servo is convenient where you need not just to turn a motor on, but to rotate a mechanism to an understandable angle: open a damper, shift a lock, press a button, switch airflow or rotate a small indicator flag.
+V jednoduchých zařízeních je servo praktické tam, kde nepotřebujete pouze zapnout motor, ale otočit mechanismus do srozumitelného úhlu: otevřít klapku, posunout zámek, stisknout tlačítko, přepnout proud vzduchu nebo otočit malou indikační vlajku.
 
-## Where It's Used
+## Kde se používá
 
-In iDryer-like devices and 3D printer peripherals, a servo can be used for:
+V zařízeních podobných iDryer a periferních zařízeních 3D tiskáren lze servo použít pro:
 
 - air intake or exhaust damper;
 - air duct switching;
@@ -14,149 +14,149 @@ In iDryer-like devices and 3D printer peripherals, a servo can be used for:
 - mechanical lock;
 - pressing a physical button;
 - moving an indicator flag;
-- simple dosing or catch.
+- jednoduché dávkování nebo záchyt.
 
-A servo is good for light mechanics with limited travel. For continuous rotation of a fan, screw or pump, it usually doesn't work: you need a different motor and driver.
+Servo je dobré pro lehkou mechaniku s omezeným zdvihem. Pro plynulé otáčení ventilátoru, šroubu nebo čerpadla to obvykle nefunguje: potřebujete jiný motor a ovladač.
 
 ## Three Wires
 
-A typical hobby servo has three lines:
+Typické hobby servo má tři řady:
 
-- power: usually `4.8-6V`, sometimes `7.4V` or other value on special models;
+- výkon: obvykle `7.4V`, někdy `7.4V` nebo jiná hodnota u speciálních modelů;
 - ground: `GND`;
-- signal: control pulses from the controller.
+- signál: řídicí impulsy z regulátoru.
 
-Common wire colors:
+Běžné barvy drátů:
 
 - red - power;
 - black or brown - ground;
 - yellow, orange or white - signal.
 
-You can't blindly trust colors. Different manufacturers use different color schemes. Before connecting, check the markings, product page or technical description.
+Barvám nelze slepě věřit. Různí výrobci používají různá barevná schémata. Před připojením zkontrolujte označení, stránku produktu nebo technický popis.
 
-A detailed connection diagram with separate power is in the practical section: [Connecting a servo motor](../06-practical-guides/03-connecting-servo.md).
+Podrobné schéma zapojení s odděleným napájením je v praktické části: [Připojení servomotoru](../06-practical-guides/03-connecting-servo.md).
 
-## What "Servo Motor" Means
+## Co znamená „servomotor“.
 
-Inside a typical positional hobby servo, there's:
+Uvnitř typického pozičního hobby serva je:
 
 - DC motor;
 - gearbox;
 - position sensor, often a potentiometer;
 - control board;
-- output shaft with arm.
+- výstupní hřídel s ramenem.
 
-The external controller doesn't manage the motor directly. It sends a position signal, and the servo's internal electronics automatically turns the motor so the shaft reaches the desired angle.
+Externí ovladač neřídí motor přímo. Vyšle signál o poloze a vnitřní elektronika serva automaticky natočí motor tak, aby hřídel dosáhla požadovaného úhlu.
 
-So a servo differs from a regular DC motor:
+Servo se tedy liší od běžného stejnosměrného motoru:
 
-- DC motor just rotates when powered;
-- servo tries to reach a set position;
-- servo draws current even while holding if there's load on the shaft;
-- servo can rapidly increase current and get hot if jammed.
+- DC motor se při napájení pouze otáčí;
+- servo se snaží dosáhnout nastavené polohy;
+- servo odebírá proud i při držení, pokud je hřídel zatížena;
+- Servo může rychle zvýšit proud a zahřát se, pokud se zasekne.
 
-## Positional and Continuous Rotation
+## Polohová a spojitá rotace
 
-The most common type is a positional servo. You set an angle, for example `0`, `90` or `180` degrees.
+Nejběžnějším typem je polohové servo. Nastavíte úhel, například stupně `90`, `180` nebo `180`.
 
-Continuous rotation servo looks similar but works differently: the control signal sets not the angle, but the direction and speed of rotation. It doesn't know where the shaft is. For a damper or lock, such a servo is often inconvenient because without additional sensors you can't guarantee the position.
+Servo kontinuálního otáčení vypadá podobně, ale funguje jinak: řídicí signál nenastavuje úhel, ale směr a rychlost otáčení. Neví, kde je šachta. Pro tlumič nebo zámek je takové servo často nepohodlné, protože bez přídavných senzorů nemůžete zaručit polohu.
 
-Before buying, check what the description says:
+Před nákupem zkontrolujte, co říká popis:
 
-- `standard servo`, `positional servo`, `180°` - usually positional;
-- `continuous rotation`, `360°` - usually rotates continuously, not positioned to an angle.
+- `positional servo`, `180°`, `180°` - obvykle poziční;
+- `360°`, `360°` - obvykle se otáčí plynule, není umístěno do úhlu.
 
-The phrase `360° servo` on a marketplace is risky: sometimes it's a continuous rotation servo, sometimes it's just an extended range. You need to check the technical description and reviews with real measurements.
+Fráze `360° servo` na trhu je riskantní: někdy je to servo s plynulou rotací, někdy je to jen prodloužený dosah. Je třeba zkontrolovat technický popis a recenze s reálnými mírami.
 
 ## Control Signal
 
-A typical hobby servo is controlled by repeating pulses.
+Typické hobby servo je řízeno opakujícími se impulsy.
 
-Typical guidelines:
+Typické pokyny:
 
 - period about `20 ms`;
-- pulse about `1 ms` - one edge of the range;
+- pulz o `1 ms` - jedna hrana rozsahu;
 - pulse about `1.5 ms` - middle;
-- pulse about `2 ms` - other edge of range.
+- impuls o `2 ms` - jiná hrana rozsahu.
 
-Different servos have different actual limits. Some work about `500-2500 us`, others safely only in a narrower range.
+Různá serva mají různé skutečné limity. Některé fungují o `500-2500 us`, jiné bezpečně jen v užším rozsahu.
 
-So extreme positions can't be set blindly. First check the middle, then small deviations, only then expand the range.
+Krajní polohy tedy nelze slepě nastavovat. Nejprve zkontrolujte střed, poté drobné odchylky, teprve poté rozšiřte rozsah.
 
-## Power and Current
+## Výkon a proud
 
-The signal wire doesn't power the servo. It draws motor energy from the power line.
+Signální vodič nenapájí servo. Energii motoru čerpá z elektrického vedení.
 
-Even a small servo can briefly draw large current on startup, rapid movement or mechanical stop. Average current "in quiet demo" doesn't show the worst case.
+I malé servo může krátkodobě odebírat velký proud při spuštění, rychlém pohybu nebo mechanickém zastavení. Průměrný proud "v tichém demu" neukazuje nejhorší případ.
 
-Important parameters:
+Důležité parametry:
 
 - operating voltage;
 - no-load current;
 - loaded current;
-- stall current - current with blocked shaft;
+- pádový proud - proud s zablokovanou hřídelí;
 - holding torque or stall torque;
 - rotation speed;
 - operating temperature.
 
-If the technical description lists stall current, the power source must be chosen with this value and margin. If stall current is not listed, you can't consider the power "safe by eye": for a real device, it's better to use a source with margin and check voltage drop under load.
+Pokud je v technickém popisu uveden blokový proud, musí být zdroj napájení zvolen s touto hodnotou a rezervou. Pokud není uveden zablokovaný proud, nemůžete výkon považovat za "bezpečný na oko": pro skutečné zařízení je lepší použít zdroj s rezervou a zkontrolovat pokles napětí pod zátěží.
 
-For one small servo, a board's 5V output sometimes works. But for a damper, lock or multiple servos, you usually need a separate 5V/6V DC-DC converter or power supply. The ground must be common with the controller.
+Pro jedno malé servo občas funguje 5V výstup desky. Ale pro tlumič, zámek nebo více serv obvykle potřebujete samostatný 5V/6V DC-DC měnič nebo napájecí zdroj. Uzemnění musí být společné s ovladačem.
 
-## Torque and Mechanics
+## Točivý moment a mechanika
 
-A servo is chosen not just by size. The main mechanical parameter is torque, often in `kg·cm` or `N·cm`.
+Servo se nevybírá jen podle velikosti. Hlavním mechanickým parametrem je točivý moment, často v `N·cm` nebo `N·cm`.
 
 Roughly:
 
-- the longer the lever, the more torque needed;
-- the heavier the damper or tighter the mechanism, the more torque needed;
-- friction, misalignment and seal greatly increase load;
-- when held at a stop, servo heats and draws current.
+- čím delší páka, tím větší potřeba krouticího momentu;
+- čím těžší je tlumič nebo těsnější mechanismus, tím větší je potřeba krouticího momentu;
+- tření, nesouosost a těsnění výrazně zvyšují zatížení;
+- při zastavení se servo zahřívá a odebírá proud.
 
-Example: a small light damper may work fine with a microservo. A damper on a tight seal or a cover with a spring may need a larger servo with metal gears.
+Příklad: malý lehký tlumič může dobře fungovat s mikroservem. Tlumič na těsném těsnění nebo kryt s pružinou může potřebovat větší servo s kovovými převody.
 
-For reliable mechanics:
+Pro spolehlivé mechaniky:
 
-- don't force the servo to constantly push against a physical stop;
-- limit angles in firmware;
-- leave a small margin of travel;
-- make the linkage without misalignment;
-- use a suitable arm length;
+- nenuťte servo neustále tlačit proti fyzické zarážce;
+- limitní úhly ve firmwaru;
+- ponechat malou rezervu na cestování;
+- proveďte spojení bez vychýlení;
+- použijte vhodnou délku paže;
 - test operation at real enclosure temperature.
 
-If the servo hums at the end position, it usually signals load, stop or wrong geometry.
+Pokud servo hučí v koncové poloze, obvykle to signalizuje zatížení, zastavení nebo špatnou geometrii.
 
 ## Gearbox: Plastic or Metal
 
-Plastic gears are cheaper, quieter and work for light tasks. But they break faster on impacts, jamming and heavy loads.
+Plastové převody jsou levnější, tišší a fungují pro lehké úkoly. Ale rychleji se lámou při nárazech, zaseknutí a velké zátěži.
 
-Metal gears are stronger, but the servo may be louder, heavier and more expensive. For dampers, locks and mechanisms a user might accidentally touch, a metal gearbox often makes sense.
+Kovové převody jsou pevnější, ale servo může být hlasitější, těžší a dražší. U tlumičů, zámků a mechanismů, kterých by se uživatel mohl náhodně dotknout, má často smysl kovová převodovka.
 
-But metal gears don't replace good mechanics. If the mechanism jams, it can damage the arm, case, mount or shaft itself.
+Kovové převody ale dobrou mechaniku nenahradí. Pokud se mechanismus zasekne, může poškodit samotné rameno, pouzdro, držák nebo hřídel.
 
-## Analog and Digital Servo
+## Analogové a digitální servo
 
-In simple projects, analog hobby servos are more common. Digital servos usually hold position stiffer and respond faster, but may draw more current and be noisier when holding.
+V jednoduchých projektech jsou běžnější analogová hobby serva. Digitální serva obvykle drží polohu tvrději a reagují rychleji, ale mohou odebírat více proudu a být při držení hlučnější.
 
-For a dryer damper or simple lock, what usually matters more is:
+U tlumiče sušiče nebo jednoduchého zámku je obvykle důležitější:
 
 - enough torque;
-- normal power;
+- normální výkon;
 - reliable mechanics;
 - clear angle range;
 - operating temperature;
 - gearbox lifetime.
 
-Being "digital" doesn't automatically make a servo good for the device.
+To, že je servo „digitální“, automaticky neznamená, že je pro zařízení dobré.
 
-## What to Check Before Buying
+## Co zkontrolovat před nákupem
 
-Before buying a servo, check:
+Před nákupem serva zkontrolujte:
 
 - positional or continuous rotation;
 - operating voltage;
-- required current and stall current if listed;
+- požadovaný proud a blokovací proud, pokud jsou uvedeny;
 - torque;
 - rotation speed;
 - angle range;
@@ -165,29 +165,29 @@ Before buying a servo, check:
 - connector type;
 - wire length;
 - operating temperature;
-- availability of technical description or reasonable specs.
+- dostupnost technického popisu nebo přiměřených specifikací.
 
-For a small flag you can use a microservo. For a damper with a seal, lock or lever in a warm chamber, it's better not to choose the cheapest servo without specs.
+Pro malou vlajku můžete použít mikroservo. U tlumiče s těsněním, zámkem nebo pákou v teplé komoře je lepší nevolit nejlevnější servo bez specifikací.
 
-## Typical Errors
+## Typické chyby
 
-- powering servo from GPIO;
-- powering from a weak board 5V pin;
-- forgot common ground with separate power;
-- trusted wire colors without checking;
-- mixed up positional servo and continuous rotation servo;
-- didn't account for stall current;
+- napájení serva z GPIO;
+- napájení ze slabé desky 5V pin;
+- zapomněli na společný základ se samostatným napájením;
+- důvěryhodné barvy drátu bez kontroly;
+- smíšené polohové servo a servo s plynulou rotací;
+- nepočítalo se s blokovým proudem;
 - placed servo against a mechanical stop;
-- used angle `0` or `180` when the mechanism safely moves only in a narrow range;
-- chose servo by size only, not calculating torque;
-- put plastic gears where impact or jamming is possible;
-- placed servo next to heater without temperature check.
+- použitý úhel `180` nebo `180`, když se mechanismus bezpečně pohybuje pouze v úzkém rozsahu;
+- vybral servo pouze podle velikosti, nepočítal točivý moment;
+- umístěte plastové převody tam, kde je možný náraz nebo zaseknutí;
+- umístěno servo vedle topení bez kontroly teploty.
 
-## Main Point
+## Hlavní bod
 
-A servo is a convenient component for dampers, locks and small mechanisms, but it needs normal power and careful mechanics. A signal from the controller only sets the position, and all motor current goes through the power line.
+Servo je vhodný komponent pro tlumiče, zámky a malé mechanismy, ale vyžaduje normální výkon a pečlivou mechaniku. Signál z ovladače pouze nastaví polohu a veškerý proud motoru prochází elektrickým vedením.
 
-Before using, check servo type, voltage, torque, current, angle range and mechanical behavior at end positions.
+Před použitím zkontrolujte typ serva, napětí, krouticí moment, proud, rozsah úhlu a mechanické chování v koncových polohách.
 
 ## Reference Materials
 

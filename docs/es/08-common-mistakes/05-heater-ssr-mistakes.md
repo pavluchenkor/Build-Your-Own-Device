@@ -68,7 +68,7 @@ Si SSR está tan caliente que es difícil sostener a mano, esta es razón para d
 
 Los módulos MOSFET normales para Arduino/ESP32 son usualmente para cargas DC: 12V o 24V.
 
-No pueden ser usados como simple interruptor para AC mains 110-230V.
+No pueden ser usados como simple interruptor para red AC 110-230V.
 
 Para carga de mains necesitas componentes diferentes, aislamiento diferente, terminales diferentes, conexión a tierra, fusibles y entendimiento de seguridad eléctrica.
 
@@ -102,7 +102,7 @@ Para calentador, protección de hardware independiente es útil:
 
 Tal protección debe funcionar independientemente del controlador y firmware.
 
-Si el controlador se cuelga, pin se cuelga en estado on, SSR falla o sensor se desconecta, la protección de hardware podría ser la última línea de defensa.
+Si el controlador se cuelga, el pin se cuelga en estado encendido, SSR falla o el sensor se desconecta, la protección de hardware podría ser la última línea de defensa.
 
 ## Sensor de temperatura mal montado
 

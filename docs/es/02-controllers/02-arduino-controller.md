@@ -9,7 +9,7 @@ Para la educación, Arduino sigue siendo muy útil: es fácil comprender GPIO, b
 Puntos fuertes de Arduino:
 
 - gran cantidad de materiales educativos;
-- IDE de Arduino simple;
+- IDE de Arduino sencillo;
 - muchas bibliotecas listas para usar;
 - ejemplos comprensibles como Blink;
 - conveniente para probar rápidamente un sensor en el escritorio;
@@ -154,7 +154,7 @@ Arduino es apropiado si:
 
 - necesitas probar rápidamente una idea;
 - necesitas explicar cómo funciona algo;
-- el dispositivo es muy simple y no necesita red;
+- el dispositivo es muy simple y no necesita rojo;
 - ya tienes un sketch funcional;
 - la claridad es más importante que la compacidad y el rendimiento;
 - es un banco educativo, no electrónica de potencia final.

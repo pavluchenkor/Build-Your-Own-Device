@@ -10,7 +10,7 @@ Ein gutes Crimp bietet:
 - Wiederholbarkeit;
 - bequeme Montage und Wartung.
 
-Ein schlechtes Crimp kann heiß werden, auseinanderfallen, zufällige Fehler verursachen und fast normal aussehen.
+Ein schlechtes Crimp kann heiß werden, auseinanderfallen, zufällige Fehler verursachen und schnell normal aussehen.
 
 ## Warum Crimpen oft besser ist als Löten
 
@@ -70,9 +70,9 @@ Gutes Ergebnis:
 - die exponierte Länge ist nicht zu lang;
 - Leiter-Strände stehen nicht heraus;
 - Kontakt ist nicht schief;
-- Kontakt tritt in den Stecker-Körper ein und verriegelt sich.
+- Der Kontakt tritt in den Stecker-Körper ein und verriegelt sich.
 
-Wenn Isolierung in die Leiter-Crimp-Zone eintrat, wird der elektrische Kontakt schlecht sein.
+Wenn Isolierung in die Leiter-Crimp-Zone eingeführt wird, wird der elektrische Kontakt schlecht sein.
 
 Wenn nur der Leiter gequetscht wird und Isolierung nicht gehalten wird, kann der Draht bei Bewegung brechen.
 

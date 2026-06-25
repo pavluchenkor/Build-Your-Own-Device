@@ -8,163 +8,163 @@
 - mechanical wire retention;
 - insulation support;
 - repeatability;
-- convenient assembly and maintenance.
+- 組裝、維修方便。
 
-A poor crimp can get hot, fall apart, cause random errors and look almost normal.
+不良的壓接可能會變熱、脫落、導致隨機錯誤，但看起來幾乎是正常的。
 
-## Why crimping is often better than soldering
+## 為什麼壓接通常比焊接更好
 
-For connectors and terminals, crimping is often better than soldering because:
+對於連接器和端子，壓接通常比焊接更好，因為：
 
-- the wire stays flexible;
-- the contact is designed by the manufacturer;
-- insulation is retained;
-- the joint better handles vibration;
-- the connector can be disassembled and serviced;
-- no risk of melting plastic connector body during soldering.
+- 電線保持靈活；
+- 觸點由製造商設計；
+- 保留絕緣；
+- 關節更好地處理震動；
+- 連接器可以拆卸和維修；
+- 焊接過程中沒有熔化塑膠連接器主體的風險。
 
-Soldering is good for pads and wires, but should not replace a proper contact in a connector if the manufacturer intended crimping.
+焊接對於焊盤和電線有好處，但如果製造商打算壓接，則不應取代連接器中的正確接點。
 
-## Types of terminals and connectors
+## 端子和連接器的類型
 
-In simple devices you often find:
+在簡單的設備中，您經常會發現：
 
-- Dupont - weak signal connections for breadboards;
-- JST-XH/JST-PH and similar - sensors, fans, small modules;
-- ferrules - tips for multi-strand wire in screw terminals;
-- Faston - flat terminals for some power connections;
-- ring and spade terminals;
+- 杜邦 - 麵包板的弱訊號連接；
+- JST-XH/JST-PH 及類似產品 - 感測器、風扇、小模組；
+- 套圈 - 螺絲端子中多股線的尖端；
+- Faston - 用於某些電源連接的扁平端子；
+- 環形端子和鏟形端子；
 - screw terminals;
 - board-mounted terminal blocks.
 
-Each type requires its own contact, its own wire gauge and its own tool.
+每種類型都需要自己的觸點、自己的線規和自己的工具。
 
-## You need the right tool
+## 您需要合適的工具
 
-Pliers are not a crimping tool.
+鉗子不是壓接工具。
 
-You can squeeze a contact so it seems to hold, but you won't get a proper crimp.
+您可以擠壓觸點，使其看起來固定，但無法獲得適當的壓接。
 
-For good crimping, you need:
+為了獲得良好的壓接效果，您需要：
 
-- a terminal for the correct wire gauge;
+- 用於正確線規的端子；
 - correct strip length;
 - correct tool matrix;
-- correct contact position in the matrix;
-- separate zones for strand and insulation crimp;
+- 矩陣中正確的接觸位置；
+- 絞線和絕緣壓接的單獨區域；
 - no damaged strands.
 
-Professional connector manufacturers provide crimp specifications, crimp height, strip length and pull force. For DIY assembly you don't always have full control, but the principle is the same: contact, wire and tool must match each other.
+專業連接器製造商提供壓接規格、壓接高度、剝線長度和拉力。對於 DIY 組裝，您並不總是能夠完全控制，但原則是相同的：觸點、電線和工具必須相互匹配。
 
 ## Open barrel crimp
 
-Many small contacts, like JST or Dupont, have two pairs of "wings":
+許多小型觸點，例如 JST 或杜邦，都有兩對「翅膀」：
 
-- one pair crimps the bare conductor;
-- the other pair holds the insulation.
+- 一對壓接裸露導體；
+- 另一對固定絕緣層。
 
 Good result:
 
-- the conductor is visible in the correct zone;
-- insulation is held by the rear wings;
-- the exposed length is not too long;
+- 導體在正確的區域可見；
+- 絕緣由後翼保持；
+- 外露長度不能太長；
 - conductor strands don't stick out;
-- the contact is not skewed;
-- the contact enters the connector body and locks in place.
+- 觸點不歪斜；
+- 觸點進入連接器主體並鎖定到位。
 
-If insulation entered the conductor crimp zone, electrical contact will be poor.
+如果絕緣體進入導體壓接區，電氣接觸將會不良。
 
-If only the conductor is crimped and insulation is not held, the wire may break when moved.
+如果僅壓接導體而未固定絕緣層，則移動時電線可能會斷裂。
 
 ## Ferrules
 
-For multi-strand wire in a screw terminal, ferrules are often useful.
+對於螺絲端子中的多股電線，套圈通常很有用。
 
 They:
 
 - gather all strands together;
-- prevent strands from separating;
-- improve seating in the terminal;
-- reduce risk that some strands are left outside;
-- make the joint neater.
+- 防止股線分離；
+- 改善航站的座位；
+- 降低某些股線被留在外面的風險；
+- 使接縫更整齊。
 
-This is especially useful for power wires, terminal blocks and assemblies that will be serviced.
+這對於要維修的電源線、端子塊和組件特別有用。
 
-But ferrules also must match the wire gauge and be crimped with the right matrix.
+但套圈也必須與線規匹配，並用正確的矩陣進行壓接。
 
-## How to check a crimp
+## 如何檢查壓接
 
-After crimping, verify:
+壓接後，驗證：
 
-- the contact doesn't move on the wire;
+- 觸點不會在線路上移動；
 - insulation is held;
-- the conductor doesn't pull out;
+- 導體不拉出；
 - no strands are cut;
-- the exposed length is not too long;
-- the contact enters the connector body;
-- the lock clicks in place;
-- the wire withstands gentle pulling.
+- 外露長度不能太長；
+- 觸點進入連接器本體；
+- 鎖卡入到位；
+- 電線可以承受輕微的拉扯。
 
-A gentle pull test is useful: carefully pull the wire. It should not come out of the contact.
+輕柔的拉力測試很有用：小心地拉動電線。它不應該從接觸中出來。
 
-No need to pull with all your strength. The goal is to find obviously bad crimps before installation.
+不需要用盡全力去拉。目標是在安裝前找到明顯不良的壓接。
 
-## Why poor crimps get hot
+## 為什麼不良壓接會變熱
 
-A poor crimp creates high resistance.
+不良壓接會產生高電阻。
 
-Under current this becomes heat.
+在電流下這會變成熱量。
 
-First the terminal might just be warm. Then plastic darkens, contact gets worse, heat increases.
+首先，終端可能只是溫暖。然後塑膠變暗，接觸變差，熱度增加。
 
-This is especially dangerous for:
+這對以下人員來說尤其危險：
 
 - heaters;
-- fans with significant current;
+- 有大電流的風扇；
 - LED strips;
 - power supplies;
 - SSR/MOSFET circuits;
 - mains connections.
 
-If a terminal gets hot, turn off power and redo the connection.
+如果終端變熱，請關閉電源並重新連接。
 
-## Dupont is not for power
+## 杜邦不是為了權力
 
-Dupont is convenient for breadboards and weak signals.
+杜邦對於麵包板和弱訊號來說很方便。
 
-But it cannot be used as a proper power connector for:
+但它不能用作適當的電源連接器：
 
 - a heater;
 - device power;
 - a powerful LED strip;
 - mains parts;
-- a motor or servo with large current.
+- 大電流的馬達或伺服。
 
-Even if the connector physically fits the pins, that doesn't mean it is rated for the needed current, vibration and heat.
+即使連接器在物理上適合引腳，也不代表它能夠滿足所需的電流、振動和熱量。
 
-## Common errors
+## 常見錯誤
 
-- crimped with pliers;
-- chose the wrong gauge terminal;
+- 用鉗子壓接；
+- 選擇了錯誤的儀表端子；
 - stripped too much insulation;
 - stripped too little insulation;
-- crimped insulation instead of the conductor;
-- didn't crimp the insulation support;
+- 壓接絕緣體代替導體；
+- 沒有壓接絕緣支撐；
 - cut some strands;
-- contact didn't lock in the body;
-- power line held on Dupont;
-- wrong ferrule gauge;
+- 觸點未鎖定在體內；
+- 杜邦電源線；
+- 套圈規格錯誤；
 - didn't do a pull test;
 - terminal gets hot but device keeps running.
 
-## The essentials
+## 重點
 
-- Crimping is both electrical contact and mechanical retention.
-- Contact, wire and tool must match each other.
+- 壓接既是電接觸又是機械保持。
+- 觸點、電線和工具必須相互匹配。
 - Pliers don't replace a crimping tool.
-- For multi-strand wire in a screw terminal, ferrules are often useful.
-- Poor crimps can get hot and be dangerous.
-- Power parts should not rely on weak breadboard connectors.
+- 對於螺絲端子中的多股電線，套圈通常很有用。
+- 不良的捲曲可能會變熱並且很危險。
+- 電源部件不應依賴薄弱的麵包板連接器。
 
 ## Reference materials
 

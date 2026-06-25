@@ -1,12 +1,12 @@
 # Motores Servo
 
-A servo motor is a small drive with a motor, gearbox and internal electronics. You give it a position, and it tries to rotate the shaft to that position and hold it.
+Un servomotor es un pequeño variador con motor, caja de cambios y electrónica interna. Le das una posición e intenta girar el eje a esa posición y sostenerlo.
 
-In simple devices, a servo is convenient where you need not just to turn a motor on, but to rotate a mechanism to an understandable angle: open a damper, shift a lock, press a button, switch airflow or rotate a small indicator flag.
+En dispositivos simples, un servo es conveniente cuando no solo necesita encender un motor, sino también rotar un mecanismo a un ángulo comprensible: abrir una compuerta, cambiar una cerradura, presionar un botón, cambiar el flujo de aire o girar una pequeña bandera indicadora.
 
-## Dónde It's Used
+## Dónde se usa
 
-In iDryer-like devices and 3D printer peripherals, a servo can be used for:
+En dispositivos tipo iDryer y periféricos de impresoras 3D, se puede utilizar un servo para:
 
 - air intake or exhaust damper;
 - air duct switching;
@@ -14,149 +14,149 @@ In iDryer-like devices and 3D printer peripherals, a servo can be used for:
 - mechanical lock;
 - pressing a physical button;
 - moving an indicator flag;
-- simple dosing or catch.
+- simple dosificación o captura.
 
-A servo is good for light mechanics with limited travel. For continuous rotation of a fan, screw or pump, it usually doesn't work: you need a different motor and driver.
+Un servo es bueno para mecánicos ligeros con recorrido limitado. Para la rotación continua de un ventilador, tornillo o bomba, generalmente no funciona: se necesita un motor y un controlador diferentes.
 
 ## Three Wires
 
-A typical hobby servo has three lines:
+Un servo típico de hobby tiene tres líneas:
 
-- power: usually `4.8-6V`, sometimes `7.4V` or other value on special models;
+- potencia: generalmente `7.4V`, a veces `7.4V` u otro valor en modelos especiales;
 - ground: `GND`;
-- signal: control pulses from the controller.
+- Señal: pulsos de control del controlador.
 
-Common wire colors:
+Colores de cables comunes:
 
 - red - power;
 - black or brown - ground;
 - yellow, orange or white - signal.
 
-You can't blindly trust colors. Different manufacturers use different color schemes. Before connecting, check the markings, product page or technical description.
+No puedes confiar ciegamente en los colores. Los diferentes fabricantes utilizan diferentes combinaciones de colores. Antes de realizar la conexión, consulte las marcas, la página del producto o la descripción técnica.
 
-A detailed connection diagram with separate power is in the practical section: [Connecting a servo motor](../06-practical-guides/03-connecting-servo.md).
+Un diagrama de conexión detallado con alimentación independiente se encuentra en la sección práctica: [Conexión de un servomotor](../06-practical-guides/03-connecting-servo.md).
 
 ## Qué "Servo Motor" Means
 
-Inside a typical positional hobby servo, there's:
+Dentro de un servo posicional típico de hobby, hay:
 
 - DC motor;
 - gearbox;
 - position sensor, often a potentiometer;
 - control board;
-- output shaft with arm.
+- Eje de salida con brazo.
 
-The external controller doesn't manage the motor directly. It sends a position signal, and the servo's internal electronics automatically turns the motor so the shaft reaches the desired angle.
+El controlador externo no gestiona el motor directamente. Envía una señal de posición y la electrónica interna del servo hace girar automáticamente el motor para que el eje alcance el ángulo deseado.
 
-So a servo differs from a regular DC motor:
+Entonces un servo se diferencia de un motor DC normal:
 
-- DC motor just rotates when powered;
-- servo tries to reach a set position;
-- servo draws current even while holding if there's load on the shaft;
-- servo can rapidly increase current and get hot if jammed.
+- El motor de CC simplemente gira cuando está encendido;
+- el servo intenta alcanzar una posición determinada;
+- el servo consume corriente incluso mientras se mantiene si hay carga en el eje;
+- El servo puede aumentar rápidamente la corriente y calentarse si se atasca.
 
-## Positional and Continuous Rotation
+## Rotación posicional y continua
 
-The most common type is a positional servo. You set an angle, for example `0`, `90` or `180` degrees.
+El tipo más común es un servo posicional. Usted establece un ángulo, por ejemplo `90`, `180` o `180` grados.
 
-Continuous rotation servo looks similar but works differently: the control signal sets not the angle, but the direction and speed of rotation. It doesn't know where the shaft is. For a damper or lock, such a servo is often inconvenient because without additional sensors you can't guarantee the position.
+El servo de rotación continua tiene un aspecto similar pero funciona de manera diferente: la señal de control no establece el ángulo, sino la dirección y la velocidad de rotación. No sabe dónde está el eje. Para un amortiguador o una cerradura, un servo de este tipo suele ser un inconveniente porque sin sensores adicionales no se puede garantizar la posición.
 
-Before buying, check what the description says:
+Antes de comprar, revisa lo que dice la descripción:
 
-- `standard servo`, `positional servo`, `180°` - usually positional;
-- `continuous rotation`, `360°` - usually rotates continuously, not positioned to an angle.
+- `positional servo`, `180°`, `180°`: generalmente posicionales;
+- `360°`, `360°`: generalmente gira continuamente, no en ángulo.
 
-The phrase `360° servo` on a marketplace is risky: sometimes it's a continuous rotation servo, sometimes it's just an extended range. You need to check the technical description and reviews with real measurements.
+La frase `360° servo` en el mercado es arriesgada: a veces es un servo de rotación continua, a veces es solo un rango extendido. Es necesario consultar la descripción técnica y reseñas con medidas reales.
 
 ## Control Signal
 
-A typical hobby servo is controlled by repeating pulses.
+Un servo típico de hobby se controla mediante pulsos repetidos.
 
-Typical guidelines:
+Pautas típicas:
 
 - period about `20 ms`;
-- pulse about `1 ms` - one edge of the range;
+- pulso sobre `1 ms` - un borde del rango;
 - pulse about `1.5 ms` - middle;
-- pulse about `2 ms` - other edge of range.
+- pulso sobre `2 ms` - otro borde del rango.
 
-Different servos have different actual limits. Some work about `500-2500 us`, others safely only in a narrower range.
+Diferentes servos tienen diferentes límites reales. Algunos funcionan sobre `500-2500 us`, otros de forma segura sólo en un rango más estrecho.
 
-So extreme positions can't be set blindly. First check the middle, then small deviations, only then expand the range.
+Por tanto, las posiciones extremas no pueden establecerse a ciegas. Primero verifique las desviaciones medias, luego las pequeñas, solo luego amplíe el rango.
 
-## Power and Current
+## Potencia y corriente
 
-The signal wire doesn't power the servo. It draws motor energy from the power line.
+El cable de señal no alimenta el servo. Extrae la energía del motor de la línea eléctrica.
 
-Even a small servo can briefly draw large current on startup, rapid movement or mechanical stop. Average current "in quiet demo" doesn't show the worst case.
+Incluso un servo pequeño puede consumir brevemente una gran corriente durante el arranque, el movimiento rápido o la parada mecánica. El promedio actual "en demostración silenciosa" no muestra el peor de los casos.
 
-Important parameters:
+Parámetros importantes:
 
 - operating voltage;
 - no-load current;
 - loaded current;
-- stall current - current with blocked shaft;
+- corriente de bloqueo - corriente con eje bloqueado;
 - holding torque or stall torque;
 - rotation speed;
 - operating temperature.
 
-If the technical description lists stall current, the power source must be chosen with this value and margin. If stall current is not listed, you can't consider the power "safe by eye": for a real device, it's better to use a source with margin and check voltage drop under load.
+Si la descripción técnica indica pérdida de corriente, la fuente de alimentación debe elegirse con este valor y margen. Si la corriente de pérdida no figura en la lista, no puede considerar la potencia "segura a simple vista": para un dispositivo real, es mejor usar una fuente con margen y verificar la caída de voltaje bajo carga.
 
-For one small servo, a board's 5V output sometimes works. But for a damper, lock or multiple servos, you usually need a separate 5V/6V DC-DC converter or power supply. The ground must be common with the controller.
+Para un servo pequeño, a veces funciona la salida de 5V de una placa. Pero para un amortiguador, una cerradura o varios servos, normalmente necesita un convertidor CC-CC de 5 V/6 V o una fuente de alimentación independiente. La tierra debe ser común con el controlador.
 
-## Torque and Mechanics
+## Torque y Mecánica
 
-A servo is chosen not just by size. The main mechanical parameter is torque, often in `kg·cm` or `N·cm`.
+Un servo se elige no sólo por su tamaño. El principal parámetro mecánico es el par, a menudo en `N·cm` o `N·cm`.
 
 Roughly:
 
-- the longer the lever, the more torque needed;
-- the heavier the damper or tighter the mechanism, the more torque needed;
-- friction, misalignment and seal greatly increase load;
-- when held at a stop, servo heats and draws current.
+- cuanto más larga sea la palanca, más torque se necesitará;
+- cuanto más pesado sea el amortiguador o más apretado sea el mecanismo, más torque se necesitará;
+- la fricción, la desalineación y el sello aumentan considerablemente la carga;
+- cuando se mantiene detenido, el servo se calienta y consume corriente.
 
-Example: a small light damper may work fine with a microservo. A damper on a tight seal or a cover with a spring may need a larger servo with metal gears.
+Ejemplo: un pequeño amortiguador de luz puede funcionar bien con un microservo. Un amortiguador con un sello hermético o una tapa con resorte puede necesitar un servo más grande con engranajes metálicos.
 
-For reliable mechanics:
+Para mecánicos confiables:
 
-- don't force the servo to constantly push against a physical stop;
-- limit angles in firmware;
-- leave a small margin of travel;
-- make the linkage without misalignment;
-- use a suitable arm length;
+- no fuerces al servo a empujar constantemente contra un tope físico;
+- limitar los ángulos en el firmware;
+- dejar un pequeño margen de recorrido;
+- realizar el enlace sin desalineamiento;
+- utilice una longitud de brazo adecuada;
 - test operation at real enclosure temperature.
 
-If the servo hums at the end position, it usually signals load, stop or wrong geometry.
+Si el servo zumba en la posición final, normalmente indica carga, parada o geometría incorrecta.
 
 ## Gearbox: Plastic or Metal
 
-Plastic gears are cheaper, quieter and work for light tasks. But they break faster on impacts, jamming and heavy loads.
+Los engranajes de plástico son más baratos, más silenciosos y sirven para tareas ligeras. Pero se rompen más rápido con impactos, atascos y cargas pesadas.
 
-Metal gears are stronger, but the servo may be louder, heavier and more expensive. For dampers, locks and mechanisms a user might accidentally touch, a metal gearbox often makes sense.
+Los engranajes metálicos son más fuertes, pero el servo puede ser más ruidoso, más pesado y más caro. Para amortiguadores, cerraduras y mecanismos que un usuario podría tocar accidentalmente, una caja de cambios de metal suele tener sentido.
 
-But metal gears don't replace good mechanics. If the mechanism jams, it can damage the arm, case, mount or shaft itself.
+Pero los engranajes metálicos no reemplazan a la buena mecánica. Si el mecanismo se atasca, puede dañar el brazo, la caja, el soporte o el propio eje.
 
-## Analog and Digital Servo
+## Servo analógico y digital
 
-In simple projects, analog hobby servos are more common. Digital servos usually hold position stiffer and respond faster, but may draw more current and be noisier when holding.
+En proyectos simples, los servos analógicos son más comunes. Los servos digitales generalmente mantienen una posición más rígida y responden más rápido, pero pueden consumir más corriente y ser más ruidosos cuando se mantienen.
 
-For a dryer damper or simple lock, what usually matters more is:
+Para una compuerta de secadora o una simple cerradura, lo que suele importar más es:
 
 - enough torque;
-- normal power;
+- potencia normal;
 - reliable mechanics;
 - clear angle range;
 - operating temperature;
 - gearbox lifetime.
 
-Being "digital" doesn't automatically make a servo good for the device.
+Ser "digital" no significa que un servo sea bueno para el dispositivo automáticamente.
 
-## Qué to Check Before Buying
+## Qué comprobar antes de comprar
 
-Before buying a servo, check:
+Antes de comprar un servo, verifique:
 
 - positional or continuous rotation;
 - operating voltage;
-- required current and stall current if listed;
+- corriente requerida y corriente de parada, si figuran en la lista;
 - torque;
 - rotation speed;
 - angle range;
@@ -165,29 +165,29 @@ Before buying a servo, check:
 - connector type;
 - wire length;
 - operating temperature;
-- availability of technical description or reasonable specs.
+- Disponibilidad de descripción técnica o especificaciones razonables.
 
-For a small flag you can use a microservo. For a damper with a seal, lock or lever in a warm chamber, it's better not to choose the cheapest servo without specs.
+Para una bandera pequeña puedes usar un microservo. Para un amortiguador con junta, cerradura o palanca en una cámara caliente, es mejor no elegir el servo más barato sin especificaciones.
 
 ## Típicos Errors
 
-- powering servo from GPIO;
-- powering from a weak board 5V pin;
-- forgot common ground with separate power;
-- trusted wire colors without checking;
-- mixed up positional servo and continuous rotation servo;
-- didn't account for stall current;
+- alimentar el servo desde GPIO;
+- alimentación desde un pin de 5V de placa débil;
+- olvidó puntos en común con poderes separados;
+- colores de cables confiables sin verificar;
+- servo posicional mezclado y servo de rotación continua;
+- no tuvo en cuenta la corriente de pérdida;
 - placed servo against a mechanical stop;
-- used angle `0` or `180` when the mechanism safely moves only in a narrow range;
-- chose servo by size only, not calculating torque;
-- put plastic gears where impact or jamming is possible;
-- placed servo next to heater without temperature check.
+- ángulo usado `180` o `180` cuando el mecanismo se mueve de manera segura solo en un rango estrecho;
+- elija el servo solo por tamaño, sin calcular el par;
+- colocar engranajes de plástico donde sea posible un impacto o un atasco;
+- Servo colocado al lado del calentador sin control de temperatura.
 
 ## Principal Point
 
-A servo is a convenient component for dampers, locks and small mechanisms, but it needs normal power and careful mechanics. A signal from the controller only sets the position, and all motor current goes through the power line.
+Un servo es un componente conveniente para amortiguadores, cerraduras y mecanismos pequeños, pero necesita energía normal y un cuidado mecánico. Una señal del controlador solo establece la posición y toda la corriente del motor pasa a través de la línea eléctrica.
 
-Before using, check servo type, voltage, torque, current, angle range and mechanical behavior at end positions.
+Antes de usarlo, verifique el tipo de servo, voltaje, torque, corriente, rango de ángulo y comportamiento mecánico en las posiciones finales.
 
 ## Referencia Materials
 

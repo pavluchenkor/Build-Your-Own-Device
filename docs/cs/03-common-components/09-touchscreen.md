@@ -1,200 +1,200 @@
 # Dotykový displejs
 
-A touchscreen is not just a display. It's a display plus user input. It must not only show temperature or a button, but tell the device where you touched.
+Dotykový displej není jen displej. Je to displej plus uživatelský vstup. Nesmí jen zobrazovat teplotu nebo tlačítko, ale musí zařízení říci, kde jste se dotknuli.
 
-Because of this, a touchscreen is almost always more complex than OLED. You need to choose not only size and resolution, but understand who draws the interface, who processes touches, what interface is used and whether your chosen firmware supports it.
+Z tohoto důvodu je dotykový displej téměř vždy složitější než OLED. Musíte si vybrat nejen velikost a rozlišení, ale pochopit, kdo kreslí rozhraní, kdo zpracovává dotyky, jaké rozhraní se používá a zda váš zvolený firmware to podporuje.
 
-## When Touchscreen Is Useful
+## Kdy je dotykový displej užitečný
 
-A touchscreen makes sense if the device needs a full local interface:
+Dotykový displej má smysl, pokud zařízení potřebuje úplné místní rozhraní:
 
-- choosing drying mode;
-- setting temperature and time;
-- material profile list;
-- confirming errors;
-- manual fan, lighting or damper control;
-- Wi-Fi setup;
-- viewing status without phone or computer.
+- volba režimu sušení;
+- nastavení teploty a času;
+- seznam profilů materiálu;
+- potvrzení chyb;
+- ruční řízení ventilátoru, osvětlení nebo tlumiče;
+- nastavení Wi-Fi;
+- zobrazení stavu bez telefonu nebo počítače.
 
-If you only need to show temperature, error and mode, usually OLED, a couple buttons, encoder or web interface is enough. A touchscreen adds cost, power, enclosure space, firmware, cables and another failure point.
+Pokud potřebujete pouze zobrazit teplotu, chybu a režim, obvykle stačí OLED, pár tlačítek, otočný kodér nebo webové rozhraní. Dotykový displej přidává náklady, energii, prostor na krytu, firmware, kabely a další bod selhání.
 
-## Main Question: Who Draws the Interface
+## Hlavní otázka: Kdo kreslí rozhraní
 
-Before buying, answer the main question: where does the user interface live.
+Než budete nakupovat, odpovězte na hlavní otázku: kde žije uživatelské rozhraní.
 
-There are several different screen classes:
+Existuje několik různých tříd obrazovek:
 
-![Classes of touchscreens and who draws the interface](../../img/03-common-components/09-touchscreen-classes.svg)
+![Třídy dotykových displejů a kdo kreslí rozhraní](../../img/03-common-components/09-touchscreen-classes.svg)
 
-Raw TFT is a simple screen with a controller like `ILI9341`, `ILI9488`, `ST7789`, plus a separate touch controller like `XPT2046` or `FT5x06`. Your microcontroller or firmware draws the interface. This is flexible but requires code, memory, drivers and calibration.
+Raw TFT je jednoduchá obrazovka s řadičem jako `ILI9341`, `ILI9488`, `ST7789`, plus samostatný dotykový řadič jako `XPT2046` nebo `FT5x06`. Vaš mikrořadič nebo firmware kreslí rozhraní. To je flexibilní, ale vyžaduje kód, paměť, ovladače a kalibraci.
 
-Smart UART/HMI display is a screen with its own firmware and interface editor, like Nextion. The microcontroller sends commands via UART, and the screen shows pages and elements. This reduces MCU load but ties your project to that screen's tools and protocol.
+Chytrý UART/HMI displej je obrazovka s vlastním firmware a editorem rozhraní, jako Nextion. Mikrořadič odesílá příkazy přes UART a obrazovka zobrazuje stránky a prvky. To snižuje zátěž MCU, ale váš projekt váže na nástroje a protokol té obrazovky.
 
-Printer TFT, like BTT TFT35, often has its own touchscreen mode via UART and classic 12864 LCD emulation via EXP connectors. This screen is convenient for Marlin/3D printer boards, but it's not a universal panel for any DIY device.
+Printer TFT, jako BTT TFT35, má často svůj vlastní režim dotykové obrazovky přes UART a klasickou emulaci LCD 12864 přes konektory EXP. Tato obrazovka je vhodná pro desky Marlin/3D tiskárny, ale není univerzálním panelem pro jakékoli DIY zařízení.
 
-HDMI/DSI/USB screen for Linux host works like a regular monitor and touch device for Raspberry Pi or other Linux computer. This suits KlipperScreen but doesn't connect directly to small ESP32 as a simple module.
+HDMI/DSI/USB obrazovka pro hostitele Linux funguje jako běžný monitor a dotykové zařízení pro Raspberry Pi nebo jiný počítač Linux. To je vhodné pro KlipperScreen, ale nepřipojuje se přímo k malému ESP32 jako jednoduchý modul.
 
-## Connection Interfaces
+## Rozhraní připojení
 
-Touchscreens use different interfaces.
+Dotykové displeje používají různá rozhraní.
 
-Common options:
+Běžné možnosti:
 
-- SPI - often on small TFT for ESP32/Arduino;
-- I2C - often on capacitive touch controllers, sometimes on touch controllers;
-- UART - on smart displays and some 3D printer TFT;
-- EXP1/EXP2/EXP3 - on screens compatible with 3D printer boards;
-- HDMI + USB - on Linux screens for Raspberry Pi;
-- DSI - on some Raspberry Pi screens;
-- parallel RGB/8080 - on faster TFT, but more wires and requirements.
+- SPI - často na malém TFT pro ESP32/Arduino;
+- I2C - často na kapacitních dotykových řadičích, někdy na dotykových řadičích;
+- UART - na chytrých displejích a některých TFT 3D tiskáren;
+- EXP1/EXP2/EXP3 - na obrazovkách kompatibilních s deskami 3D tiskáren;
+- HDMI + USB - na Linux obrazovkách pro Raspberry Pi;
+- DSI - na některých Raspberry Pi obrazovkách;
+- paralelní RGB/8080 - na rychlejších TFT, ale více vodičů a požadavků.
 
-You cannot choose a screen by diagonal alone. Two `3.5"` screens can be completely different: one SPI module for ESP32, second UART panel with its own firmware, third HDMI screen for Raspberry Pi.
+Nemůžete si vybrat obrazovku pouze podle úhlopříčky. Dvě obrazovky `3.5"` mohou být zcela odlišné: jeden SPI modul pro ESP32, druhý UART panel s vlastním firmware, třetí HDMI obrazovka pro Raspberry Pi.
 
-## Resistive and Capacitive Touch
+## Rezistivní a kapacitní dotek
 
-The touch part also varies.
+Část dotyku se také liší.
 
-Resistive touch:
+Rezistivní dotek:
 
-- responds to finger, stylus or fingernail pressure;
-- often requires calibration;
-- usually worse for gestures;
-- can be cheaper;
-- found with controllers like `XPT2046`.
+- reaguje na tlak prstem, stylusem nebo nehtem;
+- často vyžaduje kalibraci;
+- obvykle horší pro gesta;
+- může být levnější;
+- najde se s řadiči jako `XPT2046`.
 
-Capacitive touch:
+Kapacitní dotek:
 
-- responds to a finger;
-- usually nicer to use;
-- can support multiple touches;
-- often has a separate controller like `FT5x06`, `GT911` families;
-- works worse with thick gloves and some protective covers.
+- reaguje na prst;
+- obvykle se používá lépe;
+- může podporovat více dotykův;
+- často má samostatný řadič, jako je rodina `FT5x06`, `GT911`;
+- funguje hůře s tlustými rukavicemi a některými ochranným kryty.
 
-For a workshop device, resistive touch is sometimes more practical because you can press it with a fingernail or stylus. For a nice panel on the enclosure, capacitive usually feels more modern.
+Pro zařízení v dílně je rezistivní dotek někdy praktičtější, protože na něj můžete stisknout nehtem nebo stylusem. Pro hezký panel na krytu se kapacitní dotek obvykle cítí modernější.
 
-## Power, Backlight and Current
+## Napájení, podsvícení a proud
 
-A TFT screen draws more than a small OLED. The main power consumer is the backlight.
+TFT obrazovka kreslí více než malý OLED. Hlavním spotřebitelem energie je podsvícení.
 
-Before connecting, check:
+Před připojením zkontrolujte:
 
 - screen power voltage;
 - backlight current;
 - whether you need a separate 5V source;
-- whether backlight brightness is adjustable;
-- whether logic levels are compatible;
-- whether the screen overloads the board regulator;
-- whether power sags when backlight turns on.
+- zda je nastavitelný jas podsvícení;
+- zda jsou logické úrovně kompatibilní;
+- zda obrazovka přetěžuje regulátor desky;
+- zda se při zapnutí podsvícení sníží napájení.
 
-If the screen whitens, flickers, reboots the controller or loses touch events, first check power and ground, not the interface code.
+Pokud obrazovka zbělá, bliká, restartuje ovladač nebo ztratí dotykové události, nejprve zkontrolujte napájení a kostru, nikoli kód rozhraní.
 
-For a device with a heater, the screen shouldn't power from a random weak pin. It should be part of a proper power scheme with clear margin.
+U zařízení s ohřívačem by obrazovka neměla být napájena náhodně slabým kolíkem. Mělo by být součástí správného schématu napájení s jasnou rezervou.
 
-## Firmware and Compatibility
+## Firmware a kompatibilita
 
-A beautiful screen is useless if your chosen firmware doesn't support it.
+Krásná obrazovka je k ničemu, pokud váš zvolený firmware ji nepodporuje.
 
-For ESP32/Arduino approach, you need to check:
+Pro přístup ESP32/Arduino musíte zkontrolovat:
 
-- is there a display driver;
-- is there a touch controller driver;
-- are there enough GPIO;
-- is there enough RAM/PSRAM for buffer;
-- what graphics framework is used;
-- who will write the menu.
+- existuje ovladač displeje;
+- existuje ovladač dotykového řadiče;
+- máte dost GPIO;
+- máte dost RAM/PSRAM pro vyrovnávací paměť;
+- jaký grafický framework se používá;
+- kdo bude psát nabídku.
 
-For ESPHome, check support for the specific display driver and touchscreen component. For example, ILI9xxx displays and XPT2046 touch need SPI and separate configuration, and resistive touch needs calibration.
+Pro ESPHome zkontrolujte podporu konkrétního ovladače displeje a komponenty dotykové obrazovky. Například zobrazení ILI9xxx a dotek XPT2046 potřebují SPI a samostatnou konfiguraci a rezistivní dotek potřebuje kalibraci.
 
-For Klipper, there are usually two different worlds:
+Pro Klipper existují obvykle dva různé světy:
 
-- small displays connected to MCU and described in Klipper config;
-- KlipperScreen on Linux host, where the screen works as a monitor and touch device.
+- malé displeje připojené k MCU a popsané v konfiguraci Klipperu;
+- KlipperScreen na hostiteli Linux, kde obrazovka funguje jako monitor a dotykové zařízení.
 
-KlipperScreen usually needs a screen where Linux can show a desktop or console. This is not the same as a small UART TFT connected to a printer board.
+KlipperScreen obvykle potřebuje obrazovku, kde může Linux zobrazit plochu nebo konzoli. To není totéž jako malý UART TFT připojený k desce tiskárny.
 
-For Marlin/printer boards, check whether the specific screen supports the needed mode: UART touch mode, 12864 emulation, EXP1/EXP2/EXP3, specific controller type in firmware config.
+Pro Marlin/desky tiskáren zkontrolujte, zda konkrétní obrazovka podporuje potřebný režim: režim dotykové UART, emulaci 12864, EXP1/EXP2/EXP3, konkrétní typ řadiče v konfiguraci firmware.
 
-## Smart Display and Nextion-like Screens
+## Chytrý displej a obrazovky podobné Nextion
 
-Smart display is convenient because the screen stores pages, buttons, fonts and images. The controller sends commands via UART and gets touch events.
+Chytrý displej je vhodný, protože obrazovka ukládá stránky, tlačítka, fonty a obrázky. Kontroler odesílá příkazy přes UART a získává dotykové události.
 
-Pros:
+Výhody:
 
-- less load on microcontroller;
-- less graphics code in main firmware;
-- you can draw the interface in the screen editor;
-- only UART and power needed.
+- menší zatížení mikrořadiče;
+- méně grafického kódu v hlavním firmware;
+- rozhraní můžete kreslit v editoru obrazovky;
+- potřebný pouze UART a napájení.
 
-Cons:
+Nevýhody:
 
-- you need to learn a separate editor and protocol;
-- interface is often stored in the screen;
-- harder to keep UI and device firmware versions in sync;
-- not all elements behave like in a regular app;
-- replacing the screen may require redesign.
+- musíte se naučit samostatný editor a protokol;
+- rozhraní je často uloženo v obrazovce;
+- obtížnější udržovat UI a verze firmware zařízení v synchronizaci;
+- ne všechny prvky se chují jako v běžné aplikaci;
+- výměna obrazovky může vyžadovat přepracování.
 
-For a simple device, smart display can be a good solution if you need a nice panel without a Linux host. But it's not a "normal monitor": it's a separate module with its own logic.
+Pro jednoduché zařízení může být chytrý displej dobré řešení, pokud potřebujete hezký panel bez hostitele Linux. Ale to není "normální monitor": je to samostatný modul s vlastní logikou.
 
-## Case, Cables and Servicing
+## Kryt, kabely a obsluha
 
-A touchscreen is something users will touch with their hands. So mechanics matter, not just wires.
+Dotykový displej je něco, čeho se uživatelé budou dotýkat svýma rukama. Mechanika proto záleží, ne jen vodiče.
 
-Check in advance:
+Zkontrolujte předem:
 
-- screen is not in a hot zone;
-- there's a frame or protective mount;
-- cable doesn't bend sharply when opening cover;
-- cable can be disconnected for servicing;
-- connector cannot go in backward;
-- case doesn't press on screen;
-- there's access to SD card or USB for updates if needed;
-- user doesn't touch power parts while using screen;
-- touch/display wiring is separate from heater wires.
+- obrazovka není v horké zóně;
+- existuje rám nebo ochranná montáž;
+- kabel se při otevírání krytu neohýbá ostře;
+- kabel lze odpojit pro obsluhu;
+- konektor nemůže jít dozadu;
+- kryt nestlačuje obrazovku;
+- existuje přístup na kartu SD nebo USB pro aktualizace, pokud je potřeba;
+- uživatel se nedotýká součástí napájení při používání obrazovky;
+- vedení dotyku/displeje je odděleno od vedení topného tělesa.
 
-For devices with a heater, it's better to move the screen to the user zone, away from hot air and power parts.
+Pro zařízení s topným tělesem je lepší přesunout obrazovku do uživatelské zóny, daleko od horkého vzduchu a součástí napájení.
 
-## What to Check Before Buying
+## Co zkontrolovat před nákupem
 
-Before buying a touchscreen, check:
+Před nákupem dotykové obrazovky zkontrolujte:
 
-- diagonal and resolution;
-- display type: raw TFT, smart UART, printer TFT, HDMI/DSI;
-- display interface;
-- touch interface;
-- display controller: for example `ILI9341`, `ILI9488`, `ST7789`;
-- touch controller: for example `XPT2046`, `FT5x06`, `GT911`;
-- power and backlight current;
-- logic levels;
-- support in firmware;
-- availability of documentation and examples;
-- availability of libraries;
-- RAM/PSRAM requirements;
-- board dimensions, holes and cable;
-- operating temperature;
-- firmware/interface update method.
+- úhlopříčku a rozlišení;
+- typ displeje: raw TFT, chytrý UART, printer TFT, HDMI/DSI;
+- rozhraní displeje;
+- dotykové rozhraní;
+- řadič displeje: například `ILI9341`, `ILI9488`, `ST7789`;
+- dotykový řadič: například `XPT2046`, `FT5x06`, `GT911`;
+- napájení a proud podsvícení;
+- logické úrovně;
+- podporu ve firmware;
+- dostupnost dokumentace a příkladů;
+- dostupnost knihoven;
+- požadavky na RAM/PSRAM;
+- rozměry desky, otvory a kabel;
+- provozní teplotu;
+- metodu aktualizace firmware/rozhraní.
 
-If the product description lacks display controller, interface, power and connection examples, it's better not to use such a screen for your first project.
+Pokud popisu produktu chybí řadič displeje, rozhraní, napájení a příklady připojení, je lepší takovou obrazovku pro svůj první projekt nepoužívat.
 
-## Typical Errors
+## Typické chyby
 
-- bought a screen "for Arduino", but the project is KlipperScreen on Linux;
-- bought HDMI screen and tried connecting to ESP32 directly;
-- bought UART smart display but expected it to work like a regular TFT;
-- chose raw TFT but didn't plan time for menu and graphics code;
-- not enough GPIO for SPI display and touch controller;
-- not enough RAM for screen buffer;
-- didn't check touch controller;
-- didn't calibrate resistive touch;
-- screen flickers due to weak backlight power;
-- cable runs next to heater power wires;
-- screen mounted in hot zone;
-- interface looks nice but main error is hard to see.
+- koupeno obrazovku "pro Arduino", ale projekt je KlipperScreen na Linux;
+- koupena HDMI obrazovka a pokus připojit ji přímo k ESP32;
+- koupena UART chytrá obrazovka, ale očekáváno, že bude fungovat jako běžný TFT;
+- zvolen raw TFT, ale neplánován čas na kód nabídky a grafiky;
+- nedostatek GPIO pro displej SPI a dotykový řadič;
+- nedostatek RAM pro vyrovnávací paměť obrazovky;
+- nekontrolování dotykového řadiče;
+- nekalibrování rezistivního dotyku;
+- blikání obrazovky z důvodu slabého napájení podsvícení;
+- kabel běží vedle drátů napájení topného tělesa;
+- obrazovka namontována v horké zóně;
+- rozhraní vypadá pěkně, ale hlavní chyba je těžko viditelná.
 
-## Main Point
+## Hlavní bod
 
-Choose a touchscreen by architecture, not diagonal. First decide who draws the interface: microcontroller, the screen itself, printer firmware or Linux host. Then check interface, power, touch controller, firmware support and enclosure mechanics.
+Vyberte si dotykovou obrazovku podle architektury, ne úhlopříčky. Nejdříve se rozhodněte, kdo kreslí rozhraní: mikrořadič, samotná obrazovka, firmware tiskárny nebo hostitel Linux. Poté zkontrolujte rozhraní, napájení, dotykový řadič, podporu firmware a mechaniku krytu.
 
-For a simple heater, dryer or filter, usually OLED, buttons or web interface is enough. Use a touchscreen when users really need a local interface.
+Pro jednoduchouhřívač, sušičku nebo filtr, obvykle stačí OLED, tlačítka nebo webové rozhraní. Použijte dotykovou obrazovku, pokud uživatelé opravdu potřebují místní rozhraní.
 
 ## Reference Materials
 

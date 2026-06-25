@@ -1,144 +1,144 @@
-# 连接伺服
+# 连接舵机
 
-伺服是一个带有齿轮箱和控制电子元件的小马达。你可以告诉它将轴旋转到什么位置。
+舵机是带齿轮箱和控制电子元件的小电机。你可以告诉它把轴转到哪个位置。
 
-在类似iDryer的设备中，伺服可以打开阻尼器、移动小插销、按下机械开关或重新定向气流。
+在类似 iDryer 的设备中，舵机可以打开风门、移动小锁扣、按下机械开关，或改变气流方向。
 
-The main mistake with servos: thinking it is a "small thing" and you can power it from any 5V pin on the controller. A servo can draw significant current, especially at startup, sudden movement, or when the mechanism binds.
+舵机的主要错误是：把它当成“小东西”，以为可以从控制器任意 5V 引脚供电。舵机可能消耗很大电流，尤其是在启动、突然动作或机构卡住时。
 
-## Three wires
+## 三根线
 
-A typical hobby servo has three wires:
+典型 hobby servo 有三根线：
 
-- power: usually `5V` or `6V`;
-- ground: `GND`;
-- signal: control pulses from the controller.
+- 电源：通常是 `5V` 或 `6V`；
+- 地：`GND`；
+- 信号：来自控制器的控制脉冲。
 
-Common colors:
+常见颜色：
 
-- red - power;
-- black or brown - ground;
-- yellow, orange, or white - signal.
+- 红色 - 电源；
+- 黑色或棕色 - 地；
+- 黄色、橙色或白色 - 信号。
 
-But you cannot blindly trust colors. Different manufacturers may use different color schemes. Before connecting, check the marking, product page, or datasheet.
+但不能盲目信任颜色。不同厂商可能使用不同配色。连接前，请检查标识、产品页面或 datasheet。
 
-## Power separate, signal separate
+## 电源分开，信号分开
 
-The signal wire does not power the servo. It only tells the servo where to turn.
+信号线不给舵机供电。它只告诉舵机转到哪里。
 
-The servo draws energy from the power wire.
+舵机从电源线获取能量。
 
-The correct logic is:
+正确逻辑是：
 
-- the controller provides only the control signal;
-- the servo is powered by a 5V/6V source that can handle its current;
-- the controller ground and servo power ground are connected together.
+- 控制器只提供控制信号；
+- 舵机由能承受其电流的 5V/6V 电源供电；
+- 控制器地和舵机电源地连接在一起。
 
 ![Servo wire color code](../../img/03-common-components/06-servo-color-code.jpg)
 
-*Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/all), CC BY-SA 4.0*
+*来源：[SparkFun Electronics](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/all), CC BY-SA 4.0*
 
-## Why you cannot power from weak 5V
+## 为什么不能从弱 5V 供电
 
-Many boards have a 5V pin. This does not mean a servo can be safely powered from it.
+许多板子都有 5V 引脚。这不表示可以安全地从它给舵机供电。
 
-When moving, a servo may draw much more current than its size suggests. If power is insufficient, typical symptoms appear:
+舵机运动时消耗的电流可能远大于它的尺寸暗示。如果电源不足，常见症状包括：
 
-- controller reboots;
-- screen flickers;
-- USB connection drops;
-- servo jerks;
-- Wi-Fi on ESP32 drops;
-- servo hums but does not move;
-- power sags at movement start.
+- 控制器重启；
+- 屏幕闪烁；
+- USB 连接断开；
+- 舵机抽动；
+- ESP32 的 Wi-Fi 掉线；
+- 舵机嗡嗡响但不移动；
+- 动作开始时电源下陷。
 
-For one small servo, board-supplied power sometimes works if the board and source are explicitly rated for that current. But for a real device with a damper, latch, or mechanism, it is better to use a separate 5V/6V DC-DC or power supply with a margin.
+一个小舵机有时可以由板载电源供电，前提是板子和电源明确支持该电流。但在带风门、锁扣或机构的真实设备中，最好使用带余量的独立 5V/6V DC-DC 或电源。
 
-## Common ground
+## 公共地
 
-If the servo is powered by a separate source, a common ground is needed.
+如果舵机由独立电源供电，就需要公共地。
 
-Without a common ground, the controller and servo have no common signal level. The servo may not respond, may jerk, or may behave randomly.
+没有公共地时，控制器和舵机没有共同信号参考电平。舵机可能不响应、抽动或随机动作。
 
-Simple connection:
+简单连接：
 
-1. `+5V` or `+6V` from the power source goes to the servo power.
-2. `GND` from the power source goes to the servo ground.
-3. The controller's `GND` is connected to the same ground.
-4. The controller PWM/GPIO pin goes to the servo signal wire.
+1. 电源的 `+5V` 或 `+6V` 接舵机电源。
+2. 电源的 `GND` 接舵机地。
+3. 控制器 `GND` 接到同一个地。
+4. 控制器 PWM/GPIO 引脚接舵机信号线。
 
-Servo power and controller power may be different, but the ground must be common.
+舵机电源和控制器电源可以不同，但地必须共用。
 
-## What signal is needed
+## 需要什么信号
 
-A typical positional hobby servo is controlled by pulses.
+典型位置舵机由脉冲控制。
 
-Typical signal:
+典型信号：
 
-- pulse roughly every `20 ms`;
-- about `1 ms` - one extreme of the range;
-- about `1.5 ms` - middle;
-- about `2 ms` - other extreme of the range.
+- 大约每 `20 ms` 一个脉冲；
+- 约 `1 ms` - 行程一端；
+- 约 `1.5 ms` - 中间；
+- 约 `2 ms` - 行程另一端。
 
-This is not typical PWM for LED brightness or fan speed. Here, pulse width in microseconds matters.
+这不是用于 LED 亮度或风扇速度的普通 PWM。这里重要的是微秒级脉冲宽度。
 
-The actual limits of a specific servo may differ. Some safely operate not from 0 to 180 degrees but less. So extreme positions need careful testing.
+具体舵机的实际极限可能不同。有些舵机安全范围不是 0 到 180 度，而更小。因此极限位置需要谨慎测试。
 
-## Do not jam a servo against the mechanism
+## 不要让舵机顶住机构
 
-A servo tries to hold the commanded position.
+舵机会尝试保持命令位置。
 
-If a damper hits the housing, an arm binds, or the mechanism reaches a physical stop before the command ends, the servo keeps pushing. At that point, current rises, the motor heats, the gearbox wears out.
+如果风门碰到外壳、连杆卡住，或机构在命令结束前到达物理限位，舵机会继续推。此时电流升高，电机发热，齿轮箱磨损。
 
-This is especially critical for dampers and latches.
+这对风门和锁扣尤其重要。
 
-Before permanent operation, verify:
+长期运行前确认：
 
-- the mechanism moves freely across the entire range;
-- no misalignment;
-- no binding of linkages;
-- the servo does not hum in the end position;
-- extreme angles in firmware do not force the mechanism into a stop;
-- with power off, the device stays safe or returns via spring, as intended.
+- 机构在整个范围内能自由移动；
+- 没有错位；
+- 连杆不卡住；
+- 舵机在终点位置不嗡嗡响；
+- 固件中的极限角度不会把机构顶到限位；
+- 断电时设备仍安全，或按设计由弹簧复位。
 
-If a servo hums at rest, it often signals load, a stop, or wrong lever geometry.
+如果舵机静止时嗡嗡响，通常表示有负载、顶到限位或杠杆几何错误。
 
-## Starting and stall current
+## 启动电流和堵转电流
 
-A servo has normal running current and current when the shaft is blocked. The latter is often called stall current.
+舵机有正常运行电流，也有轴被卡住时的电流。后者通常叫 stall current。
 
-Stall current appears when the servo tries to move but the shaft is blocked or the mechanism is too heavy.
+当舵机尝试运动但轴被卡住，或机构太重时，会出现堵转电流。
 
-This mode often causes:
+这种模式常导致：
 
-- power sag;
-- controller reboot;
-- wire heating;
-- DC-DC overheating;
-- gearbox breakage.
+- 电源下陷；
+- 控制器重启；
+- 导线发热；
+- DC-DC 过热；
+- 齿轮箱损坏。
 
-If the datasheet lists stall current, choose the power source accounting for this value and safety margin. If there is no datasheet, you cannot assume a servo is safe to run "by sight".
+如果 datasheet 列出 stall current，选择电源时要按该值和安全余量计算。如果没有 datasheet，就不能凭感觉认为舵机安全。
 
-## Capacitor next to the servo
+## 舵机旁的电容
 
-Sometimes an electrolytic capacitor between `+5V` and `GND` next to the servo helps.
+有时在舵机旁边的 `+5V` 和 `GND` 之间加一个电解电容会有帮助。
 
-It does not replace a proper power supply, but can smooth a brief sag at movement start.
+它不能替代合适电源，但可以缓和动作开始时的短暂下陷。
 
-For a small servo: hundreds of microfarads, like `470 uF` or more, with voltage rating above the supply voltage.
+对于小舵机：几百微法，例如 `470 uF` 或更大，耐压高于供电电压。
 
-Electrolytic capacitor polarity matters:
+电解电容有极性：
 
-- capacitor plus to `+5V`;
-- capacitor minus to `GND`.
+- 电容正极接 `+5V`；
+- 电容负极接 `GND`。
 
-If the device needs to be reliable, first choose proper power and wiring, then use a capacitor as an extra measure.
+如果设备需要可靠，先选择正确电源和接线，再把电容作为额外措施。
 
-## Example Klipper configuration
+## Klipper 配置示例
 
-In Klipper, a servo is described with a `[servo]` section.
+在 Klipper 中，舵机用 `[servo]` 段描述。
 
-Example:
+示例：
 
 ```ini
 [servo chamber_damper]
@@ -149,7 +149,7 @@ maximum_pulse_width: 0.002
 initial_angle: 90
 ```
 
-Commands:
+命令：
 
 ```gcode
 SET_SERVO SERVO=chamber_damper ANGLE=0
@@ -157,13 +157,13 @@ SET_SERVO SERVO=chamber_damper ANGLE=90
 SET_SERVO SERVO=chamber_damper ANGLE=180
 ```
 
-Pin names here are typical. In a real device, check your board's pinout.
+这里的引脚名只是典型示例。真实设备中，请检查板卡 pinout。
 
-For mechanics, do not start with `0` and `180` right away. First test a safe range like `60`, `90`, `120`, then expand the angles.
+对于机械部分，不要一开始就用 `0` 和 `180`。先测试安全范围，例如 `60`、`90`、`120`，然后再扩大角度。
 
-## Example Arduino/ESP32 logic
+## Arduino/ESP32 逻辑示例
 
-Arduino approach typically uses the Servo library:
+Arduino 方式通常使用 Servo 库：
 
 ```cpp
 #include <Servo.h>
@@ -179,54 +179,54 @@ void loop() {
 }
 ```
 
-This is just an example of signal logic. Servo power still needs to be designed separately. Even if the signal wire is connected to Arduino or ESP32, the servo motor must not overload the controller power.
+这只是信号逻辑示例。舵机电源仍需要单独设计。即使信号线连接到 Arduino 或 ESP32，舵机电机也不能让控制器电源过载。
 
-## What to check after connecting
+## 连接后要检查什么
 
-Before mounting in the housing:
+安装到外壳前：
 
-- servo receives the correct voltage;
-- power source can handle servo current;
-- controller ground and servo ground are common;
-- signal wire is connected to the right pin;
-- servo moves in the right direction;
-- extreme angles do not break the mechanism;
-- mechanism does not bind;
-- servo does not hum continuously;
-- wires do not catch on the lever or gears;
-- power does not sag after movement;
-- controller does not reboot.
+- 舵机获得正确电压；
+- 电源能承受舵机电流；
+- 控制器地和舵机地共用；
+- 信号线接到正确引脚；
+- 舵机运动方向正确；
+- 极限角度不会损坏机构；
+- 机构不卡住；
+- 舵机不持续嗡嗡响；
+- 导线不会被摇臂或齿轮挂住；
+- 动作后电源不下陷；
+- 控制器不重启。
 
-Test mechanics unloaded and under real load. A damper that moves easily by hand may bind after mounting in the housing.
+在无负载和真实负载下测试机械结构。手动移动很轻松的风门，装进外壳后可能会卡住。
 
-## Common mistakes
+## 常见错误
 
-- powering servo from GPIO;
-- powering servo from a weak 5V board pin;
-- forgetting common ground;
-- trusting wire colors without checking;
-- connecting power backwards;
-- using too-thin wires;
-- not accounting for starting and stalling current;
-- forcing servo to push against a mechanical stop;
-- using angle `0` or `180` when the real mechanism safely runs only in a smaller range;
-- mounting servo near heat without checking operating temperature;
-- treating a continuous rotation servo as a regular positional servo.
+- 从 GPIO 给舵机供电；
+- 从板子弱 5V 引脚给舵机供电；
+- 忘记公共地；
+- 不检查就相信线色；
+- 电源接反；
+- 使用过细导线；
+- 没有计算启动和堵转电流；
+- 强迫舵机推机械限位；
+- 真实机构只在较小范围安全，却使用角度 `0` 或 `180`；
+- 把舵机装在热源附近却不检查工作温度；
+- 把连续旋转舵机当普通位置舵机使用。
 
-## Key points
+## 要点
 
-- A servo has three lines: power, ground, and signal.
-- Signal does not power the servo.
-- Real devices often need a separate 5V/6V power source.
-- Servo ground and controller ground must be common.
-- The most dangerous load is jamming or mechanical binding.
-- Extreme angles need careful selection, not immediate `0` and `180`.
-- If the controller reboots when the servo moves, first check power and common ground.
+- 舵机有三根线：电源、地、信号。
+- 信号不给舵机供电。
+- 真实设备通常需要独立 5V/6V 电源。
+- 舵机地和控制器地必须共用。
+- 最危险的负载是卡死或机械卡住。
+- 极限角度需要谨慎选择，不能直接用 `0` 和 `180`。
+- 如果舵机动作时控制器重启，先检查电源和公共地。
 
-## Related reading
+## 相关阅读
 
-- [Klipper Configuration Reference: Servo](https://www.klipper3d.org/Config_Reference.html#servo) - official `[servo]` section, `SET_SERVO`, angles, and pulse width.
-- [SparkFun: Hobby Servo Tutorial](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/introduction) - basic explanation of hobby servo, three wires, and pulse control.
-- [SparkFun: Servo Trigger Hookup Guide](https://learn.sparkfun.com/tutorials/servo-trigger-hookup-guide/servo-motor-background) - breakdown of electrical connection, typical wire colors, and hobby servo mechanics.
-- [Adafruit: Arduino Lesson 14. Servo Motors](https://learn.adafruit.com/adafruit-arduino-lesson-14-servo-motors?view=all) - practical example of connection, power sag behavior, and capacitor next to servo.
-- [Arduino Servo Library Reference](https://www.arduino.cc/reference/en/libraries/servo/) - official Servo library for Arduino approach.
+- [Klipper Configuration Reference: Servo](https://www.klipper3d.org/Config_Reference.html#servo) - 官方 `[servo]` 段、`SET_SERVO`、角度和脉冲宽度。
+- [SparkFun: Hobby Servo Tutorial](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/introduction) - hobby servo、三根线和脉冲控制的基本说明。
+- [SparkFun: Servo Trigger Hookup Guide](https://learn.sparkfun.com/tutorials/servo-trigger-hookup-guide/servo-motor-background) - 电气连接、常见线色和 hobby servo 机械结构说明。
+- [Adafruit: Arduino Lesson 14. Servo Motors](https://learn.adafruit.com/adafruit-arduino-lesson-14-servo-motors?view=all) - 连接、电源下陷行为和舵机旁电容的实用示例。
+- [Arduino Servo Library Reference](https://www.arduino.cc/reference/en/libraries/servo/) - Arduino 方式的官方 Servo 库。

@@ -1,231 +1,231 @@
 # LED pásy
 
-An LED strip is a flexible board with LEDs and power traces. In a printer, dryer or small DIY device, it's usually used for chamber lighting, status indication, work area lighting or decorative enclosure lighting.
+LED pás je pružná deska s LED a vodivými trasami. V tiskárně, sušičce nebo malém DIY zařízení se obvykle používá pro osvětlení komory, indikaci stavu, osvětlení pracovní plochy nebo dekorativní osvětlení krytu.
 
-The main beginner mistake is treating an LED strip like a small LED. Even a short strip can draw more current than a fan, and a long strip becomes a full power load.
+Hlavní chyba začátečníků je považovat LED pás za malou LED. I krátký pás může odebrat více proudu než ventilátor a dlouhý pás se stane úplnou energetickou zátěží.
 
-## Where It's Used
+## Kde se používá
 
-In DIY devices around a 3D printer, LED strips are useful for:
+V zařízeních pro kutily kolem 3D tiskárny jsou LED pásky užitečné pro:
 
-- lighting the printer chamber;
-- lighting the filament dryer;
+- osvětlení komory tiskárny;
+- osvětlení sušičky vláken;
 - status indication: heating, drying, error, waiting;
-- work area lighting inside the enclosure;
-- soft night lighting without main light;
-- visual signal when print finishes or error occurs.
+- osvětlení pracovní plochy uvnitř krytu;
+- měkké noční osvětlení bez hlavního světla;
+- vizuální signál, když tisk skončí nebo dojde k chybě.
 
-For service lighting, a simple white strip is usually better. For mode indication, RGB or addressable strips are convenient, but they're more complex in power and control.
+Pro provozní osvětlení je obvykle lepší jednoduchý bílý pruh. Pro indikaci režimu jsou vhodné RGB nebo adresovatelné proužky, ale jsou složitější na napájení a ovládání.
 
 ## Voltage: 5V, 12V or 24V
 
-LED strips come in different voltages:
+LED pásky se dodávají v různých napětích:
 
 - `5V` - often addressable strips like WS2812/NeoPixel;
-- `12V` - common white and RGB strips;
-- `24V` - convenient for longer sections and 24V systems.
+- `12V` - běžné bílé a RGB pásky;
+- `24V` - vhodný pro delší úseky a 24V systémy.
 
-Strip voltage must match the power source. You can't connect a `12V` strip to `24V`. A `24V` strip on `12V` may dim or not work. A `5V` strip on `12V` or `24V` will almost certainly be damaged.
+Napětí pásku musí odpovídat napájecímu zdroji. K `24V` nelze připojit pásek `24V`. Proužek `12V` na `5V` může ztmavit nebo nemusí fungovat. Proužek `12V` na `24V` nebo `24V` bude téměř jistě poškozen.
 
-If your printer already has `24V`, that doesn't mean any strip can connect to it. You need to buy exactly a `24V` strip or put a DC-DC converter for the right voltage.
+Pokud vaše tiskárna již má `24V`, neznamená to, že se k ní může připojit jakýkoli proužek. Musíte si koupit přesně pásek `24V` nebo dát DC-DC měnič pro správné napětí.
 
-## Regular and Addressable Strips
+## Pravidelné a adresovatelné proužky
 
-There are two main types of LED strips.
+Existují dva hlavní typy LED pásků.
 
-A regular strip lights up all at once. This could be:
+Běžný pruh se rozsvítí najednou. Může to být:
 
 - single-color white;
 - warm/cold white;
-- RGB strip that changes color all along its length;
-- RGBW strip with separate white channel.
+- RGB pásek, který mění barvu po celé své délce;
+- RGBW pásek se samostatným bílým kanálem.
 
-Such a strip has no microchip on each LED. Brightness is controlled by power switching or PWM through a MOSFET, LED controller or suitable board output.
+Takový pásek nemá na každé LED žádný mikročip. Jas je řízen přepínáním napájení nebo PWM přes MOSFET, LED kontrolér nebo vhodný výstup na desce.
 
-An addressable strip has a control microchip for individual LEDs or LED groups. It lets you light different sections in different colors. Typical examples: WS2812B, SK6812, NeoPixel-compatible strips.
+Adresovatelný pásek má řídící mikročip pro jednotlivé LED nebo skupiny LED. Umožňuje vám osvětlit různé části v různých barvách. Typické příklady: WS2812B, SK6812, proužky kompatibilní s NeoPixel.
 
 Addressable strips require:
 
-- power at the right voltage;
-- common `GND` with controller;
+- výkon při správném napětí;
+- společný `GND` s ovladačem;
 - data wire `DIN`;
-- correct data direction along the arrow on the strip;
+- správný směr dat podle šipky na proužku;
 - often - 5V data signal level;
-- careful power without big drops.
+- opatrná síla bez velkých kapek.
 
-For simple chamber lighting, an addressable strip is usually overkill. For nice indication and effects, it's convenient, but requires more attention to power.
+Pro jednoduché osvětlení komory je adresovatelný pásek obvykle přehnaný. Pro hezkou indikaci a efekty je to pohodlné, ale vyžaduje více pozornosti na napájení.
 
-## Current and Power
+## Proud a výkon
 
-Choose an LED strip not just by color and length. You need to know its power.
+Vybírejte LED pásek nejen podle barvy a délky. Musíte znát jeho sílu.
 
-Product pages usually list:
+Stránky produktů obvykle obsahují:
 
-- voltage: for example `12V` or `24V`;
-- power per meter: for example `4.8 W/m`, `9.6 W/m`, `14.4 W/m`;
-- number of LEDs per meter;
+- napětí: například `24V` nebo `24V`;
+- výkon na metr: například `9.6 W/m`, `14.4 W/m`, `14.4 W/m`;
+- počet LED na metr;
 - LED type: for example `3528`, `5050`, `2835`;
 - strip width;
 - protection degree: bare, silicone jacket, IP65/IP67;
 - maximum length per section.
 
-Current is calculated simply:
+Proud se počítá jednoduše:
 
 ```text
 current = power / voltage
 ```
 
-Example: you have `2 m` of `24V` strip at `9.6 W/m` power.
+Příklad: máte `24V` pásku `9.6 W/m` při napájení `9.6 W/m`.
 
 ```text
 total power = 2 m × 9.6 W/m = 19.2 W
 current = 19.2 W / 24 V = 0.8 A
 ```
 
-For such a strip, the power supply, MOSFET, wires and connector must comfortably handle over `0.8 A`. Practically, it's better to add at least `30-50%` margin, especially if the strip runs for long periods.
+U takového pásku se musí napájecí zdroj, MOSFET, vodiče a konektor pohodlně ovládat přes `30-50%`. Prakticky je lepší přidat okraj alespoň `30-50%`, zvláště pokud pás běží dlouhou dobu.
 
-For RGB strips, you must account for maximum current of all channels. White on RGB usually means red, green and blue channels are on simultaneously.
+U pásků RGB musíte počítat s maximálním proudem všech kanálů. Bílá na RGB obvykle znamená, že jsou současně zapnuté červené, zelené a modré kanály.
 
-For addressable 5V strips, a rough estimate is up to `60 mA` per RGB pixel at full white. In real effects, current can be less, but you can't size the power supply and wiring for "usually not at full brightness".
+U adresovatelných 5V pásků je hrubý odhad až `60 mA` na RGB pixel při plné bílé. V reálných efektech může být proud menší, ale nemůžete dimenzovat napájení a kabeláž na "obvykle ne na plný jas".
 
-## Why You Can't Power a Strip From GPIO
+## Proč nemůžete napájet strip z GPIO
 
-A controller's GPIO is a signal output, not a power source.
+GPIO ovladače je výstup signálu, nikoli zdroj napájení.
 
-You cannot connect an LED strip directly to a microcontroller pin. GPIO is not rated for strip current. This can damage the board, cause reboots, unstable operation or trace overheating.
+LED pásek nelze připojit přímo ke kolíku mikrokontroléru. GPIO není dimenzováno na proud pásu. To může poškodit desku, způsobit restartování, nestabilní provoz nebo přehřátí stopy.
 
 Correct logic:
 
-- strip current comes from the power supply;
-- controller only manages on/off, brightness or data;
-- a MOSFET, LED driver, LED controller or board power output handles the power switching;
-- controller and supply grounds are connected if there's a control signal.
+- páskový proud pochází z napájecího zdroje;
+- ovladač spravuje pouze zapnutí/vypnutí, jas nebo data;
+- MOSFET, LED ovladač, LED kontrolér nebo výkonový výstup desky se stará o přepínání napájení;
+- regulátor a uzemnění napájení jsou propojeny, pokud existuje řídicí signál.
 
-## Connecting a Simple Single-Color Strip
+## Připojení jednoduchého jednobarevného proužku
 
-For a white `12V` or `24V` strip, a low-side MOSFET is often used: the strip's plus is connected to the power plus, and the strip's minus is switched by the MOSFET module.
+Pro bílý pásek `24V` nebo `24V` se často používá nízkostranný MOSFET: plus pásku je připojen k napájecímu plus a mínus pásu je přepínán modulem MOSFET.
 
 ![Close-up of LED strip with SMD diodes](../../img/03-common-components/05-led-strip-closeup.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:LED_strip_closeup.jpg), Akbermamps, CC BY 4.0*
 
-Typical circuit:
+Typický obvod:
 
-1. Power supply `+V` goes to LED strip `+`.
-2. LED strip `-` goes to MOSFET module power output.
-3. Power supply `GND` goes to MOSFET module.
-4. Controller `GND` is connected to power supply `GND`.
-5. Controller control pin goes to MOSFET module input.
+1. Napájení `+` jde na LED pásek `+`.
+2. LED pásek `-` jde na výstup MOSFET modulu.
+3. Napájení `GND` jde do MOSFET modulu.
+4. Regulátor `GND` je připojen ke zdroji `GND`.
+5. Ovládací kolík ovladače jde na vstup modulu MOSFET.
 
-If the printer board already has a managed output for fans or LEDs, you can use it only if it's rated for the needed voltage and current. You cannot connect a long strip to any random connector without checking the output limit.
+Pokud již deska tiskárny má spravovaný výstup pro ventilátory nebo LED diody, můžete ji použít pouze v případě, že je dimenzována na potřebné napětí a proud. Bez kontroly výstupního limitu nemůžete připojit dlouhý pásek k libovolnému náhodnému konektoru.
 
 ## RGB Strip
 
-A typical RGB strip usually has a common plus and three managed minuses:
+Typický pás RGB má obvykle společné plus a tři spravované mínusy:
 
 - `+V`;
 - `R`;
 - `G`;
 - `B`.
 
-Each color channel requires a separate MOSFET channel or a ready-made RGB controller. One MOSFET for the whole RGB strip can only turn it on and off, not change color.
+Každý barevný kanál vyžaduje samostatný MOSFET kanál nebo připravený RGB ovladač. Jeden MOSFET pro celý RGB pásek jej může pouze zapnout a vypnout, ne změnit barvu.
 
-When selecting a MOSFET module for an RGB strip, look at current per channel and total current. The connector, terminal and wire must also handle the load.
+Při výběru modulu MOSFET pro pásek RGB se podívejte na proud na kanál a celkový proud. Konektor, svorka a vodič musí také zvládnout zátěž.
 
 ## Addressable Strip
 
-An addressable strip usually has:
+Adresovatelný pás má obvykle:
 
-- `+5V` or other power if it's not a 5V model;
+- `+5V` nebo jiné napájení, pokud se nejedná o 5V model;
 - `GND`;
 - `DIN` - data input;
-- sometimes `DOUT` - data output to the next section.
+- někdy `DOUT` - výstup dat do další sekce.
 
-Important rules:
+Důležitá pravidla:
 
-- connect data toward the arrow on the strip;
-- controller and strip must have common ground;
-- for 5V addressable strips on a 3.3V controller, you often need a level converter;
-- before a long strip, an electrolytic capacitor across power is useful;
-- a resistor around `300-500 Ohm` is often placed in the data line near the strip input;
-- for a long strip, it's better to supply power not just at the start but at additional points.
+- připojte data směrem k šipce na proužku;
+- regulátor a pásek musí mít společné uzemnění;
+- pro 5V adresovatelné pásky na 3,3V ovladači často potřebujete převodník úrovní;
+- před dlouhým pásem je užitečný elektrolytický kondenzátor přes napájení;
+- rezistor kolem `300-500 Ohm` je často umístěn v datovém vedení poblíž vstupu proužku;
+- u dlouhého pásu je lepší dodávat energii nejen na začátku, ale i na dalších místech.
 
-If an addressable strip is powered from a separate supply, you cannot apply only `DIN` without common `GND`. The data signal then has no proper reference level, and the strip will flicker randomly or not work.
+Pokud je adresovatelný pásek napájen ze samostatného zdroje, nelze použít pouze `GND` bez společného `GND`. Datový signál pak nemá správnou referenční úroveň a proužek bude náhodně blikat nebo nebude fungovat.
 
-## Voltage Drop and Multi-Point Power
+## Pokles napětí a vícebodové napájení
 
-A long LED strip may be bright at the start and noticeably dimmer at the end. This is not "bad controller", it's voltage drop on wires and the strip's copper traces.
+Dlouhý LED pásek může být na začátku jasný a na konci znatelně slabší. To není "špatný regulátor", je to pokles napětí na vodičích a měděné stopy pásku.
 
-The lower the voltage and higher the current, the worse the problem. So `5V` and `12V` strips more often need power from multiple points than `24V` strips of the same power.
+Čím nižší napětí a vyšší proud, tím horší problém. Pásky `12V` a `24V` tedy častěji potřebují napájení z více míst než pásky `24V` se stejným výkonem.
 
 Signs of voltage drop:
 
 - strip end is dimmer;
-- white on RGB shifts to yellow or red;
+- bílá na RGB se změní na žlutou nebo červenou;
 - addressable strip flickers during bright effects;
-- controller reboots when brightening;
+- ovladač se při rozjasnění restartuje;
 - wires, connector or strip start become hot.
 
 Solution:
 
-- use strip at appropriate voltage;
-- use wire with sufficient gauge;
-- apply power to the start and end of long sections;
-- split long strip into sections;
-- use fuse on the power line;
+- použijte pásek s vhodným napětím;
+- použijte drát s dostatečnou tloušťkou;
+- zapojte napájení na začátek a konec dlouhých úseků;
+- rozdělit dlouhý pás na části;
+- použijte pojistku na elektrickém vedení;
 - don't route all current through weak connector or thin traces.
 
-## Heat and Mounting
+## Teplo a montáž
 
-An LED strip itself produces heat. This is especially noticeable for bright strips in silicone jacket and strips mounted inside a closed enclosure.
+LED pásek sám o sobě produkuje teplo. To je zvláště patrné u světlých proužků v silikonovém plášti a u proužků namontovaných uvnitř uzavřeného pouzdra.
 
 Bad mounting locations:
 
 - next to a heater;
-- on soft PLA inside a warm chamber;
-- on a surface that doesn't dissipate heat;
-- where the strip touches moving parts;
-- on a cover that's often removed without a connector.
+- na měkkém PLA uvnitř teplé komory;
+- na povrchu, který neodvádí teplo;
+- kde se pás dotýká pohyblivých částí;
+- na krytu, který se často odstraňuje bez konektoru.
 
-For long life, it's better to mount the strip on an aluminum profile or other surface that dissipates heat. If the strip is inside the printer chamber, account for chamber temperature and adhesive layer temperature.
+Pro dlouhou životnost je lepší pás namontovat na hliníkový profil nebo jiný povrch, který odvádí teplo. Pokud je proužek uvnitř komory tiskárny, zohledněte teplotu komory a teplotu vrstvy lepidla.
 
-## What to Check Before Buying
+## Co zkontrolovat před nákupem
 
-Before buying an LED strip, check:
+Před zakoupením LED pásku zkontrolujte:
 
 - strip voltage;
 - power per meter;
 - total length;
 - color: white, RGB, RGBW, addressable;
 - control type;
-- strip width and mounting location;
+- šířka pásu a místo montáže;
 - installation location temperature;
 - whether you need an aluminum profile;
 - whether you need a MOSFET module or LED controller;
-- whether the power supply can handle the additional load;
-- whether there's a proper connector for servicing.
+- zda napájecí zdroj zvládne dodatečnou zátěž;
+- zda je k dispozici správný konektor pro servis.
 
-For a printer chamber, a `24V` white strip is usually more practical if the whole system is already `24V`. For a small ESP32 indicator, a short `5V` addressable strip might be convenient. For long decorative RGB lighting, it's better to calculate current in advance and think about multi-point power.
+Pro tiskovou komoru je obvykle praktičtější bílý pásek `24V`, pokud je celý systém již `5V`. Pro malý indikátor ESP32 může být vhodný krátký adresovatelný proužek `5V`. Pro dlouhé dekorativní RGB osvětlení je lepší vypočítat proud předem a přemýšlet o vícebodovém napájení.
 
-## Typical Errors
+## Typické chyby
 
-- connected strip to wrong voltage;
-- powering strip from GPIO;
-- didn't calculate current for whole length;
-- selected MOSFET module without margin;
-- connected long strip with thin wire;
-- forgot common ground between controller and strip;
-- connected addressable strip data to `DOUT` instead of `DIN`;
-- didn't install a level converter for 5V addressable strip from 3.3V controller when needed;
-- powered only one end of a long strip;
-- installed strip in hot zone without temperature check;
-- left strip without connector on a removable cover.
+- připojený pásek na špatné napětí;
+- napájecí pásek od GPIO;
+- nevypočítal proud pro celou délku;
+- vybraný modul MOSFET bez okraje;
+- spojený dlouhý pás s tenkým drátem;
+- zapomněli jste na společnou zem mezi ovladačem a pásem;
+- připojena data adresovatelného pásu k `DIN` místo `DIN`;
+- v případě potřeby nenainstaloval převodník úrovní pro 5V adresovatelný pásek z 3,3V ovladače;
+- napájen pouze jeden konec dlouhého pásu;
+- instalován pás v horké zóně bez kontroly teploty;
+- levá lišta bez konektoru na odnímatelném krytu.
 
-## Main Point
+## Hlavní bod
 
-An LED strip is not a signal LED, it's a load. First check voltage and power, then calculate current, select wire, MOSFET or controller, and only then connect to the board.
+LED pásek není signální LED, je to zátěž. Nejprve zkontrolujte napětí a výkon, poté vypočítejte proud, vyberte vodič, MOSFET nebo ovladač a teprve poté připojte k desce.
 
-For simple lighting, choose a regular white strip at system voltage. For effects and indication, you can use an addressable strip, but power, common ground, signal level and voltage drop protection are especially important.
+Pro jednoduché osvětlení zvolte běžný bílý pruh při systémovém napětí. Pro efekty a indikaci můžete použít adresovatelný proužek, ale důležité jsou zejména napájení, společná zem, úroveň signálu a ochrana proti poklesu napětí.
 
 ## Reference Materials
 

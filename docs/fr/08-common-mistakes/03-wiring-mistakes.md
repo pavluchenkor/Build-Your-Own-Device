@@ -74,7 +74,7 @@ Après un test bref sous charge, vérifiez si les bornes et connecteurs se réch
 
 Les fils Dupont sont pratiques pour les breadboards et les signaux faibles.
 
-Mais ils ne peuvent pas être considérés comme le câblage d'alimentation normal pour :
+Mais ils ne peuvent pas être définis comme le câblage d'alimentation normal pour :
 
 - chauffages ;
 - ventilateurs puissants ;

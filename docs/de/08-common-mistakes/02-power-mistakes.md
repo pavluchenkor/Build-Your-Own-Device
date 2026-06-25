@@ -39,7 +39,7 @@ Strom: 120W / 24V = 5A
 minimaler 50% Spielraum: 7.5A
 ```
 
-Also ist die Stromversorgung besser mindestens `24V 7.5A` zu wählen, und in der Praxis oft größer, wenn es Lüfter, Controller, Beleuchtung und andere Lasten gibt.
+Außerdem ist die Stromversorgung mindestens `24V 7.5A` zu wählen, und in der Praxis oft größer, wenn es Lüfter, Controller, Beleuchtung und andere Lasten gibt.
 
 ## Gesamtstrom nicht berechnet
 
@@ -139,7 +139,7 @@ Mindestens:
 5. Anwesenheit gemeinsamen Erdung.
 6. Draht- und Anschlusswärmung nach kurzem Test.
 
-Wenn Gerät nur ohne Last funktioniert, messen Sie es unter Last. Spannung ohne Last könnte normal aussehen.
+Wenn das Gerät nur ohne Last funktioniert, messen Sie es unter Last. Spannung ohne Last könnte normal aussehen.
 
 ## Was nicht zu tun
 

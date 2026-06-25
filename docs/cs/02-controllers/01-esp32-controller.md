@@ -1,190 +1,190 @@
 # Řadič ESP32
 
-ESP32 is a family of Espressif microcontrollers with Wi-Fi, Bluetooth, and a large set of peripherals. In DIY devices, it is often chosen when you need to build a standalone module: it connects to the network itself, reads sensors, shows a page in a browser, and controls simple outputs.
+ESP32 je rodina mikrokontroleérů od Espressifu s Wi-Fi, Bluetooth a rozsáhlou sadou periferií. V DIY zařízeních se volí, když chcete vytvořit samostatný modul: připojuje se ke sítí, čte sensory, zobrazuje stránku v prohlížeči a ovládá jednoduché výstupy.
 
-For devices around a 3D printer, ESP32 is useful not as "another power board," but as a small networked controller: a temperature/humidity sensor, a ventilation module, a simple filter with a web interface, separate camera monitoring, or a standalone dryer.
+Pro zařízení kolem 3D tiskárny je ESP32 užitečný nikoli jako "další silová deska", ale jako malý síťový kontrolér: senzor teploty/vlhkosti, ventilační modul, jednoduchý filtr s webovým rozhraním, samostatný monitoring kamer nebo samostatná sušička.
 
-## Where ESP32 is useful
+## Kde je ESP32 užitečný
 
-Typical tasks:
+Typické úlohy:
 
-- Wi-Fi temperature and humidity sensor;
-- separate fan controller via MOSFET module;
-- controlling a relay or SSR with a low-voltage signal;
-- OLED display over I2C;
-- RFID/NFC reader over SPI or UART;
-- servo with separate power;
-- simple web page for status and settings;
-- integration with MQTT, Home Assistant, or your own local logic;
-- autonomous prototype that does not need to be part of Klipper.
+- Wi-Fi senzor teploty a vlhkosti;
+- oddělený kontrolér ventilátoru přes MOSFET modul;
+- ovládání relé nebo SSR nízkonapěťovým signálem;
+- OLED displej přes I2C;
+- RFID/NFC čtečka přes SPI nebo UART;
+- servo se samostatným napájením;
+- jednoduchá webová stránka pro stav a nastavení;
+- integrace s MQTT, Home Assistant nebo vlastní lokální logikou;
+- autonomní prototyp, který nemusí být součástí Klipperu.
 
-ESP32 is good when the device should live separately from the printer and exchange data over the network. If the task is simply to add pins to Klipper, it is usually better to look at RP2040, STM32, or a ready-made printer board.
+ESP32 je vhodný, když by mělo zařízení fungovat odděleně od tiskárny a vyměňovat si data po síti. Pokud je úkolem pouze přidat piny do Klipperu, je obvykle lepší podívat se na RP2040, STM32 nebo hotovou desku tiskárny.
 
-## Typical device architecture
+## Typická architektura zařízení
 
-ESP32 does not power loads directly. It outputs control signals, and separate modules do the power work.
+ESP32 přímo nenapájí zátěž. Vydává řídicí signály a oddělené moduly dělají vlastní práci se napájením.
 
-![ESP32 development board with GPIO pins](../../img/02-controllers/01-esp32-dev-board.jpg)
+![Vývojová deska ESP32 s GPIO piny](../../img/02-controllers/01-esp32-dev-board.jpg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:ESP32_Dev_Board.jpg), Edwiyanto, CC BY-SA 4.0*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:ESP32_Dev_Board.jpg), Edwiyanto, CC BY-SA 4.0*
 
-In practice, this looks like:
+V praxi to vypadá takto:
 
-- ESP32 is powered from USB or stable `5V` on the development board;
-- the ESP32 logic itself runs on `3.3V`;
-- sensors are connected to GPIO, I2C, SPI, UART, or ADC;
-- fans, LED strips, DC heaters are connected via MOSFET or driver;
-- network heaters are connected only through an appropriate AC SSR/relay and a safe power section;
-- servo is powered from a separate `5V/6V` source, and ESP32 provides only the signal.
+- ESP32 je napájen z USB nebo stabilního `5V` na vývojové desce;
+- samotná logika ESP32 běží na `3.3V`;
+- sensory se připojují na GPIO, I2C, SPI, UART nebo ADC;
+- ventilátory, LED pásky, DC topidla se připojují přes MOSFET nebo driver;
+- síťová topidla se připojují pouze přes vhodné AC SSR/relé a bezpečnou sekci napájení;
+- servo je napájen z oddělného `5V/6V` zdroje, ESP32 poskytuje pouze signál.
 
-GPIO is not a power source for a load. A pin can switch the driver input, but should not power a fan, heater, relay, servo, or LED strip directly.
+GPIO není zdroj napájení pro zátěž. Pin může přepínat vstup driveru, ale neměl by přímo napájet ventilátor, topidlo, relé, servo nebo LED pásku.
 
-## What ESP32 means on a board
+## Co ESP32 znamená na desce
 
-The label "ESP32" can mean different things:
+Označení "ESP32" může znamenat různé věci:
 
-- the ESP32 chip itself;
-- a module with the chip, flash memory, and antenna, such as ESP32-WROOM;
-- a dev board with USB, power regulator, buttons, and exposed pins;
-- newer variants: ESP32-S3, ESP32-C3, ESP32-C6, and others.
+- samotný čip ESP32;
+- modul s čipem, flash pamětí a anténou, například ESP32-WROOM;
+- vývojová deska s USB, regulátorem napájení, tlačítky a exponovanými piny;
+- novější varianty: ESP32-S3, ESP32-C3, ESP32-C6 a další.
 
-For a first project, it is more convenient to use a dev board than a bare module. A dev board already has USB, a power regulator, `BOOT`/`EN` buttons, and pins for breadboarding.
+Pro první projekt je pohodlnější použít vývojovou desku než holý modul. Vývojová deska už má USB, regulátor napájení, tlačítka `BOOT`/`EN` a piny pro breadboard.
 
-Before buying, check:
+Před nákupem zkontrolujte:
 
-- the exact board and chip name;
-- whether it has USB-C or micro-USB;
-- which USB-UART or built-in USB is used;
-- whether there is a schematic and pinout;
-- which GPIO are really exposed;
-- what power regulator is on the board;
-- whether it has a proper antenna and space around it;
-- whether the board size fits your enclosure.
+- přesné jméno desky a čipu;
+- zda má USB-C nebo micro-USB;
+- který USB-UART nebo vestavěný USB se používá;
+- zda existuje schéma a rozložení pinů;
+- které GPIO jsou skutečně exponované;
+- jaký regulátor napájení je na desce;
+- zda má správnou anténu a místo kolem ní;
+- zda velikost desky vyhovuje vašemu pouzdru.
 
-## 3.3V logic
+## Logika 3.3V
 
-ESP32 works with `3.3V` logic. This means that a typical `HIGH` level on GPIO is about `3.3V`, not `5V`.
+ESP32 pracuje s logickou úrovní `3.3V`. To znamená, že typická úroveň `HIGH` na GPIO je přibližně `3.3V`, nikoli `5V`.
 
-What matters:
+Co na tom záleží:
 
-- do not apply `5V` to ESP32 GPIO;
-- for `5V` sensors and modules, you may need a level converter;
-- I2C pull-ups should go to `3.3V` if the bus is connected to ESP32;
-- some ready-made MOSFET/SSR modules may not work reliably from `3.3V`;
-- load power cannot be taken from GPIO.
+- neaplikujte `5V` na GPIO ESP32;
+- u senzorů a modulů `5V` může být potřeba měnič úrovně;
+- pull-up rezistory I2C by měly být připojeny na `3.3V`, pokud je sběrnice připojena k ESP32;
+- některé hotové MOSFET/SSR moduly nemusí spolehlivě fungovat na `3.3V`;
+- napájení zátěže se nemůže brát z GPIO.
 
-Many sensors are already available in `3.3V` variants. For ESP32, this is the best choice.
+Mnoho senzorů je již k dispozici v `3.3V` variantách. Pro ESP32 je to nejlepší volba.
 
-## Power
+## Napájení
 
-Dev boards usually have a USB input and a `5V`/`VIN` pin, and the ESP32 itself is powered by a `3.3V` regulator.
+Vývojové desky mají obvykle vstup USB a pin `5V`/`VIN`, přičemž ESP32 sám je napájen regulátorem `3.3V`.
 
-Common mistakes:
+Běžné chyby:
 
-- powering ESP32 from a weak USB cable;
-- powering a servo, fan, or relay from the `3.3V` pin on the board;
-- connecting a heavy load to the `5V` pin without understanding where that current comes from;
-- not connecting common GND between ESP32 and the low-voltage driver;
-- ESP32 resets when Wi-Fi starts due to power sag.
+- napájení ESP32 ze slabého USB kabelu;
+- napájení serva, ventilátoru nebo relé z pinu `3.3V` na desce;
+- připojení velké zátěže k pinu `5V` bez pochopení, odkud ten proud pochází;
+- nepřipojení společné GND mezi ESP32 a nízkonapěťovým driverem;
+- reset ESP32, když se Wi-Fi spustí kvůli poklesu napájení.
 
-Wi-Fi draws pulsed current. For stable operation, a good cable, regulator, capacitors on the board, and separate power for loads are important.
+Wi-Fi odebírá pulzní proud. Pro stabilní provoz jsou důležité kvalitní kabel, regulátor, kondenzátory na desce a oddělené napájení pro zátěž.
 
-## GPIO and special pins
+## GPIO a speciální piny
 
-ESP32 has many GPIO, but not every pin is equally convenient.
+ESP32 má mnoho GPIO, ale ne každý pin je stejně vhodný.
 
-On classic ESP32:
+V klasickém ESP32:
 
-- some pins are tied to chip loading, these are strapping pins;
-- `GPIO6-GPIO11` are usually occupied by flash memory and are not used;
-- `GPIO34-GPIO39` are input-only;
-- `GPIO1` and `GPIO3` are often used as UART for firmware and logs;
-- some pins may be occupied by LED, button, or other circuits on a specific dev board.
+- některé piny jsou vázány na nahrávání čipu, jedná se o přepínací piny;
+- `GPIO6-GPIO11` jsou obvykle obsazeny flash pamětí a nepoužívají se;
+- `GPIO34-GPIO39` jsou pouze pro vstup;
+- `GPIO1` a `GPIO3` se často používají jako UART pro firmware a logy;
+- některé piny mohou být obsazeny LED, tlačítkem nebo jinými obvody na konkrétní vývojové desce.
 
-Strapping pins determine the boot mode at startup. If external circuitry pulls such a pin the wrong way, ESP32 may not boot or may enter firmware update mode.
+Přepínací piny určují režim spouštění při startu. Pokud externí obvod přetáhne takový pin špatným způsobem, ESP32 se nemusí spustit nebo může vstoupit do režimu aktualizace firmwaru.
 
-Practical rule: for the first version, use pins from the pinout of your specific board and avoid pins marked `BOOT`, `FLASH`, `STRAP`, `TX0`, `RX0`, `GPIO6-GPIO11` unless you understand their role.
+Praktické pravidlo: u první verze používejte piny z rozložení vaší konkrétní desky a vyhněte se pinům označeným `BOOT`, `FLASH`, `STRAP`, `TX0`, `RX0`, `GPIO6-GPIO11`, pokud nerozumíte jejich úloze.
 
-## ADC on ESP32
+## ADC na ESP32
 
-ESP32 can measure analog voltage via ADC, but it is not a laboratory multimeter.
+ESP32 může měřit analogové napětí přes ADC, ale není laboratorním multimetrem.
 
-What matters:
+Co na tom záleží:
 
-- on classic ESP32 there are ADC1 and ADC2;
-- ADC2 conflicts with Wi-Fi, so for a Wi-Fi device it is better to use ADC1 pins;
-- the measurement range depends on the attenuation setting;
-- measurement may require calibration;
-- you cannot apply voltage above the GPIO safe level to ADC;
-- a thermistor usually needs a voltage divider and the correct table/model in firmware.
+- v klasickém ESP32 jsou ADC1 a ADC2;
+- ADC2 koliduje s Wi-Fi, takže u Wi-Fi zařízení je lepší používat piny ADC1;
+- rozsah měření závisí na nastavení útlumu;
+- měření může vyžadovat kalibraci;
+- nemůžete aplikovat napětí nad bezpečnou úroveň GPIO na ADC;
+- termistor obvykle vyžaduje dělič napětí a správnou tabulku/model v firmwaru.
 
-If you need an accurate temperature sensor, it is often simpler to use a digital sensor or a ready-made module with a known library. For an NTC thermistor, ESP32 works, but the circuit and ADC settings must be checked.
+Pokud potřebujete přesný teplotní senzor, je často jednodušší použít digitální senzor nebo hotový modul se známou knihovnou. U NTC termistoru ESP32 funguje, ale obvod a nastavení ADC musí být ověřeny.
 
-## PWM, I2C, SPI, and UART
+## PWM, I2C, SPI a UART
 
-ESP32 is convenient for peripherals:
+ESP32 je vhodný pro periferie:
 
-- PWM via LEDC is suitable for fans, backlighting, and servo signals;
-- I2C is suitable for OLED displays and many sensors;
-- SPI is suitable for RFID modules, displays, and fast devices;
-- UART is suitable for GPS, some sensors, other controllers, and debugging.
+- PWM přes LEDC je vhodný pro ventilátory, podsvícení a signály servomotoru;
+- I2C je vhodný pro OLED displeje a mnoho senzorů;
+- SPI je vhodný pro RFID moduly, displeje a rychlá zařízení;
+- UART je vhodný pro GPS, některé sensory, ostatní kontroléry a ladění.
 
-ESP32 has a flexible GPIO matrix: many signals can be assigned to different pins. But this does not mean any pin is always a good choice. Specific board limitations, flash memory, boot pins, and occupied UART still need to be considered.
+ESP32 má flexibilní GPIO matici: mnoho signálů lze přiřadit různým pinům. Ale to neznamená, že kterýkoli pin je vždy dobrá volba. Specifické omezení desky, flash paměť, boot piny a obsazené UART se stále musí zvážit.
 
-## ESP32 and Klipper
+## ESP32 a Klipper
 
-ESP32 is better viewed as a separate Wi-Fi/IoT device near the printer, not as the main path for an additional MCU in Klipper.
+ESP32 je lépe chápán jako samostatné Wi-Fi/IoT zařízení blízko tiskárny, nikoli jako hlavní cesta pro dodatečný MCU v Klipperu.
 
-Klipper is organized as a host plus one or more MCUs. For new additional MCUs, it is usually more practical to use:
+Klipper je organizován jako host plus jeden nebo více MCU. Pro nové dodatečné MCU je obvykle praktičtější používat:
 
 - RP2040;
 - STM32;
-- ready-made 3D printer boards.
+- hotové desky 3D tiskárny.
 
-ESP32 can exchange data with the printer system separately: via MQTT, HTTP API, Home Assistant, your own server, or another integration. But this is no longer the same as adding `[mcu]` to the Klipper configuration and using pins directly.
+ESP32 může vyměňovat data se systémem tiskárny odděleně: přes MQTT, HTTP API, Home Assistant, vlastní server nebo jinou integraci. Ale to už není stejné jako přidání `[mcu]` do konfigurace Klipperu a přímé používání pinů.
 
-## What to check before buying
+## Co zkontrolovat před nákupem
 
-Before buying an ESP32 board, check:
+Před nákupem desky ESP32 zkontrolujte:
 
-- exact model: ESP32, S3, C3, C6, etc.;
-- logic voltage;
-- whether it has USB and how the board is flashed;
-- whether there is an official pinout or schematic;
-- which pins are safe for GPIO;
-- which pins are input-only;
-- which pins are occupied by flash/PSRAM, USB, UART, or LED;
-- whether you have enough ADC/I2C/SPI/UART for the task;
-- how the board is powered;
-- whether it fits in the enclosure;
-- whether there is a library or firmware for your scenario.
+- přesný model: ESP32, S3, C3, C6 atd.;
+- logické napětí;
+- zda má USB a jak se deska nahrává;
+- zda existuje oficiální rozložení pinů nebo schéma;
+- které piny jsou bezpečné pro GPIO;
+- které piny jsou jen pro vstup;
+- které piny jsou obsazeny flash/PSRAM, USB, UART nebo LED;
+- zda máte dostatek ADC/I2C/SPI/UART pro úkol;
+- jak je deska napájena;
+- zda se vejde do pouzdra;
+- zda existuje knihovna nebo firmware pro váš scénář.
 
-If a board from a marketplace does not have a schematic and a proper pinout, it can be used for experiments, but is not suitable for a device that needs to run unattended for a long time.
+Pokud deska z tržiště nemá schéma a správné rozložení pinů, lze ji použít pro experimenty, ale není vhodná pro zařízení, které musí běžet bez dozoru po dlouhou dobu.
 
-## Common mistakes
+## Běžné chyby
 
-- applying `5V` to ESP32 GPIO;
-- powering a load from GPIO;
-- powering a servo or relay from a weak `3.3V` pin;
-- forgetting common GND with MOSFET/driver;
-- choosing an ADC2 pin for a sensor and then enabling Wi-Fi;
-- using a boot strapping pin so that ESP32 does not start;
-- using `GPIO34-GPIO39` as outputs;
-- buying a module without a pinout and schematic;
-- thinking that "ESP32 with Wi-Fi" automatically means safe network heater control;
-- trying to replace power electronics with firmware.
+- aplikace `5V` na GPIO ESP32;
+- napájení zátěže z GPIO;
+- napájení serva nebo relé ze slabého pinu `3.3V`;
+- zapomenutí společné GND s MOSFET/driverem;
+- výběr ADC2 pinu pro senzor a následné povolení Wi-Fi;
+- používání boot přepínacího pinu, takže se ESP32 nespustí;
+- používání `GPIO34-GPIO39` jako výstupy;
+- nákup modulu bez rozložení pinů a schématu;
+- myšlenka, že "ESP32 s Wi-Fi" automaticky znamená bezpečné řízení síťového topidla;
+- pokus nahradit silovou elektroniku firmwarem.
 
-## Key points
+## Klíčové body
 
-ESP32 is a good choice for autonomous Wi-Fi devices: sensors, web interfaces, simple ventilation control, filters, displays, and peripherals.
+ESP32 je dobrá volba pro autonomní Wi-Fi zařízení: sensory, webová rozhraní, jednoduché řízení ventilace, filtry, displeje a periferie.
 
-But ESP32 works with `3.3V` logic, has special pins, and should not directly power loads. For power circuits, MOSFET, drivers, relays, or SSRs are needed, and for a network heater, a complete safe power section is needed.
+Ale ESP32 pracuje s logikou `3.3V`, má speciální piny a neměl by přímo napájet zátěž. Pro silové obvody jsou potřebné MOSFET, drivery, relé nebo SSR, a pro síťové topidlo je potřebná úplná bezpečná sekce napájení.
 
-## Related materials
+## Související materiály
 
-- [Espressif: ESP32 Wi-Fi & Bluetooth SoC](https://www.espressif.com/en/products/socs/esp32/datasheet) — official overview of the ESP32 family, modules, dev boards, and links to documentation.
-- [Espressif: ESP32 Series Datasheet](https://documentation.espressif.com/esp32_datasheet_en.html) — chip characteristics, peripherals, ADC, PWM, UART, I2C, SPI, and pin limitations.
-- [ESP-IDF Programming Guide: GPIO & RTC GPIO](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/gpio.html) — GPIO table, strapping pins, input-only pins, flash/PSRAM pins, and ADC2 limitation with Wi-Fi.
-- [Espressif: ESP32 Hardware Design Guidelines](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32/esp-hardware-design-guidelines-en-master-esp32.pdf) — recommendations for power, strapping pins, GPIO, ADC, and board design.
-- [Arduino-ESP32: LED Control API](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/ledc.html) — PWM/LEDC in Arduino-ESP32 for fans, backlighting, and other PWM signals.
-- [Klipper: Code overview](https://www.klipper3d.org/Code_Overview.html) — Klipper architectural context for MCU and list of supported micro-controller backends in the source tree.
+- [Espressif: ESP32 Wi-Fi & Bluetooth SoC](https://www.espressif.com/en/products/socs/esp32/datasheet) — oficiální přehled rodiny ESP32, modulů, vývojových desek a odkazů na dokumentaci.
+- [Espressif: ESP32 Series Datasheet](https://documentation.espressif.com/esp32_datasheet_en.html) — charakteristiky čipu, periferie, ADC, PWM, UART, I2C, SPI a omezení pinů.
+- [ESP-IDF Programming Guide: GPIO & RTC GPIO](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/gpio.html) — tabulka GPIO, přepínací piny, piny jen pro vstup, flash/PSRAM piny a omezení ADC2 s Wi-Fi.
+- [Espressif: ESP32 Hardware Design Guidelines](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32/esp-hardware-design-guidelines-en-master-esp32.pdf) — doporučení pro napájení, přepínací piny, GPIO, ADC a návrh desky.
+- [Arduino-ESP32: LED Control API](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/ledc.html) — PWM/LEDC v Arduino-ESP32 pro ventilátory, podsvícení a další PWM signály.
+- [Klipper: Code overview](https://www.klipper3d.org/Code_Overview.html) — kontext architektury Klipperu pro MCU a seznam podporovaných mikrokontrolérů v stromu zdrojů.

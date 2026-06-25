@@ -91,7 +91,7 @@ Dans un séchoir fermé ou une chambre d'imprimante, les conditions sont différ
 - il peut y avoir une alimentation électrique ou un module d'alimentation à l'intérieur ;
 - la charge agit pendant des heures.
 
-Par conséquent, vérifier « j'ai touché la pièce avec ma main, semble aller » n'est pas suffisant.
+Par conséquent, vérifiez « j'ai touché la pièce avec ma main, semble aller » n'est pas suffisant.
 
 Vous devez vérifier l'appareil en fonctionnement réel : avec chauffage, ventilateur, boîtier et runtime similaire à l'utilisation réelle.
 

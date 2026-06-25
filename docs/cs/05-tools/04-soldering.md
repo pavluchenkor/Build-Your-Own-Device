@@ -1,203 +1,203 @@
 # Pájení
 
-Soldering is used when you need to reliably connect a wire to a pad, solder a connector, repair a broken connection, or assemble a small module.
+Pájení se používá, když potřebujete spolehlivě připojit vodič na ploškou desku, zapájet konektor, opravit přerušené spojení nebo složit malý modul.
 
-But soldering should not replace a proper connector, terminal or mechanical fastening where the wire will pull, vibrate or heat.
+Ale pájení by nemělo nahrazovat správný konektor, svorku nebo mechanické upevnění tam, kde se vodič bude zatahovat, chvět nebo zahřívat.
 
-## When soldering is appropriate
+## Kdy je pájení vhodné
 
-Soldering is good for:
+Pájení je dobré pro:
 
-- soldering wires to a board;
-- installing a pin header;
-- repairing a broken wire;
-- connecting a small module;
-- soldering a thermistor or signal wire;
-- prototype assembly.
+- pájení vodičů na desku;
+- montáž pinové lišty;
+- opravy přerušeného vodiče;
+- připojení malého modulu;
+- pájení termistoru nebo signálního vodiče;
+- montáž prototypu.
 
-Soldering is not the best choice for:
+Pájení není nejlepší volba pro:
 
-- frequently disassembled connections;
-- power terminals without strain relief;
-- wires that will move;
-- connections inside hot zones without protection;
-- mains 110-230V AC parts without proper terminals and enclosure.
+- často demontované spoje;
+- napájecí svorky bez odlehčení zatížení;
+- vodiče, které se budou pohybovat;
+- spoje v horkých zónách bez ochrany;
+- síťové součásti 110-230V AC bez správných svorek a krytu.
 
-## Minimal kit
+## Minimální souprava
 
-For proper soldering you need:
+Pro správné pájení potřebujete:
 
-- a soldering iron with temperature control;
-- solder;
-- flux;
-- soldering iron stand;
-- sponge or brass wire for cleaning the tip;
-- wire cutters;
-- wire stripper;
-- tweezers or third hand;
-- heat shrink tubing;
-- isopropyl alcohol for cleaning if needed.
+- pákovací pero s termostatem;
+- pájku;
+- tavidlo;
+- stojánek na pákovací pero;
+- hubku nebo mosazný drát na čistění špičky;
+- kleště na vodiče;
+- striptér na vodiče;
+- pinzetu nebo třetí ruku;
+- srážecí trubice;
+- izopropylový alkohol na čistění, je-li potřeba.
 
-A soldering iron without a stand is a bad idea. A hot tip easily burns your hand, wire, enclosure or table.
+Pákovací pero bez stojánku je špatný nápad. Horká špička snadno spálí vaši ruku, vodič, kryt nebo stůl.
 
-## Tin a wire
+## Zlakování vodiče
 
-Tinning a wire means coating the exposed strands with a thin layer of solder.
+Zlakování vodiče znamená pokrytí exponovaných vláken tenkou vrstvou páječného kovu.
 
-Procedure:
+Postup:
 
-1. Strip a bit of insulation.
-2. Twist the strands together if the wire is multi-strand.
-3. Apply flux if solder doesn't flow well.
-4. Heat the wire with the soldering iron.
-5. Apply some solder to the heated area.
-6. Let the solder flow across the strands.
+1. Odizolujte kousek.
+2. Zkroutěte vláken dohromady, pokud je vodič vícevodičový.
+3. Aplikujte tavidlo, pokud páječný kov neteče dobře.
+4. Zahřejte vodič pákovacím perem.
+5. Aplikujte nějakou pájku na zahřáté místo.
+6. Nechejte páječný kov protéci vlákny.
 
-Don't turn the wire end into a thick stiff blob. Tinning should be neat and thin.
+Neměňte konec vodiče na tlusté tuhé kuličky. Zlakování by mělo být úhledné a tenké.
 
-## Solder a wire to a pad
+## Pájení vodiče na ploškou desku
 
-Procedure:
+Postup:
 
-1. Secure the board and wire.
-2. Tin the pad.
-3. Tin the wire.
-4. Apply the wire to the pad.
-5. Heat both the wire and pad simultaneously.
-6. Let the solder melt and join the parts.
-7. Remove the solder, then the iron.
-8. Don't move the joint while the solder cools.
+1. Zajistěte desku a vodič.
+2. Zlakujte ploškou desku.
+3. Zlakujte vodič.
+4. Aplikujte vodič na ploškou desku.
+5. Zahřejte současně vodič i ploškou desku.
+6. Nechejte páječný kov roztavit a spojit součásti.
+7. Odstraňte páječný kov, pak pero.
+8. Nehýbejte spojem, když se páječný kov chladí.
 
-A good solder joint looks smooth and shiny or evenly dull, depending on the solder. It should not be a blob sitting on top that didn't wet the pad.
+Dobrý pájený spoj vypadá hladce a lesklý nebo rovnoměrně matný, v závislosti na pájce. Neměl by být kuličkou sedící navrchu, která nesmáčela ploškou desku.
 
-## Cold solder joints
+## Studené pájecí spoje
 
-A cold solder joint is where the solder didn't heat up properly and didn't flow normally.
+Studený pájený spoj je tam, kde se páječný kov dostatečně nezahřál a netekel normálně.
 
-Signs:
+Znaky:
 
-- rough surface;
-- solder in a lump;
-- wire moves;
-- contact comes and goes;
-- joint breaks with slight movement.
+- drsný povrch;
+- páječný kov v hrudce;
+- vodič se hýbe;
+- kontakt se přerušuje a obnovuje;
+- spoj se zlomí lehkým pohybem.
 
-Cold solder joints are dangerous because they may work sometimes. In a heated or vibrating device, such a contact will degrade.
+Studené pájecí spoje jsou nebezpečné, protože někdy mohou fungovat. V topném nebo vibračním zařízení se takový kontakt zhoršuje.
 
-Usually a cold joint is fixed by reheating with flux until the solder flows properly.
+Studený spoj se obvykle opraví přehřátím tavidlem, dokud páječný kov správně neteče.
 
-## Overheated pad
+## Přehřátá plošková deska
 
-If you heat a pad too long, it can lift off the board.
+Pokud příliš dlouho zahřívate ploškou desku, může se odlepit od desky.
 
-This especially affects:
+Toto zejména postihuje:
 
-- cheap modules;
-- small pads;
-- thin traces;
-- multiple rework attempts;
-- wires pulling on the pad.
+- levné moduly;
+- malé plošky;
+- tenké vodivé cesty;
+- vícenásobné pokusy o opravu;
+- vodiče tahající na ploškou desku.
 
-If solder doesn't flow, you don't always need to heat longer. Often adding flux, cleaning the tip, using the right temperature or a larger tip helps.
+Pokud páječný kov neteče, ne vždy je třeba zahřívat déle. Často pomůže přidání tavidla, čištění špičky, použití správné teploty nebo větší špičky.
 
-## Flux
+## Tavidlo
 
-Flux helps solder wet the metal.
+Tavidlo pomáhá páječnému kovu smáčet kov.
 
-Without flux, solder often balls up and doesn't join parts well.
+Bez tavidla se páječný kov často kuličkuje a nezpojuje součásti dobře.
 
-After soldering, some flux needs washing off. This depends on flux type:
+Po pájení je třeba část tavidla umýt. To závisí na typu tavidla:
 
-- no-clean can often be left;
-- water-soluble must be removed;
-- active flux should not be left on the board.
+- bez čištění lze často zanechat;
+- rozpustné ve vodě musí být odstraněny;
+- aktivní tavidlo by nemělo být na desce.
 
-If you don't know the flux type, use electronics-grade flux and read its description.
+Pokud neznáte typ tavidla, použijte elektronické tavidlo a přečtěte si jeho popis.
 
-## Heat shrink and insulation
+## Srážecí trubice a izolace
 
-A soldered joint must be insulated.
+Pájený spoj musí být izolován.
 
-For wires, heat shrink tubing is usually used.
+U vodičů se obvykle používá srážecí trubice.
 
-Procedure:
+Postup:
 
-1. Slide heat shrink over the wire before soldering.
-2. Solder the wires.
-3. Check the joint.
-4. Slide the heat shrink into place.
-5. Heat it gently.
+1. Nasuňte srážecí trubici na vodič před pájením.
+2. Pajejte vodiče.
+3. Zkontrolujte spoj.
+4. Nasuňte srážecí trubici na místo.
+5. Jemně ji zahřejte.
 
-Don't leave soldered joints exposed where they might touch the enclosure, another wire, a terminal or a fan.
+Nenechávejte pájecí spoje odhalené tam, kde by se mohly dotknout krytu, jiného vodiče, svorky nebo ventilátoru.
 
-## Strain relief
+## Odlehčení zatížení
 
-Solder doesn't like mechanical stress.
+Páječný kov se nemá mechanickému stresu.
 
-If a wire will pull, vibrate or move, you need strain relief:
+Pokud se vodič bude tahovat, chvět nebo pohybovat, potřebujete odlehčení zatížení:
 
-- cable tie;
-- clamp;
-- strain relief connector;
-- a silicone blob in a safe place;
-- wire fastened to the enclosure;
-- a connector instead of direct soldering.
+- stahovací pásku;
+- svěrku;
+- konektor s odlehčením zatížení;
+- silikónový kuličku na bezpečném místě;
+- vodič připevněný k krytu;
+- konektor místo přímého pájení.
 
-Bad practice: the wire is held only by the solder pad. Over time it can tear the pad loose.
+Špatná praxe: vodič je držen pouze pájenou ploškou. Postupem času to může odtrhnout ploškou ze desky.
 
-## Power wires
+## Síťové vodiče
 
-Power wires must be soldered extra carefully.
+Síťové vodiče musí být pájecí s mimořádnou péčí.
 
-Verify:
+Ověřte:
 
-- wire has the correct gauge;
-- the joint is fully heated;
-- no cold solder joints;
-- no exposed strands;
-- insulation is present;
-- mechanical fastening is present;
-- the joint is not next to a hot zone without protection.
+- vodič má správný průřez;
+- spoj je plně zahřátý;
+- žádné studené pájecí spoje;
+- žádná exponovaná vlákna;
+- izolace je přítomna;
+- mechanické upevnění je přítomno;
+- spoj není vedle horké zóny bez ochrany.
 
-For power lines, a proper terminal or connector is often better than soldering wires permanently.
+Pro napájecí vedení je správná svorka nebo konektor často lepší než permanentní pájení vodičů.
 
-## What to check after soldering
+## Co kontrolovat po pájení
 
-After soldering:
+Po pájení:
 
-- inspect the joint;
-- check that neighboring contacts are not shorted;
-- use the multimeter to check the needed connection;
-- verify no short between `+` and `GND`;
-- gently pull the wire;
-- confirm heat shrink covers the metal;
-- check that the wire doesn't pull the pad.
+- zkontrolujte spoj;
+- ověřte, že sousedící kontakty nejsou skratované;
+- použijte multimetr ke kontrole potřebného spojení;
+- ověřte, že mezi `+` a `GND` není skrat;
+- jemně zatáhněte na vodiči;
+- potvrďte, že srážecí trubice pokrývá kov;
+- zkontrolujte, že vodič netahá ploškou desku.
 
-## Common errors
+## Běžné chyby
 
-- soldering with a dirty tip;
-- not using flux;
-- heating only the solder, not the pad and wire;
-- making a solder blob;
-- moving the wire while solder cools;
-- overheating the pad;
-- leaving an open joint without heat shrink;
-- wire held only by solder;
-- soldering power wire too thin with weak iron;
-- using acid flux not meant for electronics.
+- pájení se špinavou špičkou;
+- nepoužívání tavidla;
+- zahřívání pouze páječného kovu, ne ploškou desky a vodiče;
+- vytvoření pájedného kuličky;
+- pohybování vodiče během chladnutí páječného kovu;
+- přehřívání ploškou desky;
+- zanechání otevřeného spoje bez srážecí trubice;
+- vodič držený pouze pájedným;
+- pájení příliš tenkého síťového vodiče slabým perem;
+- používání kyselého tavidla neurčeného pro elektroniku.
 
-## The essentials
+## Podstata
 
-- Good soldering requires heating both parts, not just dripping solder.
-- Flux often solves poor wetting problems.
-- Cold solder joints may work sometimes, so they are dangerous.
-- A soldered joint must be insulated and mechanically relieved.
-- For frequently disassembled and power connections, a connector or terminal is often better than soldering.
+- Správné pájení vyžaduje zahřívání obou součástí, ne jen kapání páječného kovu.
+- Tavidlo často řeší problémy se špatným smáčením.
+- Studené pájecí spoje někdy mohou fungovat, proto jsou nebezpečné.
+- Pájený spoj musí být izolován a mechanicky odlehčen.
+- Pro často demontované a napájecí spoje je konektor nebo svorka často lepší než pájení.
 
-## Reference materials
+## Referenční materiály
 
-- [SparkFun: How to Solder, Through-Hole Soldering](https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering) - tools, temperature, flux, good soldering and connection checking.
-- [SparkFun: Soldering Your First Component](https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering/soldering-your-first-component) - basic rules: heating the pad and lead, solder application order, good joint shape.
-- [Adafruit: Guide to Excellent Soldering](https://learn.adafruit.com/adafruit-guide-excellent-soldering) - practical soldering guide for electronics.
-- [Adafruit: Common Soldering Problems](https://learn.adafruit.com/adafruit-guide-excellent-soldering/common-problems) - cold joints, overheating, too much solder and fixes.
-- [NASA Workmanship: Soldered Electrical Connections](https://workmanship.nasa.gov/lib/insp/2%20books/links/sections/407%20Soldering.html) - reference material on solder joint quality and mechanical wire support.
+- [SparkFun: Jak pájet, pájení na průchod](https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering) - nářadí, teplota, tavidlo, správné pájení a kontrola spojení.
+- [SparkFun: Pájení vaší první součásti](https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering/soldering-your-first-component) - základní pravidla: zahřívání ploškou a vodiče, pořadí aplikace páječného kovu, dobrý tvar spoje.
+- [Adafruit: Průvodce vynikajícím pájením](https://learn.adafruit.com/adafruit-guide-excellent-soldering) - praktický průvodce pájením pro elektroniku.
+- [Adafruit: Běžné pájecí problémy](https://learn.adafruit.com/adafruit-guide-excellent-soldering/common-problems) - studené spoje, přehřívání, příliš páječného kovu a opravy.
+- [NASA Workmanship: Pájecí elektrická spojení](https://workmanship.nasa.gov/lib/insp/2%20books/links/sections/407%20Soldering.html) - referenční materiál o kvalitě pájeného spoje a mechanické podpoře vodiče.

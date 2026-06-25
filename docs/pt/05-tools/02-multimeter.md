@@ -1,234 +1,234 @@
 # Multímetro
 
-A multimeter is the main first-line diagnostic tool.
+Um multímetro é a principal ferramenta de diagnóstico de primeira linha.
 
-You can check with it:
+Você pode verificar com ele:
 
-- whether power is present;
-- if voltage is correct;
-- where plus and minus are;
-- if a wire is broken;
-- if a fuse is intact;
-- if a thermistor appears to be functional;
-- whether there is voltage sag under load.
+- se há energia presente;
+- se a tensão está correcta;
+- onde está o positivo e negativo;
+- se um fio está quebrado;
+- se um fusível está intacto;
+- se um termistor parece estar funcional;
+- se há queda de tensão sob carga.
 
-But it is easy to make mistakes with a multimeter if you confuse the modes. The most dangerous errors involve measuring current and mains voltage.
+Mas é fácil cometer erros com um multímetro se confundir os modos. Os erros mais perigosos envolvem medir corrente e tensão de rede.
 
-## Probes and ports
+## Sondas e Portas
 
-A multimeter typically has:
+Um multímetro típico tem:
 
-- `COM` - common port, where you almost always insert the black probe;
-- `V/Ohm/mA` or similar port - for voltage, resistance, continuity and small currents;
-- `10A` or `A` - separate port for large current.
+- `COM` - porta comum, onde você quase sempre insere a sonda preta;
+- `V/Ohm/mA` ou semelhante - para tensão, resistência, continuidade e pequenas correntes;
+- `10A` ou `A` - porta separada para corrente grande.
 
-Before measuring, always check:
+Antes de medir, sempre verifique:
 
-- which port the red probe is inserted into;
-- what mode is selected;
-- what exactly you are about to measure.
+- qual porta a sonda vermelha está inserida;
+- qual modo está selecionado;
+- exactamente o que você está prestes a medir.
 
-A very common mistake: after measuring current, you forget to move the probe from `A` back to `V/Ohm`, then try to measure voltage. This can cause a short circuit.
+Um erro muito comum: após medir corrente, você esquece de mover a sonda de `A` de volta para `V/Ohm`, depois tenta medir tensão. Isto pode causar curto-circuito.
 
-## Measuring DC voltage
+## Medindo Tensão DC
 
-DC is direct (constant) voltage. In our devices this is usually:
+DC é tensão directa (constante). Nos nossos dispositivos isto é geralmente:
 
 - `3.3V`;
 - `5V`;
 - `12V`;
 - `24V`.
 
-Procedure:
+Procedimento:
 
-1. Black probe into `COM`.
-2. Red probe into the `V` port.
-3. Select DC voltage mode: usually `V` with a straight line.
-4. Black probe on negative or `GND`.
-5. Red probe on positive.
-6. Read the display.
+1. Sonda preta em `COM`.
+2. Sonda vermelha na porta `V`.
+3. Seleccione modo de tensão DC: geralmente `V` com linha recta.
+4. Sonda preta em negativo ou `GND`.
+5. Sonda vermelha em positivo.
+6. Leia o visor.
 
-If a minus sign appears before the number on the display, the probes are swapped. This is useful: you can determine polarity this way.
+Se um sinal de menos aparece antes do número no visor, as sondas estão trocadas. Isto é útil: você pode determinar a polaridade desta forma.
 
-![Digital multimeter with probes](../../img/05-tools/02-digital-multimeter.jpg)
+![Multímetro digital com sondas](../../img/05-tools/02-digital-multimeter.jpg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
+*Fonte: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 
-## Where to measure voltage
+## Onde Medir Tensão
 
-Don't limit yourself to the power supply output.
+Não se limite apenas à saída da fonte de alimentação.
 
-Check:
+Verifique:
 
-- on the power supply terminals;
-- on the board input;
-- on the load terminals;
-- on a DC-DC module;
-- on the fan;
-- on a servo;
-- on an LED strip.
+- nos terminais da fonte de alimentação;
+- na entrada da placa;
+- nos terminais da carga;
+- num módulo DC-DC;
+- no ventilador;
+- num servo;
+- numa tira LED.
 
-If the power supply shows 24V but the load shows noticeably less, look for sag on the wires, terminals or connectors.
+Se a fonte de alimentação mostra 24V mas a carga mostra notavelmente menos, procure por queda nos fios, terminais ou conectores.
 
-For power supply diagnostics, it is important to measure under load, not just idle.
+Para diagnóstico de fonte de alimentação, é importante medir sob carga, não apenas em vazio.
 
-## Measuring AC voltage
+## Medindo Tensão AC
 
-AC is alternating voltage, such as 110-230V from the mains.
+AC é tensão alternada, como 110-230V da rede.
 
-Mains voltage is dangerous.
+A tensão da rede é perigosa.
 
-If you don't understand what you are doing, don't measure open mains parts with a multimeter. Better to use ready-made safe modules, enclosed terminals and specialist help.
+Se não compreender o que está a fazer, não meça partes de rede abertas com um multímetro. Melhor usar módulos seguros prontos para usar, terminais fechados e ajuda de especialista.
 
-If you do measure, you need:
+Se medir, você precisa:
 
-- a multimeter with safety category **CAT II** or **CAT III** — this is written on the device body next to the voltage, for example `CAT II 600V`. CAT I is not suitable for household mains. CAT III and CAT IV provide extra margin for more complex installations;
-- properly functioning probes with a category not lower than the multimeter;
-- dry hands;
-- enclosed and stable assembly;
-- understanding of where phase and neutral are;
-- no accidental open contact points.
+- um multímetro com categoria de segurança **CAT II** ou **CAT III** — isto está escrito no corpo do dispositivo junto à tensão, por exemplo `CAT II 600V`. CAT I não é adequado para rede doméstica. CAT III e CAT IV fornecem margem extra para instalações mais complexas;
+- sondas em funcionamento apropriado com categoria não inferior ao multímetro;
+- mãos secas;
+- montagem fechada e estável;
+- compreensão de onde estão a fase e neutro;
+- sem pontos de contacto acidental abertos.
 
-For most tasks involving low-voltage electronics, DC measurements are sufficient.
+Para a maioria das tarefas envolvendo electrónica de baixa tensão, medições DC são suficientes.
 
-## Continuity check
+## Verificação de Continuidade
 
-Continuity shows whether two points are electrically connected.
+Continuidade mostra se dois pontos estão electricamente ligados.
 
-It is useful to check:
+É útil para verificar:
 
-- if a wire is intact;
-- if `GND` is connected;
-- if a cable is not broken;
-- if a button works;
-- if a fuse is intact;
-- if neighboring contacts are shorted.
+- se um fio está intacto;
+- se `GND` está ligado;
+- se um cabo não está quebrado;
+- se um botão funciona;
+- se um fusível está intacto;
+- se contactos vizinhos não estão em curto.
 
-Procedure:
+Procedimento:
 
-1. Turn off power.
-2. Set the multimeter to continuity mode: usually a sound icon or diode symbol.
-3. Touch the probes to each other - there should be a beep.
-4. Touch the two points you want to check.
-5. If it beeps, there is a conductive connection between the points.
+1. Desligue a energia.
+2. Coloque o multímetro em modo de continuidade: geralmente um ícone de som ou símbolo de díodo.
+3. Toque as sondas uma à outra - deve haver um bip.
+4. Toque os dois pontos que deseja verificar.
+5. Se der bip, existe uma ligação condutora entre os pontos.
 
-Continuity check is done on a de-energized circuit.
+A verificação de continuidade é feita num circuito desenergizado.
 
-## Resistance
+## Resistência
 
-Resistance is measured in ohms.
+A resistência é medida em ohms.
 
-For our tasks this is needed to:
+Para as nossas tarefas isto é necessário para:
 
-- check a thermistor;
-- check for broken wire;
-- check a fuse;
-- determine if there is a short circuit;
-- check a resistor.
+- verificar um termistor;
+- verificar fio quebrado;
+- verificar um fusível;
+- determinar se existe curto-circuito;
+- verificar um resistor.
 
-Important: resistance is only measured on a de-energized circuit.
+Importante: a resistência é apenas medida num circuito desenergizado.
 
-If you measure resistance on an energized board, you can get incorrect readings or damage the multimeter.
+Se medir resistência numa placa energizada, pode obter leituras incorrectas ou danificar o multímetro.
 
-## Testing a thermistor
+## Testando um Termistor
 
-For a typical NTC `100K` at room temperature, expect tens or around `100 kOhm`.
+Para um NTC típico `100K` à temperatura ambiente, espere dezenas ou cerca de `100 kOhm`.
 
-If the multimeter shows:
+Se o multímetro mostrar:
 
-- `OL` or infinity - likely open circuit;
-- almost `0 Ohm` - likely short circuit;
-- value fluctuating a lot when you move the wire - poor contact;
-- resistance decreasing when heated by your fingers - looks like a live NTC.
+- `OL` ou infinito - provável circuito aberto;
+- quase `0 Ohm` - provável curto-circuito;
+- valor flutuando muito quando move o fio - mau contacto;
+- resistência diminuindo quando aquecida pelos seus dedos - parece um NTC vivo.
 
-Exact values depend on thermistor type and temperature.
+Os valores exactos dependem do tipo de termistor e da temperatura.
 
-## Measuring current
+## Medindo Corrente
 
-Measuring current is more dangerous than measuring voltage.
+Medir corrente é mais perigoso do que medir tensão.
 
-Voltage is measured in parallel: probes touch two points.
+A tensão é medida em paralelo: as sondas tocam dois pontos.
 
-Current is measured in series: you must break the circuit and connect the multimeter in line so current flows through the device.
+A corrente é medida em série: você deve quebrar o circuito e ligar o multímetro na linha para que a corrente flua através do dispositivo.
 
-Mistake - put the multimeter in current mode and touch the probes to the plus and minus of the power supply. That is almost a short circuit through the multimeter.
+Erro - colocar o multímetro em modo de corrente e tocar as sondas no mais e menos da fonte de alimentação. Isto é quase um curto-circuito através do multímetro.
 
-For a beginner it is better to:
+Para um iniciante é melhor:
 
-- first calculate current from power;
-- use ready-made watt meters/USB power meter/DC power meter;
-- measure current only if you understand how to connect the multimeter in series;
-- start with the correct range and correct port.
+- primeiro calcular corrente a partir de potência;
+- usar medidores de watts/medidor de potência USB/medidor de potência DC prontos;
+- medir corrente apenas se compreender como ligar o multímetro em série;
+- começar com o intervalo correcto e porta correcta.
 
-## Checking a fuse
+## Verificando um Fusível
 
-Check the fuse on a de-energized circuit.
+Verifique o fusível num circuito desenergizado.
 
-Methods:
+Métodos:
 
-- continuity;
-- resistance measurement.
+- continuidade;
+- medição de resistência.
 
-A good fuse usually shows continuity and has very low resistance.
+Um fusível bom geralmente mostra continuidade e tem resistência muito baixa.
 
-A blown fuse usually does not show continuity.
+Um fusível queimado geralmente não mostra continuidade.
 
-If a fuse blew, you cannot just install a higher-rated one. First find the cause.
+Se um fusível queimou, você não pode apenas instalar um de classificação superior. Primeiro encontre a causa.
 
-## How not to burn out the multimeter
+## Como Não Queimar o Multímetro
 
-Minimum rules:
+Regras mínimas:
 
-- check the mode before measuring;
-- check the red probe port before measuring;
-- don't measure resistance on an energized circuit;
-- don't measure current like voltage;
-- don't go into 110-230V AC without understanding safety;
-- start with a higher range if the multimeter is not auto-ranging;
-- use functioning probes;
-- don't touch the metal tips with your fingers.
+- verifique o modo antes de medir;
+- verifique a porta da sonda vermelha antes de medir;
+- não meça resistência num circuito energizado;
+- não meça corrente como tensão;
+- não vá para 110-230V AC sem compreender segurança;
+- comece com um intervalo superior se o multímetro não for autovariável;
+- usar sondas em funcionamento;
+- não toque as dicas metálicas com seus dedos.
 
-## Practical scenarios
+## Cenários Práticos
 
-Check a 24V power supply:
+Verifique uma fonte de alimentação 24V:
 
-1. DC voltage mode.
-2. Black probe on negative.
-3. Red probe on positive.
-4. Should read about 24V.
+1. Modo de tensão DC.
+2. Sonda preta em negativo.
+3. Sonda vermelha em positivo.
+4. Deve ler cerca de 24V.
 
-Check a fan:
+Verifique um ventilador:
 
-1. Measure voltage on the fan connector.
-2. Check polarity.
-3. Check voltage during startup.
+1. Meça tensão no conector do ventilador.
+2. Verifique polaridade.
+3. Verifique tensão durante arranque.
 
-Check for broken wire:
+Verifique fio quebrado:
 
-1. Disconnect power.
-2. Continuity mode.
-3. Probes on both ends of the wire.
-4. No beep - possible open circuit.
+1. Desligue a energia.
+2. Modo de continuidade.
+3. Sondas em ambas as extremidades do fio.
+4. Sem bip - possível circuito aberto.
 
-Check for short between `+` and `GND`:
+Verifique curto entre `+` e `GND`:
 
-1. Disconnect power.
-2. Check continuity between `+` and `GND`.
-3. If it beeps where it shouldn't, look for a short.
+1. Desligue a energia.
+2. Verifique continuidade entre `+` e `GND`.
+3. Se der bip onde não deveria, procure um curto.
 
-## The essentials
+## Os Essenciais
 
-- For DC voltage use the `V` mode with a straight line.
-- Resistance and continuity are only done on de-energized circuits.
-- Current is measured in series, not in parallel.
-- After measuring current, move the probe from `A` back to the normal `V/Ohm` port.
-- Mains voltage is dangerous; don't measure open 110-230V parts without understanding safety.
-- A multimeter under load often reveals problems invisible when idle.
+- Para tensão DC use o modo `V` com linha reta.
+- Resistência e continuidade são apenas feitas em circuitos desenergizados.
+- Corrente é medida em série, não em paralelo.
+- Após medir a corrente, mova a sonda de `V/Ohm` de volta para a porta normal `V/Ohm`.
+- Tensão de rede é perigosa; não meça partes abertas 110-230V sem compreender segurança.
+- Um multímetro sob carga frequentemente revela problemas invisíveis quando inativo.
 
-## Reference materials
+## Materiais de Referência
 
-- [SparkFun: How to Use a Multimeter](https://learn.sparkfun.com/tutorials/how-to-use-a-multimeter/all) - practical guide to voltage, current, resistance, continuity and multimeter ports.
-- [Fluke: How to Measure Resistance](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-measure-resistance) - safe resistance measurement.
-- [Fluke: How to Measure AC Voltage](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-measure-ac-voltage) - measuring AC voltage and probe connection order.
-- [Fluke: How to Test for Continuity](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-test-for-continuity) - continuity check and open-circuit search.
-- [Fluke: Choosing the correct fuse for your tester](https://www.fluke.com/en-us/learn/blog/digital-multimeters/choosing-the-correct-fuse-for-your-tester) - why current input ports need proper fuses with correct voltage and interrupt rating.
+- [SparkFun: How to Use a Multimeter](https://learn.sparkfun.com/tutorials/how-to-use-a-multimeter/all) - guia prático para tensão, corrente, resistência, continuidade e portas de multímetro.
+- [Fluke: How to Measure Resistance](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-measure-resistance) - medição segura de resistência.
+- [Fluke: How to Measure AC Voltage](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-measure-ac-voltage) - medir tensão AC e ordem de conexão de sonda.
+- [Fluke: How to Test for Continuity](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-test-for-continuity) - verificação de continuidade e busca de circuito aberto.
+- [Fluke: Choosing the correct fuse for your tester](https://www.fluke.com/en-us/learn/blog/digital-multimeters/choosing-the-correct-fuse-for-your-tester) - por que portas de entrada de corrente precisam de fusíveis apropriados com tensão e classificação de interrupção correctas.

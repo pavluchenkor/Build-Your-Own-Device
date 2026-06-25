@@ -89,11 +89,11 @@ Portanto, você não pode avaliar segurança com apenas a frase "a peça não to
 
 ![Zonas num invólucro impresso para um dispositivo aquecido](../../img/07-3d-printing/01-printed-device-zones.svg)
 
-## A força depende da direcção da camada
+## A força depende da direção da camada
 
 Peças FDM não são igualmente fortes em todas as direcções.
 
-A direcção da camada afecta como uma peça se quebra:
+A direção da camada afeta como uma peça se quebra:
 
 - ao longo das linhas de plástico é geralmente mais forte;
 - entre camadas é frequentemente mais fraca;
@@ -137,13 +137,13 @@ Para zonas quentes e com carga, é melhor pensar desta forma: se uma peça impre
 
 ## O que estará nesta secção
 
-A secção cobre vários tópicos práticos:
+A seção cobre vários tópicos práticos:
 
 - `02-what-is-stl.md` - por que STL não contém material, orientação, força ou instruções de montagem.
 - `03-materials-petg-abs-asa.md` - escolhas básicas entre PETG, ABS e ASA.
 - `04-heat-resistant-materials.md` - como pensar sobre peças perto de calor.
 - `05-enclosure-design.md` - zonas de invólucro, ventilação, fixação, acesso e fiação.
-- `06-why-pla-is-risky.md` - por que PLA é conveniente para protótipos mas arriscado perto de calor.
+- `06-why-pla-is-risky.md` - porque o PLA é conveniente para protótipos mas arriscados perto de calor.
 
 ## O que esta secção não faz
 

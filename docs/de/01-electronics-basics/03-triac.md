@@ -13,7 +13,7 @@ Das TRIAC wird für Wechselstromlasten verwendet. Es wird durch einen Steuerpuls
 In der Praxis:
 
 - MOSFET - typische Wahl für `12V`/`24V` Lüfter, LED-Streifen oder Gleichstromheizer;
-- TRIAC - typisches Element in Wechselstrom-Stromreglern und vielen Wechselstrom-SSRs;
+- TRIAC – typisches Element in Wechselstrom-Stromreglern und vielen Wechselstrom-SSRs;
 - SSR - fertig montiertes Halbleiterrelais mit Optokoppler, TRIAC/Thyristor, Gehäuse, Anschlüssen und manchmal Kühlkörper.
 
 Für einen Anfänger ist es bei einer Netzlast oft sicherer, ein fertig montiertes SSR oder ein zertifiziertes Modul zu verwenden, als eine eigene TRIAC-Schaltung auf einem Steckboard zu montieren.
@@ -123,9 +123,9 @@ In der technischen Spezifikation gibt es viele Parameter. Für die erste Wahl re
 - `VDRM`/`VRRM` — maximale Spannung im ausgeschalteten Zustand. Für 230 V Netz wählen Sie TRIAC mit 600 V oder höher.
 - `IGT` — Gate-Strom. Sollte den Möglichkeiten des Optoisolator-TRIACs entsprechen.
 
-Andere Parameter (`IH`, `dV/dt`, `Tj`, `Rth`) sind für genaue Berechnungen oder bei Problemen in der realen Schaltung wichtig.
+Andere Parameter (`dV/dt`, `Tj`, `Rth`, `Rth`) sind für genaue Berechnungen oder bei Problemen in der realen Schaltung wichtig.
 
-Die Stromwertung in der technischen Spezifikation ist unter bestimmten Kühlungsbedingungen angegeben. In einem geschlossenen, warmen Gehäuse ohne Kühlkörper ist der wirkliche maximale Strom niedriger.
+Die Stromwertung in der technischen Spezifikation ist unter bestimmten Kühlungsbedingungen angegeben. In einem geschlossenen, warmen Gehäuse ohne Kühlkörper ist der wirklich maximale Strom niedriger.
 
 ## TRIAC und SSR
 

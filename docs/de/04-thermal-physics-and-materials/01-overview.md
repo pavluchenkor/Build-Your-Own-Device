@@ -1,12 +1,12 @@
 # Thermophysik und Materialien
 
-Dieser Abschnitt ist für Geräte mit einem Heizer, einer Kammer, einem Filamenttrockner, einem Filter mit warmer Luft, Luftkanälen, Lüftern, Isolierung oder gedruckten Teilen in der Nähe hoher Temperaturen notwendig.
+Dieser Abschnitt ist für Geräte mit einem Heizer, einer Kammer, einem Filamenttrockner, einem Filter mit wärmerer Luft, Luftkanälen, Lüftern, Isolierung oder gedruckten Teilen in der Nähe hoher Temperaturen notwendig.
 
 Sie finden hier keinen akademischen Physikkurs. Das Ziel ist praktisch: verstehen, wohin die Wärme geht, warum das Gehäuse ungleichmäßig heiß wird, warum ein Material für eine Kammerwand geeignet ist, während ein anderes erweichen, rauchen oder zum Brandrisiko werden kann.
 
 ## Warum das wichtig ist
 
-In einem einfachen beheizten Gerät kann man nicht nur so denken:
+In einem einfach beheizten Gerät kann man nicht nur so denken:
 
 ```text
 Heizer eingebaut -> es ist heiß geworden
@@ -23,7 +23,7 @@ In der Praxis muss man andere Fragen beantworten:
 - landen Draht, Terminal oder Kunststoff in der Überhitzungszone;
 - gibt es unabhängigen Überhitzungsschutz.
 
-Ein Gerät kann auf dem Display `45°C` anzeigen, aber neben dem Heizer, Terminal oder in der Luftleitung kann es viel heißer sein. Daher ist nicht nur die Zielkammertemperatur wichtig, sondern auch die lokalen Temperaturen der Teile.
+Ein Gerät kann auf dem Display `45°C` angezeigt werden, aber neben dem Heizer, Terminal oder in der Luftleitung kann es viel heißer sein. Daher ist nicht nur die Zielkammertemperatur wichtig, sondern auch die lokalen Temperaturen der Teile.
 
 ## Drei Wärmegangarten
 
@@ -39,7 +39,7 @@ Wärme überträgt sich auf drei Hauptwegen:
 
 **Strahlung** - eine heiße Oberfläche überträgt Wärme durch Infrarotstrahlung. Zum Beispiel kann ein stark beheiztes Element nahegelegenen Kunststoff ohne direkten Kontakt heizen.
 
-In einem echten Gerät funktionieren alle drei Mechanismen fast immer gleichzeitig.
+In einem echten Gerät funktionieren alle drei Mechanismen schnell immer gleichzeitig.
 
 ## Material ist Teil des Thermischen Systems
 
@@ -86,7 +86,7 @@ Für Gehäuse, Montage oder Luftkanal ist die zulässige Betriebstemperatur, Erw
 
 ## Luft muss richtig fließen
 
-Ein Lüfter in einem beheizten Gerät ist nicht "zum Anschauen" da. Er bestimmt, wie Wärme aus dem Heizer entweicht.
+Ein Lüfter in einem beheizten Gerät ist nicht „zum Anschauen“ da. Er bestimmt, wie Wärme aus dem Heizer entweicht.
 
 Ohne ordentliche Strömung:
 
@@ -128,7 +128,7 @@ Der Abschnitt besteht aus drei praktischen Themen:
 
 Ein beheiztes Gerät ist nicht nur ein Heizer und Sensor. Es ist ein Thermisches System: Heizer, Luft, Gehäuse, Materialien, Drähte, Terminals, Lüfter, Sensoren und Notschutz.
 
-Wenn ein Material bequem, billig und leicht zu schneiden ist, bedeutet das nicht, dass es in die Nähe eines Heizers gestellt werden kann. Überprüfen Sie zuerst die Temperatur, Wärmeübertragung, Brandeigenschaften, Dokumentation und Fehlerszenarien.
+Wenn ein Material bequem, billig und leicht zu schneiden ist, bedeutet das nicht, dass es in die Nähe eines Heizers gestellt werden kann. Überprüfen Sie zunächst die Temperatur, Wärmeübertragung, Brandeigenschaften, Dokumentation und Fehlerszenarien.
 
 ## Materialien zu diesem Thema
 

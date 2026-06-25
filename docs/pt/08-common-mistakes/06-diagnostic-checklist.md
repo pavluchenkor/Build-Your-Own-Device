@@ -1,14 +1,14 @@
 # Lista de Verificação de Diagnóstico
 
-This checklist is needed when the device does not work or behaves strangely.
+Esta lista de verificação é necessária quando o dispositivo não funciona ou se comporta de maneira estranha.
 
-The idea is simple: first remove the danger, then check power and wiring, and only after that move to firmware, sensors, and loads.
+A ideia é simples: primeiro elimine o perigo, depois verifique a alimentação e a fiação e só depois passe para o firmware, sensores e cargas.
 
-## 1. Stop and Turn Off Power
+## 1. Pare e desligue a energia
 
-First, turn off the device.
+Primeiro, desligue o dispositivo.
 
-Especially if there is:
+Especialmente se houver:
 
 - smell;
 - wire heating;
@@ -16,14 +16,14 @@ Especially if there is:
 - smoke;
 - strange sound;
 - sparking;
-- heater will not turn off;
+- o aquecedor não desliga;
 - breaker or fuse trips.
 
-Do not change wires under power.
+Não troque os fios sob alimentação.
 
 ## 2. Disconnect Power Load
 
-Before diagnostics it is better to temporarily disconnect:
+Antes do diagnóstico, é melhor desconectar temporariamente:
 
 - heater;
 - powerful LED strip;
@@ -31,35 +31,35 @@ Before diagnostics it is better to temporarily disconnect:
 - motor;
 - external power load.
 
-First verify controller and logic are alive without dangerous load.
+Primeiro verifique se o controlador e a lógica estão ativos sem carga perigosa.
 
-If device has 110-230V AC, do not hold open mains part under power on the bench.
+Se o dispositivo tiver 110-230 V CA, não mantenha a parte da rede elétrica aberta sob alimentação na bancada.
 
-## 3. Check Power Supply
+## 3. Verifique a fonte de alimentação
 
-With multimeter check:
+Com verificação do multímetro:
 
-- is there voltage at power supply output;
+- existe tensão na saída da fonte de alimentação;
 - is voltage correct;
 - is polarity correct;
-- does voltage sag under load.
+- a tensão cai sob carga.
 
-For example:
+Por exemplo:
 
-- 24V line should be about 24V;
-- 12V line should be about 12V;
-- 5V line should be about 5V;
-- 3.3V line should be about 3.3V.
+- A linha de 24 V deve ser de cerca de 24 V;
+- A linha de 12V deve ser de cerca de 12V;
+- A linha de 5V deve ser de cerca de 5V;
+- A linha de 3,3 V deve ser de cerca de 3,3 V.
 
-Acceptable deviation depends on power supply and device, but an obvious error like 24V instead of 12V should be found before connecting load.
+O desvio aceitável depende da fonte de alimentação e do dispositivo, mas um erro óbvio como 24V em vez de 12V deve ser encontrado antes de conectar a carga.
 
-## 4. Check Polarity
+## 4. Verifique a polaridade
 
-Check where plus and minus are.
+Verifique onde estão mais e menos.
 
-Do not trust only wire color.
+Não confie apenas na cor do fio.
 
-Check:
+Verifique:
 
 - board markings;
 - power supply markings;
@@ -69,11 +69,11 @@ Check:
 
 Reversed polarity often kills module instantly.
 
-## 5. Check Common GND
+## 5. Verifique o GND comum
 
-If there is external module or separate power, check common `GND`.
+Se houver módulo externo ou alimentação separada, verifique `GND` comum.
 
-This is important for:
+Isto é importante para:
 
 - MOSFET module;
 - servo;
@@ -83,123 +83,123 @@ This is important for:
 - external sensors;
 - separate DC-DC.
 
-If signals go between devices, they must have a common reference level, unless the circuit uses special isolation.
+Se os sinais passarem entre dispositivos, eles deverão ter um nível de referência comum, a menos que o circuito utilize isolamento especial.
 
-## 6. Check Terminals and Connectors
+## 6. Verifique os terminais e conectores
 
 Inspect:
 
-- wire inserted all the way;
-- conductor clamped, not insulation;
+- fio inserido até o fim;
+- condutor preso, não isolante;
 - no exposed strands;
 - no darkening;
 - no smell;
-- terminal does not shake;
-- connector does not hold "on faith";
-- case cover does not pinch wire.
+- terminal não treme;
+- o conector não se sustenta "pela fé";
+- a tampa da caixa não comprime o fio.
 
-Move wires with power off. If contact clearly drops mechanically, fix wiring first.
+Mova os fios com a energia desligada. Se o contato cair claramente mecanicamente, conserte a fiação primeiro.
 
-## 7. Check Controller Without Load
+## 7. Verifique o controlador sem carga
 
-Connect controller without power load.
+Conecte o controlador sem carga de energia.
 
-Check:
+Verifique:
 
 - is it detected via USB;
-- does firmware start;
-- is there communication with host;
-- does microcontroller not heat;
-- does power not flicker;
+- o firmware inicia;
+- há comunicação com o anfitrião;
+- o microcontrolador não aquece;
+- a energia não pisca;
 - are logs visible.
 
-If controller is not detected even without load, do not reconnect heater and power modules until you find the cause.
+Se o controlador não for detectado mesmo sem carga, não reconecte o aquecedor e os módulos de energia até encontrar a causa.
 
-## 8. Check Firmware and Configuration
+## 8. Verifique o firmware e a configuração
 
-Check:
+Verifique:
 
-- firmware built for correct board;
+- firmware construído para placa correta;
 - correct serial/CAN/USB path selected;
-- pins in config match pinout;
+- pinos na configuração correspondem à pinagem;
 - `sensor_type` correct;
-- `min_temp` and `max_temp` reasonable;
-- outputs not accidentally inverted;
+- `max_temp` e `max_temp` razoáveis;
+- saídas não invertidas acidentalmente;
 - no pin conflicts.
 
-If heater behaves opposite after configuration change, for example "off", but temperature rises, turn off power and check config and power circuit.
+Se o aquecedor se comportar de maneira oposta após a alteração da configuração, por exemplo, "desligado", mas a temperatura subir, desligue a energia e verifique a configuração e o circuito de energia.
 
-## 9. Check Sensors
+## 9. Verifique os sensores
 
-Before heating check sensors.
+Antes de aquecer, verifique os sensores.
 
-For thermistor:
+Para termistor:
 
 - temperature like room temperature;
 - no `MINTEMP`;
 - no `MAXTEMP`;
 - readings do not jump;
 - resistance like expected;
-- when heated by hand readings change correctly.
+- quando aquecido manualmente, as leituras mudam corretamente.
 
-For other sensors:
+Para outros sensores:
 
 - power correct;
 - interface selected correctly;
 - address or pins match config;
-- wires short and not hanging.
+- fios curtos e não pendurados.
 
-## 10. Check Output Without Load
+## 10. Verifique a saída sem carga
 
-If need to check MOSFET, relay, or board output, do it first without dangerous load.
+Se for necessário verificar o MOSFET, o relé ou a saída da placa, faça-o primeiro sem carga perigosa.
 
 Options:
 
 - small test fan;
-- LED with resistor;
+- LED com resistor;
 - multimeter;
-- weak safe load.
+- carga segura fraca.
 
-Do not start diagnostics with powerful heater.
+Não inicie o diagnóstico com um aquecedor potente.
 
-For heater, before first turn-on, numerical check is useful: measure resistance and compare to expected `R = U^2 / P`. If there is metal case or `PE`, check no short to case. For `12V`/`24V` heater first run is better through lab power supply with current limit or temporary fuse.
+Para o aquecedor, antes de ligar pela primeira vez, a verificação numérica é útil: meça a resistência e compare com o `PE` esperado. Se houver caixa de metal ou `12V`, verifique se não há curto com a caixa. Para o aquecedor `24V`/`24V`, a primeira operação é melhor através da fonte de alimentação do laboratório com limite de corrente ou fusível temporário.
 
-## 11. Check Power Switch Separately
+## 11. Verifique a chave de potência separadamente
 
-For MOSFET/SSR/relay check:
+Para verificação de MOSFET/SSR/relé:
 
 - correct load type: AC or DC;
 - correct voltage;
 - correct terminals;
 - control input;
-- common `GND` if needed;
-- heatsink if needed;
-- input and output not mixed up.
+- `GND` comum, se necessário;
+- dissipador de calor, se necessário;
+- entrada e saída não misturadas.
 
-AC SSR and DC SSR cannot be swapped.
+AC SSR e DC SSR não podem ser trocados.
 
-For SSR separately check "off" state: with control signal removed load must not heat. First better use safe small load, lamp, or multimeter, not main heater.
+Para SSR, verifique separadamente o estado "desligado": com o sinal de controle removido, a carga não deve aquecer. Primeiro, é melhor usar uma carga pequena e segura, uma lâmpada ou um multímetro, e não o aquecedor principal.
 
-## 12. Connect Load with Brief Test
+## 12. Conecte a carga com um breve teste
 
-When basic checks passed, connect load briefly and under supervision.
+Quando as verificações básicas forem aprovadas, conecte a carga brevemente e sob supervisão.
 
-Check:
+Verifique:
 
 - load turns on;
 - load turns off;
 - terminals do not heat;
 - wires do not heat;
-- MOSFET/SSR does not overheat;
+- MOSFET/SSR não superaquece;
 - sensor shows realistic temperature;
-- controller does not reboot;
-- fuse does not trip.
+- o controlador não reinicia;
+- fusível não desarma.
 
-First heater test should not be long and unattended.
+O primeiro teste do aquecedor não deve ser longo e desacompanhado.
 
-## 13. Check After Few Minutes of Operation
+## 13. Verifique após alguns minutos de operação
 
-After few minutes check:
+Após alguns minutos, verifique:
 
 - terminals;
 - wires;
@@ -210,46 +210,46 @@ After few minutes check:
 - sensor readings;
 - controller stability.
 
-If something unexpectedly became hot, turn off power and return to checking power, wiring, and power switch.
+Se algo esquentar inesperadamente, desligue a energia e volte a verificar a energia, a fiação e o interruptor de energia.
 
-## What Not to Do
+## O que não fazer
 
-You cannot:
+Você não pode:
 
-- repeatedly turn on device if something heats or smells;
-- hold 110-230V AC open on the bench;
+- ligue o dispositivo repetidamente se algo aquecer ou cheirar mal;
+- mantenha 110-230 V CA aberto na bancada;
 - change wires under power;
-- increase fuse "so it does not blow";
-- disable thermal protection for testing;
+- aumentar o fusível “para não queimar”;
+- desabilitar a proteção térmica para testes;
 - short emergency thermostat;
-- test powerful heater without temperature sensor;
-- leave first test unattended.
+- teste um aquecedor potente sem sensor de temperatura;
+- deixe o primeiro teste sem supervisão.
 
 ## Short Order
 
-If you need very short order:
+Se você precisar de um pedido muito curto:
 
 1. Turn off power.
 2. Disconnect power load.
-3. Check power supply voltage.
-4. Check polarity.
-5. Check common `GND`.
-6. Check terminals and wires.
-7. Check controller without load.
-8. Check firmware and pinout.
-9. Check sensors.
-10. Check output without dangerous load.
-11. Check MOSFET/SSR/relay.
-12. Connect load with brief test.
-13. Check heating of wires, terminals, and power parts.
+3. Verifique a tensão da fonte de alimentação.
+4. Verifique a polaridade.
+5. Verifique o `GND` comum.
+6. Verifique terminais e fios.
+7. Verifique o controlador sem carga.
+8. Verifique o firmware e a pinagem.
+9. Verifique os sensores.
+10. Verifique a saída sem carga perigosa.
+11. Verifique MOSFET/SSR/relé.
+12. Conecte a carga com um breve teste.
+13. Verifique o aquecimento dos fios, terminais e peças de alimentação.
 
 ## Key Points
 
-- Diagnostics start with turning off power and reducing risk.
-- Power load better disconnected for basic checks.
-- Power, polarity, `GND`, and terminals checked before firmware.
-- Heater cannot be used as first test indicator.
-- If protection triggered, find the cause, not disable protection.
+- O diagnóstico começa desligando a energia e reduzindo o risco.
+- É melhor desconectar a carga de energia para verificações básicas.
+- Alimentação, polaridade, `GND` e terminais verificados antes do firmware.
+- O aquecedor não pode ser usado como primeiro indicador de teste.
+- Se a proteção for acionada, encontre a causa e não desative a proteção.
 
 ## References
 

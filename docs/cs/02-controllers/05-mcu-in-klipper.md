@@ -1,80 +1,80 @@
-# MCU v Klipper
+# MCU v Klipperu
 
-Klipper consists of two main parts:
+Klipper se skládá ze dvou hlavních částí:
 
-- **host** — a Linux computer with Klipper, such as a Raspberry Pi, Orange Pi, mini-PC, or other device;
-- **MCU** — a microcontroller board that physically controls pins.
+- **host** — Linux počítač s Klipperem, například Raspberry Pi, Orange Pi, mini-PC nebo jiné zařízení;
+- **MCU** — deska mikrokontroléru, která fyzicky ovládá piny.
 
-The host makes high-level decisions, reads configuration, processes G-code, and plans actions. The MCU executes precise commands on hardware: switches outputs, reads inputs, counts time, generates PWM, and reports status back to the host.
+Host dělá vysokoúrovňová rozhodnutí, čte konfiguraci, zpracovává G-code a plánuje akce. MCU provádí přesné příkazy na hardwaru: přepíná výstupy, čte vstupy, počítá čas, generuje PWM a hlášení stav zpět do hostu.
 
-## What is an MCU in Klipper
+## Co je MCU v Klipperu
 
-MCU stands for micro-controller unit.
+MCU je zkratka pro mikroprocesorovou jednotku.
 
-In the context of Klipper, it is a specific board:
+V kontextu Klipperu je to konkrétní deska:
 
-- main 3D printer board;
-- separate RP2040 board;
-- separate STM32 board;
-- CAN/toolhead board;
-- additional I/O board.
+- hlavní deska 3D tiskárny;
+- oddělená deska RP2040;
+- oddělená deska STM32;
+- deska CAN/hlava nástrojů;
+- dodatečná deska I/O.
 
-An MCU does not "think like the whole printer." It executes low-level commands sent by the host. This separation makes Klipper flexible: you can add a second or third MCU and use its pins in one shared configuration.
+MCU "nemyslí jako celá tiskárna." Provádí nízkoúrovňové příkazy poslané hostem. Toto rozdělení činí Klipper flexibilním: můžete přidat druhý nebo třetí MCU a jeho piny použít v jedné sdílené konfiguraci.
 
-## How it looks
+## Jak to vypadá
 
-Simplified scheme:
+Zjednodušené schéma:
 
-![Klipper host and multiple MCUs](../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
+![Host Klipperu a několik MCU](../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
 
-The host communicates with the MCU via USB, UART, or CAN. In the Klipper configuration, each MCU gets its own section, and the pins of that MCU are then used in fan, sensor, heater, output, and other module settings.
+Host komunikuje s MCU přes USB, UART nebo CAN. V konfiguraci Klipperu dostane každý MCU svou sekci a piny tohoto MCU se pak používají v nastavení ventilátoru, sensoru, topidla, výstupu a dalších modulů.
 
-## What the host does
+## Co dělá host
 
-The host:
+Host:
 
-- stores and reads `printer.cfg`;
-- accepts G-code and user commands;
-- maintains high-level logic;
-- schedules actions over time;
-- synchronizes communication with the MCU;
-- decides when to switch a fan, heater, or other output;
-- receives readings and status from the MCU.
+- ukládá a čte `printer.cfg`;
+- přijímá G-code a uživatelské příkazy;
+- udržuje vysokoúrovňovou logiku;
+- plánuje akce v čase;
+- synchronizuje komunikaci s MCU;
+- rozhoduje, kdy zapnout ventilátor, topidlo či jiný výstup;
+- přijímá čtení a stav z MCU.
 
-The host does not apply current to a fan or read a thermistor directly if these pins are on an external board. It tells the MCU what to do.
+Host neaplikuje proud na ventilátor a nečte termistor přímo, pokud jsou tyto piny na externí desce. Říká MCU, co má dělat.
 
-## What the MCU does
+## Co dělá MCU
 
-The MCU:
+MCU:
 
-- physically controls GPIO;
-- reads inputs and sensors;
-- generates PWM;
-- executes commands at the right time;
-- reports results to the host;
-- goes into shutdown on errors if firmware and configuration are set up that way.
+- fyzicky ovládá GPIO;
+- čte vstupy a sensory;
+- generuje PWM;
+- provádí příkazy ve správný čas;
+- hlásí výsledky do hostu;
+- vejde do shutdown na chyby, pokud je firmware a konfigurace nastavena tak.
 
-For example, if the configuration has a fan on pin `PA8`, it is the MCU with that pin that changes its state. The host only sends the command.
+Například pokud konfigurace má ventilátor na pinu `PA8`, je právě MCU s tímto pinem, který změní svůj stav. Host pouze posílá příkaz.
 
-## What does `[mcu]` mean
+## Co znamená `[mcu]`
 
-In `printer.cfg`, the `[mcu]` section describes the microcontroller that Klipper should connect to.
+V `printer.cfg` sekce `[mcu]` popisuje mikrokontroleér, ke kterému se má Klipper připojit.
 
-Example for USB/serial:
+Příklad pro USB/sériový:
 
 ```ini
 [mcu]
 serial: /dev/serial/by-id/usb-Klipper_stm32f446xx_...
 ```
 
-For an additional MCU, you use a name:
+Pro dodatečný MCU se používá jméno:
 
 ```ini
 [mcu chamber]
 serial: /dev/serial/by-id/usb-Klipper_rp2040_...
 ```
 
-After this, pins of the additional MCU can be specified with a prefix:
+Poté lze pinům dodatečného MCU zadat předponu:
 
 ```ini
 [temperature_sensor chamber_air]
@@ -85,142 +85,142 @@ sensor_pin: chamber:gpio26
 pin: chamber:gpio15
 ```
 
-The logic is simple: `chamber:gpio15` means "pin `gpio15` on the MCU named `chamber`".
+Logika je jednoduchá: `chamber:gpio15` znamená "pin `gpio15` na MCU pojmenovaném `chamber`".
 
-## Pin names and prefixes
+## Jména pinů a předpony
 
-Klipper uses hardware pin names.
+Klipper používá jména pinů hardwaru.
 
-Examples:
+Příklady:
 
-- for STM32: `PA4`, `PB0`, `PC13`;
-- for RP2040: `gpio15`, `gpio26`;
-- for Arduino/AVR there may be their own aliases.
+- pro STM32: `PA4`, `PB0`, `PC13`;
+- pro RP2040: `gpio15`, `gpio26`;
+- pro Arduino/AVR mohou být vlastní aliasy.
 
-Before a pin name there can be symbols:
+Před jménem pinu mohou být symboly:
 
-- `!` — invert the logic;
-- `^` — enable pull-up if the MCU supports it;
-- `~` — enable pull-down if the MCU supports it.
+- `!` — invertovat logiku;
+- `^` — povolit pull-up, pokud MCU podporuje;
+- `~` — povolit pull-down, pokud MCU podporuje.
 
-Example:
+Příklad:
 
 ```ini
 [gcode_button chamber_door]
 pin: ^chamber:gpio12
 ```
 
-This is not "Klipper magic," but a specific setting of an input pin on a specific MCU. So the board pinout must be accurate.
+To není "Klipperova kouzla", ale konkrétní nastavení vstupního pinu na konkrétním MCU. Takže rozložení pinů desky musí být přesné.
 
-## Why additional MCU is needed
+## Proč je potřeba dodatečný MCU
 
-Additional MCU is useful when you need to separate peripherals into a separate block.
+Dodatečný MCU je užitečný, když potřebujete separovat periferie do samostatného bloku.
 
-Examples for iDryer-like devices:
+Příklady pro zařízení podobná iDryer:
 
-- chamber temperature and humidity sensors;
-- circulation fan;
-- filter fan;
-- backlighting;
-- door button;
-- lid sensor;
-- damper servo;
-- separate module with load cell;
-- additional OLED or RFID;
-- emergency input that is more convenient to route near the device.
+- sensory teploty a vlhkosti komory;
+- oběhový ventilátor;
+- filtr ventilátor;
+- podsvícení;
+- tlačítko dveří;
+- senzor víka;
+- servo tlumidla;
+- oddělený modul s měřítkem zátěže;
+- dodatečný OLED nebo RFID;
+- nouzový vstup, který je pohodlnější směrovat blízko zařízení.
 
-This approach is convenient if the device should be part of a Klipper system, not a separate Wi-Fi box.
+Tento přístup je vhodný, když by mělo zařízení být součástí Klipperu, nikoli samostatná Wi-Fi krabička.
 
-## MCU approach or standalone controller
+## MCU přístup nebo samostatný kontrolér
 
-There are two different paths.
+Existují dvě různé cesty.
 
-**MCU in Klipper**:
+**MCU v Klipperu**:
 
-- the device is controlled from `printer.cfg`;
-- pins are visible to Klipper;
-- you can use existing sections like `fan_generic`, `temperature_sensor`, `heater_generic`, `output_pin`;
-- the state is visible in the Klipper interface;
-- communication with the host is required.
+- zařízení je řízeno z `printer.cfg`;
+- piny jsou viditelné Klipperu;
+- můžete použít existující sekce jako `fan_generic`, `temperature_sensor`, `heater_generic`, `output_pin`;
+- stav je viditelný v rozhraní Klipperu;
+- komunikace s hostem je povinná.
 
-**Standalone controller**:
+**Samostatný kontrolér**:
 
-- the device makes its own decisions;
-- may have Wi-Fi, web interface, MQTT;
-- does not need to depend on the printer;
-- requires its own firmware and safety logic;
-- does not connect as a regular `[mcu]` in Klipper.
+- zařízení si dělá vlastní rozhodnutí;
+- může mít Wi-Fi, webové rozhraní, MQTT;
+- nemusí záviset na tiskárně;
+- vyžaduje vlastní firmware a bezpečnostní logiku;
+- se nepřipojuje jako normální `[mcu]` v Klipperu.
 
-ESP32 is often good for a standalone Wi-Fi device. RP2040 and STM32 are often more convenient as a wired MCU in Klipper.
+ESP32 je často dobrý na samostatné Wi-Fi zařízení. RP2040 a STM32 jsou často pohodlnější jako drátový MCU v Klipperu.
 
-## USB, UART, and CAN
+## USB, UART a CAN
 
-Communication between host and MCU can be different.
+Komunikace mezi hostem a MCU může být různá.
 
-**USB** — the most common and simple option for one or two boards near the host. Convenient for Pico, STM32 boards, and many printer boards.
+**USB** — nejběžnější a jednoduchý na jednu nebo dvě desky blízko hostu. Pohodlný na Pico, desky STM32 a mnoho desek tiskáren.
 
-**UART** — serial communication via separate TX/RX pins. Can be useful on some boards, but requires careful level, ground, and speed connection.
+**UART** — sériová komunikace přes oddělené piny TX/RX. Může být užitečný na některých deskách, ale vyžaduje opatrné připojení úrovně, zem a rychlosti.
 
-**CAN** — convenient for remote modules, toolhead boards, and more stable wired architecture. But CAN requires a supported microcontroller, a CAN transceiver, a proper bus, terminators, and Linux interface setup.
+**CAN** — pohodlný pro vzdálené moduly, desky hlav nástrojů a stabilnější drátovou architekturu. Ale CAN vyžaduje podporovaný mikrokontroleér, CAN transceiver, správnou sběrnici, terminátory a nastavení rozhraní Linuxu.
 
-For a first additional controller, USB is usually simpler. CAN makes sense when there is a real reason: longer wiring, multiple nodes, toolhead board, or existing CAN infrastructure.
+Na první dodatečný kontrolér je USB obvykle jednodušší. CAN má smysl, když je skutečný důvod: delší zapojení, více uzlů, deska hlavy nástrojů nebo existující infrastruktura CAN.
 
-## MCU does not protect the power section
+## MCU nechrání sekci napájení
 
-Important: adding an MCU does not make a load safe.
+Důležité: přidání MCU neučiní zátěž bezpečnou.
 
-If an MCU controls a fan, heater, or SSR, you still need:
+Pokud MCU řídí ventilátor, topidlo nebo SSR, stále potřebujete:
 
-- correct power switch;
-- proper power supply;
-- wires and terminals for the current;
-- fuse;
-- independent thermal protection for the heater;
-- safe enclosure;
-- verification of behavior if communication is lost or the host is turned off.
+- správný spínač napájení;
+- správné napájení;
+- vodiče a svorky na proud;
+- pojistku;
+- nezávislou tepelnou ochranu topidla;
+- bezpečné pouzdro;
+- ověření chování, pokud komunikace bude ztracena nebo je host vypnut.
 
-If the host loses communication with the MCU, Klipper can shut down the system, but this does not replace hardware protection. A heater should be designed so that a single failure of firmware, sensor, SSR, or communication does not lead to an unsafe mode.
+Pokud hostitel ztratí komunikaci s MCU, Klipper může systém vypnout, ale nenahrazuje hardwarovou ochranu. Topidlo by mělo být navrženo tak, aby selhání firmwaru, senzoru, SSR nebo komunikace nevedlo k nebezpečnému režimu.
 
-## What to check before choosing an MCU
+## Co zkontrolovat před výběrem MCU
 
-Before buying a board for Klipper MCU, check:
+Před nákupem desky na MCU Klipperu zkontrolujte:
 
-- whether the microcontroller is supported by Klipper;
-- whether there is a ready configuration or instructions for the board;
-- which communication method is needed: USB, UART, or CAN;
-- how the board is flashed;
-- whether you have enough GPIO, ADC, PWM, I2C, SPI, UART;
-- which pins are really exposed;
-- what GPIO logic: usually `3.3V`;
-- whether drivers/MOSFET/SSR are needed for loads;
-- whether there is documentation for power and pinout;
-- what happens if communication with the MCU is lost.
+- zda je mikrokontroleér podporován Klipperem;
+- zda existuje hotová konfigurace nebo pokyny pro desku;
+- která metoda komunikace je potřebná: USB, UART nebo CAN;
+- jak se deska nahraje;
+- zda máte dost GPIO, ADC, PWM, I2C, SPI, UART;
+- které piny jsou skutečně exponované;
+- jaká logika GPIO: obvykle `3.3V`;
+- zda jsou potřebné drivery/MOSFET/SSR na zátěž;
+- zda je dokumentace na napájení a rozložení pinů;
+- co se stane, pokud komunikace s MCU bude ztracena.
 
-For a first additional MCU, it is usually easier to choose RP2040/Pico or a well-known STM32 board with clear instructions.
+Na první dodatečný MCU je obvykle jednodušší vybrat RP2040/Pico nebo známou desku STM32 s jasnými pokyny.
 
-## Common mistakes
+## Běžné chyby
 
-- thinking the MCU contains all of Klipper's logic;
-- confusing host and MCU;
-- adding `[mcu chamber]` but then specifying pins without the `chamber:` prefix;
-- taking a pin from someone else's pinout;
-- flashing the wrong microcontroller type in `make menuconfig`;
-- not checking bootloader offset and board flashing method;
-- using an unstable USB cable;
-- connecting `5V` to `3.3V` input;
-- powering a load from GPIO;
-- thinking software shutdown replaces a fuse and thermal fuse.
+- myšlenka, že MCU obsahuje veškerou logiku Klipperu;
+- plení si host a MCU;
+- přidání `[mcu chamber]`, ale pak zadání pinů bez předpony `chamber:`;
+- převzetí pinu z něčího rozložení pinů;
+- nahrání špatného typu mikrokontroléru v `make menuconfig`;
+- nekontrolování offsetu bootloaderu a metody nahrávání desky;
+- používání nestabilního USB kabelu;
+- připojení `5V` na `3.3V` vstup;
+- napájení zátěže z GPIO;
+- myšlenka, že softwarové vypnutí nahrazuje pojistku a tepelnou pojistku.
 
-## Key points
+## Klíčové body
 
-In Klipper, an MCU is a board that physically controls pins, and the host plans and coordinates the work. Additional MCU allows you to expand the system and move peripherals closer to the device.
+V Klipperu je MCU deska, která fyzicky ovládá piny, a host plánuje a koordinuje práci. Dodatečný MCU vám umožní rozšířit systém a přesunout periferie blíž k zařízení.
 
-For iDryer-like tasks, this is convenient for fans, sensors, filters, backlighting, buttons, and some actuators. But the power section and heater safety remain a separate hardware task.
+Na úlohy podobné iDryer je to pohodlné na ventilátory, sensory, filtry, podsvícení, tlačítka a některé pohony. Ale sekce napájení a bezpečnost topidla zůstávají samostatným hardwarovým úkolem.
 
-## Related materials
+## Související materiály
 
-- [Klipper: Code overview](https://www.klipper3d.org/Code_Overview.html) — Klipper architecture, division of host code and micro-controller code, timing model, and GPIO.
-- [Klipper: Configuration reference - Micro-controller configuration](https://www.klipper3d.org/Config_Reference.html#micro-controller-configuration) — `[mcu]`, additional `[mcu name]`, pin name format, and prefixes.
-- [Klipper: Installation - Building and flashing the micro-controller](https://www.klipper3d.org/Installation.html#building-and-flashing-the-micro-controller) — general process of `make menuconfig`, building, and flashing the MCU.
-- [Klipper: Bootloaders](https://www.klipper3d.org/Bootloaders.html) — why different boards have different flashing methods and why bootloader matters.
-- [Klipper: CANBUS](https://www.klipper3d.org/CANBUS.html) — CAN communication, `canbus_uuid`, USB-to-CAN bridge, and hardware requirements.
+- [Klipper: Code overview](https://www.klipper3d.org/Code_Overview.html) — architektura Klipperu, dělení kódu hostu a mikrokontroléru, model timingu a GPIO.
+- [Klipper: Configuration reference - Micro-controller configuration](https://www.klipper3d.org/Config_Reference.html#micro-controller-configuration) — `[mcu]`, dodatečný `[mcu name]`, formát jména pinu a předpony.
+- [Klipper: Installation - Building and flashing the micro-controller](https://www.klipper3d.org/Installation.html#building-and-flashing-the-micro-controller) — obecný postup `make menuconfig`, stavby a nahrávání MCU.
+- [Klipper: Bootloaders](https://www.klipper3d.org/Bootloaders.html) — proč se bootloadery liší mezi deskami a proč bootloader záleží.
+- [Klipper: CANBUS](https://www.klipper3d.org/CANBUS.html) — komunikace CAN, `canbus_uuid`, USB-to-CAN most a hardwarové požadavky.

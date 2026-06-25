@@ -83,7 +83,7 @@ Lassen Sie:
 - Belüftung für Elektronik;
 - Zugang um Temperatur nach der Montage zu überprüfen.
 
-Wenn Elektronik in einer geschlossenen Tasche ohne Belüftung sitzt, kann sie auch ohne direkten Kontakt mit dem Heizer überhitzen.
+Wenn die Elektronik in einer geschlossenen Tasche ohne Belüftung sitzt, kann sie auch ohne direkten Kontakt mit dem Heizer überhitzen.
 
 ## Luft muss dort fließen wo nötig
 
@@ -223,7 +223,7 @@ Der erste Test ist am besten unter Aufsicht mit der Möglichkeit durchzuführen,
 - zuerst ein hübsches Gehäuse entwerfen, dann versuchen Drähte zu passen;
 - keinen Platz für Steckverbinder lassen;
 - Stromversorgungsbelüftung blockieren;
-- Controller in eine heiße Ecke legen;
+- Controller in einer heißen Ecke legen;
 - Netz- und Signaldrähte zusammen verlegen;
 - keine Zugentlastung für Kabel bereitstellen;
 - dünne Abstandshalter für Schrauben verwenden;

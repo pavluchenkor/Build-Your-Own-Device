@@ -48,7 +48,7 @@ Eine der Stärken des Pico ist ein einfacher Flash-Vorgang:
 4. Die `.uf2`-Firmware-Datei kopieren.
 5. Das Board startet mit der neuen Firmware neu.
 
-Dies ist praktisch für MicroPython, CircuitPython, C/C++-Projekte und Klipper-Firmware. Für Einsteiger ist diese Methode in der Regel verständlicher als ST-Link, DFU oder ein separates USB-UART.
+Dies ist praktisch für MicroPython, CircuitPython, C/C++-Projekte und Klipper-Firmware. Für Einsteiger ist diese Methode in der Regel verständlicher als ST-Link, DFU oder ein separater USB-UART.
 
 ## RP2040 und Klipper
 
@@ -64,11 +64,11 @@ Die Idee dahinter:
 
 - Linux-Host mit Klipper bleibt der primäre Controller;
 - Pico/RP2040 wird mit Klipper-MCU-Firmware geflasht;
-- ein Haupt- oder zusätzlicher `[mcu]`-Abschnitt wird in `printer.cfg` eingetragen;
+- ein Haupt- oder zusätzlicher `printer.cfg`-Abschnitt wird in `printer.cfg` eingetragen;
 - RP2040-Pins können für Lüfter, Sensoren, PWM und andere Peripherie genutzt werden;
 - Lasten werden weiterhin über MOSFET, Treiber, Relais oder SSR angeschlossen.
 
-Das ist nützlich, wenn ein Teil der Peripherie in einen separaten Block ausgelagert werden soll: zum Beispiel Lüfter, Kamerasensoren, Filter, Beleuchtung, Taster, Endstops oder Serviceausgänge.
+Das ist nützlich, wenn ein Teil der Peripherie in einem separaten Block ausgelagert werden soll: zum Beispiel Lüfter, Kamerasensoren, Filter, Beleuchtung, Taster, Endstops oder Serviceausgänge.
 
 ## GPIO und 3.3V-Logik
 
@@ -84,7 +84,7 @@ Wenn ein Modul „Arduino-kompatibel" ist, bedeutet das nicht, dass es sicher f�
 
 ## Stromversorgung
 
-Pico wird in der Regel über USB oder den `VSYS`-Pin versorgt. Das Board verfügt über einen Regler zur Versorgung des Mikrocontrollers.
+Pico wird in der Regel über USB oder den `VSYS`-Pin mit Strom versorgt. Das Board verfügt über einen Regler zur Versorgung des Mikrocontrollers.
 
 Praktische Regeln:
 
@@ -130,7 +130,7 @@ Es ist wichtig, die Boards nicht zu verwechseln:
 - **Pico W / Pico WH** — RP2040 mit Wi-Fi/Bluetooth-Modul auf dem Board;
 - **Pico 2 / Pico 2 W** — neue Generation auf Basis von RP2350, das ist kein RP2040.
 
-Wenn ein Artikel oder Projekt RP2040 nennt, ist damit in der Regel die erste Generation Pico oder ein kompatibles Board gemeint. Pico 2 ist konzeptionell ähnlich, aber ein anderer Mikrocontroller — Firmware- und Pin-Kompatibilität muss separat geprüft werden.
+Wenn ein Artikel oder Projekt RP2040 heißt, ist damit in der Regel die erste Generation Pico oder ein kompatibles Board gemeint. Pico 2 ist konzeptionell ähnlich, aber ein anderer Mikrocontroller — Firmware- und Pin-Kompatibilität müssen separat geprüft werden.
 
 ## Was vor dem Kauf zu prüfen ist
 

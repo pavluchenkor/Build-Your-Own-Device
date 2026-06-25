@@ -60,7 +60,7 @@ Si el servo es alimentado por una fuente separada, se necesita una tierra común
 
 Sin una tierra común, el controlador y el servo no tienen un nivel de señal común. El servo puede no responder, puede sacudirse o comportarse aleatoriamente.
 
-Conexión simple:
+Conexión sencilla:
 
 1. `+5V` o `+6V` de la fuente de potencia va a la potencia del servo.
 2. `GND` de la fuente de potencia va a la tierra del servo.
@@ -121,7 +121,7 @@ Si la hoja de datos lista la corriente de bloqueo, elija la fuente de alimentaci
 
 ## Capacitor Junto al Servo
 
-A veces un capacitor electrolítico entre `+5V` y `GND` junto al servo ayuda.
+A veces un capacitor electrolítico entre `GND` y `GND` junto al servo ayuda.
 
 No reemplaza una fuente de alimentación adecuada, pero puede suavizar una breve caída al inicio del movimiento.
 

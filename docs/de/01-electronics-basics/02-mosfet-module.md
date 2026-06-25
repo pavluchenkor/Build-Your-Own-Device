@@ -2,7 +2,7 @@
 
 Ein MOSFET-Modul ist eine fertige kleine Platine, die als gesteuerter Stromschalter für DC-Lasten fungiert. Der Controller liefert ein schwaches Steuersignal, und das MOSFET-Modul schaltet den Strom vom Netzteil zur Last ein oder aus.
 
-In iDryer-ähnlichen Geräten und 3D-Drucker-Zubehör wird ein MOSFET-Modul für Lüfter, LED-Streifen, Niedervolt-Heizer und andere `12V`/`24V`-Lasten verwendet, wenn der Standard-Ausgang des Boards schwach, belegt oder unbequem ist.
+In iDryer-ähnlichen Geräten und 3D-Drucker-Zubehör wird ein MOSFET-Modul für Lüfter, LED-Streifen, Niedervolt-Heizer und andere `24V`/`24V`-Lasten verwendet, wenn der Standard-Ausgang des Boards schwach, belegt oder unbequem ist.
 
 ## MOSFET und MOSFET-Modul
 
@@ -58,7 +58,7 @@ Typische Logik:
 
 Gemeinsames `GND` / gemeinsames Minus ist obligatorisch. Ohne es haben der Controller und das MOSFET-Modul keine gemeinsame Referenzbene für das Steuersignal.
 
-Niederseitige Umschaltung hat eine Einschränkung: MOSFET unterbricht den negativen Ende der Last. Während der Schalter ausgeschaltet ist, ist das negative Ende der Last nicht gleich gemeinsam `GND`. Für einen einfachen 2-poligen Lüfter, Streifen oder Heizer ist dies normalerweise in Ordnung. Für eine Last mit Drehzahlmesser, separatem Signaldraht, Sensor im Inneren oder zusätzlicher Verbindung zu einer anderen Platine müssen Sie das Schaltplan überprüfen: manchmal ist es besser, den Standard-Eingang zu steuern oder eine andere Umschaltungsmethode zu verwenden.
+Die niederseitige Umschaltung hat eine Einschränkung: MOSFET unterbricht das negative Ende der Last. Während der Schalter ausgeschaltet ist, ist das negative Ende der Last nicht gleich gemeinsam `GND`. Für einen einfachen 2-poligen Lüfter, Streifen oder Heizer ist dies normalerweise in Ordnung. Für eine Last mit Drehzahlmesser, separatem Signaldraht, Sensor im Inneren oder zusätzlicher Verbindung zu einer anderen Platine müssen Sie das Schaltplan überprüfen: Manchmal ist es besser, den Standard-Eingang zu steuern oder eine andere Umschaltungsmethode zu verwenden.
 
 ## Wo es zu verwenden ist
 
@@ -106,9 +106,9 @@ Wichtige Begriffe:
 - `Rds(on)` - Widerstand des offenen Kanals;
 - Logik-Level-MOSFET - MOSFET bewertet für Kontrolle von Logik-Ebenen.
 
-Häufiger Fehler: Sehen Sie in der technischen Spezifikation `Vgs(th) = 2V` und entscheiden, dass der MOSFET gut von `3.3V` funktioniert. Das stimmt nicht. `Vgs(th)` bedeutet nicht "vollständig offen". Sie müssen `Rds(on)` bei `2.5V`, `3.3V`, `4.5V` oder `5V` überprüfen, abhängig vom Controller.
+Häufiger Fehler: Sehen Sie sich die technische Spezifikation `3.3V` an und entscheiden Sie, dass der MOSFET gut von `Vgs(th)` funktioniert. Das stimmt nicht. `Rds(on)` bedeutet nicht „vollständig offen“. Sie müssen `2.5V` bei `3.3V`, `4.5V`, `5V` oder `5V` überprüfen, abhängig vom Controller.
 
-Für ESP32/RP2040 ist es besser, ein Modul zu wählen, das explizit `3.3V`-Steuerungskompatibilität angibt, oder bei dem die Eingabeschaltung dies bietet. Wenn die Tabelle `Rds(on)` nur bei `10V` hat und keine Daten bei `2.5V`/`3.3V`/`4.5V` vorhanden sind, ist ein solches Modul verdächtig für einen `3.3V`-Controller.
+Für ESP32/RP2040 ist es besser, ein Modul zu wählen, das explizit `Rds(on)`-Steuerungskompatibilität angibt, oder bei dem die Eingabeschaltung dies bietet. Wenn die Tabelle `10V` nur bei `2.5V` hat und keine Daten bei `3.3V`/`4.5V`/`3.3V` vorhanden sind, ist ein solches Modul geeignet für einen `3.3V`-Controller.
 
 ## Strom und Erwärmung
 

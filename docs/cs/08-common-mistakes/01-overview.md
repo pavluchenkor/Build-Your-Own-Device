@@ -1,130 +1,130 @@
 # Časté chyby
 
-This section is not here to criticize you.
+Tato část není určena k posouzení vás.
 
-It is here to help you quickly identify common errors in a DIY device: sagging power supply, loose wire, sensor showing garbage, controller restarting, heater behaving strangely.
+Pomáhá vám rychle identifikovat běžné chyby v DIY zařízení: padající zdroj napájení, volný drát, senzor, který ukazuje nesmysly, řadič se restartuje, topidlo se chová podivně.
 
-The section format is straightforward:
+Formát sekce je přímočarý:
 
-- symptom;
-- probable cause;
-- what to check;
-- what not to do;
-- how to fix safely.
+- příznak;
+- pravděpodobná příčina;
+- co zkontrolovat;
+- co nedělat;
+- jak bezpečně opravit.
 
-## The Main Rule of Diagnostics
+## Hlavní pravidlo diagnostiky
 
-If the device behaves strangely, you do not immediately change firmware, resolder everything, or increase power.
+Pokud se zařízení chová podivně, okamžitě neměňte firmware, neresoldujte vše a nezvyšujte výkon.
 
-First, verify the basics:
+Nejdříve ověřte základy:
 
-1. power supply;
-2. polarity;
-3. common `GND`;
-4. terminals and connectors;
-5. sensors;
-6. power switches;
-7. firmware and configuration.
+1. zdroj napájení;
+2. polarita;
+3. společná `GND`;
+4. terminály a konektory;
+5. senzory;
+6. spínače výkonu;
+7. firmware a konfigurace.
 
-Most problems in simple devices turn out to be not "complex electronics", but power supply, wiring, or incorrect connections.
+Většina problémů v jednoduchých zařízeních se ukazuje jako ne "komplexní elektronika", ale zdroj napájení, zapojení nebo nesprávná připojení.
 
-## When to Stop
+## Kdy zastavit
 
-Immediately turn off power if:
+Okamžitě vypněte napájení, pokud:
 
-- burning smell appears;
-- wire is heating up;
-- terminal is heating up;
-- connector is darkening;
-- case has become hot in an unexpected place;
-- heater will not turn off;
-- breaker or fuse trips;
-- temperature sensor shows garbage;
-- device works only when you move the wire.
+- se objeví vůně pálení;
+- drát se zahřívá;
+- terminál se zahřívá;
+- konektor tmavne;
+- kryt se stal horký na neočekávaném místě;
+- topidlo se nechce vypnout;
+- přerušovač nebo pojistka se vypíchne;
+- teplotní senzor zobrazuje nesmysly;
+- zařízení funguje pouze když pohybujete drát.
 
-Do not "turn it on one more time to look". If something is heating, smelling, or sparking, find the cause first without power.
+Nedělejte "zapálit znovu, abychom se podívali". Pokud se něco zahřívá, páchne nebo jiskří, najděte nejdříve příčinu bez napájení.
 
-## Main Groups of Errors
+## Hlavní skupiny chyb
 
-In this section, errors are divided into groups:
+V této sekci jsou chyby rozděleny do skupin:
 
-- `02-power-mistakes.md` - weak power supply, incorrect voltage, sagging, thin wires, no margin.
-- `03-wiring-mistakes.md` - reversed polarity, poor terminals, no common ground, bad connectors.
-- `04-controller-mistakes.md` - unsuitable board, 3.3V/5V logic, GPIO instead of power output, incorrect firmware.
-- `05-heater-ssr-mistakes.md` - heaters, SSR, MOSFET, 110-230V AC, temperature sensor, heatsinks and protection.
-- `06-diagnostic-checklist.md` - general verification order when device does not work.
+- `02-power-mistakes.md` - slabý zdroj napájení, nesprávné napětí, pokles, tenké dráty, bez rezervy.
+- `03-wiring-mistakes.md` - obrácená polarita, špatné terminály, bez společné země, špatné konektory.
+- `04-controller-mistakes.md` - nevhodný řadič, logika 3,3V/5V, GPIO místo výstupu výkonu, nesprávný firmware.
+- `05-heater-ssr-mistakes.md` - topidla, SSR, MOSFET, 110-230V AC, teplotní senzor, chladiče a ochrana.
+- `06-diagnostic-checklist.md` - obecné pořadí ověřování, když zařízení nefunguje.
 
-## Why Power Supply is Checked First
+## Proč se nejdřív kontroluje zdroj napájení
 
-Power supply affects almost everything.
+Zdroj napájení ovlivňuje téměř vše.
 
-If the power supply is weak or the wires are thin, symptoms may look like a firmware issue:
+Pokud je zdroj napájení slabý nebo dráty tenké, příznaky mohou vypadat jako problém s firmwarem:
 
-- controller reboots;
-- Wi-Fi drops off;
-- screen flickers;
-- servo jerks;
-- fan does not start;
-- sensors show random values;
-- heater heats poorly.
+- řadič se restartuje;
+- Wi-Fi vypadne;
+- obrazovka bliká;
+- servo se trhá;
+- ventilátor se nespustí;
+- senzory zobrazují náhodné hodnoty;
+- topidlo topí slabě.
 
-Until the power supply is checked with a multimeter under load, it is difficult to confidently diagnose everything else.
+Dokud se zdroj napájení nezkontroluje s multimetrem pod zátěží, je obtížné se sebou diagnostikovat vše ostatní.
 
-## Why Wiring is More Important Than It Seems
+## Proč je zapojení důležitější, než se zdá
 
-A poor connection can work "almost normally".
+Špatné spojení může pracovat "téměř normálně".
 
-This is exactly what is dangerous:
+To je přesně to, co je nebezpečné:
 
-- today it works;
-- when vibrated it disconnects;
-- when heated, the contact gets worse;
-- terminal gradually darkens;
-- wire begins to heat up;
-- sensor appears and disappears.
+- dnes funguje;
+- při vibracích se odpojí;
+- když se zahřeje, kontakt se zhorší;
+- terminál postupně tmavne;
+- drát začíná se zahřívat;
+- senzor se objevuje a mizí.
 
-If the device changes behavior when you move the wire, this is not a software error. This is a connection problem.
+Pokud se zařízení změní chování, když pohybujete drát, nejedná se o chybu softwaru. Jedná se o problém s připojením.
 
-## Why Protection Must Not Be Disabled
+## Proč se ochrana nesmí vypínat
 
-Thermal runaway, `MINTEMP`, `MAXTEMP`, `heater not heating` and similar errors exist not to annoy the user.
+Tepelný únik, `MINTEMP`, `MAXTEMP`, `topidlo se neohřívá` a podobné chyby existují ne proto, aby se obtěžovalo uživatele.
 
-These are signs that the controller no longer trusts the temperature reading or sees dangerous heating behavior.
+Jsou to znamení, že řadič již nedůvěřuje odečtu teploty nebo vidí nebezpečné chování vytápění.
 
-Bad idea:
+Špatná myšlenka:
 
-- disable thermal protection;
-- expand temperature limits without understanding the reason;
-- replace the fuse with a larger one;
-- short the thermostat directly;
-- short the protection "for testing".
+- vypnout tepelnou ochranu;
+- rozšířit teplotní limity bez pochopení důvodu;
+- nahradit pojistku větší;
+- zkratovat termostat přímo;
+- zkratovat ochranu "k testování".
 
-Right idea: find the reason for the protection to trigger.
+Správná myšlenka: najít důvod, proč se ochrana aktivuje.
 
-## How to Read This Section
+## Jak číst tuto sekci
 
-If the device does not work at all, start with the diagnostic checklist.
+Pokud zařízení vůbec nefunguje, začněte se seznamem diagnostiky.
 
-If the symptom is clear, go to the relevant article:
+Pokud je příznak jasný, přejděte na relevantní článek:
 
-- reboots, flickering, weak heat - power supply;
-- works when you move the wire - wiring;
-- board not detected or pins not responding - controller;
-- heater will not turn off or SSR is heating - heater and SSR;
-- everything is unclear - general checklist.
+- restartování, blikání, slabé topidlo - zdroj napájení;
+- funguje, když pohybujete drát - zapojení;
+- řadič není detekován nebo piny nereagují - řadič;
+- topidlo se nechce vypnout nebo SSR se zahřívá - topidlo a SSR;
+- vše je nejasné - obecný seznam.
 
-## Key Points
+## Klíčové body
 
-- Most errors start with power, wiring, and incorrect connections.
-- If something is heating, smelling, or darkening, turn off power.
-- Diagnostics proceed from simple to complex.
-- Firmware protection and hardware protection must not be disabled for convenience.
-- The AC mains 110-230V cannot be diagnosed "on the bench" without understanding electrical safety.
+- Většina chyb začíná napájením, zapojením a nesprávnými připojeními.
+- Pokud se něco zahřívá, páchne nebo tmavne, vypněte napájení.
+- Diagnostika probíhá od jednoduchého ke složitému.
+- Ochrana firmwaru a hardwaru se nesmí vypínat pro pohodlí.
+- Sítě střídavého proudu 110-230V se nemohou diagnostikovat "na stole" bez pochopení elektrobezpečnosti.
 
-## References
+## Reference
 
-- [SparkFun: Troubleshooting Tips](https://learn.sparkfun.com/tutorials/sparkfun-troubleshooting-tips/hardware-checks) - basic approach to checking connections, power supply, heating, and hardware problems.
-- [SparkFun: How to Power a Project](https://learn.sparkfun.com/tutorials/how-to-power-a-project/voltagecurrent-considerations) - voltage, current, and selecting power for an electronic project.
-- [Tom's Hardware: How to Fix 3D Printer Thermal Runaway](https://www.tomshardware.com/3d-printing/how-to-fix-3d-printer-thermal-runaway) - practical analysis of temperature sensor, heater, fan, power supply, and wiring during thermal runaway.
-- [Klipper Configuration Reference: verify_heater](https://www.klipper3d.org/Config_Reference.html#verify_heater) - official heater verification and temperature sensor checking by expected temperature rise and accumulated error.
-- [SparkFun Qwiic Power Meter guide](https://docs.sparkfun.com/SparkFun_Qwiic_Power_Meter_ACS37800/hardware_assembly/) - example of the need for common `GND` when measuring/controlling external load.
+- [SparkFun: Tipy pro řešení problémů](https://learn.sparkfun.com/tutorials/sparkfun-troubleshooting-tips/hardware-checks) - základní přístup ke kontrole připojení, napájení, vytápění a hardwarových problémů.
+- [SparkFun: Jak napájet projekt](https://learn.sparkfun.com/tutorials/how-to-power-a-project/voltagecurrent-considerations) - napětí, proud a výběr napájení pro elektronický projekt.
+- [Tom's Hardware: Jak opravit tepelný únik 3D tiskárny](https://www.tomshardware.com/3d-printing/how-to-fix-3d-printer-thermal-runaway) - praktická analýza teplotního senzoru, topidla, ventilátoru, zdroje napájení a zapojení během tepelného úniku.
+- [Klipper Configuration Reference: verify_heater](https://www.klipper3d.org/Config_Reference.html#verify_heater) - oficiální ověření topidla a kontrola teplotního senzoru podle očekávaného nárůstu teploty a akumulované chyby.
+- [Průvodce měřičem napájení SparkFun Qwiic](https://docs.sparkfun.com/SparkFun_Qwiic_Power_Meter_ACS37800/hardware_assembly/) - příklad potřeby společné `GND` při měření/řízení externí zátěže.

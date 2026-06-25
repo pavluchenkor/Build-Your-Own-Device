@@ -1,64 +1,64 @@
-# Tenzometry
+# Snímače hmotnosti
 
-A load cell measures force through tiny metal deformation. Weighing a spool, monitoring remaining filament and simple weight platforms almost always use such sensors.
+Siloměr měří sílu prostřednictvím drobné deformace kovu. Vážení cívky, sledování zbývajícího vlákna a jednoduché zátěžové plošiny téměř vždy používají takové senzory.
 
-Important to understand: a load cell doesn't "feel weight" by itself. It slightly bends or compresses under load, and electronics measure the microscopic resistance change in strain gauges. So two things are critical: correct mechanics and a normal amplifier/ADC.
+Důležité k pochopení: siloměr sám o sobě „necítí váhu“. Při zatížení se mírně ohýbá nebo stlačuje a elektronika měří mikroskopickou změnu odporu na tenzometrech. Takže dvě věci jsou kritické: správná mechanika a normální zesilovač/ADC.
 
-## Where It's Used
+## Kde se používá
 
-In iDryer-like projects, a load cell can be used for:
+V projektech podobných iDryer lze snímač zatížení použít pro:
 
-- estimating spool weight with filament;
-- rough calculation of remaining plastic;
-- checking that the spool is installed;
+- odhad hmotnosti cívky s vláknem;
+- hrubý výpočet zbývajícího plastu;
+- kontrola, zda je cívka nainstalována;
 - detecting sudden weight change;
-- measuring load on a small mechanism;
+- měření zatížení na malém mechanismu;
 - experimental weight platform;
-- dosing control in DIY systems.
+- řízení dávkování v systémech pro kutily.
 
-For simple "spool present/absent", sometimes a limit switch or optical sensor is enough. A load cell is needed when it's important to actually measure weight or force change.
+Pro jednoduché "cívka přítomna/nepřítomna" někdy stačí koncový spínač nebo optický senzor. Siloměr je potřeba, když je důležité skutečně měřit hmotnost nebo změnu síly.
 
-## Why HX711 Is Needed
+## Proč je potřeba HX711
 
-A load cell signal is very weak. A typical analog input on ESP32, Arduino or a printer board usually doesn't work for direct connection.
+Signál snímače zatížení je velmi slabý. Typický analogový vstup na ESP32, Arduinu nebo desce tiskárny obvykle nefunguje pro přímé připojení.
 
-So a load cell is usually connected through HX711 or a similar module. HX711 does two things:
+Takže snímač zatížení je obvykle připojen přes HX711 nebo podobný modul. HX711 dělá dvě věci:
 
-- amplifies the weak differential bridge signal;
-- converts it to digital data for the controller.
+- zesiluje slabý signál diferenciálního můstku;
+- převádí je na digitální data pro regulátor.
 
-Typical chain:
+Typický řetěz:
 
 ```text
 load cell -> HX711 -> controller
 ```
 
-Detailed connection diagram is in the practical section: [Connecting a load cell](../06-practical-guides/04-connecting-load-cell.md).
+Podrobné schéma zapojení je v praktické části: [Připojení siloměru](../06-practical-guides/04-connecting-load-cell.md).
 
-## What Types of Load Cells Exist
+## Jaké typy snímačů zatížení existují
 
-In small projects, the most common are:
+U malých projektů jsou nejčastější:
 
-- beam cell - convenient for small platforms and spool holders;
-- S-type cell - works in tension/compression, often used in hanging setups;
+- buňka nosníku - vhodná pro malé plošiny a držáky cívek;
+- Buňka typu S - pracuje v tahu/kompresi, často se používá v závěsných sestavách;
 - button cell - measures compression at one point;
-- four cells on a platform - typical floor scale design;
-- single strain gauge elements - require proper bridge and mechanics, harder for beginners.
+- čtyři buňky na plošině - typické provedení podlahové váhy;
+- jednotlivé tenzometrické prvky - vyžadují správný můstek a mechaniku, těžší pro začátečníky.
 
-For a DIY spool weight system, it's usually easier to start with a beam load cell on `5 kg`, `10 kg` or nearby range. But the range depends on spool mass, holder and possible jerks.
+U systému závaží na cívku pro kutily je obvykle jednodušší začít s paprskovým siloměrem na `10 kg`, `10 kg` nebo blízkém dosahu. Dosah však závisí na hmotnosti cívky, držáku a případných trhnutích.
 
-## Wires and Bridge
+## Dráty a most
 
 Most common four-wire load cells have a bridge circuit.
 
-On HX711, you usually see markings:
+Na HX711 obvykle vidíte značky:
 
 - `E+` or `VCC` - bridge power plus;
 - `E-` or `GND` - bridge power minus;
 - `A+`, `S+`, `O+` - positive measurement signal;
 - `A-`, `S-`, `O-` - negative measurement signal.
 
-Common color scheme:
+Běžné barevné schéma:
 
 - red - `E+`;
 - black - `E-`;
@@ -66,133 +66,133 @@ Common color scheme:
 - white - `A-`;
 - yellow, foil or separate wire - shield.
 
-Colors are not guaranteed. If there's a technical description of the specific cell, it's more important than any internet table. If readings go the wrong way, often just swapping `A+` and `A-` or accounting for the sign in the program is enough.
+Barvy nejsou zaručeny. Pokud existuje technický popis konkrétní buňky, je důležitější než jakákoli internetová tabulka. Pokud jdou odečty špatným směrem, často stačí jen prohození `A-` a `A-` nebo zaúčtování znaménka v programu.
 
 ## Mechanics Matter More Than Circuit
 
-A load cell must deform exactly as the manufacturer intended. If the load goes around the working zone, the cell will show unstable readings or almost nothing.
+Siloměr se musí deformovat přesně tak, jak zamýšlel výrobce. Pokud se zátěž pohybuje kolem pracovní zóny, buňka bude ukazovat nestabilní hodnoty nebo téměř nic.
 
 ![Miniature S-beam load cell](../../img/03-common-components/07-miniature-load-cell.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Miniature_S-beam_load_cell.jpg), FUTEK Advanced Sensor Technology, CC BY-SA 4.0*
 
-For a beam cell, the typical idea is:
+Pro paprskovou buňku je typická myšlenka:
 
-- one side is firmly mounted to a fixed base;
+- jedna strana je pevně připevněna k pevné základně;
 - other side carries a platform or load;
-- there's clearance between the moving part and base;
-- screws and case don't block beam bending.
+- mezi pohyblivou částí a základnou je vůle;
+- šrouby a pouzdro neblokují ohyb paprsku.
 
 Poor mechanics gives such symptoms:
 
-- readings drift without load;
-- weight depends on where you put the spool;
-- cell barely reacts to load;
-- after removing load, zero doesn't return;
-- touching the case changes readings sharply;
-- different assemblies show different weight with the same setup.
+- drift hodnot bez zatížení;
+- hmotnost závisí na tom, kam kladete cívku;
+- buňka téměř nereaguje na zátěž;
+- po odstranění zátěže se nula nevrátí;
+- dotykem pouzdra se hodnoty prudce změní;
+- různé sestavy vykazují různou hmotnost při stejném nastavení.
 
-## Range and Overload
+## Dosah a přetížení
 
-A load cell's range is not the desired working weight, it's the limit it's rated for.
+Rozsah snímače zatížení není požadovaná pracovní hmotnost, je to limit, pro který je dimenzován.
 
-Using a `1 kg` cell for a spool, holder and jerks over `1 kg` can drive it into nonlinearity or permanent deformation. Using a `100 kg` cell for a `1 kg` spool loses sensitivity, and mechanics must be much more careful.
+Použití buňky `1 kg` pro cívku, držák a trhnutí nad `100 kg` může vést k nelinearitě nebo trvalé deformaci. Použití buňky `1 kg` pro cívku `1 kg` ztrácí citlivost a mechanici musí být mnohem opatrnější.
 
-When choosing range, consider:
+Při výběru rozsahu zvažte:
 
-- maximum weight of full spool;
-- holder and platform weight;
+- maximální hmotnost plné cívky;
+- hmotnost držáku a plošiny;
 - misalignment forces;
-- accidental jerks on mounting;
-- margin for the user;
+- náhodné trhnutí při montáži;
+- marže pro uživatele;
 - desired accuracy.
 
-For remaining filament, moderate margin is often more useful than huge range. For example, for a spool with holder weighing several kilos, a `5 kg` or `10 kg` cell is usually better than `50 kg` if mechanics allow.
+Pro zbývající vlákno je často užitečnější střední rezerva než velký rozsah. Například pro cívku s držákem o hmotnosti několika kilogramů je obvykle lepší buňka `10 kg` nebo `50 kg` než `50 kg`, pokud to mechanika dovolí.
 
-## Tare and Calibration
+## Tára a kalibrace
 
-A load cell without calibration outputs raw numbers, not grams.
+Siloměr bez kalibrace vydává hrubá čísla, nikoli gramy.
 
-Typical process:
+Typický proces:
 
-1. Install the cell in real mechanics.
+1. Nainstalujte článek do skutečné mechaniky.
 2. Put an empty platform or holder.
-3. Do tare - accept the current value as zero.
+3. Vytárovat - přijmout aktuální hodnotu jako nulu.
 4. Put a known weight.
-5. Adjust the calibration coefficient.
-6. Check one or two more weights.
+5. Upravte kalibrační koeficient.
+6. Zkontrolujte ještě jednu nebo dvě další hmotnosti.
 
-For spools, there's an extra problem: an empty spool also weighs differently. If you need to estimate just the plastic, you need to know the empty spool weight or store a profile for that specific spool.
+U cívek je tu další problém: prázdná cívka také váží jinak. Pokud potřebujete odhadnout pouze plast, musíte znát hmotnost prázdné cívky nebo uložit profil pro tuto konkrétní cívku.
 
-## Accuracy and Stability
+## Přesnost a stabilita
 
-In practice, accuracy depends on more than HX711 and cell.
+V praxi přesnost závisí na více než HX711 a buňce.
 
-Readings are affected by:
+Čtení ovlivňuje:
 
 - case rigidity;
 - mounting play;
 - side load;
 - printer vibration or fan noise;
-- wire length and shielding;
+- délka drátu a stínění;
 - measurement wires near power lines;
 - temperature;
-- material creep and plastic deformation;
-- cable or spool touching the case around the cell.
+- tečení materiálu a plastická deformace;
+- kabel nebo cívka dotýkající se pouzdra kolem článku.
 
-If a load cell is in a printed plastic case, don't expect lab accuracy. For filament remaining estimates, stable readings and repeatability after calibration are often enough.
+Pokud je siloměr v potištěném plastovém pouzdře, neočekávejte laboratorní přesnost. Pro odhady zbývajícího filamentu často postačují stabilní hodnoty a opakovatelnost po kalibraci.
 
-## Power and Wiring
+## Napájení a elektroinstalace
 
-HX711 measures a weak signal, so wiring should be careful.
+HX711 měří slabý signál, takže kabeláž by měla být opatrná.
 
 Practical rules:
 
-- keep HX711 close to the load cell;
-- don't route cell wires near heaters, motors and power lines;
-- secure wires so they don't pull the platform;
-- use common `GND` with the controller;
-- power the module with voltage compatible to the controller;
-- don't use poor Dupont contacts in final assembly if the device should run long.
+- držte HX711 blízko siloměru;
+- neveďte kabely článků v blízkosti topných těles, motorů a elektrických vedení;
+- zajistěte dráty, aby netáhly plošinu;
+- použijte společný `GND` s ovladačem;
+- napájejte modul napětím kompatibilním s regulátorem;
+- nepoužívejte špatné kontakty Dupont při konečné montáži, pokud má zařízení pracovat dlouho.
 
-On the controller side, HX711 usually connects through `DT`/`DOUT` and `SCK`/`CLK`. This is not regular I2C or SPI, but a separate simple interface.
+Na straně ovladače se HX711 obvykle připojuje přes `DOUT`/`SCK` a `CLK`/`CLK`. Nejedná se o běžné I2C nebo SPI, ale o samostatné jednoduché rozhraní.
 
-## What to Check Before Buying
+## Co zkontrolovat před nákupem
 
-Before buying, check:
+Před nákupem zkontrolujte:
 
 - cell type: beam, S-type, button, platform;
 - weight range;
 - load application direction;
-- dimensions and mounting holes;
-- availability of description or wire diagram;
-- whether one cell or four cells are needed;
+- rozměry a montážní otvory;
+- dostupnost popisu nebo schématu zapojení;
+- zda je potřeba jedna buňka nebo čtyři buňky;
 - whether HX711 module fits your chosen cell;
-- whether there's room for proper clearance and mounting;
-- whether you can put a known weight for calibration;
-- whether load won't go through the case around the cell.
+- zda je zde prostor pro správnou vůli a montáž;
+- zda můžete použít známou váhu pro kalibraci;
+- zda zátěž neprojde pouzdrem kolem buňky.
 
-If mechanics aren't thought through yet, it's better to first sketch the mounting. Buying "any load cell" often ends with it being physically impossible to mount correctly.
+Pokud mechanika ještě není promyšlená, je lepší nejprve načrtnout upevnění. Nákup „jakéhokoli siloměru“ často končí tím, že je fyzicky nemožné správně namontovat.
 
-## Typical Errors
+## Typické chyby
 
-- connecting load cell directly to analog input;
-- confusing `E+`/`E-` and `A+`/`A-`;
-- trusting wire colors without description;
-- mounting both sides of beam cell to one rigid part;
-- blocking cell bending with screws or case;
-- overloading the cell;
-- choosing too large a range and losing sensitivity;
-- forgetting tare and calibration;
-- calibrating on the bench, then installing cell in different mechanics;
+- připojení snímače zatížení přímo k analogovému vstupu;
+- matoucí `E-`/`A+` a `A-`/`A-`;
+- důvěřivé barvy drátu bez popisu;
+- připevnění obou stran buňky nosníku k jedné tuhé části;
+- blokování ohýbání buněk pomocí šroubů nebo pouzdra;
+- přetížení buňky;
+- volba příliš velkého rozsahu a ztráta citlivosti;
+- zapomenutí táry a kalibrace;
+- kalibrace na pracovním stole a následná instalace článku v různých mechanikách;
 - routing wires near heater power lines;
-- expecting gram-level accuracy from soft plastic case.
+- od pouzdra z měkkého plastu očekáváte gramovou přesnost.
 
-## Main Point
+## Hlavní bod
 
-A load cell is a component where mechanics matter as much as electronics. HX711 helps read the weak signal, but won't fix crooked mounting, overload or load going around the cell.
+Siloměr je součást, kde na mechanice záleží stejně jako na elektronice. HX711 pomáhá číst slabý signál, ale neopraví křivou montáž, přetížení nebo zatížení kolem buňky.
 
-First choose the right type and range, then design the mounting, then connect HX711, and only then do tare and calibration.
+Nejprve zvolte správný typ a rozsah, poté navrhněte upevnění, poté připojte HX711 a teprve poté proveďte tárování a kalibraci.
 
 ## Reference Materials
 

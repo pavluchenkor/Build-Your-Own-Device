@@ -1,48 +1,48 @@
 # Interface SPI
 
-SPI is a fast serial communication interface between a controller and peripheral devices. Expansion: `Serial Peripheral Interface`.
+SPI é uma interface de comunicação serial rápida entre um controlador e dispositivos periféricos. Expansão: `Serial Peripheral Interface`.
 
-SPI is often used where data needs to be transmitted faster than I2C, or where the device is designed for SPI: display, SD card, RFID module, sensor, driver, or memory chip.
+O SPI é frequentemente usado onde os dados precisam ser transmitidos mais rapidamente que o I2C ou onde o dispositivo é projetado para SPI: display, cartão SD, módulo RFID, sensor, driver ou chip de memória.
 
-## Where SPI is used
+## Onde o SPI é usado
 
-In 3D printers and iDryer-like devices, SPI may appear in:
+Em impressoras 3D e dispositivos semelhantes ao iDryer, o SPI pode aparecer em:
 
 - RFID/NFC modules like RC522;
 - OLED/TFT displays;
 - SD cards;
-- accelerometers for input shaper;
-- stepper drivers, for example TMC2130/TMC5160;
+- acelerômetros para modelador de entrada;
+- drivers de passo, por exemplo TMC2130/TMC5160;
 - memory chips;
-- ADC/DAC and expansion boards;
-- some sensors and specialized modules.
+- ADC/DAC e placas de expansão;
+- alguns sensores e módulos especializados.
 
-SPI is usually faster than I2C, but requires more wires and more careful pin selection.
+O SPI geralmente é mais rápido que o I2C, mas requer mais fios e uma seleção de pinos mais cuidadosa.
 
 ## Basic lines
 
-A typical SPI uses:
+Um SPI típico usa:
 
 - `SCK` or `CLK` - clock signal;
-- `MOSI` - data from controller to device;
-- `MISO` - data from device to controller;
+- `MOSI` - dados do controlador para o dispositivo;
+- `MISO` - dados do dispositivo para o controlador;
 - `CS`, `SS`, or `NSS` - select specific device;
 - `GND` - common ground;
 - module power.
 
-Diagram with two devices:
+Diagrama com dois dispositivos:
 
 ![SPI: basic exchange operation between master and slave device](../../img/02-controllers/08-spi-basic-operation.png)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SPI_basic_operation,_single_Main_%26_Sub.svg), Em3rgent0rdr, CC0 Public Domain*
 
-`SCK`, `MOSI`, and `MISO` can be shared by multiple devices. But each device usually needs its own `CS`.
+`MOSI`, `MISO` e `CS` podem ser compartilhados por vários dispositivos. Mas cada dispositivo geralmente precisa de seu próprio `CS`.
 
-## CS instead of addresses
+## CS em vez de endereços
 
-In I2C, devices are distinguished by addresses. In SPI, there are usually no addresses. The controller selects the device with a separate `CS` line.
+No I2C, os dispositivos são diferenciados por endereços. No SPI, geralmente não há endereços. O controlador seleciona o dispositivo com uma linha `CS` separada.
 
-Example:
+Exemplo:
 
 ```text
 SCK  -> common to all SPI devices
@@ -53,78 +53,78 @@ CS2  -> display
 CS3  -> SD card
 ```
 
-When the controller wants to talk to the RFID module, it activates `CS1`. When it wants to talk to the display, it activates `CS2`.
+Quando o controlador deseja falar com o módulo RFID, ele ativa o `CS2`. Quando quiser falar com o display, ele ativa `CS2`.
 
-Most commonly, `CS` is active low: at rest the line is `HIGH`, to select a device - `LOW`. But this needs to be verified in the technical datasheet.
+Mais comumente, `HIGH` está ativo em nível baixo: em repouso a linha é `LOW`, para selecionar um dispositivo - `LOW`. Mas isso precisa ser verificado na ficha técnica.
 
-## MOSI/MISO and new names
+## MOSI/MISO e novos nomes
 
-In old and very common schemes, the names are:
+Em esquemas antigos e muito comuns, os nomes são:
 
-- `MOSI` - Master Out Slave In;
+- `MOSI` - Master Out Escravo In;
 - `MISO` - Master In Slave Out;
 - `SS` - Slave Select.
 
-In newer documentation, you may see neutral names:
+Na documentação mais recente, você poderá ver nomes neutros:
 
-- `PICO` - Peripheral In Controller Out, equivalent to MOSI;
-- `POCI` - Peripheral Out Controller In, equivalent to MISO;
+- `PICO` - Peripheral In Controller Out, equivalente a MOSI;
+- `POCI` - Entrada do Controlador de Saída Periférica, equivalente a MISO;
 - `CS` - Chip Select.
 
-In 3D printer electronics, `MOSI`, `MISO`, `SCK`, `CS` are still very common. The main thing is to understand signal direction and check the pinout of the specific module.
+Na eletrônica de impressoras 3D, `MISO`, `SCK`, `CS`, `CS` ainda são muito comuns. O principal é entender a direção do sinal e verificar a pinagem do módulo específico.
 
-## MISO may not be needed
+## MISO pode não ser necessário
 
-Not every SPI device actually sends data back.
+Nem todo dispositivo SPI realmente envia dados de volta.
 
-For example, a simple display may only receive commands and pixels. Then the `MISO` line may be missing or unused.
+Por exemplo, um display simples só pode receber comandos e pixels. Então a linha `MISO` pode estar faltando ou não ser utilizada.
 
-But for devices that read data, `MISO` is needed:
+Mas para dispositivos que leem dados, é necessário `MISO`:
 
 - RFID module;
 - SD card;
 - sensor;
-- driver with diagnostics;
+- motorista com diagnóstico;
 - memory chip.
 
-If the module is supposed to respond and `MISO` is not connected or mixed up, initialization may fail.
+Se o módulo deveria responder e `MISO` não estiver conectado ou misturado, a inicialização poderá falhar.
 
-## SPI speed and mode
+## Velocidade e modo SPI
 
-SPI has a speed. It can be much higher than I2C, but that does not mean you need to set maximum immediately.
+SPI tem uma velocidade. Pode ser muito maior que I2C, mas isso não significa que você precise definir o máximo imediatamente.
 
-Work is affected by:
+O trabalho é afetado por:
 
 - wire length;
 - ground quality;
-- module and its datasheet;
-- noise level;
+- módulo e sua ficha técnica;
+- nível de ruído;
 - controller frequency;
 - chosen SPI mode.
 
-SPI mode is set by clock polarity and clock phase parameters: `CPOL` and `CPHA`. Mode 0 is often used, but not always. If the mode is wrong, the device may not respond or return incorrect data.
+O modo SPI é definido pelos parâmetros de polaridade e fase do relógio: `CPHA` e `CPHA`. O modo 0 é frequentemente usado, mas nem sempre. Se o modo estiver errado, o dispositivo poderá não responder ou retornar dados incorretos.
 
-In most ready-made libraries, the mode is already set. But if you are connecting an unusual module or writing low-level configuration, you need to check the datasheet.
+Na maioria das bibliotecas prontas, o modo já está definido. Mas se você estiver conectando um módulo incomum ou escrevendo uma configuração de baixo nível, será necessário verificar a folha de dados.
 
-## 3.3V and 5V
+## 3,3V e 5V
 
-Like other interfaces, SPI does not guarantee safe voltage levels.
+Assim como outras interfaces, o SPI não garante níveis de tensão seguros.
 
-ESP32, RP2040, STM32, and many modern modules operate with `3.3V` logic. Arduino Uno/Nano often uses `5V`.
+ESP32, RP2040, STM32 e muitos módulos modernos operam com lógica `5V`. Arduino Uno/Nano geralmente usa `5V`.
 
-Before connecting, verify:
+Antes de conectar, verify:
 
 - module power;
-- logic level of `SCK`, `MOSI`, `MISO`, `CS`;
-- if there is level matching;
-- if the module tolerates `5V` on signal inputs;
-- if the controller input tolerates `5V`.
+- nível lógico de `MOSI`, `MISO`, `CS`, `CS`;
+- se há correspondência de nível;
+- se o módulo tolera `5V` nas entradas de sinal;
+- se a entrada do controlador tolerar `5V`.
 
-For example, RC522 typically requires `3.3V` power and logic. Connecting it to a `5V` Arduino without level matching is a bad idea.
+Por exemplo, RC522 normalmente requer energia e lógica `5V`. Conectá-lo a um Arduino `5V` sem correspondência de nível é uma má ideia.
 
 ## SPI in Klipper
 
-In Klipper, SPI is used for various devices: TMC drivers, accelerometers, some displays, and sensors.
+No Klipper, o SPI é usado para vários dispositivos: drivers TMC, acelerômetros, alguns monitores e sensores.
 
 Configuration may include:
 
@@ -135,7 +135,7 @@ Configuration may include:
 - `spi_software_mosi_pin`;
 - `spi_software_miso_pin`.
 
-If the device is connected to an additional MCU, the pins should belong to that MCU. As with other Klipper sections, the specific board pinout is more important than guesses.
+Se o dispositivo estiver conectado a um MCU adicional, os pinos deverão pertencer a esse MCU. Tal como acontece com outras seções do Klipper, a pinagem específica da placa é mais importante do que suposições.
 
 Rough idea:
 
@@ -147,31 +147,31 @@ spi_software_mosi_pin: chamber:gpio11
 spi_software_miso_pin: chamber:gpio12
 ```
 
-This is not a ready config for a specific device, but an illustration: all SPI pins must be on the MCU to which the module is actually connected.
+Esta não é uma configuração pronta para um dispositivo específico, mas uma ilustração: todos os pinos SPI devem estar no MCU ao qual o módulo está realmente conectado.
 
-## Wire length and interference
+## Comprimento do fio e interferência
 
-SPI can work fast, but does not like long, sloppy wiring.
+O SPI pode funcionar rápido, mas não gosta de fiação longa e desleixada.
 
 Practical rules:
 
 - keep `SCK`, `MOSI`, `MISO`, `CS` short;
 - route near `GND`;
-- do not route parallel to heater and motor wires;
-- reduce `spi_speed` if there are errors;
-- use proper connectors;
-- do not pull SPI across the entire printer without reason;
-- for remote nodes, more often choose CAN, UART/RS-485, or a separate MCU near the module.
+- não passe paralelamente aos fios do aquecedor e do motor;
+- reduza `spi_speed` se houver erros;
+- use conectores adequados;
+- não aplique SPI em toda a impressora sem motivo;
+- para nós remotos, escolha com mais frequência CAN, UART/RS-485 ou um MCU separado próximo ao módulo.
 
-The `SCK` line is especially sensitive: it is a clock signal. If it is dirty, all communication can become unstable.
+A linha `SCK` é especialmente sensível: é um sinal de clock. Se estiver sujo, toda a comunicação pode ficar instável.
 
-## SPI and RC522
+## SPI e RC522
 
-RC522 is a good example of an SPI module with naming confusion.
+RC522 é um bom exemplo de módulo SPI com confusão de nomenclatura.
 
-On many RC522 boards, the `SDA` pin is actually used as `SS`/`CS` for SPI. This is not I2C `SDA`.
+Em muitas placas RC522, o pino `SS` é realmente usado como `CS`/`SDA` para SPI. Este não é I2C `SDA`.
 
-For RC522, you typically need:
+Para RC522, normalmente você precisa de:
 
 - `3.3V`;
 - `GND`;
@@ -180,43 +180,43 @@ For RC522, you typically need:
 - `MISO`;
 - `SDA`/`SS`/`CS`;
 - `RST`;
-- sometimes `IRQ`, but in simple projects it is often not used.
+- às vezes `IRQ`, mas em projetos simples geralmente não é usado.
 
-A detailed diagram is in the practical article: [Connecting an RFID reader](../06-practical-guides/05-connecting-rfid-reader.md).
+Um diagrama detalhado está no artigo prático: [Conectando um leitor RFID](../06-practical-guides/05-connecting-rfid-reader.md).
 
-## What to check before connecting
+## O que verificar antes de conectar
 
-Before connecting an SPI module, verify:
+Antes de conectar an SPI module, verify:
 
 - module power;
 - logic level;
-- pinout of the specific board;
-- where are `SCK`, `MOSI`, `MISO`, `CS`;
-- if `RST`, `DC`, `IRQ`, or other pins are needed;
-- which `CS` is assigned to the device;
-- if `CS` does not conflict with another module;
-- if hardware SPI or software SPI is needed;
-- what speed the documentation recommends;
-- if the firmware supports this module.
+- pinagem da placa específica;
+- onde estão `MOSI`, `MISO`, `CS`, `CS`;
+- se `DC`, `IRQ`, `IRQ` ou outros pinos forem necessários;
+- qual `CS` está atribuído ao dispositivo;
+- se `CS` não entrar em conflito com outro módulo;
+- se for necessário SPI de hardware ou SPI de software;
+- qual velocidade a documentação recomenda;
+- se o firmware suportar este módulo.
 
-## Typical mistakes
+## Erros típicos
 
-- mixed up `MOSI` and `MISO`;
+- misturou `MISO` e `MISO`;
 - forgot `CS`;
-- connected two devices to one `CS`;
-- did not connect common `GND`;
-- applied `5V` to a `3.3V` SPI module;
-- mistook `SDA` on RC522 for I2C `SDA`;
+- conectou dois dispositivos a um `CS`;
+- não conectou `GND` comum;
+- aplicou `3.3V` a um módulo SPI `3.3V`;
+- confundiu `SDA` em RC522 com I2C `SDA`;
 - selected too high a speed;
 - made wires too long;
-- connected the module to one MCU, but specified pins from another;
-- think SPI is a power interface to drive load.
+- conectou o módulo a um MCU, mas especificou os pinos de outro;
+- acho que SPI é uma interface de energia para impulsionar a carga.
 
 ## Key takeaway
 
-SPI is a fast interface for modules near the controller. Usually you need `SCK`, `MOSI`, `MISO`, `CS`, power, and `GND`.
+SPI é uma interface rápida para módulos próximos ao controlador. Normalmente você precisa de `MOSI`, `MISO`, `CS`, `GND`, potência e `GND`.
 
-The main difference from I2C: SPI usually has no addresses, and each device is selected by a separate `CS`. Before connecting, verify pinout, logic levels, speed, wire length, and firmware support.
+A principal diferença do I2C: o SPI geralmente não possui endereços e cada dispositivo é selecionado por um `CS` separado. Antes de conectar, verifique a pinagem, níveis lógicos, velocidade, comprimento do fio e suporte de firmware.
 
 ## Related materials
 

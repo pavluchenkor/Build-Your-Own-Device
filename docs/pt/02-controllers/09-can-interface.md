@@ -1,32 +1,32 @@
 # Interface CAN
 
-CAN is a communication interface for multiple devices on a common differential line. Expansion: `Controller Area Network`.
+CAN é uma interface de comunicação para vários dispositivos em uma linha diferencial comum. Expansão: `Controller Area Network`.
 
-CAN came from automotive and industrial electronics, but in 3D printers it became popular for toolhead boards, remote MCUs, and modules where you need longer and more reliable communication than I2C/SPI.
+CAN veio da eletrônica automotiva e industrial, mas em impressoras 3D ele se tornou popular para placas de cabeçote de ferramentas, MCUs remotos e módulos onde você precisa de comunicação mais longa e confiável do que I2C/SPI.
 
-## Where CAN is useful
+## Onde o CAN é útil
 
-In printer and iDryer-like peripherals, CAN is used for:
+Em impressoras e periféricos semelhantes ao iDryer, o CAN é usado para:
 
-- toolhead boards on the printer head;
-- additional MCU in a remote block;
-- reducing wire count in the cable bundle;
-- communication with CAN filter, camera, or dryer boards;
-- distributed system of multiple controllers;
-- cases where USB or long I2C/SPI is inconvenient.
+- placas de cabeçote de ferramentas no cabeçote da impressora;
+- MCU adicional em um bloco remoto;
+- reduzindo a contagem de fios no feixe de cabos;
+- comunicação com filtro CAN, câmera ou placas secadoras;
+- sistema distribuído de múltiplos controladores;
+- casos em que USB ou I2C/SPI longo são inconvenientes.
 
-CAN is especially useful when a node is far from the host or main board, and there are motors, heaters, and other sources of noise nearby.
+CAN é especialmente útil quando um nó está longe do host ou da placa principal e há motores, aquecedores e outras fontes de ruído próximos.
 
-## CANH, CANL, and GND
+## CANH, CANL e GND
 
-A physical CAN bus typically uses:
+Um barramento CAN físico normalmente usa:
 
 - `CANH`;
 - `CANL`;
 - sometimes `GND` or common reference wire;
-- module power separately, if needed.
+- alimentação do módulo separadamente, se necessário.
 
-Signal is transmitted as the difference between `CANH` and `CANL`. That's why CAN handles noise better than single signal lines.
+O sinal é transmitido como a diferença entre `CANL` e `CANL`. É por isso que o CAN lida melhor com o ruído do que linhas de sinal único.
 
 Simplified diagram:
 
@@ -34,149 +34,149 @@ Simplified diagram:
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:CAN_ISO11898-2_Network.png), EE JRW, CC BY-SA 4.0*
 
-For wiring, a twisted pair is often used for `CANH`/`CANL`. `GND` depends on the specific circuit, boards, and documentation, but in small DIY systems, a common reference is often needed for stable operation and interface safety.
+Para fiação, um par trançado é frequentemente usado para `CANL`/`GND`. `GND` depende do circuito, placas e documentação específicos, mas em pequenos sistemas DIY, muitas vezes é necessária uma referência comum para operação estável e segurança de interface.
 
-## CAN transceiver is required
+## É necessário um transceptor CAN
 
-Important: CAN support in the microcontroller and CAN presence on the board are not the same thing.
+Importante: Suporte CAN no microcontrolador e presença CAN na placa não são a mesma coisa.
 
-For CAN to work, you need:
+Para que o CAN funcione, você precisa de:
 
-- microcontroller with CAN controller or suitable firmware support;
-- CAN transceiver on the board;
+- microcontrolador com controlador CAN ou suporte de firmware adequado;
+- CAN transceptor na placa;
 - correct `CANH`/`CANL` connectors;
 - transceiver power;
 - terminators;
-- firmware built for CAN.
+- firmware construído para CAN.
 
-If the microcontroller datasheet mentions CAN, but the board has no transceiver, you cannot connect directly to the CAN bus.
+Se a folha de dados do microcontrolador mencionar CAN, mas a placa não tiver transceptor, você não poderá conectar diretamente ao barramento CAN.
 
-## Topology and terminators
+## Topologia e terminadores
 
-CAN is a bus. Good topology looks like a line with nodes attached via short branches.
+CAN é um ônibus. Uma boa topologia se parece com uma linha com nós conectados por meio de ramificações curtas.
 
-Usually two `120 Ohm` terminators are needed:
+Normalmente são necessários dois terminadores `120 Ohm`:
 
-- one at one physical end of the bus;
-- second at the other physical end.
+- um em uma extremidade física do barramento;
+- segundo na outra extremidade física.
 
-Not one, not three, and not "on each board". Exactly two at the ends.
+Nem um, nem três, e nem "em cada tabuleiro". Exatamente dois nas extremidades.
 
-If power is off, on a properly terminated bus, a multimeter between `CANH` and `CANL` often shows around `60 Ohm`, because two `120 Ohm` resistors are in parallel.
+Se a energia estiver desligada, em um barramento com terminação adequada, um multímetro entre `CANL` e `60 Ohm` geralmente mostra cerca de `120 Ohm`, porque dois resistores `120 Ohm` estão em paralelo.
 
-Many boards have a terminator jumper. Some have a built-in terminator without convenient disable. So before assembly, check the schematics of all boards on the bus.
+Muitas placas possuem um jumper terminador. Alguns possuem um terminador integrado sem desativação conveniente. Portanto, antes da montagem, verifique os esquemas de todas as placas do barramento.
 
 ## Bitrate
 
-CAN speed must match on all nodes. In Klipper, CAN often uses `1000000`, which is `1 Mbit/s`, but the specific value depends on firmware, settings, and bus length.
+A velocidade CAN deve corresponder em todos os nós. No Klipper, o CAN geralmente usa `1 Mbit/s`, que é `1 Mbit/s`, mas o valor específico depende do firmware, das configurações e do comprimento do barramento.
 
-If bitrate is different, nodes will not be able to communicate normally.
+Se a taxa de bits for diferente, os nós não conseguirão se comunicar normalmente.
 
-For long or problem wiring, speed may be critical. The higher the speed, the more demanding the bus is to topology, terminators, and wire quality.
+Para cabeamento longo ou problemático, a velocidade pode ser crítica. Quanto maior a velocidade, mais exigente será o barramento em relação à topologia, aos terminadores e à qualidade do fio.
 
 ## CAN in Klipper
 
-In Klipper, CAN is used as a way to communicate with MCU.
+No Klipper, o CAN é usado como forma de comunicação com o MCU.
 
-A device on CAN is usually not specified via `serial:`. Instead, the configuration uses `canbus_uuid`:
+Um dispositivo em CAN geralmente não é especificado via `canbus_uuid`. Em vez disso, a configuração usa `canbus_uuid`:
 
 ```ini
 [mcu toolhead]
 canbus_uuid: 11aa22bb33cc
 ```
 
-On the Linux side, you usually need a `can0` interface. The host must have a CAN adapter:
+No lado Linux, você geralmente precisa de uma interface `can0`. O host deve ter um adaptador CAN:
 
 - USB-CAN adapter;
-- board in USB-to-CAN bridge mode;
+- placa em modo ponte USB para CAN;
 - HAT/adapter for SBC;
 - other supported circuit.
 
-Klipper has a tool to find `canbus_uuid` of new uninitialized devices. Important to understand: if a device is already configured by Klipper, it may no longer appear in the list as "new".
+Klipper possui uma ferramenta para localizar `canbus_uuid` de novos dispositivos não inicializados. Importante entender: se um dispositivo já estiver configurado pelo Klipper, ele poderá não aparecer mais na lista como “novo”.
 
 ## USB-to-CAN bridge
 
-Some boards can be flashed in USB-to-CAN bridge mode. Then the board connects to the host via USB, and appears to Linux as a CAN adapter.
+Algumas placas podem ser atualizadas no modo ponte USB para CAN. Em seguida, a placa se conecta ao host via USB e aparece no Linux como um adaptador CAN.
 
-This is convenient, but there is an important limitation: bridge mode is needed to communicate with a real CAN bus and other CAN nodes. If you only have one board near the host and no real CAN bus, it is usually simpler to use normal USB/serial mode.
+Isso é conveniente, mas há uma limitação importante: o modo ponte é necessário para se comunicar com um barramento CAN real e outros nós CAN. Se você tiver apenas uma placa próxima ao host e nenhum barramento CAN real, geralmente é mais simples usar o modo USB/serial normal.
 
-Also, USB-to-CAN bridge will not be visible as `/dev/serial/by-id/...`. It is configured as a CAN interface and uses `canbus_uuid`, not `serial:`.
+Além disso, a ponte USB para CAN não será visível como `canbus_uuid`. Ele é configurado como interface CAN e usa `serial:`, não `serial:`.
 
-## When CAN is justified
+## Quando o CAN é justificado
 
-CAN is worth considering if:
+Vale a pena considerar o CAN se:
 
-- you need to connect a toolhead board;
-- you need to run communication over a long cable bundle;
+- você precisa conectar uma placa de cabeçote;
+- você precisa executar a comunicação por meio de um longo feixe de cabos;
 - you need multiple remote MCUs;
-- you want to reduce wires between moving parts and enclosure;
+- você deseja reduzir os fios entre as peças móveis e o gabinete;
 - you already have CAN infrastructure;
-- the chosen board is well documented for Klipper CAN.
+- a placa escolhida está bem documentada para Klipper CAN.
 
-CAN may be unnecessary if:
+CAN pode ser desnecessário se:
 
-- the board sits near the host;
+- o tabuleiro fica perto do anfitrião;
 - you only need one additional MCU;
-- USB works stably;
-- you have no experience with flashing, `can0`, terminators, and Linux networking;
-- the chosen board is poorly documented.
+- USB funciona de forma estável;
+- você não tem experiência com flashing, `can0`, terminadores e redes Linux;
+- o conselho escolhido está mal documentado.
 
-For the first simple additional controller, USB is often faster and clearer. CAN makes sense when it solves a real wiring or board distribution problem.
+Para o primeiro controlador adicional simples, o USB costuma ser mais rápido e claro. CAN faz sentido quando resolve um problema real de fiação ou distribuição de placa.
 
-## CAN does not power load
+## CAN não alimenta carga
 
-CAN is only communication.
+CAN é apenas comunicação.
 
-If a CAN board controls a fan, heater, SSR, or servo, it still needs:
+Se uma placa CAN controlar um ventilador, aquecedor, SSR ou servo, ela ainda precisará de:
 
 - board power;
 - load power;
 - MOSFET/driver/SSR;
 - fuses;
 - proper terminals;
-- thermal protection for heaters;
-- safe enclosure.
+- proteção térmica para aquecedores;
+- recinto seguro.
 
-CAN does not replace power electronics and does not make a heater safe.
+CAN não substitui a eletrônica de potência e não torna um aquecedor seguro.
 
-## What to check before buying
+## O que verificar antes de comprar
 
-Before buying a CAN board, verify:
+Antes de comprar uma placa CAN, verifique:
 
-- what microcontroller is used;
-- if the board supports Klipper CAN;
-- if there is a CAN transceiver;
-- where are `CANH` and `CANL`;
-- if there is a terminator and how to enable it;
-- what connector is used;
-- how the board is powered;
-- how the board is flashed;
-- if there is an instruction for `canbus_uuid`;
-- if a separate USB-CAN adapter is needed;
-- if there is a schematic and pinout;
-- what pins and power outputs are available.
+- qual microcontrolador é usado;
+- se a placa suportar Klipper CAN;
+- se houver um transceptor CAN;
+- onde estão `CANL` e `CANL`;
+- se existe um terminador e como habilitá-lo;
+- qual conector é usado;
+- como a placa é alimentada;
+- como a placa pisca;
+- se existe uma instrução para `canbus_uuid`;
+- se for necessário um adaptador USB-CAN separado;
+- se houver esquema e pinagem;
+- quais pinos e saídas de energia estão disponíveis.
 
-If the seller writes "CAN" only because the chip theoretically supports it, but the board has no transceiver and documentation, it's a poor choice.
+Se o vendedor escrever "CAN" apenas porque o chip teoricamente o suporta, mas a placa não possui transceptor e documentação, é uma má escolha.
 
-## Typical mistakes
+## Erros típicos
 
-- mixed up `CANH` and `CANL`;
-- forgot that CAN transceiver is required;
-- put one terminator instead of two;
-- enabled terminators on every board;
-- did not check resistance between `CANH` and `CANL`;
-- chose different bitrate on nodes;
-- expect `/dev/serial/by-id` from USB-to-CAN bridge;
-- flashed board for USB, but connect as CAN;
-- flashed for CAN, but did not configure `can0`;
-- made a star from long branches instead of a bus;
-- think CAN is a way to power load.
+- misturou `CANL` e `CANL`;
+- esqueci que o transceptor CAN é necessário;
+- coloque um terminador em vez de dois;
+- terminadores habilitados em todas as placas;
+- não verificou resistência entre `CANL` e `CANL`;
+- escolheu taxas de bits diferentes nos nós;
+- espere `/dev/serial/by-id` da ponte USB para CAN;
+- placa flashada para USB, mas conecte como CAN;
+- piscou para CAN, mas não configurou `can0`;
+- fez uma estrela com longos galhos em vez de um ônibus;
+- acho que CAN é uma forma de alimentar a carga.
 
 ## Key takeaway
 
-CAN is a good interface for remote MCUs, toolhead boards, and distributed systems inside a printer. It uses a differential pair `CANH`/`CANL`, requires CAN transceivers, correct topology, and two terminators at bus ends.
+CAN é uma boa interface para MCUs remotos, placas de cabeçote de ferramentas e sistemas distribuídos dentro de uma impressora. Ele usa um par diferencial `CANL`/`CANL`, requer transceptores CAN, topologia correta e dois terminadores nas extremidades do barramento.
 
-For Klipper, CAN is useful but more complex than USB: you need to flash the board for CAN, configure the adapter/`can0`, find `canbus_uuid`, and verify the physical bus. Use CAN where it actually simplifies wiring or improves connection robustness.
+Para o Klipper, o CAN é útil, mas mais complexo que o USB: você precisa atualizar a placa para CAN, configurar o adaptador/`can0`, encontrar o `canbus_uuid` e verificar o barramento físico. Use CAN onde ele realmente simplifica a hidratação ou melhora a robustez da conexão.
 
 ## Related materials
 

@@ -86,7 +86,7 @@ Parfois, le firmware brise l'accès SWD.
 
 Par exemple :
 
-- Les broches SWD sont utilisées comme GPIO normal ;
+- Les broches SWD sont utilisées comme GPIO normales ;
 - le firmware met rapidement la puce en veille ;
 - le code se bloque juste après le démarrage ;
 - les modes horloge/puissance sont définis incorrectement.

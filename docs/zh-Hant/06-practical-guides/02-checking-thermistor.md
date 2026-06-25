@@ -1,113 +1,113 @@
 # 檢查熱敏電阻
 
-熱敏電阻是一種當加熱或冷卻時改變電阻的溫度傳感器。
+熱敏電阻是一种溫度感測器，加熱或冷卻时電阻会變化。
 
-在3D印表機、烘乾機和室加熱器中，最常見的類型是額定為`100K`的NTC熱敏電阻。NTC表示當溫度升高時電阻降低。
+在 3D 打印机、乾燥機和艙體加熱器中，最常見的是额定 `100K` 的 NTC 熱敏電阻。NTC 表示溫度升高时電阻降低。
 
-You need to check a thermistor if:
+出现以下情况时需要檢查熱敏電阻：
 
-- temperature readings are unrealistic;
-- temperature jumps around;
-- the heater enters an error state;
-- firmware reports `MINTEMP`, `MAXTEMP`, `Thermal runaway`, or similar;
-- the thermistor was replaced, moved, or re-crimped;
-- the device was assembled for the first time.
+- 溫度讀數不现实；
+- 溫度讀數跳动；
+- 加熱器进入錯誤状态；
+- 韌體報告 `MINTEMP`、`MAXTEMP`、`Thermal runaway` 或類似錯誤；
+- 熱敏電阻被更換、移動或重新壓接；
+- 設備是第一次組裝。
 
-## First, turn off power
+## 首先關閉電源
 
-Resistance is measured only on de-energized circuits.
+電阻只能在斷電電路上測量。
 
-Before checking:
+檢查前：
 
-1. Turn off the device.
-2. Disconnect power from the mains or power supply.
-3. Wait for the heater to cool down.
-4. Disconnect the thermistor from the board if you need to measure the sensor itself.
+1. 關閉設備。
+2. 从市電或電源断开供电。
+3. 等待加熱器冷卻。
+4. 如果需要測量感測器本身，请把熱敏電阻从板上拔下。
 
-If you measure resistance while the thermistor is connected to the board, readings may be distorted by other circuit components. If you measure resistance with power on, you can damage the multimeter or board.
+如果熱敏電阻仍连接在板上，测得的電阻可能会被其他電路元件影響。如果带电測量電阻，可能損壞萬用表或板子。
 
-## What an NTC 100K should have
+## NTC 100K 应该是什么样
 
-A typical NTC `100K` has a resistance of about `100 kOhm` at `25°C`.
+典型 NTC `100K` 在 `25°C` 时電阻约为 `100 kOhm`。
 
-This does not mean the multimeter will always show exactly `100.0 kOhm`.
+这并不表示萬用表一定会精确顯示 `100.0 kOhm`。
 
-It is normal for the reading to differ slightly at room temperature:
+室温下讀數略有差异是正常的：
 
-- in a cool room resistance will be higher;
-- in a warm room resistance will be lower;
-- different thermistor types have different tables;
-- long wires and poor contacts can affect measurement.
+- 房間較冷时電阻更高；
+- 房間較热时電阻更低；
+- 不同熱敏電阻类型有不同表格；
+- 长導線和接觸不良会影響測量。
 
-The main check is simple: a 100K NTC at room temperature should read tens or around a hundred kilohms, not `0 Ohm` or `OL`.
+核心檢查很簡單：室温下 100K NTC 应顯示幾十千欧到约一百千欧，而不是 `0 Ohm` 或 `OL`。
 
-## Measuring with a multimeter
+## 用萬用表測量
 
-Set your multimeter to resistance mode `Ohm`.
+把萬用表设为電阻模式 `Ohm`。
 
-If your multimeter is not autoranging, select a range above `100 kOhm`, such as `200 kOhm` or `2 MOhm`.
+如果萬用表不是自动量程，请選擇高于 `100 kOhm` 的檔位，例如 `200 kOhm` 或 `2 MOhm`。
 
-Then:
+然后：
 
-1. Disconnect the thermistor from the board.
-2. Touch the multimeter probes to the two thermistor wires.
-3. Do not hold the metal ends of the probes and wires simultaneously: your body can add parallel resistance.
-4. Wait for the reading to stabilize.
-5. Record the value.
+1. 从板上断开熱敏電阻。
+2. 用萬用表錶筆接觸熱敏電阻的两根线。
+3. 不要同时握住錶筆和導線的金屬端：人体会增加並聯電阻。
+4. 等待讀數稳定。
+5. 記錄數值。
 
 ![Digital multimeter for measuring thermistor resistance](../../img/05-tools/02-digital-multimeter.jpg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
+*來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 
-## Quick heat test with your finger
+## 用手指快速加熱测试
 
-After measuring at room temperature, you can carefully warm the sensor with your fingers.
+在室温測量后，可以小心地用手指加熱感測器。
 
-For an NTC thermistor, resistance should start to decrease.
+对于 NTC 熱敏電阻，電阻应该开始下降。
 
-For example:
+例如：
 
-- was around `100 kOhm` at room temperature;
-- became lower after finger heating.
+- 室温时约为 `100 kOhm`；
+- 手指加熱后变低。
 
-Exact numbers do not matter here. The direction of change matters.
+这里精确数字不重要，變化方向才重要。
 
-If resistance does not change at all, jumps randomly, or disappears when the wire moves, the problem may be in the sensor, wire, crimp, or connector.
+如果電阻完全不变、隨機跳动，或移動導線时讀數消失，问题可能在感測器、導線、壓接或連接器。
 
-## Breakage and short circuit
+## 斷路和短路
 
-A multimeter helps quickly distinguish a normal sensor from an obvious failure.
+萬用表能快速区分正常感測器和明顯故障。
 
-Typical signs:
+典型跡象：
 
-- `OL`, `over limit`, `1` on the left of the display, or infinite resistance - open circuit;
-- nearly `0 Ohm` - short circuit;
-- value jumps significantly when the wire moves - poor contact or broken conductor;
-- value around `100 kOhm` at room temperature and decreases with heating - looks like a healthy NTC 100K.
+- `OL`、`over limit`、顯示器左侧 `1` 或無限電阻 - 斷路；
+- 接近 `0 Ohm` - 短路；
+- 移動導線时數值大幅跳变 - 接觸不良或导体断裂；
+- 室温约 `100 kOhm`，加熱后下降 - 看起来像健康的 NTC 100K。
 
-Different multimeters use different designations for open circuit. Usually it is `OL` or a value beyond the selected range.
+不同萬用表对斷路有不同顯示。通常是 `OL` 或超出所选量程。
 
-## Checking the wiring
+## 檢查接線
 
-The thermistor may be fine while the problem is in the wiring.
+熱敏電阻本身可能正常，问题在接線。
 
-Check:
+檢查：
 
-- the connector is fully inserted;
-- pins have not come out of the connector housing;
-- wires are not frayed;
-- no insulation damage near the heater;
-- no wire tension when axes or cover move;
-- the cable does not run right next to heater power wires without reason;
-- the crimp location is secure.
+- 連接器是否完全插入；
+- 腳位是否从連接器外殼中退出；
+- 導線是否磨損；
+- 加熱器附近絕緣是否損壞；
+- 轴或蓋板移動时導線是否受拉；
+- 電纜是否无理由紧贴加熱器電源線；
+- 壓接位置是否牢固。
 
-If readings change when you move the wire, this is not a "sensor feature". This is a contact problem that must be fixed before turning on the heater.
+如果移動導線时讀數變化，这不是“感測器特性”。这是接觸问题，必须在開啟加熱器前修復。
 
-## Checking in Klipper
+## 在 Klipper 中檢查
 
-In Klipper the sensor type is set in the configuration.
+在 Klipper 中，感測器类型在設定中设置。
 
-Example for a typical chamber temperature sensor:
+典型艙體溫度感測器範例：
 
 ```ini
 [temperature_sensor chamber]
@@ -117,7 +117,7 @@ min_temp: 0
 max_temp: 100
 ```
 
-Example for a chamber heater:
+艙體加熱器範例：
 
 ```ini
 [heater_generic chamber_heater]
@@ -130,102 +130,102 @@ min_temp: 0
 max_temp: 90
 ```
 
-Pin names here are typical. In a real device, check your board's pinout.
+这里的腳位名只是典型範例。真實設備中请檢查板卡 pinout。
 
-Important: `sensor_type` must match the real sensor. Two thermistors may look identical but have different tables. If you choose the wrong type, temperature can be noticeably inaccurate, especially in the working heating range.
+重要：`sensor_type` 必须与真實感測器匹配。两个熱敏電阻外观看起来可能相同，但表格不同。如果选错类型，溫度会明顯不准，尤其是在實際加熱工作範圍内。
 
-## What to watch in the interface
+## 在介面中觀察什么
 
-After connecting, check the temperature in the Klipper interface, Mainsail, Fluidd, or other UI.
+连接后，在 Klipper 介面、Mainsail、Fluidd 或其他 UI 中檢查溫度。
 
-At room temperature, the reading should be close to the actual room temperature.
+室温下，讀數应接近真實室温。
 
-Suspicious signs:
+可疑跡象：
 
-- reads significantly lower than reality;
-- reads significantly higher than reality;
-- temperature jumps by tens of degrees;
-- temperature changes when you move the wire;
-- temperature does not rise when heating is on;
-- temperature rises very slowly;
-- temperature rises even though the heater is off.
+- 明顯低于實際溫度；
+- 明顯高于實際溫度；
+- 溫度跳动幾十度；
+- 移動導線时溫度變化；
+- 加熱開啟时溫度不上升；
+- 溫度上升很慢；
+- 加熱器關閉时溫度仍上升。
 
-If the sensor is on the heater, do not start extended heating until readings look reasonable.
+如果感測器安装在加熱器上，讀數看起来合理之前，不要进行長時間加熱。
 
-## Firmware errors
+## 韌體錯誤
 
-In 3D printer firmware, temperature errors are not a minor issue but part of safety.
+在 3D 打印机韌體中，溫度錯誤不是小问题，而是安全的一部分。
 
-For a typical circuit with an NTC and on-board pull-up:
+对于带 NTC 和板载上拉的典型電路：
 
-- sensor breakage often looks like too low temperature or `MINTEMP`;
-- short circuit often looks like too high temperature or `MAXTEMP`;
-- poor thermal contact may cause `Heating failed` or `Thermal runaway`;
-- strong cooling of the heating block may cause an error because temperature rises too slowly or does not hold.
+- 感測器斷路通常表现为溫度过低或 `MINTEMP`；
+- 短路通常表现为溫度过高或 `MAXTEMP`；
+- 热接觸不良可能导致 `Heating failed` 或 `Thermal runaway`；
+- 加熱块被强烈冷卻时，溫度上升太慢或无法保持，也可能报错。
 
-Error names depend on the firmware, but the meaning is the same: the controller no longer trusts the temperature or sees that heating is not working as expected.
+錯誤名称取决于韌體，但含义相同：控制器不再信任溫度，或发现加熱没有按預期工作。
 
-Do not disable thermal protection just to "check". If protection trips, first look for the cause in the sensor, wiring, mounting, heater, PID settings, and cooling.
+不要为了“檢查”而關閉热保護。如果保護触发，先从感測器、接線、固定、加熱器、PID 设置和冷卻中查找原因。
 
-## Thermal contact
+## 热接觸
 
-An electrically working thermistor does not guarantee correct temperature.
+電氣上正常的熱敏電阻并不保證溫度正確。
 
-The sensor must transfer heat well from the part it is measuring.
+感測器必须能很好地从被测部件传热。
 
-Check:
+檢查：
 
-- the sensor sits fully in the sleeve or hole;
-- there is normal clamping;
-- no gap between sensor and surface;
-- thermal paste has not dried or flaked out if used;
-- fasteners are not loose;
-- the sensor has not come out of its seat;
-- wires are not pulling the sensor out.
+- 感測器是否完全坐入套管或孔中；
+- 是否有正常夹紧；
+- 感測器和表面之间是否没有間隙；
+- 如果使用導熱膏，是否没有干裂或脫落；
+- 緊韌體是否没有鬆動；
+- 感測器是否没有从座位中脱出；
+- 導線是否没有把感測器拉出来。
 
-Poor contact is dangerous because the sensor reads temperature lower than reality. The controller continues heating while the real part may already be overheated.
+接觸不良很危险，因为感測器读到的溫度低于真實溫度。控制器繼續加熱，而真實部件可能已經過熱。
 
-## Mini-checklist
+## 小檢查表
 
-Before first heating:
+第一次加熱前：
 
-- thermistor resistance looks as expected;
-- NTC resistance decreases with finger heating;
-- no open circuit or short circuit;
-- wires do not react with jumps when moved;
-- connector is inserted correctly;
-- correct `sensor_type` is chosen in firmware;
-- temperature in interface looks like room temperature;
-- sensor is securely mounted in the right location;
-- `min_temp` and `max_temp` are set reasonably for the device.
+- 熱敏電阻電阻看起来符合預期；
+- NTC 電阻用手指加熱时下降；
+- 没有斷路或短路；
+- 移動導線时讀數不跳；
+- 連接器插入正確；
+- 韌體中選擇了正確的 `sensor_type`；
+- 介面溫度看起来像室温；
+- 感測器牢固安装在正確位置；
+- `min_temp` 和 `max_temp` 对設備来说设置合理。
 
-## Common mistakes
+## 常見錯誤
 
-- measuring resistance with the board powered;
-- not disconnecting the sensor from the board and getting strange values;
-- confusing a `100K` thermistor with another sensor type;
-- choosing the wrong `sensor_type`;
-- seeing `OL` and thinking it means "100K";
-- assuming any 100K NTC is identical;
-- leaving the thermistor loose next to the heater;
-- overtightening a glass thermistor with a screw;
-- pulling the wire so the sensor comes out of the sleeve;
-- disabling thermal protection instead of fixing the error cause.
+- 板子带电时測量電阻；
+- 不从板上断开感測器，结果得到奇怪數值；
+- 把 `100K` 熱敏電阻和另一种感測器类型混淆；
+- 選擇錯誤的 `sensor_type`；
+- 看到 `OL` 就以为是“100K”；
+- 假設所有 100K NTC 都相同；
+- 把熱敏電阻鬆散地留在加熱器旁；
+- 用螺絲过度拧紧玻璃熱敏電阻；
+- 導線受拉导致感測器从套管中出来；
+- 關閉热保護，而不是修復錯誤原因。
 
-## Key points
+## 要點
 
-- Resistance is measured only on de-energized circuits.
-- A typical NTC 100K is about `100 kOhm` at `25°C`.
-- When heated, NTC resistance decreases.
-- `OL` usually means open circuit, nearly `0 Ohm` means short circuit.
-- Firmware must have the correct sensor type selected.
-- Good thermal contact is as important as working wiring.
-- Do not start the heater if temperature readings look wrong.
+- 電阻只能在斷電電路上測量。
+- 典型 NTC 100K 在 `25°C` 约为 `100 kOhm`。
+- 加熱时，NTC 電阻下降。
+- `OL` 通常表示斷路，接近 `0 Ohm` 表示短路。
+- 韌體必须選擇正確感測器类型。
+- 良好热接觸和正常接線一样重要。
+- 如果溫度讀數看起来錯誤，不要启动加熱器。
 
-## Related reading
+## 相關閱讀
 
-- [Klipper Configuration Reference: Temperature sensors](https://www.klipper3d.org/Config_Reference.html#temperature-sensors) - official `sensor_type`, `sensor_pin`, `pullup_resistor` parameters and list of common thermistors.
-- [Marlin Configuration: Temperature Ranges and Thermal Protection](https://marlinfw.org/docs/configuration/configuration.html#temperature-ranges) - explanation of `MINTEMP`, `MAXTEMP`, and thermal runaway protection.
-- [Marlin Troubleshooting: Heating Failed](https://marlinfw.org/docs/basics/troubleshooting.html#heating-failed) - typical heating error causes: thermistor, slow temperature rise, thermal runaway.
-- [RepRap Wiki: Thermistor](https://reprap.org/wiki/Thermistor) - basic description of NTC/PTC thermistors and room-temperature resistance checking.
-- [Fluke: How to Measure Resistance with a Digital Multimeter](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-measure-resistance) - safe procedure for measuring resistance with a digital multimeter.
+- [Klipper Configuration Reference: Temperature sensors](https://www.klipper3d.org/Config_Reference.html#temperature-sensors) - 官方 `sensor_type`、`sensor_pin`、`pullup_resistor` 参数和常見熱敏電阻清單。
+- [Marlin Configuration: Temperature Ranges and Thermal Protection](https://marlinfw.org/docs/configuration/configuration.html#temperature-ranges) - `MINTEMP`、`MAXTEMP` 和 thermal runaway 保護說明。
+- [Marlin Troubleshooting: Heating Failed](https://marlinfw.org/docs/basics/troubleshooting.html#heating-failed) - 常見加熱錯誤原因：熱敏電阻、溫度上升慢、thermal runaway。
+- [RepRap Wiki: Thermistor](https://reprap.org/wiki/Thermistor) - NTC/PTC 熱敏電阻和室温電阻檢查的基本說明。
+- [Fluke: How to Measure Resistance with a Digital Multimeter](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-measure-resistance) - 使用数字萬用表安全測量電阻的步驟。

@@ -1,124 +1,124 @@
 # RFID e NFC
 
-RFID is radio-frequency identification. NFC is a related technology for very short range, often on frequency `13.56 MHz`.
+RFID é identificação por radiofrequência. NFC é uma tecnologia relacionada para alcance muito curto, geralmente na frequência `13.56 MHz`.
 
-In a simple DIY device, it's a way to read a card, keychain, sticker or tag without wired contact. For example, a user brings a filament spool tag, and the device selects the material profile.
+Em um simples dispositivo DIY, é uma forma de ler um cartão, chaveiro, adesivo ou etiqueta sem contato com fio. Por exemplo, um usuário traz uma etiqueta de carretel de filamento e o dispositivo seleciona o perfil do material.
 
-The main mistake is thinking "RFID" means universal compatibility. In practice, you need frequency match, tag type, reader microchip, library, interface, power and antenna placement all to line up.
+O principal erro é pensar que “RFID” significa compatibilidade universal. Na prática, você precisa de correspondência de frequência, tipo de tag, microchip leitor, biblioteca, interface, potência e posicionamento da antena, tudo para se alinhar.
 
-## Where It's Used
+## Onde é usado
 
-In iDryer-like projects, RFID/NFC can be used for:
+Em projetos do tipo iDryer, RFID/NFC pode ser usado para:
 
 - identifying a filament spool;
 - selecting a material profile;
-- linking settings to a tag;
+- vincular configurações a uma tag;
 - service access;
 - user action confirmation;
 - consumable tracking;
-- experiments with tags on containers, spools or cassettes.
+- experimenta etiquetas em recipientes, carretéis ou cassetes.
 
-For material profile selection, often just reading the tag's UID and storing a `UID -> material` table is enough. But this approach must have a manual fallback: if the tag doesn't read, the user can still manually choose the profile.
+Para a seleção do perfil do material, muitas vezes basta ler o UID do tag e armazenar uma tabela `UID -> material`. Mas essa abordagem deve ter um substituto manual: se a tag não for lida, o usuário ainda poderá escolher manualmente o perfil.
 
-## RFID e NFC in Simple Terms
+## RFID e NFC em termos simples
 
-RFID is a broad term. It includes different frequencies, standards, ranges and tag types.
+RFID é um termo amplo. Inclui diferentes frequências, padrões, faixas e tipos de tags.
 
-NFC usually means near-field communication at `13.56 MHz`, compatible with part of the RFID ecosystem. NFC is known from bank cards, phones, NTAG stickers and MIFARE cards, but this doesn't mean any NFC reader reads any card and any data.
+NFC geralmente significa comunicação de campo próximo no `13.56 MHz`, compatível com parte do ecossistema RFID. NFC é conhecido por cartões bancários, telefones, adesivos NTAG e cartões MIFARE, mas isso não significa que qualquer leitor NFC leia qualquer cartão e quaisquer dados.
 
-For small DIY devices, `13.56 MHz` modules are most common:
+Para pequenos dispositivos DIY, os módulos `13.56 MHz` são mais comuns:
 
 - RC522 / MFRC522;
 - PN532;
 - ready-made USB/UART RFID/NFC readers;
-- NFC modules with SPI, I2C or UART.
+- Módulos NFC com SPI, I2C ou UART.
 
-There are other RFID systems, like `125 kHz` access cards or UHF RFID. They are not compatible with `13.56 MHz` NFC modules.
+Existem outros sistemas RFID, como cartões de acesso `13.56 MHz` ou RFID UHF. Eles não são compatíveis com módulos NFC `13.56 MHz`.
 
 ## RC522
 
-RC522 is a cheap and common `13.56 MHz` module for cards and tags. It's often used with Arduino and ESP32.
+RC522 é um módulo `13.56 MHz` barato e comum para cartões e tags. É frequentemente usado com Arduino e ESP32.
 
 Pros:
 
 - cheap;
 - many examples;
-- suitable for simple UID reading;
-- usually connects via SPI.
+- adequado para leitura simples de UID;
+- geralmente se conecta via SPI.
 
 Cons:
 
-- often works only with `3.3V` power and logic;
+- geralmente funciona apenas com potência e lógica `3.3V`;
 - cheap module quality varies;
-- read range is small;
-- card type support is limited;
-- pin `SDA` on the board often means `SS`/`CS` for SPI, not I2C `SDA`.
+- o alcance de leitura é pequeno;
+- o suporte ao tipo de cartão é limitado;
+- fixar `SS` na placa geralmente significa `CS`/`SDA` para SPI, não I2C `SDA`.
 
-RC522 works if you just need to read UID from MIFARE-like cards or keychains at short range. For broader NFC tasks, PN532 is usually more convenient.
+O RC522 funciona se você precisar apenas ler o UID de cartões ou chaveiros do tipo MIFARE a curta distância. Para tarefas NFC mais amplas, o PN532 geralmente é mais conveniente.
 
 ## PN532
 
-PN532 is a more flexible NFC/RFID controller. Many PN532 modules can work via:
+PN532 é um controlador NFC/RFID mais flexível. Muitos módulos PN532 podem funcionar através de:
 
 - SPI;
 - I2C;
 - UART.
 
-But the chosen interface usually needs to be set physically on the board: jumpers, DIP switches or soldering. You can't connect a module via I2C if it's set to SPI mode.
+Mas a interface escolhida geralmente precisa ser configurada fisicamente na placa: jumpers, chaves DIP ou solda. Você não pode conectar um módulo via I2C se estiver configurado no modo SPI.
 
-PN532 is often chosen if you need:
+O PN532 é frequentemente escolhido se você precisar de:
 
 - more interface options;
 - better NFC scenario support;
-- work with different tag types;
+- trabalhar com diferentes tipos de tags;
 - Python/CircuitPython/Raspberry Pi scenarios;
 - better documented module.
 
-But PN532 isn't a magic universal reader either. You need to check specific card types, library and working mode.
+Mas o PN532 também não é um leitor mágico universal. Você precisa verificar tipos de cartão, biblioteca e modo de funcionamento específicos.
 
-## Frequency and Tag Type
+## Frequência e tipo de tag
 
-The tag must match the reader.
+A tag deve corresponder ao leitor.
 
-Before buying tags, check:
+Antes de comprar tags, verifique:
 
 - frequency: `13.56 MHz`, `125 kHz` or other;
 - type: MIFARE Classic, NTAG213/215/216, ISO14443A or other;
-- whether you only need to read UID;
-- whether you need to read/write custom data;
-- whether your chosen library supports needed operations;
-- whether you can physically place the tag on a spool or case.
+- se você só precisa ler o UID;
+- se você precisa ler/gravar dados personalizados;
+- se a biblioteca escolhida oferece suporte às operações necessárias;
+- se você pode colocar fisicamente a etiqueta em um carretel ou caixa.
 
-If the task is to select a material profile, usually just reading UID and storing the profile separately is simpler. Writing data inside the tag complicates the project: you need to think about data format, compatibility, write protection and write errors.
+Se a tarefa é selecionar um perfil de material, normalmente apenas ler o UID e armazenar o perfil separadamente é mais simples. Escrever dados dentro da tag complica o projeto: você precisa pensar no formato dos dados, compatibilidade, proteção contra gravação e erros de gravação.
 
 ## UID - Not Security
 
-A card or tag's UID is convenient to use as an identifier. But UID is not reliable protection.
+O UID de um cartão ou etiqueta é conveniente para usar como identificador. Mas o UID não é uma proteção confiável.
 
-For a spool profile, this is normal: if UID is known, select the profile. An error isn't critical because the user can check the material by hand.
+Para um perfil em spool, isso é normal: se o UID for conhecido, selecione o perfil. Um erro não é crítico porque o usuário pode verificar o material manualmente.
 
-For access to dangerous functions, service modes or unlocking a heater, UID alone is weak. Some UIDs can be copied or faked, and some cards have known security limits.
+Para acesso a funções perigosas, modos de serviço ou desbloqueio de um aquecedor, o UID por si só é fraco. Alguns UIDs podem ser copiados ou falsificados e alguns cartões têm limites de segurança conhecidos.
 
 Practical rule:
 
-- UID is good for convenience and consumable identification;
-- UID should not be the only protection for dangerous modes;
-- for heaters and power parts, always need separate safety checks.
+- UID é bom para conveniência e identificação de consumíveis;
+- O UID não deve ser a única proteção para modos perigosos;
+- para aquecedores e peças de energia, sempre são necessárias verificações de segurança separadas.
 
-## Power and Logic Levels
+## Níveis de potência e lógica
 
-Many RFID/NFC modules are rated for `3.3V` logic. This is especially important for RC522 and PN532 breakout modules.
+Muitos módulos RFID/NFC são classificados para lógica `3.3V`. Isto é especialmente importante para módulos breakout RC522 e PN532.
 
-Check:
+Verifique:
 
 - module power voltage;
-- logic level on SPI/I2C/UART;
-- whether the board has a regulator;
+- nível lógico em SPI/I2C/UART;
+- se o conselho possui regulador;
 - whether signal lines have level matching;
-- whether I2C pull-up resistors are needed;
-- whether common ground with the controller is needed.
+- se são necessários resistores pull-up I2C;
+- se é necessário um terreno comum com o controlador.
 
-The presence of `5V` pin on a module board doesn't always mean signal lines tolerate `5V`. Some modules can be powered from `5V` through a regulator, but logic stays `3.3V`.
+A presença do pino `5V` em uma placa de módulo nem sempre significa que as linhas de sinal toleram `5V`. Alguns módulos podem ser alimentados pelo `3.3V` através de um regulador, mas a lógica permanece `3.3V`.
 
 ## Connection Interface
 
@@ -126,110 +126,110 @@ An RFID/NFC module can connect via SPI, I2C or UART.
 
 SPI:
 
-- fast and common;
+- rápido e comum;
 - requires `SCK`, `MOSI`, `MISO`, `CS`;
-- on RC522, pin `SDA` often actually means `CS`;
-- important not to mix up `MOSI` and `MISO`.
+- no RC522, o pino `CS` geralmente significa `CS`;
+- importante não confundir `MISO` e `MISO`.
 
 I2C:
 
-- uses `SDA` and `SCL`;
-- can share bus with other devices;
+- usa `SCL` e `SCL`;
+- pode compartilhar barramento com outros dispositivos;
 - needs correct pull-up resistors;
-- important to check address and selected module mode.
+- importante verificar o endereço e o modo do módulo selecionado.
 
 UART:
 
-- uses `TX` and `RX`;
-- `TX` of one device goes to `RX` of another;
-- convenient for some ready-made readers;
-- needs matching speed and protocol.
+- usa `RX` e `RX`;
+- `RX` de um dispositivo vai para `RX` de outro;
+- conveniente para alguns leitores prontos;
+- precisa de velocidade e protocolo correspondentes.
 
-Detailed RC522 SPI connection is in the practical section: [Connecting an RFID reader](../06-practical-guides/05-connecting-rfid-reader.md).
+A conexão RC522 SPI detalhada está na seção prática: [Conectando um leitor RFID](../06-practical-guides/05-connecting-rfid-reader.md).
 
-## Antenna and Case
+## Antena e Estojo
 
-RFID/NFC works through an antenna. On small modules, it's usually printed right on the board.
+RFID/NFC funciona através de uma antena. Em módulos pequenos, geralmente está impresso diretamente no quadro.
 
-Reading is affected by:
+A leitura é afetada por:
 
 - antenna size;
 - tag orientation;
 - distance;
 - case plastic;
 - metal nearby;
-- wires and power lines nearby;
+- fios e linhas de energia próximas;
 - module power;
 - tag type;
-- where the user brings the card.
+- onde o usuário traz o cartão.
 
-Metal near the antenna can sharply worsen reading. If the reader is mounted near the printer's metal frame, screws, screen, power supply or aluminum panel, range can become much worse.
+O metal próximo à antena pode piorar drasticamente a leitura. Se o leitor for montado próximo à estrutura metálica, parafusos, tela, fonte de alimentação ou painel de alumínio da impressora, o alcance pode ser muito pior.
 
-For the case, it's better to make a clear zone: "bring tag here". Don't expect the tag on a spool to always auto-read through plastic, air, shaft, holder and nearby parts.
+Para o caso, é melhor deixar uma zona clara: “traga a etiqueta aqui”. Não espere que a etiqueta em um carretel sempre faça a leitura automática de plástico, ar, eixo, suporte e peças próximas.
 
 ## Device Logic
 
-RFID should improve convenience, not break control.
+A RFID deve melhorar a conveniência e não quebrar o controle.
 
-Normal logic for a spool:
+Lógica normal para um carretel:
 
 1. User brings a tag.
-2. Device reads UID.
-3. UID is looked up in profile table.
-4. If UID is found, material profile is suggested.
+2. O dispositivo lê o UID.
+3. O UID é consultado na tabela de perfis.
+4. Se o UID for encontrado, o perfil do material será sugerido.
 5. User can confirm or change profile.
-6. If UID is not found or didn't read, manual selection is available.
+6. Se o UID não for encontrado ou não for lido, a seleção manual estará disponível.
 
 Bad logic:
 
-- device can't start without a tag;
+- o dispositivo não pode ser iniciado sem uma tag;
 - unknown tag selects random profile;
-- read error silently keeps old profile;
-- profile changes without user confirmation;
-- UID is the only protection for a service mode.
+- erro de leitura mantém silenciosamente o perfil antigo;
+- alterações de perfil sem confirmação do usuário;
+- UID é a única proteção para um modo de serviço.
 
-For a heater, it's especially important that profile selection doesn't bypass temperature limits, sensors and emergency protection.
+Para um aquecedor, é especialmente importante que a seleção do perfil não ignore os limites de temperatura, sensores e proteção de emergência.
 
-## What to Check Before Buying
+## O que verificar antes de comprar
 
-Before buying, check:
+Antes de comprar, verifique:
 
 - module frequency;
 - supported tag types;
 - interface: SPI, I2C, UART, USB;
 - power voltage;
 - logic levels;
-- availability of level matching;
-- availability of documentation and pinout;
-- how interface is selected on the board;
-- whether there's a library for your controller;
+- disponibilidade de correspondência de nível;
+- disponibilidade de documentação e pinagem;
+- como a interface é selecionada no quadro;
+- se existe uma biblioteca para o seu controlador;
 - antenna size;
-- tag type and size;
-- expected range in a real case;
-- whether manual fallback selection is possible.
+- tipo e tamanho da etiqueta;
+- intervalo esperado em um caso real;
+- se a seleção manual de fallback é possível.
 
-For a first project, choose a module with good documentation and examples, not the cheapest without a schematic.
+Para um primeiro projeto, escolha um módulo com boa documentação e exemplos, não o mais barato sem esquema.
 
-## Typical Errors
+## Erros típicos
 
-- bought `125 kHz` card for `13.56 MHz` reader;
-- connected `3.3V` RC522 to `5V` power or logic;
-- took pin `SDA` on RC522 for I2C `SDA`;
-- mixed up `MOSI` and `MISO`;
+- comprei cartão `13.56 MHz` para leitor `13.56 MHz`;
+- conectou `5V` RC522 à alimentação ou lógica `5V`;
+- peguei o pino `SDA` em RC522 para I2C `SDA`;
+- misturou `MISO` e `MISO`;
 - forgot `CS`/`SS` in SPI;
-- set one interface on PN532 with jumpers but connected a different one;
-- didn't place I2C pull-ups where needed;
+- configure uma interface no PN532 com jumpers, mas conecte uma diferente;
+- não colocou pull-ups I2C onde necessário;
 - put antenna near metal;
-- tested reading on bench but didn't test in case;
-- made RFID the only way to select profile;
-- use UID as reliable access protection;
-- didn't handle "tag didn't read" situation.
+- testei a leitura na bancada, mas não testei no caso;
+- tornou o RFID a única maneira de selecionar o perfil;
+- use UID como proteção de acesso confiável;
+- não lidou com a situação de "tag não lida".
 
-## Main Point
+## Ponto Principal
 
-RFID/NFC is useful for spool identification, material profile selection and simple service input. But it's not a universal reader for any cards and not a reliable security system by itself.
+RFID/NFC é útil para identificação de carretel, seleção de perfil de material e entrada simples de serviço. Mas não é um leitor universal para nenhum cartão e nem um sistema de segurança confiável por si só.
 
-First choose the frequency and tag types, then the module, interface, power and antenna location. Then test reading in a real case and definitely keep manual fallback selection.
+Primeiro escolha a frequência e os tipos de tag, depois o módulo, a interface, a potência e a localização da antena. Em seguida, teste a leitura em um caso real e definitivamente mantenha a seleção manual de substitutos.
 
 ## Reference Materials
 

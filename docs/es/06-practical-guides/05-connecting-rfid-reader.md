@@ -96,7 +96,7 @@ Verificar:
 - solo necesita leer UID o también leer/escribir datos;
 - la librería elegida soporta la operación necesaria.
 
-Para selección simple de perfil de material, a menudo es suficiente solo leer el UID de etiqueta y almacenar mapeo de UID -> material en firmware u host.
+Para simple de perfil de material, a menudo es suficiente solo leer el UID selección de etiqueta y almacenar mapeo de UID -> material en firmware u host.
 
 ## Distancia de Lectura
 

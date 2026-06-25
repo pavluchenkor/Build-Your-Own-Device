@@ -87,7 +87,7 @@ Antes de conectar, verifique:
 - si el módulo tiene convertidor de nivel;
 - si el módulo es compatible con un controlador de `3,3V`.
 
-En caso de duda, use alimentación de `3,3V` para módulos I2C o un convertidor de nivel.
+En caso de duda, utilice alimentación de `3.3V` para módulos I2C o un convertidor de nivel.
 
 ## Velocidad
 

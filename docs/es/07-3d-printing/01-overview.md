@@ -158,7 +158,7 @@ No nos sumergiremos en:
 - calibración perfecta de impresora;
 - selección de marca específica de filamento.
 
-El enfoque es simple: las partes para un dispositivo real deben ser suficientemente resistentes, resistentes al calor, reparables y seguras.
+El enfoque es simple: las partes para un dispositivo real deben ser lo suficientemente resistentes, resistentes al calor, reparables y seguras.
 
 ## Conclusiones clave
 

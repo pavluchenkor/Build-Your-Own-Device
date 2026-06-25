@@ -36,7 +36,7 @@ Schéma de connexion :
 
 *Source : [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:15938_-_USBtoSerial_1.jpg), SparkFun Electronics, CC BY 2.0*
 
-Pour une simple lecture de journaux, `TX`, `RX` et `GND` sont souvent suffisants. L'alimentation n'est connectée que s'il est clair que la carte doit être alimentée par l'adaptateur.
+Pour une simple lecture de journaux, `RX`, `GND` et `GND` sont souvent suffisants. L'alimentation n'est connectée que s'il est clair que la carte doit être alimentée par l'adaptateur.
 
 ## Comment connecter TX et RX
 

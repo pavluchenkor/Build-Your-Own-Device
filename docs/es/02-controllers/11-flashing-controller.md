@@ -62,7 +62,7 @@ Usualmente:
 4. Copia archivo `.uf2`.
 5. El disco desaparece, la placa se reinicia.
 
-El BOOTSEL de Pico está en la ROM del microcontrolador, así que no se puede borrar accidentalmente por flasheo normal. Esto hace que RP2040 sea conveniente para principiantes.
+El BOOTSEL de Pico está en la ROM del microcontrolador, por lo que no se puede borrar accidentalmente por flasheo normal. Esto hace que RP2040 sea conveniente para principiantes.
 
 ## STM32: DFU, ST-LINK, tarjeta SD
 
@@ -79,7 +79,7 @@ Opciones posibles:
 
 Para STM32, el offset del bootloader es a menudo importante. Por ejemplo, si el bootloader ocupa los primeros `8 KiB`, Klipper debe construirse con el offset correcto. Si se elige mal, la placa puede no iniciar después del flasheo.
 
-ST-LINK/SWD es útil como opción más de bajo nivel: a menudo puede recuperar una placa si el bootloader normal no funciona. Pero esto requiere pines SWD, programador y comprensión de la conexión.
+ST-LINK/SWD es útil como opción más de bajo nivel: a menudo puede recuperar una placa si el gestor de arranque normal no funciona. Pero esto requiere pinos SWD, programador y comprensión de la conexión.
 
 ## Klipper: make menuconfig
 
@@ -111,7 +111,7 @@ Después del flasheo, debes verificar más que solo "el flasher escribió éxito
 Verifica:
 
 - ¿aparece el dispositivo en el sistema?
-- ¿está presente `/dev/serial/by-id/...`, si usas USB/serie?
+- ¿Está presente `/dev/serial/by-id/...`, si usas USB/serie?
 - ¿es visible `canbus_uuid`, si usas CAN?
 - ¿coincide la ruta con `printer.cfg`?
 - ¿no hay errores de comunicación en Klipper?
@@ -188,7 +188,7 @@ Después de flashear el controlador, no conectes el calentador sin verificar que
 
 El firmware es el programa dentro del controlador, la configuración son sus configuraciones operacionales. Para cada placa, debes conocer el modelo exacto, microcontrolador, bootloader, método de flasheo y parámetros de construcción.
 
-Para RP2040, UF2/BOOTSEL es usualmente lo más simple. Para STM32, verifica la placa específica: DFU, ST-LINK, tarjeta SD, bootloader UART o CAN. Para Klipper, primero encuentra una configuración lista y comentarios para `make menuconfig`.
+Para RP2040, UF2/BOOTSEL es normalmente lo más simple. Para STM32, verifica la placa específica: DFU, ST-LINK, tarjeta SD, bootloader UART o CAN. Para Klipper, primero encuentra una lista de configuración y comentarios para `make menuconfig`.
 
 ## Materiales relacionados
 

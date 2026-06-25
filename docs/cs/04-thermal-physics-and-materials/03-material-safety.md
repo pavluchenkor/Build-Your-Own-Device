@@ -32,7 +32,7 @@ Nejdříve je třeba pochopit, jaká teplota bude ne „v průměru v komoře", 
 - pod izolací;
 - na vnějším povrchu.
 
-Pokud komora udržuje `45°C`, neznamenání to, že všechny části v ní jsou také `45°C`. Blízko topného prvku nebo v kanálu by to mohlo být výrazně horkší.
+Pokud komora udržuje také `45°C`, neznamená to, že části v níž jsou `45°C`. Blízko topného prvku nebo v kanálu by to mohlo být výrazně horkší.
 
 Praktické pravidlo: materiál musí mít bezpečnostní rezervu pro nepřetržitou teplotu přesně na místě, kde se nachází. Pro zónu vedle topného prvku musí být rezerva větší než pro vnější dekorativní panel.
 

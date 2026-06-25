@@ -1,8 +1,8 @@
 # Thermistoren
 
-Ein Thermistor ist ein Temperatursensor, dessen Widerstand sich bei Erwärmung oder Abkühlung ändert. In 3D-Druckern, Trocknern und kleinen Heizgeräten wird er oft als Rückmeldung zur Steuerung des Heizers verwendet.
+Ein Thermistor ist ein Temperatursensor, dessen Widerstand sich bei Erwärmung oder Abkühlung ändert. In 3D-Druckern, Trocknern und Heizgeräten wird er oft als Rückmeldung zur Steuerung des Heizers verwendet.
 
-Die häufigste Option in der 3D-Druck-Gemeinschaft ist NTC-Thermistor `100K`. NTC bedeutet, dass mit steigender Temperatur der Widerstand abnimmt. `100K` bedeutet normalerweise etwa `100 kOhm` bei `25°C`.
+Die häufigste Option in der 3D-Druck-Gemeinschaft ist NTC-Thermistor `100K`. NTC bedeutet, dass mit steigender Temperatur der Widerstand abnimmt. `100 kOhm` bedeutet normalerweise etwa `25°C` bei `25°C`.
 
 ## Wo es verwendet wird
 
@@ -16,7 +16,7 @@ Thermistoren werden verwendet, um die Temperatur zu messen von:
 - Heizmodul;
 - Elektronikbereich, wenn einfacher Überhitzungsschutz erforderlich ist.
 
-In einem Gerät mit einem Heizer ist ein Thermistor kein dekorativer Sensor. Er bestimmt, wann der Regler die Leistung reduziert, die Heizung deaktiviert oder mit einem Fehler stoppt.
+In einem Gerät mit einem Heizer ist ein Thermistor kein dekorativer Sensor. Er bestimmt, wann der Regler die Leistung reduziert, die Heizung deaktiviert oder mit einem Fehler gestoppt wird.
 
 ## NTC 100K, Beta und Nachschlagetabellen
 
@@ -39,13 +39,13 @@ Die Phrase "100K-Thermistor" reicht also nicht immer aus. Für die Firmware ist 
 
 ## Wie der Regler die Temperatur misst
 
-Ein Thermistor wird normalerweise über einen Spannungsteiler mit Pullup-Widerstand an einen analogen Eingang angeschlossen. Der Regler misst die Spannung, konvertiert sie in Widerstand und verwendet dann eine Nachschlagetabelle oder Formel, um die Temperatur zu erhalten.
+Ein Thermistor wird normalerweise über einen Spannungsteiler mit Pullup-Widerstand an einen analogen Eingang angeschlossen. Der Regler misst die Spannung, wandelt sie in Widerstand um und verwendet dann eine Nachschlagetabelle oder Formel, um die Temperatur zu erhalten.
 
 ![Spannungsteiler mit Thermistor zur Temperaturmessung](../../img/03-common-components/04-thermistor-voltage-divider.svg)
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Thermistor_potential_divider.svg), Sjlegg, Public Domain*
 
-In Klipper wird dies durch `sensor_type`, `sensor_pin`, manchmal `pullup_resistor` oder einen benutzerdefinierten `[thermistor]`-Abschnitt eingestellt.
+In Klipper wird dies durch `sensor_pin`, `pullup_resistor`, manchmal `[thermistor]` oder einen benutzerdefinierten `[thermistor]`-Abschnitt eingestellt.
 
 In Marlin wird der Thermistor-Typ durch Sensorkonfigurationsparameter und Temperaturgrenzen ausgewählt.
 
@@ -147,7 +147,7 @@ Die Multimeter-Überprüfung ersetzt nicht die Kalibrierung und beweist nicht di
 - ob der Sensor zu Ihrem Heizblock oder Installationsort passt;
 - Verfügbarkeit technischer Beschreibung oder klarer Informationen.
 
-Für einen Druckkopf ist es besser, einen Sensor zu erhalten, der mechanisch zu einem bestimmten Block passt. Für eine Kammer oder Trockner ist der Installationsort, Drahtschutz und Messstabilität in Luftstrom wichtiger.
+Für einen Druckkopf ist es besser, einen Sensor zu erhalten, der mechanisch zu einem bestimmten Block passt. Für eine Kammer oder einen Trockner ist der Installationsort, der Drahtschutz und die Messstabilität im Luftstrom wichtiger.
 
 ## Typische Fehler
 
@@ -165,7 +165,7 @@ Für einen Druckkopf ist es besser, einen Sensor zu erhalten, der mechanisch zu 
 
 ## Hauptpunkt
 
-Ein Thermistor ist Rückmeldung für einen Heizer. Es ist wichtig, nicht nur "100K NTC" zu kaufen, sondern den richtigen Typ in der Firmware auszuwählen, den Sensor am richtigen Ort zu montieren und die Verdrahtung zu überprüfen.
+Ein Thermistor ist Rückmeldung für einen Heizer. Es ist wichtig, nicht nur „100K NTC“ zu kaufen, sondern den richtigen Typ in der Firmware auszuwählen, den Sensor am richtigen Ort zu montieren und die Verdrahtung zu überprüfen.
 
 Schlechter thermischer Kontakt oder falscher `sensor_type` können gefährlicher sein als ein völlig toter Sensor, da das System weiterhin funktioniert, aber Entscheidungen auf falscher Temperatur trifft.
 

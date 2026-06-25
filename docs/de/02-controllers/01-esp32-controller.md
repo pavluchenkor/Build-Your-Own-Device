@@ -18,7 +18,7 @@ Typische Aufgaben:
 - Integration mit MQTT, Home Assistant oder eigener lokaler Logik;
 - autonomes Prototyp, das kein Teil von Klipper sein muss.
 
-ESP32 ist geeignet, wenn das Gerät separat vom Drucker betrieben werden und Daten über das Netzwerk austauschen soll. Sollen lediglich zusätzliche Pins für Klipper bereitgestellt werden, ist es in der Regel besser, RP2040, STM32 oder eine fertige Druckerplatine zu verwenden.
+ESP32 ist geeignet, wenn das Gerät separat vom Drucker betrieben werden und Daten über das Netzwerk ausgetauscht werden sollen. Sollen zusätzlich zusätzliche Pins für Klipper bereitgestellt werden, ist es in der Regel besser, RP2040, STM32 oder eine fertige Druckerplatine zu verwenden.
 
 ## Typische Gerätearchitektur
 
@@ -59,7 +59,7 @@ Vor dem Kauf prüfen:
 - welche GPIO tatsächlich herausgeführt sind;
 - welcher Spannungsregler auf der Platine sitzt;
 - ob eine ordentliche Antenne und ausreichend Freiraum darum vorhanden ist;
-- ob die Platinenabmessungen in das Gehäuse passen.
+- Ob die Platinenabmessungen in das Gehäuse passen.
 
 ## 3.3V-Logik
 
@@ -73,11 +73,11 @@ Was zu beachten ist:
 - einige fertige MOSFET/SSR-Module funktionieren mit `3.3V` möglicherweise nicht zuverlässig;
 - Laststrom kann nicht von GPIO entnommen werden.
 
-Viele Sensoren sind bereits in `3.3V`-Varianten erhältlich. Für ESP32 ist das die beste Wahl.
+Viele Sensoren sind bereits in `3.3V`-Varianten erhältlich. Für ESP32 ist die beste Wahl.
 
 ## Stromversorgung
 
-Entwicklungsplatinen haben in der Regel einen USB-Eingang und einen `5V`/`VIN`-Pin, der ESP32 selbst wird von einem `3.3V`-Regler versorgt.
+Entwicklungsplatinen haben in der Regel einen USB-Eingang und einen `VIN`/`3.3V`-Pin, der ESP32 selbst wird von einem `3.3V`-Regler versorgt.
 
 Häufige Fehler:
 
@@ -101,9 +101,9 @@ Beim klassischen ESP32:
 - `GPIO1` und `GPIO3` werden häufig als UART für Firmware und Logs verwendet;
 - einige Pins können auf einer bestimmten Entwicklungsplatine durch LED, Taste oder andere Schaltkreise belegt sein.
 
-Strapping-Pins bestimmen den Boot-Modus beim Start. Wenn externe Beschaltung einen solchen Pin falsch zieht, startet ESP32 möglicherweise nicht oder wechselt in den Firmware-Update-Modus.
+Strapping-Pins bestimmen den Boot-Modus beim Start. Wenn die externe Beschaltung einen Pin falsch zieht, startet ESP32 möglicherweise nicht oder wechselt in den Firmware-Update-Modus.
 
-Praktische Regel: In der ersten Version Pins aus dem Pinout der eigenen Platine verwenden und Pins meiden, die mit `BOOT`, `FLASH`, `STRAP`, `TX0`, `RX0`, `GPIO6-GPIO11` gekennzeichnet sind, sofern ihre Funktion nicht bekannt ist.
+Praktische Regel: In der ersten Version gekennzeichnet Pins aus dem Pinout der eigenen Platine verwenden und Pins meiden, die mit `FLASH`, `STRAP`, `TX0`, `RX0`, `GPIO6-GPIO11`, `GPIO6-GPIO11` sind, sofern ihre Funktion nicht bekannt ist.
 
 ## ADC auf ESP32
 
@@ -116,7 +116,7 @@ Was zu beachten ist:
 - der Messbereich hängt von der Dämpfungseinstellung ab;
 - die Messung kann eine Kalibrierung erfordern;
 - an ADC darf keine Spannung über dem sicheren GPIO-Pegel angelegt werden;
-- ein Thermistor benötigt in der Regel einen Spannungsteiler und die richtige Tabelle/das richtige Modell in der Firmware.
+- Ein Thermistor benötigt in der Regel einen Spannungsteiler und die richtige Tabelle/das richtige Modell in der Firmware.
 
 Wenn ein genauer Temperatursensor benötigt wird, ist es oft einfacher, einen digitalen Sensor oder ein fertiges Modul mit einer bekannten Bibliothek zu verwenden. Für einen NTC-Thermistor funktioniert ESP32, aber Schaltung und ADC-Einstellungen müssen geprüft werden.
 

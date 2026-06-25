@@ -2,7 +2,7 @@
 
 ESP32 es una familia de microcontroladores Espressif con Wi-Fi, Bluetooth y un amplio conjunto de periféricos. En dispositivos DIY, se elige a menudo cuando necesitas construir un módulo independiente: se conecta a la red por sí solo, lee sensores, muestra una página en el navegador y controla salidas simples.
 
-Para dispositivos alrededor de una impresora 3D, ESP32 es útil no como "otra placa de potencia", sino como un pequeño controlador conectado a la red: un sensor de temperatura/humedad, un módulo de ventilación, un filtro simple con interfaz web, monitoreo de cámara separado o una secadora independiente.
+Para dispositivos alrededor de una impresora 3D, ESP32 es útil no como "otra placa de potencia", sino como un pequeño controlador conectado a la red: un sensor de temperatura/humedad, un módulo de ventilación, un filtro simple con interfaz web, monitoreo de cámara separada o una secadora independiente.
 
 ## Dónde es útil ESP32
 
@@ -118,7 +118,7 @@ Lo que importa:
 - no puedes aplicar voltaje por encima del nivel seguro de GPIO a ADC;
 - un termistor generalmente necesita un divisor de voltaje y la tabla/modelo correcto en el firmware.
 
-Si necesitas un sensor de temperatura preciso, a menudo es más simple usar un sensor digital o un módulo listo con una biblioteca conocida. Para un termistor NTC, ESP32 funciona, pero el circuito y las configuraciones de ADC deben verificarse.
+Si necesita un sensor de temperatura preciso, a menudo es más simple usar un sensor digital o un módulo listo con una biblioteca conocida. Para un termistor NTC, funciona ESP32, pero el circuito y las configuraciones de ADC deben verificarse.
 
 ## PWM, I2C, SPI y UART
 

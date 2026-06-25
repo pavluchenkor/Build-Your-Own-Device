@@ -1,198 +1,198 @@
 # Soldagem
 
-Soldering is used when you need to reliably connect a wire to a pad, solder a connector, repair a broken connection, or assemble a small module.
+A soldagem é usada quando você precisa conectar com segurança um fio a uma almofada, soldar um conector, reparar uma conexão quebrada ou montar um pequeno módulo.
 
-But soldering should not replace a proper connector, terminal or mechanical fastening where the wire will pull, vibrate or heat.
+Mas a soldagem não deve substituir um conector, terminal ou fixação mecânica adequada onde o fio possa puxar, vibrar ou aquecer.
 
-## When soldering is appropriate
+## Quando a soldagem é apropriada
 
 Soldering is good for:
 
-- soldering wires to a board;
+- soldar fios em uma placa;
 - installing a pin header;
 - repairing a broken wire;
 - connecting a small module;
 - soldering a thermistor or signal wire;
 - prototype assembly.
 
-Soldering is not the best choice for:
+Soldar não é a melhor escolha para:
 
 - frequently disassembled connections;
-- power terminals without strain relief;
-- wires that will move;
-- connections inside hot zones without protection;
-- mains 110-230V AC parts without proper terminals and enclosure.
+- terminais de potência sem alívio de tensão;
+- fios que irão se mover;
+- conexões dentro de zonas quentes sem proteção;
+- peças de rede elétrica de 110-230 Vca sem terminais e invólucros adequados.
 
 ## Minimal kit
 
-For proper soldering you need:
+Para uma soldagem adequada, você precisa de:
 
-- a soldering iron with temperature control;
+- ferro de soldar com controle de temperatura;
 - solder;
 - flux;
 - soldering iron stand;
-- sponge or brass wire for cleaning the tip;
+- esponja ou fio de latão para limpeza da ponta;
 - wire cutters;
 - wire stripper;
 - tweezers or third hand;
 - heat shrink tubing;
-- isopropyl alcohol for cleaning if needed.
+- álcool isopropílico para limpeza, se necessário.
 
-A soldering iron without a stand is a bad idea. A hot tip easily burns your hand, wire, enclosure or table.
+Um ferro de soldar sem suporte é uma má ideia. Uma ponta quente queima facilmente sua mão, fio, gabinete ou mesa.
 
 ## Tin a wire
 
-Tinning a wire means coating the exposed strands with a thin layer of solder.
+Estanhar um fio significa revestir os fios expostos com uma fina camada de solda.
 
 Procedure:
 
-1. Strip a bit of insulation.
-2. Twist the strands together if the wire is multi-strand.
-3. Apply flux if solder doesn't flow well.
-4. Heat the wire with the soldering iron.
-5. Apply some solder to the heated area.
-6. Let the solder flow across the strands.
+1. Retire um pouco do isolamento.
+2. Torça os fios juntos se o fio for multifilar.
+3. Aplique fluxo se a solda não fluir bem.
+4. Aqueça o fio com o ferro de soldar.
+5. Aplique um pouco de solda na área aquecida.
+6. Deixe a solda fluir pelos fios.
 
-Don't turn the wire end into a thick stiff blob. Tinning should be neat and thin.
+Não transforme a extremidade do fio em uma bolha grossa e rígida. A estanhagem deve ser limpa e fina.
 
 ## Solder a wire to a pad
 
 Procedure:
 
-1. Secure the board and wire.
-2. Tin the pad.
-3. Tin the wire.
-4. Apply the wire to the pad.
-5. Heat both the wire and pad simultaneously.
-6. Let the solder melt and join the parts.
-7. Remove the solder, then the iron.
-8. Don't move the joint while the solder cools.
+1. Prenda a placa e o fio.
+2. Estanhe a almofada.
+3. Estanhe o fio.
+4. Aplique o fio na almofada.
+5. Aqueça o fio e a almofada simultaneamente.
+6. Deixe a solda derreter e unir as peças.
+7. Remova a solda e depois o ferro.
+8. Não mova a junta enquanto a solda esfria.
 
-A good solder joint looks smooth and shiny or evenly dull, depending on the solder. It should not be a blob sitting on top that didn't wet the pad.
+Uma boa junta de solda parece lisa e brilhante ou uniformemente opaca, dependendo da solda. Não deve haver uma bolha no topo que não tenha molhado a almofada.
 
 ## Cold solder joints
 
-A cold solder joint is where the solder didn't heat up properly and didn't flow normally.
+Uma junta de solda fria é onde a solda não aqueceu adequadamente e não fluiu normalmente.
 
 Signs:
 
 - rough surface;
 - solder in a lump;
 - wire moves;
-- contact comes and goes;
-- joint breaks with slight movement.
+- o contato vai e vem;
+- rupturas articulares com leve movimento.
 
-Cold solder joints are dangerous because they may work sometimes. In a heated or vibrating device, such a contact will degrade.
+As juntas de solda fria são perigosas porque às vezes podem funcionar. Em um dispositivo aquecido ou vibratório, esse contato será degradado.
 
-Usually a cold joint is fixed by reheating with flux until the solder flows properly.
+Normalmente, uma junta fria é fixada por reaquecimento com fluxo até que a solda flua adequadamente.
 
 ## Overheated pad
 
-If you heat a pad too long, it can lift off the board.
+Se você aquecer uma almofada por muito tempo, ela pode se soltar da prancha.
 
-This especially affects:
+Isso afeta especialmente:
 
 - cheap modules;
 - small pads;
 - thin traces;
 - multiple rework attempts;
-- wires pulling on the pad.
+- fios puxando a almofada.
 
-If solder doesn't flow, you don't always need to heat longer. Often adding flux, cleaning the tip, using the right temperature or a larger tip helps.
+Se a solda não fluir, nem sempre será necessário aquecer por mais tempo. Muitas vezes, adicionar fluxo, limpar a ponta, usar a temperatura certa ou uma ponta maior ajuda.
 
 ## Flux
 
-Flux helps solder wet the metal.
+O fluxo ajuda a solda a molhar o metal.
 
-Without flux, solder often balls up and doesn't join parts well.
+Sem fluxo, a solda geralmente se enrola e não une bem as peças.
 
-After soldering, some flux needs washing off. This depends on flux type:
+Após a soldagem, algum fluxo precisa ser removido. Isso depende do tipo de fluxo:
 
 - no-clean can often be left;
-- water-soluble must be removed;
-- active flux should not be left on the board.
+- solúvel em água deve ser removido;
+- o fluxo ativo não deve ser deixado na placa.
 
-If you don't know the flux type, use electronics-grade flux and read its description.
+Se você não conhece o tipo de fluxo, use fluxo de nível eletrônico e leia sua descrição.
 
-## Heat shrink and insulation
+## Encolhimento térmico e isolamento
 
-A soldered joint must be insulated.
+Uma junta soldada deve ser isolada.
 
-For wires, heat shrink tubing is usually used.
+Para fios, geralmente é usado tubo termorretrátil.
 
 Procedure:
 
-1. Slide heat shrink over the wire before soldering.
-2. Solder the wires.
-3. Check the joint.
-4. Slide the heat shrink into place.
+1. Deslize o termorretrátil sobre o fio antes de soldar.
+2. Solde os fios.
+3. Verifique a junta.
+4. Deslize o termorretrátil no lugar.
 5. Heat it gently.
 
-Don't leave soldered joints exposed where they might touch the enclosure, another wire, a terminal or a fan.
+Não deixe juntas soldadas expostas onde possam tocar no gabinete, em outro fio, em um terminal ou em um ventilador.
 
 ## Strain relief
 
 Solder doesn't like mechanical stress.
 
-If a wire will pull, vibrate or move, you need strain relief:
+Se um fio puxar, vibrar ou se mover, você precisa de um alívio de tensão:
 
 - cable tie;
 - clamp;
 - strain relief connector;
-- a silicone blob in a safe place;
-- wire fastened to the enclosure;
-- a connector instead of direct soldering.
+- uma gota de silicone em local seguro;
+- fio preso ao gabinete;
+- um conector em vez de solda direta.
 
-Bad practice: the wire is held only by the solder pad. Over time it can tear the pad loose.
+Má prática: o fio é preso apenas pela almofada de solda. Com o tempo, ele pode soltar a almofada.
 
 ## Power wires
 
-Power wires must be soldered extra carefully.
+Os fios de alimentação devem ser soldados com muito cuidado.
 
 Verify:
 
-- wire has the correct gauge;
-- the joint is fully heated;
+- o fio tem a bitola correta;
+- a junta está totalmente aquecida;
 - no cold solder joints;
 - no exposed strands;
-- insulation is present;
-- mechanical fastening is present;
-- the joint is not next to a hot zone without protection.
+- o isolamento está presente;
+- fixação mecânica está presente;
+- a junta não está próxima de uma zona quente sem proteção.
 
-For power lines, a proper terminal or connector is often better than soldering wires permanently.
+Para linhas de energia, um terminal ou conector adequado geralmente é melhor do que soldar fios permanentemente.
 
-## What to check after soldering
+## O que verificar após a soldagem
 
-After soldering:
+Após a soldagem:
 
-- inspect the joint;
-- check that neighboring contacts are not shorted;
-- use the multimeter to check the needed connection;
-- verify no short between `+` and `GND`;
-- gently pull the wire;
-- confirm heat shrink covers the metal;
-- check that the wire doesn't pull the pad.
+- inspecionar a junta;
+- verifique se os contatos vizinhos não estão em curto;
+- use o multímetro para verificar a necessidade de conexão;
+- verifique se não há curto entre `GND` e `GND`;
+- puxe suavemente o fio;
+- confirme se o encolhimento térmico cobre o metal;
+- verifique se o fio não puxa a almofada.
 
-## Common errors
+## Erros comuns
 
-- soldering with a dirty tip;
-- not using flux;
-- heating only the solder, not the pad and wire;
+- soldar com ponta suja;
+- não usar fluxo;
+- aquecendo apenas a solda, não a almofada e o fio;
 - making a solder blob;
-- moving the wire while solder cools;
-- overheating the pad;
-- leaving an open joint without heat shrink;
-- wire held only by solder;
-- soldering power wire too thin with weak iron;
-- using acid flux not meant for electronics.
+- mover o fio enquanto a solda esfria;
+- superaquecimento da almofada;
+- deixando uma junta aberta sem contração térmica;
+- fio preso apenas por solda;
+- soldar fio de alimentação muito fino com ferro fraco;
+- usando fluxo ácido não destinado à eletrônica.
 
-## The essentials
+## O essencial
 
-- Good soldering requires heating both parts, not just dripping solder.
+- Uma boa soldagem requer aquecimento de ambas as partes, e não apenas gotejamento de solda.
 - Flux often solves poor wetting problems.
-- Cold solder joints may work sometimes, so they are dangerous.
-- A soldered joint must be insulated and mechanically relieved.
-- For frequently disassembled and power connections, a connector or terminal is often better than soldering.
+- As juntas de solda fria podem funcionar às vezes, por isso são perigosas.
+- Uma junta soldada deve ser isolada e aliviada mecanicamente.
+- Para conexões de alimentação e desmontagens frequentes, um conector ou terminal geralmente é melhor do que soldar.
 
 ## Reference materials
 

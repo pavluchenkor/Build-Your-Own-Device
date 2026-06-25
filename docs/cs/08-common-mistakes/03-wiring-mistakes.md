@@ -1,199 +1,199 @@
 # Chyby ve vedení
 
-Wiring often breaks the device more than the electronics themselves.
+Zapojení často poškozuje zařízení více než samotná elektronika.
 
-Poor contact, reversed polarity, or weak terminal can look like a firmware, sensor, or controller error.
+Špatný kontakt, obrácená polarita nebo slabý terminál mohou vypadat jako problém s firmwarem, senzorem nebo řadičem.
 
-## Symptoms
+## Příznaky
 
-Typical signs of wiring problems:
+Typické příznaky problémů se zapojením:
 
-- device works sometimes, then does not;
-- board detected only when cable is moved;
-- sensors show garbage;
-- temperature jumps;
-- fan starts intermittently;
-- USB drops off;
-- terminal heats up;
-- wire darkens or smells;
-- module works on the bench but does not work in the case;
-- after closing the cover device stops working.
+- zařízení někdy funguje, někdy ne;
+- řadič je detekován pouze když je kabel pohnut;
+- senzory zobrazují nesmysly;
+- teplota se skáče;
+- ventilátor se spustí přerušovaně;
+- USB vypadne;
+- terminál se zahřívá;
+- drát tmavne nebo páchne;
+- modul funguje na stole ale ne v pouzdru;
+- po zavření krytu zařízení přestane fungovat.
 
-If a symptom changes when the wire is moved, first check the wiring.
+Pokud se příznak změní když se drát pohne, nejdříve zkontrolujte zapojení.
 
-## Reversed Plus and Minus
+## Obrácená plus a minus
 
-Polarity cannot be checked "by color".
+Polarita se nedá zkontrolovat "podle barvy".
 
-Red wire is often plus, black wire often minus, but this is not a guarantee. In a DIY device, the previous builder or you yourself may have mixed up the colors.
+Červený drát je často plus, černý drát často minus, ale to není zárukou. V DIY zařízení si předchozí stavitel nebo vy sami mohli barvy zamíchat.
 
-Before connecting:
+Před připojením:
 
-- check board markings;
-- check module pinout;
-- measure voltage with multimeter;
-- verify where `+` and where `GND`;
-- do not connect module if pinout is unclear.
+- zkontrolujte označení řadiče;
+- zkontrolujte pinout modulu;
+- změřte napětí multimetrem;
+- ověřte kde je `+` a kde `GND`;
+- nepřipojujte modul pokud je pinout nejasný.
 
-Reversed polarity can instantly destroy a board, sensor, fan, or DC-DC.
+Obrácená polarita může okamžitě zničit řadič, senzor, ventilátor nebo DC-DC.
 
-## No Common Ground
+## Bez společné země
 
-Common ground is needed when one module is powered separately, and the signal comes from the controller.
+Společná zem je potřeba když je jeden modul napájen samostatně a signál pochází z řadiče.
 
-Examples:
+Příklady:
 
-- servo with separate 5V power;
-- MOSFET module for fan;
-- 4-pin PWM fan;
+- servo s samostatným napájením 5V;
+- MOSFET modul pro ventilátor;
+- 4-pinový PWM ventilátor;
 - HX711;
-- RFID module;
-- external sensor.
+- RFID modul;
+- externí senzor.
 
-Without common `GND` the signal may not make sense. Device may not respond, jerk, or work unstably.
+Bez společné `GND` nemusí mít signál smysl. Zařízení nemusí reagovat, trhá se nebo funguje nestabilně.
 
-## Poor Contact in Terminal
+## Špatný kontakt v terminálu
 
-Terminal may look clamped, but hold the wire poorly.
+Terminál může vypadat jako upnutý, ale drát málo drží.
 
-Reasons:
+Důvody:
 
-- wire not inserted all the way;
-- insulation clamped instead of conductor;
-- stranded wire frayed;
-- screw loosened;
-- terminal not rated for current;
-- wire too thin or too thick for terminal;
-- no ferrule where needed.
+- drát není vložen až do konce;
+- je upnut izolant místo vodiče;
+- vinutý drát se třepí;
+- je uvolněný šroub;
+- terminál není hodnocen na proud;
+- drát je příliš tenký nebo příliš tlustý pro terminál;
+- chybí ferrule tam, kde je potřebná.
 
-Poor contact causes heating. Heating worsens the contact. This is a dangerous cycle.
+Špatný kontakt způsobuje zahřívání. Zahřívání zhoršuje kontakt. Toto je nebezpečný kruh.
 
-After a brief test under load, check if terminals and connectors are heating.
+Po krátké zkoušce pod zátěží zkontrolujte, zda se terminály a konektory zahřívají.
 
-## Dupont Not for Power Load
+## Dupont ne pro napájecí zátěž
 
-Dupont wires are convenient for breadboards and weak signals.
+Vodiče Dupont jsou vhodné pro breadboardy a slabé signály.
 
-But they cannot be considered normal power wiring for:
+Ale nemohou se považovat za normální napájecí vedení pro:
 
-- heaters;
-- powerful fans;
-- LED strips;
-- servos with large current;
-- device power;
+- topidla;
+- výkonné ventilátory;
+- LED pásy;
+- servomechanismy s velkým proudem;
+- napájení zařízení;
 - 110-230V AC.
 
-Dupont may hold poorly, have small contact area, and heat up at currents it is not designed for.
+Dupont se může špatně držet, má malou kontaktní plochu a zahřívá se na proudech, na které není navržen.
 
-For the power part you need proper terminals, connectors, wire cross-section, and strain relief.
+Pro napájecí část potřebujete správné terminály, konektory, průřez drátů a protihlučnou ochranu.
 
-## TX and RX
+## TX a RX
 
-For UART often cross-wiring is needed:
+Pro UART je často potřeba křížové vedení:
 
-- `TX` of one device to `RX` of another;
-- `RX` of one device to `TX` of another;
-- common `GND`.
+- `TX` jednoho zařízení na `RX` druhého;
+- `RX` jednoho zařízení na `TX` druhého;
+- společný `GND`.
 
-Typical mistakes:
+Typické chyby:
 
-- connected `TX` to `TX`;
-- connected `RX` to `RX`;
-- forgot `GND`;
-- chose wrong speed;
-- logic levels do not match: 5V and 3.3V.
+- připojeno `TX` na `TX`;
+- připojeno `RX` na `RX`;
+- zapomnut `GND`;
+- vybraná špatná rychlost;
+- logické úrovně se neshodují: 5V a 3,3V.
 
-If UART does not work, first check `TX/RX/GND`, then speed and settings.
+Pokud UART nefunguje, nejdříve zkontrolujte `TX/RX/GND`, pak rychlost a nastavení.
 
-## I2C and SPI
+## I2C a SPI
 
-For I2C:
+Pro I2C:
 
-- `SDA` must go to `SDA`;
-- `SCL` must go to `SCL`;
-- need common `GND`;
-- device address must not conflict;
-- wires must be short.
+- `SDA` musí jít na `SDA`;
+- `SCL` musí jít na `SCL`;
+- potřeba společný `GND`;
+- adresa zařízení se nesmí konfliktovat;
+- dráty musí být krátké.
 
-For SPI:
+Pro SPI:
 
-- `MOSI`, `MISO`, `SCK`, `CS` must match the pinout;
-- each device has its own `CS`;
-- need common `GND`;
-- long wires can break the connection.
+- `MOSI`, `MISO`, `SCK`, `CS` se musí shodovat s pinoutem;
+- každé zařízení má svůj vlastní `CS`;
+- potřeba společný `GND`;
+- dlouhé dráty mohou přerušit připojení.
 
-RFID RC522 often confuses people: pin `SDA` on the board may mean `SS/CS` for SPI, not I2C `SDA`.
+RFID RC522 často matou lidi: pin `SDA` na řadiči může znamenat `SS/CS` pro SPI, ne I2C `SDA`.
 
-## Mains and Signal Wires
+## Sítě a signální vodiče
 
-110-230V AC wires, power DC load, and weak signals must not be laid randomly in one bundle.
+Vodiče 110-230V AC, napájecí DC zátěž a slabé signály se nesmí pokládat náhodně do jednoho svazku.
 
-Problems:
+Problémy:
 
-- interference;
-- heating;
-- insulation damage;
-- risk of touching mains part;
-- difficult diagnostics;
-- user danger.
+- rušení;
+- zahřívání;
+- poškození izolace;
+- riziko dotknutí se síťové části;
+- obtížná diagnostika;
+- nebezpečí pro uživatele.
 
-Mains part must be separated physically. Low-voltage sensors, UART/I2C/SPI, and thermistor wires are better run separately from heater power wires.
+Část sítě musí být fyzicky oddělena. Nízkonapěťové senzory, UART/I2C/SPI a termistorové vodiče je lépe vést samostatně od napájecích vodičů topidla.
 
-## Exposed Strands
+## Exponované vodiče
 
-An exposed wire outside a terminal is a bad sign.
+Exponovaný drát mimo terminál je špatný znak.
 
-It can:
+Může:
 
-- touch a neighboring terminal;
-- short the case;
-- get under the cover;
-- hit the fan;
-- create a danger during maintenance.
+- dotknout sousedního terminálu;
+- zkratovat pouzdro;
+- dostat se pod kryt;
+- zasáhnout ventilátor;
+- vytvořit nebezpečí během údržby.
 
-After clamping in the terminal no long bare strands should stick out.
+Po upnutí v terminálu by neměly vyčnívat dlouhé holé vodiče.
 
-## What to Check
+## Co zkontrolovat
 
-Mini-checklist:
+Mini seznam:
 
-1. Power supply polarity.
-2. Common `GND`.
-3. Pinout correspondence.
-4. Terminal quality.
-5. No insulation clamped instead of conductor.
-6. No exposed strands.
-7. Wires not taut.
-8. Cover does not pinch cable.
-9. Power and signal wires separated.
-10. Connector rated for current.
-11. Device does not change behavior when wire is moved.
+1. Polarita zdroje napájení.
+2. Společný `GND`.
+3. Shoda pinoutu.
+4. Kvalita terminálu.
+5. Bez upnuté izolace místo vodiče.
+6. Bez exponovaných vodičů.
+7. Vodiče nejsou napnuté.
+8. Kryt nepřitíská kabel.
+9. Napájecí a signální vodiče odděleny.
+10. Konektor hodnocen na proud.
+11. Zařízení nemění chování když se drát pohne.
 
-## What Not to Do
+## Co nedělat
 
-You cannot:
+Nemůžete:
 
-- change wires under power;
-- hold open mains part on the bench;
-- use Dupont for heater;
-- clamp stranded wire so some strands stick out;
-- twist power wires without proper connection;
-- ignore a heating terminal;
-- consider "sometimes works" normal.
+- měnit vodiče pod napájením;
+- držet otevřenou síťovou část na stole;
+- používat Dupont pro topidlo;
+- upnout vinutý drát tak aby část vodiče trčela;
+- kroutit napájecí vodiče bez správného spojení;
+- ignorovat zahřívající se terminál;
+- považovat "někdy funguje" za normální.
 
-## Key Points
+## Klíčové body
 
-- If device responds to wire movement, this is a wiring problem.
-- Polarity is checked with multimeter, not by color.
-- Common `GND` is needed for most external modules with separate power.
-- Dupont is suitable for breadboards and signals, but not for power load.
-- Mains and low-voltage wires must be separated.
-- Heating terminal is reason to stop, not continue the test.
+- Pokud zařízení reaguje na pohyb vodiče, jedná se o problém s vedením.
+- Polarita se kontroluje multimetrem, ne podle barvy.
+- Společný `GND` je potřeba pro většinu externích modulů se samostatným napájením.
+- Dupont je vhodný pro breadboardy a signály, ale ne pro napájecí zátěž.
+- Síťové a nízkonapěťové vodiče musí být odděleny.
+- Zahřívající se terminál je důvod k zastavení, ne pokračování testu.
 
-## References
+## Reference
 
-- [SparkFun: Troubleshooting Tips](https://learn.sparkfun.com/tutorials/sparkfun-troubleshooting-tips/hardware-checks) - basic checking of connections, continuity, power cycle, and heating.
-- [SparkFun: Serial Communication](https://learn.sparkfun.com/tutorials/serial-communication) - UART, TX/RX, and serial communication.
-- [SparkFun: I2C](https://learn.sparkfun.com/tutorials/i2c) - `SDA`, `SCL` lines, addresses, and I2C typical mistakes.
-- [SparkFun: Serial Peripheral Interface](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi) - SPI lines, `MOSI`, `MISO`, `SCK`, `SS/CS`.
-- [FRC Design: Design for 3D Printing](https://www.frcdesign.org/design-handbook/structure/design-for-3d-printing/) - practical advice on electronics cases: wire holes, ventilation, port access, and component service removal.
+- [SparkFun: Troubleshooting Tips](https://learn.sparkfun.com/tutorials/sparkfun-troubleshooting-tips/hardware-checks) - základní kontrola připojení, kontinuity, vypnutí-zapnutí a zahřívání.
+- [SparkFun: Serial Communication](https://learn.sparkfun.com/tutorials/serial-communication) - UART, TX/RX a sériová komunikace.
+- [SparkFun: I2C](https://learn.sparkfun.com/tutorials/i2c) - linky `SDA`, `SCL`, adresy a typické I2C chyby.
+- [SparkFun: Serial Peripheral Interface](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi) - linky SPI, `MOSI`, `MISO`, `SCK`, `SS/CS`.
+- [FRC Design: Design for 3D Printing](https://www.frcdesign.org/design-handbook/structure/design-for-3d-printing/) - praktické rady pro elektronické pouzdra: otvory pro vodiče, ventilace, přístup k portům a odstranění komponent.

@@ -1,245 +1,244 @@
 # 連接風扇
 
-風扇看起來像一個簡單的組件：施加電源，它就會旋轉。
+風扇看起來像一个簡單的組件：接上電源，它就会转。
 
-實際上，問題來自四件事：
+實際问题通常来自四件事：
 
-- selecting a fan with the wrong voltage;
-- connecting it to a weak controller output;
-- not understanding the difference between 2-pin, 3-pin, and 4-pin fans;
-- placing the fan where it lacks pressure due to a filter, grill, or duct.
+- 選擇了錯誤電壓的風扇；
+- 把風扇接到承载能力不足的控制器輸出；
+- 不理解 2-pin、3-pin 和 4-pin 風扇之間的差異；
+- 把風扇放在因濾網、格柵或風道而压力不足的位置。
 
-In iDryer-like devices, a fan is usually needed for air circulation, heater cooling, chamber exhaust, filtration, or electronics cooling.
+在类似 iDryer 的設備中，風扇通常用於空氣循環、加熱器冷卻、艙體排风、过滤或電子元件冷卻。
 
-## What to check before connecting
+## 連接前要檢查什么
 
-Before connecting, find the fan parameters:
+連接前，先確認風扇參數：
 
-- voltage: `5V`, `12V`, or `24V`;
-- current or power;
-- connector type: 2-pin, 3-pin, or 4-pin;
-- PWM control capability;
-- tachometric signal presence;
-- airflow;
-- static pressure;
-- noise level;
-- operating temperature.
+- 電壓：`5V`、`12V` 或 `24V`；
+- 電流或功率；
+- 連接器類型：2-pin、3-pin 或 4-pin；
+- 是否支持 PWM 控制；
+- 是否有測速訊號；
+- 風量；
+- 靜壓；
+- 噪音等級；
+- 工作溫度。
 
-This data is found on a label, product page, or in the technical datasheet.
+這些資料通常在標籤、產品頁面或技術 datasheet 中。
 
-For example, a fan datasheet usually contains not just voltage and current, but also airflow, static pressure, noise `SPL dB(A)`, operating temperature, and service life. These are more useful than selecting a fan by size alone.
+例如，風扇 datasheet 通常不仅包含電壓和電流，还包含風量、靜壓、噪音 `SPL dB(A)`、工作溫度和壽命。按這些參數選擇，比只看尺寸可靠得多。
 
-## Do not power a fan from GPIO
+## 不要从 GPIO 给風扇供電
 
-GPIO of a controller is a control signal, not a power output.
+控制器的 GPIO 是控制訊號，不是電源輸出。
 
-Never power a fan directly from GPIO. This can damage the controller or cause resets when the fan starts.
+不要直接从 GPIO 给風扇供電。这可能损坏控制器，或在風扇启动时造成控制器重置。
 
-The correct logic is:
+正確邏輯是：
 
-- the fan receives power from a power supply or board power output;
-- the controller only manages on/off or speed;
-- if an external MOSFET module is used, the power supply `GND` and controller `GND` must be common.
+- 風扇从電源或板载電源輸出获得供電；
+- 控制器只負責开关或速度控制；
+- 如果使用外部 MOSFET 模組，電源 `GND` 和控制器 `GND` 必須共地。
 
 ![N-channel MOSFET in switching mode (low-side) for load control](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
+*來源：[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 
-## Simplest option: 2-pin fan
+## 最簡單的方案：2-pin 風扇
 
-A 2-pin fan typically has only:
+2-pin 風扇通常只有：
 
-- `+` power;
-- `-` power.
+- `+` 電源；
+- `-` 電源。
 
-If it is a 24V fan, connect it to 24V. If it is a 12V fan, connect it to 12V.
+如果是 24V 風扇，就接到 24V。如果是 12V 風扇，就接到 12V。
 
-For simple on/off control, you can use:
+簡單开关控制可以使用：
 
-- a dedicated fan output on the board, if rated for the needed voltage and current;
-- an external MOSFET module for DC loads;
-- a separate fan controller.
+- 板上的专用風扇輸出，前提是它支持所需電壓和電流；
+- 用於 DC 负载的外部 MOSFET 模組；
+- 獨立風扇控制器。
 
-If the fan should run continuously, it can be connected directly to an appropriate power supply through a fuse or protected power line. But in a device with a heater, it is often better for the fan to be controlled by the controller as part of safety logic.
+如果風扇需要持续運行，可以透過保險絲或受保护的電源线直接接到合適電源。但在帶加熱器的設備中，通常最好让控制器把風扇作為安全邏輯的一部分来控制。
 
-## 3-pin fan
+## 3-pin 風扇
 
-A 3-pin fan typically has:
+3-pin 風扇通常有：
 
-- power;
-- ground;
-- tachometric signal.
+- 電源；
+- 地；
+- 測速訊號。
 
-The tachometric signal allows you to monitor fan RPM. It does not control speed by itself.
+測速訊號允许監控風扇 RPM。它本身不控制速度。
 
-A 3-pin fan's speed is usually changed by reducing supply voltage or PWM on the power line, if the specific board and fan support this. But this method may work worse than proper 4-pin PWM: the fan may squeal, fail to start at low speed, or operate unstably.
+3-pin 風扇通常透過降低供電電壓或在電源线上做 PWM 来调速，前提是具体板子和風扇支持这种方式。但这种方法通常不如真正的 4-pin PWM：風扇可能啸叫、低速无法启动，或運行不穩定。
 
-If speed control is not needed, a 3-pin fan can be used as a regular 2-pin: power and ground are connected, the tachometric wire is unused.
+如果不需要调速，3-pin 風扇可以当普通 2-pin 使用：接電源和地，測速线不接。
 
-## 4-pin PWM fan
+## 4-pin PWM 風扇
 
-A 4-pin PWM fan typically has:
+4-pin PWM 風扇通常有：
 
-- ground;
-- power;
-- tachometric signal;
-- PWM control signal.
+- 地；
+- 電源；
+- 測速訊號；
+- PWM 控制訊號。
 
-The key difference: power to the fan is applied continuously, and speed is set by a separate PWM signal.
+關鍵差異是：風扇電源一直存在，速度由單獨的 PWM 訊號決定。
 
-This is the correct way to control computer PWM fans. Do not assume a 4-pin fan needs to be controlled by constantly switching power on and off. For a proper PWM fan, the control signal should go to a separate PWM pin.
+这是控制電腦 PWM 風扇的正確方式。不要以為 4-pin 風扇需要不断开关電源来控制。对于真正的 PWM 風扇，控制訊號应接到單獨的 PWM 腳位。
 
-Computer 4-pin PWM fans often have a control input designed for open-collector/open-drain signals with internal pull-up, not any voltage from GPIO. Do not apply `12V` or `24V` to the PWM pin. Check fan documentation; if open-drain/open-collector is required, use an appropriate transistor output or GPIO mode.
+電腦 4-pin PWM 風扇的控制输入通常设计為开集电极/open-drain 訊號，并帶内部上拉，而不是接收任意 GPIO 電壓。不要把 `12V` 或 `24V` 加到 PWM 腳位。查看風扇文件；如果需要 open-drain/open-collector，请使用合適的晶体管輸出或 GPIO 模式。
 
-For many 4-pin PWM fans, typical PWM frequency is around `25 kHz`. Some fans operate in a nearby range, but at too low or too high frequency they may behave unpredictably: run at full speed, stop, or make noise.
+許多 4-pin PWM 風扇的典型 PWM 頻率约為 `25 kHz`。有些風扇能在附近範圍工作，但頻率太低或太高时，可能全速運行、停止或產生噪音。
 
-If the PWM wire is not connected, many 4-pin fans run at full speed.
+如果 PWM 线沒有連接，許多 4-pin 風扇会全速運行。
 
-## Common GND / common negative
+## 公共 GND / 公共負極
 
-If the fan is powered by a separate power supply and the PWM signal comes from the controller, a common `GND` / common negative is needed.
+如果風扇由獨立電源供電，而 PWM 訊號来自控制器，就需要公共 `GND` / 公共負極。
 
-Without a common `GND`, the controller and fan have no common reference level. As a result, PWM may not work or may work intermittently.
+沒有公共 `GND` 时，控制器和風扇沒有共同參考電平。結果是 PWM 可能不工作，或間歇工作。
 
-Simple rule:
+簡單規則：
 
-- the fan's positive power comes from an appropriate power supply;
-- the fan's negative power is connected to the power supply's negative;
-- the controller's `GND` is connected to the same negative;
-- the control signal only works with a common ground.
+- 風扇正极来自合適電源；
+- 風扇負極接到電源負極；
+- 控制器 `GND` 接到同一个負極；
+- 控制訊號只有在共地时才有效。
 
-## Selecting a fan for the task
+## 為任務選擇風扇
 
-For open cooling, airflow matters.
+風扇不仅看尺寸和電壓。
 
-For a filter, heatsink, tight grill, long duct, or narrow channel, static pressure is more important.
+重要參數：
 
-So for a printer chamber filter, an ordinary quiet case fan may be weak. It will blow well in free air but barely push air through a HEPA filter, charcoal layer, or narrow channel.
+- 風量；
+- 靜壓；
+- 噪音；
+- 工作溫度；
+- 壽命；
+- 轴承類型；
+- 連接器；
+- PWM/測速支持。
 
-Guidelines:
+对于打印机艙體濾網，普通安静机箱風扇可能太弱。它在自由空氣中吹得很好，但很难推动空氣穿过 HEPA 濾網、活性炭层或狭窄通道。
 
-- for free air circulation look at `CFM` or `m³/h`;
-- for filters, heatsinks, and ducts, static pressure is essential;
-- for quiet operation look not just at `dB(A)` but also at mounting, grill, and vibration;
-- for a heated chamber look at the fan's operating temperature.
+经验規則：
 
-## Starting current and margin
+- 对于空氣混合和簡單冷卻，風量很重要；
+- 对于濾網、散熱片和風道，靜壓很重要；
+- 对于安静運行，不只看 `dB(A)`，还要看安装方式、格柵和振动；
+- 对于加熱艙體，要看風扇的工作溫度。
 
-When a fan starts, it may briefly draw more current than during normal operation.
+## 启动電流和余量
 
-If multiple fans are connected to one output, their currents add up.
+風扇启动时，可能短时间消耗比正常運行更大的電流。
 
-Check:
+檢查：
 
-- maximum output current of the board;
-- current of one fan;
-- total current of all fans;
-- at least 50% margin;
-- heating of terminals, wires, and MOSFET module during prolonged operation.
+- 板载輸出的最大電流；
+- 单个風扇電流；
+- 所有風扇总電流；
+- 是否有启动余量；
+- 长时间運行时端子、導線和 MOSFET 模組是否发熱。
 
-For example, if one fan draws `0.25A`, four such fans draw about `1A` without accounting for starting current.
+例如，如果一个風扇消耗 `0.25A`，四个这样的風扇总共约 `1A`，还沒有计入启动電流。
 
-## Example: connecting via MOSFET module
+## 範例：透過 MOSFET 模組連接
 
-Typical circuit for a 12V or 24V fan:
+12V 或 24V 風扇的典型电路：
 
-1. The positive of the power supply goes to the positive of the fan.
-2. The negative of the fan goes to the power output of the MOSFET module.
-3. The negative of the power supply goes to the MOSFET module.
-4. The controller's `GND` is connected to the power supply's negative.
-5. The controller's control pin goes to the MOSFET module input.
+1. 電源正极接風扇正极。
+2. 風扇負極接 MOSFET 模組的负载輸出。
+3. 電源負極接 MOSFET 模組。
+4. 控制器 `GND` 接電源負極。
+5. 控制器控制腳位接 MOSFET 模組输入。
 
-This is called low-side switching: the MOSFET breaks the negative of the load.
+这叫 low-side switching：MOSFET 断开负载的負極。
 
-For a simple 2-pin fan this is a standard and clear option if the MOSFET module is rated for the needed voltage and current. For a 3-pin/4-pin fan with a tachometer or separate PWM input, "cutting the negative" is not always good: monitoring RPM and native PWM control usually require a constant common `GND`.
+对于簡單 2-pin 風扇，只要 MOSFET 模組满足電壓和電流要求，这是标准且清晰的方案。对于帶測速或獨立 PWM 输入的 3-pin/4-pin 風扇，“切負極”不一定合適：RPM 監控和原生 PWM 控制通常需要持续的公共 `GND`。
 
-## Example Klipper configuration
+## Klipper 設定範例
 
-Pin names in examples are not universal. Before copying, check your board's pinout: a wrong `pin` may activate the wrong output.
+範例中的腳位名并不通用。复制前先檢查你的板卡 pinout：錯誤的 `pin` 可能会激活錯誤輸出。
 
-If the fan is connected to a controlled output and should be controlled manually:
+如果風扇接到受控輸出并需要手动控制：
 
 ```ini
 [fan_generic chamber_fan]
 pin: PA8
-max_power: 1.0
-shutdown_speed: 0.0
 kick_start_time: 0.5
-off_below: 0.15
 ```
 
-Control:
+然后可以透過 G-code 控制：
 
 ```gcode
 SET_FAN_SPEED FAN=chamber_fan SPEED=1.0
-SET_FAN_SPEED FAN=chamber_fan SPEED=0.4
-SET_FAN_SPEED FAN=chamber_fan SPEED=0
+SET_FAN_SPEED FAN=chamber_fan SPEED=0.0
 ```
 
-If the fan should turn on based on chamber temperature:
+如果風扇需要根据艙體溫度启动：
 
 ```ini
 [temperature_fan chamber_exhaust]
 pin: PA8
-max_power: 1.0
-shutdown_speed: 0.0
-kick_start_time: 2.0
-off_below: 0.15
-sensor_type: NTC 100K beta 3950
+sensor_type: Generic 3950
 sensor_pin: PA0
-min_temp: 0
-max_temp: 80
-target_temp: 45
+target_temp: 45.0
 control: watermark
+max_speed: 1.0
+min_speed: 0.0
 ```
 
-Pin names here are typical. In a real device, check your board's pinout.
+这里的腳位名只是典型範例。真實設備中必須檢查板卡 pinout。
 
-## What to check after connecting
+## 連接後要檢查什么
 
-Before prolonged operation, verify:
+长时间運行前，確認：
 
-- the fan rotates in the correct direction;
-- voltage matches the fan;
-- the MOSFET module does not overheat;
-- terminals do not overheat;
-- wires are not too thin for the chosen current;
-- the fan starts after a complete stop;
-- no squealing or stalling at low speed;
-- airflow passes through the needed area, not past it;
-- the grill, filter, or housing does not choke the flow more than expected.
+- 風扇旋轉方向正確；
+- 電壓与風扇匹配；
+- MOSFET 模組不過熱；
+- 端子不发熱；
+- 導線对所選電流来说不太細；
+- 風扇能从完全停止状态启动；
+- PWM 控制在整个範圍内可用；
+- 气流經過需要的區域，而不是从旁邊繞過；
+- 格柵、濾網或外殼沒有比预期更嚴重地阻塞气流。
 
-If the fan is near a heater, test it at real chamber temperature. A fan that works fine on the bench may degrade quickly in a hot enclosure.
+如果風扇靠近加熱器，请在真實艙體溫度下測試。台架上工作正常的風扇，在熱外殼中可能很快退化。
 
-## Common mistakes
+## 常見錯誤
 
-- connecting a 12V fan to 24V;
-- connecting a 24V fan to 12V and deciding it is broken;
-- powering a fan from GPIO;
-- forgetting common ground between controller and external power;
-- expecting PWM control from a 3-pin fan;
-- controlling a 4-pin PWM fan by cutting power instead of using the PWM pin;
-- not accounting for total current of multiple fans;
-- choosing a fan by size without checking static pressure;
-- putting a quiet fan on a dense filter and getting near-zero flow;
-- not checking flow direction after installation;
-- leaving wires unsecured and getting fraying against the impeller or housing.
+- 把 12V 風扇接到 24V；
+- 把 24V 風扇接到 12V，然后认為風扇坏了；
+- 从 GPIO 给風扇供電；
+- 忘記控制器和外部電源之間需要公共地；
+- 期待 3-pin 風扇具备 PWM 控制；
+- 用切断電源的方式控制 4-pin PWM 風扇，而不是使用 PWM 腳位；
+- 沒有計算多個風扇的总電流；
+- 只按尺寸选風扇，不檢查靜壓；
+- 把安静風扇装在密集濾網上，結果幾乎沒有气流；
+- 安装后不檢查气流方向；
+- 導線沒有固定，最終被葉輪或外殼磨損。
 
-## Key points
+## 要點
 
-- Fan voltage must match the power supply.
-- GPIO does not power a fan, only controls it.
-- For external power, a common ground with the controller is required.
-- A 2-pin fan is easiest to control via a power output or MOSFET.
-- 3-pin adds a tachometer but not a separate PWM input.
-- 4-pin PWM is best controlled by a separate PWM signal, not power switching.
-- For filters and ducts, static pressure matters more than a nice `CFM` number.
-- After assembly, check not just rotation but actual flow through the construction.
+- 風扇電壓必須匹配電源。
+- GPIO 不给風扇供電，只負責控制。
+- 使用外部電源时，必須与控制器共地。
+- 2-pin 風扇最容易透過電源輸出或 MOSFET 控制。
+- 3-pin 風扇有測速訊號，但不一定有 PWM 控制。
+- 4-pin PWM 最好用獨立 PWM 訊號控制，而不是开关電源。
+- 对濾網和風道来说，靜壓比漂亮的 `CFM` 數字更重要。
+- 组装后不仅要檢查旋轉，还要檢查气流是否真正穿过結構。
 
-## Related reading
+## 相關閱讀
 
-- [Noctua: PWM setup and RPM monitoring of a fan with microcontrollers](https://www.noctua.at/en/support/faqs/microcontroller-guide-pwm-setup-and-rpm-monitoring) - practical explanation of 4-pin PWM, RPM signal, common ground, and typical PWM frequency.
-- [Klipper Configuration Reference: Fans](https://www.klipper3d.org/Config_Reference.html#fans) - official sections `fan`, `heater_fan`, `controller_fan`, `temperature_fan`, and `fan_generic`.
-- [Voron Documentation: Chamber Temperature & Exhaust Fan](https://docs.vorondesign.com/community/howto/alchemyEngine/chamber_temperature_exhaust_fan.html) - example of controlling chamber exhaust fan by temperature in Klipper.
-- [DigiKey: Selecting A Fan](https://www.digikey.com/en/articles/selecting-a-fan) - fan selection accounting for airflow, static pressure, housing resistance, and filters.
-- [SANYO DENKI: DC fan example datasheet](https://products.sanyodenki.com/en/sanace/dc/dc-fan/109P0405F601/) - example of real parameters: voltage, current, airflow, static pressure, noise, operating temperature, and service life.
+- [Noctua: PWM setup and RPM monitoring of a fan with microcontrollers](https://www.noctua.at/en/support/faqs/microcontroller-guide-pwm-setup-and-rpm-monitoring) - 4-pin PWM、RPM 訊號、公共地和典型 PWM 頻率的实用說明。
+- [Klipper Configuration Reference: Fans](https://www.klipper3d.org/Config_Reference.html#fans) - 官方 `fan`、`heater_fan`、`controller_fan`、`temperature_fan` 和 `fan_generic` 設定。
+- [Voron Documentation: Chamber Temperature & Exhaust Fan](https://docs.vorondesign.com/community/howto/alchemyEngine/chamber_temperature_exhaust_fan.html) - 在 Klipper 中按溫度控制艙體排风風扇的範例。
+- [DigiKey: Selecting A Fan](https://www.digikey.com/en/articles/selecting-a-fan) - 按風量、靜壓、外殼阻力和濾網選擇風扇。
+- [SANYO DENKI: DC fan example datasheet](https://products.sanyodenki.com/en/sanace/dc/dc-fan/109P0405F601/) - 真實參數範例：電壓、電流、風量、靜壓、噪音、工作溫度和壽命。

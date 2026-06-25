@@ -1,196 +1,196 @@
 # Convecção e Fluxo de Ar
 
-Convection is the transfer of heat by air stream. In a dryer, printer chamber, heated filter, or iHeater-like device, air often determines whether heat reaches where it is needed.
+Convecção é a transferência de calor por fluxo de ar. Num secador, câmara de impressora, filtro aquecido ou dispositivo tipo iHeater, o ar frequentemente determina se o calor atinge onde é necessário.
 
-A heater by itself only converts electrical power into heat. The fan and air duct determine whether this heat is evenly distributed throughout the chamber or remains a small dangerous hot spot.
+Um aquecedor por si só apenas converte energia eléctrica em calor. O ventilador e o conduto de ar determinam se este calor é distribuído uniformemente por toda a câmara ou permanece um pequeno ponto quente perigoso.
 
-## Three Modes of One Heater
+## Três Modos de Um Aquecedor
 
-The same `100 W` heater can work completely differently.
+O mesmo aquecedor de `100 W` pode funcionar completamente diferente.
 
-![Convection cells: warm air rises, cold air falls](../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
+![Células de convecção: o ar quente sobe, o ar frio desce](../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Convection_cells.svg), McSush, CC BY-SA 3.0*
+*Fonte: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Convection_cells.svg), McSush, CC BY-SA 3.0*
 
-Without airflow:
+Sem fluxo de ar:
 
-- heater heats up strongly in local zone;
-- air nearby heats up, but mixes poorly;
-- far part of chamber may stay cold;
-- plastic, terminals, or insulation nearby may overheat;
-- temperature sensor may not show what happens near heater.
+- o aquecedor aquece fortemente na zona local;
+- o ar próximo aquece, mas se mistura mal;
+- a parte distante da câmara pode permanecer fria;
+- plástico, terminais ou isolamento próximos podem sobrequecer;
+- o sensor de temperatura pode não mostrar o que acontece perto do aquecedor.
 
-With weak or improper airflow:
+Com fluxo fraco ou impróprio:
 
-- some heat goes into chamber;
-- mixing occurs;
-- but flow may bypass heater;
-- filter, screen, or narrow channel may greatly reduce airflow;
-- hot spots still remain.
+- algum calor entra na câmara;
+- ocorre mistura;
+- mas o fluxo pode contornar o aquecedor;
+- filtro, tela ou canal estreito podem reduzir muito o fluxo de ar;
+- pontos quentes ainda permanecem.
 
-With normal flow:
+Com fluxo normal:
 
-- air passes through hot zone;
-- heat escapes from heater into chamber;
-- temperature becomes more even;
-- PID control works more predictably;
-- nearby parts overheat less locally.
+- o ar passa através da zona quente;
+- o calor escapa do aquecedor para a câmara;
+- a temperatura torna-se mais uniforme;
+- o controlo PID funciona mais previsibilmente;
+- partes próximas sobrequecem menos localmente.
 
-Airflow does not create additional power. It helps remove already generated heat and transfer it to the right place.
+O fluxo de ar não cria potência adicional. Ajuda a remover o calor já gerado e transferi-lo para o local certo.
 
-## Natural and Forced Convection
+## Convecção Natural e Forçada
 
-There are two useful modes:
+Existem dois modos úteis:
 
-- natural convection - warm air rises on its own;
-- forced convection - flow is created by a fan, blower, or centrifugal fan.
+- convecção natural - o ar quente sobe por si só;
+- convecção forçada - o fluxo é criado por um ventilador, soprador ou ventilador centrífugo.
 
-For small heated devices, natural convection is often insufficient. It is slow, depends on housing shape, and easily creates temperature zones.
+Para pequenos dispositivos aquecidos, a convecção natural é frequentemente insuficiente. É lenta, depende da forma da carcaça e facilmente cria zonas de temperatura.
 
-Forced convection is usually better if you need to:
+A convecção forçada é geralmente melhor se você precisar:
 
-- quickly remove heat from heater;
-- heat chamber evenly;
-- pass air through a filter;
-- dry filament;
-- cool power electronics;
-- keep temperature sensor in meaningful airstream.
+- remover rapidamente o calor do aquecedor;
+- aquecer a câmara uniformemente;
+- passar ar através de um filtro;
+- secar filamento;
+- arrefecer electrónica de potência;
+- manter o sensor de temperatura em fluxo de ar significativo.
 
-## Fan Is Not Just Size
+## Ventilador Não É Apenas Tamanho
 
-The phrase "I will put a 40 mm fan" tells you almost nothing about the result.
+A frase "vou colocar um ventilador de 40 mm" diz quase nada sobre o resultado.
 
-For a real device, important are:
+Para um dispositivo real, o importante é:
 
-- air flow;
-- static pressure;
-- operating point after installation in housing;
-- flow direction;
-- resistance of screens, filters, and air ducts;
-- air temperature at fan;
-- noise and vibration;
-- resource under load;
-- starting current;
-- tachometer or rotation control.
+- fluxo de ar;
+- pressão estática;
+- ponto operacional após instalação na carcaça;
+- direcção do fluxo;
+- resistência de telas, filtros e condutas de ar;
+- temperatura do ar no ventilador;
+- ruído e vibração;
+- recurso sob carga;
+- corrente de arranque;
+- tacómetro ou controlo de rotação.
 
-Catalog often lists maximum flow and maximum static pressure. In a real device, the fan does not operate at these ideal points. Filter, screen, narrow channel, air duct turn, and dense heater create resistance, so actual flow may be much lower.
+O catálogo frequentemente lista o fluxo máximo e a pressão estática máxima. Num dispositivo real, o ventilador não funciona nestes pontos ideais. Filtro, tela, canal estreito, volta de conduto de ar e aquecedor denso criam resistência, portanto o fluxo real pode ser muito menor.
 
-If air must pass through a filter, radiator, honeycomb, or narrow channel, often you need not just "more CFM" but a fan or centrifugal blower with appropriate static pressure.
+Se o ar deve passar através de um filtro, radiador, favos, ou canal estreito, frequentemente você precisa não apenas de "mais CFM" mas de um ventilador ou soprador centrífugo com pressão estática apropriada.
 
-## Air Path
+## Caminho do Ar
 
-Good design answers four questions:
+Um bom design responde quatro questões:
 
-1. Where is air drawn from?
-2. What does it pass through?
-3. Where does it release heat?
-4. Where does it return?
+1. De onde o ar é retirado?
+2. O que passa?
+3. Onde liberta o calor?
+4. Onde retorna?
 
-For chamber or dryer, closed-loop circulation is useful:
-
-```text
-chamber -> fan -> heater -> hot stream -> chamber -> return
-```
-
-For a filter, different logic may apply:
+Para câmara ou secador, a circulação em circuito fechado é útil:
 
 ```text
-chamber -> filter -> fan -> exhaust or return
+câmara -> ventilador -> aquecedor -> fluxo quente -> câmara -> retorno
 ```
 
-The main thing is that flow does not take the easiest useless path past heater or filter. Air always chooses the path with least resistance.
-
-## Temperature Sensor Must See the Right Place
-
-Bad options:
-
-- sensor is right at heater and sees local overheat;
-- sensor is in dead zone and sees cold corner;
-- sensor touches metal wall and measures wall, not air;
-- sensor is located before heater, though temperature after it matters;
-- sensor is blown by a stream that does not reflect chamber temperature.
-
-For chamber, it is usually useful to measure air where temperature should be controllable, but not directly at heater. For protection from overheat near heater, a separate sensor or independent thermostat/thermal cutoff is needed.
-
-One sensor for control and one independent emergency element is much better than one sensor responsible for everything.
-
-## Filters and Screens Can Kill Flow
-
-A filter, screen, decorative grate, or narrow gap adds resistance.
-
-Typical mistakes:
-
-- putting dense filter on weak axial fan;
-- half-blocking inlet with decorative screen;
-- making sharp turn right after fan;
-- positioning heater so air goes around it;
-- forgetting that filter clogs with dust and resistance grows;
-- not leaving access for filter maintenance.
-
-If device depends on flow, check not only "fan is spinning" but also that air really passes through the right path.
-
-## What Happens If Fan Fails
-
-Most dangerous scenario for heater with airflow:
+Para um filtro, lógica diferente pode aplicar-se:
 
 ```text
-fan stopped -> heater keeps working -> local temperature quickly rises
+câmara -> filtro -> ventilador -> exaustão ou retorno
 ```
 
-Therefore, heater that relies on air stream needs measures:
+O importante é que o fluxo não tome o caminho mais fácil e inútil contornando o aquecedor ou filtro. O ar sempre escolhe o caminho com menor resistência.
 
-- independent overheat protection near hot zone;
-- power limiting;
-- material with temperature margin;
-- distance from heater to plastic and insulation;
-- fan tachometer control if fan is critical;
-- firmware check for heating if using Klipper or similar;
-- first test under observation.
+## Sensor de Temperatura Deve Ver o Local Correcto
 
-Firmware helps but does not replace physical protection. MOSFET, SSR, or relay can fail in the on state.
+Opções ruins:
 
-## Minimum Check After Assembly
+- sensor está directamente no aquecedor e vê sobreaquecimento local;
+- sensor está em zona morta e vê canto frio;
+- sensor toca parede de metal e mede a parede, não o ar;
+- sensor está localizado antes do aquecedor, embora a temperatura depois seja importante;
+- sensor é soprado por um fluxo que não reflecte a temperatura da câmara.
 
-After building a heated device, check:
+Para câmara, é geralmente útil medir ar onde a temperatura deve ser controlável, mas não directamente no aquecedor. Para protecção de sobreaquecimento perto do aquecedor, um sensor separado ou termóstato/corte térmico independente é necessário.
 
-- flow direction;
-- is there flow at outlet, not just fan rotation;
-- temperature at heater;
-- temperature after heater;
-- temperature in far part of chamber;
-- temperature of wires, terminals, and printed parts;
-- temperature of fan;
-- behavior with partially blocked filter;
-- does heating shut off if sensor fails;
-- does independent overheat protection trip in dangerous scenario.
+Um sensor para controlo e um elemento de emergência independente é muito melhor do que um sensor responsável por tudo.
 
-Do first warm-up under observation. Measurements are better done after stabilization and after prolonged operation, because housing, fasteners, and insulation heat up slower than air.
+## Filtros e Telas Podem Matar o Fluxo
 
-## Connection to Klipper
+Um filtro, tela, grelha decorativa ou lacuna estreita adiciona resistência.
 
-In Klipper, several mechanisms are useful:
+Erros típicos:
 
-- `heater_fan` - fan turns on with heater or when temperature is reached;
-- `temperature_fan` - fan is controlled by separate temperature sensor;
-- `verify_heater` - checks that heater behaves as expected;
-- `tachometer_pin` for fan - allows to see RPM if fan supports tachometer signal.
+- colocar filtro denso em ventilador axial fraco;
+- bloquear meia entrada com tela decorativa;
+- fazer volta acentuada directamente após ventilador;
+- posicionar aquecedor para que ar o contorne;
+- esquecer que o filtro entope com pó e a resistência cresce;
+- não deixar acesso para manutenção do filtro.
 
-This is not a complete safety scheme, but a good level of control for device where temperature and flow are important.
+Se o dispositivo depende de fluxo, verifique não apenas "o ventilador está a rodar" mas também que o ar realmente passa pelo caminho certo.
 
-## Main Takeaway
+## O Que Acontece Se o Ventilador Falhar
 
-In a heated device, what matters is not only heater power but air path. Good flow removes heat from heater and transfers it to chamber. Poor flow leaves a hot spot, deceives sensor, and increases material overheating risk.
+Cenário mais perigoso para aquecedor com fluxo de ar:
 
-If heater depends on fan, fan failure must be a separate emergency scenario, not a surprise.
+```text
+ventilador parou -> aquecedor continua funcionando -> temperatura local sobe rapidamente
+```
 
-## Materials on the Topic
+Portanto, aquecedor que depende de fluxo de ar precisa de medidas:
 
-- [Engineering ToolBox: Convective Heat Transfer](https://www.engineeringtoolbox.com/amp/convective-heat-transfer-d_430.html) - explanation of natural and forced convection.
-- [SANYO DENKI: Fan Airflow and Static Pressure](https://techcompass.sanyodenki.com/en/training/cooling/fan_basic/004/index.html) - why maximum flow and maximum pressure from catalog do not equal real device operation.
-- [SANYO DENKI: Guideline in Selecting a Fan](https://products.sanyodenki.com/info/sanace/en/technical_material/select.html) - practical approach to choosing fan by thermal power, temperature rise, and actual tests.
-- [DigiKey: Selecting a Fan](https://www.digikey.com/en/articles/selecting-a-fan) - difference between axial and centrifugal fans, impact of housing and flow resistance.
-- [Klipper Documentation: Configuration Reference](https://www.klipper3d.org/Config_Reference.html) - parameters for `heater_fan`, `temperature_fan`, `verify_heater`, and fan tachometer.
+- protecção de sobreaquecimento independente perto da zona quente;
+- limitação de potência;
+- material com margem de temperatura;
+- distância do aquecedor para plástico e isolamento;
+- controlo de tacómetro do ventilador se o ventilador é crítico;
+- verificação de firmware para aquecimento se usar Klipper ou similar;
+- primeiro teste sob observação.
 
-## See Also
+Firmware ajuda mas não substitui protecção física. MOSFET, SSR ou relé pode falhar no estado ligado.
 
-- [iDryer docs: Connecting a Fan](../06-practical-guides/01-connecting-fan.md) - local instruction on fan power, MOSFET, common GND, and Klipper examples.
+## Verificação Mínima Após Montagem
+
+Após construir um dispositivo aquecido, verifique:
+
+- direcção do fluxo;
+- há fluxo na saída, não apenas rotação do ventilador;
+- temperatura no aquecedor;
+- temperatura após aquecedor;
+- temperatura na parte distante da câmara;
+- temperatura de fios, terminais e peças impressas;
+- temperatura do ventilador;
+- comportamento com filtro parcialmente bloqueado;
+- aquecimento desliga se sensor falha;
+- protecção de sobreaquecimento independente dispara em cenário perigoso.
+
+Faça primeiro aquecimento sob observação. As medições são melhores feitas após estabilização e após funcionamento prolongado, porque a carcaça, fixadores e isolamento aquecem mais lentamente que o ar.
+
+## Conexão a Klipper
+
+Em Klipper, vários mecanismos são úteis:
+
+- `heater_fan` - ventilador liga-se com aquecedor ou quando temperatura é atingida;
+- `temperature_fan` - ventilador é controlado por sensor de temperatura separado;
+- `verify_heater` - verifica que o aquecedor funciona como esperado;
+- `tachometer_pin` para ventilador - permite ver RPM se o ventilador suporta sinal de tacómetro.
+
+Isto não é um esquema de segurança completo, mas um bom nível de controlo para dispositivo onde a temperatura e o fluxo são importantes.
+
+## Conclusão Principal
+
+Num dispositivo aquecido, o que importa não é apenas a potência do aquecedor mas o caminho do ar. Um bom fluxo remove o calor do aquecedor e transfere-o para a câmara. Fluxo fraco deixa um ponto quente, engana o sensor e aumenta o risco de sobreaquecimento de material.
+
+Se o aquecedor depende do ventilador, a falha do ventilador deve ser um cenário de emergência separado, não uma surpresa.
+
+## Materiais sobre o Tópico
+
+- [Engineering ToolBox: Convective Heat Transfer](https://www.engineeringtoolbox.com/amp/convective-heat-transfer-d_430.html) - explicação de convecção natural e forçada.
+- [SANYO DENKI: Fan Airflow and Static Pressure](https://techcompass.sanyodenki.com/en/training/cooling/fan_basic/004/index.html) - por que o fluxo máximo e a pressão máxima do catálogo não igualam a operação de dispositivo real.
+- [SANYO DENKI: Guideline in Selecting a Fan](https://products.sanyodenki.com/info/sanace/en/technical_material/select.html) - abordagem prática para escolher ventilador por potência térmica, aumento de temperatura e testes reais.
+- [DigiKey: Selecting a Fan](https://www.digikey.com/en/articles/selecting-a-fan) - diferença entre ventiladores axiais e centrífugos, impacto da carcaça e resistência do fluxo.
+- [Klipper Documentation: Configuration Reference](https://www.klipper3d.org/Config_Reference.html) - parâmetros para `heater_fan`, `temperature_fan`, `verify_heater` e tacómetro do ventilador.
+
+## Ver Também
+
+- [iDryer docs: Connecting a Fan](../06-practical-guides/01-connecting-fan.md) - instrução local sobre potência do ventilador, MOSFET, GND comum e exemplos de Klipper.

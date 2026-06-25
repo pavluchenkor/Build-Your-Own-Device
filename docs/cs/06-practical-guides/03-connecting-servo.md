@@ -1,144 +1,144 @@
 # Připojení servomotoru
 
-A servo is a small motor with a gearbox and control electronics. You can tell it what position to rotate the shaft to.
+Servomotor je malý motor se převodovkou a řídící elektronikou. Můžete mu sdělit, na jakou pozici natočit hřídel.
 
-In iDryer-like devices, a servo can open a damper, move a small latch, press a mechanical switch, or redirect airflow.
+V zařízeních podobných iDryer-u může servomotor otevřít tlumič, posunout malou sponu, stisknout mechanický spínač nebo změnit směr proudu vzduchu.
 
-The main mistake with servos: thinking it is a "small thing" and you can power it from any 5V pin on the controller. A servo can draw significant current, especially at startup, sudden movement, or when the mechanism binds.
+Hlavní chyba se servomotorem: myšlení, že je to "malá věc" a můžete ji napájet z jakéhokoli 5V pinu kontroléru. Servomotor může odebrat významný proud, zejména při startu, náhlém pohybu nebo když se mechanismus zajednoté.
 
-## Three wires
+## Tři vodiče
 
-A typical hobby servo has three wires:
+Typický hobby servomotor má tři vodiče:
 
-- power: usually `5V` or `6V`;
-- ground: `GND`;
-- signal: control pulses from the controller.
+- napájení: obvykle `5V` nebo `6V`;
+- zem: `GND`;
+- signál: řídicí pulsy od kontroléru.
 
-Common colors:
+Běžné barvy:
 
-- red - power;
-- black or brown - ground;
-- yellow, orange, or white - signal.
+- červená - napájení;
+- černá nebo hnědá - zem;
+- žlutá, oranžová nebo bílá - signál.
 
-But you cannot blindly trust colors. Different manufacturers may use different color schemes. Before connecting, check the marking, product page, or datasheet.
+Ale nemůžete slepě důvěřovat barvám. Různí výrobci mohou používat různá barevná schémata. Před připojením zkontrolujte značení, stránku produktu nebo specifikace.
 
-## Power separate, signal separate
+## Napájení oddělené, signál oddělený
 
-The signal wire does not power the servo. It only tells the servo where to turn.
+Signální vodič nenaápájí servomotor. Pouze řídí servomotor, kam se má otočit.
 
-The servo draws energy from the power wire.
+Servomotor čerpá energii z napájecího vodiče.
 
-The correct logic is:
+Správná logika je:
 
-- the controller provides only the control signal;
-- the servo is powered by a 5V/6V source that can handle its current;
-- the controller ground and servo power ground are connected together.
+- kontrolér poskytuje pouze řídicí signál;
+- servomotor je napájen zdrojem 5V/6V, který zvládne jeho proud;
+- zem kontroléru a zem napájení servomotoru jsou připojeny dohromady.
 
-![Servo wire color code](../../img/03-common-components/06-servo-color-code.jpg)
+![Barevný kód vodiče servomotoru](../../img/03-common-components/06-servo-color-code.jpg)
 
-*Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/all), CC BY-SA 4.0*
+*Zdroj: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/all), CC BY-SA 4.0*
 
-## Why you cannot power from weak 5V
+## Proč nemůžete napájet ze slabých 5V
 
-Many boards have a 5V pin. This does not mean a servo can be safely powered from it.
+Mnoho desek má 5V pin. To neznamená, že od něj lze bezpečně napájet servomotor.
 
-When moving, a servo may draw much more current than its size suggests. If power is insufficient, typical symptoms appear:
+Při pohybu servomotor odebrat mnohem více proudu, než naznačuje jeho velikost. Pokud napájení stačit, objeví se typické příznaky:
 
-- controller reboots;
-- screen flickers;
-- USB connection drops;
-- servo jerks;
-- Wi-Fi on ESP32 drops;
-- servo hums but does not move;
-- power sags at movement start.
+- kontrolér se restartuje;
+- obrazovka zábleskuje;
+- USB připojení padá;
+- servomotor se trhá;
+- Wi-Fi na ESP32 padá;
+- servomotor bručí ale nepohybuje se;
+- napájení klesá při startu pohybu.
 
-For one small servo, board-supplied power sometimes works if the board and source are explicitly rated for that current. But for a real device with a damper, latch, or mechanism, it is better to use a separate 5V/6V DC-DC or power supply with a margin.
+U jednoho malého servomotoru board napájení někdy funguje, pokud jsou deska a zdroj výslovně hodnoceny pro tento proud. Ale pro skutečné zařízení s tlumičem, sponkou nebo mechanismem je lépe použít oddělený zdroj 5V/6V DC-DC nebo napájení s rezervou.
 
-## Common ground
+## Společná zem
 
-If the servo is powered by a separate source, a common ground is needed.
+Pokud je servomotor napájen samostatným zdrojem, je potřeba společná zem.
 
-Without a common ground, the controller and servo have no common signal level. The servo may not respond, may jerk, or may behave randomly.
+Bez společné zemi nemají kontrolér a servomotor společné úrovně signálu. Servomotor nemusí reagovat, může se trhát nebo se chovat náhodně.
 
-Simple connection:
+Jednoduché připojení:
 
-1. `+5V` or `+6V` from the power source goes to the servo power.
-2. `GND` from the power source goes to the servo ground.
-3. The controller's `GND` is connected to the same ground.
-4. The controller PWM/GPIO pin goes to the servo signal wire.
+1. `+5V` nebo `+6V` ze zdroje napájení jde na napájení servomotoru.
+2. `GND` ze zdroje napájení jde na zem servomotoru.
+3. `GND` kontroléru je připojen ke stejné zemi.
+4. PWM/GPIO pin kontroléru jde na signální vodič servomotoru.
 
-Servo power and controller power may be different, but the ground must be common.
+Napájení servomotoru a kontroléru mohou být různé, ale zem musí být společná.
 
-## What signal is needed
+## Jaký signál je potřebný
 
-A typical positional hobby servo is controlled by pulses.
+Typický pozičný hobby servomotor je řízen pulsy.
 
-Typical signal:
+Typický signál:
 
-- pulse roughly every `20 ms`;
-- about `1 ms` - one extreme of the range;
-- about `1.5 ms` - middle;
-- about `2 ms` - other extreme of the range.
+- puls zhruba každých `20 ms`;
+- asi `1 ms` - jeden extrém rozsahu;
+- asi `1.5 ms` - střed;
+- asi `2 ms` - druhý extrém rozsahu.
 
-This is not typical PWM for LED brightness or fan speed. Here, pulse width in microseconds matters.
+Toto není typické PWM pro jasnost LED nebo rychlost ventilátoru. Zde záleží na šířce pulsu v mikrosekundách.
 
-The actual limits of a specific servo may differ. Some safely operate not from 0 to 180 degrees but less. So extreme positions need careful testing.
+Skutečné limity konkrétního servomotoru se mohou lišit. Některé bezpečně fungují ne od 0 do 180 stupňů, ale méně. Takže extrémní pozice vyžadují pečlivé testování.
 
-## Do not jam a servo against the mechanism
+## Nezacpávejte servomotor proti mechanismu
 
-A servo tries to hold the commanded position.
+Servomotor se snaží udržovat stanovenou pozici.
 
-If a damper hits the housing, an arm binds, or the mechanism reaches a physical stop before the command ends, the servo keeps pushing. At that point, current rises, the motor heats, the gearbox wears out.
+Pokud tlumič zasáhne kryt, rameno se uvázne nebo mechanismus dosáhne fyzického zastavení dříve, než příkaz skončí, servomotor pokračuje v tlačení. V tom okamžiku proud roste, motor se zahřívá, převodovka se opotřebovává.
 
-This is especially critical for dampers and latches.
+To je zvláště kritické pro tlumače a spony.
 
-Before permanent operation, verify:
+Před trvalým provozem ověřte:
 
-- the mechanism moves freely across the entire range;
-- no misalignment;
-- no binding of linkages;
-- the servo does not hum in the end position;
-- extreme angles in firmware do not force the mechanism into a stop;
-- with power off, the device stays safe or returns via spring, as intended.
+- mechanismus se volně pohybuje po celém rozsahu;
+- bez chybného zarovnání;
+- bez uváznutí vazeb;
+- servomotor nebrouzí v krajní poloze;
+- extrémní úhly ve firmwaru nevynucují mechanismus do zastavení;
+- s vypnutým napájením zařízení zůstane bezpečné nebo se vrátí přes pružinu, jak je zamýšleno.
 
-If a servo hums at rest, it often signals load, a stop, or wrong lever geometry.
+Pokud servomotor brouzí v klidu, často to signalizuje zátěž, zastavení nebo špatnou geometrii páky.
 
-## Starting and stall current
+## Počáteční a blokující proud
 
-A servo has normal running current and current when the shaft is blocked. The latter is often called stall current.
+Servomotor má normální provozní proud a proud, když je hřídel blokovaná. Druhý se často nazývá proud zastavení.
 
-Stall current appears when the servo tries to move but the shaft is blocked or the mechanism is too heavy.
+Proud zastavení se objeví, když se servomotor pokusí pohybovat, ale hřídel je blokovaná nebo mechanismus je příliš těžký.
 
-This mode often causes:
+Tento režim často způsobuje:
 
-- power sag;
-- controller reboot;
-- wire heating;
-- DC-DC overheating;
-- gearbox breakage.
+- pokles napájení;
+- restart kontroléru;
+- zahřívání vodiče;
+- přehřívání DC-DC;
+- lámání převodovky.
 
-If the datasheet lists stall current, choose the power source accounting for this value and safety margin. If there is no datasheet, you cannot assume a servo is safe to run "by sight".
+Pokud specifikace uvádí proud zastavení, vyberte zdroj napájení s ohledem na tuto hodnotu a bezpečnostní rezervu. Pokud není specifikace, nemůžete předpokládat, že je servomotor bezpečný "podle vzhledu".
 
-## Capacitor next to the servo
+## Kondenzátor vedle servomotoru
 
-Sometimes an electrolytic capacitor between `+5V` and `GND` next to the servo helps.
+Někdy elektrolytický kondenzátor mezi `+5V` a `GND` vedle servomotoru pomáhá.
 
-It does not replace a proper power supply, but can smooth a brief sag at movement start.
+Nenahrazuje správné napájení, ale může hladlit krátké pokles při startu pohybu.
 
-For a small servo: hundreds of microfarads, like `470 uF` or more, with voltage rating above the supply voltage.
+Pro malý servomotor: stovky mikrofaradů, jako `470 uF` nebo více, s hodnocením napětí nad napájecím napětím.
 
-Electrolytic capacitor polarity matters:
+Polarita elektrolytického kondenzátoru záleží:
 
-- capacitor plus to `+5V`;
-- capacitor minus to `GND`.
+- plus kondenzátoru na `+5V`;
+- minus kondenzátoru na `GND`.
 
-If the device needs to be reliable, first choose proper power and wiring, then use a capacitor as an extra measure.
+Pokud musí být zařízení spolehlivé, nejdřív zvolte správné napájení a vodičů, pak použijte kondenzátor jako dodatečné opatření.
 
-## Example Klipper configuration
+## Příklad konfigurace Klipperu
 
-In Klipper, a servo is described with a `[servo]` section.
+V Klipperu je servomotor popsán sekcí `[servo]`.
 
-Example:
+Příklad:
 
 ```ini
 [servo chamber_damper]
@@ -149,7 +149,7 @@ maximum_pulse_width: 0.002
 initial_angle: 90
 ```
 
-Commands:
+Příkazy:
 
 ```gcode
 SET_SERVO SERVO=chamber_damper ANGLE=0
@@ -157,13 +157,13 @@ SET_SERVO SERVO=chamber_damper ANGLE=90
 SET_SERVO SERVO=chamber_damper ANGLE=180
 ```
 
-Pin names here are typical. In a real device, check your board's pinout.
+Názvy pinů jsou zde typické. V reálném zařízení zkontrolujte rozpis pinů vaší desky.
 
-For mechanics, do not start with `0` and `180` right away. First test a safe range like `60`, `90`, `120`, then expand the angles.
+Pro mechaniku nezačínejte s `0` a `180` hned. Nejdřív testujte bezpečný rozsah jako `60`, `90`, `120`, pak rozšiřujte úhly.
 
-## Example Arduino/ESP32 logic
+## Příklad Arduino/ESP32 logiky
 
-Arduino approach typically uses the Servo library:
+Přístup Arduino obvykle používá knihovnu Servo:
 
 ```cpp
 #include <Servo.h>
@@ -179,54 +179,54 @@ void loop() {
 }
 ```
 
-This is just an example of signal logic. Servo power still needs to be designed separately. Even if the signal wire is connected to Arduino or ESP32, the servo motor must not overload the controller power.
+Toto je jen příklad logiky signálu. Napájení servomotoru stále musí být navrženo zvlášť. I když je signální vodič připojen k Arduino nebo ESP32, servomotor nesmí přetěžovat napájení kontroléru.
 
-## What to check after connecting
+## Co kontrolovat po připojení
 
-Before mounting in the housing:
+Před montáží do pouzdra:
 
-- servo receives the correct voltage;
-- power source can handle servo current;
-- controller ground and servo ground are common;
-- signal wire is connected to the right pin;
-- servo moves in the right direction;
-- extreme angles do not break the mechanism;
-- mechanism does not bind;
-- servo does not hum continuously;
-- wires do not catch on the lever or gears;
-- power does not sag after movement;
-- controller does not reboot.
+- servomotor dostává správné napětí;
+- zdroj napájení zvládne proud servomotoru;
+- zem kontroléru a zem servomotoru jsou společné;
+- signální vodič je připojen na správný pin;
+- servomotor se otáčí správným směrem;
+- extrémní úhly nepoškodzují mechanismus;
+- mechanismus se neuvázne;
+- servomotor nebrouzí nepřetržitě;
+- vodiče nechytají se páky nebo ozubů;
+- napájení neslábne po pohybu;
+- kontrolér se neresetuje.
 
-Test mechanics unloaded and under real load. A damper that moves easily by hand may bind after mounting in the housing.
+Testujte mechaniku bez zátěže a pod skutečnou zátěží. Tlumič, který se lehce pohybuje ručně, se může po montáži v pouzdře uváznouttout.
 
-## Common mistakes
+## Běžné chyby
 
-- powering servo from GPIO;
-- powering servo from a weak 5V board pin;
-- forgetting common ground;
-- trusting wire colors without checking;
-- connecting power backwards;
-- using too-thin wires;
-- not accounting for starting and stalling current;
-- forcing servo to push against a mechanical stop;
-- using angle `0` or `180` when the real mechanism safely runs only in a smaller range;
-- mounting servo near heat without checking operating temperature;
-- treating a continuous rotation servo as a regular positional servo.
+- napájení servomotoru z GPIO;
+- napájení servomotoru ze slabého 5V pinu desky;
+- zapomenutí společné zemi;
+- důvěřování barevným kódům bez kontroly;
+- připojení napájení pozpátku;
+- použití příliš tenkých vodičů;
+- nezohlednění počátečního a blokujícího proudu;
+- vynucení servomotoru tlačit proti mechanickému zastavení;
+- použití úhlu `0` nebo `180`, když skutečný mechanismus bezpečně běží pouze v menším rozsahu;
+- montáž servomotoru blízko tepla bez kontroly pracovní teploty;
+- zacházení se servomotorem nepřetržité rotace jako s běžným pozičním servomotorem.
 
-## Key points
+## Klíčové body
 
-- A servo has three lines: power, ground, and signal.
-- Signal does not power the servo.
-- Real devices often need a separate 5V/6V power source.
-- Servo ground and controller ground must be common.
-- The most dangerous load is jamming or mechanical binding.
-- Extreme angles need careful selection, not immediate `0` and `180`.
-- If the controller reboots when the servo moves, first check power and common ground.
+- Servomotor má tři linky: napájení, zem a signál.
+- Signál nenaápájí servomotor.
+- Skutečná zařízení často potřebují oddělený zdroj 5V/6V.
+- Zem servomotoru a zem kontroléru musí být společné.
+- Nejnebezpečnější zátěž je uvíznutí nebo mechanické blokování.
+- Extrémní úhly vyžadují pečlivý výběr, ne okamžité `0` a `180`.
+- Pokud se kontrolér restartuje, když se servomotor pohybuje, nejdřív zkontrolujte napájení a společnou zem.
 
-## Related reading
+## Související čtení
 
-- [Klipper Configuration Reference: Servo](https://www.klipper3d.org/Config_Reference.html#servo) - official `[servo]` section, `SET_SERVO`, angles, and pulse width.
-- [SparkFun: Hobby Servo Tutorial](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/introduction) - basic explanation of hobby servo, three wires, and pulse control.
-- [SparkFun: Servo Trigger Hookup Guide](https://learn.sparkfun.com/tutorials/servo-trigger-hookup-guide/servo-motor-background) - breakdown of electrical connection, typical wire colors, and hobby servo mechanics.
-- [Adafruit: Arduino Lesson 14. Servo Motors](https://learn.adafruit.com/adafruit-arduino-lesson-14-servo-motors?view=all) - practical example of connection, power sag behavior, and capacitor next to servo.
-- [Arduino Servo Library Reference](https://www.arduino.cc/reference/en/libraries/servo/) - official Servo library for Arduino approach.
+- [Odkaz na konfiguraci Klipperu: Servo](https://www.klipper3d.org/Config_Reference.html#servo) - oficiální sekce `[servo]`, `SET_SERVO`, úhly a šířka pulsu.
+- [SparkFun: Hobby Servo Tutoriál](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/introduction) - základní vysvětlení hobby servomotoru, tří vodičů a řízení pulsu.
+- [SparkFun: Servo Trigger Hookup Guide](https://learn.sparkfun.com/tutorials/servo-trigger-hookup-guide/servo-motor-background) - rozpis elektrického připojení, typických barev vodičů a mechaniky hobby servomotoru.
+- [Adafruit: Arduino Lekce 14. Servomotory](https://learn.adafruit.com/adafruit-arduino-lesson-14-servo-motors?view=all) - praktický příklad připojení, chování poklesu napájení a kondenzátor vedle servomotoru.
+- [Odkaz na knihovnu Arduino Servo](https://www.arduino.cc/reference/en/libraries/servo/) - oficiální knihovna Servo pro přístup Arduino.

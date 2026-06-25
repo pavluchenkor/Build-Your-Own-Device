@@ -2,7 +2,7 @@
 
 PETG, ABS y ASA son a menudo considerados los siguientes materiales después de PLA, cuando una pieza debe ser no solo bonita sino funcional.
 
-En dispositivos alrededor de un secador, cámara de impresora o calentador, la elección del material afecta la seguridad. Una pieza puede verse normal después de imprimir, pero después de una hora en una carcasa cálida puede empezar a ablandarse, deformar el conducto de aire, aflojar sujetadores o desplazar un sensor.
+En dispositivos alrededor de una secadora, cámara de impresora o calentador, la elección del material afecta la seguridad. Una pieza puede verse normal después de imprimir, pero después de una hora en una carcasa cálida puede empezar a ablandarse, deformar el conducto de aire, aflojar sujetadores o desplazar un sensor.
 
 ## PETG
 

@@ -8,7 +8,7 @@ Lo necesita para:
 - leer registros;
 - depurar comunicación UART;
 - configurar módulos;
-- recuperar una placa cuando USB normal no funciona;
+- recupere una placa cuando el USB normal no funciona;
 - conectarse a un dispositivo sin USB-UART incorporado.
 
 Los adaptadores comunes usan chips como CH340, CP2102, FT232 y similares.
@@ -162,7 +162,7 @@ Los adaptadores baratos a veces requieren un controlador separado, especialmente
 
 ## Prueba de Bucle Invertido
 
-Forma simple de verificar el adaptador:
+Forma sencilla de verificar el adaptador:
 
 1. Conecte el `TX` y `RX` del adaptador juntos.
 2. Abra una terminal serie.

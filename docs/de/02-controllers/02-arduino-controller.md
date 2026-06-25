@@ -58,7 +58,7 @@ Man muss unterscheiden:
 - Arduino-kompatible Boards mit anderen Mikrocontrollern;
 - moderne Arduino-Boards mit Wi-Fi, USB-C, Arm-Chips und anderer Logik.
 
-Ein Nano-Klon für wenige Euro kann für Experimente geeignet sein, aber Qualität von USB-UART, Regler, Lötstellen und Bootloader kann variieren. Manchmal muss man für einen Nano-Klon in der Arduino IDE einen alten Bootloader oder einen anderen Prozessor auswählen.
+Ein Nano-Klon für wenige Euro kann für Experimente geeignet sein, aber die Qualität von USB-UART, Regler, Lötstellen und Bootloader kann variieren. Manchmal muss man für einen Nano-Klon in der Arduino IDE einen alten Bootloader oder einen anderen Prozessor auswählen.
 
 Wenn das Gerät lange ohne Aufsicht betrieben werden soll, sind Boardqualität, Regler, Steckverbinder und Dokumentation wichtiger als der niedrigste Preis.
 
@@ -68,10 +68,10 @@ Alte Arduino Uno/Nano verwenden `5V`-Logik.
 
 Das ist bei einigen alten Modulen praktisch, aber gefährlich für `3.3V`-Geräte:
 
-- ESP32 verträgt in der Regel keine `5V` an GPIO;
+- ESP32 verfügt in der Regel nicht über `5V` und GPIO;
 - viele OLED-, RFID-, Sensor- und Funkmodule sind für `3.3V` ausgelegt;
 - I2C-Pull-ups auf `5V` können ein `3.3V`-Gerät beschädigen;
-- manche Moduleingänge sind `5V`-kompatibel, aber das muss in der Dokumentation geprüft werden.
+- Manche Moduleingänge sind `5V`-kompatibel, aber das muss in der Dokumentation geprüft werden.
 
 Wenn Arduino mit einem `3.3V`-Modul verbunden wird, benötigt man einen Pegelwandler oder eine Schaltung, bei der die Pegel bekanntermaßen kompatibel sind.
 
@@ -123,7 +123,7 @@ Arduino Uno/Nano eignet sich für einfache Analogmessungen:
 - Lichtsensor;
 - einfacher Spannungssensor über Spannungsteiler.
 
-Ein Analogeingang darf jedoch keine Spannung über seinem sicheren Bereich sehen. Bei Uno/Nano ist das in der Regel der Bereich relativ zur `5V`-Versorgung oder dem gewählten `AREF`. Bei höheren Spannungen werden Teiler und Schutz benötigt.
+Ein Analogeingang darf jedoch keine Spannung über seinem sicheren Bereich sehen. Bei Uno/Nano ist das in der Regel der Bereich relativ zur `AREF`-Versorgung oder dem gewählten `AREF`. Bei höheren Spannungen werden Teiler und Schutz benötigt.
 
 Für genaue Temperaturmessungen braucht man nicht nur `analogRead()`, sondern auch:
 
@@ -146,7 +146,7 @@ Gründe:
 - kein Netzwerk ohne zusätzliche Module;
 - kein praktischer Weg für einen neuen Klipper-MCU.
 
-Wenn ein zusätzlicher MCU für Klipper benötigt wird, ist es in der Regel praktischer, RP2040, STM32 oder ein fertiges 3D-Druckerboard zu verwenden. Arduino kann für Ausbildung, Steckbrettaufbau und das Testen einzelner Sensoren behalten werden.
+Wenn ein zusätzlicher MCU für Klipper benötigt wird, ist es in der Regel praktischer, RP2040, STM32 oder ein fertiges 3D-Druckerboard zu verwenden. Arduino kann für die Ausbildung, den Steckbrettaufbau und das Testen einzelner Sensoren beibehalten werden.
 
 ## Wann Arduino noch geeignet ist
 
@@ -161,7 +161,7 @@ Arduino ist geeignet, wenn:
 
 Arduino ist keine gute Wahl, wenn:
 
-- Wi-Fi out of the box benötigt wird;
+- Wi-Fi wird sofort benötigt;
 - eine enge Integration mit Klipper erforderlich ist;
 - viel Speicher benötigt wird;
 - viele moderne `3.3V`-Sensoren benötigt werden;
@@ -194,7 +194,7 @@ Vor dem Kauf eines Arduino-kompatiblen Boards prüfen:
 - falschen Bootloader für einen Nano-Klon auswählen;
 - keinen Treiber für den USB-UART installieren;
 - versuchen, ohne triftigen Grund ein modernes vernetztes Gerät auf Uno aufzubauen;
-- einen Lernsteckbrettaufbau in ein geschlossenes Leistungsgerät übertragen, ohne Stromversorgung, Verkabelung und Schutz zu überarbeiten.
+- Einen Lernsteckbrettaufbau in einem geschlossenen Leistungsgerät übertragen, ohne Stromversorgung, Verkabelung und Schutz zu überarbeiten.
 
 ## Wichtigste Punkte
 

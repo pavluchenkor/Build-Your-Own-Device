@@ -10,7 +10,7 @@ Daher bedeutet die Aussage „Ich habe eine STL-Datei für ein Gehäuse", nicht 
 
 STL beschreibt die Oberfläche eines Modells als eine Menge von Dreiecken.
 
-Der Slicer nimmt diese Geometrie und konvertiert sie in Druckpfade.
+Der Slicer übernimmt diese Geometrie und konvertiert sie in Druckpfade.
 
 STL ist nützlich, weil:
 
@@ -118,7 +118,7 @@ Dies ist besonders wichtig für:
 - Temperatursensor-Halter;
 - Elektronik-Gehäuse;
 - Terminal-Halterung;
-- Teile in der Nähe von 110-230V AC.
+- Teile in der Nähe von 110–230 V Wechselstrom.
 
 ## STL, 3MF und Projektdateien
 
@@ -141,7 +141,7 @@ Bevor du ein heruntergeladenes Teil druckst, frag dich selbst:
 1. Ist es klar, aus welchem Material es zu drucken ist?
 2. Gibt es Temperaturwarnungen?
 3. Kannst du sehen, in welcher Ausrichtung es gedruckt wurde?
-4. Gibt es Fotos des echten Teils in Baugruppe?
+4. Gibt es Fotos des echten Teils in der Baugruppe?
 5. Sind Schrauben, Muttern, Einsätze und Toleranzen spezifiziert?
 6. Ist es klar, welche Last es halten wird?
 7. Besteht ein Risiko, dass Verformung eine gefährliche Situation schaffen könnte?
@@ -156,16 +156,16 @@ Falls du keine Antworten hast, kann das Teil als Idee oder Prototyp verwendet we
 - Verwendung von zu wenigen Wänden und hoffen hohe Füllung löst es;
 - Nicht Berechnung der Temperatur im Gehäuse;
 - Nicht Überprüfen von Lücken nach dem Drucken;
-- Schrauben in dünne Pfosten ohne Marge;
-- Verwendung eines heruntergeladenes Gehäuses in der Nähe von Wärme ohne das Material zu verstehen;
+- Schrauben in dünnen Pfosten ohne Marge;
+- Verwendung eines heruntergeladenen Gehäuses in der Nähe von Wärme, ohne das Material zu verstehen;
 - Nicht Hinterlassung von Zugang für Wartung nach der Montage.
 
 ## Wichtigste Erkenntnisse
 
 - STL speichert Form, nicht einen sicheren Weg zur Herstellung eines Teils.
 - Für ein Gerät zählen Material, Ausrichtung, Wände, Befestigungselemente und Arbeitsbedingungen.
-- Ein STL kann in ein schwaches oder starkes Teil resultieren.
-- Für Teile in der Nähe von Wärme brauchst du Informationen über Material und Temperaturlimits.
+- Ein STL kann in einem schwachen oder starken Teil resultieren.
+- Für Teile in der Nähe von Wärme benötigen Sie Informationen über Material und Temperaturgrenzen.
 - 3MF oder Slicer-Projektdateien vermitteln besser Einstellungen, ersetzen aber nicht die Ingenieurs-Überprüfung.
 
 ## Referenzen

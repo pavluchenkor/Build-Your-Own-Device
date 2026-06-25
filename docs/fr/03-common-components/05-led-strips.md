@@ -15,7 +15,7 @@ Dans les appareils DIY autour d'une imprimante 3D, les bandes LED sont utiles po
 - éclairage doux de nuit sans lumière principale ;
 - signal visuel lorsque l'impression se termine ou qu'une erreur se produit.
 
-Pour l'éclairage de service, une simple bande blanche est généralement préférable. Pour l'indication de mode, les bandes RGB ou adressables sont pratiques, mais elles sont plus complexes en termes d'alimentation et de contrôle.
+Pour l'éclairage de service, une simple bande blanche est préférable. Pour l'indication de mode, les bandes RGB ou adressables sont pratiques, mais elles sont plus complexes en termes d'alimentation et de contrôle.
 
 ## Tension : 5V, 12V ou 24V
 
@@ -101,7 +101,7 @@ Logique correcte :
 - un MOSFET, un pilote LED, un contrôleur LED ou une sortie de carte appropriée gère la commutation de puissance ;
 - les masses du contrôleur et de l'alimentation sont connectées s'il y a un signal de contrôle.
 
-## Connexion d'une bande simple monocolor
+## Connexion d'une bande simple monocolore
 
 Pour une bande blanche `12V` ou `24V`, un MOSFET bas est souvent utilisé : le plus de la bande est connecté au plus d'alimentation, et le moins de la bande est commuté par le module MOSFET.
 

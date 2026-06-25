@@ -1,78 +1,78 @@
 # Interface UART
 
-UART is a simple serial data transmission interface between two devices. Expansion: `Universal Asynchronous Receiver/Transmitter`.
+UART é uma interface simples de transmissão de dados em série entre dois dispositivos. Expansão: `Universal Asynchronous Receiver/Transmitter`.
 
-In practical projects, you typically hear "UART", "serial", "TX/RX", or "UART port". For beginners, the key point is: UART transmits data on the `TX` line, receives on the `RX` line, and both devices need a common `GND` for proper operation.
+Nos projetos práticos, normalmente encontra-se "UART", "serial", "TX/RX" ou "porta UART". Para iniciantes, o ponto-chave é: UART transmite dados na linha `TX`, recebe na linha `RX`, e ambos os dispositivos precisam de um `GND` comum para funcionarem correctamente.
 
-## Where UART is used
+## Onde UART é utilizado
 
-UART is found almost everywhere:
+UART encontra-se quase em toda a parte:
 
-- debug logs from microcontrollers;
-- flashing boards via USB-UART adapter;
-- host-to-MCU communication in some Klipper scenarios;
-- GPS, RFID, fingerprint, and sensor modules;
-- TMC stepper driver configuration;
-- communication between two microcontrollers;
-- service port on the board.
+- registos de depuração de microcontroladores;
+- programação de placas através de adaptador USB-UART;
+- comunicação anfitrião-para-MCU em alguns cenários Klipper;
+- módulos de GPS, RFID, impressão digital e sensores;
+- configuração do controlador de motor TMC;
+- comunicação entre dois microcontroladores;
+- porta de serviço na placa.
 
-UART is convenient because it requires few wires and works well for simple text, command, and diagnostic exchange.
+UART é conveniente porque requer poucos fios e funciona bem para troca simples de texto, comandos e diagnósticos.
 
-## TX, RX, and GND
+## TX, RX e GND
 
-Minimal connection:
+Conexão mínima:
 
-- `TX` - transmission;
-- `RX` - reception;
-- `GND` - common ground.
+- `TX` - transmissão;
+- `RX` - recepção;
+- `GND` - terra comum.
 
-TX of one device connects to RX of the other:
+TX de um dispositivo conecta-se a RX do outro:
 
-![Cross-connected TX/RX and common GND in UART connection](../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![TX/RX conectados cruzadamente e GND comum na conexão UART](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
-*Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
+*Fonte: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 
-Rule:
+Regra:
 
 ```text
-Device A TX -> Device B RX
-Device A RX <- Device B TX
-Device A GND -> Device B GND
+Dispositivo A TX -> Dispositivo B RX
+Dispositivo A RX <- Dispositivo B TX
+Dispositivo A GND -> Dispositivo B GND
 ```
 
-The most common mistake is connecting `TX` to `TX` and `RX` to `RX`. Sometimes module markings are confusing, so if there is no connection, first double-check the pinout and documentation rather than randomly changing all wires.
+O erro mais comum é conectar `TX` a `TX` e `RX` a `RX`. Às vezes, as marcações do módulo são confusas, portanto, se não houver conexão, primeiro verifique novamente o diagrama de pinos e a documentação em vez de alterar aleatoriamente todos os fios.
 
-## UART, USB, and USB-UART
+## UART, USB e USB-UART
 
-UART is not USB.
+UART não é USB.
 
-A computer typically does not have bare UART pins. That's why a USB-UART adapter is needed: it connects to the computer's USB on one side and provides `TX`, `RX`, `GND`, and sometimes `VCC`, `DTR`, `CTS` lines on the other.
+Um computador normalmente não tem pinos UART nus. Por isso é necessário um adaptador USB-UART: conecta-se à USB do computador de um lado e fornece linhas `TX`, `RX`, `GND` e, às vezes, `VCC`, `DTR`, `CTS` do outro.
 
-Examples:
+Exemplos:
 
-- computer reading logs from a board via USB-UART;
-- USB-UART flashing a board without built-in USB;
-- host connecting to MCU over serial;
-- adapter helping recover a board after failed flashing.
+- computador a ler registos de uma placa através de USB-UART;
+- USB-UART a programar uma placa sem USB incorporado;
+- anfitrião conectando-se a MCU através de série;
+- adaptador ajudando na recuperação de uma placa após falha de programação.
 
-Do not confuse a USB connector on a board with UART pins on the header. On some boards USB is already connected to a built-in USB-UART chip, while on others USB goes directly to the microcontroller.
+Não confunda um conector USB numa placa com pinos UART no conector. Em algumas placas, o USB já está conectado a um chip USB-UART incorporado, enquanto noutras o USB vai directamente para o microcontrolador.
 
-## Logic levels: 3.3V, 5V, RS-232
+## Níveis lógicos: 3.3V, 5V, RS-232
 
-UART describes the data transmission method, but does not guarantee safe voltage levels.
+UART descreve o método de transmissão de dados, mas não garante níveis de tensão seguros.
 
-In DIY electronics, TTL/CMOS UART is most common:
+Na electrónica DIY, UART TTL/CMOS é o mais comum:
 
-- `3.3V` UART - ESP32, RP2040, STM32, and many modern boards;
-- `5V` UART - Arduino Uno/Nano and some older modules.
+- UART `3.3V` - ESP32, RP2040, STM32 e muitas placas modernas;
+- UART `5V` - Arduino Uno/Nano e alguns módulos mais antigos.
 
-Applying a `5V` signal to a `3.3V` microcontroller input can damage the board. For incompatible levels, a level converter or other matching circuit is required.
+Aplicar um sinal `5V` a uma entrada de microcontrolador `3.3V` pode danificar a placa. Para níveis incompatíveis, é necessário um conversor de nível ou outro circuito de correspondência.
 
-There is also RS-232, which is separate. This is not "just UART on a DB9 connector". RS-232 has different voltage levels and different electrical logic. You cannot connect a true RS-232 port directly to a microcontroller GPIO. A level converter is needed, such as a MAX232-like circuit or ready-made adapter.
+Existe também RS-232, que é separado. Isto não é "apenas UART num conector DB9". RS-232 tem níveis de tensão diferentes e lógica eléctrica diferente. Não pode conectar uma porta RS-232 verdadeira directamente a um GPIO de microcontrolador. É necessário um conversor de nível, como um circuito tipo MAX232 ou um adaptador pronto.
 
-## Speed and format
+## Velocidade e formato
 
-UART speed must match. Common values:
+A velocidade UART deve ser responsável. Valores comuns:
 
 ```text
 9600
@@ -82,83 +82,83 @@ UART speed must match. Common values:
 1000000
 ```
 
-If the speed does not match, the terminal will show garbage or silence.
+Se a velocidade não corresponder, o terminal mostrará lixo ou silêncio.
 
-There is also transmission format. `8N1` is often used:
+Existe também formato de transmissão. `8N1` é frequentemente utilizado:
 
-- `8` - 8 data bits;
-- `N` - no parity;
-- `1` - one stop bit.
+- `8` - 8 bits de dados;
+- `N` - sem paridade;
+- `1` - um bit de paragem.
 
-For most simple tasks, setting the same speed and standard `8N1` is sufficient, unless the module documentation requires otherwise.
+Para a maioria das tarefas simples, configurar a mesma velocidade e `8N1` padrão é suficiente, a menos que a documentação do módulo exija o contrário.
 
-## UART in 3D printers
+## UART em impressoras 3D
 
-In 3D printers, UART often serves three different roles.
+Nas impressoras 3D, UART frequentemente serve três papéis diferentes.
 
-**Host and board communication**
+**Comunicação entre anfitrião e placa**
 
-Some boards can communicate with the host via serial/UART. In Klipper, this is described in the `[mcu]` section via `serial`.
+Algumas placas podem comunicar com o anfitrião através de série/UART. Em Klipper, isto é descrito na secção `[mcu]` através de `serial`.
 
-**TMC driver configuration**
+**Configuração do controlador TMC**
 
-Some stepper drivers use UART to configure current, stealthChop/spreadCycle, diagnostics, and status reading. The motor itself is usually controlled not by UART, but by `STEP` and `DIR` signals.
+Alguns controladores de motor utilizam UART para configurar corrente, stealthChop/spreadCycle, diagnósticos e leitura de estado. O motor em si é normalmente controlado não por UART, mas pelos sinais `STEP` e `DIR`.
 
-**Debug and flashing**
+**Depuração e programação**
 
-UART can be used for logs, bootloader mode, and board recovery via USB-UART adapter.
+UART pode ser utilizado para registos, modo bootloader e recuperação de placa através de adaptador USB-UART.
 
-## One UART - usually two active devices
+## Um UART - normalmente dois dispositivos activos
 
-Classic UART is a connection between two devices. You cannot blindly connect multiple transmitters to one `RX` line.
+O UART clássico é uma conexão entre dois dispositivos. Não pode simplesmente conectar vários transmissores a uma linha `RX`.
 
-Problems:
+Problemas:
 
-- two devices simultaneously pull the `TX` line;
-- data gets mixed;
-- one module receives commands intended for another;
-- possible electrical conflict.
+- dois dispositivos puxam simultaneamente a linha `TX`;
+- os dados ficam misturados;
+- um módulo recebe comandos destinados a outro;
+- possível conflito eléctrico.
 
-Sometimes one `TX` can be listened to by multiple receivers, but this is a conscious decision and not suitable as a universal rule. For beginners, it's safer to assume: one UART port - one pair of devices.
+Às vezes, um `TX` pode ser ouvido por vários receptores, mas esta é uma decisão consciente e não adequada como regra universal. Para iniciantes, é mais seguro assumir: uma porta UART - um par de dispositivos.
 
-## What to check before connecting
+## O que verificar antes de conectar
 
-Before connecting UART, verify:
+Antes de conectar UART, verifique:
 
-- where are `TX` and `RX`;
-- is a common `GND` needed;
-- logic level: `3.3V` or `5V`;
-- is this TTL UART or RS-232;
-- transmission speed;
-- format, if specified;
-- is this UART not occupied by USB logs or flashing;
-- is there another transmitter connected to this line;
-- do power or only `TX`/`RX`/`GND` need to be connected.
+- onde estão `TX` e `RX`;
+- é necessário um `GND` comum;
+- nível lógico: `3.3V` ou `5V`;
+- é isto UART TTL ou RS-232;
+- velocidade de transmissão;
+- formato, se especificado;
+- isto UART não está ocupado por registos USB ou programação;
+- há outro transmissor conectado a esta linha;
+- é necessário conectar potência ou apenas `TX`/`RX`/`GND`.
 
-Power from the USB-UART adapter is only connected if it is clear the board should be powered from it. Often for diagnostics, only `TX`, `RX`, and `GND` are needed.
+A alimentação do adaptador USB-UART é conectada apenas para que a placa seja alimentada por ele. Freqüentemente, para diagnósticos, apenas `RX`, `GND` e `GND` são necessários.
 
-## Typical mistakes
+## Erros típicos
 
-- connecting `TX` with `TX`, `RX` with `RX`;
-- forgetting the common `GND`;
-- applying `5V` UART to a `3.3V` input;
-- confusing TTL UART and RS-232;
-- selecting the wrong baud rate;
-- connecting power from a USB-UART adapter to an already-powered board;
-- using UART pins occupied by USB logs or bootloader;
-- connecting multiple transmitters to one line;
-- thinking UART can drive a powerful load directly.
+- conectar `TX` com `TX`, `RX` com `RX`;
+- esquecer o `GND` comum;
+- aplicar UART `5V` a uma entrada `3.3V`;
+- confundir UART TTL e RS-232;
+- seleccionar a taxa de transmissão errada;
+- conectar potência de um adaptador USB-UART a uma placa já alimentada;
+- utilizar pinos UART ocupados por registos USB ou bootloader;
+- conectar vários transmissores a uma linha;
+- pensar que UART pode accionar uma carga potente directamente.
 
-## Key takeaway
+## Ponto-chave
 
-UART is a simple interface for data exchange between two devices. You need cross-connected `TX`/`RX`, common `GND`, matching speed, and compatible logic levels.
+UART é uma interface simples para troca de dados entre dois dispositivos. Precisa de `TX`/`RX` conectados cruzadamente, `GND` comum, velocidade correspondente e níveis lógicos compatíveis.
 
-UART is not a power supply and does not work as a power output. It transmits data, not spin motors or activate heaters directly.
+UART não é uma fonte de alimentação e não funciona como saída de potência. Transmite dados, não faz rodar motores ou activa aquecedores directamente.
 
-## Related materials
+## Materiais relacionados
 
-- [SparkFun: Serial Communication](https://learn.sparkfun.com/tutorials/serial-communication/all) - good practical explanation of UART, TX/RX, baud rate, TTL serial, RS-232, and common mistakes.
-- [SparkFun: Serial Communication - UARTs](https://learn.sparkfun.com/tutorials/serial-communication/uarts) - what UART does inside a microcontroller and why TX/RX are needed.
-- [Adafruit: Serial UART on FT232H](https://learn.adafruit.com/adafruit-ft232h-breakout/serial-uart) - example of a USB-UART adapter and connecting TX/RX/GND to a serial device.
-- [SparkFun: Serial Basic CH340C Hookup Guide](https://learn.sparkfun.com/tutorials/sparkfun-serial-basic-ch340c-hookup-guide) - example of a USB-UART adapter, RX/TX/VCC/GND pins, and loopback test.
-- [Klipper: Configuration reference - `[mcu]`](https://www.klipper3d.org/Config_Reference.html#mcu) - how serial MCU connection is described in Klipper configuration.
+- [SparkFun: Serial Communication](https://learn.sparkfun.com/tutorials/serial-communication/all) - explicação prática boa de UART, TX/RX, taxa de transmissão, série TTL, RS-232 e erros comuns.
+- [SparkFun: Serial Communication - UARTs](https://learn.sparkfun.com/tutorials/serial-communication/uarts) - o que UART faz dentro de um microcontrolador e por que TX/RX são necessários.
+- [Adafruit: Serial UART on FT232H](https://learn.adafruit.com/adafruit-ft232h-breakout/serial-uart) - exemplo de adaptador USB-UART e conexão de TX/RX/GND a um dispositivo série.
+- [SparkFun: Serial Basic CH340C Hookup Guide](https://learn.sparkfun.com/tutorials/sparkfun-serial-basic-ch340c-hookup-guide) - exemplo de adaptador USB-UART, pinos RX/TX/VCC/GND e teste de loopback.
+- [Klipper: Configuration reference - `[mcu]`](https://www.klipper3d.org/Config_Reference.html#mcu) - como a conexão MCU série é descrita na configuração Klipper.

@@ -7,7 +7,7 @@ Klipper besteht aus zwei Hauptteilen:
 
 Der Host trifft übergeordnete Entscheidungen, liest die Konfiguration, verarbeitet G-Code und plant Aktionen. Der MCU führt präzise Befehle auf der Hardware aus: schaltet Ausgänge, liest Eingänge, zählt Zeit, erzeugt PWM und meldet den Status zurück an den Host.
 
-## Was ist ein MCU in Klipper
+## Was ist ein MCU in Klipper?
 
 MCU steht für Micro-Controller Unit (Mikrocontroller-Einheit).
 
@@ -19,7 +19,7 @@ Im Kontext von Klipper ist es eine konkrete Platine:
 - CAN/Toolhead-Platine;
 - zusätzliche I/O-Platine.
 
-Ein MCU „denkt nicht wie der gesamte Drucker." Er führt Low-Level-Befehle aus, die der Host sendet. Diese Trennung macht Klipper flexibel: Man kann einen zweiten oder dritten MCU hinzufügen und dessen Pins in einer gemeinsamen Konfiguration verwenden.
+Ein MCU „denkt nicht wie der gesamte Drucker.“ Er führt Low-Level-Befehle aus, die der Host sendet. Diese Trennung macht Klipper flexibel: Man kann einen zweiten oder dritten MCU hinzufügen und dessen Pins in einer gemeinsamen Konfiguration verwenden.
 
 ## Wie es aussieht
 
@@ -54,11 +54,11 @@ Der MCU:
 - meldet Ergebnisse an den Host;
 - wechselt bei Fehlern in den Abschaltzustand, wenn Firmware und Konfiguration entsprechend eingerichtet sind.
 
-Wenn beispielsweise in der Konfiguration ein Lüfter an Pin `PA8` definiert ist, ändert der MCU mit diesem Pin dessen Zustand. Der Host sendet nur den Befehl.
+Wenn beispielsweise in der Konfiguration ein Lüfter an Pin `PA8` definiert ist, ändert sich der MCU mit diesem Pin dessen Zustand. Der Host sendet nur den Befehl.
 
 ## Was `[mcu]` bedeutet
 
-In `printer.cfg` beschreibt der Abschnitt `[mcu]` den Mikrocontroller, mit dem Klipper sich verbinden soll.
+In `[mcu]` beschreibt der Abschnitt `[mcu]` den Mikrocontroller, mit dem Klipper sich verbinden soll.
 
 Beispiel für USB/Seriell:
 
@@ -114,7 +114,7 @@ Das ist kein „Klipper-Zauber", sondern eine konkrete Einstellung eines Eingang
 
 ## Wozu ein zusätzlicher MCU benötigt wird
 
-Ein zusätzlicher MCU ist nützlich, wenn Peripheriegeräte in einen separaten Block ausgelagert werden sollen.
+Ein zusätzlicher MCU ist nützlich, wenn Peripheriegeräte in einem separaten Block ausgelagert werden sollen.
 
 Beispiele für iDryer-ähnliche Geräte:
 
@@ -127,7 +127,7 @@ Beispiele für iDryer-ähnliche Geräte:
 - Klappservo;
 - separates Modul mit Wägezelle;
 - zusätzliches OLED oder RFID;
-- Notfall-Eingang, der praktischer in der Nähe des Geräts verlegt werden kann.
+- Notfall-Eingang, der praktisch in die Nähe des Geräts verlegt werden kann.
 
 Dieser Ansatz ist sinnvoll, wenn das Gerät Teil eines Klipper-Systems sein soll und keine eigenständige WiFi-Box.
 
@@ -149,7 +149,7 @@ Es gibt zwei unterschiedliche Wege.
 - kann WiFi, Weboberfläche, MQTT haben;
 - muss nicht vom Drucker abhängen;
 - erfordert eigene Firmware und Sicherheitslogik;
-- verbindet sich nicht als regulärer `[mcu]` in Klipper.
+- Verbindet sich nicht als regulärer `[mcu]` in Klipper.
 
 ESP32 eignet sich oft gut für ein eigenständiges WiFi-Gerät. RP2040 und STM32 sind häufig praktischer als kabelgebundener MCU in Klipper.
 
@@ -157,13 +157,13 @@ ESP32 eignet sich oft gut für ein eigenständiges WiFi-Gerät. RP2040 und STM32
 
 Die Kommunikation zwischen Host und MCU kann unterschiedlich sein.
 
-**USB** — die häufigste und einfachste Option für eine oder zwei Platinen in der Nähe des Hosts. Praktisch für Pico, STM32-Platinen und viele Druckerplatinen.
+**USB** – die häufigste und einfachste Option für einen oder zwei Platinen in der Nähe des Hosts. Praktisch für Pico, STM32-Platinen und viele Druckerplatinen.
 
 **UART** — serielle Kommunikation über separate TX/RX-Pins. Kann bei einigen Platinen nützlich sein, erfordert jedoch sorgfältige Abstimmung von Pegel, Masse und Geschwindigkeit.
 
 **CAN** — praktisch für entfernte Module, Toolhead-Platinen und eine stabilere kabelgebundene Architektur. CAN erfordert jedoch einen unterstützten Mikrocontroller, einen CAN-Transceiver, einen ordnungsgemäßen Bus, Abschlusswiderstände und die Einrichtung einer Linux-Schnittstelle.
 
-Für einen ersten zusätzlichen Controller ist USB in der Regel einfacher. CAN ist sinnvoll, wenn es einen echten Grund gibt: längere Verkabelung, mehrere Knoten, Toolhead-Platine oder vorhandene CAN-Infrastruktur.
+Für einen ersten zusätzlichen Controller ist USB in der Regel einfacher. CAN ist sinnvoll, wenn es einen echten Grund gibt: längere Verkabelung, mehrere Knoten, Toolhead-Platine oder diese CAN-Infrastruktur.
 
 ## MCU schützt nicht den Leistungsteil
 

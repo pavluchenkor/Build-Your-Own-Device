@@ -1,51 +1,51 @@
 # OLED displej
 
-An OLED display is a small screen for showing text, numbers, simple icons and device status. Unlike regular LCD, OLED lights itself and doesn't need separate backlight. So small OLED modules are readable, take little space and are convenient for simple DIY devices.
+OLED displej je malá obrazovka pro zobrazení textu, čísel, jednoduchých ikon a stavu zařízení. Na rozdíl od běžného LCD se OLED sám osvětluje a nevyžaduje samostatné podsvícení. Malé OLED moduly jsou tedy čitelné, zabírají málo místa a jsou vhodné pro jednoduchá DIY zařízení.
 
-In an iDryer-like device, an OLED can show temperature, humidity, working mode, error, Wi-Fi status, remaining filament or current drying phase.
+V zařízení podobném iDryer může OLED zobrazovat teplotu, vlhkost, pracovní režim, chybu, stav Wi-Fi, zbývající filament nebo aktuální fázi sušení.
 
-## When OLED Is Useful
+## Kdy je OLED užitečné
 
-An OLED is worth adding if users need to see device status right on the enclosure:
+OLED stojí za to přidat, pokud uživatelé potřebují vidět stav zařízení přímo na krytu:
 
-- current chamber temperature;
-- humidity;
-- target temperature;
-- working mode;
-- timer;
-- sensor error;
-- fan or heater status;
-- connection status;
-- simple menu without a large screen.
+- aktuální teplota v komoře;
+- vlhkost;
+- cílová teplota;
+- pracovní režim;
+- časovač;
+- chyba senzoru;
+- stav ventilátoru nebo topení;
+- stav připojení;
+- jednoduchá nabídka bez velkého displeje.
 
-If the device is always managed through Klipper, a web interface or mobile app, a separate OLED may be unnecessary. It adds wiring, enclosure space, code and another failure point.
+Pokud je zařízení vždy spravováno přes Klipper, webové rozhraní nebo mobilní aplikaci, může být samostatné OLED zbytečné. Přidává přívody, prostor na krytu, kód a další bod selhání.
 
-## Typical Sizes and Controllers
+## Typické velikosti a řadiče
 
-The most common small OLED modules:
+Nejčastější malé OLED moduly:
 
-- `128x32` pixels;
-- `128x64` pixels;
-- diagonal about `0.91"` or `0.96"`;
-- monochrome: white, blue, yellow-blue;
-- with controller `SSD1306` or similar `SH1106`.
+- `128x32` pixelů;
+- `128x64` pixelů;
+- úhlopříčka přibližně `0.91"` nebo `0.96"`;
+- jednobarevné: bílé, modré, žluto-modré;
+- s řadičem `SSD1306` nebo podobným `SH1106`.
 
-`SSD1306` and `SH1106` look similar but are not always fully compatible in code. If a library is set for `SSD1306` but the module is actually `SH1106`, the screen may show a shifted picture, garbage or not work.
+`SSD1306` a `SH1106` vypadají podobně, ale v kódu nejsou vždy plně kompatibilní. Pokud je knihovna nastavena pro `SSD1306`, ale modul je vlastně `SH1106`, obrazovka může zobrazovat posuntý obraz, nesmysl nebo vůbec nefungovat.
 
-Before buying, it's important to check not just screen size but controller, interface and supply voltage.
+Před nákupem je důležité kontrolovat nejen velikost obrazovky, ale také řadič, rozhraní a napájecí napětí.
 
-## I2C and SPI
+## I2C a SPI
 
-Small OLED modules usually connect by I2C or SPI.
+Malé OLED moduly se obvykle připojují přes I2C nebo SPI.
 
-An I2C module usually has 4 contacts:
+Modul I2C má obvykle 4 kontakty:
 
 - `VCC`;
 - `GND`;
 - `SDA`;
 - `SCL`.
 
-An SPI module usually needs more lines:
+Modul SPI obvykle potřebuje více linek:
 
 - `VCC`;
 - `GND`;
@@ -53,148 +53,148 @@ An SPI module usually needs more lines:
 - `MOSI`/`DIN`;
 - `CS`;
 - `DC`;
-- sometimes `RST`.
+- někdy `RST`.
 
-I2C is simpler to wire and usually enough for status, temperature and simple menu. SPI is faster and better if the screen redraws often, but for a small status display this is rarely critical.
+I2C je jednodušší na zapojení a obvykle stačí na stav, teplotu a jednoduchou nabídku. SPI je rychlejší a lepší, pokud se obrazovka často překresluje, ale pro malý displej se stavem to zřídka kritické.
 
 ![Connecting I2C OLED display to controller](../../img/03-common-components/08-oled-i2c-wiring.jpg)
 
 *Source: [Adafruit Learning System](https://learn.adafruit.com/adafruit-128x64-oled-featherwing/), CC BY-SA 3.0*
 
-## Power and Logic Levels
+## Napájení a logické úrovně
 
-An OLED module may be rated for `3.3V`, for `5V`, or have a regulator and level shifting on the board. Externally such modules can look almost identical.
+OLED modul může být hodnocen na `3.3V`, na `5V`, nebo má regulátor a posun úrovně na desce. Zvenčí mohou takové moduly vypadat téměř totožně.
 
-Before connecting, check:
+Před připojením zkontrolujte:
 
-- what power is listed on the module or product page;
-- whether `SDA`/`SCL` lines are compatible with controller logic;
-- whether the module has I2C pull-ups;
-- whether pull-ups don't conflict with controller voltage.
+- jaké napájení je uvedeno na modulu nebo na stránce produktu;
+- zda jsou linky `SDA`/`SCL` kompatibilní s logikou řadiče;
+- zda má modul I2C Pull-up rezistory;
+- zda Pull-upy nekonfrontují napětí řadiče.
 
-For ESP32 and most modern microcontrollers, it's safer to assume `3.3V` logic. If an OLED module pulls I2C to `5V`, it can be problematic for a 3.3V controller.
+Pro ESP32 a většinu moderních mikrořadičů je bezpečnější předpokládat logiku `3.3V`. Pokud OLED modul táhne I2C na `5V`, to může být problematické pro kontroler `3.3V`.
 
-Many popular I2C OLED modules work from `3.3V` and connect fine to ESP32 directly, but you need to check the specific module.
+Mnoho populárních I2C OLED modulů funguje z `3.3V` a připojuje se přímo k ESP32, ale musíte kontrolovat konkrétní modul.
 
-## I2C Address
+## Adresa I2C
 
-I2C OLED often has addresses:
+I2C OLED má často adresy:
 
 - `0x3C`;
 - `0x3D`.
 
-If the screen doesn't respond, the address is the first thing to check after power and wires. Some modules let you change the address via jumper or soldering a small jumper on the board.
+Pokud obrazovka nereaguje, adresa je první věc, kterou zkontrolovat po napájení a vodičích. Některé moduly umožňují změnit adresu přes jumper nebo pájením malého jumperu na desce.
 
-Signs of wrong address:
+Příznaky nesprávné adresy:
 
-- sketch or firmware starts but screen is blank;
-- I2C scanner sees device at different address;
-- library initializes display without visible result;
-- changing `0x3C` to `0x3D` makes it work.
+- sketch nebo firmware se spustí, ale obrazovka je prázdná;
+- I2C skener vidí zařízení na jiné adrese;
+- knihovna inicializuje displej bez viditelného výsledku;
+- změna `0x3C` na `0x3D` to zprovozní.
 
-## What to Show on a Small Screen
+## Co zobrazit na malé obrazovce
 
-A `128x32` or `128x64` OLED has very little space. Don't try to make a full smartphone interface on it.
+OLED `128x32` nebo `128x64` má velmi málo místa. Nepokoušejte se na něj vytvářet celé rozhraní smartphonu.
 
-Good set for a dryer or heater:
+Dobrá sada pro sušičku nebo ohřívač:
 
-- large current temperature;
-- target temperature;
-- humidity if there's a sensor;
-- mode: `HEAT`, `DRY`, `IDLE`, `ERROR`;
-- small fan/heat icon;
-- error code or short message.
+- velká aktuální teplota;
+- cílová teplota;
+- vlhkost, pokud máte senzor;
+- režim: `HEAT`, `DRY`, `IDLE`, `ERROR`;
+- malá ikona ventilátoru/tepla;
+- kód chyby nebo krátká zpráva.
 
-Bad set:
+Špatná sada:
 
-- long sentences;
-- tiny tables;
-- many menu items on one screen;
-- constantly scrolling text;
-- decorative animation instead of useful status.
+- dlouhé věty;
+- malé tabulky;
+- mnoho položek nabídky na jedné obrazovce;
+- neustále posouvající se text;
+- dekorativní animace místo užitečného stavu.
 
-For a device with a heater, it's more important to quickly see an error than a pretty splash screen.
+Pro zařízení s topným tělesem je důležitější rychle vidět chybu než hezkou úvodní obrazovku.
 
-## Burn-in and Brightness
+## Vypalování a jas
 
-OLED pixels age from glowing. If you show the same bright text in one place for many hours, a trace may eventually appear.
+OLED pixely stárnou ze svícení. Pokud na jednom místě dlouhé hodiny zobrazujete stejný jasný text, může se nakonec objevit stopa.
 
-For a DIY device, this isn't always critical, but it's better to:
+Pro DIY zařízení to vždy není kritické, ale je lepší:
 
-- not keep brightness at maximum without need;
-- turn off screen after idle time;
-- occasionally move static elements;
-- not show white fill constantly;
-- use brief updates instead of extra animation.
+- neuchovávat jas na maximu bez potřeby;
+- vypnout obrazovku po nečinnosti;
+- občas přesunout statické prvky;
+- neustále neukazovat bílou výplň;
+- používat krátké aktualizace místo další animace.
 
-In a warm chamber or near a heater, OLED also lives worse. It's better to keep electronics in a zone with controlled temperature not exceeding the module's range.
+V teplé komoře nebo poblíž topného tělesa OLED také hůř trvá. Lepší je udržovat elektroniku v zóně s kontrolovanou teplotou nepřesahující rozsah modulu.
 
-## Wire Length and Interference
+## Délka vodiče a interference
 
-I2C doesn't like long wires, especially near motors, heaters and power lines. If OLED is on a door or removable panel, a long flexible cable can become a noise source.
+I2C se nemá rádo dlouhé vodiče, obzvláště poblíž motorů, topných těles a vedení elektrické sítě. Pokud je OLED na dveřích nebo odnímatelném panelu, dlouhý pružný kabel se může stát zdrojem rušení.
 
-Practical rules:
+Praktická pravidla:
 
-- keep `SDA` and `SCL` short;
-- route them away from heater power wires;
-- use common `GND`;
-- don't make a connector that goes in backward;
-- for a removable cover, use a proper connector and strain relief;
-- if I2C is unstable, first shorten the wires and check pull-ups.
+- udržujte `SDA` a `SCL` krátké;
+- vychylte je pryč od napájecích drátů topného tělesa;
+- používejte společné `GND`;
+- nevytvářejte konektor, který by šel dozadu;
+- pro odnímatelný kryt použijte správný konektor a ochranu před tahem;
+- pokud je I2C nestabilní, nejdříve zkraťte vodiče a zkontrolujte Pull-upy.
 
-SPI usually tolerates higher update speed better, but has more wires and connection errors are more common.
+SPI obvykle toleruje vyšší rychlost aktualizace lépe, ale má více vodičů a chyby připojení jsou běžnější.
 
-## OLED or Touchscreen
+## OLED nebo dotykový displej
 
-OLED is good for showing status. It doesn't solve the input problem without buttons, encoder or other control.
+OLED je vhodný pro zobrazení stavu. Nevyřeší problém vstupu bez tlačítek, otočného kódovače nebo jiného ovládání.
 
-If users often need to change settings right on the device, you might need:
+Pokud uživatelé často potřebují měnit nastavení přímo v zařízení, možná budete potřebovat:
 
-- encoder + OLED;
-- several buttons + OLED;
-- TFT display;
-- touchscreen;
-- web interface or app.
+- otočný kodér + OLED;
+- několik tlačítek + OLED;
+- TFT displej;
+- dotykový displej;
+- webové rozhraní nebo aplikace.
 
-Don't install a touchscreen just because OLED seems small. For simple devices, a small OLED with one button is sometimes more reliable and clear.
+Neinstalujte dotykový displej jen proto, že se vám OLED zdá malý. U jednoduchých zařízení je malý OLED s jedním tlačítkem někdy spolehlivější a jasnější.
 
-## What to Check Before Buying
+## Co zkontrolovat před nákupem
 
-Before buying an OLED module, check:
+Před nákupem OLED modulu zkontrolujte:
 
-- size: `128x32`, `128x64` or other;
-- controller: `SSD1306`, `SH1106`, `SH1107`;
-- interface: I2C or SPI;
-- power: `3.3V`, `5V` or range;
-- logic level;
-- I2C address if listed;
-- reset pin support;
-- support in chosen firmware or library;
-- physical board dimensions and mounting holes;
-- connector location;
-- operating temperature;
-- color and readability at the angle you need.
+- velikost: `128x32`, `128x64` nebo jinou;
+- řadič: `SSD1306`, `SH1106`, `SH1107`;
+- rozhraní: I2C nebo SPI;
+- napájení: `3.3V`, `5V` nebo rozsah;
+- logickou úroveň;
+- adresu I2C, pokud je uvedena;
+- podporu pin Reset;
+- podporu v zvoleném firmware nebo knihovně;
+- fyzické rozměry desky a montážní otvory;
+- umístění konektoru;
+- provozní teplotu;
+- barvu a čitelnost v potřebném úhlu.
 
-For an ESP32 device, I2C OLED `128x64` on `SSD1306` with address `0x3C` is usually most convenient. For a Klipper board, check whether the specific board supports your chosen bus and how the display is described in configuration.
+Pro zařízení ESP32 je I2C OLED `128x64` na `SSD1306` s adresou `0x3C` obvykle nejvýhodnější. Pro desku Klipper zkontrolujte, zda konkrétní deska podporuje váš zvolený sběrnici a jak je displej popsán v konfiguraci.
 
-## Typical Errors
+## Typické chyby
 
-- mixed up `SDA` and `SCL`;
-- connected power to wrong voltage;
-- didn't check I2C address;
-- selected `SSD1306` in code but module is `SH1106`;
-- made I2C wires too long;
-- forgot common `GND`;
-- connected 5V pull-up module to 3.3V controller without checking;
-- selected SPI module expecting 4 pins like I2C;
-- put screen in hot zone;
-- added display without understanding what problem it solves for users.
+- záměna `SDA` a `SCL`;
+- připojení napájení na nesprávné napětí;
+- nekontrolování adresy I2C;
+- výběr `SSD1306` v kódu, ale modul je `SH1106`;
+- příliš dlouhé vodiče I2C;
+- zapomenutí společného `GND`;
+- připojení modulu Pull-up 5V do kontroleru 3.3V bez kontroly;
+- výběr modulu SPI očekávajícího 4 piny jako I2C;
+- umístění obrazovky v horké zóně;
+- přidání displeje bez pochopení, jaký problém řeší uživatelům.
 
-## Main Point
+## Hlavní bod
 
-An OLED display is good for short status and simple local interface. For most DIY devices, an I2C OLED `128x64` is enough if compatible by power and supported by chosen firmware.
+OLED displej je vhodný pro krátký stav a jednoduché místní rozhraní. U většiny DIY zařízení je I2C OLED `128x64` dostačující, pokud je kompatibilní s napájením a podporován zvoleným firmware.
 
-Before connecting, check the display controller, interface, power, I2C address and wire length. If the device is already convenient via web interface, OLED may not be needed.
+Před připojením zkontrolujte řadič displeje, rozhraní, napájení, adresu I2C a délku vodiče. Pokud je zařízení již vhodné prostřednictvím webového rozhraní, OLED nemusí být potřebné.
 
 ## Reference Materials
 

@@ -4,103 +4,103 @@ RFID/NFC读卡器让你可以不用有线接触就能读取卡、标签或钥匙
 
 在类似iDryer的设备中，这对于线轴标识、材料配置选择、服务访问或消耗品追踪实验很有用。
 
-Main mistake: buy an "RFID module" and assume any card will read from any distance on any controller. In reality, you need to verify frequency, tag type, interface, power, logic levels, and antenna placement.
+主要错误：购买“RFID 模块”并假设任何卡都可以在任何控制器上从任何距离读取。实际上，您需要验证频率、标签类型、接口、功率、逻辑电平和天线放置。
 
 ## Popular modules
 
-Common ones include:
+常见的包括：
 
 - RC522 / MFRC522;
 - PN532;
 - ready-made USB/UART RFID readers;
-- NFC modules with I2C, SPI, or UART.
+- 具有 I2C、SPI 或 UART 的 NFC 模块。
 
-For simple 3D printer projects, 13.56 MHz modules and tags are most common: cards, fobs, NTAG/MIFARE-compatible tags.
+对于简单的 3D 打印机项目，13.56 MHz 模块和标签最常见：卡、密钥卡、NTAG/MIFARE 兼容标签。
 
-## What to check before connecting
+## 连接前要检查什么
 
-Before connecting, find:
+连接之前，找到：
 
 - module frequency;
-- supported card and tag types;
+- 支持的卡和标签类型；
 - interface: SPI, I2C, or UART;
 - supply voltage;
 - logic levels;
 - board pinout;
 - interface selection via jumpers or solder bridges;
-- read distance;
-- antenna and placement requirements.
+- 读取距离；
+- 天线和放置要求。
 
-If the module is rated for `3.3V`, you cannot just hook it to `5V` logic without checking. Some boards have voltage regulators but lack level shifting on signal lines.
+如果模块的额定值为 `5V`，则不能在不检查的情况下将其直接连接到 `5V` 逻辑。有些板有电压调节器，但缺乏信号线上的电平转换。
 
-## RC522: typical SPI connection
+## RC522：典型的 SPI 连接
 
-Cheap RC522 modules usually run on `3.3V` and most commonly connect via SPI.
+廉价的 RC522 模块通常在 `3.3V` 上运行，并且最常见的是通过 SPI 连接。
 
-Typical lines:
+典型线路：
 
 - `VCC` - `3.3V` power;
 - `GND` - ground;
 - `SCK` - SPI clock signal;
-- `MOSI` - data from controller to module;
-- `MISO` - data from module to controller;
+- `MOSI`——从控制器到模块的数据；
+- `MISO`——模块到控制器的数据；
 - `SDA`, `SS`, or `CS` - SPI chip select;
 - `RST` - reset;
-- `IRQ` - interrupt, often unused in simple projects.
+- `IRQ` - 中断，在简单项目中经常使用。
 
 ![RFID RC522 (MFRC522) module for reading 13.56 MHz cards](../../img/06-practical-guides/05-rfid-rc522-module.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:RFID-RC522_photo.jpg), Giacomo Alessandroni, CC BY-SA 4.0*
 
-Pin names can differ. For example, on RC522, pin `SDA` often means `SS`/`CS` for SPI, not the I2C `SDA` line. This is a common source of confusion.
+引脚名称可能不同。例如，在 RC522 上，引脚 `SS` 通常表示 SPI 的 `CS`/`SDA`，而不是 I2C `SDA` 线。这是造成混乱的常见原因。
 
 ## PN532: SPI, I2C, or UART
 
-PN532 is a more flexible module. Depending on the board, it can work via:
+PN532是一个更灵活的模块。根据主板的不同，它可以通过以下方式工作：
 
 - SPI;
 - I2C;
 - UART.
 
-But you cannot just connect any pins. On many PN532 boards, the interface is selected by jumpers, DIP switches, or solder bridges.
+但你不能只连接任何引脚。在许多 PN532 板上，接口是通过跳线、DIP 开关或焊桥来选择的。
 
-Before connecting, check:
+连接之前，请检查：
 
-- which interface is physically selected on the board;
-- which pins match the selected interface;
-- whether pull-up resistors are needed for I2C;
-- whether pull-up or reset pin is needed;
-- whether logic levels are compatible with the controller.
+- 在板上物理选择哪个接口；
+- 哪些引脚与所选接口匹配；
+- I2C是否需要上拉电阻；
+- 是否需要上拉或复位引脚；
+- 逻辑电平是否与控制器兼容。
 
-If the board says "3.3V logic", do not connect it directly to 5V GPIO.
+如果板上显示“3.3V 逻辑”，请勿将其直接连接到 5V GPIO。
 
-## Common ground
+## 共同点
 
-Like other modules, common ground is needed.
+与其他模块一样，需要共同点。
 
-If the RFID module is powered from one source and the controller from another, their `GND` must be connected.
+如果 RFID 模块由一个电源供电而控制器由另一个电源供电，则必须连接它们的 `GND`。
 
-Without common ground, SPI/I2C/UART may not work or work unstably.
+如果没有共地，SPI/I2C/UART可能无法工作或工作不稳定。
 
-## Tag must match the reader
+## 标签必须与阅读器匹配
 
-RFID/NFC is not a single universal standard.
+RFID/NFC 不是单一的通用标准。
 
-A module can physically only read tags supported by its chip and library.
+模块在物理上只能读取其芯片和库支持的标签。
 
-Check:
+检查：
 
 - tag frequency;
 - card or fob type;
-- does the module support MIFARE, NTAG, ISO14443A, or the needed type;
-- do you only need to read UID or also read/write data;
-- does the chosen library support the needed operation.
+- 模块是否支持 MIFARE、NTAG、ISO14443A 或所需的类型；
+- 只需要读取UID还是同时读取/写入数据？
+- 所选库是否支持所需的操作。
 
-For simple material profile selection, often reading just the tag UID and storing UID -> material mapping in firmware or host is enough.
+对于简单的材料配置文件选择，通常仅读取标签 UID 并将 UID -> 材料映射存储在固件或主机中就足够了。
 
-## Read distance
+## 读取距离
 
-Read distance for small RFID/NFC modules is usually short.
+小型 RFID/NFC 模块的读取距离通常很短。
 
 Results depend on:
 
@@ -113,89 +113,89 @@ Results depend on:
 - interference;
 - module power.
 
-Metal near the antenna can drastically worsen reading. If the reader is mounted in a dryer, chamber, or spool holder, test distance in the actual assembly, not just on the bench.
+天线附近的金属会严重影响读数。如果读取器安装在干燥器、腔室或线轴支架中，请在实际组装中测试距离，而不仅仅是在工作台上。
 
-## Where to place the reader
+## 阅读器放置在哪里
 
-For a filament spool, it is best to place the RFID/NFC reader where the user intentionally brings the tag.
+对于细丝线轴，最好将 RFID/NFC 读取器放置在用户有意携带标签的位置。
 
-Do not design logic assuming the tag will always read automatically.
+不要假设标签总是自动读取来设计逻辑。
 
 Practical options:
 
-- "bring tag here" zone on the housing;
-- location near the spool holder;
-- service zone for access card;
-- separate panel with short read distance.
+- 外壳上的“将标签带到这里”区域；
+- 靠近线轴支架的位置；
+- 门禁卡服务区；
+- 独立面板，读取距离短。
 
-If the tag is on the spool, test with different spools, different tag orientation, different plastic, and metal proximity.
+如果标签位于线轴上，请使用不同的线轴、不同的标签方向、不同的塑料和金属接近度进行测试。
 
-## First startup
+## 首次启动
 
-Before integration:
+整合前：
 
-1. Connect module on the bench.
-2. Run an example from the library for your module.
-3. Verify the card or tag reads stably.
-4. Record UID of several tags.
-5. Check that unsupported cards do not break the logic.
-6. Mount module in housing and retest.
+1. 连接工作台上的模块。
+2. 从库中为您的模块运行一个示例。
+3. 验证卡或标签的读取是否稳定。
+4. 记录多个标签的UID。
+5. 检查不支持的卡是否不会破坏逻辑。
+6. 将模块安装到外壳中并重新测试。
 
-At this stage, do not build complex profile systems right away. First, achieve stable UID reading.
+在这个阶段，不要立即构建复杂的配置文件系统。首先，实现稳定的UID读取。
 
-## Example device logic
+## 示例设备逻辑
 
-For material profile, simple logic can be:
+对于材料剖面，简单的逻辑可以是：
 
 1. User brings tag.
-2. Device reads UID.
-3. UID is looked up in a table.
-4. If UID is known, material profile is selected.
-5. If UID is unknown, device asks for manual profile selection.
+2. 设备读取 UID。
+3. UID 在表中查找。
+4. 如果 UID 已知，则选择材料配置文件。
+5. 如果 UID 未知，设备会要求手动选择配置文件。
 
-RFID should not be the only control method. You need a manual backup: profile in menu, button, screen, or interface setting.
+RFID不应该是唯一的控制方法。您需要手动备份：菜单、按钮、屏幕或界面设置中的配置文件。
 
-## What to check after assembly
+## 组装后要检查什么
 
 Verify:
 
 - module receives correct voltage;
-- logic levels are compatible with controller;
-- correct interface is selected;
-- `MOSI`, `MISO`, `SCK`, `CS` are not swapped for SPI;
-- `SDA`, `SCL` are not swapped for I2C;
-- `TX` and `RX` are correctly crossed for UART;
+- 逻辑电平与控制器兼容；
+- 选择正确的接口；
+- `MISO`、`SCK`、`CS`、`CS` 不交换为 SPI；
+- `SCL`、`SCL` 不交换为 I2C；
+- 对于 UART，`RX` 和 `RX` 正确交叉；
 - common ground exists;
-- reset/IRQ are connected as the library requires;
-- tags of the right type read;
-- read distance is normal in the housing;
-- metal and wires do not block the antenna;
-- device works normally if tag is not read.
+- 根据库的要求连接复位/IRQ；
+- 读取正确类型的标签；
+- 外壳内读取距离正常；
+- 金属和电线不要遮挡天线；
+- 如果没有读取标签，设备可以正常工作。
 
-## Common mistakes
+## 常见错误
 
-- connecting 3.3V RC522 to 5V power or 5V logic;
-- confusing RC522 `SDA` with I2C `SDA`;
-- forgetting `CS`/`SS` on SPI;
-- swapping `MOSI` and `MISO`;
-- selecting one interface on PN532 with jumpers but wiring another;
-- using unsupported card type;
-- placing antenna right next to metal;
-- testing read distance on bench but not in housing;
-- making RFID the only profile selection method;
-- storing important logic only in UID without read error checking.
+- 将3.3V RC522连接到5V电源或5V逻辑；
+- 将 RC522 `SDA` 与 I2C `SDA` 混淆；
+- 忘记 SPI 上的 `SS`/`SS`；
+- 交换 `MISO` 和 `MISO`；
+- 用跳线选择PN532上的一个接口，但连接另一个接口；
+- 使用不受支持的卡类型；
+- 将天线放置在金属旁边；
+- 在工作台上测试读取距离，但不在外壳内测试；
+- 使 RFID 成为唯一的配置文件选择方法；
+- 仅将重要逻辑存储在 UID 中，而不进行读取错误检查。
 
-## Key points
+## 要点
 
-- RFID/NFC module must be chosen for specific tags and interface.
-- RC522 usually needs `3.3V` and SPI.
-- PN532 can work via SPI, I2C, or UART, but interface must be selected on the board.
-- Common ground is required.
+- 必须针对特定标签和接口选择 RFID/NFC 模块。
+- RC522通常需要`3.3V`和SPI。
+- PN532 可以通过 SPI、I2C 或 UART 工作，但必须在板上选择接口。
+- 需要共同基础。
 - Metal near antenna can greatly worsen reading.
-- For material profiles, tag UID is often enough, but manual backup selection is needed.
-- Test in the actual housing, not just on the bench.
+- 对于材料配置文件，标签 UID 通常就足够了，但需要手动备份选择。
+- 在实际住房中进行测试，而不仅仅是在工作台上进行测试。
 
-## Related reading
+## 相关阅读
 
 - [Adafruit: PN532 RFID/NFC Breakout Wiring](https://learn.adafruit.com/adafruit-pn532-rfid-nfc/breakout-wiring) - PN532 connection, SPI/I2C/UART selection, and 3.3V logic warnings.
 - [Adafruit: PN532 RFID/NFC guide, single page](https://learn.adafruit.com/adafruit-pn532-rfid-nfc?view=all) - full PN532 guide, wiring, CircuitPython, Raspberry Pi, and interface selection.

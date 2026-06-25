@@ -32,7 +32,7 @@ Les modules OLED petits les plus courants :
 
 `SSD1306` et `SH1106` se ressemblent mais ne sont pas toujours entièrement compatibles dans le code. Si une bibliothèque est définie pour `SSD1306` mais le module est réellement `SH1106`, l'écran peut montrer une image décalée, du charabia ou ne pas fonctionner.
 
-Avant d'acheter, il est important de vérifier non seulement la taille d'écran mais aussi le contrôleur, l'interface et la tension d'alimentation.
+Avant d'acheter, il est important de vérifier non seulement la taille de l'écran mais aussi le contrôleur, l'interface et la tension d'alimentation.
 
 ## I2C et SPI
 

@@ -87,7 +87,7 @@ Si el dispositivo cambia comportamiento cuando mueves el cable, esto no es un er
 
 ## Por qué la protección no debe ser deshabilitada
 
-Thermal runaway, `MINTEMP`, `MAXTEMP`, "heater not heating" y errores similares existen no para molestar al usuario.
+Thermal runaway, `MAXTEMP`, `MAXTEMP`, "calentador no calienta" y errores similares existen no para molestar al usuario.
 
 Estas son señales de que el controlador ya no confía en la lectura de temperatura o ve comportamiento de calentamiento peligroso.
 

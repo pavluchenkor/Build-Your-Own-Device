@@ -102,7 +102,7 @@ Pour décoder le texte, un analyseur logique ou un adaptateur USB-UART est plus 
 
 Un multimètre peut ne pas voir un affaissement bref.
 
-Par exemple, quand un servo démarre, une ligne 5V peut chuter pendant quelques millisecondes. Le multimètre affiche presque 5V normal, mais le contrôleur a déjà redémarré.
+Par exemple, lorsqu'un servo démarre, une ligne 5V peut tomber pendant quelques millisecondes. Le multimètre affiche presque 5V normal, mais le contrôleur a déjà redémarré.
 
 Un oscilloscope vous laisse voir :
 

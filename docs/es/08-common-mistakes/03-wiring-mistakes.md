@@ -179,7 +179,7 @@ No puedes:
 - apretar cable trenzado para que algunos hilos sobresalgan;
 - retorcer cables de potencia sin conexión apropiada;
 - ignorar un terminal calentándose;
-- considerar "a veces funciona" normal.
+- Considere "a veces funciona" normal.
 
 ## Puntos clave
 

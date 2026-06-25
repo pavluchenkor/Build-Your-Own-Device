@@ -7,7 +7,7 @@ description: "Cómo elegir un calentador para un secador de filamento o cámara 
 
 El calentador define la velocidad de calentamiento y los límites de seguridad del secador o la cámara. Esta página explica tipos de calentadores, potencia, control con MOSFET o SSR y errores que pueden causar sobrecalentamiento.
 
-Un calentador es una carga que convierte energía eléctrica en calor. En un dispositivo DIY simple, es el componente más peligroso: un error en un ventilador generalmente resulta en pobre flujo de aire, pero un error en un calentador puede causar sobrecalentamiento, carcasa fundida, cableado dañado, o riesgo de incendio.
+Un calentador es una carga que convierte energía eléctrica en calor. En un dispositivo DIY simple, es el componente más peligroso: un error en un ventilador generalmente resulta en un flujo de aire deficiente, pero un error en un calentador puede causar sobrecalentamiento, carcasa fundida, cableado dañado o riesgo de incendio.
 
 En impresoras 3D y dispositivos tipo iDryer, los calentadores se encuentran en el hotend, cama, cámara, secador de filamento, conducto de aire, o módulo de calentamiento separado.
 
@@ -111,7 +111,7 @@ Lógica mínima:
 - enclosure y materiales soportan la temperatura real;
 - la primera prueba se realiza bajo supervisión.
 
-La protección térmica de hardware debe funcionar independientemente del controlador. En el caso simple, se coloca en serie en el circuito de potencia del calentador para romper físicamente la potencia. Esto no es solo otro sensor para el firmware.
+La protección térmica del hardware debe funcionar independientemente del controlador. En el caso simple, se coloca en serie en el circuito de potencia del calentador para romper básicamente la potencia. Esto no es solo otro sensor para el firmware.
 
 Si el controlador se cuelga, el sensor se cae, un MOSFET hace cortocircuito o un SSR se queda atascado, la protección debe cortar la potencia del calentador.
 

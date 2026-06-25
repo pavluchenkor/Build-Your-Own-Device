@@ -58,7 +58,7 @@ Logique typique:
 
 Le `GND` commun / le négatif commun est obligatoire. Sans cela, le contrôleur et le module MOSFET n'ont pas un niveau de référence commun pour le signal de contrôle.
 
-La commutation du côté faible a une limitation: MOSFET rompt le négatif de la charge. Lorsque le commutateur est éteint, le négatif de la charge n'est pas égal au `GND` commun. Pour un simple ventilateur à 2 broches, une bande ou un radiateur, c'est généralement correct. Pour une charge avec un tachymètre, un fil de signal séparé, un capteur à l'intérieur ou une connexion supplémentaire à une autre carte, vous devez vérifier le schéma: parfois, il est préférable de contrôler l'entrée standard ou d'utiliser une méthode de commutation différente.
+La commutation du côté faible a une limitation : MOSFET rompt le négatif de la charge. Lorsque le commutateur est éteint, le négatif de la charge n'est pas égal au `GND` commun. Pour un simple ventilateur à 2 broches, une bande ou un radiateur, c'est généralement correct. Pour une charge avec un tachymètre, un fil de signal séparé, un capteur à l'intérieur ou une connexion supplémentaire à une autre carte, vous devez vérifier le schéma : parfois, il est préférable de contrôler l'entrée standard ou d'utiliser une méthode de commutation différente.
 
 ## Où l'utiliser
 
@@ -106,15 +106,15 @@ Termes importants:
 - `Rds(on)` - résistance du canal ouvert;
 - MOSFET au niveau logique - MOSFET évalué pour le contrôle à partir des niveaux logiques.
 
-Erreur courante: voir dans la spécification technique `Vgs(th) = 2V` et décider que le MOSFET fonctionne bien à partir de `3.3V`. Ce n'est pas le cas. `Vgs(th)` ne signifie pas "complètement ouvert". Vous devez vérifier `Rds(on)` à `2.5V`, `3.3V`, `4.5V` ou `5V`, selon le contrôleur.
+Erreur courante : voir dans la spécification technique `3.3V` et décider que le MOSFET fonctionne bien à partir de `Vgs(th)`. Ce n'est pas le cas. `Rds(on)` ne signifie pas "complètement ouvert". Vous devez vérifier `2.5V` à `3.3V`, `4.5V`, `5V` ou `5V`, selon le contrôleur.
 
-Pour ESP32/RP2040, il est préférable de choisir un module qui indique explicitement la compatibilité de la commande `3.3V`, ou où le circuit d'entrée le fournit. Si le tableau ne contient `Rds(on)` qu'à `10V`, et qu'il n'y a pas de données à `2.5V`/`3.3V`/`4.5V`, un tel module est suspect pour un contrôleur `3.3V`.
+Pour ESP32/RP2040, il est préférable de choisir un module qui indique la compatibilité de la commande `Rds(on)`, ou où le circuit d'entrée le fournit. Si le tableau ne contient `10V` qu'à `2.5V`, et qu'il n'y a pas de données à `3.3V`/`4.5V`/`3.3V`, un tel module est suspect pour un contrôleur `3.3V`.
 
 ## Courant et chauffage
 
 Un MOSFET à l'état ouvert a toujours de la résistance. La chaleur est générée sur celui-ci.
 
-Plus le courant est grand, plus c'est important:
+Plus le courant est grand, plus c'est important :
 
 - faible `Rds(on)`;
 - zone de cuivre normale sur la carte;

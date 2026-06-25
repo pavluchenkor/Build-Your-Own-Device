@@ -1,80 +1,80 @@
 # MCU em Klipper
 
-Klipper consists of two main parts:
+Klipper consiste em duas partes principais:
 
-- **host** — a Linux computer with Klipper, such as a Raspberry Pi, Orange Pi, mini-PC, or other device;
-- **MCU** — a microcontroller board that physically controls pins.
+- **host** — um computador Linux com Klipper, como Raspberry Pi, Orange Pi, mini-PC ou outro dispositivo;
+- **MCU** — uma placa microcontroladora que controla fisicamente os pinos.
 
-The host makes high-level decisions, reads configuration, processes G-code, and plans actions. The MCU executes precise commands on hardware: switches outputs, reads inputs, counts time, generates PWM, and reports status back to the host.
+O host toma decisões de alto nível, lê a configuração, processa o código G e planeja ações. O MCU executa comandos precisos no hardware: alterna saídas, lê entradas, conta o tempo, gera PWM e relata o status ao host.
 
-## What is an MCU in Klipper
+## O que é um MCU no Klipper
 
-MCU stands for micro-controller unit.
+MCU significa unidade microcontroladora.
 
-In the context of Klipper, it is a specific board:
+No contexto do Klipper, é uma placa específica:
 
-- main 3D printer board;
+- placa principal da impressora 3D;
 - separate RP2040 board;
 - separate STM32 board;
 - CAN/toolhead board;
 - additional I/O board.
 
-An MCU does not "think like the whole printer." It executes low-level commands sent by the host. This separation makes Klipper flexible: you can add a second or third MCU and use its pins in one shared configuration.
+Um MCU não “pensa como a impressora inteira”. Ele executa comandos de baixo nível enviados pelo host. Essa separação torna o Klipper flexível: você pode adicionar um segundo ou terceiro MCU e usar seus pinos em uma configuração compartilhada.
 
-## How it looks
+## Como parece
 
 Simplified scheme:
 
 ![Klipper host and multiple MCUs](../../img/02-controllers/05-klipper-host-mcu-architecture.svg)
 
-The host communicates with the MCU via USB, UART, or CAN. In the Klipper configuration, each MCU gets its own section, and the pins of that MCU are then used in fan, sensor, heater, output, and other module settings.
+O host se comunica com o MCU via USB, UART ou CAN. Na configuração do Klipper, cada MCU obtém sua própria seção, e os pinos desse MCU são então usados ​​nas configurações do ventilador, sensor, aquecedor, saída e outras configurações do módulo.
 
-## What the host does
+## O que o anfitrião faz
 
-The host:
+O anfitrião:
 
-- stores and reads `printer.cfg`;
-- accepts G-code and user commands;
+- armazena e lê `printer.cfg`;
+- aceita código G e comandos do usuário;
 - maintains high-level logic;
 - schedules actions over time;
-- synchronizes communication with the MCU;
-- decides when to switch a fan, heater, or other output;
-- receives readings and status from the MCU.
+- sincroniza a comunicação com o MCU;
+- decide quando trocar um ventilador, aquecedor ou outra saída;
+- recebe leituras e status do MCU.
 
-The host does not apply current to a fan or read a thermistor directly if these pins are on an external board. It tells the MCU what to do.
+O host não aplica corrente a um ventilador nem lê um termistor diretamente se esses pinos estiverem em uma placa externa. Diz ao MCU o que fazer.
 
-## What the MCU does
+## O que o MCU faz
 
-The MCU:
+O MCU:
 
 - physically controls GPIO;
-- reads inputs and sensors;
+- lê entradas e sensores;
 - generates PWM;
-- executes commands at the right time;
-- reports results to the host;
-- goes into shutdown on errors if firmware and configuration are set up that way.
+- executa comandos na hora certa;
+- relata os resultados ao host;
+- entra em desligamento devido a erros se o firmware e a configuração estiverem configurados dessa maneira.
 
-For example, if the configuration has a fan on pin `PA8`, it is the MCU with that pin that changes its state. The host only sends the command.
+Por exemplo, se a configuração possui uma ventoinha no pino `PA8`, é o MCU com esse pino que muda seu estado. O host apenas envia o comando.
 
-## What does `[mcu]` mean
+## O que significa `[mcu]`
 
-In `printer.cfg`, the `[mcu]` section describes the microcontroller that Klipper should connect to.
+Em `[mcu]`, a seção `[mcu]` descreve o microcontrolador ao qual o Klipper deve se conectar.
 
-Example for USB/serial:
+Exemplo para USB/serial:
 
 ```ini
 [mcu]
 serial: /dev/serial/by-id/usb-Klipper_stm32f446xx_...
 ```
 
-For an additional MCU, you use a name:
+Para um MCU adicional, você usa um nome:
 
 ```ini
 [mcu chamber]
 serial: /dev/serial/by-id/usb-Klipper_rp2040_...
 ```
 
-After this, pins of the additional MCU can be specified with a prefix:
+Depois disso, os pinos do MCU adicional podem ser especificados com um prefixo:
 
 ```ini
 [temperature_sensor chamber_air]
@@ -85,137 +85,137 @@ sensor_pin: chamber:gpio26
 pin: chamber:gpio15
 ```
 
-The logic is simple: `chamber:gpio15` means "pin `gpio15` on the MCU named `chamber`".
+A lógica é simples: `gpio15` significa “pino `chamber` no MCU chamado `chamber`”.
 
-## Pin names and prefixes
+## Nomes e prefixos de pinos
 
 Klipper uses hardware pin names.
 
-Examples:
+Exemplos:
 
 - for STM32: `PA4`, `PB0`, `PC13`;
 - for RP2040: `gpio15`, `gpio26`;
-- for Arduino/AVR there may be their own aliases.
+- para Arduino/AVR pode haver seus próprios aliases.
 
-Before a pin name there can be symbols:
+Antes do nome de um pino pode haver símbolos:
 
-- `!` — invert the logic;
-- `^` — enable pull-up if the MCU supports it;
-- `~` — enable pull-down if the MCU supports it.
+- `!` — inverte a lógica;
+- `^` — habilita pull-up se o MCU suportar;
+- `~` — habilite o menu suspenso se o MCU suportar.
 
-Example:
+Exemplo:
 
 ```ini
 [gcode_button chamber_door]
 pin: ^chamber:gpio12
 ```
 
-This is not "Klipper magic," but a specific setting of an input pin on a specific MCU. So the board pinout must be accurate.
+Esta não é uma “mágica do Klipper”, mas uma configuração específica de um pino de entrada em um MCU específico. Portanto, a pinagem da placa deve ser precisa.
 
-## Why additional MCU is needed
+## Por que MCU adicional é necessário
 
-Additional MCU is useful when you need to separate peripherals into a separate block.
+MCU adicional é útil quando você precisa separar periféricos em um bloco separado.
 
-Examples for iDryer-like devices:
+Exemplos de dispositivos semelhantes ao iDryer:
 
-- chamber temperature and humidity sensors;
+- sensores de temperatura e umidade da câmara;
 - circulation fan;
 - filter fan;
 - backlighting;
 - door button;
 - lid sensor;
 - damper servo;
-- separate module with load cell;
+- módulo separado com célula de carga;
 - additional OLED or RFID;
-- emergency input that is more convenient to route near the device.
+- entrada de emergência que é mais conveniente para rotear perto do dispositivo.
 
-This approach is convenient if the device should be part of a Klipper system, not a separate Wi-Fi box.
+Essa abordagem é conveniente se o dispositivo fizer parte de um sistema Klipper, e não de uma caixa Wi-Fi separada.
 
 ## MCU approach or standalone controller
 
-There are two different paths.
+Existem dois caminhos diferentes.
 
 **MCU in Klipper**:
 
-- the device is controlled from `printer.cfg`;
-- pins are visible to Klipper;
-- you can use existing sections like `fan_generic`, `temperature_sensor`, `heater_generic`, `output_pin`;
-- the state is visible in the Klipper interface;
-- communication with the host is required.
+- o dispositivo é controlado por `printer.cfg`;
+- os pinos são visíveis para o Klipper;
+- você pode usar seções existentes como `temperature_sensor`, `heater_generic`, `output_pin`, `output_pin`;
+- o estado é visível na interface do Klipper;
+- a comunicação com o host é necessária.
 
 **Standalone controller**:
 
-- the device makes its own decisions;
+- o dispositivo toma suas próprias decisões;
 - may have Wi-Fi, web interface, MQTT;
-- does not need to depend on the printer;
-- requires its own firmware and safety logic;
-- does not connect as a regular `[mcu]` in Klipper.
+- não precisa depender da impressora;
+- requer seu próprio firmware e lógica de segurança;
+- não se conecta como um `[mcu]` normal no Klipper.
 
-ESP32 is often good for a standalone Wi-Fi device. RP2040 and STM32 are often more convenient as a wired MCU in Klipper.
+O ESP32 costuma ser bom para um dispositivo Wi-Fi independente. RP2040 e STM32 costumam ser mais convenientes como MCU com fio no Klipper.
 
-## USB, UART, and CAN
+## USB, UART e CAN
 
-Communication between host and MCU can be different.
+A comunicação entre o host e o MCU pode ser diferente.
 
-**USB** — the most common and simple option for one or two boards near the host. Convenient for Pico, STM32 boards, and many printer boards.
+**USB** — a opção mais comum e simples para uma ou duas placas próximas ao host. Conveniente para placas Pico, STM32 e muitas placas de impressora.
 
-**UART** — serial communication via separate TX/RX pins. Can be useful on some boards, but requires careful level, ground, and speed connection.
+**UART** — comunicação serial por meio de pinos TX/RX separados. Pode ser útil em algumas placas, mas requer conexão cuidadosa de nível, aterramento e velocidade.
 
-**CAN** — convenient for remote modules, toolhead boards, and more stable wired architecture. But CAN requires a supported microcontroller, a CAN transceiver, a proper bus, terminators, and Linux interface setup.
+**CAN** — conveniente para módulos remotos, placas de cabeçote de ferramentas e arquitetura com fio mais estável. Mas o CAN requer um microcontrolador compatível, um transceptor CAN, um barramento adequado, terminadores e configuração de interface Linux.
 
-For a first additional controller, USB is usually simpler. CAN makes sense when there is a real reason: longer wiring, multiple nodes, toolhead board, or existing CAN infrastructure.
+Para um primeiro controlador adicional, o USB geralmente é mais simples. CAN faz sentido quando há um motivo real: fiação mais longa, vários nós, placa de cabeçote ou infraestrutura CAN existente.
 
-## MCU does not protect the power section
+## MCU não protege a seção de energia
 
-Important: adding an MCU does not make a load safe.
+Importante: adicionar um MCU não torna a carga segura.
 
-If an MCU controls a fan, heater, or SSR, you still need:
+Se um MCU controlar um ventilador, aquecedor ou SSR, você ainda precisará de:
 
 - correct power switch;
 - proper power supply;
-- wires and terminals for the current;
+- fios e terminais para corrente;
 - fuse;
-- independent thermal protection for the heater;
-- safe enclosure;
-- verification of behavior if communication is lost or the host is turned off.
+- proteção térmica independente para o aquecedor;
+- recinto seguro;
+- verificação do comportamento se a comunicação for perdida ou o host for desligado.
 
-If the host loses communication with the MCU, Klipper can shut down the system, but this does not replace hardware protection. A heater should be designed so that a single failure of firmware, sensor, SSR, or communication does not lead to an unsafe mode.
+Se o host perder a comunicação com o MCU, o Klipper poderá desligar o sistema, mas isso não substitui a proteção do hardware. Um aquecedor deve ser projetado de modo que uma única falha de firmware, sensor, SSR ou comunicação não leve a um modo inseguro.
 
-## What to check before choosing an MCU
+## O que verificar antes de escolher um MCU
 
-Before buying a board for Klipper MCU, check:
+Antes de comprar uma placa para Klipper MCU, verifique:
 
-- whether the microcontroller is supported by Klipper;
-- whether there is a ready configuration or instructions for the board;
-- which communication method is needed: USB, UART, or CAN;
-- how the board is flashed;
+- se o microcontrolador é compatível com Klipper;
+- se existe configuração pronta ou instruções para a placa;
+- qual método de comunicação é necessário: USB, UART ou CAN;
+- como a placa pisca;
 - whether you have enough GPIO, ADC, PWM, I2C, SPI, UART;
-- which pins are really exposed;
-- what GPIO logic: usually `3.3V`;
-- whether drivers/MOSFET/SSR are needed for loads;
-- whether there is documentation for power and pinout;
-- what happens if communication with the MCU is lost.
+- quais pinos estão realmente expostos;
+- qual lógica GPIO: geralmente `3.3V`;
+- se drivers/MOSFET/SSR são necessários para cargas;
+- se há documentação para alimentação e pinagem;
+- o que acontece se a comunicação com o MCU for perdida.
 
-For a first additional MCU, it is usually easier to choose RP2040/Pico or a well-known STM32 board with clear instructions.
+Para um primeiro MCU adicional, geralmente é mais fácil escolher RP2040/Pico ou uma placa STM32 bem conhecida com instruções claras.
 
-## Common mistakes
+## Erros comuns
 
-- thinking the MCU contains all of Klipper's logic;
-- confusing host and MCU;
-- adding `[mcu chamber]` but then specifying pins without the `chamber:` prefix;
-- taking a pin from someone else's pinout;
-- flashing the wrong microcontroller type in `make menuconfig`;
-- not checking bootloader offset and board flashing method;
-- using an unstable USB cable;
-- connecting `5V` to `3.3V` input;
-- powering a load from GPIO;
-- thinking software shutdown replaces a fuse and thermal fuse.
+- pensar que o MCU contém toda a lógica do Klipper;
+- host confuso e MCU;
+- adicionando `chamber:`, mas especificando pinos sem o prefixo `chamber:`;
+- tirar um alfinete da pinagem de outra pessoa;
+- piscando o tipo de microcontrolador errado em `make menuconfig`;
+- não verificar o deslocamento do bootloader e o método de flashing da placa;
+- usando um cabo USB instável;
+- conectando `3.3V` à entrada `3.3V`;
+- alimentando uma carga do GPIO;
+- pensar que o desligamento do software substitui um fusível e um fusível térmico.
 
-## Key points
+## Pontos principais
 
-In Klipper, an MCU is a board that physically controls pins, and the host plans and coordinates the work. Additional MCU allows you to expand the system and move peripherals closer to the device.
+No Klipper, um MCU é uma placa que controla fisicamente os pinos e o host planeja e coordena o trabalho. MCU adicional permite expandir o sistema e mover periféricos para mais perto do dispositivo.
 
-For iDryer-like tasks, this is convenient for fans, sensors, filters, backlighting, buttons, and some actuators. But the power section and heater safety remain a separate hardware task.
+Para tarefas semelhantes ao iDryer, isso é conveniente para ventiladores, sensores, filtros, iluminação de fundo, botões e alguns atuadores. Mas a seção de energia e a segurança do aquecedor permanecem uma tarefa separada de hardware.
 
 ## Related materials
 

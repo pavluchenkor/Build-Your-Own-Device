@@ -1,200 +1,200 @@
 # Ecrã Tátils
 
-A touchscreen is not just a display. It's a display plus user input. It must not only show temperature or a button, but tell the device where you touched.
+Uma tela sensível ao toque não é apenas uma tela. É uma exibição mais entrada do usuário. Ele não deve apenas mostrar a temperatura ou um botão, mas também informar ao dispositivo onde você tocou.
 
-Because of this, a touchscreen is almost always more complex than OLED. You need to choose not only size and resolution, but understand who draws the interface, who processes touches, what interface is used and whether your chosen firmware supports it.
+Por causa disso, uma tela sensível ao toque é quase sempre mais complexa que o OLED. Você precisa escolher não apenas tamanho e resolução, mas entender quem desenha a interface, quem processa os toques, qual interface é usada e se o firmware escolhido suporta isso.
 
-## When Touchscreen Is Useful
+## Quando a tela sensível ao toque é útil
 
-A touchscreen makes sense if the device needs a full local interface:
+Uma tela sensível ao toque faz sentido se o dispositivo precisar de uma interface local completa:
 
 - choosing drying mode;
-- setting temperature and time;
+- definir temperatura e tempo;
 - material profile list;
 - confirming errors;
 - manual fan, lighting or damper control;
 - Wi-Fi setup;
-- viewing status without phone or computer.
+- visualizar o status sem telefone ou computador.
 
-If you only need to show temperature, error and mode, usually OLED, a couple buttons, encoder or web interface is enough. A touchscreen adds cost, power, enclosure space, firmware, cables and another failure point.
+Se você só precisa mostrar temperatura, erro e modo, geralmente OLED, alguns botões, codificador ou interface web são suficientes. Uma tela sensível ao toque acrescenta custo, energia, espaço no gabinete, firmware, cabos e outro ponto de falha.
 
-## Main Question: Who Draws the Interface
+## Pergunta principal: quem desenha a interface
 
-Before buying, answer the main question: where does the user interface live.
+Antes de comprar, responda à pergunta principal: onde fica a interface do usuário.
 
-There are several different screen classes:
+Existem várias classes de tela diferentes:
 
 ![Classes of touchscreens and who draws the interface](../../img/03-common-components/09-touchscreen-classes.svg)
 
-Raw TFT is a simple screen with a controller like `ILI9341`, `ILI9488`, `ST7789`, plus a separate touch controller like `XPT2046` or `FT5x06`. Your microcontroller or firmware draws the interface. This is flexible but requires code, memory, drivers and calibration.
+Raw TFT é uma tela simples com um controlador como `ILI9488`, `ST7789`, `XPT2046`, além de um controlador de toque separado como `FT5x06` ou `FT5x06`. Seu microcontrolador ou firmware desenha a interface. Isso é flexível, mas requer código, memória, drivers e calibração.
 
-Smart UART/HMI display is a screen with its own firmware and interface editor, like Nextion. The microcontroller sends commands via UART, and the screen shows pages and elements. This reduces MCU load but ties your project to that screen's tools and protocol.
+O display Smart UART/HMI é uma tela com seu próprio firmware e editor de interface, como o Nextion. O microcontrolador envia comandos via UART e a tela mostra páginas e elementos. Isso reduz a carga do MCU, mas vincula seu projeto às ferramentas e ao protocolo dessa tela.
 
-Printer TFT, like BTT TFT35, often has its own touchscreen mode via UART and classic 12864 LCD emulation via EXP connectors. This screen is convenient for Marlin/3D printer boards, but it's not a universal panel for any DIY device.
+A impressora TFT, como o BTT TFT35, geralmente possui seu próprio modo de tela sensível ao toque via UART e emulação clássica de LCD 12864 por meio de conectores EXP. Esta tela é conveniente para placas de impressora Marlin/3D, mas não é um painel universal para qualquer dispositivo DIY.
 
-HDMI/DSI/USB screen for Linux host works like a regular monitor and touch device for Raspberry Pi or other Linux computer. This suits KlipperScreen but doesn't connect directly to small ESP32 as a simple module.
+A tela HDMI/DSI/USB para host Linux funciona como um monitor normal e dispositivo de toque para Raspberry Pi ou outro computador Linux. Isso é adequado ao KlipperScreen, mas não se conecta diretamente ao pequeno ESP32 como um módulo simples.
 
 ## Connection Interfaces
 
-Touchscreens use different interfaces.
+As telas sensíveis ao toque usam interfaces diferentes.
 
-Common options:
+Opções comuns:
 
-- SPI - often on small TFT for ESP32/Arduino;
-- I2C - often on capacitive touch controllers, sometimes on touch controllers;
-- UART - on smart displays and some 3D printer TFT;
-- EXP1/EXP2/EXP3 - on screens compatible with 3D printer boards;
-- HDMI + USB - on Linux screens for Raspberry Pi;
-- DSI - on some Raspberry Pi screens;
-- parallel RGB/8080 - on faster TFT, but more wires and requirements.
+- SPI - geralmente em TFT pequeno para ESP32/Arduino;
+- I2C - geralmente em controladores de toque capacitivos, às vezes em controladores de toque;
+- UART - em monitores inteligentes e algumas impressoras 3D TFT;
+- EXP1/EXP2/EXP3 - em telas compatíveis com placas de impressora 3D;
+- HDMI + USB – em telas Linux para Raspberry Pi;
+- DSI – em algumas telas do Raspberry Pi;
+- RGB/8080 paralelo - em TFT mais rápido, mas com mais fios e requisitos.
 
-You cannot choose a screen by diagonal alone. Two `3.5"` screens can be completely different: one SPI module for ESP32, second UART panel with its own firmware, third HDMI screen for Raspberry Pi.
+Você não pode escolher uma tela apenas pela diagonal. Duas telas `3.5"` podem ser completamente diferentes: um módulo SPI para ESP32, segundo painel UART com firmware próprio, terceira tela HDMI para Raspberry Pi.
 
-## Resistive and Capacitive Touch
+## Toque resistivo e capacitivo
 
-The touch part also varies.
+A parte de toque também varia.
 
 Resistive touch:
 
-- responds to finger, stylus or fingernail pressure;
+- responde à pressão do dedo, da caneta ou da unha;
 - often requires calibration;
-- usually worse for gestures;
+- geralmente pior para gestos;
 - can be cheaper;
-- found with controllers like `XPT2046`.
+- encontrado com controladores como `XPT2046`.
 
 Capacitive touch:
 
 - responds to a finger;
-- usually nicer to use;
+- geralmente é mais agradável de usar;
 - can support multiple touches;
 - often has a separate controller like `FT5x06`, `GT911` families;
-- works worse with thick gloves and some protective covers.
+- funciona pior com luvas grossas e algumas capas protetoras.
 
-For a workshop device, resistive touch is sometimes more practical because you can press it with a fingernail or stylus. For a nice panel on the enclosure, capacitive usually feels more modern.
+Para um dispositivo de oficina, o toque resistivo às vezes é mais prático porque você pode pressioná-lo com a unha ou com uma caneta. Para um belo painel no gabinete, o capacitivo geralmente parece mais moderno.
 
-## Power, Backlight and Current
+## Potência, luz de fundo e corrente
 
-A TFT screen draws more than a small OLED. The main power consumer is the backlight.
+Uma tela TFT atrai mais do que um pequeno OLED. O principal consumidor de energia é a luz de fundo.
 
-Before connecting, check:
+Antes de conectar, verifique:
 
 - screen power voltage;
 - backlight current;
 - whether you need a separate 5V source;
-- whether backlight brightness is adjustable;
-- whether logic levels are compatible;
-- whether the screen overloads the board regulator;
-- whether power sags when backlight turns on.
+- se o brilho da luz de fundo é ajustável;
+- se os níveis lógicos são compatíveis;
+- se a tela sobrecarrega o regulador da placa;
+- se a energia diminui quando a luz de fundo é ligada.
 
-If the screen whitens, flickers, reboots the controller or loses touch events, first check power and ground, not the interface code.
+Se a tela ficar branca, piscar, reiniciar o controlador ou perder eventos de toque, primeiro verifique a alimentação e o aterramento, não o código da interface.
 
-For a device with a heater, the screen shouldn't power from a random weak pin. It should be part of a proper power scheme with clear margin.
+Para um dispositivo com aquecedor, a tela não deve ser alimentada por um pino fraco aleatório. Deve fazer parte de um esquema de energia adequado com margem clara.
 
-## Firmware and Compatibility
+## Firmware e compatibilidade
 
-A beautiful screen is useless if your chosen firmware doesn't support it.
+Uma tela bonita é inútil se o firmware escolhido não for compatível.
 
-For ESP32/Arduino approach, you need to check:
+Para a abordagem ESP32/Arduino, você precisa verificar:
 
-- is there a display driver;
-- is there a touch controller driver;
+- existe um driver de vídeo;
+- existe um driver controlador de toque;
 - are there enough GPIO;
-- is there enough RAM/PSRAM for buffer;
-- what graphics framework is used;
-- who will write the menu.
+- há RAM/PSRAM suficiente para buffer;
+- qual estrutura gráfica é usada;
+- quem vai escrever o cardápio.
 
-For ESPHome, check support for the specific display driver and touchscreen component. For example, ILI9xxx displays and XPT2046 touch need SPI and separate configuration, and resistive touch needs calibration.
+Para ESPHome, verifique o suporte para o driver de vídeo específico e o componente touchscreen. Por exemplo, os monitores ILI9xxx e o toque XPT2046 precisam de SPI e configuração separada, e o toque resistivo precisa de calibração.
 
-For Klipper, there are usually two different worlds:
+Para o Klipper, geralmente existem dois mundos diferentes:
 
-- small displays connected to MCU and described in Klipper config;
-- KlipperScreen on Linux host, where the screen works as a monitor and touch device.
+- pequenos displays conectados ao MCU e descritos na configuração do Klipper;
+- KlipperScreen no host Linux, onde a tela funciona como monitor e dispositivo de toque.
 
-KlipperScreen usually needs a screen where Linux can show a desktop or console. This is not the same as a small UART TFT connected to a printer board.
+O KlipperScreen geralmente precisa de uma tela onde o Linux possa mostrar um desktop ou console. Isto não é o mesmo que um pequeno UART TFT conectado a uma placa de impressora.
 
-For Marlin/printer boards, check whether the specific screen supports the needed mode: UART touch mode, 12864 emulation, EXP1/EXP2/EXP3, specific controller type in firmware config.
+Para placas Marlin/impressora, verifique se a tela específica suporta o modo necessário: modo de toque UART, emulação 12864, EXP1/EXP2/EXP3, tipo de controlador específico na configuração do firmware.
 
-## Smart Display and Nextion-like Screens
+## Smart Display e telas semelhantes ao Nextion
 
-Smart display is convenient because the screen stores pages, buttons, fonts and images. The controller sends commands via UART and gets touch events.
+O display inteligente é conveniente porque a tela armazena páginas, botões, fontes e imagens. O controlador envia comandos via UART e recebe eventos de toque.
 
 Pros:
 
-- less load on microcontroller;
-- less graphics code in main firmware;
-- you can draw the interface in the screen editor;
-- only UART and power needed.
+- menos carga no microcontrolador;
+- menos código gráfico no firmware principal;
+- você pode desenhar a interface no editor de tela;
+- apenas UART e energia necessários.
 
 Cons:
 
-- you need to learn a separate editor and protocol;
-- interface is often stored in the screen;
-- harder to keep UI and device firmware versions in sync;
-- not all elements behave like in a regular app;
-- replacing the screen may require redesign.
+- você precisa aprender um editor e protocolo separados;
+- a interface geralmente é armazenada na tela;
+- mais difícil manter sincronizadas as versões da interface do usuário e do firmware do dispositivo;
+- nem todos os elementos se comportam como em um aplicativo normal;
+- substituir a tela pode exigir um redesenho.
 
-For a simple device, smart display can be a good solution if you need a nice panel without a Linux host. But it's not a "normal monitor": it's a separate module with its own logic.
+Para um dispositivo simples, o display inteligente pode ser uma boa solução se você precisar de um painel bonito sem um host Linux. Mas não é um “monitor normal”: é um módulo separado com lógica própria.
 
-## Case, Cables and Servicing
+## Caixa, cabos e manutenção
 
-A touchscreen is something users will touch with their hands. So mechanics matter, not just wires.
+Uma tela sensível ao toque é algo que os usuários tocarão com as mãos. Portanto, a mecânica é importante, não apenas os fios.
 
-Check in advance:
+Verifique com antecedência:
 
-- screen is not in a hot zone;
+- a tela não está em uma zona quente;
 - there's a frame or protective mount;
-- cable doesn't bend sharply when opening cover;
-- cable can be disconnected for servicing;
-- connector cannot go in backward;
-- case doesn't press on screen;
-- there's access to SD card or USB for updates if needed;
-- user doesn't touch power parts while using screen;
-- touch/display wiring is separate from heater wires.
+- o cabo não dobra acentuadamente ao abrir a tampa;
+- o cabo pode ser desconectado para manutenção;
+- o conector não pode entrar para trás;
+- case não pressiona na tela;
+- há acesso ao cartão SD ou USB para atualizações, se necessário;
+- o usuário não toca nas partes elétricas enquanto usa a tela;
+- a fiação de toque/display é separada dos fios do aquecedor.
 
-For devices with a heater, it's better to move the screen to the user zone, away from hot air and power parts.
+Para dispositivos com aquecedor, é melhor mover a tela para a zona do usuário, longe do ar quente e de peças de energia.
 
-## What to Check Before Buying
+## O que verificar antes de comprar
 
-Before buying a touchscreen, check:
+Antes de comprar uma tela sensível ao toque, verifique:
 
-- diagonal and resolution;
+- diagonal e resolução;
 - display type: raw TFT, smart UART, printer TFT, HDMI/DSI;
 - display interface;
 - touch interface;
-- display controller: for example `ILI9341`, `ILI9488`, `ST7789`;
-- touch controller: for example `XPT2046`, `FT5x06`, `GT911`;
-- power and backlight current;
+- controlador de exibição: por exemplo `ILI9488`, `ST7789`, `ST7789`;
+- controlador de toque: por exemplo `FT5x06`, `GT911`, `GT911`;
+- corrente de energia e luz de fundo;
 - logic levels;
 - support in firmware;
-- availability of documentation and examples;
-- availability of libraries;
+- disponibilidade de documentação e exemplos;
+- disponibilidade de bibliotecas;
 - RAM/PSRAM requirements;
-- board dimensions, holes and cable;
+- dimensões da placa, furos e cabos;
 - operating temperature;
 - firmware/interface update method.
 
-If the product description lacks display controller, interface, power and connection examples, it's better not to use such a screen for your first project.
+Se a descrição do produto não tiver exemplos de controlador de exibição, interface, alimentação e conexão, é melhor não usar essa tela em seu primeiro projeto.
 
-## Typical Errors
+## Erros típicos
 
-- bought a screen "for Arduino", but the project is KlipperScreen on Linux;
-- bought HDMI screen and tried connecting to ESP32 directly;
-- bought UART smart display but expected it to work like a regular TFT;
-- chose raw TFT but didn't plan time for menu and graphics code;
-- not enough GPIO for SPI display and touch controller;
-- not enough RAM for screen buffer;
+- comprei uma tela “para Arduino”, mas o projeto é KlipperScreen no Linux;
+- comprei tela HDMI e tentei conectar diretamente ao ESP32;
+- comprei um display UART inteligente, mas esperava que funcionasse como um TFT normal;
+- escolheu TFT bruto, mas não planejou tempo para menu e código gráfico;
+- GPIO insuficiente para display SPI e controlador de toque;
+- RAM insuficiente para buffer de tela;
 - didn't check touch controller;
 - didn't calibrate resistive touch;
-- screen flickers due to weak backlight power;
-- cable runs next to heater power wires;
-- screen mounted in hot zone;
-- interface looks nice but main error is hard to see.
+- a tela treme devido à fraca potência da luz de fundo;
+- o cabo passa próximo aos fios de alimentação do aquecedor;
+- tela montada em zona quente;
+- a interface parece boa, mas o erro principal é difícil de ver.
 
-## Main Point
+## Ponto Principal
 
-Choose a touchscreen by architecture, not diagonal. First decide who draws the interface: microcontroller, the screen itself, printer firmware or Linux host. Then check interface, power, touch controller, firmware support and enclosure mechanics.
+Escolha uma tela sensível ao toque pela arquitetura, não pela diagonal. Primeiro decida quem desenha a interface: microcontrolador, a própria tela, firmware da impressora ou host Linux. Em seguida, verifique a interface, a alimentação, o controlador de toque, o suporte de firmware e a mecânica do gabinete.
 
-For a simple heater, dryer or filter, usually OLED, buttons or web interface is enough. Use a touchscreen when users really need a local interface.
+Para um simples aquecedor, secador ou filtro, geralmente OLED, botões ou interface web são suficientes. Use uma tela sensível ao toque quando os usuários realmente precisarem de uma interface local.
 
 ## Reference Materials
 

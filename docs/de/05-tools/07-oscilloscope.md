@@ -14,11 +14,11 @@ Ein PWM Signal auf dem Oszilloskop-Bildschirm sieht so aus:
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pwm.gif), Mik81, CC0 Public Domain*
 
-Sie benötigen eines nicht für jeden einfachen Bau. Aber wenn sich ein Gerät instabil verhält, kann ein Oszilloskop in Minuten offenbaren, was ein Multimeter nicht sehen kann.
+Sie benötigen eines nicht für jeden einfachen Bau. Aber wenn sich ein Gerät instabil verhält, kann ein Oszilloskop in Minuten auftauchen, was ein Multimeter nicht sehen kann.
 
 ## Was Sie sehen können
 
-In iDryer-ähnlichen Geräten ist ein Oszilloskop nützlich um zu zeigen:
+Bei iDryer-ähnlichen Geräten ist ein Oszilloskop nützlich um zu zeigen:
 
 - Lüfter PWM;
 - MOSFET Modul PWM;
@@ -102,7 +102,7 @@ Zum Dekodieren von Text ist ein Logik-Analyzer oder USB-UART Adapter bequemer. A
 
 Ein Multimeter sieht möglicherweise keinen kurzen Sag.
 
-Zum Beispiel könnte eine 5V Leitung beim Servo-Start um wenige Millisekunden sinken. Das Multimeter zeigt fast normal 5V, aber der Controller ist bereits neu gestartet.
+Zum Beispiel könnte eine 5V-Leitung beim Servo-Start um wenige Millisekunden sinken. Das Multimeter zeigt schnell normale 5V an, aber der Controller ist bereits neu gestartet.
 
 Ein Oszilloskop ermöglicht Ihnen zu sehen:
 
@@ -132,7 +132,7 @@ Aber verstehen Sie die Grenzen: schlechte Sonden-Erde-Verbindung kann Rauschen d
 
 Manchmal wird ein Oszilloskop für erste Überprüfungen nicht benötigt.
 
-Einige Multimeter können Signal-Frequenz messen. In den Spezifikationen könnte dies `Hz`, `Frequenz` oder `Frequenz-Zähler` genannt werden.
+Einige Multimeter können Signal-Frequenz messen. In den Spezifikationen könnte dies `Frequenz`, `Frequenz-Zähler` oder `frequency counter` genannt werden.
 
 Dies ist nützlich, wenn Sie schnell verstehen müssen:
 
@@ -159,7 +159,7 @@ Also ein Frequenz-messendes Multimeter ist ein gutes Werkzeug für schnelle Übe
 
 Vor dem Anschließen einer Sonde:
 
-1. Was ist `GND` in der Schaltung?
+1. War `GND` in der Schaltung?
 2. Ist dieser Punkt mit Netzschutzerde verbunden?
 3. Gibt es keine Netzspannung?
 4. Ist die Sonde für die Spannung bewertet?

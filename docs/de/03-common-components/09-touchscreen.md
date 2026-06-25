@@ -1,144 +1,206 @@
-# Touchscreen (TFT)
+# Touchscreen
 
-Ein Touchscreen ist ein farbiges Display mit Touch-Erkennung. Im Gegensatz zu OLED-Bildschirmen (schwarz-weiß oder wenig Farbe) können TFT-Bildschirme Farbe anzeigen.
+Ein Touchscreen ist nicht nur ein Display. Es ist ein Display plus Benutzereingabe. Es muss nicht nur Temperatur oder einen Knopf anzeigen, sondern dem Gerät sagen, wo du berührt hast.
 
-In iDryern werden Touchscreens für komplexere Bedienoberflächen verwendet: Menü-Navigation, Grafiken, Echtzeit-Kurven.
+Aus diesem Grund ist ein Touchscreen fast immer komplexer als OLED. Du musst nicht nur Größe und Auflösung wählen, sondern verstehen, wer die Schnittstelle zeichnet, wer Berührungen verarbeitet, welche Schnittstelle verwendet wird und ob deine gewählte Firmware sie unterstützt.
 
-## Wo es verwendet wird
+## Wann ist Touchscreen sinnvoll
 
-In iDryern und ähnlichen Geräten:
+Ein Touchscreen macht Sinn, wenn das Gerät eine vollständige lokale Schnittstelle benötigt:
 
-- Bedienoberfläche für den Benutzer;
-- grafische Anzeige von Prozessparametern;
-- Einstellung von Temperaturen und Zeiten;
-- Visualisierung von Kurven (Temperatur über Zeit);
-- Status-Anzeigen und Warnmeldungen.
+- Trocknungsmodus wählen;
+- Temperatur und Zeit einstellen;
+- Materialprofilliste;
+- Fehler bestätigen;
+- manuelle Lüfter-, Beleuchtungs- oder Drosselklappensteuerung;
+- Wi-Fi-Einrichtung;
+- Status ohne Telefon oder Computer anzeigen.
 
-Ein Touchscreen erfordert mehr Stromversorgung und Programmlogik als OLED.
+Wenn du nur Temperatur, Fehler und Modus anzeigen musst, reichen normalerweise OLED, ein paar Tasten, Encoder oder Web-Interface aus. Ein Touchscreen erhöht Kosten, Stromverbrauch, Gehäuseplatz, Firmware, Kabel und einen weiteren Fehlerpunkt.
 
-## TFT-Schnittstellen
+## Hauptfrage: Wer zeichnet die Schnittstelle
 
-Typische TFT-Schnittstellen:
+Vor dem Kauf beantwort die Hauptfrage: wo lebt die Benutzeroberfläche.
 
-**SPI:**
+Es gibt mehrere verschiedene Bildschirmklassen:
 
-- Schnell für kleine Bildschirme;
-- normalerweise `5V` logisch;
-- Pins: GND, VCC, SCK, MOSI, MISO, CS, DC, RESET.
+![Klassen von Touchscreens und wer die Schnittstelle zeichnet](../../img/03-common-components/09-touchscreen-classes.svg)
 
-**UART/Serial:**
+Raw TFT ist ein einfacher Bildschirm mit einem Controller wie `ILI9341`, `ILI9488`, `ST7789`, plus einem separaten Touch-Controller wie `XPT2046` oder `FT5x06`. Dein Mikrocontroller oder deine Firmware zeichnet die Schnittstelle. Das ist flexibel, erfordert aber Code, Speicher, Treiber und Kalibrierung.
 
-- Langsamere Bild-Updates;
-- einfacher zu verdrahten;
-- vordefinierte AT-Befehle zum Zeichnen.
+Smart UART/HMI-Display ist ein Bildschirm mit eigenem Firmware und Interface-Editor, wie Nextion. Der Mikrocontroller sendet Befehle über UART, und der Bildschirm zeigt Seiten und Elemente. Das reduziert die MCU-Last, bindet dein Projekt aber an die Tools und das Protokoll dieses Bildschirms.
 
-**Parallel (RGB/16-bit):**
+Printer TFT, wie BTT TFT35, hat oft seinen eigenen Touchscreen-Modus über UART und klassische 12864 LCD-Emulation über EXP-Stecker. Dieser Bildschirm ist praktisch für Marlin/3D-Printer-Platinen, ist aber kein universelles Bedienfeld für jedes DIY-Gerät.
 
-- Schnellste Schnittstelle;
-- benötigt viele GPIO-Pins;
-- hauptsächlich auf großen Boards.
+HDMI/DSI/USB-Bildschirm für Linux-Host funktioniert wie ein normaler Monitor und Touch-Gerät für Raspberry Pi oder anderen Linux-Computer. Das passt zu KlipperScreen, verbindet sich aber nicht direkt zu kleinem ESP32 als einfaches Modul.
 
-Für kleine Projektboards ist meist SPI oder UART praktisch.
+## Verbindungsschnittstellen
 
-## Größe und Auflösung
+Touchscreens verwenden verschiedene Schnittstellen.
 
-Typische Größen:
+Häufige Optionen:
 
-- 3,5" oder 4" (diagonale);
-- Auflösung: 480x320 oder 320x240 typisch.
+- SPI - oft auf kleinem TFT für ESP32/Arduino;
+- I2C - oft auf kapazitiven Touch-Controllern, manchmal auf Touch-Controllern;
+- UART - auf Smart Displays und einigen 3D-Printer TFTs;
+- EXP1/EXP2/EXP3 - auf Bildschirmen, die mit 3D-Printer-Platinen kompatibel sind;
+- HDMI + USB - auf Linux-Bildschirmen für Raspberry Pi;
+- DSI - auf einigen Raspberry-Pi-Bildschirmen;
+- paralleles RGB/8080 - auf schnelleren TFTs, aber mehr Drähte und Anforderungen.
 
-Größere Bildschirme brauchen mehr Speicher für Grafikpuffer. Ein 480x320-Bildschirm mit 16-Bit Farbe braucht etwa 307 kB RAM nur für den Puffer.
+Du kannst einen Bildschirm nicht nur nach der Diagonale wählen. Zwei `3,5"`-Bildschirme können völlig unterschiedlich sein: ein SPI-Modul für ESP32, zweites UART-Panel mit eigenem Firmware, drittes HDMI-Screen für Raspberry Pi.
 
-## Touch-Erkennung
+## Resistiver und kapazitiver Touch
 
-Der Touchscreen hat zwei Teile:
+Der Touch-Teil variiert auch.
 
-1. **Display:** zeigt Bilder an;
-2. **Touchpanel:** erkennt Berührungen über Widerstandsänderung oder kapazitive Änderung.
+Resistiver Touch:
 
-Die Touch-Daten werden normalerweise über UART oder ein anderes Protokoll übertragen.
+- reagiert auf Finger, Stylus oder Fingernagel-Druck;
+- erfordert oft Kalibrierung;
+- normalerweise schlechter für Gesten;
+- kann billiger sein;
+- zu finden mit Controllern wie `XPT2046`.
 
-Überprüfen Sie:
+Kapazitiver Touch:
 
-- ob Touch getrennt verdrahtet ist;
-- Touch-Auflösung und Kalibrierungsbereich;
-- Koordinaten-Mapping (Bildschirm-Koordinaten vs. Touch-Koordinaten).
+- reagiert auf einen Finger;
+- normalerweise angenehmer zu bedienen;
+- kann mehrere Berührungen unterstützen;
+- hat oft einen separaten Controller wie `FT5x06`, `GT911` Familien;
+- funktioniert schlechter mit dicken Handschuhen und einigen Schutzabdeckungen.
 
-## Stromversorgung
+Für ein Werkstattgerät ist resistiver Touch manchmal praktischer, weil du ihn mit einem Fingernagel oder Stylus drücken kannst. Für ein schönes Bedienfeld auf dem Gehäuse fühlt sich kapazitiv normalerweise moderner an.
 
-Ein TFT-Bildschirm verbraucht mehr als OLED:
+## Stromversorgung, Hintergrundbeleuchtung und Strom
 
-- Display: `50-200 mA`;
-- Hintergrundbeleuchtung: `100-300 mA` (wenn vorhanden);
-- Total: `150-500 mA` abhängig von Größe und Typ.
+Ein TFT-Bildschirm zieht mehr als ein kleines OLED. Der Hauptstromverbraucher ist die Hintergrundbeleuchtung.
 
-Ein schwacher Stromversorger kann Flackern oder Instabilität verursachen.
+Vor dem Anschluss überprüfe:
 
-## Firmware-Unterstützung
+- Bildschirm-Stromversorgungsspannung;
+- Hintergrundbeleuchtungsstrom;
+- ob du eine separate 5V-Quelle brauchst;
+- ob Hintergrundbeleuchtungshelligkeit einstellbar ist;
+- ob Logikpegel kompatibel sind;
+- ob der Bildschirm die Board-Stromversorgung überlädt;
+- ob die Stromversorgung abfällt, wenn die Hintergrundbeleuchtung eingeschaltet wird.
 
-Die meisten Touchscreens brauchen Hersteller-spezifische Firmware oder AT-Befehlssätze:
+Wenn der Bildschirm weiß wird, flimmert, den Controller neu startet oder Touch-Ereignisse verliert, überprüfe zuerst Stromversorgung und Masse, nicht den Interface-Code.
 
-- Arduino/ESP32: UART-Kommunikation möglich;
-- Klipper: eingeschränkter Support für Touchscreens;
-- custom Firmware: häufig erforderlich für komplexe GUIs.
+Für ein Gerät mit Heizer sollte der Bildschirm nicht von einem zufälligen schwachen Pin mit Strom versorgt werden. Er sollte Teil eines ordnungsgemäßen Stromversorgungsschemas mit klarem Spielraum sein.
 
-Touchscreens sind komplexer als OLED-Bildschirme in der Firmware-Integration.
+## Firmware und Kompatibilität
 
-## Kalibrierung und Koordinaten
+Ein schöner Bildschirm ist nutzlos, wenn deine gewählte Firmware ihn nicht unterstützt.
 
-Der Touchscreen braucht Kalibrierung, um korrekt auf Berührungen zu reagieren:
+Für ESP32/Arduino-Ansatz musst du überprüfen:
 
-- Bildschirm-Auflösung: z.B. 480x320;
-- Touch-Rohwerte: z.B. 0-4095;
-- Kalibrierungspunkte: normalerweise 3-4 Punkte.
+- gibt es einen Display-Treiber;
+- gibt es einen Touch-Controller-Treiber;
+- gibt es genug GPIO;
+- gibt es genug RAM/PSRAM für Puffer;
+- welches Graphics-Framework wird verwendet;
+- wer wird das Menü schreiben.
 
-Eine schlechte Kalibrierung führt dazu, dass Berührungen falsch erkannt werden.
+Für ESPHome überprüfe die Unterstützung für den spezifischen Display-Treiber und die Touchscreen-Komponente. Zum Beispiel benötigen ILI9xxx-Displays und XPT2046-Touch SPI und separate Konfiguration, und resistiver Touch benötigt Kalibrierung.
 
-## Wärme und Sichtbarkeit
+Für Klipper gibt es normalerweise zwei verschiedene Welten:
 
-Ein TFT mit Hintergrundbeleuchtung kann in heißer Umgebung Probleme haben:
+- kleine Displays, die mit MCU verbunden und in Klipper-Konfiguration beschrieben sind;
+- KlipperScreen auf Linux-Host, wo der Bildschirm als Monitor und Touch-Gerät funktioniert.
 
-- Hintergrundbeleuchtung wird dunkler bei Hitze;
-- Display kann bei sehr hoher Temperatur beschädigt werden;
-- typischer Betriebsbereich: `0-50°C`.
+KlipperScreen benötigt normalerweise einen Bildschirm, auf dem Linux einen Desktop oder eine Konsole anzeigen kann. Dies ist nicht dasselbe wie ein kleines UART TFT, das mit einer Printer-Platine verbunden ist.
 
-Ein Kühlkörper oder Belüftung kann helfen.
+Für Marlin/Printer-Platinen überprüfe, ob der spezifische Bildschirm den benötigten Modus unterstützt: UART-Touch-Modus, 12864-Emulation, EXP1/EXP2/EXP3, spezifischer Controller-Typ in der Firmware-Konfiguration.
+
+## Smart Display und Nextion-ähnliche Bildschirme
+
+Smart Display ist praktisch, weil der Bildschirm Seiten, Tasten, Schriftarten und Bilder speichert. Der Controller sendet Befehle über UART und empfängt Touch-Ereignisse.
+
+Vorteile:
+
+- weniger Last auf Mikrocontroller;
+- weniger Grafikcode in der Hauptfirmware;
+- du kannst die Schnittstelle im Bildschirm-Editor zeichnen;
+- nur UART und Stromversorgung nötig.
+
+Nachteile:
+
+- du musst einen separaten Editor und Protokoll erlernen;
+- Schnittstelle ist oft im Bildschirm gespeichert;
+- schwieriger, UI- und Gerätfirmware-Versionen synchron zu halten;
+- Nicht alle Elemente verhalten sich wie in einer regulären App;
+- Bildschirmwechsel kann Neuentwurf erfordern.
+
+Für ein einfaches Gerät kann Smart Display eine gute Lösung sein, wenn du ein schönes Bedienfeld ohne Linux-Host brauchst. Aber es ist kein "normaler Monitor": es ist ein separates Modul mit eigener Logik.
+
+## Gehäuse, Kabel und Wartung
+
+Ein Touchscreen ist etwas, das Benutzer mit ihren Händen berühren werden. Also ist Mechanik wichtig, nicht nur Drähte.
+
+Überprüfe im Voraus:
+
+- Der Bildschirm befindet sich nicht in einer heißen Zone.
+- es gibt eine Rahmen oder Schutzhalterung;
+- Kabel biegt sich nicht scharf, wenn die Abdeckung geöffnet wird;
+- Kabel kann zur Wartung getrennt werden;
+- Stecker kann nicht rückwärts eingeführt werden;
+- Gehäuse drückt nicht auf den Bildschirm;
+- es gibt Zugang zu SD-Karte oder USB für Updates, wenn nötig;
+- Benutzer berührt keine Stromteile beim Bildschirmgebrauch;
+- Touch-/Display-Verdrahtung ist von Heizer-Drähten getrennt.
+
+Für Geräte mit Heizer ist es besser, den Bildschirm in die Benutzerzone zu verschieben, weg von heißer Luft und Stromteilen.
 
 ## Was vor dem Kauf zu überprüfen ist
 
-Vor dem Kauf überprüfen Sie:
+Vor dem Kauf eines Touchscreens überprüfe:
 
-- Größe und Auflösung;
-- Schnittstelle (SPI, UART, parallel);
-- ob Touch enthalten ist;
-- Betriebsspannung (normalerweise 5V);
-- Stromverbrauch;
-- Größe und Form;
-- Touch-Auflösung und Genauigkeit;
-- Hintergrundbeleuchtung (Ström und Helligkeitssteuerung);
-- Verfügbarkeit von Dokumentation oder Code-Beispielen;
-- Betriebstemperaturbereich.
+- Diagonale und Auflösung;
+- Display-Typ: raw TFT, Smart UART, Printer TFT, HDMI/DSI;
+- Display-Schnittstelle;
+- Touch-Schnittstelle;
+- Display-Controller: zum Beispiel `ILI9341`, `ILI9488`, `ST7789`;
+- Touch-Controller: zum Beispiel `XPT2046`, `FT5x06`, `GT911`;
+- Stromversorgung und Hintergrundbeleuchtungsstrom;
+- Logikpegel;
+- Unterstützung in der Firmware;
+- Verfügbarkeit von Dokumentation und Beispielen;
+- Verfügbarkeit von Bibliotheken;
+- RAM/PSRAM-Anforderungen;
+- Board-Dimensionen, Löcher und Kabel;
+- Betriebstemperatur;
+- Firmware-/Interface-Update-Methode.
 
-Für ein Anfängerprojekt: ein kleines `3,5"` UART-TFT mit Touch.
+Wenn die Produktbeschreibung Display-Controller, Schnittstelle, Stromversorgung und Verbindungsbeispiele fehlen, ist es besser, solch einen Bildschirm für dein erstes Projekt nicht zu verwenden.
 
 ## Typische Fehler
 
-- falsche Spannungsversorgung;
-- zu schwache Stromversorgung (Flackern, Instabilität);
-- falsche Schnittstellen-Protokolleinstellung;
-- SPI-Pins vertauscht;
-- Touch nicht kalibriert;
-- Koordinaten nicht korrekt gemappt;
-- Display zu nah an Heizer;
-- Hintergrundbeleuchtung an falsches Steuersignal;
-- Firmware-Unterstützung nicht vorhanden.
+- Bildschirm "für Arduino" gekauft, aber das Projekt ist KlipperScreen auf Linux;
+- HDMI-Bildschirm gekauft und versucht, direkt mit ESP32 zu verbinden;
+- UART Smart Display gekauft, aber erwartet, dass es wie ein normales TFT funktioniert;
+- raw TFT gewählt, aber Zeit für Menü und Grafikcode nicht geplant;
+- nicht genug GPIO für SPI-Display und Touch-Controller;
+- nicht genug RAM für Bildschirmpuffer;
+- Touch-Controller nicht überprüft;
+- resistiven Touch nicht kalibriert;
+- Bildschirm flimmert aufgrund schwacher Hintergrundbeleuchtungsstromversorgung;
+- Kabel läuft neben Heizer-Stromversorgungsleitungen;
+- Bildschirm in heißer Zone montiert;
+- Schnittstelle sieht schön aus, aber Hauptfehler ist schwer zu sehen.
 
 ## Hauptpunkt
 
-Ein Touchscreen ist komplexer als ein einfacher OLED-Bildschirm. Überprüfen Sie Schnittstelle, Stromversorgung, Touch-Kalibrierung und Firmware-Unterstützung sorgfältig. Bei Anfängern: UART-basierte Bildschirme sind einfacher als reine SPI.
+Wähle einen Touchscreen nach Architektur, nicht nach Diagonale. Entscheide zuerst, wer die Schnittstelle zeichnet: Mikrocontroller, der Bildschirm selbst, Printer-Firmware oder Linux-Host. Überprüfe dann Schnittstelle, Stromversorgung, Touch-Controller, Firmware-Unterstützung und Gehäusemechanik.
+
+Für einen einfachen Heizer, Trockner oder Filter reichen normalerweise OLED, Tasten oder Web-Interface aus. Verwende einen Touchscreen, wenn Benutzer wirklich eine lokale Schnittstelle benötigen.
 
 ## Referenzmaterialien
 
-- [Seeed Studio: UART LCD Module](https://wiki.seeedstudio.com/2.8-inch-TFT-Touch-Shield-v2.0/) - UART-basierter Touchscreen, Befehle, Kalibrierung.
-- [ITDB: TFT LCD Library](http://henningkarlsen.com/electronics/library.php?id=52) - Beliebte Arduino-Bibliothek für TFT-Bildschirme.
-- [4D Systems: Serial LCD Protocol](https://4dsystems.com.au/products/uLCD) - Beispiel von seriellen (UART) Touchscreen-Protokollen.
+- [KlipperScreen: Hardware](https://klipperscreen.github.io/KlipperScreen/Hardware/) - Anforderungen und Bildschirmbeispiele für KlipperScreen, einschließlich HDMI/DSI/Raspberry-Pi-Optionen.
+- [BIGTREETECH TouchScreenFirmware](https://github.com/bigtreetech/BIGTREETECH-TouchScreenFirmware) - Firmware und BTT TFT-Modi: Touch-Modus, Marlin/12864-Emulation, EXP-Stecker und Einstellungen.
+- [BIGTREETECH TFT35 V3.0 Repository](https://github.com/bigtreetech/BIGTREETECH-TFT35-V3.0) - Dokumentation und Dateien für beliebte 3D-Printer-TFT35.
+- [Adafruit 3,5-Zoll-TFT-Touchscreen-Breakout](https://learn.adafruit.com/adafruit-3-5-color-320x480-tft-touchscreen-breakout) - Beispiel von raw TFT mit SPI/8-Bit-Modi, separatem Touch und Bibliotheken.
+- [ESPHome: Touchscreen-Komponenten](https://esphome.io/components/touchscreen) - Dokumentation zu Touch-Komponenten, Kalibrierung und Verknüpfung von rohen Touch-Koordinaten zu Display-Koordinaten.
+- [ESPHome: ILI9xxx TFT LCD Series](https://esphome.io/components/display/ili9xxx/) - Beispiel der raw TFT-Display-Unterstützung auf ESPHome und wichtige Speicherbegrenzungen.

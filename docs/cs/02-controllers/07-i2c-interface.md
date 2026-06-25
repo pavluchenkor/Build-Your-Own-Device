@@ -1,196 +1,196 @@
 # Rozhraní I2C
 
-I2C is a communication interface for small microchips and modules near the controller. Expansion: `Inter-Integrated Circuit`. In documentation you often see `I2C bus`.
+I2C je komunikační rozhraní pro malé mikročipy a moduly blízko kontroléru. Rozšíření: `Inter-Integrated Circuit`. V dokumentaci často vidíte `I2C sběrnice`.
 
-Main idea: multiple devices can be connected to the same two signal lines `SDA` and `SCL` if they have different addresses.
+Hlavní myšlenka: více zařízení se může připojit ke stejným dvěma signálním linkám `SDA` a `SCL`, pokud mají různé adresy.
 
-## Where I2C is used
+## Kde se I2C používá
 
-In simple devices around a 3D printer, I2C is often used for:
+V jednoduchých zařízeních kolem 3D tiskárny se I2C často používá na:
 
-- OLED displays;
-- temperature, humidity, pressure, and light sensors;
-- real-time clocks;
-- GPIO expanders;
-- some encoders and button modules;
-- I2C multiplexers;
-- some RFID/NFC modules;
-- small auxiliary boards.
+- OLED displeje;
+- senzory teploty, vlhkosti, tlaku a světla;
+- hodiny reálného času;
+- expanzéry GPIO;
+- některé enkodéry a modulové tlačítka;
+- I2C multiplexery;
+- některé RFID/NFC moduly;
+- malé pomocné desky.
 
-I2C works well for short connections within one enclosure. For long wires across the entire printer or near power lines, it becomes more risky.
+I2C funguje dobře na krátká spojení v jednom pouzdru. Na dlouhé vodiče přes celou tiskárnu nebo blízko napájecích linek se to stává rizikovým.
 
-## SDA, SCL, power, and GND
+## SDA, SCL, napájení a GND
 
-An I2C module typically has 4 contacts:
+Typický I2C modul má 4 kontakty:
 
-- `VCC` or `VIN` - power;
-- `GND` - common ground;
+- `VCC` nebo `VIN` - napájení;
+- `GND` - společná zem;
 - `SDA` - data;
-- `SCL` - clock signal.
+- `SCL` - hodinový signál.
 
-A circuit with multiple devices looks like this:
+Obvod s více zařízeními vypadá takto:
 
-![I2C bus: one master and three devices on common SDA/SCL](../../img/02-controllers/07-i2c-bus-topology.svg)
+![I2C sběrnice: jeden master a tři zařízení na společné SDA/SCL](../../img/02-controllers/07-i2c-bus-topology.svg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:I2C.svg), Cburnett, CC BY-SA 3.0*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:I2C.svg), Cburnett, CC BY-SA 3.0*
 
-All devices on the same I2C bus connect to the same `SDA`, `SCL`, and `GND`. Power can be common, but its voltage and logic levels must be verified for each module.
+Všechna zařízení na stejné I2C sběrnici se připojují na stejné `SDA`, `SCL` a `GND`. Napájení může být společné, ale jeho napětí a logické úrovně musí být ověřeny pro každý modul.
 
-## Device addresses
+## Adresy zařízení
 
-Each I2C device has an address. For example, small OLEDs often use `0x3C`, some sensors use `0x76`, `0x77`, `0x68`, `0x69`, and so on.
+Každé I2C zařízení má adresu. Například malé OLED obvykle používají `0x3C`, některé sensory `0x76`, `0x77`, `0x68`, `0x69` a tak dále.
 
-If two devices on the same bus have the same address, the controller cannot properly address them individually.
+Pokud mají dvě zařízení na stejné sběrnici stejnou adresu, kontrolér je nemůže jednotlivě správně adresovat.
 
-What to do with address conflicts:
+Co s konflikty adres:
 
-- change the address via jumper or solder bridge, if the module supports it;
-- select a different module variant;
-- use an I2C multiplexer;
-- split devices across different I2C buses, if the controller and firmware allow it.
+- změňte adresu přes jumper nebo mosty, pokud modul podporuje;
+- vyberte si jinou variantu modulu;
+- používejte I2C multiplexer;
+- rozdělte zařízení na různé I2C, pokud kontrolér a firmware získáte.
 
-Address is often given in hexadecimal format (`hex`): `0x3C`. But some firmware or configs may require decimal format (`decimal`). For example, `0x3C` in decimal is `60`. You need to check the documentation of the specific system.
+Adresa je často v hexadecimálním formátu (`hex`): `0x3C`. Ale firmware nebo config mohou vyžadovat některý desítkový formát (`decimal`). Například `0x3C` v desítce je `60`. Musíte zkontrolovat dokumentaci konkrétního systému.
 
-## Pull-up resistors
+## Pull-up rezistory
 
-I2C lines work through pull-up resistors. Devices on the bus can typically pull `SDA` or `SCL` low, and the high level comes from pull-up to the logic supply.
+I2C linky fungují přes pull-up rezistory. Zařízení na sběrnici mohou typicky tahat `SDA` nebo `SCL` dolů a vysoká úroveň přichází z pull-up na napájecí logice.
 
-Without pull-ups, the bus may not work. But too many modules with their own pull-ups on one bus can also be a problem: the total resistance becomes too small, the lines are loaded harder, signal edges and levels may degrade.
+Bez pull-upů sběrnice nemusí fungovat. Ale příliš mnoho modulů s vlastními pull-upy na jedné sběrnici může být také problém: celkový odpor je příliš malý, linky jsou více zatíženy, hrany signálů a úrovně se degradují.
 
-Practically:
+Prakticky:
 
-- many OLEDs and sensor boards already have pull-up resistors;
-- on a short simple bus this usually works immediately;
-- if there are many devices, you need to check the module schematics and total pull-ups;
-- if the bus is unstable, one of the first checks is pull-up resistors.
+- mnoho OLED a modulů senzoru již má pull-up rezistory;
+- na krátké jednoduché sběrnici to obvykle funguje hned;
+- pokud je více zařízení, musíte zkontrolovat schémata modulů a celkové pull-upy;
+- pokud je sběrnice nestabilní, jedním z prvních kontrol jsou pull-up rezistory.
 
-A common starting resistance for a separate bus is around `4.7 kOhm`, but pull-ups in ready-made modules may be different.
+Běžný počáteční odpor pro oddělené sběrnice je kolem `4.7 kOhm`, ale pull-upy v hotových modulech mohou být různé.
 
-## 3.3V and 5V
+## 3.3V a 5V
 
-I2C is especially sensitive to voltage levels, because `SDA` and `SCL` are usually pulled to some supply voltage.
+I2C je obzvláště citlivý na napěťové úrovně, protože `SDA` a `SCL` jsou obvykle taženy na nějaké napájecí napětí.
 
-ESP32, RP2040, and STM32 typically operate with `3.3V` logic. Arduino Uno/Nano often operates with `5V` logic.
+ESP32, RP2040 a STM32 typicky pracují s logikou `3.3V`. Arduino Uno/Nano často pracuje s logikou `5V`.
 
-Dangerous situation:
+Nebezpečná situace:
 
-- `3.3V` controller;
-- I2C module powered from `5V`;
-- pull-up resistors on the module pull `SDA` and `SCL` to `5V`.
+- kontrolér `3.3V`;
+- I2C modul napájen z `5V`;
+- pull-up rezistory na modulu tahají `SDA` a `SCL` na `5V`.
 
-In this case, `5V` may appear on the controller's GPIO. This can damage the microcontroller.
+V tomto případě může se objevit `5V` na GPIO kontroléru. To může poškodit mikrokontroleér.
 
-Before connecting, verify:
+Před připojením ověřte:
 
-- what voltage the module is powered from;
-- what `SDA` and `SCL` are pulled to;
-- if there is a level converter on the module;
-- if the module is compatible with a `3.3V` controller.
+- jaké napětí je modul napájen;
+- na jaké napětí jsou `SDA` a `SCL` taženy;
+- zda je na modulu měnič úrovně;
+- zda je modul kompatibilní s kontrolérem `3.3V`.
 
-If in doubt, use `3.3V` power for I2C modules or a level converter.
+Pokud si nejste jistí, používejte napájení `3.3V` na I2C moduly nebo měnič úrovně.
 
-## Speed
+## Rychlost
 
-Typical I2C speeds:
+Typické I2C rychlosti:
 
 ```text
-100000   # standard mode, 100 kHz
-400000   # fast mode, 400 kHz
+100000   # standardní režim, 100 kHz
+400000   # rychlý režim, 400 kHz
 ```
 
-For short wires and normal modules, `400 kHz` often works. But for long wires, weak pull-ups, many devices, or noisy environment, it's better to start with `100 kHz`.
+Na krátké vodiče a normální moduly často funguje `400 kHz`. Ale na dlouhé vodiče, slabé pull-upy, mnoho zařízení nebo hlučné prostředí je lepší začít s `100 kHz`.
 
-In Klipper, the `i2c_speed` parameter is not equally supported across all MCUs. The documentation states that many microcontrollers use `100000`, while some platforms support `400000`. So you cannot just write a high speed and assume it is actually applied.
+V Klipperu parametr `i2c_speed` není stejně podporován na všech MCU. Dokumentace uvádí, že mnoho mikrokontroleérů používá `100000`, zatímco některé platformy podporují `400000`. Takže nemůžete jen napsat vysokou rychlost a předpokládat, že se skutečně aplikuje.
 
 ## I2C scanner
 
-An I2C scanner is a small program or command that iterates through addresses and shows which devices respond on the bus.
+I2C scanner je malý program či příkaz, který iteruje adresami a ukazuje, která zařízení na sběrnici reagují.
 
-It helps understand:
+Pomáhá pochopit:
 
-- does the controller see the module;
-- what is the device address;
-- are `SDA` and `SCL` mixed up;
-- is there power and common `GND`;
-- is there an address conflict.
+- vidí kontrolér modul;
+- jaká je adresa zařízení;
+- nejsou `SDA` a `SCL` prohozeni;
+- je tam napájení a společná `GND`;
+- je konflikt adres.
 
-But the scanner does not prove the device fully works. It only shows that someone responds at that address.
+Ale scanner neprokazuje, že zařízení plně funguje. Jen ukazuje, že někdo reaguje na tu adresu.
 
-## I2C in Klipper
+## I2C v Klipperu
 
-In Klipper, an I2C device is connected to a specific MCU.
+V Klipperu je I2C zařízení připojeno na konkrétní MCU.
 
-Configuration may include parameters:
+Konfigurace může obsahovat parametry:
 
-- `i2c_mcu` - which MCU the device is connected to;
-- `i2c_bus` - hardware I2C bus, if there are multiple;
-- `i2c_software_scl_pin` and `i2c_software_sda_pin` - software I2C on selected pins;
-- `i2c_address` - device address;
-- `i2c_speed` - speed, if supported.
+- `i2c_mcu` - na který MCU je zařízení připojeno;
+- `i2c_bus` - hardwarová I2C sběrnice, pokud je více;
+- `i2c_software_scl_pin` a `i2c_software_sda_pin` - softwarový I2C na vybraných pinech;
+- `i2c_address` - adresa zařízení;
+- `i2c_speed` - rychlost, pokud je podporována.
 
-Important: `i2c_address` in Klipper is often specified as a decimal number, not hex format. If the datasheet says `0x3C`, the config may require `60`.
+Důležité: `i2c_address` v Klipperu je často zadávána jako desítkové číslo, ne hex formát. Pokud datalist říká `0x3C`, config může vyžadovat `60`.
 
-If the device is connected to an additional MCU, that must also be specified. Otherwise Klipper will look for it on the main board.
+Pokud je zařízení připojeno na dodatečný MCU, musí se také zadat. Jinak bude Klipper hledat na hlavní desce.
 
-## Wire length and interference
+## Délka vodiče a interference
 
-I2C is designed for short connections. Inside a small enclosure or on one board, it is convenient. In a 3D printer, conditions are worse:
+I2C je navržen na krátká spojení. V malém pouzdru nebo na jedné desce je pohodlný. V 3D tiskárně jsou podmínky horší:
 
-- motors nearby;
-- heaters nearby;
-- long wires;
-- connectors on doors;
-- power lines of fans and heaters;
-- electromagnetic interference.
+- motory v blízkosti;
+- topidla v blízkosti;
+- dlouhé vodiče;
+- konektory na dveřích;
+- napájecí linky ventilátorů a topidel;
+- elektromagnetické rušení.
 
-Practical rules:
+Praktická pravidla:
 
-- keep `SDA` and `SCL` short;
-- route them near `GND`;
-- do not route parallel to heater power wires;
-- do not make long ribbon cables to moving parts without reason;
-- reduce speed to `100 kHz` if there are errors;
-- use proper connectors and strain relief;
-- for long connections, choose another interface: UART, CAN, RS-485, or local MCU near the sensor.
+- udržujte `SDA` a `SCL` krátké;
+- vedete je blízko `GND`;
+- nevedete paralelně s napájecími vodiči topidla;
+- nedělejte dlouhé páskové kabely na pohyblivé části bez důvodu;
+- snižte rychlost na `100 kHz`, pokud jsou chyby;
+- používejte správné konektory a úpravu proti tahu;
+- na dlouhá spojení si vyberte jiné rozhraní: UART, CAN, RS-485 či místní MCU blízko sensoru.
 
-## What to check before connecting
+## Co zkontrolovat před připojením
 
-Before connecting an I2C module, verify:
+Před připojením I2C modulu ověřte:
 
-- module power;
-- logic level;
-- what `SDA` and `SCL` are pulled to;
-- device address;
-- if the address can be changed;
-- if there is a conflict with other devices;
-- wire length;
-- if there is firmware support;
-- which MCU and bus the device connects to;
-- if hardware I2C or software I2C is needed.
+- napájení modulu;
+- logickou úroveň;
+- na jaké napětí jsou `SDA` a `SCL` taženy;
+- adresa zařízení;
+- zda lze adresu změnit;
+- zda není konflikt s jinými zařízeními;
+- délku vodiče;
+- zda je podpora firmwaru;
+- který MCU a sběrnice je zařízení připojeno;
+- zda je potřeba hardwarový nebo softwarový I2C.
 
-## Typical mistakes
+## Typické chyby
 
-- mixed up `SDA` and `SCL`;
-- forgot common `GND`;
-- applied `5V` pull-ups to a `3.3V` controller;
-- two devices have the same address;
-- specified hex address where decimal was needed;
-- used too long wires;
-- connected many modules with pull-up resistors;
-- chose a module not supported by firmware;
-- connected device to an additional MCU but did not specify `i2c_mcu`;
-- confuse I2C and I2S.
+- prohození `SDA` a `SCL`;
+- zapomenutí společné `GND`;
+- aplikace pull-upů `5V` na kontrolér `3.3V`;
+- dvě zařízení mají stejnou adresu;
+- zadaná hex adresa, kde byla potřeba desítková;
+- používání příliš dlouhých vodičů;
+- připojení mnoha modulů s pull-up rezistory;
+- výběr modulu nepodporovaného firmwarem;
+- připojení zařízení na dodatečný MCU bez zadání `i2c_mcu`;
+- plení si I2C a I2S.
 
-## Key takeaway
+## Klíčové pozorování
 
-I2C is convenient for small displays, sensors, and auxiliary modules near the controller. It requires `SDA`, `SCL`, power, and common `GND`.
+I2C je pohodlný na malé displeje, sensory a pomocné moduly blízko kontroléru. Vyžaduje `SDA`, `SCL`, napájení a společnou `GND`.
 
-Main checks before connecting: address, `3.3V/5V` levels, pull-up resistors, wire length, and firmware support. In the noisy printer environment, keep I2C short.
+Hlavní kontroly před připojením: adresa, úroveň `3.3V/5V`, pull-up rezistory, délka vodiče a podpora firmwaru. V hlučném prostředí tiskárny udržujte I2C krátký.
 
-## Related materials
+## Související materiály
 
-- [SparkFun: I2C at the Hardware Level](https://learn.sparkfun.com/tutorials/i2c/i2c-at-the-hardware-level) - practical explanation of `SDA`, `SCL`, open-drain lines, and pull-up resistors.
-- [SparkFun: I2C tutorial](https://learn.sparkfun.com/tutorials/i2c/all) - general I2C guide, addresses, multiple devices on a bus, and hardware features.
-- [Adafruit: STEMMA QT technical specs](https://learn.adafruit.com/introducing-adafruit-stemma-qt/technical-specs) - example of a standardized I2C connector, pinout, power, and `GND`.
-- [Adafruit: PCA9548 I2C multiplexer](https://learn.adafruit.com/adafruit-pca9548-8-channel-stemma-qt-qwiic-i2c-multiplexer/pinouts) - example of resolving duplicate I2C address conflicts via multiplexer.
-- [Klipper Configuration Reference: common I2C settings](https://www.klipper3d.org/Config_Reference.html) - `i2c_address`, `i2c_mcu`, `i2c_bus`, software I2C, and `i2c_speed` parameters.
+- [SparkFun: I2C at the Hardware Level](https://learn.sparkfun.com/tutorials/i2c/i2c-at-the-hardware-level) - praktický výklad `SDA`, `SCL`, open-drain linek a pull-up rezistorů.
+- [SparkFun: I2C tutorial](https://learn.sparkfun.com/tutorials/i2c/all) - obecný průvodce I2C, adresy, více zařízení na sběrnici a hardwarové rysy.
+- [Adafruit: STEMMA QT technical specs](https://learn.adafruit.com/introducing-adafruit-stemma-qt/technical-specs) - příklad standardizovaného I2C konektoru, rozložení pinů, napájení a `GND`.
+- [Adafruit: PCA9548 I2C multiplexer](https://learn.adafruit.com/adafruit-pca9548-8-channel-stemma-qt-qwiic-i2c-multiplexer/pinouts) - příklad řešení konfliktů duplicitních I2C adres přes multiplexer.
+- [Klipper Configuration Reference: common I2C settings](https://www.klipper3d.org/Config_Reference.html) - `i2c_address`, `i2c_mcu`, `i2c_bus`, softwarový I2C a parametry `i2c_speed`.

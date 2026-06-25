@@ -1,6 +1,6 @@
 # Heizer- und SSR-Fehler
 
-Der Heizer ist die gefährlichste Last in einem einfachen DIY-Gerät.
+Der Heizer ist der gefährlichste Last in einem einfachen DIY-Gerät.
 
 Ein Lüfter könnte nicht starten. Ein Sensor könnte falsche Ablesungen geben. Aber ein Heizer mit einem Fehler kann das Gehäuse überhitzen, Kunststoff schmelzen, Verdrahtung beschädigen oder ein Feuerrisiko schaffen.
 
@@ -11,7 +11,7 @@ Wenn das Gerät 110-230V AC hat und Sie keine Elektrosicherheit verstehen, ist d
 Gefährliche Zeichen:
 
 - SSR wird erheblich heiß;
-- Heizer will nicht ausschalten;
+- Heizer lässt sich nicht ausschalten;
 - Temperatur steigt obwohl Befehl aus ist;
 - Temperatur steigt zu schnell oder unangemessen;
 - Temperatursensor zeigt falschen Wert;
@@ -51,7 +51,7 @@ Bevor Sie verbinden überprüfen Sie:
 
 SSR wird während des Betriebs heiß.
 
-Auch wenn das Gehäuse großen Strom sagt, bedeutet es nicht dass das Relais es ohne Kühlkörper in einem geschlossenen Gehäuse halten wird.
+Auch wenn das Gehäuse großen Strom sagt, bedeutet es nicht, dass das Relais ohne Kühlkörper in einem geschlossenen Gehäuse gehalten wird.
 
 Überprüfen Sie:
 
@@ -102,7 +102,7 @@ Für Heizer ist unabhängiger Hardware-Schutz nützlich:
 
 Solcher Schutz muss unabhängig von Controller und Firmware arbeiten.
 
-Wenn Controller hängt, Pin in An-Zustand hängt, SSR ausfällt oder Sensor getrennt wird, Hardware-Schutz kann letzte Verteidigungslinie sein.
+Wenn der Controller hängt, Pin im Anschluss hängt, SSR ausfällt oder Sensor getrennt wird, kann Hardware-Schutz die letzte Verteidigungslinie sein.
 
 ## Temperatursensor schlecht montiert
 
@@ -179,7 +179,7 @@ Vor erstem Heizen:
 7. Erdung, wenn benötigt.
 8. Anschlüsse und Drähte.
 9. Temperatursensor-Montage.
-10. Richtig `sensor_type` in Firmware.
+10. Richtig `sensor_type` in der Firmware.
 11. `min_temp` und `max_temp`.
 12. Unabhängiger thermischer Schutz.
 13. Verhalten wenn Controller aus ist.

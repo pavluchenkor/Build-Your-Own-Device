@@ -80,7 +80,7 @@ Die Befestigung muss stabil sein. Ein locker montierter Servo kann zittern oder 
 
 ## Drehmoment und Last
 
-Das Servomaximaldr drehmoment ist in `kg·cm` oder `N·cm` angegeben.
+Das Servomaximaldrehmoment wird in `N·cm` oder `kg·cm` angegeben.
 
 Überprüfen Sie:
 

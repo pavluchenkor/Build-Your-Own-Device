@@ -60,7 +60,7 @@ Para circuitos de bajo voltaje:
 4. Seleccione la configuración correcta de la sonda: `1x` o `10x`.
 5. Asegúrese de que el osciloscopio esté configurado con el mismo factor.
 
-Para la mayoría de señales digitales, use `10x`: la sonda carga menos el circuito y generalmente muestra mejor la forma de la señal.
+Para la mayoría de señales digitales, utilice `10x`: la sonda carga menos el circuito y generalmente muestra mejor la forma de la señal.
 
 ## PWM
 
@@ -102,7 +102,7 @@ Para decodificar texto, un analizador lógico o adaptador USB-UART es más conve
 
 Un multímetro puede no ver una breve caída.
 
-Por ejemplo, cuando un servo comienza, una línea de 5V podría caer durante unos milisegundos. El multímetro muestra casi 5V normal, pero el controlador ya se reinició.
+Por ejemplo, cuando un servo comienza, una línea de 5V podría caer durante unos milisegundos. El multímetro muestra casi 5V normal, pero el controlador ya se reinicia.
 
 Un osciloscopio le permite ver:
 
@@ -130,7 +130,7 @@ Pero comprenda los límites: una conexión pobre de la tierra de la sonda puede 
 
 ## Multímetro con Medición de Frecuencia
 
-A veces un osciloscopio no es necesario para verificaciones iniciales.
+A veces no es necesario un osciloscopio para verificaciones iniciales.
 
 Algunos multímetros pueden medir la frecuencia de la señal. En las especificaciones esto podría llamarse `Hz`, `frequency` o `frequency counter`.
 

@@ -1,187 +1,187 @@
-# Convection and Airflow
+# Convection et flux d'air
 
-Convection is the transfer of heat by air stream. In a dryer, printer chamber, heated filter, or iHeater-like device, air often determines whether heat reaches where it is needed.
+La convection est le transfert de chaleur par le courant d'air. Dans un séchoir, une chambre d'imprimante, un filtre chauffant ou un appareil de type iHeater, l'air détermine souvent si la chaleur atteint là où elle est nécessaire.
 
-A heater by itself only converts electrical power into heat. The fan and air duct determine whether this heat is evenly distributed throughout the chamber or remains a small dangerous hot spot.
+Un radiateur à lui seul convertit uniquement l’énergie électrique en chaleur. Le ventilateur et le conduit d'air déterminent si cette chaleur est répartie uniformément dans toute la chambre ou si elle reste un petit point chaud dangereux.
 
-## Three Modes of One Heater
+## Trois modes d'un seul appareil de chauffage
 
-The same `100 W` heater can work completely differently.
+Le même radiateur `100 W` peut fonctionner complètement différemment.
 
 ![Convection cells: warm air rises, cold air falls](../../img/04-thermal-physics-and-materials/04-convection-cells.svg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Convection_cells.svg), McSush, CC BY-SA 3.0*
 
-Without airflow:
+Sans flux d'air :
 
-- heater heats up strongly in local zone;
+- le radiateur chauffe fortement dans la zone locale ;
 - air nearby heats up, but mixes poorly;
-- far part of chamber may stay cold;
+- une partie éloignée de la chambre peut rester froide ;
 - plastic, terminals, or insulation nearby may overheat;
-- temperature sensor may not show what happens near heater.
+- le capteur de température peut ne pas indiquer ce qui se passe à proximité du radiateur.
 
-With weak or improper airflow:
+Avec un débit d'air faible ou inapproprié :
 
-- some heat goes into chamber;
+- un peu de chaleur entre dans la chambre ;
 - mixing occurs;
 - but flow may bypass heater;
 - filter, screen, or narrow channel may greatly reduce airflow;
 - hot spots still remain.
 
-With normal flow:
+Avec un débit normal :
 
 - air passes through hot zone;
-- heat escapes from heater into chamber;
+- la chaleur s'échappe du radiateur vers la chambre ;
 - temperature becomes more even;
-- PID control works more predictably;
+- Le contrôle PID fonctionne de manière plus prévisible ;
 - nearby parts overheat less locally.
 
-Airflow does not create additional power. It helps remove already generated heat and transfer it to the right place.
+Le flux d’air ne crée pas de puissance supplémentaire. Cela aide à éliminer la chaleur déjà générée et à la transférer au bon endroit.
 
-## Natural and Forced Convection
+## Convection naturelle et forcée
 
-There are two useful modes:
+Il existe deux modes utiles :
 
-- natural convection - warm air rises on its own;
-- forced convection - flow is created by a fan, blower, or centrifugal fan.
+- convection naturelle - l'air chaud monte tout seul ;
+- convection forcée - le flux est créé par un ventilateur, un ventilateur ou un ventilateur centrifuge.
 
-For small heated devices, natural convection is often insufficient. It is slow, depends on housing shape, and easily creates temperature zones.
+Pour les petits appareils chauffants, la convection naturelle est souvent insuffisante. Il est lent, dépend de la forme du boîtier et crée facilement des zones de température.
 
-Forced convection is usually better if you need to:
+La convection forcée est généralement préférable si vous devez :
 
-- quickly remove heat from heater;
+- retirez rapidement la chaleur du radiateur ;
 - heat chamber evenly;
 - pass air through a filter;
 - dry filament;
 - cool power electronics;
-- keep temperature sensor in meaningful airstream.
+- Gardez le capteur de température dans un flux d'air significatif.
 
 ## Fan Is Not Just Size
 
-The phrase "I will put a 40 mm fan" tells you almost nothing about the result.
+La phrase « je mettrai un ventilateur de 40 mm » ne vous dit quasiment rien sur le résultat.
 
-For a real device, important are:
+Pour un appareil réel, les éléments importants sont :
 
 - air flow;
 - static pressure;
-- operating point after installation in housing;
+- point de fonctionnement après installation dans le boîtier ;
 - flow direction;
-- resistance of screens, filters, and air ducts;
+- résistance des écrans, des filtres et des conduits d'air ;
 - air temperature at fan;
-- noise and vibration;
+- bruit et vibrations ;
 - resource under load;
 - starting current;
 - tachometer or rotation control.
 
-Catalog often lists maximum flow and maximum static pressure. In a real device, the fan does not operate at these ideal points. Filter, screen, narrow channel, air duct turn, and dense heater create resistance, so actual flow may be much lower.
+Le catalogue répertorie souvent le débit maximum et la pression statique maximale. Dans un appareil réel, le ventilateur ne fonctionne pas à ces points idéaux. Le filtre, le tamis, le canal étroit, la tournure du conduit d'air et le chauffage dense créent une résistance, de sorte que le débit réel peut être beaucoup plus faible.
 
-If air must pass through a filter, radiator, honeycomb, or narrow channel, often you need not just "more CFM" but a fan or centrifugal blower with appropriate static pressure.
+Si l'air doit passer à travers un filtre, un radiateur, un nid d'abeilles ou un canal étroit, vous avez souvent besoin non seulement de « plus de CFM », mais aussi d'un ventilateur ou d'une soufflante centrifuge avec une pression statique appropriée.
 
 ## Air Path
 
 Good design answers four questions:
 
-1. Where is air drawn from?
-2. What does it pass through?
-3. Where does it release heat?
-4. Where does it return?
+1. D’où provient l’air ?
+2. Par quoi passe-t-il ?
+3. Où dégage-t-il de la chaleur ?
+4. Où retourne-t-il ?
 
-For chamber or dryer, closed-loop circulation is useful:
+Pour une chambre ou un séchoir, la circulation en boucle fermée est utile :
 
 ```text
 chamber -> fan -> heater -> hot stream -> chamber -> return
 ```
 
-For a filter, different logic may apply:
+Pour un filtre, une logique différente peut s'appliquer :
 
 ```text
 chamber -> filter -> fan -> exhaust or return
 ```
 
-The main thing is that flow does not take the easiest useless path past heater or filter. Air always chooses the path with least resistance.
+L’essentiel est que le flux n’emprunte pas le chemin inutile le plus simple en passant par le chauffage ou le filtre. L'air choisit toujours le chemin présentant le moins de résistance.
 
-## Temperature Sensor Must See the Right Place
+## Le capteur de température doit voir le bon endroit
 
 Bad options:
 
-- sensor is right at heater and sees local overheat;
-- sensor is in dead zone and sees cold corner;
-- sensor touches metal wall and measures wall, not air;
-- sensor is located before heater, though temperature after it matters;
-- sensor is blown by a stream that does not reflect chamber temperature.
+- le capteur est juste au niveau du radiateur et détecte une surchauffe locale ;
+- le capteur est dans la zone morte et voit un coin froid ;
+- le capteur touche le mur métallique et mesure le mur, pas l'air ;
+- le capteur est situé avant le chauffage, bien que la température après soit importante ;
+- Le capteur est soufflé par un flux qui ne reflète pas la température de la chambre.
 
-For chamber, it is usually useful to measure air where temperature should be controllable, but not directly at heater. For protection from overheat near heater, a separate sensor or independent thermostat/thermal cutoff is needed.
+Pour les chambres, il est généralement utile de mesurer l'air là où la température doit être contrôlable, mais pas directement au niveau du chauffage. Pour la protection contre la surchauffe à proximité du radiateur, un capteur séparé ou un thermostat/coupure thermique indépendant est nécessaire.
 
-One sensor for control and one independent emergency element is much better than one sensor responsible for everything.
+Un capteur de contrôle et un élément d'urgence indépendant valent bien mieux qu'un seul capteur responsable de tout.
 
-## Filters and Screens Can Kill Flow
+## Les filtres et les écrans peuvent tuer le flux
 
-A filter, screen, decorative grate, or narrow gap adds resistance.
+Un filtre, un écran, une grille décorative ou un espace étroit ajoute de la résistance.
 
-Typical mistakes:
+Erreurs typiques :
 
-- putting dense filter on weak axial fan;
-- half-blocking inlet with decorative screen;
-- making sharp turn right after fan;
+- mettre un filtre dense sur un ventilateur axial faible ;
+- entrée semi-bloquante avec écran décoratif ;
+- faire un virage serré à droite après le ventilateur ;
 - positioning heater so air goes around it;
-- forgetting that filter clogs with dust and resistance grows;
-- not leaving access for filter maintenance.
+- oublier que le filtre se bouche avec la poussière et que la résistance augmente ;
+- ne laissant aucun accès pour l’entretien du filtre.
 
-If device depends on flow, check not only "fan is spinning" but also that air really passes through the right path.
+Si l'appareil dépend du débit, vérifiez non seulement « le ventilateur tourne » mais aussi que l'air passe réellement dans le bon chemin.
 
-## What Happens If Fan Fails
+## Que se passe-t-il si le ventilateur tombe en panne
 
-Most dangerous scenario for heater with airflow:
+Scénario le plus dangereux pour un chauffage à flux d'air :
 
 ```text
 fan stopped -> heater keeps working -> local temperature quickly rises
 ```
 
-Therefore, heater that relies on air stream needs measures:
+Par conséquent, un appareil de chauffage qui repose sur le flux d’air nécessite les mesures suivantes :
 
 - independent overheat protection near hot zone;
 - power limiting;
-- material with temperature margin;
-- distance from heater to plastic and insulation;
-- fan tachometer control if fan is critical;
-- firmware check for heating if using Klipper or similar;
-- first test under observation.
+- matériau avec marge de température ;
+- distance entre le radiateur et le plastique et l'isolation ;
+- contrôle du tachymètre du ventilateur si le ventilateur est critique ;
+- vérification du micrologiciel pour le chauffage si vous utilisez Klipper ou similaire ;
+- premier test sous observation.
 
-Firmware helps but does not replace physical protection. MOSFET, SSR, or relay can fail in the on state.
+Le micrologiciel aide mais ne remplace pas la protection physique. MOSFET, SSR ou relais peuvent échouer à l'état activé.
 
-## Minimum Check After Assembly
+## Vérification minimale après assemblage
 
-After building a heated device, check:
+Après avoir construit un appareil chauffant, vérifiez :
 
 - flow direction;
-- is there flow at outlet, not just fan rotation;
+- y a-t-il un débit à la sortie, pas seulement une rotation du ventilateur ;
 - temperature at heater;
-- temperature after heater;
-- temperature in far part of chamber;
-- temperature of wires, terminals, and printed parts;
+- température après chauffage ;
+- température dans une partie éloignée de la chambre ;
+- température des fils, des bornes et des pièces imprimées ;
 - temperature of fan;
-- behavior with partially blocked filter;
-- does heating shut off if sensor fails;
-- does independent overheat protection trip in dangerous scenario.
+- comportement avec filtre partiellement bloqué ;
+- le chauffage s'arrête-t-il si le capteur tombe en panne ?
+- effectue un déclenchement indépendant de protection contre la surchauffe dans un scénario dangereux.
 
-Do first warm-up under observation. Measurements are better done after stabilization and after prolonged operation, because housing, fasteners, and insulation heat up slower than air.
+Faites un premier échauffement sous observation. Il est préférable d'effectuer les mesures après stabilisation et après un fonctionnement prolongé, car le boîtier, les fixations et l'isolation chauffent plus lentement que l'air.
 
-## Connection to Klipper
+## Connexion à Clipper
 
-In Klipper, several mechanisms are useful:
+Dans Klipper, plusieurs mécanismes sont utiles :
 
-- `heater_fan` - fan turns on with heater or when temperature is reached;
-- `temperature_fan` - fan is controlled by separate temperature sensor;
-- `verify_heater` - checks that heater behaves as expected;
-- `tachometer_pin` for fan - allows to see RPM if fan supports tachometer signal.
+- `heater_fan` - le ventilateur s'allume avec le chauffage ou lorsque la température est atteinte ;
+- `temperature_fan` - le ventilateur est contrôlé par un capteur de température séparé ;
+- `verify_heater` - vérifie que le chauffage se comporte comme prévu ;
+- `tachometer_pin` pour le ventilateur - permet de voir le régime si le ventilateur prend en charge le signal du tachymètre.
 
-This is not a complete safety scheme, but a good level of control for device where temperature and flow are important.
+Il ne s'agit pas d'un système de sécurité complet, mais d'un bon niveau de contrôle pour les appareils où la température et le débit sont importants.
 
 ## Conclusion principale
 
-In a heated device, what matters is not only heater power but air path. Good flow removes heat from heater and transfers it to chamber. Poor flow leaves a hot spot, deceives sensor, and increases material overheating risk.
+Dans un appareil chauffé, ce qui compte n’est pas seulement la puissance du chauffage mais aussi le cheminement de l’air. Un bon flux élimine la chaleur du radiateur et la transfère vers la chambre. Un mauvais débit laisse un point chaud, trompe le capteur et augmente le risque de surchauffe du matériau.
 
-If heater depends on fan, fan failure must be a separate emergency scenario, not a surprise.
+Si le chauffage dépend du ventilateur, la panne du ventilateur doit constituer un scénario d’urgence distinct et non une surprise.
 
 ## Matériaux sur le Topic
 

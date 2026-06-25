@@ -30,7 +30,7 @@ ESP32 n'est pas le meilleur choix comme MCU pour Klipper — il n'a pas le suppo
 
 ESP32 est un bon choix si l'appareil doit fonctionner seul : lire les capteurs, gérer le chauffage, envoyer des données via Wi-Fi ou afficher une page dans un navigateur.
 
-Arduino convient pour un prototype simple ou un projet pédagogique, mais ses limitations — RAM, Flash, ADC faible et USB obsolète — le rendent mauvais choix pour un appareil final.
+Arduino convient pour un prototype simple ou un projet pédagogique, mais ses limitations — RAM, Flash, ADC faibles et USB obsolètes — le font un mauvais choix pour un appareil final.
 
 ## Quoi lire après
 

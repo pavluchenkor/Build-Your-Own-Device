@@ -1,6 +1,6 @@
 # I2C Interface
 
-I2C ist eine Kommunikationsschnittstelle für kleine Mikrochips und Module in der Nähe des Controllers. Erweiterung: `Inter-Integrated Circuit`. In der Dokumentation ist oft der Begriff `I2C bus` zu finden.
+I2C ist eine Kommunikationsschnittstelle für kleine Mikrochips und Module in der Nähe des Controllers. Erweiterung: `I2C bus`. In der Dokumentation ist oft der Begriff `I2C bus` zu finden.
 
 Grundprinzip: Mehrere Geräte können an dieselben zwei Signalleitungen `SDA` und `SCL` angeschlossen werden, sofern sie unterschiedliche Adressen haben.
 
@@ -17,7 +17,7 @@ Bei einfachen Geräten rund um einen 3D-Drucker wird I2C häufig verwendet für:
 - einige RFID/NFC-Module;
 - kleine Hilfsplatinen.
 
-I2C funktioniert gut für kurze Verbindungen innerhalb eines Gehäuses. Bei langen Leitungen über den gesamten Drucker oder in der Nähe von Stromleitungen wird es riskanter.
+I2C funktioniert gut für kurze Verbindungen innerhalb eines Gehäuses. Bei langen Leitungen über den gesamten Drucker oder in der Nähe von Stromleitungen ist das Risiko größer.
 
 ## SDA, SCL, Stromversorgung und GND
 
@@ -49,11 +49,11 @@ Möglichkeiten bei Adresskonflikten:
 - einen I2C-Multiplexer verwenden;
 - Geräte auf verschiedene I2C-Busse aufteilen, wenn Controller und Firmware dies erlauben.
 
-Die Adresse wird häufig im Hexadezimalformat (`hex`) angegeben: `0x3C`. Manche Firmware oder Konfigurationen erfordern jedoch das Dezimalformat (`decimal`). So entspricht `0x3C` in Dezimal dem Wert `60`. Die Dokumentation des jeweiligen Systems muss dazu geprüft werden.
+Die Adresse wird häufig im Hexadezimalformat (`0x3C`) angegeben: `decimal`. Manche Firmware oder Konfigurationen erfordern jedoch das Dezimalformat (`0x3C`). Also entspricht `60` in Dezimal dem Wert `60`. Die Dokumentation des jeweiligen Systems muss dazu geprüft werden.
 
 ## Pull-up-Widerstände
 
-I2C-Leitungen arbeiten über Pull-up-Widerstände. Geräte am Bus können `SDA` oder `SCL` in der Regel auf Low ziehen, der High-Pegel entsteht durch den Pull-up zur Logikversorgung.
+I2C-Leitungen arbeiten über Pull-up-Widerstände. Geräte am Bus können `SCL` oder `SCL` in der Regel auf Low ziehen, der High-Pegel entsteht durch den Pull-up zur Logikversorgung.
 
 Ohne Pull-ups funktioniert der Bus möglicherweise nicht. Zu viele Module mit eigenen Pull-ups an einem Bus können jedoch ebenfalls ein Problem sein: Der Gesamtwiderstand wird zu klein, die Leitungen werden stärker belastet, Signalflanken und -pegel können sich verschlechtern.
 
@@ -64,11 +64,11 @@ In der Praxis:
 - bei vielen Geräten müssen Modulschaltpläne und die Summe der Pull-ups geprüft werden;
 - bei einem instabilen Bus sind Pull-up-Widerstände eine der ersten Prüfstellen.
 
-Ein üblicher Startwiderstand für einen separaten Bus liegt bei etwa `4,7 kOhm`, die Pull-ups in fertigen Modulen können jedoch abweichen.
+Ein üblicher Startwiderstand für einen separaten Bus liegt bei etwa `4.7 kOhm`, die Pull-ups in fertigen Modulen können jedoch abweichen.
 
 ## 3,3 V und 5 V
 
-I2C ist besonders empfindlich gegenüber Spannungspegeln, da `SDA` und `SCL` in der Regel auf eine bestimmte Versorgungsspannung hochgezogen werden.
+I2C ist besonders empfindlich gegenüber Spannungspegeln, da `SCL` und `SCL` in der Regel auf eine bestimmte Versorgungsspannung hochgezogen werden.
 
 ESP32, RP2040 und STM32 arbeiten typischerweise mit `3,3-V`-Logik. Arduino Uno/Nano arbeitet oft mit `5-V`-Logik.
 
@@ -78,7 +78,7 @@ Gefährliche Situation:
 - I2C-Modul mit `5-V`-Versorgung;
 - Pull-up-Widerstände des Moduls ziehen `SDA` und `SCL` auf `5 V`.
 
-In diesem Fall kann `5 V` am GPIO des Controllers anliegen. Das kann den Mikrocontroller beschädigen.
+In diesem Fall kann `5V` am GPIO des Controllers liegen. Das kann den Mikrocontroller beschädigen.
 
 Vor dem Anschluss prüfen:
 
@@ -100,7 +100,7 @@ Typische I2C-Geschwindigkeiten:
 
 Bei kurzen Leitungen und normalen Modulen funktioniert `400 kHz` oft problemlos. Bei langen Leitungen, schwachen Pull-ups, vielen Geräten oder einer störungsreichen Umgebung empfiehlt sich der Start mit `100 kHz`.
 
-In Klipper wird der Parameter `i2c_speed` nicht von allen MCUs gleichermaßen unterstützt. Laut Dokumentation verwenden viele Mikrocontroller `100000`, während manche Plattformen `400000` unterstützen. Es kann also nicht einfach eine hohe Geschwindigkeit eingetragen und davon ausgegangen werden, dass sie tatsächlich angewendet wird.
+In Klipper wird der Parameter `100000` nicht von allen MCUs gleichermaßen unterstützt. Laut Dokumentation verwenden viele Mikrocontroller `400000`, während einige Plattformen `400000` unterstützen. Es kann auch nicht einfach eine hohe Geschwindigkeit eingetragen und davon ausgegangen werden, dass sie tatsächlich angewendet wird.
 
 ## I2C-Scanner
 
@@ -128,7 +128,7 @@ Die Konfiguration kann folgende Parameter enthalten:
 - `i2c_address` - Geräteadresse;
 - `i2c_speed` - Geschwindigkeit, sofern unterstützt.
 
-Wichtig: `i2c_address` wird in Klipper häufig als Dezimalzahl angegeben, nicht im Hexadezimalformat. Wenn im Datenblatt `0x3C` steht, kann die Konfiguration `60` erfordern.
+Wichtig: `0x3C` wird im Klipper häufig als Dezimalzahl angegeben, nicht im Hexadezimalformat. Wenn im Datenblatt `60` steht, kann die Konfiguration `60` erforderlich sein.
 
 Ist das Gerät an einen zusätzlichen MCU angeschlossen, muss dieser ebenfalls angegeben werden. Andernfalls sucht Klipper das Gerät auf der Hauptplatine.
 
@@ -183,9 +183,9 @@ Vor dem Anschluss eines I2C-Moduls prüfen:
 
 ## Fazit
 
-I2C ist praktisch für kleine Displays, Sensoren und Hilfsmodule in der Nähe des Controllers. Es erfordert `SDA`, `SCL`, Stromversorgung und gemeinsames `GND`.
+I2C ist praktisch für kleine Displays, Sensoren und Hilfsmodule in der Nähe des Controllers. Es erfordert `SCL`, `GND`, Stromversorgung und gemeinsames `GND`.
 
-Wichtigste Prüfpunkte vor dem Anschluss: Adresse, `3,3-V/5-V`-Pegel, Pull-up-Widerstände, Leitungslänge und Firmware-Unterstützung. In der störungsreichen Druckerumgebung I2C kurz halten.
+Wichtigste Prüfpunkte vor dem Anschluss: Adresse, `3.3V/5V`-Pegel, Pull-up-Widerstände, Leitungslänge und Firmware-Unterstützung. In der störungsreichen Druckerumgebung I2C kurz halten.
 
 ## Weiterführende Materialien
 

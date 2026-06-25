@@ -8,17 +8,17 @@
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Digital_oscilloscope.jpg), premek.v, Public Domain*
 
-A PWM signal on the oscilloscope screen looks like this:
+示波器螢幕上的 PWM 訊號如下所示：
 
 ![Animation of PWM: duty cycle change and signal waveform](../../img/05-tools/07-pwm-signal-waveform.gif)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pwm.gif), Mik81, CC0 Public Domain*
 
-You don't need one for every simple build. But when a device behaves unstably, an oscilloscope can reveal in minutes what a multimeter cannot see.
+您不需要為每個簡單的構建都配備一個。但是，當設備運作不穩定時，示波器可以在幾分鐘內顯示萬用電表無法看到的內容。
 
-## What you can see
+## 你能看到什麼
 
-In iDryer-like devices, an oscilloscope is useful for viewing:
+在類似 iDryer 的設備中，示波器可用於檢視：
 
 - fan PWM;
 - MOSFET module PWM;
@@ -27,46 +27,46 @@ In iDryer-like devices, an oscilloscope is useful for viewing:
 - power supply noise;
 - button bounce;
 - tachometric fan signal;
-- brief glitches that a multimeter averages out.
+- 萬用電錶平均消除的短暫故障。
 
-An oscilloscope answers not just "is there voltage" but "what is happening to the signal over time".
+示波器不僅可以回答“是否有電壓”，還可以回答“訊號隨時間變化的情況”。
 
-## The most important warning
+## 最重要的警告
 
-Most benchtop oscilloscopes have the probe ground connected to the mains protective earth.
+大多數桌上型示波器的探頭接地連接到電源保護接地。
 
-This means: the ground clip of the probe is not "just another wire".
+這意味著：探頭的接地夾不僅僅是「另一根電線」。
 
-If you attach the ground clip to a point that is not `GND` of the low-voltage circuit, you can create a short circuit through the oscilloscope.
+如果將接地夾連接到低電壓電路的 `GND` 以外的點，則可以透過示波器建立短路。
 
-It is especially dangerous to go into the mains 110-230V AC part, SSR, power supply or high-voltage sections with a normal oscilloscope.
+用普通示波器進入市電110-230V交流部分、SSR、電源或高壓部分尤其危險。
 
-You cannot:
+你不能：
 
-- disconnect the oscilloscope earth for "floating" measurement;
-- connect the probe ground to phase or another voltage point;
-- measure mains voltage with a normal probe without understanding the circuit;
-- assume the two channels are completely independent: channel grounds are often connected together.
+- 斷開示波器接地以進行“浮動”測量；
+- 將探頭接地連接到相或另一個電壓點；
+- 在不了解電路的情況下用普通探頭測量市電電壓；
+- 假設兩個通道完全獨立：通道接地通常連接在一起。
 
-For floating measurements, high-side measurements and high-voltage measurements, you need proper methods: differential probe, isolated device or another safe approach.
+對於浮動測量、高側測量和高壓測量，您需要正確的方法：差分探頭、隔離設備或其他安全方法。
 
-## How to connect a probe
+## 如何連接探頭
 
-For low-voltage circuits:
+對於低電壓電路：
 
-1. Connect the probe to the oscilloscope.
-2. Connect the probe ground to `GND` of the device.
-3. Connect the probe tip to the signal.
-4. Select the correct probe setting: `1x` or `10x`.
-5. Make sure the oscilloscope is set to the same factor.
+1. 將探頭連接到示波器。
+2. 將探頭接地連接到設備的 `GND`。
+3. 將探頭尖端連接到訊號。
+4. 選擇正確的探頭設定：`10x` 或 `10x`。
+5. 確保示波器設定為相同的係數。
 
-For most digital signals, use `10x`: the probe loads the circuit less and usually shows signal shape better.
+對於大多數數位訊號，請使用 `10x`：探頭對電路的負載較小，通常可以更好地顯示訊號形狀。
 
 ## PWM
 
 PWM is a pulse signal.
 
-The oscilloscope shows:
+示波器顯示：
 
 - frequency;
 - duty cycle;
@@ -76,72 +76,72 @@ The oscilloscope shows:
 - jitter;
 - noise.
 
-For a fan or MOSFET this helps understand:
+對於風扇或 MOSFET，這有助於理解：
 
-- whether the pin outputs a signal at all;
-- whether 3.3V or 5V level is sufficient;
-- whether frequency matches the setting;
-- whether duty cycle changes on command;
-- whether signal doesn't sag when load is connected.
+- 引腳是否輸出訊號；
+- 3.3V或5V電平是否足夠；
+- 頻率是否與設定相符；
+- 佔空比是否根據命令改變；
+- 連接負載時訊號是否不會下垂。
 
 ## UART
 
-UART on the oscilloscope looks like a sequence of pulses.
+示波器上的 UART 看起來像是脈衝序列。
 
-The oscilloscope helps see:
+示波器有助於檢視：
 
-- whether there is activity on `TX`;
-- whether logic levels are not swapped;
-- what the idle level is;
-- whether there is strong noise;
+- `TX` 上是否有活動；
+- 邏輯電平是否不交換；
+- 空閒等級是多少；
+- 是否有強烈噪音；
 - whether baud rate roughly matches.
 
-For decoding text, a logic analyzer or USB-UART adapter is more convenient. But an oscilloscope quickly shows whether the signal is physically alive.
+對於文字解碼，邏輯分析儀或 USB-UART 轉接器更方便。但示波器可以快速顯示訊號是否有效。
 
 ## Power supply sag
 
-A multimeter may not see a brief sag.
+萬用電表可能看不到短暫的電壓下降。
 
-For example, when a servo starts, a 5V line might dip for a few milliseconds. The multimeter shows almost normal 5V, but the controller already rebooted.
+例如，當伺服系統啟動時，5V 線路可能會下降幾毫秒。萬用電表顯示5V幾乎正常，但控制器已經重新啟動。
 
 An oscilloscope lets you see:
 
-- how much voltage drops;
-- how long the sag lasts;
-- whether there are spikes;
+- 電壓下降多少；
+- 下垂持續多久；
+- 是否有尖峰；
 - whether a capacitor helps;
-- whether the situation changes with a different power supply or wires.
+- 情況是否因不同的電源或電線而改變。
 
-This is especially useful for ESP32, servos, fans and DC-DC.
+這對於 ESP32、伺服系統、風扇和 DC-DC 特別有用。
 
-## Noise and interference
+## 噪音和乾擾
 
-Noise on power or signal lines can break sensors and communication.
+電源或訊號線上的雜訊可能會破壞感測器和通訊。
 
 An oscilloscope helps see:
 
 - DC-DC ripple;
 - motor spikes;
-- noise near the heater;
+- 加熱器附近的噪音；
 - button bounce;
-- interference on a long wire.
+- 長電線上的干擾。
 
-But understand the limits: poor probe ground connection can add noise to the display itself. A short probe ground spring or short ground wire often gives a more honest picture than a long clip.
+但要了解其限制：探頭接地不良可能會增加顯示器本身的雜訊。短探頭接地彈簧或短接地線通常比長夾子提供更真實的影像。
 
-## Multimeter with frequency measurement
+## 帶頻率測量功能的萬用電錶
 
-Sometimes an oscilloscope is not needed for initial checks.
+有時初始檢查不需要示波器。
 
-Some multimeters can measure signal frequency. In the specs this might be called `Hz`, `frequency` or `frequency counter`.
+一些萬用電表可以測量訊號頻率。在規範中，這可能稱為 `frequency`、`frequency counter` 或 `frequency counter`。
 
-This is useful if you need to quickly understand:
+如果您需要快速理解以下內容，這很有用：
 
 - whether a PWM signal exists at all;
-- whether frequency changes with adjustment;
-- whether the controller output works;
-- whether there is activity on a simple digital line.
+- 頻率是否隨調整而變化；
+- 控制器輸出是否工作；
+- 簡單數字線路上是否有活動。
 
-For example, if a controller should output PWM to a fan or MOSFET module, a frequency-measuring multimeter can show that the signal exists and its frequency roughly matches the expected value.
+例如，如果控制器要向風扇或MOSFET模組輸出PWM，則測頻萬用電表可以顯示訊號存在並且其頻率與預期值大致相符。
 
 But a multimeter doesn't show signal shape. It won't show:
 
@@ -150,45 +150,45 @@ But a multimeter doesn't show signal shape. It won't show:
 - PWM duty cycle;
 - signal edges;
 - brief dips;
-- noise and interference;
+- 噪音和乾擾；
 - line distortion.
 
-So a frequency-measuring multimeter is a good tool for quick checks, but not a full oscilloscope replacement.
+因此，測頻萬用電表是快速檢查的好工具，但不能完全取代示波器。
 
-## What to check before measuring
+## 測量前要檢查什麼
 
-Before connecting a probe:
+連接探頭之前：
 
-1. What is `GND` in the circuit?
-2. Is this point connected to mains protective earth?
-3. Is there no mains voltage?
-4. Is the probe rated for the voltage?
-5. Is `10x` selected if needed?
-6. Are the probe and channel set the same way?
-7. Don't channel grounds connect different circuit points?
-8. Can you first check the signal on the low-voltage side?
+1. 電路中的`GND`是什麼？
+2. 該點是否連接到電源保護接地？
+3. 沒有市電電壓嗎？
+4. 探頭的額定電壓是多少？
+5. 如果需要的話是否選擇`10x`？
+6. 探頭和頻道設定是否相同？
+7. 通道地不連接不同的電路點嗎？
+8. 可以先檢查一下低壓側的訊號嗎？
 
-If you have doubts about 110-230V AC, don't connect the oscilloscope.
+如果您對 110-230V AC 有疑問，請勿連接示波器。
 
-## Common errors
+## 常見錯誤
 
-- ground clip attached to a voltage point, not `GND`;
-- trying to "disconnect" oscilloscope earth from the mains;
-- measuring mains voltage with a normal probe without a differential;
-- forgetting that channel grounds are connected;
-- probe set to `10x`, oscilloscope set to `1x`;
-- using long probe ground and seeing extra noise;
-- only looking with a multimeter and missing a brief sag;
-- thinking a UART problem is software when there is no physical signal on the line.
+- 接地夾連接到電壓點，而不是 `GND`；
+- 試圖將示波器接地與電源「斷開」；
+- 使用無差動的普通探頭測量電源電壓；
+- 忘記通道接地已連接；
+- 探頭設定為 `1x`，示波器設定為 `1x`；
+- 使用長探頭接地並看到額外的噪音；
+- 僅用萬用電表查看並錯過了短暫的電壓下降；
+- 當線路上沒有實體訊號時，認為 UART 問題是軟體問題。
 
-## The essentials
+## 重點
 
 - An oscilloscope shows signal shape over time.
-- It is useful for PWM, UART, power sag, noise and brief glitches.
-- A normal benchtop oscilloscope ground is connected to mains protective earth.
-- You cannot connect the probe ground to an arbitrary circuit point.
-- For mains and floating measurements, special safe methods are needed.
-- A frequency-measuring multimeter is useful, but not an oscilloscope replacement.
+- 它對於 PWM、UART、功率驟降、噪音和短暫毛邊非常有用。
+- 普通桌上型示波器接地連接到電源保護接地。
+- 您不能將探頭接地連接到任意電路點。
+- 對於乾線和浮動測量，需要特殊的安全方法。
+- 測頻萬用電表很有用，但不能取代示波器。
 
 ## Reference materials
 

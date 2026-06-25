@@ -2,7 +2,7 @@
 
 O material para câmara, secador, filtro, carcaça ou duto de ar não pode ser escolhido apenas pelo preço, espessura e facilidade de corte.
 
-Em um dispositivo aquecido, o material deve suportar não apenas a operação normal, mas também falhas razoáveis: parada do ventilador, erro do sensor, interruptor travado, mau contato, terminal superaquecido ou fluxo de ar localizado quente.
+Em um dispositivo aquecido, o material não deve suportar apenas a operação normal, mas também falhas ocasionais: parada do ventilador, erro do sensor, interruptor travado, mau contato, terminal superaquecido ou fluxo de ar localizado quente.
 
 ## O que "Adequado para Aquecimento" Significa
 
@@ -17,7 +17,7 @@ O material é adequado não porque "não derrete imediatamente". Para um disposi
 - comportamento em contato com ar quente;
 - requisitos do fabricante para montagem.
 
-A temperatura de fusão por si só é quase inútil. O plástico pode perder rigidez e forma muito antes de derreter. O isolamento pode mudar de dimensões. A cola pode descolar. Uma peça impressa pode empenar sob carga.
+A temperatura de fusão por si só é quase inútil. O plástico pode perder muito e formar muito antes de derreter. O isolamento pode mudar de dimensões. A cola pode descolar. Uma peça impressa pode empenar sob carga.
 
 ## Temperatura de Funcionamento e Margem de Segurança
 
@@ -88,7 +88,7 @@ Para uma câmara aquecida, é frequentemente melhor pensar não em "material de 
 Exemplo de lógica mais sólida:
 
 - dentro da zona quente - metal, cerâmica, vidro ou outro material que suporte temperatura e não pegue fogo com superaquecimento local;
-- mais adiante - espaço de ar ou isolamento se realmente for necessário;
+- mais adiante - espaço de ar ou isolamento é realmente necessário;
 - fora - carcaça que não aquece para temperatura perigosa;
 - fios e terminais não tocam isolamento e não estão escondidos em zonas onde o superaquecimento passaria despercebido;
 - existe proteção independente contra superaquecimento se a falha de controle pudesse levar a aquecimento perigoso.
@@ -138,7 +138,7 @@ Soluções ruins:
 
 ## Conclusão Principal
 
-A segurança dos materiais não é um parâmetro único. É necessário observar a temperatura de funcionamento, inflamabilidade, fumaça, toxicidade dos produtos de combustão, colas, revestimentos e cenários de falha reais.
+A segurança dos materiais não é um parâmetro único. É necessário observar a temperatura de funcionamento, inflamabilidade, fumaça, toxicidade de produtos de combustão, colas, revestimentos e cenários de falhas reais.
 
 Se o material não tem documentação clara, não pode ser colocado perto do aquecedor como proteção primária. Se o material é inflamável, deve ser removido da zona quente, coberto com camada adequada e verificado por medição em modo operacional real.
 

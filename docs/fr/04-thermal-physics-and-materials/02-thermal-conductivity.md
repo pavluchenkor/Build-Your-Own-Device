@@ -6,22 +6,22 @@ Pour un sécheur, une chambre, un filtre, un conduit d'air ou un boîtier faits 
 
 ## Idée simple
 
-Heat always tends to escape from a hotter zone to a colder one. The higher the thermal conductivity of a material, the easier heat passes through it.
+La chaleur a toujours tendance à s’échapper d’une zone plus chaude vers une zone plus froide. Plus la conductivité thermique d’un matériau est élevée, plus la chaleur le traverse facilement.
 
-The rate of heat transfer is affected by:
+Le taux de transfert de chaleur est affecté par :
 
 - material;
 - wall thickness;
 - contact area;
 - temperature difference;
-- quality of contact between parts;
-- presence of air, gaps, and insulation.
+- qualité du contact entre les pièces ;
+- présence d'air, de vides et d'isolation.
 
-A thin aluminum plate can quickly spread heat throughout the housing. A thick layer of mineral wool or foam insulation, on the contrary, prevents heat from escaping.
+Une fine plaque d'aluminium peut rapidement diffuser la chaleur dans tout le boîtier. Au contraire, une épaisse couche de laine minérale ou de mousse isolante empêche la chaleur de s'échapper.
 
 ## Valeurs de référence matériau
 
-The values below are only for understanding orders of magnitude. For a real build, check the datasheet of the specific material.
+Les valeurs ci-dessous servent uniquement à comprendre les ordres de grandeur. Pour une vraie construction, consultez la fiche technique du matériau spécifique.
 
 | Material | Approximate Thermal Conductivity, `W/(m*K)` | What It Means in Practice |
 | --- | ---: | --- |
@@ -34,100 +34,100 @@ The values below are only for understanding orders of magnitude. For a real buil
 | Expanded polystyrene / polyurethane foam | about `0.03` | good insulation, but near heat, working temperature and fire properties are important |
 | Air | about `0.026` | conducts heat poorly by itself, but transfers heat via convection when moving |
 
-The main conclusion: metal and insulation differ not by a factor of two, but by orders of magnitude. Therefore, even a small metal part can significantly change the thermal picture.
+La conclusion principale : le métal et l'isolation diffèrent non pas d'un facteur deux, mais de plusieurs ordres de grandeur. Par conséquent, même une petite pièce métallique peut modifier considérablement l’image thermique.
 
 ## Pont thermique
 
-A thermal bridge is a path through which heat escapes more easily than through the rest of the structure.
+Un pont thermique est un chemin par lequel la chaleur s’échappe plus facilement que par le reste de la structure.
 
 ![Classic thermal bridge through an enclosure](../../img/04-thermal-physics-and-materials/02-thermal-bridge-classic.png)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Pont_thermique_classique.png), AmisDeLaThermique, CC BY-SA 3.0*
 
-Typical thermal bridges:
+Ponts thermiques typiques :
 
 - metal screw through an insulated wall;
-- aluminum plate connected to the outer housing;
-- metal post between hot chamber and outer panel;
-- terminal block or fastener near the heater;
-- air duct that directly touches a hot part.
+- plaque d'aluminium reliée au boîtier extérieur ;
+- poteau métallique entre la chambre chaude et le panneau extérieur ;
+- bornier ou fixation à proximité du radiateur ;
+- conduit d'air qui touche directement une partie chaude.
 
-A thermal bridge is not always bad. Sometimes it is needed to dissipate heat from a power switch, radiator, or hot node. The problem starts when the bridge is accidental: the chamber loses heat, the outer surface becomes hot, and plastic near the bridge heats up more than expected.
+Un pont thermique n'est pas toujours mauvais. Parfois, il est nécessaire de dissiper la chaleur d'un interrupteur d'alimentation, d'un radiateur ou d'un nœud chaud. Le problème commence lorsque le pont est accidentel : la chambre perd de la chaleur, la surface extérieure devient chaude et le plastique près du pont chauffe plus que prévu.
 
 ## Métal : Heat Sink or Accidental Heating
 
-Metal is convenient to use in heated devices:
+Le métal est pratique à utiliser dans les appareils chauffants :
 
-- as a screen between heater and plastic;
+- comme écran entre le radiateur et le plastique ;
 - as a heat distribution plate;
-- as a base for heater mounting;
-- as a radiator for power electronics;
+- comme base pour le montage du radiateur ;
+- comme radiateur pour l'électronique de puissance ;
 - as a non-flammable inner surface.
 
-But metal does not make a device safe automatically. If a metal plate touches a hot zone and the outer housing, it can conduct heat outward. If plastic is screwed to it, that plastic can heat up through the fastener. If wires pass through it, near the edge you need feedthroughs, protection from chafing, and temperature margin for insulation.
+Mais le métal ne garantit pas automatiquement la sécurité d’un appareil. Si une plaque métallique touche une zone chaude et le boîtier extérieur, elle peut conduire la chaleur vers l'extérieur. Si du plastique y est vissé, ce plastique peut chauffer à travers la fixation. Si des fils le traversent, près du bord, vous avez besoin de traversées, d'une protection contre les frottements et d'une marge de température pour l'isolation.
 
 ## Isolation : Lower Loss, More Responsibility
 
-Insulation reduces heat loss, but it does not eliminate temperature control.
+L’isolation réduit les pertes de chaleur, mais n’élimine pas le contrôle de la température.
 
-When you insulate a chamber:
+Lorsque vous isolez une chambre :
 
-- it is easier for the heater to raise the temperature;
-- the housing may become colder on the outside;
+- il est plus facile pour le radiateur d'augmenter la température ;
+- le logement peut devenir plus froid à l'extérieur ;
 - cooling time increases;
-- local temperature near the heater may rise;
+- la température locale à proximité du radiateur peut augmenter ;
 - fan failure or stuck switch becomes more dangerous.
 
-Therefore, insulation cannot be added as an "improvement" without testing again. After insulation, you need to remeasure temperatures inside the chamber, at the heater, at wires, at terminals, and on the outer surface.
+Par conséquent, l’isolation ne peut pas être ajoutée à titre d’« amélioration » sans être testée à nouveau. Après l'isolation, vous devez mesurer à nouveau les températures à l'intérieur de la chambre, au niveau du radiateur, des fils, des bornes et sur la surface extérieure.
 
 ## L'espace d'air fonctionne aussi
 
-Stationary air conducts heat poorly. Therefore, air gaps, double walls, and foam materials can reduce heat transfer.
+L'air stationnaire conduit mal la chaleur. Par conséquent, les entrefers, les doubles parois et les matériaux en mousse peuvent réduire le transfert de chaleur.
 
-But if air starts to move, convection kicks in. Then heat is transferred by the air stream, not just thermal conduction. Therefore, a gap through which a hot stream flows can heat the housing more than a thick wall without flow.
+Mais si l’air commence à se déplacer, la convection entre en jeu. La chaleur est alors transférée par le flux d’air, et non seulement par conduction thermique. Par conséquent, un espace à travers lequel circule un flux chaud peut chauffer le boîtier plus qu'une paroi épaisse sans flux.
 
-In practice, this means:
+En pratique, cela signifie :
 
-- do not leave accidental gaps near the heater;
-- do not direct hot flow straight at plastic;
-- do not treat air gaps as protection if a stream passes through them;
-- check temperature in real operating mode, not just on a cold device.
+- ne laissez pas d'espaces accidentels à proximité du radiateur ;
+- ne dirigez pas le flux chaud directement sur le plastique ;
+- ne pas considérer les entrefers comme une protection si un courant les traverse ;
+- vérifier la température en mode de fonctionnement réel, pas seulement sur un appareil froid.
 
-## Quoi chercher in Material Datasheet
+## Quoi chercher dans la fiche technique du matériau
 
-For material near heat, thermal conductivity is not the only thing that matters.
+Pour les matériaux proches de la chaleur, la conductivité thermique n’est pas la seule chose qui compte.
 
-Check:
+Vérifiez :
 
 - maximum continuous working temperature;
 - softening temperature or thermal deformation temperature;
-- flammability and fire behavior class;
-- permissibility of contact with hot air;
-- behavior of glue layer, foil, coating, or lamination;
-- manufacturer recommendations for use;
-- availability of SDS/safety datasheet if material can heat up or be processed.
+- classe d'inflammabilité et de comportement au feu ;
+- possibilité de contact avec l'air chaud ;
+- comportement de la couche de colle, du film, du revêtement ou du laminage ;
+- recommandations d'utilisation du fabricant ;
+- disponibilité d'une FDS/fiche de données de sécurité si le matériau peut chauffer ou être traité.
 
-If a material has no clear documentation, do not place it near the heater and do not use it as the only protection.
+Si un matériau n'a pas de documentation claire, ne le placez pas à proximité du radiateur et ne l'utilisez pas comme seule protection.
 
 ## Vérification pratique Order
 
-For housing, chamber, or dryer, it is convenient to proceed as follows:
+Pour le logement, l'enceinte ou le séchoir, il convient de procéder de la manière suivante :
 
-1. Identify the hot zone: heater, air outlet, terminals, power switch.
-2. Separate the hot zone from plastic with metal, ceramics, or another suitable material.
-3. Check where the metal conducts heat.
-4. Add insulation only where it does not cover dangerous hot nodes.
-5. Measure temperature at several points after warm-up.
-6. Check fan failure mode if the heater depends on airflow.
-7. Add independent overheat protection where overheat is dangerous.
+1. Identifiez la zone chaude : chauffage, sortie d'air, bornes, interrupteur d'alimentation.
+2. Séparez la zone chaude du plastique avec du métal, de la céramique ou un autre matériau approprié.
+3. Vérifiez où le métal conduit la chaleur.
+4. Ajoutez de l'isolant uniquement là où il ne couvre pas les nœuds chauds dangereux.
+5. Mesurez la température en plusieurs points après l'échauffement.
+6. Vérifiez le mode de panne du ventilateur si le chauffage dépend du débit d'air.
+7. Ajoutez une protection indépendante contre la surchauffe là où la surchauffe est dangereuse.
 
-One temperature sensor in the chamber does not show the entire thermal picture. You need measurements near the heater, on fasteners, on wires, on the housing, and on printed parts.
+Un capteur de température dans la chambre ne montre pas l'intégralité de l'image thermique. Vous avez besoin de mesures à proximité du radiateur, sur les fixations, sur les fils, sur le boîtier et sur les pièces imprimées.
 
 ## Conclusion principale
 
-Thermal conductivity helps you understand where heat will really go. Metal can be a useful heat sink or an accidental thermal bridge. Insulation can improve efficiency, but at the same time amplify the consequences of failure.
+La conductivité thermique vous aide à comprendre où ira réellement la chaleur. Le métal peut être un dissipateur thermique utile ou un pont thermique accidentel. L’isolation peut améliorer l’efficacité, mais en même temps amplifier les conséquences d’une défaillance.
 
-Any change to the housing, insulation, fasteners, or air duct must be verified by measuring temperature in real operating mode.
+Toute modification du boîtier, de l'isolation, des fixations ou du conduit d'air doit être vérifiée par une mesure de température en mode de fonctionnement réel.
 
 ## Matériaux sur le Topic
 

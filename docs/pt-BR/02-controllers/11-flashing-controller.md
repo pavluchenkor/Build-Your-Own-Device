@@ -12,7 +12,7 @@ Três conceitos diferentes:
 - **bootloader** - pequeno programa que ajuda a gravar o firmware principal;
 - **configuração** - configurações do dispositivo, por exemplo `printer.cfg` no Klipper.
 
-O bootloader é executado primeiro e pode aceitar novo firmware via USB, UART, DFU, cartão SD, CAN ou outro mecanismo. Se o bootloader for acidentalmente apagado, a gravação da placa pode se tornar difícil: às vezes é necessário ST-LINK/SWD, USB-UART ou outro programador.
+O bootloader é executado primeiro e pode aceitar novo firmware via USB, UART, DFU, cartão SD, CAN ou outro mecanismo. Se o bootloader for acidentalmente desligado, a gravação da placa pode se tornar difícil: às vezes é necessário ST-LINK/SWD, USB-UART ou outro programador.
 
 ## Procedimento geral
 
@@ -62,7 +62,7 @@ Normalmente:
 4. Copie arquivo `.uf2`.
 5. Disco desaparece, placa reinicia.
 
-O BOOTSEL do Pico está na ROM do microcontrolador, portanto não pode ser acidentalmente apagado por gravação normal. Isso torna o RP2040 conveniente para iniciantes.
+O BOOTSEL do Pico está na ROM do microcontrolador, portanto não pode ser apagado acidentalmente por gravação normal. Isso torna o RP2040 conveniente para iniciantes.
 
 ## STM32: DFU, ST-LINK, cartão SD
 

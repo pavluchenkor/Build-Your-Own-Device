@@ -86,7 +86,7 @@ A veces el firmware rompe el acceso a SWD.
 
 Por ejemplo:
 
-- los pines SWD se usan como GPIO normal;
+- los pinos SWD se usan como GPIO normal;
 - el firmware rápidamente duerme el chip;
 - el código se cuelga justo después del arranque;
 - los modos de reloj/potencia se configuran incorrectamente.

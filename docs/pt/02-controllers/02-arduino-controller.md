@@ -1,206 +1,206 @@
 # Controlador Arduino
 
-Arduino is not one specific microcontroller, but an ecosystem of boards, libraries, examples, and development environment. When a newcomer says "Arduino," they usually mean Arduino Uno, Nano, or a compatible board based on ATmega328P.
+Arduino não é um microcontrolador específico, mas um ecossistema de placas, bibliotecas, exemplos e ambiente de desenvolvimento. Quando um iniciante diz “Arduino”, geralmente se refere a Arduino Uno, Nano ou uma placa compatível baseada em ATmega328P.
 
-For education, Arduino is still very useful: it is easy to understand GPIO, buttons, LEDs, PWM, analog input, I2C, SPI, and simple sensors. But for a new device around a 3D printer, Arduino Uno/Nano is not always the best choice.
+Para a educação, o Arduino ainda é muito útil: é fácil de entender GPIO, botões, LEDs, PWM, entrada analógica, I2C, SPI e sensores simples. Mas para um novo dispositivo em torno de uma impressora 3D, o Arduino Uno/Nano nem sempre é a melhor escolha.
 
-## Why Arduino is popular
+## Por que o Arduino é popular
 
 Strengths of Arduino:
 
-- lots of educational materials;
-- simple Arduino IDE;
+- muitos materiais educativos;
+- IDE Arduino simples;
 - many ready-made libraries;
 - understandable examples like Blink;
-- convenient to quickly test a sensor on the desk;
-- easy to find compatible modules;
-- old boards are well documented.
+- conveniente testar rapidamente um sensor na mesa;
+- fácil de encontrar módulos compatíveis;
+- placas antigas estão bem documentadas.
 
-If the goal is to understand the basics of microcontrollers, Arduino is good. It lowers the barrier to entry and lets you see results quickly.
+Se o objetivo é entender o básico dos microcontroladores, o Arduino é bom. Ele reduz a barreira de entrada e permite que você veja os resultados rapidamente.
 
 ## Arduino as an educational board
 
-Arduino is convenient for:
+Arduino é conveniente para:
 
 - testing a button, limit switch, or sensor;
-- simple thermistor test via a voltage divider;
+- teste simples de termistor através de um divisor de tensão;
 - testing I2C OLED;
 - testing SPI RFID module;
-- generating PWM for a small test;
+- gerando PWM para um pequeno teste;
 - reading analog voltage;
-- quick experiments on a breadboard.
+- experimentos rápidos em uma placa de ensaio.
 
-In this mode, Arduino is an excellent lab tool. You don't need to build a final device on it: you can first understand the circuit and sensor, then transfer the solution to ESP32, RP2040, STM32, or a printer board.
+Neste modo, o Arduino é uma excelente ferramenta de laboratório. Você não precisa construir um dispositivo final nele: você pode primeiro entender o circuito e o sensor e depois transferir a solução para ESP32, RP2040, STM32 ou uma placa de impressora.
 
-## Uno and Nano in a nutshell
+## Uno e Nano em poucas palavras
 
-Classic Arduino Uno and Nano are usually based on ATmega328P.
+Os clássicos Arduino Uno e Nano são geralmente baseados em ATmega328P.
 
-Typical characteristics:
+Características típicas:
 
 - `5V` logic;
 - 16 MHz clock;
 - 32 KB flash memory;
 - 2 KB SRAM;
 - 14 digital pins;
-- 6 PWM pins on Uno/Nano class;
-- 6 analog inputs on Uno, 8 on Nano;
-- USB for flashing and powering the board.
+- 6 pinos PWM na classe Uno/Nano;
+- 6 entradas analógicas no Uno, 8 no Nano;
+- USB para piscar e alimentar a placa.
 
-This is enough for educational sketches and simple standalone tasks, but not enough for complex logic, networking, web interface, large libraries, and convenient integration with modern systems.
+Isso é suficiente para esboços educacionais e tarefas autônomas simples, mas não o suficiente para lógica complexa, redes, interface web, grandes bibliotecas e integração conveniente com sistemas modernos.
 
-## Original, clone, and Arduino-compatible
+## Original, clone e compatível com Arduino
 
-You need to distinguish:
+Você precisa distinguir:
 
 - original Arduino boards;
 - cheap Uno/Nano clones;
-- Arduino-compatible boards based on other microcontrollers;
-- modern Arduino boards with Wi-Fi, USB-C, Arm chips, and other logic.
+- Placas compatíveis com Arduino baseadas em outros microcontroladores;
+- placas Arduino modernas com Wi-Fi, USB-C, chips Arm e outras lógicas.
 
-A Nano clone for a few dollars can be fine for experiments, but the quality of the USB-UART, regulator, soldering, and bootloader may vary. Sometimes for a Nano clone in the Arduino IDE you need to select an old bootloader or a different processor.
+Um clone Nano por alguns dólares pode ser adequado para experimentos, mas a qualidade do USB-UART, do regulador, da soldagem e do bootloader pode variar. Às vezes, para um clone Nano no Arduino IDE, você precisa selecionar um bootloader antigo ou um processador diferente.
 
-If the device must work for a long time without supervision, board quality, regulator, connectors, and documentation are more important than the lowest price.
+Se o dispositivo precisar funcionar por muito tempo sem supervisão, a qualidade da placa, o regulador, os conectores e a documentação são mais importantes do que o preço mais baixo.
 
 ## 5V logic
 
-Old Arduino Uno/Nano use `5V` logic.
+O antigo Arduino Uno/Nano usa a lógica `5V`.
 
-This is convenient with some old modules, but dangerous for `3.3V` devices:
+Isto é conveniente com alguns módulos antigos, mas perigoso para dispositivos `3.3V`:
 
-- ESP32 usually cannot tolerate `5V` on GPIO;
-- many OLED, RFID, sensors, and radio modules are designed for `3.3V`;
-- I2C pull-ups to `5V` can damage a `3.3V` device;
-- some module inputs are compatible with `5V`, but this needs to be checked in the documentation.
+- ESP32 geralmente não tolera `5V` no GPIO;
+- muitos módulos OLED, RFID, sensores e rádio são projetados para `3.3V`;
+- Pull-ups I2C para `3.3V` podem danificar um dispositivo `3.3V`;
+- algumas entradas do módulo são compatíveis com `5V`, mas isso precisa ser verificado na documentação.
 
-If Arduino is connected to a `3.3V` module, you need a level converter or a circuit where levels are known to be compatible.
+Se o Arduino estiver conectado a um módulo `3.3V`, você precisará de um conversor de nível ou de um circuito onde os níveis sejam compatíveis.
 
-## GPIO does not power loads
+## GPIO não alimenta cargas
 
-An Arduino pin can light an LED through a resistor or provide a control signal. It should not power a fan, heater, servo, relay, or LED strip directly.
+Um pino do Arduino pode acender um LED através de um resistor ou fornecer um sinal de controle. Ele não deve alimentar diretamente um ventilador, aquecedor, servo, relé ou faixa de LED.
 
-Typical circuit:
+Circuito típico:
 
 ![Arduino Uno Rev3 with ATmega328P microcontroller](../../img/02-controllers/02-arduino-uno-rev3.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Arduino_Uno_Rev3_with_Atmega328P.jpg), HonCode, CC0 Public Domain*
 
-For loads you need:
+Para cargas você precisa de:
 
-- MOSFET or driver for DC fan, LED strip, or DC heater;
-- transistor driver and protective diode for relay coil;
-- SSR or relay for AC network load;
-- separate power for servo;
-- common GND where required by the low-voltage circuit.
+- MOSFET ou driver para ventilador DC, faixa de LED ou aquecedor DC;
+- driver de transistor e diodo de proteção para bobina de relé;
+- SSR ou relé para carga de rede AC;
+- alimentação separada para servo;
+- GND comum quando exigido pelo circuito de baixa tensão.
 
-GPIO is a command, not a power output.
+GPIO é um comando, não uma saída de energia.
 
-## PWM and analogWrite
+## PWM e gravação analógica
 
-In Arduino, `analogWrite()` on Uno/Nano usually means PWM, not true analog output. The board quickly switches the pin on and off, changing the signal duty cycle.
+No Arduino, `analogWrite()` em Uno/Nano geralmente significa PWM, não uma saída analógica verdadeira. A placa liga e desliga rapidamente o pino, alterando o ciclo de trabalho do sinal.
 
-This is suitable for:
+Isto é adequado para:
 
 - LED brightness;
-- control input for a driver;
-- simple PWM for a fan or MOSFET module;
+- entrada de controle para um driver;
+- PWM simples para ventilador ou módulo MOSFET;
 - educational experiments.
 
-But there are limitations:
+Mas existem limitações:
 
-- PWM is not available on all pins;
-- PWM frequency is fixed or changes in non-obvious ways;
-- `analogWrite()` and `analogRead()` are different things;
-- a 4-pin PC fan may require a different frequency and proper open-collector/open-drain approach;
-- heaters and SSRs cannot just use any fast PWM without understanding the power section.
+- O PWM não está disponível em todos os pinos;
+- A frequência PWM é fixa ou muda de maneiras não óbvias;
+- `analogRead()` e `analogRead()` são coisas diferentes;
+- uma ventoinha de PC de 4 pinos pode exigir uma frequência diferente e uma abordagem adequada de coletor aberto/dreno aberto;
+- aquecedores e SSRs não podem simplesmente usar qualquer PWM rápido sem entender a seção de potência.
 
 ## Analog inputs
 
-Arduino Uno/Nano is convenient for simple analog measurements:
+Arduino Uno/Nano é conveniente para medições analógicas simples:
 
 - potentiometer;
 - thermistor via voltage divider;
 - light sensor;
-- simple voltage sensor via voltage divider.
+- sensor de tensão simples via divisor de tensão.
 
-But an analog input should not see voltage above its safe range. For Uno/Nano this is usually the range relative to `5V` power or selected `AREF`. If measuring higher voltage, you need a divider and protection.
+Mas uma entrada analógica não deve ver tensão acima de sua faixa segura. Para Uno/Nano este é geralmente o intervalo relativo à potência `AREF` ou `AREF` selecionado. Se estiver medindo tensões mais altas, você precisará de um divisor e proteção.
 
-For accurate temperature measurements, you need not just `analogRead()`, but also:
+Para medições precisas de temperatura, você não precisa apenas do `analogRead()`, mas também de:
 
 - correct voltage divider circuit;
-- resistor value;
+- valor do resistor;
 - thermistor table or Beta parameter;
 - stable power/reference voltage;
 - noise filtering;
-- mechanical sensor contact with the object.
+- contato do sensor mecânico com o objeto.
 
-## Arduino and Klipper
+## Arduino e Klipper
 
-Some old AVR boards may historically be found near 3D printers, but for a new device around Klipper it is better not to start with Uno/Nano.
+Algumas placas AVR antigas podem ser encontradas historicamente perto de impressoras 3D, mas para um novo dispositivo em torno do Klipper é melhor não começar com Uno/Nano.
 
 Reasons:
 
 - limited memory;
 - weak performance;
-- 5V logic can interfere with modern `3.3V` modules;
-- no networking without additional modules;
-- not the most practical path for a new Klipper MCU.
+- A lógica de 5V pode interferir nos módulos `3.3V` modernos;
+- nenhuma rede sem módulos adicionais;
+- não é o caminho mais prático para um novo Klipper MCU.
 
-If you need an additional MCU for Klipper, it is usually more practical to look at RP2040, STM32, or a ready-made 3D printer board. Arduino can be kept for education, breadboarding, and testing individual sensors.
+Se você precisar de um MCU adicional para o Klipper, geralmente é mais prático procurar RP2040, STM32 ou uma placa de impressora 3D pronta. O Arduino pode ser mantido para educação, breadboard e teste de sensores individuais.
 
-## When Arduino is still appropriate
+## Quando o Arduino ainda é apropriado
 
-Arduino is appropriate if:
+Arduino é apropriado se:
 
-- you need to quickly test an idea;
-- you need to explain how something works;
-- the device is very simple and does not need networking;
+- você precisa testar uma ideia rapidamente;
+- você precisa explicar como algo funciona;
+- o dispositivo é muito simples e não precisa de rede;
 - you already have a working sketch;
-- clarity is more important than compactness and performance;
-- this is an educational bench, not final power electronics.
+- a clareza é mais importante que a compactação e o desempenho;
+- esta é uma bancada educacional, não uma eletrônica de potência final.
 
-Arduino is not a good choice if:
+Arduino não é uma boa escolha se:
 
-- you need Wi-Fi out of the box;
-- you need tight integration with Klipper;
-- you need a lot of memory;
+- você precisa de Wi-Fi pronto para uso;
+- você precisa de forte integração com o Klipper;
+- você precisa de muita memória;
 - you need many modern `3.3V` sensors;
-- the device must be compact, long-lived, and industrially neat;
-- there is a power section with a heater where independent protections are important.
+- o dispositivo deve ser compacto, de longa duração e industrialmente limpo;
+- existe uma seção de alimentação com aquecedor onde proteções independentes são importantes.
 
-## What to check before buying
+## O que verificar antes de comprar
 
-Before buying an Arduino-compatible board, check:
+Antes de comprar uma placa compatível com Arduino, verifique:
 
-- whether it is an original, clone, or compatible board;
-- which microcontroller is installed;
+- se é uma placa original, clone ou compatível;
+- qual microcontrolador está instalado;
 - `5V` or `3.3V` logic;
-- which USB-UART chip is used;
-- whether there is a driver for your computer;
-- which bootloader is needed;
-- how much flash and SRAM;
-- how many PWM and analog inputs;
-- whether there is a schematic and pinout;
-- quality of power regulator and connectors;
-- whether the board is suitable for the final task.
+- qual chip USB-UART é usado;
+- se existe um driver para o seu computador;
+- qual bootloader é necessário;
+- quanto flash e SRAM;
+- quantas entradas PWM e analógicas;
+- se existe esquema e pinagem;
+- qualidade do regulador de potência e conectores;
+- se o quadro é adequado para a tarefa final.
 
-## Common mistakes
+## Erros comuns
 
-- thinking Arduino is one specific board;
-- connecting `5V` Arduino directly to `3.3V` module;
-- powering a load from GPIO;
-- powering a servo from the `5V` pin and getting resets;
-- using `analogWrite()` as a true analog output;
-- selecting the wrong bootloader for a Nano clone;
-- not installing a driver for the USB-UART;
-- trying to build a modern networked device on Uno without reason;
-- transferring an educational breadboard into a closed power device without reworking power, wiring, and protection.
+- pensar que o Arduino é uma placa específica;
+- conectando `3.3V` Arduino diretamente ao módulo `3.3V`;
+- alimentando uma carga do GPIO;
+- alimentar um servo a partir do pino `5V` e obter redefinições;
+- usando `analogWrite()` como uma verdadeira saída analógica;
+- selecionando o bootloader errado para um clone Nano;
+- não instalar driver para USB-UART;
+- tentando construir um dispositivo de rede moderno no Uno sem motivo;
+- transferir uma placa de ensaio educacional para um dispositivo de energia fechado sem refazer a energia, a fiação e a proteção.
 
-## Key points
+## Pontos principais
 
-Arduino is a good educational ecosystem and a convenient tool for quick tests. It is great for understanding GPIO, PWM, ADC, and sensors.
+Arduino é um bom ecossistema educacional e uma ferramenta conveniente para testes rápidos. É ótimo para entender GPIO, PWM, ADC e sensores.
 
-But classic Uno/Nano are old `5V` boards with limited memory and no networking. For a new device around a 3D printer, ESP32, RP2040, STM32, or a ready-made printer board is often more practical, leaving Arduino as an educational and diagnostic tool.
+Mas os clássicos Uno/Nano são placas `5V` antigas com memória limitada e sem rede. Para um novo dispositivo em torno de uma impressora 3D, ESP32, RP2040, STM32 ou uma placa de impressora pronta costuma ser mais prática, deixando o Arduino como uma ferramenta educacional e de diagnóstico.
 
 ## Related materials
 

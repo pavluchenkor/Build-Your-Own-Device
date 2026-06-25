@@ -1,214 +1,214 @@
-# Conectando uma Célula de Carga
+# Ligação de uma Célula de Carga
 
-A load cell measures force or weight through tiny deformation of a metal beam, button, or platform.
+Uma célula de carga mede força ou peso através de pequena deformação de uma viga de metal, botão ou plataforma.
 
-In iDryer-like devices, a load cell can estimate spool weight, remaining filament, or mechanism load.
+Em dispositivos semelhantes ao iDryer, uma célula de carga pode estimar peso da bobine, filamento restante ou carga do mecanismo.
 
-Main point: a load cell is almost never connected directly to a controller. Its signal is too small. Usually, an HX711 module or similar amplifier/ADC is placed between the sensor and controller.
+Ponto principal: uma célula de carga raramente é conectada diretamente a um controlador. Seu sinal é demasiado pequeno. Normalmente, um módulo HX711 ou amplificador/ADC similar é colocado entre o sensor e o controlador.
 
-## What you need
+## O que precisa
 
-Minimum set:
+Conjunto mínimo:
 
-- load cell of the needed weight range;
-- HX711 module;
-- controller: Arduino, ESP32, RP2040, STM32, or other board;
-- rigid mechanical mounting;
-- known mass for calibration;
-- short, neat wires.
+- célula de carga do intervalo de peso necessário;
+- módulo HX711;
+- controlador: Arduino, ESP32, RP2040, STM32, ou outra placa;
+- montagem mecânica rígida;
+- massa conhecida para calibração;
+- fios curtos e arrumados.
 
-If mechanics are poor, the circuit will not help. A load cell can be wired perfectly but give meaningless readings due to misalignment, play, or load applied at the wrong point.
+Se a mecânica falhar, o circuito não ajudará. Uma célula de carga pode ser fiada perfeitamente, mas dar leituras sem sentido devido a desalinhamento, jogo ou carga aplicada no ponto errado.
 
-## How the connection is arranged
+## Como a conexão é arrumada
 
-Load cell connects to HX711 with analog wires.
+A célula de carga liga-se ao HX711 com fios analógicos.
 
-HX711 connects to the controller with digital wires.
+O HX711 liga-se ao controlador com fios digitais.
 
-Typical chain:
+Cadeia típica:
 
 ```text
-load cell -> HX711 -> controller
+célula de carga -> HX711 -> controlador
 ```
 
-The HX711 usually has two sides:
+O HX711 normalmente tem dois lados:
 
-- input from load cell: `E+`, `E-`, `A+`, `A-`, or similar;
-- connection to controller: `VCC`, `GND`, `DT`/`DOUT`, `SCK`/`CLK`.
+- entrada da célula de carga: `E+`, `E-`, `A+`, `A-`, ou similar;
+- conexão ao controlador: `VCC`, `GND`, `DT`/`DOUT`, `SCK`/`CLK`.
 
 ![HX711 and load cell connection diagram](../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
 
 *Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/load-cell-amplifier-hx711-breakout-hookup-guide/all), CC BY-SA 4.0*
 
-## Load cell wires
+## Fios da célula de carga
 
-A common four-wire load cell typically has:
+Uma célula de carga típica de quatro fios normalmente tem:
 
-- `E+` - bridge supply plus;
-- `E-` - bridge supply minus;
-- `S+`, `A+`, or `O+` - positive measurement signal;
-- `S-`, `A-`, or `O-` - negative measurement signal.
+- `E+` - mais da ponte de alimentação;
+- `E-` - menos da ponte de alimentação;
+- `S+`, `A+`, ou `O+` - sinal de medição positivo;
+- `S-`, `A-`, ou `O-` - sinal de medição negativo.
 
-Common color scheme:
+Esquema de cor comum:
 
-- red - `E+`;
-- black - `E-`;
-- green or blue - `A+`;
-- white - `A-`.
+- vermelho - `E+`;
+- preto - `E-`;
+- verde ou azul - `A+`;
+- branco - `A-`.
 
-But colors are not law. Different sensors may differ. If there is a datasheet for the specific load cell, follow it.
+Mas as cores não são lei. Diferentes sensores podem diferir. Se houver uma datasheet para a célula de carga específica, siga-a.
 
-If the sensor has a fifth wire, foil, or shield, it is often electromagnetic shielding. Do not confuse it with a bridge measurement wire. Usually, the shield is connected to `GND` or housing on one side if the documentation says so, but not to measurement `A+`/`A-`.
+Se o sensor tiver um quinto fio, folha ou blindagem, frequentemente é blindagem electromagnética. Não confunda com um fio de medição de ponte. Normalmente, a blindagem é conectada a `GND` ou alojamento num lado se a documentação o disser, mas não à medição `A+`/`A-`.
 
-If there is no wire diagram, do not connect the load cell "at random". First find the sensor datasheet or ring out the bridge per manufacturer guide: incorrect wires easily give unstable readings or overload the HX711 input.
+Se não houver diagrama de fio, não ligue a célula de carga "ao acaso". Primeiro procure a datasheet do sensor ou teste a ponte por guia do fabricante: fios incorretos facilmente dão leituras instáveis ou sobrecarregam a entrada HX711.
 
-## Connecting HX711 to the controller
+## Ligação de HX711 ao controlador
 
-On the controller side, you usually need four lines:
+No lado do controlador, normalmente precisa de quatro linhas:
 
-- `VCC` - module power;
-- `GND` - common negative;
-- `DT`, `DOUT`, or `DATA` - data;
-- `SCK`, `CLK`, or `PD_SCK` - clock.
+- `VCC` - alimentação do módulo;
+- `GND` - negativo comum;
+- `DT`, `DOUT`, ou `DATA` - dados;
+- `SCK`, `CLK`, ou `PD_SCK` - relógio.
 
-For many HX711 modules, power can be `3.3V` or `5V`, but check the specific module. If the controller runs on 3.3V, it is convenient to use a module and power compatible with 3.3V logic.
+Para muitos módulos HX711, a alimentação pode ser `3.3V` ou `5V`, mas verifique o módulo específico. Se o controlador funciona em 3.3V, é conveniente usar um módulo e alimentação compatível com lógica 3.3V.
 
-Pins `DT` and `SCK` can usually connect to regular GPIO. This is not I2C or SPI in the usual sense, but a simple two-wire HX711 interface.
+Os pinos `DT` e `SCK` normalmente podem conectar-se a GPIO regular. Isto não é I2C ou SPI no sentido usual, mas uma interface simples de dois fios HX711.
 
-## Mechanics matter more than the circuit
+## Mecânica é mais importante do que o circuito
 
-A load cell must deform as the manufacturer intended.
+Uma célula de carga deve deformar-se conforme o fabricante pretendeu.
 
-For a beam sensor, one side usually mounts to a fixed base, the other side bears the load. If both sides are rigidly mounted to one part, the sensor will not flex normally.
+Para um sensor de viga, um lado normalmente monta-se numa base fixa, o outro lado suporta a carga. Se ambos os lados estiverem rigidamente montados numa parte, o sensor não se dobrará normalmente.
 
-Check:
+Verifique:
 
-- where the sensor's mounting side is;
-- where the load should be applied;
-- which direction the force should go;
-- whether spacers are needed;
-- whether the moving part clears the housing;
-- no misalignment;
-- no side loading;
-- screws are not over-tightened;
-- the spool or platform does not land past the working zone of the sensor.
+- onde está o lado de montagem do sensor;
+- onde a carga deve ser aplicada;
+- que direcção a força deve ir;
+- se são necessários espaçadores;
+- se a parte móvel limpa o alojamento;
+- nenhum desalinhamento;
+- nenhum carregamento lateral;
+- os parafusos não estão demasiado apertados;
+- a bobine ou plataforma não cai para além da zona de trabalho do sensor.
 
-For spool weight, it is especially important that all load goes through the sensor, not partly through the housing wall, axle, cable, or cosmetic cover.
+Para peso da bobine, é especialmente importante que toda a carga passe através do sensor, não parcialmente pela parede do alojamento, eixo, cabo ou cobertura cosmética.
 
-## Do not overload the sensor
+## Não sobrecarregue o sensor
 
-A load cell's range is not a recommendation but a measurement limit.
+O intervalo de uma célula de carga não é uma recomendação mas um limite de medição.
 
-If a 1 kg sensor is placed where a spool and holder can exceed this, the sensor will work poorly or permanently deform.
+Se um sensor de 1 kg for colocado onde uma bobina e suporte pode exceder isto, o sensor funcionará mal ou se deformará permanentemente.
 
-Choose the range with margin:
+Escolha o intervalo com margem:
 
-- maximum spool weight;
-- holder weight;
-- possible jerks;
-- misalignment;
-- safety margin for user error.
+- peso máximo da bobine;
+- peso do suporte;
+- possíveis solavancos;
+- desalinhamento;
+- margem de segurança para erro do usuário.
 
-But too large a range is also not always good. A 100 kg sensor will sense a small spool worse than a 5 kg or 10 kg sensor with identical mechanics and electronics.
+Mas um intervalo demasiado grande também nem sempre é bom. Um sensor de 100 kg sentirá uma pequena bobine pior do que um sensor de 5 kg ou 10 kg com mecânica e eletrônica idênticas.
 
-## First startup
+## Primeiro arranque
 
-Before installing in the device, test the system on the bench:
+Antes de instalar no dispositivo, teste o sistema na bancada:
 
-1. Connect load cell to HX711.
-2. Connect HX711 to controller.
-3. Run test code or a library.
-4. Ensure raw values change when you press on the sensor.
-5. Remove the load and check that the value is fairly stable.
-6. Place a known mass and check for change.
+1. Ligue a célula de carga ao HX711.
+2. Ligue o HX711 ao controlador.
+3. Execute código de teste ou biblioteca.
+4. Certifique-se de que os valores brutos mudam quando pressiona no sensor.
+5. Remova a carga e verifique se o valor é bastante estável.
+6. Coloque uma massa conhecida e verifique a mudança.
 
-At this stage, do not demand gram accuracy. First, you need to see the sensor is alive, load direction is correct, and readings change predictably.
+Nesta fase, não exija precisão em gramas. Em primeiro lugar, precisa ver que o sensor está vivo, a direcção da carga está correta e as leituras mudam previsivelmente.
 
-If the value decreases as weight increases, usually just swap `A+` and `A-` or account for the sign in code.
+Se o valor diminui à medida que o peso aumenta, normalmente apenas troque `A+` e `A-` ou contabilize o sinal no código.
 
-## Tare and calibration
+## Tara e calibração
 
-A load cell without calibration does not know what grams are.
+Uma célula de carga sem calibração não sabe o que são gramas.
 
-Typical process:
+Processo típico:
 
-1. Place empty platform.
-2. Tare: this is zero accounting for platform weight.
-3. Place a known mass.
-4. Select calibration factor.
-5. Check several different weights.
+1. Coloque plataforma vazia.
+2. Tara: isto é zero contabilizando o peso da plataforma.
+3. Coloque uma massa conhecida.
+4. Selecione factor de calibração.
+5. Verifique vários pesos diferentes.
 
-For filament spools, decide what counts as weight:
+Para bobines de filamento, decida o que conta como peso:
 
-- entire spool with plastic;
-- only remaining plastic without empty spool weight;
-- weight change from initial value.
+- bobine inteira com plástico;
+- apenas plástico restante sem peso da bobine vazia;
+- mudança de peso do valor inicial.
 
-If empty spools from different makers weigh differently, accurate remainder calculation requires knowing the specific empty spool weight or working with rough estimates.
+Se bobines vazias de diferentes fabricantes pesarem diferentemente, o cálculo preciso do restante requer conhecer o peso específico da bobine vazia ou trabalhar com estimativas aproximadas.
 
-## Noise and unstable readings
+## Ruído e leituras instáveis
 
-HX711 measures a very small signal, so the system is sensitive to noise and mechanical issues.
+O HX711 mede um sinal muito pequeno, portanto o sistema é sensível a ruído e problemas mecânicos.
 
-Causes of unstable readings:
+Causas de leituras instáveis:
 
-- long wires from sensor to HX711;
-- poor contacts;
-- heater power wires next to signal wires;
-- fan or printer vibration;
-- soft base;
-- play in mounting;
-- temperature drift;
-- load touching the housing bypassing the sensor.
+- fios longos do sensor ao HX711;
+- maus contactos;
+- fios de alimentação do aquecedor próximos a fios de sinal;
+- vibração do ventoinha ou impressora;
+- base mole;
+- jogo na montagem;
+- desvio de temperatura;
+- carga tocando o alojamento contornando o sensor.
 
-Practical measures:
+Medidas práticas:
 
-- keep HX711 close to load cell;
-- do not run signal wires alongside heater power wires;
-- secure wires so they do not pull the sensor;
-- use measurement averaging;
-- calibrate after mounting in housing;
-- tare after device warmup if temperature notably affects readings.
+- mantenha o HX711 próximo à célula de carga;
+- não execute fios de sinal junto a fios de alimentação do aquecedor;
+- fixe os fios para não puxarem o sensor;
+- usar média de medição;
+- calibre após montagem no alojamento;
+- tare após aquecimento do dispositivo se a temperatura afecta notavelmente as leituras.
 
-## What to check after assembly
+## O que verificar após montagem
 
-Before use:
+Antes de usar:
 
-- sensor is rated for the needed weight;
-- load goes through the working part of the sensor;
-- fasteners do not block deformation;
-- HX711 receives correct power;
-- `DT` and `SCK` are connected to the right GPIO;
-- common ground exists;
-- raw values change under load;
-- without load, readings do not drift too quickly;
-- known mass shows expected weight after calibration;
-- wires do not pull the platform;
-- spool or holder does not touch the housing past the sensor.
+- sensor é classificado para o peso necessário;
+- a carga passa através da parte de trabalho do sensor;
+- os fixadores não bloqueiam a deformação;
+- o HX711 recebe alimentação correta;
+- `DT` e `SCK` estão conectados ao GPIO correto;
+- existe massa comum;
+- os valores brutos mudam sob carga;
+- sem carga, as leituras não desviam muito rapidamente;
+- a massa conhecida mostra peso esperado após calibração;
+- os fios não puxam a plataforma;
+- a bobine ou suporte não toca o alojamento para além do sensor.
 
-## Common mistakes
+## Erros comuns
 
-- connecting load cell directly to controller analog input;
-- confusing `E+`/`E-` and `A+`/`A-`;
-- trusting wire colors without datasheet;
-- forgetting calibration;
-- taring before final mechanical installation;
-- mounting sensor so it cannot flex;
-- overloading the sensor;
-- choosing too large a range and losing sensitivity;
-- getting instability from long wires and interference;
-- expecting gram accuracy from a flexible plastic body without rigid mechanics.
+- conectar a célula de carga diretamente à entrada analógica do controlador;
+- confundir `E+`/`E-` e `A+`/`A-`;
+- confiar nas cores dos fios sem datasheet;
+- esquecer calibração;
+- tara antes da instalação mecânica final;
+- montar o sensor para que não se possa dobrar;
+- sobrecarregar o sensor;
+- escolher um intervalo demasiado grande e perder sensibilidade;
+- obter instabilidade de fios longos e interferência;
+- esperar precisão em gramas de um corpo plástico flexível sem mecânica rígida.
 
-## Key points
+## Pontos-chave
 
-- Load cell usually connects through HX711, not directly to controller.
-- Sensor wires go to `E+`, `E-`, `A+`, `A-`.
-- HX711 connects to controller via power, ground, `DT`, and `SCK`.
-- Mechanics matter more than the circuit: load must go through the sensor correctly.
-- Tare and calibration with known mass are required.
-- Without rigid mounting and proper mechanics, accurate readings will not happen.
+- A célula de carga normalmente liga-se através de HX711, não diretamente ao controlador.
+- Os fios do sensor vão para `E+`, `E-`, `A+`, `A-`.
+- O HX711 liga-se ao controlador através de alimentação, massa, `DT` e `SCK`.
+- A mecânica é mais importante do que o circuito: a carga deve passar corretamente através do sensor.
+- Tara e calibração com massa conhecida são necessárias.
+- Sem montagem rígida e mecânica adequada, leituras precisas não acontecerão.
 
-## Related reading
+## Leitura relacionada
 
 - [SparkFun: Load Cell Amplifier HX711 Breakout Hookup Guide](https://learn.sparkfun.com/tutorials/load-cell-amplifier-hx711-breakout-hookup-guide/all) - practical HX711 and load cell connection, wire colors, `DT`/`SCK`, and calibration example.
 - [SparkFun: Load Cell Amplifier HX711 product page](https://www.sparkfun.com/sparkfun-load-cell-amplifier-hx711.html) - HX711 module description, purpose, and microcontroller interface.

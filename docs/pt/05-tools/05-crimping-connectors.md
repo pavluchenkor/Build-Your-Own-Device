@@ -23,7 +23,7 @@ Para conectores e terminais, a crimpagem é frequentemente melhor que a soldadur
 - o conector pode ser desmontado e reparado;
 - sem risco de derreter o corpo do conector de plástico durante a soldadura.
 
-A soldadura é boa para pads e fios, mas não deve substituir um contacto apropriado num conector se o fabricante pretendia crimpagem.
+A solda é boa para almofadas e fios, mas não deve substituir um contato protetor num conector se o fabricante pretender crimpagem.
 
 ## Tipos de terminais e conectores
 

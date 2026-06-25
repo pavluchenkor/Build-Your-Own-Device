@@ -1,173 +1,173 @@
 # Řadiče STM32
 
-STM32 is a large family of 32-bit microcontrollers from STMicroelectronics based on Arm Cortex-M cores. It is not one board or one chip: under the STM32 name there are dozens of series and hundreds of models.
+STM32 je velká rodina 32bitových mikrokontroleérů od STMicroelectronics na bázi Arm Cortex-M jader. Není to jedna deska nebo jeden čip: pod názvem STM32 je desítky řad a několik modelů.
 
-In the world of 3D printers, STM32 is very common. Many ready-made printer boards, expansion boards, CAN boards, and controllers use STM32. For Klipper and printer peripherals, it is one of the most practical options if you are ready to work with a specific board.
+Ve světě 3D tiskáren je STM32 velmi běžný. Mnoho hotových desek tiskáren, expanzních desek, CAN desek a kontrolérů používá STM32. Pro Klipper a periférie tiskárny je to jedním z nejpraktičtějších řešení, pokud jste připraveni pracovat s konkrétní deskou.
 
-## Where STM32 is useful
+## Kde je STM32 užitečný
 
-STM32 is good for:
+STM32 je vhodný pro:
 
-- main 3D printer board;
-- additional MCU in Klipper;
-- fan, sensor, and output control board;
-- CAN board or toolhead board;
-- more serious custom board;
-- tasks requiring timers, PWM, ADC, UART, SPI, I2C, CAN, or USB;
-- projects needing a ready-made industrial ecosystem and documentation.
+- hlavní desku 3D tiskárny;
+- dodatečný MCU v Klipperu;
+- desku na ovládání ventilátoru, sensoru a výstupu;
+- CAN desku nebo desku na hlavu nástrojů;
+- vážnější vlastní desku;
+- úlohy vyžadující timery, PWM, ADC, UART, SPI, I2C, CAN nebo USB;
+- projekty vyžadující hotový průmyslový ekosystém a dokumentaci.
 
-If RP2040 is a simple and clear start, STM32 is a wide world of controllers where you can select a chip for almost any task. But flexibility comes at the cost of complexity.
+Pokud je RP2040 jednoduché a jasné začátek, STM32 je širokým světem kontrolérů, kde si můžete vybrat čip pro skoro jakoukoli úlohu. Ale flexibilita přichází s cenou složitosti.
 
-## STM32 is a family
+## STM32 je rodina
 
-You cannot say "I got an STM32" and stop choosing. You need to know the exact model.
+Nemůžete říct "dostal jsem STM32" a skončit s výběrem. Musíte znát přesný model.
 
-Examples of series:
+Příklady řad:
 
-- **STM32F0 / STM32C0 / STM32G0** — budget and mass-market series;
-- **STM32F1** — old but very well-known series, often found in Blue Pill and old boards;
-- **STM32F4** — more powerful series, popular in controllers;
-- **STM32G4** — interesting for control, timer, and analog peripheral tasks;
-- **STM32H7** — powerful high-end controllers;
-- **STM32L / STM32U** — series focused on low power consumption.
+- **STM32F0 / STM32C0 / STM32G0** — rozpočtové a masové řady;
+- **STM32F1** — stará, ale velmi známá řada, často se vyskytuje v Blue Pill a starých deskách;
+- **STM32F4** — výkonnější řada, populární v kontrolérech;
+- **STM32G4** — zajímavá na řízení, timer a úlohy periferií;
+- **STM32H7** — výkonné high-end kontroléry;
+- **STM32L / STM32U** — řady zaměřené na nízkou spotřebu.
 
-For a typical user, what matters is not the marketing of the series, but specific things:
+Pro typického uživatele na marketingu řady nezáleží, ale na konkrétních věcech:
 
-- is there support in the firmware you need;
-- how many GPIO are really exposed on the board;
-- does it have USB, CAN, UART, I2C, SPI;
-- how much flash and RAM;
-- how to flash it;
-- is there a proper pinout and schematic.
+- je tam podpora ve firmware, který potřebujete;
+- kolik GPIO je skutečně exponováno na desce;
+- má USB, CAN, UART, I2C, SPI;
+- kolik flash a RAM;
+- jak se nahraje;
+- existuje správné rozložení pinů a schéma.
 
-## The board matters more than the chip name
+## Deska je důležitější než jméno čipu
 
-The same STM32 can be on very different boards.
+Stejný STM32 může být na velmi různých deskách.
 
-Common variants:
+Běžné varianty:
 
-- **Blue Pill / Black Pill** — cheap small boards, often with STM32F103 or STM32F4 class, but clone quality varies;
-- **STM32 Nucleo** — official ST development boards with built-in ST-LINK;
-- **ready-made 3D printer board** — already has drivers, connectors, MOSFET outputs, thermistor inputs, fuses, and power connectors;
-- **toolhead/CAN board** — specialized board for a printer head or remote module;
-- **custom board** — requires complete power, USB, SWD, protection, and routing design.
+- **Blue Pill / Black Pill** — levné malé desky, často s STM32F103 nebo třídou STM32F4, ale kvalita klonů se liší;
+- **STM32 Nucleo** — oficiální ST vývojové desky s vestavěným ST-LINK;
+- **hotová deska 3D tiskárny** — již má drivery, konektory, MOSFET výstupy, termistorové vstupy, pojistky a konektor napájení;
+- **deska na hlavu nástrojů/CAN** — specializovaná deska na hlavu tiskárny nebo vzdálený modul;
+- **vlastní deska** — vyžaduje úplný návrh napájení, USB, SWD, ochrany a vedení.
 
-For a first practical project, it is usually easier to get a ready-made board with documentation than a bare STM32 or a random clone without a schematic.
+Pro první praktický projekt je obvykle jednodušší koupit hotovou desku s dokumentací než holý STM32 nebo náhodný klon bez schématu.
 
-## STM32 and Klipper
+## STM32 a Klipper
 
-STM32 is one of the main paths for a Klipper MCU.
+STM32 je jednou z hlavních cest pro MCU Klipperu.
 
-Typical architecture:
+Typická architektura:
 
-![Nucleo boards for STM8 and STM32 from STMicroelectronics](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
+![Desky Nucleo pro STM8 a STM32 od STMicroelectronics](../../img/02-controllers/04-stm32-nucleo-boards.jpg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nucleo-board.jpg), Avandalen, CC BY-SA 4.0*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Nucleo-board.jpg), Avandalen, CC BY-SA 4.0*
 
-The Klipper host runs on a Linux device, and the STM32 board physically controls pins: switches MOSFET outputs, reads thermistors, controls fans, receives limit switch signals, and communicates with the host via USB, UART, or CAN.
+Host Klipperu běží na Linux zařízení a deska STM32 fyzicky ovládá piny: přepíná MOSFET výstupy, čte termistory, ovládá ventilátory, přijímá signály koncového spínače a komunikuje s hostem přes USB, UART nebo CAN.
 
-For iDryer-like peripherals, STM32 makes sense if:
+Pro periferie podobné iDryer má STM32 smysl, pokud:
 
-- the device should be part of the Klipper configuration;
-- you need a ready-made printer board with power outputs;
-- you need CAN;
-- you need a more industrial board approach;
-- you already have an STM32 board and a known configuration.
+- zařízení by mělo být součástí konfigurace Klipperu;
+- potřebujete hotovou desku tiskárny se silovými výstupy;
+- potřebujete CAN;
+- potřebujete průmyslovější přístup k desce;
+- již máte desku STM32 a známou konfiguraci.
 
-If you need to quickly add a few pins and sensors, RP2040 is often simpler. If you need a ready-made powerful board with connectors and drivers, an STM32 board may be better.
+Pokud potřebujete rychle přidat pár pinů a senzorů, je RP2040 často jednodušší. Pokud potřebujete hotovou výkonnou desku s konektory a drivery, deska STM32 může být lepší.
 
-## Flashing: USB, DFU, UART, SWD, ST-LINK
+## Nahrávání: USB, DFU, UART, SWD, ST-LINK
 
-STM32 does not have one universal flashing method for all boards.
+STM32 nemá jednu univerzální metodu nahrávání pro všechny desky.
 
-Options:
+Možnosti:
 
-- **USB bootloader / DFU** — flashing via built-in USB bootloader if the board and chip support it;
-- **UART bootloader** — flashing via serial pins in the right BOOT mode;
-- **SWD via ST-LINK** — reliable way to flash and debug via a programmer;
-- **built-in ST-LINK on Nucleo** — convenient for development;
-- **bootloader on printer board** — sometimes flashing is via SD card, USB, or a manufacturer's special bootloader.
+- **USB bootloader / DFU** — nahrávání přes vestavěný USB bootloader, pokud je deska a čip podporují;
+- **UART bootloader** — nahrávání přes sériové piny ve správném BOOT režimu;
+- **SWD přes ST-LINK** — spolehlivý způsob nahrávání a ladění přes programátor;
+- **vestavěný ST-LINK na Nucleo** — pohodlný na vývoj;
+- **bootloader na desce tiskárny** — někdy se nahrávání dělá přes SD kartu, USB nebo speciální bootloader výrobce.
 
-So before buying a board, you need to look not just for a chip datasheet, but instructions for that specific board. For Klipper, it is especially important to read comments in a ready-made board config and manufacturer's instructions.
+Takže před nákupem desky musíte hledat nejen datasheet čipu, ale pokyny pro konkrétní desku. Pro Klipper je obzvláště důležité číst komentáře v hotové konfiguraci desky a pokyny výrobce.
 
-## Nucleo, Blue Pill, and printer boards
+## Nucleo, Blue Pill a desky tiskáren
 
-**STM32 Nucleo** boards are convenient for learning and prototyping. They usually have a built-in ST-LINK, Arduino Uno V3 connectors, and ST morpho pins that provide access to more signals. This is a good option if you want to learn STM32 and have an official flashing tool.
+**Desky STM32 Nucleo** jsou vhodné na učení a prototypování. Obvykle mají vestavěný ST-LINK, konektory Arduino Uno V3 a ST morpho piny, které poskytují přístup k více signálům. Toto je dobrá volba, pokud chcete naučit se STM32 a máte oficiální nástroj na nahrávání.
 
-**Blue Pill / Black Pill** are attractive for price and size, but clones often have problems: wrong chip, weak regulator, poor USB, no proper schematic, odd bootloader. For experiments they are useful, for a reliable device — only after verification.
+**Blue Pill / Black Pill** jsou atraktivní cenou a velikostí, ale klony často mají problémy: špatný čip, slabý regulátor, špatný USB, bez správného schématu, zvláštní bootloader. Na experimenty jsou užitečné, na spolehlivé zařízení — pouze po ověření.
 
-**Ready-made 3D printer boards** are often more practical for heaters, fans, and sensors because the power section is already routed: there are terminals, MOSFET outputs, thermistor inputs, power, fuses, or room for them. But even a ready-made board requires checking currents, connectors, cooling, and safety.
+**Hotové desky 3D tiskáren** jsou pro topidla, ventilátory a sensory často praktičtější, protože je sekce napájení již vedena: jsou tam svorky, MOSFET výstupy, termistorové vstupy, napájení, pojistky či místo pro ně. Ale i hotová deska vyžaduje kontrolu proudů, konektorů, chlazení a bezpečnosti.
 
-## 3.3V logic and GPIO
+## Logika 3.3V a GPIO
 
-Most STM32 work with `3.3V` logic.
+Většina STM32 pracuje s logikou `3.3V`.
 
-Important:
+Důležité:
 
-- do not apply `5V` to pins unless the chip datasheet specifically says this pin accepts `5V`;
-- Arduino shield compatibility on Nucleo does not mean all signals are safe like on a `5V` Arduino Uno;
-- I2C pull-ups are usually to `3.3V`;
-- GPIO should not power a load directly;
-- fans, LED strips, heaters, relays, and servos are connected via drivers and separate power.
+- neaplikujte `5V` na piny, pokud datalist čipu konkrétně neřekne, že pin akceptuje `5V`;
+- kompatibilita štítu Arduino na Nucleo neznamená, že všechny signály jsou bezpečné jako na `5V` Arduino Uno;
+- pull-up rezistory I2C jsou obvykle na `3.3V`;
+- GPIO by nemělo přímo napájet zátěž;
+- ventilátory, LED pásky, topidla, relé a servomotory se připojují přes drivery a oddělené napájení.
 
-Even if some STM32 pins accept `5V`, this is not permission to connect everything. You need to check the pinout table and electrical characteristics for the specific chip.
+I když některé piny STM32 akceptují `5V`, není to povolení spojit všechno. Musíte zkontrolovat tabulku rozložení pinů a elektrické charakteristiky konkrétního čipu.
 
-## Why STM32 is often chosen for printers
+## Proč je STM32 často vybrán pro tiskárny
 
-STM32 is good for 3D printer boards because it has a lot of useful peripherals:
+STM32 je vhodný pro desky 3D tiskáren, protože má spoustu užitečných periferií:
 
-- timers and PWM for fans, heaters, and signals;
-- ADC for thermistors and sensors;
-- UART/SPI for stepper drivers and modules;
-- I2C for displays and sensors;
-- USB for communication with the host;
-- CAN in some series and boards;
-- enough performance for real-time MCU tasks.
+- timery a PWM na ventilátory, topidla a signály;
+- ADC na termistory a sensory;
+- UART/SPI na stepper drivery a moduly;
+- I2C na displeje a sensory;
+- USB na komunikaci s hostem;
+- CAN v některých řadách a deskách;
+- dostatek výkonu pro real-time úlohy MCU.
 
-But the microcontroller itself does not make a board safe. Heaters, power MOSFETs, SSRs, fuses, connectors, and thermal protection remain a separate engineering task.
+Ale samotný mikrokontroleér desku bezpečnou neučiní. Topidla, silové MOSFET, SSR, pojistky, konektory a tepelná ochrana zůstávají samostatným inženýrským úkolem.
 
-## What to check before buying
+## Co zkontrolovat před nákupem
 
-Before buying an STM32 board, check:
+Před nákupem desky STM32 zkontrolujte:
 
-- exact microcontroller model;
-- whether there is support in Klipper or the firmware you need;
-- how much flash and RAM;
-- how the board is flashed;
-- whether it has USB, CAN, UART, or other needed interface;
-- whether there is official pinout and schematic;
-- which pins are occupied by LEDs, USB, oscillator, boot mode, or SWD;
-- which pins are 5V-tolerant and which are not;
-- which power outputs are on the board and what current they are rated for;
-- whether there are fuses, terminals, and proper power;
-- how understandable the manufacturer's documentation is.
+- přesný model mikrokontroléru;
+- zda je podpora v Klipperu nebo firmware, který potřebujete;
+- kolik flash a RAM;
+- jak se deska nahraje;
+- zda má USB, CAN, UART či jiné potřebné rozhraní;
+- zda existuje oficiální rozložení pinů a schéma;
+- které piny jsou obsazeny LED, USB, oscilátorem, boot režimem nebo SWD;
+- které piny tolerují `5V` a které ne;
+- které silové výstupy jsou na desce a jaký proud tolerují;
+- zda jsou pojistky, svorky a správné napájení;
+- jak srozumitelná je dokumentace výrobce.
 
-If a board is sold with only a nice photo and no schematic, it is not a good basis for a device with a heater.
+Pokud je deska prodávána pouze s hezkou fotkou bez schématu, není to dobrý základ pro zařízení s topidlem.
 
-## Common mistakes
+## Běžné chyby
 
-- thinking STM32 is one specific board;
-- buying a Blue Pill clone and expecting official board behavior;
-- not checking the exact chip model;
-- not understanding how to flash the board;
-- confusing DFU, BOOT0, UART, and ST-LINK;
-- connecting a `5V` module to a `5V`-intolerant pin;
-- using SWD pins as regular GPIO and losing the ability to flash/debug;
-- thinking GPIO is a power output;
-- choosing a board without a schematic for a heater;
-- not checking the ready Klipper configuration before buying.
+- myšlenka, že STM32 je jedna konkrétní deska;
+- nákup klonu Blue Pill a očekávání chování oficiální desky;
+- nekontrolování přesného modelu čipu;
+- nepochopení, jak se deska nahraje;
+- plení si DFU, BOOT0, UART a ST-LINK;
+- připojení modulu `5V` k pinu, který `5V` nesnese;
+- používání SWD pinů jako normálních GPIO a ztráta schopnosti nahrávání/ladění;
+- myšlenka, že GPIO je silový výstup;
+- výběr desky bez schématu na topidlo;
+- nekontrolování hotové konfigurace Klipperu před nákupem.
 
-## Key points
+## Klíčové body
 
-STM32 is a powerful and practical family of microcontrollers, especially for 3D printer boards and Klipper MCU. But you need to choose not "STM32 in general" but a specific board with a specific chip, pinout, flashing method, and documentation.
+STM32 je výkonná a praktická rodina mikrokontroleérů, zejména na desky 3D tiskáren a MCU Klipperu. Ale musíte vybrat ne "STM32 všeobecně", ale konkrétní desku s konkrétním čipem, rozložením pinů, metodou nahrávání a dokumentací.
 
-For a first simple controller, RP2040 is often easier. For ready-made printer electronics, CAN boards, and more serious peripherals, STM32 is often the right choice.
+Na první jednoduchý kontrolér je RP2040 často jednodušší. Na hotové elektroniky tiskáren, CAN desky a vážnější periferie je STM32 často správnou volbou.
 
-## Related materials
+## Související materiály
 
-- [STMicroelectronics: STM32 32-bit Arm Cortex MCUs](https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html) — official overview of the STM32 family, series, performance, and tools.
-- [STMicroelectronics: STM32 Mainstream MCUs](https://www.st.com/en/microcontrollers-microprocessors/stm32-mainstream-mcus.html) — overview of mass-market series STM32C0, G0, F0, F1, G4, and their positioning.
-- [STMicroelectronics: STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html) — official STM32 flashing tool via ST-LINK/SWD, UART, USB DFU, I2C, SPI, and CAN bootloader.
-- [STMicroelectronics: NUCLEO-F103RB](https://www.st.com/en/product/nucleo-f103rb) — example of an official Nucleo board with built-in ST-LINK, Arduino Uno V3 connectors, and ST morpho pins.
-- [ST UM1724: STM32 Nucleo-64 boards user manual](https://www.st.com/resource/en/user_manual/dm00105823-stlink-v2-in-circuit-debugger-programmer-for-stm8-and-stm32-stmicroelectronics.pdf) — documentation for Nucleo-64, connectors, ST-LINK, and warning about `3.3V` I/O.
-- [Klipper: Code overview](https://www.klipper3d.org/Code_Overview.html) — Klipper architecture and MCU backend context, including STM32 in the source tree.
+- [STMicroelectronics: STM32 32-bit Arm Cortex MCUs](https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html) — oficiální přehled rodiny STM32, řad, výkonu a nástrojů.
+- [STMicroelectronics: STM32 Mainstream MCUs](https://www.st.com/en/microcontrollers-microprocessors/stm32-mainstream-mcus.html) — přehled masových řad STM32C0, G0, F0, F1, G4 a jejich postavení.
+- [STMicroelectronics: STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html) — oficiální nástroj STM32 na nahrávání přes ST-LINK/SWD, UART, USB DFU, I2C, SPI a CAN bootloader.
+- [STMicroelectronics: NUCLEO-F103RB](https://www.st.com/en/product/nucleo-f103rb) — příklad oficiální desky Nucleo se vestavěným ST-LINK, konektory Arduino Uno V3 a ST morpho piny.
+- [ST UM1724: STM32 Nucleo-64 boards user manual](https://www.st.com/resource/en/user_manual/dm00105823-stlink-v2-in-circuit-debugger-programmer-for-stm8-and-stm32-stmicroelectronics.pdf) — dokumentace pro Nucleo-64, konektory, ST-LINK a varování na `3.3V` I/O.
+- [Klipper: Code overview](https://www.klipper3d.org/Code_Overview.html) — architektura Klipperu a kontext MCU, včetně STM32 ve stromu zdrojů.

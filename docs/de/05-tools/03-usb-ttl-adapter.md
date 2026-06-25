@@ -117,7 +117,7 @@ Sie können `VCC` vom Adapter verbinden wenn:
 - es keinen anderen Strom gleichzeitig gibt;
 - die Platinen-Dokumentation das Stromzuführen durch diesen Pin erlaubt.
 
-Ein gefährlicher Fehler ist das Zuführen von Strom von sowohl USB-UART Adapter als auch separater Stromversorgung gleichzeitig, was die Quellen in Konflikt bringt.
+Ein gefährlicher Fehler ist das Zuführen von Strom sowohl von USB-UART-Adapter als auch separater Stromversorgung gleichzeitig, was die Quellen in Konflikt bringt.
 
 ## DTR und Auto-Reset
 

@@ -43,7 +43,7 @@ Mínimo para comunicação:
 - `TX`;
 - `RX`.
 
-A energia só é conectada se você tem a certeza de que o adaptador deve alimentar a placa.
+A energia só é conectada se você tiver certeza de que o adaptador deve alimentar a placa.
 
 ## TX e RX são interconectados
 

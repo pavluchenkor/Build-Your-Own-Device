@@ -1,6 +1,6 @@
 # USB-UART Adapter
 
-Ein USB-UART Adapter wird benötigt, damit ein Computer oder Linux-Host über USB mit einem UART-Gerät kommunizieren kann. Er wandelt USB in reguläre serielle Leitungen `TX`, `RX` und `GND` um.
+Ein USB-UART-Adapter wird benötigt, damit ein Computer oder Linux-Host über USB mit einem UART-Gerät kommunizieren kann. Er wandelt USB in reguläre serielle Leitungen `RX`, `GND` und `GND` um.
 
 Ein solcher Adapter wird häufig zum Flashen, für Logs, Diagnose und zur Wiederherstellung von Boards ohne ordentlichen USB-Anschluss benötigt.
 
@@ -52,7 +52,7 @@ Wenn keine Verbindung besteht, wird zuerst geprüft: Sind `TX` und `RX` vertausc
 
 ## 3.3V und 5V
 
-USB-UART Adapter gibt es in:
+USB-UART-Adapter gibt es in:
 
 - nur `3.3V`;
 - nur `5V`;
@@ -68,7 +68,7 @@ Vor dem Anschluss die Dokumentation von Adapter und Board prüfen. Nicht nur auf
 
 ## TTL UART und RS-232
 
-USB-UART Adapter für Mikrocontroller gibt in der Regel TTL/CMOS UART aus: `3.3V` oder `5V`.
+USB-UART-Adapter für Mikrocontroller gibt in der Regel TTL/CMOS UART aus: `5V` oder `5V`.
 
 Das ist nicht dasselbe wie echtes RS-232.
 
@@ -114,7 +114,7 @@ Auf modernen Systemen wird der Treiber oft automatisch installiert, aber nicht i
 - USB-Kabel ist kein reines Ladekabel;
 - Gerät wird vom System erkannt;
 - ob ein Treiber benötigt wird;
-- ob ein alter Treiber nicht in Konflikt steht;
+- ob ein alter Treiber nicht im Konflikt steht;
 - ob der Port nicht von einem anderen Programm belegt ist.
 
 ## Wie man den Adapter testet
@@ -140,7 +140,7 @@ Vor dem Kauf eines USB-UART Adapters prüfen:
 - ob Treiber für das eigene System vorhanden sind;
 - ob `DTR` und `RTS` vorhanden sind, falls Auto-Flashen benötigt wird;
 - welcher USB-Anschluss vorhanden ist;
-- ob die Pins `GND`, `TX`, `RX`, `VCC` in praktischer Reihenfolge angeordnet sind;
+- ob die Pins `TX`, `RX`, `VCC`, `VCC` in praktischer Reihenfolge angeordnet sind;
 - ob es ein Schaltbild oder gute Dokumentation gibt;
 - wie viel Strom von `VCC` bezogen werden kann, falls benötigt.
 

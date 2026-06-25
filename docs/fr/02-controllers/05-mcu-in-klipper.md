@@ -85,7 +85,7 @@ sensor_pin: chamber:gpio26
 pin: chamber:gpio15
 ```
 
-La logique est simple : `chamber:gpio15` signifie « broche `gpio15` sur le MCU nommé `chamber` ».
+La logique est simple : `gpio15` signifie « broche `chamber` sur le MCU nommé `chamber` ».
 
 ## Noms de broches et préfixes
 
@@ -163,7 +163,7 @@ La communication entre l'hôte et le MCU peut être différente.
 
 **CAN** — pratique pour les modules distants, cartes de tête d'outil et une architecture filaire plus stable. Mais CAN nécessite un microcontrôleur supporté, un transcepteur CAN, un bus correct, des terminateurs et une configuration d'interface Linux.
 
-Pour un premier contrôleur supplémentaire, USB est généralement plus simple. CAN a du sens quand il y a une vraie raison : câblage plus long, nœuds multiples, carte de tête d'outil ou infrastructure CAN existante.
+Pour un premier contrôleur supplémentaire, l’USB est généralement plus simple. CAN a du sens quand il y a une vraie raison : connexion plus long, nœuds multiples, carte de tête d'outil ou infrastructure CAN existante.
 
 ## MCU ne protège pas la section puissance
 

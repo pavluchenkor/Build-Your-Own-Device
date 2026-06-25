@@ -112,7 +112,7 @@ Después de soldar, algo de flujo debe limpiarse. Esto depende del tipo de flujo
 - soluble en agua debe ser removido;
 - el flujo activo no debe dejarse en la placa.
 
-Si no conoce el tipo de flujo, use flujo de grado electrónico y lea su descripción.
+Si no conoce el tipo de flujo, utilice flujo de grado electrónico y lea su descripción.
 
 ## Tubo Retráctil de Calor e Aislamiento
 

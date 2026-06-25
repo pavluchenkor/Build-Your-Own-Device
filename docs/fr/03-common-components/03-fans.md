@@ -117,7 +117,7 @@ Avant de connecter, vérifiez :
 
 Vous ne pouvez pas alimenter un ventilateur à partir du GPIO du contrôleur. GPIO est un signal, pas une sortie de puissance. Le courant du ventilateur doit provenir de l'alimentation, d'une sortie de puissance de carte ou d'un module MOSFET.
 
-Au démarrage, un ventilateur peut brièvement tirer plus de courant qu'en fonctionnement normal. Si plusieurs ventilateurs sont connectés à une sortie, leurs courants s'additionnent.
+Au démarrage, un ventilateur peut tirer plus de courant qu'en fonctionnement normal. Si plusieurs ventilateurs sont connectés à une sortie, leurs courants s'additionnent.
 
 ## Bruit, vibration et roulement
 

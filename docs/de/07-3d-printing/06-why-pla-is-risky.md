@@ -1,6 +1,6 @@
 ---
 title: "Warum PLA für heiße Gehäuse und Trockner riskant ist"
-description: "Warum PLA in der Nähe von Heizung, Filamenttrockner oder aktiver Heizkammer ungeeignet ist: Erweichungstemperatur, Verformung und Risiko."
+Beschreibung: „Warum PLA in der Nähe von Heizung, Filamenttrockner oder aktiver Heizkammer ungeeignet ist: Erweichungstemperatur, Verformung und Risiko.“
 ---
 
 # Warum PLA für heiße Gehäuse und Trockner riskant ist
@@ -11,7 +11,7 @@ PLA ist ein großartiges Material zum Anfangen.
 
 Es druckt leicht, ist preiswert, produziert saubere Teile und ist gut für Prototypen geeignet. Viele erste Gehäuse, Abdeckungen und Halterungen werden aus PLA gedruckt.
 
-Das Problem fängt an wenn PLA in der Nähe von Wärme platziert wird und als vollständiges Arbeitsmaterial behandelt wird.
+Das Problem tritt auf, wenn PLA in der Nähe von Wärme platziert wird und als vollständiges Arbeitsmaterial behandelt wird.
 
 ## PLA muss nicht schmelzen um gefährlich zu werden
 
@@ -45,7 +45,7 @@ PLA wird besser nicht verwendet für:
 - Teil unter ständiger Last in Wärme;
 - Gehäuse wo 110-230V AC in der Nähe läuft.
 
-Auch wenn das Teil den Heizer nicht berührt, kann es lange Zeit in warmer Luft sitzen. In einem geschlossenen Gehäuse steigt die Temperatur nicht nur in der Nähe des Heizers sondern überall.
+Auch wenn das Teil des Heizgeräts nicht berührt wird, kann es lange Zeit in wärmerer Luft sitzen. In einem geschlossenen Gehäuse steigt die Temperatur nicht nur in der Nähe des Heizers, sondern überall.
 
 ## Gefährliche Szenarien
 
@@ -76,13 +76,13 @@ PLA ist geeignet für:
 - vorübergehende Teile zur Formprüfung;
 - Modelle die Gerätesicherheit nicht tragen.
 
-PLA ist früh nützlich: schnell Abmessungen überprüfen, Board-Passung, Abdeckungsform, Schalterposition oder Luftkanalrichtung. Aber nach dem Überprüfen muss ein funktionierendes Teil in der Nähe von Wärme oft aus anderem Material neu gedruckt oder durch ein nicht gedrucktes Teil ersetzt werden.
+PLA ist früh nützlich: schnelle Abmessungen überprüfen, Board-Passung, Abdeckungsform, Schalterposition oder Luftkanalrichtung. Aber nach dem Überprüfen muss ein funktionierendes Teil in der Nähe von Wärme oft aus anderem Material neu gedruckt oder durch ein nicht gedrucktes Teil ersetzt werden.
 
 ## Geschlossenes Gehäuse macht es schlimmer
 
 In einem offenen Raum könnte ein PLA-Teil stabil aussehen.
 
-In einer geschlossenen Trockneror oder Druckerkammer sind die Bedingungen unterschiedlich:
+In einem geschlossenen Trockner oder Druckerkammer sind die Bedingungen unterschiedlich:
 
 - Luft heizt auf;
 - Kunststoff bleibt lange in Wärme;
@@ -91,13 +91,13 @@ In einer geschlossenen Trockneror oder Druckerkammer sind die Bedingungen unters
 - es könnte eine Stromversorgung oder ein Strommodul innen sein;
 - Last wirkt stundenlang.
 
-Daher ist das Überprüfen "Ich berührte das Teil mit meiner Hand, scheint in Ordnung" nicht ausreichend.
+Daher ist die Rezension „Ich berührte das Teil mit meiner Hand, scheint in Ordnung“ nicht ausreichend.
 
 Sie müssen das Gerät im echten Betrieb überprüfen: mit Heizen, Lüfter, Gehäuse und Betriebsdauer ähnlich tatsächlicher Nutzung.
 
 ## PLA unter Last
 
-PLA ist steif, aber das bedeutet nicht dass es konstante Last in Wärme gut hält.
+PLA ist steif, bedeutet aber nicht, dass es die Wärme gut hält.
 
 Schlechte Plätze für PLA:
 
@@ -120,7 +120,7 @@ Je nach Aufgabe erwägen Sie:
 - PETG - für gemäßigt warme Zonen und einfache funktionierende Teile;
 - ABS oder ASA - für wärmere und technische Teile;
 - PC oder PA/Nylon - für erfahrene Benutzer und anspruchsvollere Bedingungen;
-- Metall, Fiberglas, Keramik oder vorgefertigte Halterungen - in der Nähe des Heizers und Stromabschnittes.
+- Metall, Fiberglas, Keramik oder vorgefertigte Halterungen – in der Nähe des Heizers und Stromabschnittes.
 
 Wenn die Frage Heizhalterung, thermischer Schutz, Netzanschlüsse oder kritischer Sensor ist, wählen Sie Material nicht nur aus einer Filamementliste. Manchmal ist die richtige Antwort diesen Teil nicht aus Kunststoff zu drucken.
 
@@ -128,8 +128,8 @@ Wenn die Frage Heizhalterung, thermischer Schutz, Netzanschlüsse oder kritische
 
 Wenn PLA trotzdem verwendet wird:
 
-- halten Sie es in der kühlen Zone;
-- platzieren Sie nicht in der Nähe des Heizers;
+- Halten Sie es in der kühlen Zone;
+- Platzieren Sie Sie nicht in der Nähe des Heizers;
 - verwenden Sie nicht als Stromteilhalter;
 - belasten Sie nicht mit Schraube ohne Spielraum;
 - machen Sie PLA nicht zum einzigen Sicherheitselement;
@@ -146,10 +146,10 @@ Für frühe Tests können Sie ein PLA-Teil drucken, das Gerät ohne Heizen oder 
 - PLA-Luftkanal direkt nach dem Heizer legen;
 - Thermistor mit PLA in heißer Zone montieren;
 - PLA in einer geschlossenen warmen Kammer verwenden;
-- denken "wenn es in 5 Minuten nicht schmilzt ist es sicher";
+- denken: „Wenn es in 5 Minuten nicht schmilzt, ist es sicher“;
 - Verformung nach mehreren Stunden Betrieb nicht überprüfen;
-- PLA unter Schraube und Last in Wärme lassen;
-- Prototyp nicht in funktionierendem Material neu drucken.
+- PLA unter Schraube und zuletzt in Wärme lassen;
+- Prototyp nicht in funktionsfähigem Material neu drucken.
 
 ## Wichtige Erkenntnisse
 
@@ -157,7 +157,7 @@ Für frühe Tests können Sie ein PLA-Teil drucken, das Gerät ohne Heizen oder 
 - Ein Teil kann lange bevor es schmilzt gefährlich werden.
 - Hauptrisiko ist Formverlust, Steifheitsverlust und Spalte.
 - PLA kann weg von Wärme und Stromabschnitt verwendet werden.
-- Für funktionierende Teile in der Nähe von Wärme erwägen Sie PETG, ABS/ASA oder Nicht-Kunststofflösung.
+- Für funktionsfähige Teile in der Nähe von Wärme erwägen Sie PETG, ABS/ASA oder Nicht-Kunststofflösung.
 - Wenn das Ausfallen eines PLA-Teils Sicherheit beeinflussen kann ist das Material falsch gewählt.
 
 ## Referenzen

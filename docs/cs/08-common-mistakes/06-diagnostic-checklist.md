@@ -1,260 +1,260 @@
 # Kontrolní seznam diagnostiky
 
-This checklist is needed when the device does not work or behaves strangely.
+Tento kontrolní seznam je potřeba když zařízení nefunguje nebo se chová podivně.
 
-The idea is simple: first remove the danger, then check power and wiring, and only after that move to firmware, sensors, and loads.
+Myšlenka je jednoduchá: nejdříve odstraňte nebezpečí, pak zkontrolujte napájení a zapojení, a až poté se přesunout na firmware, senzory a zátěž.
 
-## 1. Stop and Turn Off Power
+## 1. Zastavit a vypnout napájení
 
-First, turn off the device.
+Nejdříve vypněte zařízení.
 
-Especially if there is:
+Zvláště pokud je zde:
 
-- smell;
-- wire heating;
-- terminal heating;
-- smoke;
-- strange sound;
-- sparking;
-- heater will not turn off;
-- breaker or fuse trips.
+- vůně;
+- drát se zahřívá;
+- terminál se zahřívá;
+- kouř;
+- zvláštní zvuk;
+- jiskření;
+- topidlo se nechce vypnout;
+- přerušovač nebo pojistka se vypíchne.
 
-Do not change wires under power.
+Neměňte vodiče pod napájením.
 
-## 2. Disconnect Power Load
+## 2. Odpojit napájecí zátěž
 
-Before diagnostics it is better to temporarily disconnect:
+Před diagnostikou je lépe dočasně odpojit:
 
-- heater;
-- powerful LED strip;
+- topidlo;
+- výkonný LED pás;
 - servo;
 - motor;
-- external power load.
+- externí napájecí zátěž.
 
-First verify controller and logic are alive without dangerous load.
+Nejdříve ověřte, že řadič a logika fungují bez nebezpečné zátěže.
 
-If device has 110-230V AC, do not hold open mains part under power on the bench.
+Pokud má zařízení 110-230V AC, nedržejte otevřenou síťovou část pod napájením na stole.
 
-## 3. Check Power Supply
+## 3. Kontrola zdroje napájení
 
-With multimeter check:
+S multimetrem zkontrolujte:
 
-- is there voltage at power supply output;
-- is voltage correct;
-- is polarity correct;
-- does voltage sag under load.
+- je na výstupu zdroje napájení napětí;
+- je napětí správné;
+- je polarita správná;
+- pokles napětí pod zátěží.
 
-For example:
+Například:
 
-- 24V line should be about 24V;
-- 12V line should be about 12V;
-- 5V line should be about 5V;
-- 3.3V line should be about 3.3V.
+- 24V vedení by mělo být zhruba 24V;
+- 12V vedení by mělo být zhruba 12V;
+- 5V vedení by mělo být zhruba 5V;
+- 3,3V vedení by mělo být zhruba 3,3V.
 
-Acceptable deviation depends on power supply and device, but an obvious error like 24V instead of 12V should be found before connecting load.
+Přijatelná odchylka závisí na zdroji napájení a zařízení, ale zřejmá chyba jako 24V místo 12V by měla být nalezena před připojením zátěže.
 
-## 4. Check Polarity
+## 4. Kontrola polarity
 
-Check where plus and minus are.
+Zkontrolujte kde je plus a kde minus.
 
-Do not trust only wire color.
+Nesdoléhejte se pouze na barvu vodiče.
 
-Check:
+Zkontrolujte:
 
-- board markings;
-- power supply markings;
-- module pinout;
-- multimeter;
-- connection diagram.
+- označení řadiče;
+- označení zdroje napájení;
+- pinout modulu;
+- multimetr;
+- schéma zapojení.
 
-Reversed polarity often kills module instantly.
+Obrácená polarita často okamžitě zabije modul.
 
-## 5. Check Common GND
+## 5. Kontrola společné GND
 
-If there is external module or separate power, check common `GND`.
+Pokud je zde externí modul nebo samostatné napájení, zkontrolujte společný `GND`.
 
-This is important for:
+To je důležité pro:
 
-- MOSFET module;
+- MOSFET modul;
 - servo;
-- PWM fan;
+- PWM ventilátor;
 - HX711;
 - RFID;
-- external sensors;
-- separate DC-DC.
+- externí senzory;
+- samostatný DC-DC.
 
-If signals go between devices, they must have a common reference level, unless the circuit uses special isolation.
+Pokud signály jdou mezi zařízeními, musí mít společnou referenční úroveň, pokud obvod nepoužívá speciální izolaci.
 
-## 6. Check Terminals and Connectors
+## 6. Kontrola terminálů a konektorů
 
-Inspect:
+Prohlédněte si:
 
-- wire inserted all the way;
-- conductor clamped, not insulation;
-- no exposed strands;
-- no darkening;
-- no smell;
-- terminal does not shake;
-- connector does not hold "on faith";
-- case cover does not pinch wire.
+- drát je vložen až do konce;
+- vodič je upnut, ne izolace;
+- bez exponovaných vodičů;
+- bez otmavlení;
+- bez vůně;
+- terminál se netřese;
+- konektor nekupuje "na víře";
+- kryt pouzdra nepřitíská drát.
 
-Move wires with power off. If contact clearly drops mechanically, fix wiring first.
+Pohybujte vodiči s vypnutým napájením. Pokud kontakt jasně poklesne mechanicky, nejdříve opravte zapojení.
 
-## 7. Check Controller Without Load
+## 7. Kontrola řadiče bez zátěže
 
-Connect controller without power load.
+Připojte řadič bez napájecí zátěže.
 
-Check:
+Zkontrolujte:
 
-- is it detected via USB;
-- does firmware start;
-- is there communication with host;
-- does microcontroller not heat;
-- does power not flicker;
-- are logs visible.
+- je detekován přes USB;
+- spouští se firmware;
+- je komunikace s hostitelem;
+- mikrokontrolér se nezahřívá;
+- napájení se nehoupe;
+- jsou viditelné logy.
 
-If controller is not detected even without load, do not reconnect heater and power modules until you find the cause.
+Pokud řadič není detekován ani bez zátěže, nepřipojujte topidlo a napájecí moduly, dokud nenajdete příčinu.
 
-## 8. Check Firmware and Configuration
+## 8. Kontrola firmwaru a konfigurace
 
-Check:
+Zkontrolujte:
 
-- firmware built for correct board;
-- correct serial/CAN/USB path selected;
-- pins in config match pinout;
-- `sensor_type` correct;
-- `min_temp` and `max_temp` reasonable;
-- outputs not accidentally inverted;
-- no pin conflicts.
+- firmware je vytvořen pro správný řadič;
+- je vybrána správná sériová/CAN/USB cesta;
+- piny v konfiguraci odpovídají pinoutu;
+- `sensor_type` je správný;
+- `min_temp` a `max_temp` jsou rozumné;
+- výstupy nejsou omylem invertované;
+- žádné konflikty pinů.
 
-If heater behaves opposite after configuration change, for example "off", but temperature rises, turn off power and check config and power circuit.
+Pokud se topidlo chová opačně po změně konfigurace, například "vypnut", ale teplota stoupá, vypněte napájení a zkontrolujte konfiguraci a napájecí obvod.
 
-## 9. Check Sensors
+## 9. Kontrola senzorů
 
-Before heating check sensors.
+Před topením zkontrolujte senzory.
 
-For thermistor:
+Pro termistor:
 
-- temperature like room temperature;
-- no `MINTEMP`;
-- no `MAXTEMP`;
-- readings do not jump;
-- resistance like expected;
-- when heated by hand readings change correctly.
+- teplota jako pokojová teplota;
+- bez `MINTEMP`;
+- bez `MAXTEMP`;
+- odečty se neskáčou;
+- odpor jak se očekávalo;
+- když se senzor ohřeje rukou, odečty se změní správně.
 
-For other sensors:
+Pro ostatní senzory:
 
-- power correct;
-- interface selected correctly;
-- address or pins match config;
-- wires short and not hanging.
+- napájení správné;
+- rozhraní vybrané správně;
+- adresa nebo piny odpovídají konfiguraci;
+- vodiče jsou krátké a nevisí.
 
-## 10. Check Output Without Load
+## 10. Kontrola výstupu bez zátěže
 
-If need to check MOSFET, relay, or board output, do it first without dangerous load.
+Pokud je třeba zkontrolovat MOSFET, relé nebo výstup řadiče, udělajte to nejdříve bez nebezpečné zátěže.
 
-Options:
+Možnosti:
 
-- small test fan;
-- LED with resistor;
-- multimeter;
-- weak safe load.
+- malý testovací ventilátor;
+- LED s odporem;
+- multimetr;
+- slabá bezpečná zátěž.
 
-Do not start diagnostics with powerful heater.
+Nezačínejte diagnostiku s výkonným topidlem.
 
-For heater, before first turn-on, numerical check is useful: measure resistance and compare to expected `R = U^2 / P`. If there is metal case or `PE`, check no short to case. For `12V`/`24V` heater first run is better through lab power supply with current limit or temporary fuse.
+Pro topidlo, před prvním zapnutím, je užitečná číselná kontrola: změřte odpor a porovnejte s očekávaným `R = U^2 / P`. Pokud je kovové pouzdro nebo `PE`, zkontrolujte žádný zkrat na pouzdro. Pro topidlo `12V`/`24V` je první běh lepší přes laboratorní zdroj napájení s omezením proudu nebo dočasnou pojistkou.
 
-## 11. Check Power Switch Separately
+## 11. Kontrola spínače napájení samostatně
 
-For MOSFET/SSR/relay check:
+Pro MOSFET/SSR/relé zkontrolujte:
 
-- correct load type: AC or DC;
-- correct voltage;
-- correct terminals;
-- control input;
-- common `GND` if needed;
-- heatsink if needed;
-- input and output not mixed up.
+- správný typ zatížení: AC nebo DC;
+- správné napětí;
+- správné terminály;
+- řídící vstup;
+- společný `GND` pokud je potřeba;
+- chladič pokud je potřeba;
+- vstup a výstup nejsou zaměněny.
 
-AC SSR and DC SSR cannot be swapped.
+AC SSR a DC SSR nemohou být zaměněny.
 
-For SSR separately check "off" state: with control signal removed load must not heat. First better use safe small load, lamp, or multimeter, not main heater.
+Pro SSR samostatně zkontrolujte stav "vypnut": když je řídící signál odstraněn, zátěž se nesmí zahřívat. Nejdříve lépe použijte bezpečnou malou zátěž, lampu nebo multimetr, ne hlavní topidlo.
 
-## 12. Connect Load with Brief Test
+## 12. Připojit zátěž s krátkou zkouškou
 
-When basic checks passed, connect load briefly and under supervision.
+Když základní kontroly prošly, připojte zátěž krátce a pod dohledem.
 
-Check:
+Zkontrolujte:
 
-- load turns on;
-- load turns off;
-- terminals do not heat;
-- wires do not heat;
-- MOSFET/SSR does not overheat;
-- sensor shows realistic temperature;
-- controller does not reboot;
-- fuse does not trip.
+- zátěž se zapne;
+- zátěž se vypne;
+- terminály se nezahřívají;
+- vodiče se nezahřívají;
+- MOSFET/SSR se nepřehřívá;
+- senzor ukazuje realistickou teplotu;
+- řadič se nerestartuje;
+- pojistka se nevypíchne.
 
-First heater test should not be long and unattended.
+První test topidla by neměl být dlouhý a bez dozoru.
 
-## 13. Check After Few Minutes of Operation
+## 13. Kontrola po několika minutách provozu
 
-After few minutes check:
+Po několika minutách zkontrolujte:
 
-- terminals;
-- wires;
-- power supply;
+- terminály;
+- vodiče;
+- zdroj napájení;
 - MOSFET;
 - SSR;
-- case near heater;
-- sensor readings;
-- controller stability.
+- pouzdro blízko topidla;
+- odečty senzoru;
+- stabilitu řadiče.
 
-If something unexpectedly became hot, turn off power and return to checking power, wiring, and power switch.
+Pokud se něco nečekaně zahřálo, vypněte napájení a vraťte se k kontrole napájení, zapojení a spínače napájení.
 
-## What Not to Do
+## Co nedělat
 
-You cannot:
+Nemůžete:
 
-- repeatedly turn on device if something heats or smells;
-- hold 110-230V AC open on the bench;
-- change wires under power;
-- increase fuse "so it does not blow";
-- disable thermal protection for testing;
-- short emergency thermostat;
-- test powerful heater without temperature sensor;
-- leave first test unattended.
+- opakovaně zapínat zařízení pokud se něco zahřívá nebo páchne;
+- držet 110-230V AC otevřeno na stole;
+- měnit vodiče pod napájením;
+- zvýšit pojistku "aby se nevypíchla";
+- vypnout tepelnou ochranu k testování;
+- zkratovat nouzový termostat;
+- testovat výkonné topidlo bez teplotního senzoru;
+- nechat první test bez dozoru.
 
-## Short Order
+## Krátké pořadí
 
-If you need very short order:
+Pokud potřebujete velmi krátké pořadí:
 
-1. Turn off power.
-2. Disconnect power load.
-3. Check power supply voltage.
-4. Check polarity.
-5. Check common `GND`.
-6. Check terminals and wires.
-7. Check controller without load.
-8. Check firmware and pinout.
-9. Check sensors.
-10. Check output without dangerous load.
-11. Check MOSFET/SSR/relay.
-12. Connect load with brief test.
-13. Check heating of wires, terminals, and power parts.
+1. Vypněte napájení.
+2. Odpojte napájecí zátěž.
+3. Zkontrolujte napětí zdroje napájení.
+4. Zkontrolujte polaritu.
+5. Zkontrolujte společný `GND`.
+6. Zkontrolujte terminály a vodiče.
+7. Zkontrolujte řadič bez zátěže.
+8. Zkontrolujte firmware a pinout.
+9. Zkontrolujte senzory.
+10. Zkontrolujte výstup bez nebezpečné zátěže.
+11. Zkontrolujte MOSFET/SSR/relé.
+12. Připojte zátěž s krátkou zkouškou.
+13. Zkontrolujte zahřívání vodičů, terminálů a napájecích částí.
 
-## Key Points
+## Klíčové body
 
-- Diagnostics start with turning off power and reducing risk.
-- Power load better disconnected for basic checks.
-- Power, polarity, `GND`, and terminals checked before firmware.
-- Heater cannot be used as first test indicator.
-- If protection triggered, find the cause, not disable protection.
+- Diagnostika začíná vypnutím napájení a snížením rizika.
+- Napájecí zátěž je lépe odpojena pro základní kontroly.
+- Napájení, polarita, `GND` a terminály se kontrolují před firmwarem.
+- Topidlo se nemůže používat jako první indikátor testu.
+- Pokud se ochrana aktivuje, najděte příčinu, ne vypínání ochrany.
 
-## References
+## Reference
 
-- [SparkFun: Troubleshooting Tips](https://learn.sparkfun.com/tutorials/sparkfun-troubleshooting-tips/hardware-checks) - basic sequence of checking connections, power, and hardware problems.
-- [SparkFun: How to Power a Project](https://learn.sparkfun.com/tutorials/how-to-power-a-project/voltagecurrent-considerations) - how to think about voltage, current, and project power.
-- [Fluke: How to Measure Resistance with a Digital Multimeter](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-measure-resistance) - safe resistance measurement on de-energized circuit.
-- [Tom's Hardware: How to Fix 3D Printer Thermal Runaway](https://www.tomshardware.com/3d-printing/how-to-fix-3d-printer-thermal-runaway) - practical checks of thermistor, heater, fan, power, and wiring.
-- [Klipper Configuration Reference: min_temp, max_temp and verify_heater](https://www.klipper3d.org/Config_Reference.html#verify_heater) - software checks of temperature, sensor, and expected heater temperature rise.
+- [SparkFun: Troubleshooting Tips](https://learn.sparkfun.com/tutorials/sparkfun-troubleshooting-tips/hardware-checks) - základní sekvence kontroly připojení, napájení a hardwarových problémů.
+- [SparkFun: How to Power a Project](https://learn.sparkfun.com/tutorials/how-to-power-a-project/voltagecurrent-considerations) - jak přemýšlet o napětí, proudu a napájení projektu.
+- [Fluke: How to Measure Resistance with a Digital Multimeter](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-measure-resistance) - bezpečné měření odporu na de-energizovaném obvodu.
+- [Tom's Hardware: How to Fix 3D Printer Thermal Runaway](https://www.tomshardware.com/3d-printing/how-to-fix-3d-printer-thermal-runaway) - praktické kontroly termistoru, topidla, ventilátoru, napájení a zapojení.
+- [Klipper Configuration Reference: min_temp, max_temp and verify_heater](https://www.klipper3d.org/Config_Reference.html#verify_heater) - softwarové kontroly teploty, senzoru a očekávaného nárůstu teploty topidla.

@@ -2,7 +2,7 @@
 
 PETG, ABS und ASA werden oft als nächste Materialien nach PLA angesehen, wenn ein Teil nicht nur hübsch, sondern funktionierend sein muss.
 
-In Geräten um einen Trockner, eine Druckerkammer oder einen Heizer beeinflußt die Materialauswahl die Sicherheit. Ein Teil kann nach dem Druck normal aussehen, aber nach einer Stunde in einem warmen Gehäuse kann es anfangen, weich zu werden, den Luftkanal zu verzerren, Befestigungselemente zu lockern oder einen Sensor zu verschieben.
+Bei Geräten um einen Trockner, eine Druckerkammer oder einen Heizer beeinflußt die Materialauswahl die Sicherheit. Ein Teil kann nach dem Druck normal aussehen, aber nach einer Stunde in einem warmen Gehäuse kann es anfangen, weich zu werden, den Luftkanal zu verzerren, Befestigungselemente zu lockern oder einen Sensor zu verschieben.
 
 ## PETG
 
@@ -20,13 +20,13 @@ Für Geräte wie iDryer kann PETG gut funktionieren für:
 
 - Lüfter-Halterung weg vom Heizer;
 - Elektronik-Abdeckung;
-- Sensor-Halter in moderater Temperaturzone;
+- Sensorhalter in gemäßigter Temperaturzone;
 - Luftkanal für nicht-zu-heißer Luft;
 - Prototyp-Gehäuse.
 
 Aber PETG wird nicht automatisch wärmebeständig für irgendwelche heißen Zonen.
 
-Falls ein Teil in der Nähe eines Heizers, in einem heißen Luftstrom oder unter konstanter Last sitzt, kann PETG allmählich an Steifheit verlieren und sich verformen.
+Fällt ein Teil in die Nähe eines Heizgeräts, in einen heißen Luftstrom oder unter konstanter Last, kann PETG allmählich an Steifheit verlieren und sich verformen.
 
 ## ABS
 
@@ -45,13 +45,13 @@ Nachteile von ABS:
 - benötigt eine geschlossene Kammer oder stabile warme Umgebung beim Drucken;
 - bemerkbar riechend;
 - kann schädliche Dämpfe beim Drucken abgeben;
-- nicht geeignet zum Drucken in einem Wohnbereich ohne Belüftung.
+- Nicht geeignet zum Drucken in einem Wohnbereich ohne Belüftung.
 
 Wähle nicht ABS nur weil „es stärker ist". Du musst wissen, wie man es druckt. Schlecht gedrucktes ABS mit Delamination und interner Spannungen kann schlechter als gut gedrucktes PETG ausfallen.
 
 ## ASA
 
-ASA ist ähnlich zu ABS in Zweck, aber oft besser für Außen- und technische Teile geeignet.
+ASA ist im Zweck ähnlich wie ABS, aber oft besser für Außen- und technische Teile geeignet.
 
 Vorteile von ASA:
 
@@ -145,9 +145,9 @@ Bei einem einfachen Gerät kannst du so denken:
 - PLA - Prototyp, Vorlage, kaltes dekoratives Teil.
 - PETG - grundlegender Minimum für viele funktionierende Teile bei moderater Temperatur.
 - ABS/ASA - besser für heiße und mechanisch belastete Teile, falls du sie drucken kannst.
-- Metall, Glasfaser, Keramik oder vorgefertigte nicht entflammbare Teile - wo Kunststoff in der Nähe von Wärme nicht länger geeignet ist.
+- Metall, Glasfaser, Keramik oder vorgefertigte nicht entflammbare Teile – wo Kunststoff in der Nähe von Wärme nicht länger geeignet ist.
 
-Falls ein Teile-Ausfall zu Überhitzung, Kurzschluss oder Kontakt zwischen Draht und heißem Teil führen kann, muss Material mit großem Sicherheitsspielraum gewählt und in echtem Zusammenbau getestet werden.
+Falls ein Teile-Ausfall zu Überhitzung, Kurzschluss oder Kontakt zwischen Draht und heißem Teil führen kann, muss Material mit großem Sicherheitsspielraum ausgewählt und in echtem Zusammenbau getestet werden.
 
 ## Häufige Fehler
 
@@ -164,9 +164,9 @@ Falls ein Teile-Ausfall zu Überhitzung, Kurzschluss oder Kontakt zwischen Draht
 
 - PETG ist oft ein gutes Minimum für funktionierende Teile, aber nicht für irgendwelche heißen Zonen.
 - ABS und ASA handhaben Temperatur besser, aber sind schwieriger zu drucken und benötigen Belüftung.
-- ASA schlägt normalerweise ABS in UV-Beständigkeit und riecht oft weniger, benötigt aber immer noch Sorgfalt.
+- ASA schlägt normalerweise ABS in UV-Beständigkeit und riecht oft weniger, erfordert aber immer noch Sorgfalt.
 - Material wird basierend auf echter Temperatur, Last und Ausfalls-Konsequenzen gewählt.
-- Für Teile in der Nähe eines Heizers ist manchmal die richtige Antwort nicht Kunststoff, sondern Metall oder eine vorgefertigte Halterung.
+- Für Teile in der Nähe eines Heizers ist manchmal die richtige Antwort nicht aus Kunststoff, sondern aus Metall oder einer vorgefertigten Halterung.
 
 ## Referenzen
 

@@ -58,7 +58,7 @@ Par exemple :
 
 Les courants s'ajoutent. Les courants d'appel et les pics brefs doivent également être comptabilisés.
 
-Un servo ou un ventilateur peut brièvement consommer plus qu'en mode normal. Si la marge est petite, exactement ce moment causera le redémarrage du contrôleur.
+Un servo ou un ventilateur peut consommer plus qu'en mode normal. Si la marge est petite, exactement ce moment provoquera le réenregistrement du contrôleur.
 
 ## Confusion 12V et 24V
 

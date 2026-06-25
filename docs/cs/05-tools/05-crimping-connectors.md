@@ -140,7 +140,7 @@ Ale nelze jej použít jako správný konektor napájecího zdroje pro:
 - sítě;
 - motor nebo servo s velkým proudem.
 
-I když se konektor fyzicky vejde na kolíky, neznamenání to, že je hodnocen pro potřebný proud, vibrace a teplo.
+I když se fyzicky vejde na kolíky, neznamená to, že je hodnocen pro potřebný proud, vibrace a teplo.
 
 ## Běžné chyby
 

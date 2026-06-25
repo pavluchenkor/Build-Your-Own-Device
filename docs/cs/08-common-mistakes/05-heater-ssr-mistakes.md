@@ -1,204 +1,204 @@
 # Chyby topidla a SSR
 
-The heater is the most dangerous load in a simple DIY device.
+Topidlo je nejnebezpečnější zátěž v jednoduchém DIY zařízení.
 
-A fan may not start. A sensor may give wrong readings. But a heater with an error can overheat the case, melt plastic, damage wiring, or create a fire risk.
+Ventilátor se nemusí spustit. Senzor může dávat špatné odečty. Ale topidlo s chybou může přehřát pouzdro, rozpustit plast, poškodit zapojení nebo vytvořit riziko požáru.
 
-If the device has 110-230V AC and you do not understand electrical safety, the right action is to stop and ask a specialist for help.
+Pokud má zařízení 110-230V AC a nerozumíte elektrobezpečnosti, správná akce je zastavit a zeptat se specialisty na pomoc.
 
-## Symptoms
+## Příznaky
 
-Dangerous signs:
+Nebezpečné příznaky:
 
-- SSR heats up significantly;
-- heater will not turn off;
-- temperature rises though command is off;
-- temperature rises too fast or unreasonably;
-- temperature sensor shows wrong value;
-- terminal darkened;
-- wire or connector heats up;
-- breaker or fuse trips;
-- case smells of plastic or burning;
-- device is dangerous to touch;
-- heating continues after controller error.
+- SSR se výrazně zahřívá;
+- topidlo se nechce vypnout;
+- teplota stoupá přestože je příkaz vypnut;
+- teplota stoupá příliš rychle nebo nerozsáhlou;
+- teplotní senzor zobrazuje špatnou hodnotu;
+- terminál se otmavil;
+- drát nebo konektor se zahřívá;
+- přerušovač nebo pojistka se vypíchne;
+- pouzdro páchne na plast nebo spalování;
+- zařízení je nebezpečné se dotýkat;
+- topidlo pokračuje po chybě řadiče.
 
-If heater behaves not as expected, turn off the power.
+Pokud se topidlo nechová podle očekávání, vypněte napájení.
 
-## AC SSR and DC SSR Mixed Up
+## AC SSR a DC SSR zaměněno
 
-SSRs come for different load types.
+SSR přichází pro různé typy zatížení.
 
-AC SSR is for alternating current. DC SSR is for direct current.
+AC SSR je pro střídavý proud. DC SSR je pro stejnosměrný proud.
 
-Mistake:
+Chyba:
 
-- AC SSR put on DC heater;
-- DC SSR put on 230V AC;
-- bought "SSR 40A" without understanding what is written on the case.
+- AC SSR umístěn na DC topidlo;
+- DC SSR umístěn na 230V AC;
+- koupen "SSR 40A" bez pochopení co je napsáno na pouzdru.
 
-Wrong SSR type may not turn off the load or work dangerously.
+Špatný typ SSR nemusí vypnout zátěž nebo pracovat nebezpečně.
 
-Before connecting verify:
+Před připojením ověřte:
 
-- output type: AC or DC;
-- allowed load voltage;
-- allowed current;
-- control input voltage;
-- manufacturer connection diagram;
-- is heatsink needed.
+- typ výstupu: AC nebo DC;
+- povolené napětí zátěže;
+- povolený proud;
+- napětí řídícího vstupu;
+- schéma zapojení výrobce;
+- je potřeba chladič.
 
-## SSR Without Heatsink
+## SSR bez chladiče
 
-SSR heats up during operation.
+SSR se zahřívá během provozu.
 
-Even if the case says large current, it does not mean the relay will handle it without a heatsink in a closed case.
+I když pouzdro říká velký proud, neznamená to, že relé to zvládne bez chladiče v uzavřeném pouzdru.
 
-Check:
+Kontrola:
 
-- load current;
-- voltage drop across SSR;
-- dissipated power;
-- heatsink requirements;
-- SSR case temperature after operation;
-- is there airflow.
+- proud zátěže;
+- úbytek napětí přes SSR;
+- rozptýlený výkon;
+- požadavky chladiče;
+- teplota SSR pouzdra po provozu;
+- je tam proudění vzduchu.
 
-If SSR is so hot it is hard to hold by hand, this is reason to stop and figure out.
+Pokud je SSR tak horký, že je těžko se ho dotýkat rukou, je to důvod zastavit a zjistit.
 
-## MOSFET for 110-230V AC
+## MOSFET pro 110-230V AC
 
-Regular MOSFET modules for Arduino/ESP32 are usually for DC loads: 12V or 24V.
+Běžné MOSFET moduly pro Arduino/ESP32 jsou obvykle pro DC zátěž: 12V nebo 24V.
 
-They cannot be used as a simple switch for AC mains 110-230V.
+Nemohou se používat jako jednoduchý spínač pro střídavou síť 110-230V.
 
-For mains load you need different components, different isolation, different terminals, grounding, fuses, and understanding of electrical safety.
+Pro síťovou zátěž potřebujete jiné součásti, jinou izolaci, jiné terminály, uzemnění, pojistky a pochopení elektrobezpečnosti.
 
-If unsure the selected module is designed for mains load, do not connect it to mains.
+Pokud si nejste jisti, že vybraný modul je určen pro síťovou zátěž, nepřipojujte ho k síti.
 
-## No Fuse
+## Bez pojistky
 
-A fuse does not make the device completely safe, but it limits the consequences of some failures.
+Pojistka nezjistí zařízení zcela bezpečné, ale omezuje důsledky některých selhání.
 
-Bad ideas:
+Špatné myšlenky:
 
-- "I will add it later";
-- "power supply will protect itself";
-- "my heater is small";
-- "if fuse blows I will put a larger one".
+- "Přidám to později";
+- "zdroj napájení se bude chránit";
+- "moje topidlo je malé";
+- "pokud se pojistka vypíchne, dám větší".
 
-Fuse is selected for the circuit, wiring, and load. It cannot be increased just because it trips.
+Pojistka se volí pro obvod, zapojení a zátěž. Nemůže být zvýšena jen proto, že se vypíchne.
 
-If fuse trips, find the cause.
+Pokud se pojistka vypíchne, najděte příčinu.
 
-## No Independent Thermal Protection
+## Bez nezávislé tepelné ochrany
 
-Firmware and temperature sensor are not the only protection.
+Firmware a teplotní senzor nejsou jedinou ochranou.
 
-For heater, independent hardware protection is useful:
+Pro topidlo je nezávislá ochrana hardwaru užitečná:
 
-- thermostat;
-- thermal fuse;
-- bimetallic switch;
-- separate emergency heater power cutoff.
+- termostat;
+- tepelná pojistka;
+- bimetalový spínač;
+- samostatný nouzový vypínač napájení topidla.
 
-Such protection must work independently of the controller and firmware.
+Taková ochrana musí pracovat nezávisle na řadiči a firmwaru.
 
-If controller hangs, pin hangs in on state, SSR failed, or sensor disconnected, hardware protection can be the last line of defense.
+Pokud se řadič zaseká, pin zůstane v zapnutém stavu, SSR selže nebo senzor se odpojí, hardwarová ochrana může být poslední linií obrany.
 
-## Temperature Sensor Poorly Mounted
+## Teplotní senzor špatně upevněn
 
-Heater is controlled by feedback from the sensor.
+Topidlo je řízeno zpětnou vazbou ze senzoru.
 
-If sensor:
+Pokud senzor:
 
-- disconnected;
-- poorly pressed;
-- in wrong place;
-- has no thermal contact;
-- shows air temperature instead of heater;
-- wrong type selected in firmware;
+- je odpojen;
+- špatně přidrženě;
+- na špatném místě;
+- nemá tepelný kontakt;
+- ukazuje teplotu vzduchu místo topidla;
+- je ve firmwaru vybrán špatný typ;
 
-controller may continue heating because it sees wrong temperature.
+řadič může pokračovat v topení protože vidí špatnou teplotu.
 
-Poor thermal contact is one of the most dangerous mistakes in heating systems.
+Špatný tepelný kontakt je jedna z nejnebezpečnějších chyb v tepelných systémech.
 
-## Wrong Heater Power
+## Špatný výkon topidla
 
-Heater power must be calculated before connecting.
+Výkon topidla musí být vypočítán před připojením.
 
-Example:
+Příklad:
 
 ```text
 24V 120W -> 5A
 24V 240W -> 10A
-230V 300W -> about 1.3A
+230V 300W -> zhruba 1,3A
 ```
 
-For low-voltage powerful heaters current quickly becomes large. This requires proper wires, terminals, MOSFET/SSR, and power supply.
+Pro nízkonapěťová výkonná topidla se proud rychle zvětší. To vyžaduje správné dráty, terminály, MOSFET/SSR a zdroj napájení.
 
-For mains heaters current is less but shock hazard is much higher.
+Pro topidla na síti je proud menší ale nebezpečí úrazu je mnohem větší.
 
-## Weak Terminals and Wires
+## Slabé terminály a vodiče
 
-A terminal that "sort of holds" can heat under current.
+Terminál, který "nějak drží" se může zahřát pod proudem.
 
-Reasons:
+Důvody:
 
-- poor contact;
-- insulation clamped;
-- wire too thin;
-- terminal not rated for current;
-- stranded wire without ferrule frayed;
-- screw loosened by heat and vibration.
+- špatný kontakt;
+- upnutá izolace;
+- drát příliš tenký;
+- terminál není hodnocen na proud;
+- vinutý drát bez ferrule se třepí;
+- šroub uvolněn teplem a vibracemi.
 
-Darkened terminal, smell, heating, or plastic softening around is reason to turn off device.
+Otmavlý terminál, vůně, zahřívání nebo měknutí plastu je důvod vypnout zařízení.
 
-## What Not to Do
+## Co nedělat
 
-You cannot:
+Nemůžete:
 
-- hold open mains part under power;
-- change wires under power;
-- use Arduino MOSFET module for 230V AC;
-- use SSR without heatsink if required;
-- disable thermal protection;
-- short the emergency thermostat;
-- increase fuse "so it does not blow";
-- leave heater unattended on first test;
-- use PLA mounting near heater.
+- držet otevřenou síťovou část pod napájením;
+- měnit vodiče pod napájením;
+- používat Arduino MOSFET modul pro 230V AC;
+- používat SSR bez chladiče pokud je potřeba;
+- vypnout tepelnou ochranu;
+- zkratovat nouzový termostat;
+- zvýšit pojistku "aby se nevypíchla";
+- nechat topidlo bez dozoru při prvním testu;
+- používat PLA montáž blízko topidla.
 
-## What to Check
+## Co zkontrolovat
 
-Before first heating:
+Před prvním topením:
 
-1. Heater voltage.
-2. Power and current.
-3. Power switch type: MOSFET, AC SSR, DC SSR, relay.
-4. Current margin.
-5. SSR or MOSFET heatsink, if needed.
-6. Fuse.
-7. Grounding, if required.
-8. Terminals and wires.
-9. Temperature sensor mounting.
-10. Correct `sensor_type` in firmware.
-11. `min_temp` and `max_temp`.
-12. Independent thermal protection.
-13. Behavior when controller is off.
-14. Terminal and SSR temperature after brief test.
+1. Napětí topidla.
+2. Výkon a proud.
+3. Typ spínače: MOSFET, AC SSR, DC SSR, relé.
+4. Proudová rezerva.
+5. Chladič SSR nebo MOSFET, pokud je potřeba.
+6. Pojistka.
+7. Uzemnění, pokud je potřeba.
+8. Terminály a vodiče.
+9. Montáž teplotního senzoru.
+10. Správný `sensor_type` v firmwaru.
+11. `min_temp` a `max_temp`.
+12. Nezávislá tepelná ochrana.
+13. Chování když je řadič vypnut.
+14. Teplota terminálu a SSR po krátké zkoušce.
 
-## Key Points
+## Klíčové body
 
-- Heater cannot be tested like an ordinary small load.
-- AC SSR and DC SSR are different devices.
-- SSR often requires heatsink.
-- MOSFET module for DC loads does not work for 110-230V AC.
-- Temperature sensor must be mounted firmly in correct place.
-- Hardware thermal protection must be independent of firmware.
-- If there is smell, terminal heating, or unusual heater behavior, turn off power.
+- Topidlo se nemůže testovat jako běžná malá zátěž.
+- AC SSR a DC SSR jsou různá zařízení.
+- SSR často vyžaduje chladič.
+- MOSFET modul pro DC zátěž nefunguje pro 110-230V AC.
+- Teplotní senzor musí být pevně upevněn na správném místě.
+- Hardwarová tepelná ochrana musí být nezávislá na firmwaru.
+- Pokud je vůně, zahřívání terminálu nebo neobvyklé chování topidla, vypněte napájení.
 
-## References
+## Reference
 
-- [Klipper Configuration Reference: verify_heater](https://www.klipper3d.org/Config_Reference.html#verify_heater) - official heater verification and temperature sensor checking by rise rate and accumulated error.
-- [Tom's Hardware: How to Fix 3D Printer Thermal Runaway](https://www.tomshardware.com/3d-printing/how-to-fix-3d-printer-thermal-runaway) - checking thermistor, heating cartridge, fan, power, and wiring during thermal runaway.
-- [Marlin Configuration: Temperature Ranges and Thermal Protection](https://marlinfw.org/docs/configuration/configuration.html#temperature-ranges) - `MINTEMP`, `MAXTEMP`, and thermal protection as part of safety.
-- [Sensata/Crydom SSR Heat Sink Selection](https://www.sensata.com/sites/default/files/a/sensata-ssr-heat-sink-selection-white-paper.pdf) - why SSR requires thermal calculation and heatsink at significant currents.
-- [Omron: Solid State Relay Basics](https://components.omron.com/us-en/products/basic-knowledge/relays/solid-state-relays) - basic information about SSR, application, heating, and differences from mechanical relays.
+- [Klipper Configuration Reference: verify_heater](https://www.klipper3d.org/Config_Reference.html#verify_heater) - oficiální ověřování topidla a kontrola teplotního senzoru podle míry nárůstu a akumulované chyby.
+- [Tom's Hardware: How to Fix 3D Printer Thermal Runaway](https://www.tomshardware.com/3d-printing/how-to-fix-3d-printer-thermal-runaway) - kontrola termistoru, topného kartridže, ventilátoru, napájení a zapojení během tepelného úniku.
+- [Marlin Configuration: Temperature Ranges and Thermal Protection](https://marlinfw.org/docs/configuration/configuration.html#temperature-ranges) - `MINTEMP`, `MAXTEMP` a tepelná ochrana jako součást bezpečnosti.
+- [Sensata/Crydom SSR Heat Sink Selection](https://www.sensata.com/sites/default/files/a/sensata-ssr-heat-sink-selection-white-paper.pdf) - proč SSR vyžaduje tepelný výpočet a chladič při významných proudech.
+- [Omron: Solid State Relay Basics](https://components.omron.com/us-en/products/basic-knowledge/relays/solid-state-relays) - základní informace o SSR, aplikaci, zahřívání a rozdílech od mechanických relé.

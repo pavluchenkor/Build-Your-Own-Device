@@ -1,204 +1,204 @@
 # Připojení čtečky RFID
 
-An RFID/NFC reader lets you read a card, tag, or fob without wired contact.
+RFID/NFC čtečka umožňuje číst kartu, štítek nebo přívěšek bez drátového kontaktu.
 
-In iDryer-like devices, this can be useful for spool identification, material profile selection, service access, or consumable tracking experiments.
+V zařízeních podobných iDryer-u to může být užitečné pro identifikaci cívky, výběr profilu materiálu, přístup k servisu nebo experimenty s sledováním spotřeby.
 
-Main mistake: buy an "RFID module" and assume any card will read from any distance on any controller. In reality, you need to verify frequency, tag type, interface, power, logic levels, and antenna placement.
+Hlavní chyba: koupíte "RFID modul" a předpokládáte, že jakákoli karta se bude čist z jakékoli vzdálenosti na jakémkoli kontroléru. Ve skutečnosti musíte ověřit frekvenci, typ štítku, rozhraní, napájení, logické úrovně a umístění antény.
 
-## Popular modules
+## Populární moduly
 
-Common ones include:
+Běžné moduly zahrnují:
 
 - RC522 / MFRC522;
 - PN532;
-- ready-made USB/UART RFID readers;
-- NFC modules with I2C, SPI, or UART.
+- hotové USB/UART RFID čtečky;
+- NFC moduly s I2C, SPI nebo UART.
 
-For simple 3D printer projects, 13.56 MHz modules and tags are most common: cards, fobs, NTAG/MIFARE-compatible tags.
+Pro jednoduché 3D tiskárny projekty jsou nejběžnější 13.56 MHz moduly a štítky: karty, přívěšky, NTAG/MIFARE kompatibilní štítky.
 
-## What to check before connecting
+## Co kontrolovat před připojením
 
-Before connecting, find:
+Před připojením najděte:
 
-- module frequency;
-- supported card and tag types;
-- interface: SPI, I2C, or UART;
-- supply voltage;
-- logic levels;
-- board pinout;
-- interface selection via jumpers or solder bridges;
-- read distance;
-- antenna and placement requirements.
+- frekvenci modulu;
+- podporované typy karet a štítků;
+- rozhraní: SPI, I2C nebo UART;
+- napájecí napětí;
+- logické úrovně;
+- rozpis pinů desky;
+- výběr rozhraní přes jumper nebo pájecích můstek;
+- vzdálenost čtení;
+- požadavky na anténu a umístění.
 
-If the module is rated for `3.3V`, you cannot just hook it to `5V` logic without checking. Some boards have voltage regulators but lack level shifting on signal lines.
+Pokud je modul hodnocen na `3.3V`, nemůžete jej jednoduše připojit na `5V` logiku bez kontroly. Některé desky mají napěťové regulátory, ale postrádají úpravu logických úrovní na signálních vodičích.
 
-## RC522: typical SPI connection
+## RC522: typické SPI připojení
 
-Cheap RC522 modules usually run on `3.3V` and most commonly connect via SPI.
+Levné moduly RC522 obvykle běží na `3.3V` a nejčastěji se připojují přes SPI.
 
-Typical lines:
+Typické linky:
 
-- `VCC` - `3.3V` power;
-- `GND` - ground;
-- `SCK` - SPI clock signal;
-- `MOSI` - data from controller to module;
-- `MISO` - data from module to controller;
-- `SDA`, `SS`, or `CS` - SPI chip select;
+- `VCC` - napájení `3.3V`;
+- `GND` - zem;
+- `SCK` - SPI signál hodin;
+- `MOSI` - data z kontroléru na modul;
+- `MISO` - data z modulu na kontrolér;
+- `SDA`, `SS` nebo `CS` - SPI výběr čipu;
 - `RST` - reset;
-- `IRQ` - interrupt, often unused in simple projects.
+- `IRQ` - přerušení, často nepoužívané v jednoduchých projektech.
 
-![RFID RC522 (MFRC522) module for reading 13.56 MHz cards](../../img/06-practical-guides/05-rfid-rc522-module.jpg)
+![RFID modul RC522 (MFRC522) pro čtení 13.56 MHz karet](../../img/06-practical-guides/05-rfid-rc522-module.jpg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:RFID-RC522_photo.jpg), Giacomo Alessandroni, CC BY-SA 4.0*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:RFID-RC522_photo.jpg), Giacomo Alessandroni, CC BY-SA 4.0*
 
-Pin names can differ. For example, on RC522, pin `SDA` often means `SS`/`CS` for SPI, not the I2C `SDA` line. This is a common source of confusion.
+Názvy pinů se mohou lišit. Například na RC522 pin `SDA` často znamená `SS`/`CS` pro SPI, ne I2C linku `SDA`. To je běžný zdroj zmatku.
 
-## PN532: SPI, I2C, or UART
+## PN532: SPI, I2C nebo UART
 
-PN532 is a more flexible module. Depending on the board, it can work via:
+PN532 je flexibilnější modul. V závislosti na desce se může jednat:
 
 - SPI;
 - I2C;
 - UART.
 
-But you cannot just connect any pins. On many PN532 boards, the interface is selected by jumpers, DIP switches, or solder bridges.
+Ale nemůžete se jednoduše připojit na jakékoli piny. Na mnoha PN532 deskách je rozhraní vybráno jumper, DIP přepínače nebo pájecím můstkem.
 
-Before connecting, check:
+Před připojením zkontrolujte:
 
-- which interface is physically selected on the board;
-- which pins match the selected interface;
-- whether pull-up resistors are needed for I2C;
-- whether pull-up or reset pin is needed;
-- whether logic levels are compatible with the controller.
+- které rozhraní je fyzicky vybráno na desce;
+- které piny odpovídají vybranému rozhraní;
+- zda jsou potřebné pull-up rezistory pro I2C;
+- zda je potřeba pull-up nebo reset pin;
+- zda jsou logické úrovně kompatibilní s kontrolérem.
 
-If the board says "3.3V logic", do not connect it directly to 5V GPIO.
+Pokud deska říká "3.3V logika", nepřipojujte jej přímo na 5V GPIO.
 
-## Common ground
+## Společná zem
 
-Like other modules, common ground is needed.
+Jako ostatní moduly, je potřeba společná zem.
 
-If the RFID module is powered from one source and the controller from another, their `GND` must be connected.
+Pokud je RFID modul napájen z jednoho zdroje a kontrolér z druhého, jejich `GND` musí být připojeny.
 
-Without common ground, SPI/I2C/UART may not work or work unstably.
+Bez společné zemi se SPI/I2C/UART nemusí fungovat nebo funguje nestabilně.
 
-## Tag must match the reader
+## Štítek musí odpovídat čtečce
 
-RFID/NFC is not a single universal standard.
+RFID/NFC není jediný univerzální standard.
 
-A module can physically only read tags supported by its chip and library.
+Modul může fyzicky číst pouze štítky podporované jeho čipem a knihovnou.
 
-Check:
+Zkontrolujte:
 
-- tag frequency;
-- card or fob type;
-- does the module support MIFARE, NTAG, ISO14443A, or the needed type;
-- do you only need to read UID or also read/write data;
-- does the chosen library support the needed operation.
+- frekvenci štítku;
+- typ karty nebo přívěšku;
+- podporuje modul MIFARE, NTAG, ISO14443A nebo potřebný typ;
+- potřebujete pouze číst UID nebo také číst/psát data;
+- podporuje zvolená knihovna potřebnou operaci.
 
-For simple material profile selection, often reading just the tag UID and storing UID -> material mapping in firmware or host is enough.
+Pro jednoduchy výběr profilu materiálu stačí často pouze čtení UID štítku a uložení mapování UID -> materiál v firmwaru nebo hostitelu.
 
-## Read distance
+## Vzdálenost čtení
 
-Read distance for small RFID/NFC modules is usually short.
+Vzdálenost čtení pro malé RFID/NFC moduly je obvykle krátká.
 
-Results depend on:
+Výsledky závisí na:
 
-- antenna size;
-- tag type;
-- tag orientation;
-- distance;
-- housing plastic;
-- nearby metal;
-- interference;
-- module power.
+- velikosti antény;
+- typu štítku;
+- orientaci štítku;
+- vzdálenosti;
+- plastu v pouzdru;
+- nedalekého kovu;
+- interferenci;
+- výkonu modulu.
 
-Metal near the antenna can drastically worsen reading. If the reader is mounted in a dryer, chamber, or spool holder, test distance in the actual assembly, not just on the bench.
+Kov blízko antény může výrazně zhoršit čtení. Pokud je čtečka namontována v sušičce, komoře nebo držáku cívky, testujte vzdálenost ve skutečné montáži, ne jen na lavici.
 
-## Where to place the reader
+## Kde umístit čtečku
 
-For a filament spool, it is best to place the RFID/NFC reader where the user intentionally brings the tag.
+Pro cívku s filamentem je nejlepší umístit RFID/NFC čtečku tam, kde uživatel záměrně přináší štítek.
 
-Do not design logic assuming the tag will always read automatically.
+Nenavrhujte logiku za předpokladu, že se štítek bude vždy automaticky číst.
 
-Practical options:
+Praktické možnosti:
 
-- "bring tag here" zone on the housing;
-- location near the spool holder;
-- service zone for access card;
-- separate panel with short read distance.
+- "přineš štítek sem" zóna na pouzdru;
+- umístění blízko držáku cívky;
+- servisní zóna pro přístupovou kartu;
+- oddělený panel s krátkou vzdáleností čtení.
 
-If the tag is on the spool, test with different spools, different tag orientation, different plastic, and metal proximity.
+Pokud je štítek na cívce, testujte s různými cívkami, různými orientacemi štítků, různými plasty a blízkostí kovu.
 
-## First startup
+## První spuštění
 
-Before integration:
+Před integrací:
 
-1. Connect module on the bench.
-2. Run an example from the library for your module.
-3. Verify the card or tag reads stably.
-4. Record UID of several tags.
-5. Check that unsupported cards do not break the logic.
-6. Mount module in housing and retest.
+1. Připojte modul na lavici.
+2. Spusťte příklad z knihovny pro váš modul.
+3. Ověřte, že se karta nebo štítek čtou stabilně.
+4. Zaznamenejte UID několika štítků.
+5. Zkontrolujte, že nepodporované karty neprolomí logiku.
+6. Namontujte modul v pouzdru a znovu testujte.
 
-At this stage, do not build complex profile systems right away. First, achieve stable UID reading.
+V tomto stadiu nebudujte složité systémy profilů hned. Nejdřív dosáhněte stabilního čtení UID.
 
-## Example device logic
+## Příklad logiky zařízení
 
-For material profile, simple logic can be:
+Pro profil materiálu může být jednoduchá logika:
 
-1. User brings tag.
-2. Device reads UID.
-3. UID is looked up in a table.
-4. If UID is known, material profile is selected.
-5. If UID is unknown, device asks for manual profile selection.
+1. Uživatel přináší štítek.
+2. Zařízení čte UID.
+3. UID se vyhledá v tabulce.
+4. Pokud je UID známo, je vybrán profil materiálu.
+5. Pokud je UID neznámé, zařízení vyzývá k ručnímu výběru profilu.
 
-RFID should not be the only control method. You need a manual backup: profile in menu, button, screen, or interface setting.
+RFID by neměl být jedinou metodou řízení. Potřebujete manuální zálohu: profil v menu, tlačítko, obrazovka nebo nastavení rozhraní.
 
-## What to check after assembly
+## Co kontrolovat po montáži
 
-Verify:
+Ověřte:
 
-- module receives correct voltage;
-- logic levels are compatible with controller;
-- correct interface is selected;
-- `MOSI`, `MISO`, `SCK`, `CS` are not swapped for SPI;
-- `SDA`, `SCL` are not swapped for I2C;
-- `TX` and `RX` are correctly crossed for UART;
-- common ground exists;
-- reset/IRQ are connected as the library requires;
-- tags of the right type read;
-- read distance is normal in the housing;
-- metal and wires do not block the antenna;
-- device works normally if tag is not read.
+- modul dostává správné napjetí;
+- logické úrovně jsou kompatibilní s kontrolérem;
+- správné rozhraní je vybráno;
+- `MOSI`, `MISO`, `SCK`, `CS` nejsou pro SPI;
+- `SDA`, `SCL` nejsou zaměněny pro I2C;
+- `TX` a `RX` jsou správně zkřížené pro UART;
+- existuje společná zem;
+- reset/IRQ jsou připojeny podle požadavků knihovny;
+- štítky správného typu se čtou;
+- vzdálenost čtení je normální v pouzdru;
+- kov a vodiče neblokují anténu;
+- zařízení funguje normálně, pokud se štítek nečte.
 
-## Common mistakes
+## Běžné chyby
 
-- connecting 3.3V RC522 to 5V power or 5V logic;
-- confusing RC522 `SDA` with I2C `SDA`;
-- forgetting `CS`/`SS` on SPI;
-- swapping `MOSI` and `MISO`;
-- selecting one interface on PN532 with jumpers but wiring another;
-- using unsupported card type;
-- placing antenna right next to metal;
-- testing read distance on bench but not in housing;
-- making RFID the only profile selection method;
-- storing important logic only in UID without read error checking.
+- připojení 3.3V RC522 na 5V napájení nebo 5V logiku;
+- zaměňování RC522 `SDA` s I2C `SDA`;
+- zapomenutí `CS`/`SS` na SPI;
+- prohození `MOSI` a `MISO`;
+- výběr jednoho rozhraní na PN532 s jumper, ale zapojení jiného;
+- použití nepodporovaného typu karty;
+- umístění antény přímo vedle kovu;
+- testování vzdálenosti čtení na lavici, ale ne v pouzdru;
+- vytvoření RFID jedinou metodou výběru profilu;
+- uložení důležité logiky pouze v UID bez kontroly chyby čtení.
 
-## Key points
+## Klíčové body
 
-- RFID/NFC module must be chosen for specific tags and interface.
-- RC522 usually needs `3.3V` and SPI.
-- PN532 can work via SPI, I2C, or UART, but interface must be selected on the board.
-- Common ground is required.
-- Metal near antenna can greatly worsen reading.
-- For material profiles, tag UID is often enough, but manual backup selection is needed.
-- Test in the actual housing, not just on the bench.
+- RFID/NFC modul musí být zvolen pro specifické štítky a rozhraní.
+- RC522 obvykle potřebuje `3.3V` a SPI.
+- PN532 se může fungovat přes SPI, I2C nebo UART, ale rozhraní musí být vybráno na desce.
+- Společná zem je vyžadována.
+- Kov blízko antény může výrazně zhoršit čtení.
+- Pro profily materiálu stačí UID štítku, ale potřeba manuální výběr zálohy.
+- Testujte v skutečném pouzdru, ne jen na lavici.
 
-## Related reading
+## Související čtení
 
-- [Adafruit: PN532 RFID/NFC Breakout Wiring](https://learn.adafruit.com/adafruit-pn532-rfid-nfc/breakout-wiring) - PN532 connection, SPI/I2C/UART selection, and 3.3V logic warnings.
-- [Adafruit: PN532 RFID/NFC guide, single page](https://learn.adafruit.com/adafruit-pn532-rfid-nfc?view=all) - full PN532 guide, wiring, CircuitPython, Raspberry Pi, and interface selection.
-- [Adafruit PN532 product page](https://www.adafruit.com/product/364) - PN532 capabilities, NFC/RFID tag support, and 3.3V UART/I2C/SPI interfaces.
-- [NXP: MFRC522 Standard performance MIFARE and NTAG frontend](https://www.nxp.com/products/rfid-nfc/nfc-hf/nfc-readers/standard-performance-mifare-and-ntag-frontend:MFRC52202HN1) - official MFRC522/RC522 page for 13.56 MHz MIFARE/NTAG scenarios.
-- [DigiKey: MFRC522 Datasheet by NXP](https://www.digikey.com/htmldatasheets/production/993456/0/0/1/mfrc522.html) - MFRC522 technical datasheet: supported cards, power, communication interfaces with controller, and antenna/power effects on distance.
+- [Adafruit: PN532 RFID/NFC Breakout Wiring](https://learn.adafruit.com/adafruit-pn532-rfid-nfc/breakout-wiring) - připojení PN532, výběr rozhraní SPI/I2C/UART a varování logiky 3.3V.
+- [Adafruit: PN532 RFID/NFC průvodce, jednotná stránka](https://learn.adafruit.com/adafruit-pn532-rfid-nfc?view=all) - úplný průvodce PN532, zapojení, CircuitPython, Raspberry Pi a výběr rozhraní.
+- [Stránka produktu Adafruit PN532](https://www.adafruit.com/product/364) - schopnosti PN532, podpora NFC/RFID štítků a rozhraní 3.3V UART/I2C/SPI.
+- [NXP: MFRC522 Standardní výkonný MIFARE a NTAG frontend](https://www.nxp.com/products/rfid-nfc/nfc-hf/nfc-readers/standard-performance-mifare-and-ntag-frontend:MFRC52202HN1) - oficiální stránka MFRC522/RC522 pro 13.56 MHz MIFARE/NTAG scénáře.
+- [DigiKey: Specifikace MFRC522 od NXP](https://www.digikey.com/htmldatasheets/production/993456/0/0/1/mfrc522.html) - technická specifikace MFRC522: podporované karty, napájení, komunikační rozhraní s kontrolérem a vliv antény/napájení na vzdálenost.

@@ -12,7 +12,7 @@ V projektech podobných iDryeru se 3D tisk obvykle používá pro:
 - fan brackets;
 - sensor holders;
 - guides;
-- handles and clips;
+- rukojeti a spony;
 - decorative or service panels.
 
 Tisk součásti je snadný. Aby součást pracovala bezpečně v teplém pouzdře po dobu měsíců, je obtížnější.
@@ -139,7 +139,7 @@ Pro horké a nosné zóny je lépe myslet tímto způsobem: pokud se tištěná 
 
 Sekce obsahuje několik praktických témat:
 
-- `02-what-is-stl.md` - proč STL neobsahuje materiál, orientaci, sílu nebo pokyny k montáži.
+- `02-what-is-stl.md` - proč STL materiál, orientace, síla nebo pokyny k montáži.
 - `03-materials-petg-abs-asa.md` - základní volby mezi PETG, ABS a ASA.
 - `04-heat-resistant-materials.md` - jak myslet na součásti blízko tepla.
 - `05-enclosure-design.md` - zóny pouzdra, větrání, upevnění, přístup a zapojení.

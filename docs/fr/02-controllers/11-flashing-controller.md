@@ -62,7 +62,7 @@ Généralement :
 4. Copiez le fichier `.uf2`.
 5. Le disque disparaît, la carte redémarre.
 
-Le BOOTSEL de Pico est dans la ROM du microcontrôleur, il ne peut donc pas être accidentellement effacé par le flashage normal. Cela rend RP2040 pratique pour les débutants.
+Le BOOTSEL de Pico est dans la ROM du microcontrôleur, il ne peut donc pas être effacé par le flashage normal. Cela rend le RP2040 pratique pour les débutants.
 
 ## STM32 : DFU, ST-LINK, carte SD
 
@@ -77,7 +77,7 @@ Options possibles :
 - bootloader du fabricant de la carte ;
 - bootloader CAN.
 
-Pour STM32, le décalage du bootloader est souvent important. Par exemple, si le bootloader prend les premiers `8 KiB`, Klipper doit être construit avec le décalage correct. Si choisi mal, la carte peut ne pas démarrer après le flashage.
+Pour STM32, le décalage du bootloader est souvent important. Par exemple, si le bootloader prend les premiers `8 KiB`, Klipper doit être construit avec le décalage correct. Si vous choisissez mal, la carte peut ne pas démarrer après le flashage.
 
 ST-LINK/SWD est utile comme option de plus bas niveau : il peut souvent récupérer une carte si le bootloader normal ne fonctionne pas. Mais cela nécessite les broches SWD, le programmeur et la compréhension de la connexion.
 
@@ -179,7 +179,7 @@ Après le flashage du contrôleur, ne connectez pas le radiateur sans vérifier 
 - effacer le bootloader sans comprendre les conséquences ;
 - utiliser un câble USB charge uniquement ;
 - ne pas mettre la carte en mode flashage ;
-- chercher la carte CAN dans `/dev/serial/by-id` ;
+- rechercher la carte CAN dans `/dev/serial/by-id` ;
 - chercher la carte USB-série via `canbus_uuid` ;
 - connecter la charge de puissance avant de vérifier les broches ;
 - ne pas sauvegarder l'ancienne configuration.

@@ -116,7 +116,7 @@ Desventajas:
 - difícil de imprimir;
 - requiere superficie y condiciones correctas.
 
-El nylon mojado se imprime mal: burbujas, silbidos, mala superficie y baja resistencia resultan. Para una cubierta de carcasa simple, nylon es generalmente excesivo.
+El nailon mojado se imprime mal: resultan burbujas, silbidos, mala superficie y baja resistencia. Para una cubierta de carcasa simple, el nailon es generalmente excesivo.
 
 ## PC / Policarbonato
 
@@ -137,7 +137,7 @@ Desventajas:
 - necesita ambiente cálido estable;
 - no todas las impresoras son adecuadas.
 
-PC no es un material "principiante". Si la impresión es inestable, una pieza puede verse normal pero tener pobre resistencia entre capas.
+PC no es un material "principiante". Si la impresión es inestable, una pieza puede volverse normal pero tener pobre resistencia entre capas.
 
 ## Compuestos
 

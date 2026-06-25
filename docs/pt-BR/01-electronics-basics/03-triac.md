@@ -32,7 +32,7 @@ Por exemplo:
 
 Em `24V` você precisa de fios grossos, fonte de alimentação poderosa, MOSFET forte, terminais normais e arrefecimento. Em `230V AC` a corrente é menor, mas há tensão de rede perigosa e todos os requisitos de segurança elétrica.
 
-A abordagem TRIAC não é "melhor" e não "mais simples". É um compromisso diferente: menos corrente no circuito de potência, mas requisitos muito maiores para isolamento, enclosure, fusível, distâncias e qualificações.
+A abordagem TRIAC não é "melhor" e não "mais simples". É um compromisso diferente: menos corrente no circuito de potência, mas requisitos muito maiores para isolamento, fechamento, fiação, distâncias e qualificações.
 
 ## Arquitetura típica
 
@@ -83,9 +83,9 @@ Use cautela com:
 - drivers electrónicos;
 - cargas com alta corrente de inrush.
 
-A carga indutiva desloca a fase de corrente relativa à tensão e pode interferir com o desligamento normal de TRIAC. Pode requerer outros tipos de TRIACs, circuito snubber, varistor ou um método de comutação diferente.
+A carga indutiva desloca a fase de corrente relativa à tensão e pode interferir no desligamento normal do TRIAC. Podem exigir outros tipos de TRIACs, circuito snubber, varistor ou um método de visão diferente.
 
-Uma fonte de alimentação ou driver electrónico não deve ser considerado uma carga resistiva normal. Se tem sua própria electrónica dentro, controlo de TRIAC pode funcionar mal ou perigosamente.
+Uma fonte de alimentação ou driver eletrônico não deve ser considerada uma carga resistiva normal. Se tiver sua própria eletrônica dentro, o controle do TRIAC pode funcionar mal ou perigosamente.
 
 ## Circuito snubber
 
@@ -125,7 +125,7 @@ Na especificação técnica há muitos parâmetros. Para a primeira escolha, tr�
 
 Outros parâmetros (`IH`, `dV/dt`, `Tj`, `Rth`) são importantes para cálculo preciso ou quando há problemas no circuito real.
 
-A classificação de corrente na especificação técnica é dada sob certas condições de arrefecimento. Em um enclosure fechado, quente sem dissipador de calor, a corrente máxima real é menor.
+A classificação de corrente na concepção técnica é dada sob certas condições de ventilação. Em um recinto fechado, quente sem dissipador de calor, a corrente máxima real é menor.
 
 ## TRIAC e SSR
 

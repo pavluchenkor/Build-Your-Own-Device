@@ -26,7 +26,7 @@ Il y a plusieurs classes d'écran différentes :
 
 ![Classes d'écrans tactiles et qui dessine l'interface](../../img/03-common-components/09-touchscreen-classes.svg)
 
-TFT brut est un simple écran avec un contrôleur comme `ILI9341`, `ILI9488`, `ST7789`, plus un contrôleur tactile séparé comme `XPT2046` ou `FT5x06`. Votre microcontrôleur ou micrologiciel dessine l'interface. C'est flexible mais nécessite du code, de la mémoire, des pilotes et un étalonnage.
+TFT brut est un simple écran avec un contrôleur comme `ILI9488`, `ST7789`, `XPT2046`, plus un contrôleur tactile séparé comme `FT5x06` ou `FT5x06`. Votre microcontrôleur ou micrologiciel dessine l'interface. C'est flexible mais nécessite du code, de la mémoire, des pilotes et un étalonnage.
 
 L'affichage intelligent UART/HMI est un écran avec son propre micrologiciel et éditeur d'interface, comme Nextion. Le microcontrôleur envoie des commandes via UART, et l'écran affiche les pages et les éléments. Cela réduit la charge MCU mais lie votre projet aux outils et au protocole de cet écran.
 
@@ -133,7 +133,7 @@ Inconvénients :
 - tous les éléments ne se comportent pas comme dans une application régulière ;
 - remplacer l'écran peut nécessiter une refonte.
 
-Pour un simple appareil, l'affichage intelligent peut être une bonne solution si vous avez besoin d'un beau panneau sans hôte Linux. Mais ce n'est pas un « moniteur normal » : c'est un module séparé avec sa propre logique.
+Pour un appareil simple, l'affichage intelligent peut être une bonne solution si vous avez besoin d'un beau panneau sans hôte Linux. Mais ce n'est pas un « moniteur normal » : c'est un module séparé avec sa propre logique.
 
 ## Cas, câbles et maintenance
 

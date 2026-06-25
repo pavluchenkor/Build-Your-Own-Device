@@ -11,7 +11,7 @@ Já imprime numa impressora 3D e quer construir um secador de filamento. Mas qua
 
 Após esta secção, compreenderá o que está a construir, porque exatamente desta forma, onde pode estar o perigo e como verificar o dispositivo antes de o ligar.
 
-A secção leva-o gradualmente de conceitos simples para resultados reais.
+A seção leva gradualmente de conceitos simples para resultados reais.
 
 O caminho aqui vai do simples para o complexo:
 
@@ -23,7 +23,7 @@ O caminho aqui vai do simples para o complexo:
 6. Depois pense no recinto e nas peças impressas em 3D.
 7. No final, tenha à mão uma lista de erros comuns e uma lista de verificação de diagnóstico.
 
-A ideia principal:
+Uma ideia principal:
 
 Não é preciso compreender toda a eletrónica de uma vez. É suficiente ir passo a passo e cada vez compreender o próximo pequeno passo.
 

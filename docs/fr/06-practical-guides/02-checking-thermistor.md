@@ -32,14 +32,14 @@ Une NTC typique `100K` a une résistance d'environ `100 kOhm` à `25°C`.
 
 Cela ne signifie pas que le multimètre affichera toujours exactement `100.0 kOhm`.
 
-Il est normal que la lecture diffère légèrement à température ambiante:
+Il est normal que la lecture diffère légèrement à température ambiante :
 
 - dans une pièce froide, la résistance sera plus élevée;
 - dans une pièce chaude, la résistance sera plus basse;
 - différents types de thermistances ont des tables différentes;
 - les longs fils et les mauvais contacts peuvent affecter la mesure.
 
-La vérification principale est simple: une NTC 100K à température ambiante devrait lire des dizaines ou environ cent kilohms, pas `0 Ohm` ou `OL`.
+La vérification principale est simple : une NTC 100K à température ambiante devrait lire des dizaines ou environ cent kilohms, pas `OL` ou `OL`.
 
 ## Mesure avec un multimètre numérique
 
@@ -76,7 +76,7 @@ Si la résistance ne change pas du tout, saute aléatoirement ou disparaît lors
 
 ## Rupture et court-circuit
 
-Un multimètre aide à distinguer rapidement un capteur normal d'une défaillance évidente.
+Un multimètre aide à distinguer rapidement un capteur normal d'un défaut évident.
 
 Signes typiques:
 
@@ -132,7 +132,7 @@ max_temp: 90
 
 Les noms de broches ici sont typiques. Dans un appareil réel, vérifiez la disposition de votre carte.
 
-Important: `sensor_type` doit correspondre au capteur réel. Deux thermistances peuvent sembler identiques mais avoir des tables différentes. Si vous choisissez le mauvais type, la température peut être notablement inexacte, en particulier dans la plage de chauffage de travail.
+Important : `sensor_type` doit correspondre au capteur réel. Deux thermistances peuvent sembler identiques mais avoir des tables différentes. Si vous choisissez le mauvais type, la température peut être notablement inexacte, en particulier dans la plage de chauffage de travail.
 
 ## Ce à surveiller dans l'interface
 
@@ -176,7 +176,7 @@ Le capteur doit transférer bien la chaleur du partie qu'il mesure.
 Vérifier:
 
 - le capteur s'assied complètement dans la douille ou le trou;
-- il y a un serrage normal;
+- il y a un unserrage normal ;
 - pas d'écart entre le capteur et la surface;
 - la pâte thermique n'a pas séché ni écaillée si elle est utilisée;
 - les attaches ne sont pas lâches;

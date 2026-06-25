@@ -30,7 +30,7 @@ Navrhované soubory:
 - `03-fans.md` - ventilátory: 2-pin, 3-pin, 4-pin PWM, napětí, proud, hluk, průtok vzduchu.
 - `04-thermistors.md` - termistory: NTC 100K, tabulky, montáž, otevřené/zkratované obvody.
 - `05-led-strips.md` - LED pásy: 5V/12V/24V, normální a adresovatelné, proud na metr.
-- `06-servo-motors.md` - servomotory: napájení, signál, úhel, špičkový proud.
+- `06-servo-motors.md` - servomotory: signál, úhel, špičkové napájení proud.
 - `07-load-cells.md` - váhové čidla: HX711, kalibrování, mechanická montáž.
 - `08-oled-display.md` - OLED: I2C/SPI, adresa, napájení, kdy je potřeba.
 - `09-touchscreen.md` - TFT/dotyková: UART/SPI/HDMI, napájení, kompatibilita.
@@ -49,5 +49,5 @@ Navrhované soubory:
 - [Topidla](02-heaters.md) - nejobjektivnější typ zátěže: napájení, teplota, SSR/MOSFET a nezávislá ochrana.
 - [Ventilátory](03-fans.md) - průtok vzduchu, statický tlak, 2-pin/3-pin/4-pin a napájení.
 - [Termistory](04-thermistors.md) - teplotní senzor jako základ pro zpětnou vazbu topidla.
-- [Připojení ventilátoru](../06-practical-guides/01-connecting-fan.md) - praktický příklad připojení součástky přes výkonový spínač.
-- [Chyby topidla a SSR](../08-common-mistakes/05-heater-ssr-mistakes.md) - běžné chyby s vysokovýkonem a sítě zátěží.
+- [Připojení ventilátoru](../06-practical-guides/01-connecting-fan.md) - praktické připojení součástky přes výkonový spínač.
+- [Chyby topidla a SSR](../08-common-mistakes/05-heater-ssr-mistakes.md) - běžné chyby s vysokým výkonem a sítí zátěží.

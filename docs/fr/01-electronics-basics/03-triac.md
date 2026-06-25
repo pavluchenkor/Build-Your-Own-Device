@@ -1,6 +1,6 @@
 # TRIAC
 
-Un TRIAC, ou thyristor, est un interrupteur semi-conducteur de puissance pour le courant alternatif. Il est utilisé lorsque vous devez allumer ou contrôler une charge AC : par exemple un radiateur réseau, une ampoule incandescente ou un autre appareil simple sur `110-230V AC`.
+Un TRIAC, ou thyristor, est un interrupteur semi-conducteur de puissance pour le courant alternatif. Il est utilisé lorsque vous devez allumer ou contrôler une charge AC : par exemple un radiateur, une ampoule incandescente ou un autre appareil simple sur `110-230V AC`.
 
 Pour les appareils faits maison, c'est un sujet à haut risque. Le TRIAC lui-même ne rend pas la tension réseau sûre. Il fournit simplement un moyen de contrôler une charge AC sans contacts mécaniques.
 
@@ -59,7 +59,7 @@ L'isolement galvanique réduit le risque que la tension réseau atteigne le cont
 
 Les TRIAC optoïsolateurs sont disponibles avec passage à zéro et sans.
 
-Un TRIAC optoïsolateur avec passage à zéro allume la charge près du passage à zéro de la tension réseau. C'est pratique pour l'allumage/extinction simple d'un radiateur ou d'une autre charge résistive : moins de bruit et une commutation plus douce.
+Un optoïsolateur TRIAC avec passage à zéro allume la charge près du passage à zéro de la tension réseau. C'est pratique pour l'allumage/extinction simple d'un radiateur ou d'une autre charge résistive : moins de bruit et une commutation plus douce.
 
 Un TRIAC optoïsolateur sans passage à zéro est utilisé lorsque le contrôle de phase de la puissance est nécessaire, par exemple un variateur. Un tel circuit est plus complexe : vous devez détecter le passage à zéro, compter le délai et tenir compte du bruit.
 

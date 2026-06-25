@@ -1,233 +1,233 @@
 # Módulo MOSFET
 
-A MOSFET module is a ready-made small board that works as a controlled power switch for DC loads. The controller supplies a weak control signal, and the MOSFET module turns the current from the power supply to the load on or off.
+Um módulo MOSFET é uma placa pequena pré-fabricada que funciona como um comutador de potência controlado para cargas DC. O controlador fornece um sinal de controle fraco e o módulo MOSFET liga ou desliga a corrente da fonte de alimentação para a carga.
 
-In iDryer-like devices and 3D printer peripherals, a MOSFET module is used for fans, LED strips, low-voltage heaters, and other `12V`/`24V` loads, when the board's standard output is weak, occupied, or inconvenient.
+Em dispositivos tipo iDryer e periféricos de impressoras 3D, um módulo MOSFET é utilizado para ventoinhaes, fitas LED, aquecedores de baixa tensão e outras cargas `12V`/`24V`, quando a saída padrão da placa é fraca, ocupada ou inconveniente.
 
-## MOSFET and MOSFET module
+## MOSFET e módulo MOSFET
 
-A MOSFET is a field-effect transistor. It has three main pins:
+Um MOSFET é um transístor de efeito de campo. Tem três pinos principais:
 
-- `Gate` - control input;
-- `Drain` - power output;
-- `Source` - power output.
+- `Gate` - entrada de controle;
+- `Drain` - saída de potência;
+- `Source` - saída de potência.
 
-The gate does not power the load. It only controls. The main load current flows through the power part of the MOSFET between `Drain` and `Source`.
+O gate não alimenta a carga. Apenas controla. A corrente de carga principal flui através da parte de potência do MOSFET entre `Drain` e `Source`.
 
-A MOSFET module is not just a single transistor. It is usually a board with a MOSFET, terminals, control input, and sometimes additional resistors, indicators, heatsink, or protection diode.
+Um módulo MOSFET não é apenas um único transístor. É normalmente uma placa com um MOSFET, terminais, entrada de controle e às vezes resistores adicionais, indicadores, dissipador de calor ou díodo de proteção.
 
-The board is convenient for a prototype, but its specifications must be checked as carefully as any power node.
+A placa é conveniente para um protótipo, mas suas especificações devem ser verificadas com cuidado como qualquer nó de potência.
 
-## Why it is needed
+## Por que é necessário
 
-GPIO of the controller should not power a heavy load.
+O GPIO do controlador não deve alimentar uma carga pesada.
 
-GPIO can control:
+O GPIO pode controlar:
 
-- input of MOSFET module;
-- input of relay;
-- input of SSR;
-- input of driver.
+- entrada do módulo MOSFET;
+- entrada do relé;
+- entrada do SSR;
+- entrada do driver.
 
-But GPIO should not directly power:
+Mas o GPIO não deve alimentar diretamente:
 
-- fan;
-- LED strip;
-- heater;
+- ventoinha;
+- fita LED;
+- aquecedor;
 - motor;
-- solenoid;
+- solenoide;
 - servo drive.
 
-If you connect the load directly to GPIO, you can damage the controller, get reboots, overheat traces, or just get unstable operation.
+Se conectar a carga diretamente ao GPIO, pode danificar o controlador, obter reiniciações, sobreaquecer traços ou apenas obter funcionamento instável.
 
-## Low-side switching
+## Comutação baixa
 
-The most common variant for N-channel MOSFET module is low-side switching, that is, switching via the negative line.
+A variante mais comum para módulo MOSFET de canal N é a passagem baixa, ou seja, através da linha negativa.
 
-![N-channel MOSFET in low-side switching mode](../../img/01-electronics-basics/02-nmos-switch-operation.png)
+![MOSFET de canal N em modo de comutação baixa](../../img/01-electronics-basics/02-nmos-switch-operation.png)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
+*Fonte: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:NMOS_PWR_WHOLE.PNG), KjellElec, CC BY-SA 4.0*
 
-Typical logic:
+Lógica típica:
 
-1. `+24V` from power supply goes directly to the load positive.
-2. Load negative goes to the power output of MOSFET module.
-3. MOSFET module connects or breaks the path from load negative to `GND`.
-4. `GND` of power supply and `GND` of controller are connected together.
-5. Controller control pin goes to the `Signal`, `IN`, `Gate` or similar input of the module.
+1. `+24V` da fonte de alimentação vai diretamente para o positivo da carga.
+2. O negativo da carga vai para a saída de potência do módulo MOSFET.
+3. O módulo MOSFET liga ou quebra o caminho do negativo da carga para `GND`.
+4. `GND` da fonte de alimentação e `GND` do controlador estão conectados em conjunto.
+5. O pino de controle do controlador vai para a entrada `Signal`, `IN`, `Gate` ou similar do módulo.
 
-Common `GND` / common negative is mandatory. Without it, the controller and MOSFET module do not have a common reference level for the control signal.
+O `GND` comum / negativo comum é obrigatório. Sem isto, o controlador e o módulo MOSFET não têm um nível de referência comum para o sinal de controle.
 
-Low-side switching has a limitation: MOSFET breaks the load negative. While the switch is off, the load negative is not equal to common `GND`. For a simple 2-pin fan, strip, or heater this is usually fine. For a load with a tachometer, separate signal wire, sensor inside, or additional connection to another board, you need to check the schematic: sometimes it is better to control the standard input or use a different switching method.
+A sobrecarga baixa tem uma limitação: MOSFET quebra o negativo da carga. Enquanto o comutador está desconectado, o negativo da carga não é igual ao `GND` comum. Para uma ventoinha simples de 2 pinos, fita ou aquecedor, isto é normalmente bom. Para uma carga com tacômetro, fio de sinal separado, sensor interno ou conexão adicional a outra placa, é preciso verificar o esquema: às vezes é melhor controlar a entrada padrão ou usar um método de necessidades diferentes.
 
-## Where to use
+## Onde utilizar
 
-MOSFET module is suitable for DC loads if it is rated for their voltage and current:
+Um módulo MOSFET é adequado para cargas DC se for classificado para sua tensão e corrente:
 
-- `12V`/`24V` fan;
-- single-color LED strip;
-- channel of standard RGB strip;
-- `12V`/`24V` heater;
-- small DC motor, if protected from spikes;
-- solenoid, if there is flyback diode or other protection.
+- ventoinha `12V`/`24V`;
+- fita LED de cor única;
+- canal de fita RGB padrão;
+- aquecedor `12V`/`24V`;
+- pequeno motor DC, se protegido contra picos;
+- solenoide, se houver díodo de retorno ou outra proteção.
 
-For addressable LED strip, MOSFET usually does not control the data. It can disconnect power to the entire strip, but individual LEDs are controlled via the data line.
+Para fita LED endereçável, o MOSFET normalmente não controla os dados. Pode desconectar a potência para toda a fita, mas os LEDs individuais são controlados através da linha de dados.
 
-For a servo drive, a MOSFET module is usually not needed to control position: the servo needs a separate control PWM signal and normal power.
+Para um servo drive, um módulo MOSFET normalmente não é necessário para controlar a posição: o servo precisa de um sinal PWM de controle separado e potência normal.
 
-## What to check when choosing
+## O que verificar ao escolher
 
-Before purchasing or connecting, check:
+Antes de comprar ou conectar, verifique:
 
-- load voltage rating;
-- maximum current rating;
-- real current of your load;
-- does the input work from `3.3V`;
-- is `Rds(on)` in the technical specification at the needed gate voltage;
-- does it need active logic `HIGH` or `LOW`;
-- is there common `GND`;
-- is there flyback diode for motors/solenoids;
-- terminal size and maximum terminal current;
-- board trace thickness and cooling;
-- is heatsink needed;
-- is there a schematic, technical specification, or normal documentation.
+- classificação de tensão da carga;
+- classificação de corrente máxima;
+- corrente real da sua carga;
+- a entrada funciona de `3.3V`;
+- `Rds(on)` está nas especificações técnicas na tensão de gate necessária;
+- precisa de lógica ativa `HIGH` ou `LOW`;
+- há `GND` comum;
+- há díodo de retorno para motores/solenoides;
+- tamanho do terminal e corrente máxima do terminal;
+- espessura do traço da placa e arrefecimento;
+- é necessário dissipador de calor;
+- há esquema, especificações técnicas ou documentação normal.
 
-If the description only says "MOSFET module for Arduino" without voltage, current, schematic, and MOSFET type, you cannot choose such a module for a heater or long LED strip.
+Se a descrição apenas diz "módulo MOSFET para Arduino" sem tensão, corrente, esquema e tipo MOSFET, não pode escolher tal módulo para um aquecedor ou fita LED longa.
 
-## 3.3V and logic-level MOSFET
+## 3.3V e MOSFET nível de lógica
 
-Many modern controllers work with `3.3V` logic: ESP32, RP2040, many STM32.
+Muitos controladores modernos funcionam com lógica `3.3V`: ESP32, RP2040, muitos STM32.
 
-Not every MOSFET fully opens from `3.3V`. If it does not open fully, its resistance remains high and it heats up.
+Nem todo MOSFET abre completamente a partir de `3.3V`. Se não abrir completamente, a sua resistência permanece elevada e aquece.
 
-Important terms:
+Termos importantes:
 
-- `Vgs(th)` - threshold where MOSFET starts to open;
-- `Rds(on)` - resistance of the open channel;
-- logic-level MOSFET - MOSFET rated for control from logic levels.
+- `Vgs(th)` - limiar onde o MOSFET começa a abrir;
+- `Rds(on)` - resistência do canal aberto;
+- MOSFET nível de lógica - MOSFET classificado para controle a partir de níveis de lógica.
 
-Common mistake: see in the technical specification `Vgs(th) = 2V` and decide that the MOSFET works fine from `3.3V`. That is not so. `Vgs(th)` does not mean "fully open". You need to check `Rds(on)` at `2.5V`, `3.3V`, `4.5V` or `5V`, depending on the controller.
+Erro comum: ver as especificações técnicas do `3.3V` e decidir que o MOSFET funciona bem a partir do `Vgs(th)`. Não é assim. `Rds(on)` não significa "totalmente aberto". Precisa verificar `2.5V` em `3.3V`, `4.5V`, `5V` ou `5V`, dependendo do driver.
 
-For ESP32/RP2040 it is better to choose a module that explicitly states `3.3V` control compatibility, or where the input circuit provides this. If the table has `Rds(on)` only at `10V`, and there is no data at `2.5V`/`3.3V`/`4.5V`, such a module is suspicious for a `3.3V` controller.
+Para ESP32/RP2040 é melhor escolher um módulo que declare explicitamente a compatibilidade de controle `Rds(on)` ou onde o circuito de entrada ou fornecimento. Se a tabela tem `10V` apenas em `2.5V` e não há dados em `3.3V`/`4.5V`/`3.3V`, tal módulo é suspeito para um driver `3.3V`.
 
-## Current and heating
+## Corrente e aquecimento
 
-A MOSFET in the open state still has resistance. Heat is generated across it.
+Um MOSFET no estado aberto ainda tem resistência. O calor é gerado através dele.
 
-The greater the current, the more important:
+Quanto maior a corrente, mais importante é:
 
-- low `Rds(on)`;
-- normal copper area on the board;
-- appropriately sized terminals;
-- heatsink, if needed;
-- enclosure ventilation;
-- current headroom;
-- temperature check after real operation.
+- baixo `Rds(on)`;
+- área de cobre normal na placa;
+- terminais dimensionados apropriadamente;
+- dissipador de calor, se necessário;
+- ventilação do enclosure;
+- margem de corrente;
+- verificação de temperatura após funcionamento real.
 
-The "100A MOSFET" marking on the transistor package does not mean that a small module with thin traces and cheap terminals will withstand `100A`. The real limit is often the board, terminal block, wire, solder joint, and cooling.
+A marcação "100A MOSFET" no pacote do transistor não significa que um módulo pequeno com traços finos e terminais baratos aguentará `100A`. O limite real é frequentemente a placa, bloco de terminais, cabo, junta de solda e resfriamento.
 
-If the MOSFET module is so hot that it is difficult to hold in your hand, that is a reason to stop and recalculate the current, cooling, and connection quality.
+Se o módulo MOSFET está tão quente que é difícil de segurar na mão, essa é uma razão para parar e recalcular a corrente, arrefecimento e qualidade da conexão.
 
-## Motors, fans, and solenoids
+## Motores, ventoinhaes e solenoides
 
-Inductive loads can produce voltage spikes when turned off.
+As cargas indutivas podem produzir picos de tensão quando desconectadas.
 
-Such loads include:
+Tais cargas incluem:
 
-- DC motors;
-- fans;
-- solenoids;
-- relays;
-- electromagnets.
+- motores DC;
+- ventoinhaes;
+- solenoides;
+- relés;
+- eletroímanes.
 
-They often need protection:
+Frequentemente precisam de proteção:
 
-- flyback diode;
-- TVS diode;
-- ready-made driver with protection;
-- module where protection is already installed.
+- díodo de retorno;
+- díodo TVS;
+- driver pré-fabricado com proteção;
+- módulo onde a proteção já está instalada.
 
-If the module is only rated for LED strip or resistive load, you cannot automatically assume it is safe for a motor or solenoid.
+Se o módulo é apenas classificado para fita LED ou carga resistiva, não pode assumir automaticamente que é seguro para um motor ou solenoide.
 
-For a heater, flyback diode is usually not needed, because the heater is close to a resistive load. But for a heater, current, terminals, fuse, and independent thermal protection are more important.
+Para um aquecedor, o díodo de retorno normalmente não é necessário, porque o aquecedor é próximo de uma carga resistiva. Mas para um aquecedor, corrente, terminais, fusível e proteção térmica independente são mais importantes.
 
-## PWM control
+## Controlo PWM
 
-A MOSFET module can be used not only for on/off, but also for PWM power regulation.
+Um módulo MOSFET pode ser utilizado não apenas para conectar/desconectar, mas também para regulação de potência PWM.
 
-Typical examples:
+Exemplos típicos:
 
-- LED strip brightness;
-- speed of simple DC fan;
-- power of low-voltage heater.
+- brilho da fita LED;
+- velocidade de ventoinha DC simples;
+- potência do aquecedor de baixa tensão.
 
-But PWM is not always the same:
+Mas PWM nem sempre é o mesmo:
 
-- 4-pin PWM fan is better controlled by a separate PWM pin of the fan, not by cutting power;
-- heater usually does not require high PWM frequency;
-- too high frequency can increase MOSFET heating;
-- too low frequency can cause LED flicker or motor noise.
+- ventoinha PWM de 4 pinos é melhor controlado por um pino PWM separado do ventoinha, não cortando potência;
+- aquecedor normalmente não requer frequência PWM elevada;
+- frequência demasiado elevada pode aumentar o aquecimento do MOSFET;
+- frequência demasiado baixa pode causar cintilação LED ou ruído do motor.
 
-Choice of frequency depends on the load, module, and firmware.
+A escolha da frequência depende da carga, módulo e firmware.
 
-## MOSFET module is not for 110-230V AC
+## O módulo MOSFET não é para 110-230V AC
 
-Standard MOSFET modules for Arduino/ESP32 are designed for DC loads: `5V`, `12V`, `24V`, sometimes more if explicitly specified.
+Os módulos MOSFET padrão para Arduino/ESP32 são concebidos para cargas DC: `5V`, `12V`, `24V`, às vezes mais se explicitamente especificado.
 
-They cannot be used as a switch for mains voltage `110-230V AC`.
+Não podem ser utilizados como comutador para tensão de rede `110-230V AC`.
 
-For mains load you need different solutions:
+Para carga de rede precisa de soluções diferentes:
 
-- relay or SSR rated specifically for AC load;
-- normal terminals;
-- fuse;
+- relé ou SSR classificado especificamente para carga AC;
+- terminais normais;
+- fusível;
 - enclosure;
-- insulation;
-- grounding where required;
-- understanding of electrical safety.
+- isolamento;
+- aterramento onde necessário;
+- compreensão da segurança elétrica.
 
-If you are not sure that the module is intended for mains voltage, do not connect it to the mains.
+Se não tem a certeza de que o módulo é destinado para tensão de rede, não ligue à rede.
 
-## What to check after connecting
+## O que verificar após a conexão
 
-Before long-term operation, check:
+Antes da operação a longo prazo, verifique:
 
-- load gets correct voltage;
-- controller and power supply have common `GND`;
-- control signal actually turns the load on and off;
-- MOSFET module does not heat excessively;
-- terminals do not heat;
-- wires are suitable for current;
-- PWM works without strange noise, flicker, or reboots;
-- load is actually off when command is off;
-- for motor/solenoid there is spike protection;
-- for heater there is a fuse and independent thermal protection.
+- carga recebe tensão correta;
+- controlador e fonte de alimentação têm `GND` comum;
+- sinal de controle realmente liga e desliga a carga;
+- módulo MOSFET não aquece excessivamente;
+- terminais não aquecem;
+- cabos são adequados para corrente;
+- PWM funciona sem ruído estranho, cintilação ou reiniciações;
+- carga está realmente desconectada quando o comando está desconectado;
+- para motor/solenoide há proteção contra picos;
+- para aquecedor há fusível e proteção térmica independente.
 
-Do the first test of heavy load briefly and under observation.
+Faça o primeiro teste de carga pesada brevemente e sob observação.
 
-## Common mistakes
+## Erros comuns
 
-- powering load from GPIO;
-- forgetting common ground;
-- choosing module only by the pretty current number in the name;
-- not checking operation from `3.3V` logic;
-- using MOSFET that does not fully open;
-- connecting motor or solenoid without flyback protection;
-- connecting long LED strip through weak terminals;
-- using DC MOSFET module for `110-230V AC`;
-- not checking module heating in closed enclosure;
-- thinking MOSFET module itself limits load current.
+- alimentar carga de GPIO;
+- esquecer terra comum;
+- escolher módulo apenas pelo número de corrente bonito no nome;
+- não verificar funcionamento da lógica `3.3V`;
+- utilizar MOSFET que não abre completamente;
+- conectar motor ou solenoide sem proteção contra retorno;
+- conectar fita LED longa através de terminais fracos;
+- utilizar módulo MOSFET DC para `110-230V AC`;
+- não verificar aquecimento do módulo em enclosure fechado;
+- pensar que o módulo MOSFET em si limita a corrente de carga.
 
-## The main point
+## O ponto principal
 
-A MOSFET module is a controlled power switch for DC loads. It does not create power and does not power the load from the controller. It only opens or closes the path for current from the power supply.
+Um módulo MOSFET é um comutador de potência controlado para cargas DC. Não cria potência e não alimenta a carga a partir do controlador. Apenas abre ou fecha o caminho para corrente a partir da fonte de alimentação.
 
-Check voltage, current, compatibility with `3.3V`/`5V` logic, common `GND`, heating, terminals, and protection for inductive loads. For mains voltage, standard Arduino/ESP32 MOSFET module is not suitable.
+Verifique tensão, corrente, compatibilidade com lógica `3.3V`/`5V`, `GND` comum, aquecimento, terminais e proteção para cargas indutivas. Para tensão de rede, o módulo MOSFET padrão Arduino/ESP32 não é adequado.
 
-## Reference materials
+## Materiais de referência
 
-- [SparkFun MOSFET Power Switch and Buck Regulator Hookup Guide](https://docs.sparkfun.com/SparkFun_MOSFET_Power_Switch_and_Buck_Regulator_Low-Side/single_page/) - example of ready-made low-side MOSFET module, load connection, thermal board limits and flyback diode.
-- [SparkFun MOSFET Power Switch product page](https://www.sparkfun.com/products/23979) - example of how manufacturer specifies voltage, current, low-side circuit, MOSFET and board limitations.
-- [Adafruit MOSFET Driver](https://learn.adafruit.com/adafruit-mosfet-driver) - practical explanation of why motors, solenoids, and powerful LEDs cannot be connected directly to GPIO and why spike protection is needed.
-- [DigiKey: How to Select a MOSFET](https://www.digikey.com/en/blog/how-to-select-a-mosfet-for-logic-circuits-or-gate-design) - selecting MOSFET by `Vgs`, `Rds(on)` and logic control level.
-- [Infineon: Logic level MOSFETs](https://www.infineon.com/products/power/mosfet/n-channel/optimos-strongirfet/optimos-ir-mosfet-logic-level) - explanation of logic-level MOSFET and control from microcontroller.
+- [SparkFun MOSFET Power Switch and Buck Regulator Hookup Guide](https://docs.sparkfun.com/SparkFun_MOSFET_Power_Switch_and_Buck_Regulator_Low-Side/single_page/) - exemplo de módulo MOSFET de comutação baixa pré-fabricado, conexão de carga, limites de placa térmica e díodo de retorno.
+- [SparkFun MOSFET Power Switch product page](https://www.sparkfun.com/products/23979) - exemplo de como o fabricante especifica tensão, corrente, circuito de comutação baixa, limitações MOSFET e placa.
+- [Adafruit MOSFET Driver](https://learn.adafruit.com/adafruit-mosfet-driver) - explicação prática de por que motores, solenoides e LEDs poderosos não podem ser conectados diretamente ao GPIO e por que a proteção contra picos é necessária.
+- [DigiKey: How to Select a MOSFET](https://www.digikey.com/en/blog/how-to-select-a-mosfet-for-logic-circuits-or-gate-design) - seleção de MOSFET por `Vgs`, `Rds(on)` e nível de controle de lógica.
+- [Infineon: Logic level MOSFETs](https://www.infineon.com/products/power/mosfet/n-channel/optimos-strongirfet/optimos-ir-mosfet-logic-level) - explicação de MOSFET nível de lógica e controle a partir de microcontrolador.

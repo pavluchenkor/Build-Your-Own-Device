@@ -1,12 +1,12 @@
 # Visor OLED
 
-An OLED display is a small screen for showing text, numbers, simple icons and device status. Unlike regular LCD, OLED lights itself and doesn't need separate backlight. So small OLED modules are readable, take little space and are convenient for simple DIY devices.
+Um display OLED é uma pequena tela que mostra texto, números, ícones simples e status do dispositivo. Ao contrário do LCD normal, o OLED ilumina-se sozinho e não precisa de luz de fundo separada. Portanto, pequenos módulos OLED são legíveis, ocupam pouco espaço e são convenientes para dispositivos DIY simples.
 
-In an iDryer-like device, an OLED can show temperature, humidity, working mode, error, Wi-Fi status, remaining filament or current drying phase.
+Em um dispositivo semelhante ao iDryer, um OLED pode mostrar temperatura, umidade, modo de trabalho, erro, status do Wi-Fi, filamento restante ou fase de secagem atual.
 
-## When OLED Is Useful
+## Quando o OLED é útil
 
-An OLED is worth adding if users need to see device status right on the enclosure:
+Vale a pena adicionar um OLED se os usuários precisarem ver o status do dispositivo diretamente no gabinete:
 
 - current chamber temperature;
 - humidity;
@@ -16,36 +16,36 @@ An OLED is worth adding if users need to see device status right on the enclosur
 - sensor error;
 - fan or heater status;
 - connection status;
-- simple menu without a large screen.
+- menu simples sem tela grande.
 
-If the device is always managed through Klipper, a web interface or mobile app, a separate OLED may be unnecessary. It adds wiring, enclosure space, code and another failure point.
+Se o dispositivo for sempre gerenciado através do Klipper, uma interface web ou aplicativo móvel, um OLED separado pode ser desnecessário. Ele adiciona fiação, espaço no gabinete, código e outro ponto de falha.
 
-## Typical Sizes and Controllers
+## Tamanhos e controladores típicos
 
-The most common small OLED modules:
+Os pequenos módulos OLED mais comuns:
 
 - `128x32` pixels;
 - `128x64` pixels;
 - diagonal about `0.91"` or `0.96"`;
 - monochrome: white, blue, yellow-blue;
-- with controller `SSD1306` or similar `SH1106`.
+- com controlador `SH1106` ou similar `SH1106`.
 
-`SSD1306` and `SH1106` look similar but are not always fully compatible in code. If a library is set for `SSD1306` but the module is actually `SH1106`, the screen may show a shifted picture, garbage or not work.
+`SH1106` e `SSD1306` parecem semelhantes, mas nem sempre são totalmente compatíveis no código. Se uma biblioteca estiver definida para `SH1106`, mas o módulo for na verdade `SH1106`, a tela poderá mostrar uma imagem deslocada, lixo ou não funcionar.
 
-Before buying, it's important to check not just screen size but controller, interface and supply voltage.
+Antes de comprar, é importante verificar não apenas o tamanho da tela, mas também o controlador, a interface e a tensão de alimentação.
 
-## I2C and SPI
+## I2C e SPI
 
-Small OLED modules usually connect by I2C or SPI.
+Módulos OLED pequenos geralmente são conectados por I2C ou SPI.
 
-An I2C module usually has 4 contacts:
+Um módulo I2C geralmente possui 4 contatos:
 
 - `VCC`;
 - `GND`;
 - `SDA`;
 - `SCL`.
 
-An SPI module usually needs more lines:
+Um módulo SPI geralmente precisa de mais linhas:
 
 - `VCC`;
 - `GND`;
@@ -55,26 +55,26 @@ An SPI module usually needs more lines:
 - `DC`;
 - sometimes `RST`.
 
-I2C is simpler to wire and usually enough for status, temperature and simple menu. SPI is faster and better if the screen redraws often, but for a small status display this is rarely critical.
+I2C é mais simples de conectar e geralmente é suficiente para status, temperatura e menu simples. O SPI é mais rápido e melhor se a tela for redesenhada com frequência, mas para uma exibição de status pequena isso raramente é crítico.
 
 ![Connecting I2C OLED display to controller](../../img/03-common-components/08-oled-i2c-wiring.jpg)
 
 *Source: [Adafruit Learning System](https://learn.adafruit.com/adafruit-128x64-oled-featherwing/), CC BY-SA 3.0*
 
-## Power and Logic Levels
+## Níveis de potência e lógica
 
-An OLED module may be rated for `3.3V`, for `5V`, or have a regulator and level shifting on the board. Externally such modules can look almost identical.
+Um módulo OLED pode ser classificado para `5V`, para `5V` ou ter um regulador e mudança de nível na placa. Externamente, esses módulos podem parecer quase idênticos.
 
-Before connecting, check:
+Antes de conectar, verifique:
 
-- what power is listed on the module or product page;
-- whether `SDA`/`SCL` lines are compatible with controller logic;
-- whether the module has I2C pull-ups;
-- whether pull-ups don't conflict with controller voltage.
+- qual potência está listada no módulo ou na página do produto;
+- se as linhas `SCL`/`SCL` são compatíveis com a lógica do controlador;
+- se o módulo possui pull-ups I2C;
+- se os pull-ups não entram em conflito com a tensão do controlador.
 
-For ESP32 and most modern microcontrollers, it's safer to assume `3.3V` logic. If an OLED module pulls I2C to `5V`, it can be problematic for a 3.3V controller.
+Para ESP32 e a maioria dos microcontroladores modernos, é mais seguro assumir a lógica `5V`. Se um módulo OLED puxar I2C para `5V`, pode ser problemático para um controlador de 3,3V.
 
-Many popular I2C OLED modules work from `3.3V` and connect fine to ESP32 directly, but you need to check the specific module.
+Muitos módulos OLED I2C populares funcionam no `3.3V` e se conectam perfeitamente ao ESP32 diretamente, mas você precisa verificar o módulo específico.
 
 ## I2C Address
 
@@ -83,24 +83,24 @@ I2C OLED often has addresses:
 - `0x3C`;
 - `0x3D`.
 
-If the screen doesn't respond, the address is the first thing to check after power and wires. Some modules let you change the address via jumper or soldering a small jumper on the board.
+Se a tela não responder, o endereço é a primeira coisa a verificar depois da alimentação e dos fios. Alguns módulos permitem alterar o endereço via jumper ou soldar um pequeno jumper na placa.
 
-Signs of wrong address:
+Sinais de endereço errado:
 
-- sketch or firmware starts but screen is blank;
-- I2C scanner sees device at different address;
-- library initializes display without visible result;
-- changing `0x3C` to `0x3D` makes it work.
+- o esboço ou firmware é iniciado, mas a tela fica em branco;
+- O scanner I2C vê o dispositivo em um endereço diferente;
+- biblioteca inicializa exibição sem resultado visível;
+- mudar `0x3D` para `0x3D` faz com que funcione.
 
-## What to Show on a Small Screen
+## O que mostrar em uma tela pequena
 
-A `128x32` or `128x64` OLED has very little space. Don't try to make a full smartphone interface on it.
+Um OLED `128x64` ou `128x64` tem muito pouco espaço. Não tente fazer uma interface completa para smartphone nele.
 
-Good set for a dryer or heater:
+Bom conjunto para secadora ou aquecedor:
 
 - large current temperature;
 - target temperature;
-- humidity if there's a sensor;
+- umidade se houver sensor;
 - mode: `HEAT`, `DRY`, `IDLE`, `ERROR`;
 - small fan/heat icon;
 - error code or short message.
@@ -109,46 +109,46 @@ Bad set:
 
 - long sentences;
 - tiny tables;
-- many menu items on one screen;
+- muitos itens de menu em uma tela;
 - constantly scrolling text;
-- decorative animation instead of useful status.
+- animação decorativa em vez de status útil.
 
-For a device with a heater, it's more important to quickly see an error than a pretty splash screen.
+Para um dispositivo com aquecedor, é mais importante ver rapidamente um erro do que uma bela tela inicial.
 
-## Burn-in and Brightness
+## Burn-in e brilho
 
-OLED pixels age from glowing. If you show the same bright text in one place for many hours, a trace may eventually appear.
+Os pixels OLED envelhecem devido ao brilho. Se você mostrar o mesmo texto brilhante em um lugar por muitas horas, um traço poderá aparecer.
 
-For a DIY device, this isn't always critical, but it's better to:
+Para um dispositivo DIY, isso nem sempre é crítico, mas é melhor:
 
-- not keep brightness at maximum without need;
-- turn off screen after idle time;
+- não manter o brilho no máximo sem necessidade;
+- desligue a tela após o tempo ocioso;
 - occasionally move static elements;
-- not show white fill constantly;
-- use brief updates instead of extra animation.
+- não apresentar preenchimento branco constantemente;
+- use atualizações breves em vez de animação extra.
 
-In a warm chamber or near a heater, OLED also lives worse. It's better to keep electronics in a zone with controlled temperature not exceeding the module's range.
+Em uma câmara quente ou perto de um aquecedor, o OLED também vive pior. É melhor manter os componentes eletrônicos em uma zona com temperatura controlada que não exceda a faixa do módulo.
 
-## Wire Length and Interference
+## Comprimento do fio e interferência
 
-I2C doesn't like long wires, especially near motors, heaters and power lines. If OLED is on a door or removable panel, a long flexible cable can become a noise source.
+I2C não gosta de fios longos, especialmente perto de motores, aquecedores e linhas de energia. Se o OLED estiver em uma porta ou painel removível, um cabo longo e flexível pode se tornar uma fonte de ruído.
 
 Practical rules:
 
-- keep `SDA` and `SCL` short;
-- route them away from heater power wires;
-- use common `GND`;
-- don't make a connector that goes in backward;
-- for a removable cover, use a proper connector and strain relief;
-- if I2C is unstable, first shorten the wires and check pull-ups.
+- mantenha `SCL` e `SCL` curtos;
+- afaste-os dos fios de alimentação do aquecedor;
+- use `GND` comum;
+- não faça um conector que entre ao contrário;
+- para uma tampa fechada, use um conector e ruptura de tensão adequada;
+- se o I2C estiver instável, primeiro encurte os fios e verifique os pull-ups.
 
-SPI usually tolerates higher update speed better, but has more wires and connection errors are more common.
+SPI geralmente tolera melhor velocidades de atualização mais altas, mas tem mais fios e erros de conexão são mais comuns.
 
 ## OLED or Touchscreen
 
-OLED is good for showing status. It doesn't solve the input problem without buttons, encoder or other control.
+OLED é bom para mostrar status. Não resolve o problema de entrada sem botões, codificador ou outro controle.
 
-If users often need to change settings right on the device, you might need:
+Se os usuários frequentemente precisarem alterar as configurações diretamente no dispositivo, talvez seja necessário:
 
 - encoder + OLED;
 - several buttons + OLED;
@@ -156,45 +156,45 @@ If users often need to change settings right on the device, you might need:
 - touchscreen;
 - web interface or app.
 
-Don't install a touchscreen just because OLED seems small. For simple devices, a small OLED with one button is sometimes more reliable and clear.
+Não instale uma tela sensível ao toque só porque o OLED parece pequeno. Para dispositivos simples, um pequeno OLED com um botão às vezes é mais confiável e claro.
 
-## What to Check Before Buying
+## O que verificar antes de comprar
 
-Before buying an OLED module, check:
+Antes de comprar um módulo OLED, verifique:
 
 - size: `128x32`, `128x64` or other;
 - controller: `SSD1306`, `SH1106`, `SH1107`;
 - interface: I2C or SPI;
 - power: `3.3V`, `5V` or range;
 - logic level;
-- I2C address if listed;
+- Endereço I2C, se listado;
 - reset pin support;
-- support in chosen firmware or library;
-- physical board dimensions and mounting holes;
+- suporte no firmware ou biblioteca escolhida;
+- dimensões físicas da placa e furos de montagem;
 - connector location;
 - operating temperature;
-- color and readability at the angle you need.
+- cor e legibilidade no ângulo que você precisa.
 
-For an ESP32 device, I2C OLED `128x64` on `SSD1306` with address `0x3C` is usually most convenient. For a Klipper board, check whether the specific board supports your chosen bus and how the display is described in configuration.
+Para um dispositivo ESP32, I2C OLED `SSD1306` em `0x3C` com endereço `0x3C` geralmente é mais conveniente. Para uma placa Klipper, verifique se a placa específica suporta o barramento escolhido e como o display é descrito na configuração.
 
-## Typical Errors
+## Erros típicos
 
-- mixed up `SDA` and `SCL`;
-- connected power to wrong voltage;
+- misturou `SCL` e `SCL`;
+- energia conectada à tensão errada;
 - didn't check I2C address;
-- selected `SSD1306` in code but module is `SH1106`;
+- selecionou `SH1106` no código, mas o módulo é `SH1106`;
 - made I2C wires too long;
 - forgot common `GND`;
-- connected 5V pull-up module to 3.3V controller without checking;
+- módulo pull-up de 5 V conectado ao controlador de 3,3 V sem verificação;
 - selected SPI module expecting 4 pins like I2C;
 - put screen in hot zone;
-- added display without understanding what problem it solves for users.
+- exibição adicionada sem entender qual problema ela resolve para os usuários.
 
-## Main Point
+## Ponto Principal
 
-An OLED display is good for short status and simple local interface. For most DIY devices, an I2C OLED `128x64` is enough if compatible by power and supported by chosen firmware.
+Um display OLED é bom para status curto e interface local simples. Para a maioria dos dispositivos DIY, um I2C OLED `128x64` é suficiente se for compatível com energia e suportado pelo firmware escolhido.
 
-Before connecting, check the display controller, interface, power, I2C address and wire length. If the device is already convenient via web interface, OLED may not be needed.
+Antes de conectar, verifique o controlador de exibição, interface, alimentação, endereço I2C e comprimento do fio. Se o dispositivo já for conveniente via interface web, o OLED pode não ser necessário.
 
 ## Reference Materials
 

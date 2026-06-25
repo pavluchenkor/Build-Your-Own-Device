@@ -11,7 +11,7 @@ Você já imprime em uma impressora 3D e quer construir um secador de filamento.
 
 Após esta seção, você compreenderá o que está construindo, por que exatamente desta forma, onde pode estar o perigo e como verificar o dispositivo antes de ligá-lo.
 
-A seção o leva gradualmente de conceitos simples para resultados reais.
+A seção leva gradualmente conceitos simples para resultados reais.
 
 O caminho aqui vai do simples para o complexo:
 
@@ -23,7 +23,7 @@ O caminho aqui vai do simples para o complexo:
 6. Depois pense no gabinete e nas peças impressas em 3D.
 7. No final, tenha à mão uma lista de erros comuns e um checklist de diagnóstico.
 
-A ideia principal:
+Uma ideia principal:
 
 Você não precisa compreender toda a eletrônica de uma vez. É suficiente ir passo a passo e cada vez compreender o próximo pequeno passo.
 

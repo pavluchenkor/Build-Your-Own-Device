@@ -20,7 +20,7 @@ Un multimètre a généralement :
 
 - `COM` - port commun, où vous insérez presque toujours la sonde noire ;
 - `V/Ohm/mA` ou similaire - pour tension, résistance, continuité et petits courants ;
-- `10A` ou `A` - port séparé pour courant important.
+- `A` ou `A` - port séparé pour courant important.
 
 Avant de mesurer, vérifiez toujours :
 
@@ -221,7 +221,7 @@ Vérifiez un court-circuit entre `+` et `GND` :
 - Pour la tension DC, utilisez le mode `V` avec une ligne droite.
 - La résistance et la continuité ne sont effectuées que sur les circuits hors tension.
 - Le courant se mesure en série, pas en parallèle.
-- Après mesure du courant, déplacez la sonde de `A` vers le port normal `V/Ohm`.
+- Après avoir mesuré le courant, déplacez la sonde de `V/Ohm` vers le port normal `V/Ohm`.
 - La tension secteur est dangereuse ; ne mesurez pas les parties ouvertes 110-230V sans comprendre la sécurité.
 - Un multimètre sous charge révèle souvent des problèmes invisibles au repos.
 

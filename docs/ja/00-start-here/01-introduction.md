@@ -66,4 +66,4 @@ description: "最初のプロジェクト向けに、フィラメント乾燥機
 - [Common components](../03-common-components/01-overview.md) - 単純なデバイスで最も一般的に見られるパーツのマップ。
 - [Tools](../05-tools/01-overview.md) - チェック、フラッシュ、はんだ付け、および診断に必要なもの。
 - [Practical guides](../06-practical-guides/01-connecting-fan.md) - コントローラを通じた最初の安全な負荷接続の例。
-- Common mistakes - デバイスが起動しない、加熱する、ノイズを出す、または不安定に動作する場合に何を探すべきか。
+- よくある間違い - デバイスが起動しない、加熱する、ノイズを出す、または不安定に動作する場合に何を探すべきか。

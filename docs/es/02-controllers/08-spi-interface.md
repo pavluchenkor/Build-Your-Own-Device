@@ -61,14 +61,14 @@ Más comúnmente, `CS` es activo en bajo: en reposo la línea es `HIGH`, para se
 
 En esquemas antiguos y muy comunes, los nombres son:
 
-- `MOSI` - Master Out Slave In;
-- `MISO` - Master In Slave Out;
+- `MOSI` - Entrada maestra y entrada esclava;
+- `MISO` - Maestro entra esclavo sale;
 - `SS` - Slave Select.
 
 En documentación más reciente, puede ver nombres neutros:
 
-- `PICO` - Peripheral In Controller Out, equivalente a MOSI;
-- `POCI` - Peripheral Out Controller In, equivalente a MISO;
+- `PICO` - Salida de controlador de entrada periférica, equivalente a MOSI;
+- `POCI` - Entrada de controlador de salida periférica, equivalente a MISO;
 - `CS` - Chip Select.
 
 En la electrónica de impresoras 3D, `MOSI`, `MISO`, `SCK`, `CS` siguen siendo muy comunes. Lo más importante es entender la dirección de la señal y verificar el pinout del módulo específico.
@@ -159,7 +159,7 @@ Reglas prácticas:
 - trace cerca de `GND`;
 - no trace en paralelo con cables de calefactor y motor;
 - reduzca `spi_speed` si hay errores;
-- use conectores adecuados;
+- utilizar conectores adecuados;
 - no lleve SPI por toda la impresora sin motivo;
 - para nodos remotos, elija con mayor frecuencia CAN, UART/RS-485 o un MCU separado cerca del módulo.
 

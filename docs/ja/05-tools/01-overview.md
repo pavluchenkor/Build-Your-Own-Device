@@ -34,64 +34,64 @@ iDryerおよび3Dプリンタの周りの自作デバイスでは、ツールは
 
 ## Tools don't replace understanding
 
-A multimeter does not make the mains part safe.
+マルチメーターは主電源部分を安全にするものではありません。
 
-A soldering iron does not fix a bad schematic.
+はんだごてを使用しても、悪い回路図は修正されません。
 
-An oscilloscope is not needed if plus and minus are swapped.
+プラスとマイナスを入れ替えればオシロスコープは不要です。
 
-So the order is:
+したがって、順序は次のとおりです。
 
-1. Understand what should be connected.
-2. Check power supply.
-3. Check wiring.
-4. Check sensors and signals.
-5. Only then look for complex problems.
+1. 何を接続すべきかを理解します。
+2. 電源を確認する。
+3. 配線を確認する。
+4. センサーと信号を確認します。
+5. その後でのみ、複雑な問題を探します。
 
-## What will be in this section
+## このセクションの内容
 
-- `02-multimeter.md` - measuring DC voltage, continuity, resistance, fuses and why current measurement is more dangerous.
-- `03-usb-ttl-adapter.md` - USB-UART adapters, TX/RX/GND, 3.3V/5V logic levels, flashing and logs.
-- `04-soldering.md` - soldering wires, pads, modules, cold solder joints, heat shrink and strain relief.
-- `05-crimping-connectors.md` - Dupont, JST, ferrules, Faston, terminals and crimp quality checks.
-- `06-st-link.md` - ST-Link, STM32, SWD, board recovery after failed flashing.
-- `07-oscilloscope.md` - PWM, UART, power sag, noise and critical safety warning about mains voltage.
+- `02-multimeter.md` - DC 電圧、導通、抵抗、ヒューズの測定、および電流測定がより危険である理由。
+- `03-usb-ttl-adapter.md` - USB-UART アダプター、TX/RX/GND、3.3V/5V ロジック レベル、フラッシュおよびログ。
+- `04-soldering.md` - はんだ付けワイヤー、パッド、モジュール、冷はんだ接合部、熱収縮および張力緩和。
+- `05-crimping-connectors.md` - Dupont、JST、フェルール、ファストン、端子、圧着品質チェック。
+- `06-st-link.md` - ST-Link、STM32、SWD、フラッシュ失敗後のボードリカバリ。
+- `07-oscilloscope.md` - PWM、UART、停電、ノイズ、および主電源電圧に関する重要な安全警告。
 
-## What's worth buying properly
+## きちんと買う価値のあるもの
 
-There are things you should not economize on:
+節約すべきではないものもあります。
 
-- a multimeter with proper probes and continuity mode;
-- a soldering iron with temperature control;
-- quality solder and flux;
-- a crimping tool for specific terminals;
-- connectors and terminals rated for the needed current;
+- 適切なプローブと導通モードを備えたマルチメーター。
+- 温度制御付きはんだごて。
+- 高品質のはんだとフラックス。
+- 特定の端子用の圧着工具。
+- 必要な電流の定格を備えたコネクタと端子。
 - heat shrink tubing;
-- wires of correct gauge.
+- 正しいゲージのワイヤー。
 
 Poor crimping or weak terminals can cause more problems than bad firmware.
 
-## What you cannot do
+## できないこと
 
-You cannot:
+次のことはできません:
 
-- measure resistance on an energized circuit;
-- measure current the same way you measure voltage;
-- poke a multimeter into 110-230V AC without understanding safety;
-- solder the power part "somehow";
-- use Dupont for a heater;
-- change wires while power is on;
-- keep open mains parts on the table;
-- think that if a wire "holds", the contact is good.
+- 通電された回路の抵抗を測定します。
+- 電圧を測定するのと同じ方法で電流を測定します。
+- 安全性を理解せずにマルチメーターを 110 ～ 230V AC に接続します。
+- 電源部分を「何らかの方法で」はんだ付けします。
+- ヒーターにはデュポン社を使用。
+- 電源が入っているときにワイヤを交換します。
+- 電源部分はテーブルの上に開いたままにしておきます。
+- ワイヤーが「保持」されていれば、接触は良好であると考えてください。
 
-## The essentials
+## 必需品
 
-- Multimeter is the first diagnostic tool.
-- USB-UART is needed for logs, flashing and communication with UART devices.
-- Soldering and crimping are different tasks, and for connectors, crimping is often better.
-- ST-Link is needed when you work with STM32 and SWD.
-- Oscilloscope is not needed by everyone, but it quickly shows signals, sag and noise.
-- For the power part, contact quality, wire gauge and safety matter more than assembly looks.
+- マルチメーターは最初の診断ツールです。
+- USB-UART は、ログ、フラッシュ、UART デバイスとの通信に必要です。
+- はんだ付けと圧着は異なる作業であり、コネクタの場合は圧着の方が優れていることがよくあります。
+- STM32 および SWD を使用する場合は、ST-Link が必要です。
+- オシロスコープは誰もが必要とするわけではありませんが、信号、サグ、ノイズをすぐに表示します。
+- 電源部品の場合、アセンブリの見た目よりも、接触品質、ワイヤゲージ、安全性が重要です。
 
 ## Reference materials
 

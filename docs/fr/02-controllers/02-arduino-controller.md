@@ -9,7 +9,7 @@ Pour l'apprentissage, Arduino reste très utile : il est facile de comprendre GP
 Les points forts d'Arduino :
 
 - beaucoup de ressources pédagogiques ;
-- Arduino IDE simple ;
+- EDI Arduino simple ;
 - nombreuses bibliothèques prêtes à l'emploi ;
 - exemples compréhensibles comme Blink ;
 - pratique pour tester rapidement un capteur sur la table ;
@@ -23,7 +23,7 @@ Si l'objectif est de comprendre les bases des microcontrôleurs, Arduino est bie
 Arduino est pratique pour :
 
 - tester un bouton, un fin de course ou un capteur ;
-- test simple de thermistance via un diviseur de tension ;
+- tester simple de thermistance via un diviseur de tension ;
 - tester un OLED I2C ;
 - tester un module RFID SPI ;
 - générer du PWM pour un petit test ;

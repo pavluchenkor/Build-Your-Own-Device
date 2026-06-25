@@ -2,7 +2,7 @@
 
 Un capteur de charge mesure la force par une légère déformation du métal. Peser une bobine, surveiller le filament restant et les simples plateformes de poids utilisent presque toujours de tels capteurs.
 
-Important à comprendre : un capteur de charge ne « ressent pas le poids » par lui-même. Il se plie ou se compresse légèrement sous la charge, et l'électronique mesure le changement de résistance microscopique dans les jauges de contrainte. Deux choses sont donc critiques : la mécanique correcte et un amplificateur/ADC normal.
+Important à comprendre : un capteur de charge ne « ressent pas le poids » par lui-même. Il se plie ou se comprime légèrement sous la charge, et l'électronique mesure le changement de résistance microscopique dans les jauges de contrainte. Deux choses sont donc critiques : la mécanique correcte et un amplificateur/ADC normal.
 
 ## Où c'est utilisé
 
@@ -16,7 +16,7 @@ Dans les projets de type iDryer, un capteur de charge peut être utilisé pour :
 - plateforme de poids expérimentale ;
 - contrôle du dosage dans les systèmes DIY.
 
-Pour un simple « bobine présente/absente », parfois un commutateur limite ou un capteur optique suffit. Un capteur de charge est nécessaire lorsqu'il est important de mesurer réellement le poids ou le changement de force.
+Pour une simple « bobine présente/absente », parfois un commutateur limite ou un capteur optique suffit. Un capteur de charge est nécessaire lorsqu'il est important de mesurer réellement le poids ou le changement de force.
 
 ## Pourquoi HX711 est nécessaire
 
@@ -45,7 +45,7 @@ Dans les petits projets, les plus courants sont :
 - quatre cellules sur une plateforme - conception typique de la balance de sol ;
 - éléments de jauge de contrainte unique - nécessitent un pont approprié et une mécanique, plus difficile pour les débutants.
 
-Pour un système simple de poids de bobine DIY, il est généralement plus facile de commencer par un capteur de charge de poutre sur `5 kg`, `10 kg` ou à proximité. Mais la plage dépend de la masse de la bobine, du support et des à-coups possibles.
+Pour un système simple de poids de bobine DIY, il est généralement plus facile de commencer par un capteur de charge de poutre sur `10 kg`, `10 kg` ou à proximité. Mais la plage dépend de la masse de la bobine, du support et des coups possibles.
 
 ## Fils et pont
 
@@ -66,7 +66,7 @@ Schéma de couleurs courant :
 - blanc - `A-` ;
 - jaune, feuille ou fil séparé - blindage.
 
-Les couleurs ne sont pas garanties. S'il y a une description technique de la cellule spécifique, c'est plus important que n'importe quelle table Internet. Si les lectures vont mal, souvent inverser `A+` et `A-` ou tenir compte du signe dans le programme suffit.
+Les couleurs ne sont pas garanties. S'il y a une description technique de la cellule spécifique, c'est plus important que n'importe quelle table Internet. Si les cours vont mal, souvent inverser `A-` et `A-` ou tenir compte du signe dans le programme suffit.
 
 ## La mécanique est plus importante que le circuit
 
@@ -155,7 +155,7 @@ Règles pratiques :
 - alimentez le module avec une tension compatible au contrôleur ;
 - n'utilisez pas de mauvais contacts Dupont dans l'assemblage final si l'appareil devrait fonctionner longtemps.
 
-Du côté du contrôleur, HX711 se connecte généralement via `DT`/`DOUT` et `SCK`/`CLK`. Ce n'est pas régulier I2C ou SPI, mais une interface simple séparée.
+Du côté du contrôleur, le HX711 se connecte généralement via `DOUT`/`SCK` et `CLK`/`CLK`. Ce n'est pas régulier I2C ou SPI, mais une interface simple séparée.
 
 ## Quoi vérifier avant d'acheter
 

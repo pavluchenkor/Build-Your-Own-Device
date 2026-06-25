@@ -7,9 +7,9 @@ description: "Heizung für Filamenttrockner oder aktive 3D-Drucker-Kammer auswä
 
 Die Heizung bestimmt Aufheizgeschwindigkeit und Sicherheitsgrenzen des Filamenttrockners oder der beheizten Kammer. Diese Seite erklärt Heizertypen, Leistungswahl, Steuerung über MOSFET oder SSR und Fehler, die Überhitzung verursachen können.
 
-Ein Heizer ist eine Last, die elektrische Energie in Wärme umwandelt. In einem einfachen DIY-Gerät ist dies die gefährlichste Komponente: Ein Fehler bei einem Lüfter führt normalerweise zu schlechtem Luftstrom, aber ein Heizer-Fehler kann zu Überhitzung, geschmolzenem Gehäuse, beschädigter Verdrahtung oder Brandrisiko führen.
+Ein Heizer ist ein Laster, der elektrische Energie in Wärme umwandelt. In einem einfachen DIY-Gerät ist dies die gefährlichste Komponente: Ein Fehler bei einem Lüfter führt normalerweise zu schlechtem Luftstrom, aber ein Heizer-Fehler kann zu Überhitzung, geschmolzenem Gehäuse, beschädigter Verdrahtung oder Brandrisiko führen.
 
-In 3D-Druckern und iDryer-ähnlichen Geräten befinden sich Heizer am Druckkopf, Druckbett, Kammer, Filamenttrockner, Luftkanal oder separaten Heizmodul.
+In 3D-Druckern und iDryer-ähnlichen Geräten befinden sich Heizer am Druckkopf, Druckbett, Kammer, Filamenttrockner, Luftkanal oder separates Heizmodul.
 
 ## Wo es verwendet wird
 
@@ -20,7 +20,7 @@ Typische Aufgaben:
 - Vorwärmen der Druckerkammer;
 - Trocknung von Filament;
 - Vorwärmen der Luft vor einem Filter oder Kanal;
-- Aufrechterhaltung der Temperatur in einem kleinen Prozessvolumen.
+- Eine einheitliche Temperatur in einem kleinen Prozessvolumen.
 
 Dies sind unterschiedliche Aufgaben. Ein Heizer für einen Metalldruckkopf, eine Silikonbettmatte und ein Luft-PTC-Modul sind nicht ohne Neuberechnung von Leistung, Montage, Luftstrom und Schutz austauschbar.
 
@@ -37,7 +37,7 @@ Häufige Optionen:
 - Netz-Heizplatte;
 - Nichrom- oder Widerstandswicklung in einem fertigen Gehäuse.
 
-Eine Heizpatrone wird üblicherweise in einen Metallblock eingeführt. Sie benötigt guten thermischen Kontakt mit dem Metall und zuverlässige Temperatursenor-Montage.
+Eine Heizpatrone wird üblicherweise in einen Metallblock eingeführt. Sie benötigen guten thermischen Kontakt mit dem Metall und eine zuverlässige Temperatursensor-Montage.
 
 Eine Silikongummi-Matte wird üblicherweise auf eine flache Fläche geklebt oder gepresst. Sie benötigt eine flache Fläche, gute Haftung, einen Temperatursensor und Schutz vor Ablösung.
 
@@ -130,7 +130,7 @@ Wenn der Sensor:
 
 kann der Regler weiter heizen, obwohl die tatsächliche Temperatur bereits gefährlich ist.
 
-Beim Druckkopf ist der Sensor-Kontakt mit dem Metallblock wichtig. Beim Luftheizer ist es wichtig zu verstehen, was gemessen wird: Elementtemperatur, Lufttemperatur nach dem Element, Kammertemperatur oder Temperatur in der Nähe der Spule. Dies sind unterschiedliche Punkte und können sich erheblich unterscheiden.
+Beim Druckkopf ist der Sensor-Kontakt mit dem Metallblock wichtig. Beim Luftheizer ist es wichtig zu verstehen, was gemessen wird: Elementtemperatur, Lufttemperatur nach dem Element, Kammertemperatur oder Temperatur in der Nähe der Spule. Dies sind verschiedene Punkte und können sich erheblich unterscheiden.
 
 ## Luftstrom und Wärmeleitung
 
@@ -144,7 +144,7 @@ Für einen Luftheizer ist der Luftstrom kritisch:
 - Kunststoffkanäle können erweichen;
 - ein Temperatursensor sieht möglicherweise nicht, was am Element passiert.
 
-Beim Kammer-Heizer ist es wichtig, nicht nur die Ziellufttemperatur zu überprüfen, sondern auch die Temperatur in der Nähe des Heizers, Drähte, SSR/MOSFET, Anschlüsse und Kunststoffteile.
+Beim Kammer-Heizer ist es wichtig, nicht nur die Ziellufttemperatur zu überprüfen, sondern auch die Temperatur in der Nähe des Heizers, der Drähte, des SSR/MOSFET, der Anschlüsse und der Kunststoffteile.
 
 ## Drähte, Anschlüsse und Stecker
 
@@ -217,7 +217,7 @@ Lassen Sie einen neuen Heizer beim ersten Starten nicht unbeaufsichtigt.
 - Sicherung vergessen;
 - kein unabhängiger Thermoschutz;
 - schlechte Temperatursensor-Montage;
-- Gehäuse aus PLA in Heizernähe gemacht;
+- Gehäuse aus PLA in Heizernähe gefertigt;
 - Luftstrom nicht berücksichtigt und Filter verstopft;
 - auf dem Tisch getestet, aber nicht im Gehäuse;
 - Netzwerk-Teil exponiert gelassen;

@@ -74,7 +74,7 @@ Pour les périphériques de type iDryer, STM32 a du sens si :
 - vous avez besoin d'une approche de carte plus industrielle ;
 - vous avez déjà une carte STM32 et une configuration connue.
 
-Si vous avez besoin d'ajouter rapidement quelques broches et capteurs, RP2040 est souvent plus simple. Si vous avez besoin d'une carte puissante prêt à l'emploi avec connecteurs et drivers, une carte STM32 peut être meilleure.
+Si vous avez besoin d'ajouter rapidement quelques broches et capteurs, le RP2040 est souvent plus simple. Si vous avez besoin d'une carte puissante prête à l'emploi avec connecteurs et pilotes, une carte STM32 peut être meilleure.
 
 ## Flashage : USB, DFU, UART, SWD, ST-LINK
 
@@ -161,7 +161,7 @@ Si une carte est vendue avec seulement une belle photo et pas de schéma, ce n'e
 
 STM32 est une famille puissante et pratique de microcontrôleurs, en particulier pour les cartes d'imprimante 3D et Klipper MCU. Mais vous devez choisir non pas « STM32 en général » mais une carte spécifique avec une puce spécifique, pinout, méthode de flashage et documentation.
 
-Pour un premier contrôleur simple, RP2040 est souvent plus facile. Pour l'électronique d'imprimante prête à l'emploi, les cartes CAN et les périphériques plus sérieux, STM32 est souvent le bon choix.
+Pour un premier contrôleur simple, le RP2040 est souvent plus facile. Pour l'électronique d'imprimante prête à l'emploi, les cartes CAN et les périphériques plus sérieux, STM32 est souvent le bon choix.
 
 ## Matériaux connexes
 

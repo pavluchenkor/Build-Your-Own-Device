@@ -1,6 +1,6 @@
 # Erros de Fonte de Alimentação
 
-A fonte de alimentação é a primeira coisa a verificar quando o dispositivo se comporta estranhamente.
+A fonte de alimentação é a primeira coisa a verificar quando o dispositivo se comporta de maneira estranha.
 
 Uma fonte de alimentação fraca, fio fino ou terminal pobre pode parecer um problema de firmware, Wi-Fi, sensor ou controlador.
 
@@ -58,7 +58,7 @@ Por exemplo:
 
 As correntes adicionam. As correntes de inrush e picos breves também precisam ser contabilizados.
 
-Um servo ou ventilador pode brevemente extrair mais do que em modo normal. Se a margem é pequena, exactamente este momento causará o controlador reiniciar.
+Um servo ou ventilador pode extrair brevemente mais do que em modo normal. Se a margem for pequena, exatamente esse momento fará com que o driver seja reiniciado.
 
 ## Confundido 12V e 24V
 
@@ -111,7 +111,7 @@ Por exemplo:
 
 Sem `GND` comum o sinal pode não ter o nível correcto. O dispositivo pode não funcionar ou funcionar aleatoriamente.
 
-A terra comum não significa que toda a carga deve ser alimentada através do controlador. É apenas o nível de referência comum para o sinal.
+A terra comum não significa que toda a carga deva ser alimentada através do driver. É apenas o nível de referência comum para o sinal.
 
 ## Controlador Alimentado de Linha Ruidosa
 
@@ -139,7 +139,7 @@ No mínimo:
 5. Presença de terra comum.
 6. Aquecimento de fio e terminal após teste breve.
 
-Se o dispositivo funciona apenas sem carga, meça-o sob carga. A tensão sem carga pode parecer normal.
+Se o dispositivo funcionar apenas sem carga, meça-o sob carga. A tensão sem carga pode parecer normal.
 
 ## O Que Não Fazer
 

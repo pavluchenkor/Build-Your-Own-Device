@@ -34,7 +34,7 @@
 - `07-load-cells.md` - 負載傳感器：HX711、校準、機械安裝。
 - `08-oled-display.md` - OLED：I2C/SPI、位址、電源、何時需要。
 - `09-touchscreen.md` - TFT/觸控：UART/SPI/HDMI、電源、相容性。
-- `10-rfid-and-nfc.md` - RFID/NFC：卡、標籤、頻率、連接。
+- `10-rfid-and-nfc.md` - RFID/NFC：卡片、標籤、頻率、連接。
 
 ## 參考資料
 

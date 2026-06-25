@@ -25,7 +25,7 @@ Man kann nicht sagen „Ich habe ein STM32" und aufhören zu wählen. Man muss d
 Beispiele für Serien:
 
 - **STM32F0 / STM32C0 / STM32G0** — Budget- und Massenmarktserie;
-- **STM32F1** — alte, aber sehr bekannte Serie, häufig in Blue Pill und alten Platinen zu finden;
+- **STM32F1** – alte, aber sehr bekannte Serie, häufig in Blue Pill und alten Platinen zu finden;
 - **STM32F4** — leistungsstärkere Serie, beliebt in Controllern;
 - **STM32G4** — interessant für Steuerungs-, Timer- und Analogperipherieaufgaben;
 - **STM32H7** — leistungsstarke High-End-Controller;

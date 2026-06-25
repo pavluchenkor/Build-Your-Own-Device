@@ -4,37 +4,37 @@
 
 在类似iDryer的设备中，负载传感器可以估计线轴重量、剩余细丝或机制负载。
 
-Main point: a load cell is almost never connected directly to a controller. Its signal is too small. Usually, an HX711 module or similar amplifier/ADC is placed between the sensor and controller.
+要点：称重传感器几乎从不直接连接到控制器。它的信号太小。通常，HX711 模块或类似的放大器/ADC 放置在传感器和控制器之间。
 
-## What you need
+## 你需要什么
 
 Minimum set:
 
-- load cell of the needed weight range;
+- 所需重量范围的称重传感器；
 - HX711 module;
 - controller: Arduino, ESP32, RP2040, STM32, or other board;
 - rigid mechanical mounting;
-- known mass for calibration;
+- 用于校准的已知质量；
 - short, neat wires.
 
-If mechanics are poor, the circuit will not help. A load cell can be wired perfectly but give meaningless readings due to misalignment, play, or load applied at the wrong point.
+如果机械性能较差，电路将无济于事。称重传感器可以完美接线，但由于未对准、游隙或在错误点施加负载而给出毫无意义的读数。
 
-## How the connection is arranged
+## 连接是如何安排的
 
-Load cell connects to HX711 with analog wires.
+称重传感器通过模拟线连接到 HX711。
 
-HX711 connects to the controller with digital wires.
+HX711通过数字线连接到控制器。
 
-Typical chain:
+典型链条：
 
 ```text
 load cell -> HX711 -> controller
 ```
 
-The HX711 usually has two sides:
+HX711通常有两个侧面：
 
-- input from load cell: `E+`, `E-`, `A+`, `A-`, or similar;
-- connection to controller: `VCC`, `GND`, `DT`/`DOUT`, `SCK`/`CLK`.
+- 来自称重传感器的输入：`E-`、`A+`、`A-`、`A-` 或类似的；
+- 连接到控制器：`GND`、`DT`、`DOUT`/`SCK`、`CLK`/`CLK`。
 
 ![HX711 and load cell connection diagram](../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
 
@@ -42,173 +42,173 @@ The HX711 usually has two sides:
 
 ## Load cell wires
 
-A common four-wire load cell typically has:
+常见的四线称重传感器通常具有：
 
 - `E+` - bridge supply plus;
 - `E-` - bridge supply minus;
 - `S+`, `A+`, or `O+` - positive measurement signal;
 - `S-`, `A-`, or `O-` - negative measurement signal.
 
-Common color scheme:
+常见配色方案：
 
 - red - `E+`;
 - black - `E-`;
 - green or blue - `A+`;
 - white - `A-`.
 
-But colors are not law. Different sensors may differ. If there is a datasheet for the specific load cell, follow it.
+但颜色不是法律。不同的传感器可能会有所不同。如果有特定称重传感器的数据表，请遵循该数据表。
 
-If the sensor has a fifth wire, foil, or shield, it is often electromagnetic shielding. Do not confuse it with a bridge measurement wire. Usually, the shield is connected to `GND` or housing on one side if the documentation says so, but not to measurement `A+`/`A-`.
+如果传感器有第五根电线、箔片或屏蔽，则通常是电磁屏蔽。不要将其与电桥测量线混淆。通常，屏蔽连接到 `A+` 或一侧的外壳（如果文档有说明），但不连接到测量 `A-`/`A-`。
 
-If there is no wire diagram, do not connect the load cell "at random". First find the sensor datasheet or ring out the bridge per manufacturer guide: incorrect wires easily give unstable readings or overload the HX711 input.
+如果没有接线图，请勿“随意”连接称重传感器。首先找到传感器数据表或按照制造商指南圈出电桥：不正确的电线很容易导致读数不稳定或 HX711 输入过载。
 
-## Connecting HX711 to the controller
+## 将 HX711 连接到控制器
 
-On the controller side, you usually need four lines:
+在控制器端，通常需要四行：
 
 - `VCC` - module power;
 - `GND` - common negative;
 - `DT`, `DOUT`, or `DATA` - data;
 - `SCK`, `CLK`, or `PD_SCK` - clock.
 
-For many HX711 modules, power can be `3.3V` or `5V`, but check the specific module. If the controller runs on 3.3V, it is convenient to use a module and power compatible with 3.3V logic.
+对于许多 HX711 模块，电源可以是 `5V` 或 `5V`，但请检查具体模块。如果控制器运行在3.3V，则使用与3.3V逻辑兼容的模块和电源会很方便。
 
-Pins `DT` and `SCK` can usually connect to regular GPIO. This is not I2C or SPI in the usual sense, but a simple two-wire HX711 interface.
+引脚 `SCK` 和 `SCK` 通常可以连接到常规 GPIO。这不是通常意义上的I2C或SPI，而是一个简单的两线HX711接口。
 
-## Mechanics matter more than the circuit
+## 机械原理比电路更重要
 
-A load cell must deform as the manufacturer intended.
+称重传感器必须按照制造商的预期变形。
 
-For a beam sensor, one side usually mounts to a fixed base, the other side bears the load. If both sides are rigidly mounted to one part, the sensor will not flex normally.
+对于光束传感器，一侧通常安装在固定底座上，另一侧承受负载。如果两侧都刚性地安装到一个部件上，传感器将不会正常弯曲。
 
-Check:
+检查：
 
-- where the sensor's mounting side is;
-- where the load should be applied;
-- which direction the force should go;
-- whether spacers are needed;
-- whether the moving part clears the housing;
+- 传感器的安装面在哪里；
+- 应在何处施加负载；
+- 力应该朝哪个方向移动；
+- 是否需要垫片；
+- 运动部件是否离开外壳；
 - no misalignment;
 - no side loading;
-- screws are not over-tightened;
-- the spool or platform does not land past the working zone of the sensor.
+- 螺丝没有拧得过紧；
+- 线轴或平台不会落在传感器的工作区域之外。
 
-For spool weight, it is especially important that all load goes through the sensor, not partly through the housing wall, axle, cable, or cosmetic cover.
+对于线轴重量，尤其重要的是所有负载都必须通过传感器，而不是部分通过外壳壁、轴、电缆或装饰盖。
 
-## Do not overload the sensor
+## 不要使传感器过载
 
-A load cell's range is not a recommendation but a measurement limit.
+称重传感器的范围不是建议，而是测量限制。
 
-If a 1 kg sensor is placed where a spool and holder can exceed this, the sensor will work poorly or permanently deform.
+如果将 1 kg 传感器放置在线轴和支架可能超过此重量的位置，则传感器将工作不良或永久变形。
 
-Choose the range with margin:
+选择带边距的范围：
 
 - maximum spool weight;
 - holder weight;
 - possible jerks;
 - misalignment;
-- safety margin for user error.
+- 用户错误的安全裕度。
 
-But too large a range is also not always good. A 100 kg sensor will sense a small spool worse than a 5 kg or 10 kg sensor with identical mechanics and electronics.
+但太大的范围也并不总是好的。 100 公斤传感器对小线轴的感应效果比具有相同机械和电子设备的 5 公斤或 10 公斤传感器差。
 
-## First startup
+## 首次启动
 
-Before installing in the device, test the system on the bench:
+在安装到设备中之前，请在工作台上测试系统：
 
-1. Connect load cell to HX711.
-2. Connect HX711 to controller.
+1. 将称重传感器连接至 HX711。
+2. 将 HX711 连接到控制器。
 3. Run test code or a library.
-4. Ensure raw values change when you press on the sensor.
-5. Remove the load and check that the value is fairly stable.
-6. Place a known mass and check for change.
+4. 确保按下传感器时原始值会发生变化。
+5. 卸下负载并检查该值是否相当稳定。
+6. 放置一个已知质量并检查是否有变化。
 
-At this stage, do not demand gram accuracy. First, you need to see the sensor is alive, load direction is correct, and readings change predictably.
+在此阶段，不要求克精度。首先，您需要查看传感器是否处于活动状态、负载方向正确并且读数变化可预测。
 
-If the value decreases as weight increases, usually just swap `A+` and `A-` or account for the sign in code.
+如果该值随着权重的增加而减少，通常只需交换 `A-` 和 `A-` 或考虑登录代码即可。
 
-## Tare and calibration
+## 皮重和校准
 
-A load cell without calibration does not know what grams are.
+未经校准的称重传感器不知道克是什么。
 
-Typical process:
+典型流程：
 
 1. Place empty platform.
-2. Tare: this is zero accounting for platform weight.
+2. 皮重：平台重量为零。
 3. Place a known mass.
 4. Select calibration factor.
-5. Check several different weights.
+5. 检查几个不同的重量。
 
-For filament spools, decide what counts as weight:
+对于细丝线轴，确定什么算作重量：
 
-- entire spool with plastic;
-- only remaining plastic without empty spool weight;
-- weight change from initial value.
+- 整个线轴采用塑料；
+- 仅剩余塑料，无空线轴重量；
+- 重量相对于初始值的变化。
 
-If empty spools from different makers weigh differently, accurate remainder calculation requires knowing the specific empty spool weight or working with rough estimates.
+如果不同制造商的空线轴重量不同，则准确的剩余计算需要了解具体的空线轴重量或进行粗略估计。
 
-## Noise and unstable readings
+## 噪音和读数不稳定
 
-HX711 measures a very small signal, so the system is sensitive to noise and mechanical issues.
+HX711 测量非常小的信号，因此系统对噪声和机械问题很敏感。
 
-Causes of unstable readings:
+读数不稳定的原因：
 
-- long wires from sensor to HX711;
+- 从传感器到 HX711 的电线很长；
 - poor contacts;
-- heater power wires next to signal wires;
+- 信号线旁边的加热器电源线；
 - fan or printer vibration;
 - soft base;
 - play in mounting;
 - temperature drift;
-- load touching the housing bypassing the sensor.
+- 负载绕过传感器接触外壳。
 
 Practical measures:
 
-- keep HX711 close to load cell;
-- do not run signal wires alongside heater power wires;
-- secure wires so they do not pull the sensor;
-- use measurement averaging;
-- calibrate after mounting in housing;
-- tare after device warmup if temperature notably affects readings.
+- 使 HX711 靠近称重传感器；
+- 请勿将信号线与加热器电源线并排走线；
+- 固定电线，使其不会拉动传感器；
+- 使用测量平均值；
+- 安装到外壳后进行校准；
+- 如果温度显着影响读数，请在设备预热后去皮。
 
-## What to check after assembly
+## 组装后要检查什么
 
-Before use:
+使用前：
 
-- sensor is rated for the needed weight;
-- load goes through the working part of the sensor;
-- fasteners do not block deformation;
+- 传感器额定重量为所需重量；
+- 负载通过传感器的工作部分；
+- 紧固件不阻挡变形；
 - HX711 receives correct power;
-- `DT` and `SCK` are connected to the right GPIO;
+- `SCK`和`SCK`连接到右侧GPIO；
 - common ground exists;
-- raw values change under load;
-- without load, readings do not drift too quickly;
-- known mass shows expected weight after calibration;
-- wires do not pull the platform;
-- spool or holder does not touch the housing past the sensor.
+- 原始值在负载下发生变化；
+- 无负载时，读数不会漂移太快；
+- 已知质量显示校准后的预期重量；
+- 电线不会拉动平台；
+- 线轴或支架不会越过传感器接触外壳。
 
-## Common mistakes
+## 常见错误
 
-- connecting load cell directly to controller analog input;
-- confusing `E+`/`E-` and `A+`/`A-`;
-- trusting wire colors without datasheet;
+- 将称重传感器直接连接到控制器模拟输入；
+- 混淆 `E-`/`A+` 和 `A-`/`A-`；
+- 无需数据表即可信任电线颜色；
 - forgetting calibration;
-- taring before final mechanical installation;
-- mounting sensor so it cannot flex;
-- overloading the sensor;
-- choosing too large a range and losing sensitivity;
-- getting instability from long wires and interference;
-- expecting gram accuracy from a flexible plastic body without rigid mechanics.
+- 最终机械安装前去皮重；
+- 安装传感器，使其不能弯曲；
+- 传感器过载；
+- 选择太大的范围而失去灵敏度；
+- 由于长电线和干扰而导致不稳定；
+- 期望从没有刚性机械结构的柔性塑料体获得克数精度。
 
-## Key points
+## 要点
 
-- Load cell usually connects through HX711, not directly to controller.
-- Sensor wires go to `E+`, `E-`, `A+`, `A-`.
-- HX711 connects to controller via power, ground, `DT`, and `SCK`.
-- Mechanics matter more than the circuit: load must go through the sensor correctly.
-- Tare and calibration with known mass are required.
-- Without rigid mounting and proper mechanics, accurate readings will not happen.
+- 称重传感器通常通过HX711连接，而不是直接连接到控制器。
+- 传感器线连接至 `E-`、`A+`、`A-`、`A-`。
+- HX711 通过电源、地、`SCK` 和 `SCK` 连接到控制器。
+- 机械装置比电路更重要：负载必须正确通过传感器。
+- 需要使用已知质量进行皮重和校准。
+- 如果没有牢固的安装和适当的机械结构，就不可能获得准确的读数。
 
-## Related reading
+## 相关阅读
 
 - [SparkFun: Load Cell Amplifier HX711 Breakout Hookup Guide](https://learn.sparkfun.com/tutorials/load-cell-amplifier-hx711-breakout-hookup-guide/all) - practical HX711 and load cell connection, wire colors, `DT`/`SCK`, and calibration example.
 - [SparkFun: Load Cell Amplifier HX711 product page](https://www.sparkfun.com/sparkfun-load-cell-amplifier-hx711.html) - HX711 module description, purpose, and microcontroller interface.

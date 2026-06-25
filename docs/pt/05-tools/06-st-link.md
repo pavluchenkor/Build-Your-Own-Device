@@ -41,7 +41,7 @@ ST-Link NRST  -> board NRST if reset is needed
 ST-Link 3.3V/VTref -> 3.3V target if required by specific ST-Link
 ```
 
-A placa STM32 é frequentemente alimentada a partir de sua alimentação normal ou USB.
+A placa STM32 é frequentemente alimentada por sua alimentação normal ou USB.
 
 Antes de conectar, verifique a documentação para seu ST-Link e placa específicos.
 
@@ -74,7 +74,7 @@ ST-Link é útil quando:
 - DFU não está disponível;
 - o bootloader está corrompido ou não é utilizado;
 - a programação desactivou USB;
-- a placa não entra em modo de programação normal;
+- a placa não entra no modo de programação normal;
 - você precisa apagar memória;
 - você precisa recuperar acesso STM32.
 
@@ -86,14 +86,14 @@ Mas se uma placa programa normalmente através de USB/DFU ou cartão SD, ST-Link
 
 Por exemplo:
 
-- pinos SWD são utilizados como GPIO normal;
+- pinos SWD são usados como GPIO normais;
 - firmware coloca rapidamente o chip em sleep;
 - código trava logo após startup;
 - modos de relógio/potência estão configurados incorrectamente.
 
 Em tais casos, o modo `Connect under reset` ajuda.
 
-A ideia: ST-Link mantém reset e tenta conectar antes de firmware ruim executar.
+A ideia: ST-Link mantém reset e tenta conectar antes de firmware funcionar mal.
 
 Isto frequentemente requer conectar `NRST`.
 

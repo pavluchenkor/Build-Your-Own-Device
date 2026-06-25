@@ -1,38 +1,38 @@
 # Multimetr
 
-A multimeter is the main first-line diagnostic tool.
+Multimetr je hlavním diagnostickým nástrojem první linie.
 
-You can check with it:
+Můžete to zkontrolovat:
 
-- whether power is present;
-- if voltage is correct;
-- where plus and minus are;
-- if a wire is broken;
-- if a fuse is intact;
-- if a thermistor appears to be functional;
-- whether there is voltage sag under load.
+- zda je přítomna síla;
+- pokud je napětí správné;
+- kde plus a mínus jsou;
+- pokud je přerušený drát;
+- pokud je pojistka neporušená;
+- pokud se termistor jeví jako funkční;
+- zda nedochází k poklesu napětí při zátěži.
 
-But it is easy to make mistakes with a multimeter if you confuse the modes. The most dangerous errors involve measuring current and mains voltage.
+Ale je snadné dělat chyby s multimetrem, pokud si pletete režimy. Mezi nejnebezpečnější chyby patří měření proudu a síťového napětí.
 
-## Probes and ports
+## Sondy a porty
 
-A multimeter typically has:
+Multimetr má obvykle:
 
-- `COM` - common port, where you almost always insert the black probe;
-- `V/Ohm/mA` or similar port - for voltage, resistance, continuity and small currents;
-- `10A` or `A` - separate port for large current.
+- `COM` - společný port, kam téměř vždy vkládáte černou sondu;
+- `V/Ohm/mA` nebo podobný port - pro napětí, odpor, spojitost a malé proudy;
+- `A` nebo `A` - samostatný port pro velký proud.
 
-Before measuring, always check:
+Před měřením vždy zkontrolujte:
 
-- which port the red probe is inserted into;
-- what mode is selected;
-- what exactly you are about to measure.
+- do kterého portu je vložena červená sonda;
+- jaký režim je zvolen;
+- co přesně se chystáte měřit.
 
-A very common mistake: after measuring current, you forget to move the probe from `A` back to `V/Ohm`, then try to measure voltage. This can cause a short circuit.
+Velmi častá chyba: po změření proudu zapomenete přesunout sondu z `V/Ohm` zpět do `V/Ohm` a poté zkusíte změřit napětí. To může způsobit zkrat.
 
 ## Measuring DC voltage
 
-DC is direct (constant) voltage. In our devices this is usually:
+DC je stejnosměrné (konstantní) napětí. V našich zařízeních je to obvykle:
 
 - `3.3V`;
 - `5V`;
@@ -41,189 +41,189 @@ DC is direct (constant) voltage. In our devices this is usually:
 
 Procedure:
 
-1. Black probe into `COM`.
-2. Red probe into the `V` port.
-3. Select DC voltage mode: usually `V` with a straight line.
-4. Black probe on negative or `GND`.
+1. Černá sonda do `COM`.
+2. Červená sonda do portu `V`.
+3. Zvolte režim stejnosměrného napětí: obvykle `V` s rovnou čárou.
+4. Černá sonda na negativu nebo `GND`.
 5. Red probe on positive.
-6. Read the display.
+6. Přečtěte si displej.
 
-If a minus sign appears before the number on the display, the probes are swapped. This is useful: you can determine polarity this way.
+Pokud se před číslem na displeji objeví znaménko mínus, jsou sondy prohozeny. To je užitečné: tímto způsobem můžete určit polaritu.
 
 ![Digital multimeter with probes](../../img/05-tools/02-digital-multimeter.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 
-## Where to measure voltage
+## Kde měřit napětí
 
-Don't limit yourself to the power supply output.
+Neomezujte se na výstup napájecího zdroje.
 
-Check:
+Zkontrolujte:
 
-- on the power supply terminals;
-- on the board input;
-- on the load terminals;
+- na napájecích svorkách;
+- na vstupu desky;
+- na zátěžových svorkách;
 - on a DC-DC module;
-- on the fan;
+- na ventilátoru;
 - on a servo;
 - on an LED strip.
 
-If the power supply shows 24V but the load shows noticeably less, look for sag on the wires, terminals or connectors.
+Pokud napájecí zdroj ukazuje 24 V, ale zátěž ukazuje znatelně méně, hledejte průhyb na vodičích, svorkách nebo konektorech.
 
-For power supply diagnostics, it is important to measure under load, not just idle.
+Pro diagnostiku napájecího zdroje je důležité měřit při zátěži, ne pouze v klidu.
 
 ## Measuring AC voltage
 
-AC is alternating voltage, such as 110-230V from the mains.
+AC je střídavé napětí, např. 110-230V ze sítě.
 
-Mains voltage is dangerous.
+Síťové napětí je nebezpečné.
 
-If you don't understand what you are doing, don't measure open mains parts with a multimeter. Better to use ready-made safe modules, enclosed terminals and specialist help.
+Pokud nerozumíte tomu, co děláte, neměřte otevřené části sítě multimetrem. Je lepší používat hotové bezpečné moduly, přiložené terminály a odbornou pomoc.
 
-If you do measure, you need:
+Pokud měříte, potřebujete:
 
-- a multimeter with safety category **CAT II** or **CAT III** — this is written on the device body next to the voltage, for example `CAT II 600V`. CAT I is not suitable for household mains. CAT III and CAT IV provide extra margin for more complex installations;
-- properly functioning probes with a category not lower than the multimeter;
+- multimetr s bezpečnostní kategorií **CAT II** nebo **CAT III** — toto je napsáno na těle přístroje vedle napětí, například `CAT II 600V`. CAT I není vhodný pro domácí sítě. CAT III a CAT IV poskytují extra rezervu pro složitější instalace;
+- správně fungující sondy s kategorií ne nižší než multimetr;
 - dry hands;
-- enclosed and stable assembly;
-- understanding of where phase and neutral are;
+- uzavřená a stabilní sestava;
+- pochopení toho, kde jsou fáze a neutrál;
 - no accidental open contact points.
 
-For most tasks involving low-voltage electronics, DC measurements are sufficient.
+Pro většinu úloh týkajících se nízkonapěťové elektroniky postačují DC měření.
 
 ## Continuity check
 
-Continuity shows whether two points are electrically connected.
+Spojitost ukazuje, zda jsou dva body elektricky spojeny.
 
-It is useful to check:
+Je užitečné zkontrolovat:
 
-- if a wire is intact;
-- if `GND` is connected;
-- if a cable is not broken;
-- if a button works;
-- if a fuse is intact;
-- if neighboring contacts are shorted.
+- pokud je drát neporušený;
+- pokud je připojen `GND`;
+- pokud kabel není přerušený;
+- pokud tlačítko funguje;
+- pokud je pojistka neporušená;
+- pokud jsou sousední kontakty zkratovány.
 
 Procedure:
 
 1. Turn off power.
-2. Set the multimeter to continuity mode: usually a sound icon or diode symbol.
-3. Touch the probes to each other - there should be a beep.
-4. Touch the two points you want to check.
-5. If it beeps, there is a conductive connection between the points.
+2. Nastavte multimetr do režimu spojitosti: obvykle ikona zvuku nebo symbol diody.
+3. Dotkněte se sond navzájem – mělo by se ozvat pípnutí.
+4. Dotkněte se dvou bodů, které chcete zkontrolovat.
+5. Pokud pípne, je mezi body vodivé spojení.
 
-Continuity check is done on a de-energized circuit.
+Kontrola kontinuity se provádí na obvodu bez napětí.
 
 ## Resistance
 
-Resistance is measured in ohms.
+Odpor se měří v ohmech.
 
-For our tasks this is needed to:
+Pro naše úkoly je potřeba:
 
 - check a thermistor;
 - check for broken wire;
 - check a fuse;
-- determine if there is a short circuit;
+- určit, zda nedošlo ke zkratu;
 - check a resistor.
 
-Important: resistance is only measured on a de-energized circuit.
+Důležité: odpor se měří pouze na beznapěťovém obvodu.
 
-If you measure resistance on an energized board, you can get incorrect readings or damage the multimeter.
+Pokud měříte odpor na desce pod napětím, můžete získat nesprávné údaje nebo poškodit multimetr.
 
 ## Testing a thermistor
 
-For a typical NTC `100K` at room temperature, expect tens or around `100 kOhm`.
+U typického NTC `100 kOhm` při pokojové teplotě počítejte s desítkami nebo kolem `100 kOhm`.
 
-If the multimeter shows:
+Pokud multimetr ukazuje:
 
 - `OL` or infinity - likely open circuit;
 - almost `0 Ohm` - likely short circuit;
-- value fluctuating a lot when you move the wire - poor contact;
-- resistance decreasing when heated by your fingers - looks like a live NTC.
+- hodnota hodně kolísá při pohybu drátu - špatný kontakt;
+- odpor klesá při zahřátí prsty - vypadá jako živé NTC.
 
-Exact values depend on thermistor type and temperature.
+Přesné hodnoty závisí na typu termistoru a teplotě.
 
 ## Measuring current
 
-Measuring current is more dangerous than measuring voltage.
+Měření proudu je nebezpečnější než měření napětí.
 
-Voltage is measured in parallel: probes touch two points.
+Napětí se měří paralelně: sondy se dotýkají dvou bodů.
 
-Current is measured in series: you must break the circuit and connect the multimeter in line so current flows through the device.
+Proud se měří v sérii: musíte přerušit obvod a zapojit multimetr do řady, aby proud procházel zařízením.
 
-Mistake - put the multimeter in current mode and touch the probes to the plus and minus of the power supply. That is almost a short circuit through the multimeter.
+Chyba - uveďte multimetr do aktuálního režimu a dotkněte se sond na plus a mínus napájení. To je téměř zkrat přes multimetr.
 
-For a beginner it is better to:
+Pro začátečníka je lepší:
 
-- first calculate current from power;
-- use ready-made watt meters/USB power meter/DC power meter;
-- measure current only if you understand how to connect the multimeter in series;
-- start with the correct range and correct port.
+- nejprve vypočítat proud z výkonu;
+- použijte hotové wattmetry/USB elektroměr/DC elektroměr;
+- měřte proud pouze v případě, že rozumíte tomu, jak zapojit multimetr do série;
+- začněte se správným rozsahem a správným portem.
 
 ## Checking a fuse
 
-Check the fuse on a de-energized circuit.
+Zkontrolujte pojistku v obvodu bez napětí.
 
 Methods:
 
 - continuity;
 - resistance measurement.
 
-A good fuse usually shows continuity and has very low resistance.
+Dobrá pojistka obvykle vykazuje spojitost a má velmi nízký odpor.
 
-A blown fuse usually does not show continuity.
+Spálená pojistka obvykle nevykazuje spojitost.
 
-If a fuse blew, you cannot just install a higher-rated one. First find the cause.
+Pokud se spálila pojistka, nemůžete jen nainstalovat pojistku vyšší třídy. Nejprve najděte příčinu.
 
-## How not to burn out the multimeter
+## Jak nespálit multimetr
 
 Minimum rules:
 
-- check the mode before measuring;
-- check the red probe port before measuring;
-- don't measure resistance on an energized circuit;
+- před měřením zkontrolujte režim;
+- před měřením zkontrolujte červený port sondy;
+- neměřte odpor v obvodu pod napětím;
 - don't measure current like voltage;
-- don't go into 110-230V AC without understanding safety;
-- start with a higher range if the multimeter is not auto-ranging;
-- use functioning probes;
-- don't touch the metal tips with your fingers.
+- nechoďte do 110-230V AC bez pochopení bezpečnosti;
+- začněte s vyšším rozsahem, pokud multimetr není automatický;
+- používat funkční sondy;
+- nedotýkejte se prsty kovových hrotů.
 
 ## Practical scenarios
 
-Check a 24V power supply:
+Zkontrolujte 24V napájecí zdroj:
 
 1. DC voltage mode.
-2. Black probe on negative.
+2. Černá sonda na negativu.
 3. Red probe on positive.
-4. Should read about 24V.
+4. Mělo by číst o 24V.
 
-Check a fan:
+Zkontrolujte ventilátor:
 
-1. Measure voltage on the fan connector.
-2. Check polarity.
-3. Check voltage during startup.
+1. Změřte napětí na konektoru ventilátoru.
+2. Zkontrolujte polaritu.
+3. Zkontrolujte napětí při startu.
 
-Check for broken wire:
+Zkontrolujte přerušený vodič:
 
 1. Disconnect power.
 2. Continuity mode.
-3. Probes on both ends of the wire.
+3. Sondy na obou koncích drátu.
 4. No beep - possible open circuit.
 
-Check for short between `+` and `GND`:
+Zkontrolujte zkrat mezi `GND` a `GND`:
 
 1. Disconnect power.
-2. Check continuity between `+` and `GND`.
-3. If it beeps where it shouldn't, look for a short.
+2. Zkontrolujte kontinuitu mezi `GND` a `GND`.
+3. Pokud pípá tam, kde nemá, hledejte zkrat.
 
-## The essentials
+## To podstatné
 
-- For DC voltage use the `V` mode with a straight line.
-- Resistance and continuity are only done on de-energized circuits.
-- Current is measured in series, not in parallel.
-- After measuring current, move the probe from `A` back to the normal `V/Ohm` port.
-- Mains voltage is dangerous; don't measure open 110-230V parts without understanding safety.
-- A multimeter under load often reveals problems invisible when idle.
+- Pro stejnosměrné napětí použijte režim `V` s přímkou.
+- Odpor a kontinuita se provádí pouze na obvodech bez napětí.
+- Proud se měří v sérii, ne paralelně.
+- Po změření proudu přesuňte sondu z `V/Ohm` zpět do normálního portu `V/Ohm`.
+- Síťové napětí je nebezpečné; neměřte otevřené části 110-230V bez pochopení bezpečnosti.
+- Multimetr pod zatížením často odhalí problémy, které nejsou viditelné při nečinnosti.
 
 ## Reference materials
 

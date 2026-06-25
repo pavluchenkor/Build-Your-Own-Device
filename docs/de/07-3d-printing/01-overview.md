@@ -2,7 +2,7 @@
 
 Dieser Abschnitt ist kein 3D-Druck-Kurs.
 
-Er dient einem anderen Zweck: Um zu verstehen, welche gedruckten Teile sicher in einem selbstgebauten Gerät verwendet werden können und welche zu einer Risiko in der Nähe von Heizungen, Elektronik, Verdrahtung und beweglichen Teilen werden.
+Er dient einem anderen Zweck: Um zu verstehen, welche gedruckten Teile sicher in einem selbstgebauten Gerät verwendet werden können und welche zu einem Risiko in der Nähe von Heizungen, Elektronik, Verdrahtung und beweglichen Teilen werden.
 
 In Projekten wie iDryer wird 3D-Druck normalerweise für folgende Zwecke verwendet:
 
@@ -15,11 +15,11 @@ In Projekten wie iDryer wird 3D-Druck normalerweise für folgende Zwecke verwend
 - Griffe und Klammern;
 - dekorative oder Service-Platten.
 
-Ein Teil zu drucken ist einfach. Es mehrere Monate sicher in einem warmen Gehäuse funktionieren zu lassen, ist schwieriger.
+Ein Teil zum Drucken ist einfach. Es ist schwierig, mehrere Monate sicher in einem warmen Gehäuse funktionieren zu lassen.
 
 ## Wichtigste Fragen
 
-Bevor du ein Teil für ein Gerät druckst, musst du nicht nur „passt das STL in den Slicer" antworten, sondern mehrere Fragen beantworten:
+Bevor du einen Teil für ein Gerät druckst, musst du nicht nur „Passt das STL in den Slicer“ antworten, sondern mehrere Fragen beantworten:
 
 - wo wird das Teil platziert;
 - welche Temperatur wird dort sein;
@@ -54,7 +54,7 @@ Daher benötigt ein funktionierendes Teil nicht nur ein STL, sondern auch Kontex
 
 Für einen Prototypen funktioniert PLA oft. Es druckt leicht und produziert ein schönes aussehendes Teil.
 
-Aber für Teile in der Nähe von Wärme ist PLA eine schlechte Wahl. Das Problem ist nicht, dass es sofort schmilzt, sondern dass es allmählich an Steifheit und Form bei Temperaturen in einem geschlossenen Gehäuse oder in der Nähe eines Heizers verlieren kann.
+Aber für Teile in der Nähe von Wärme ist PLA eine schlechte Wahl. Das Problem besteht nicht darin, dass es sofort schmilzt, sondern dass es allmählich an Steifheit und Form bei Temperaturen in einem geschlossenen Gehäuse oder in der Nähe eines Heizers verlieren kann.
 
 Für funktionierende Teile um einen Trockner, Kammer oder Heizer verwendest du normalerweise:
 
@@ -91,7 +91,7 @@ Daher kannst du die Sicherheit nicht mit der Aussage „das Teil berührt den He
 
 ## Festigkeit hängt von der Schichtrichtung ab
 
-FDM-Teile sind nicht in alle Richtungen gleich stark.
+FDM-Teile sind nicht in allen Richtungen gleich stark.
 
 Die Schichtrichtung beeinflusst, wie ein Teil bricht:
 
@@ -141,7 +141,7 @@ Der Abschnitt behandelt mehrere praktische Themen:
 
 - `02-what-is-stl.md` - warum STL kein Material, Ausrichtung, Festigkeit oder Montageanleitungen enthält.
 - `03-materials-petg-abs-asa.md` - grundlegende Wahlmöglichkeiten zwischen PETG, ABS und ASA.
-- `04-heat-resistant-materials.md` - wie man über Teile in der Nähe von Wärme denken sollte.
+- `04-heat-resistant-materials.md` - wie man über Teile in der Nähe von Wärme nachdenken sollte.
 - `05-enclosure-design.md` - Gehäusezonen, Belüftung, Befestigung, Zugang und Verdrahtung.
 - `06-why-pla-is-risky.md` - warum PLA für Prototypen praktisch ist, aber in der Nähe von Wärme riskant ist.
 
@@ -149,7 +149,7 @@ Der Abschnitt behandelt mehrere praktische Themen:
 
 Es gibt keinen kompletten 3D-Druck-Kurs hier.
 
-Wir werden nicht tauchen ein in:
+Wir werden nicht eintauchen in:
 
 - alle Kunststoffe der Welt;
 - Rückzugs-Einstellungen;

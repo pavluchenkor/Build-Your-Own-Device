@@ -88,7 +88,7 @@ Les limites réelles d'un servo spécifique peuvent différer. Certains fonction
 
 Un servo essaie de maintenir la position commandée.
 
-Si un amortisseur frappe le boîtier, un bras se bloque, ou le mécanisme atteint une butée physique avant la fin de la commande, le servo continue à pousser. À ce moment, le courant augmente, le moteur chauffe, la boîte de vitesses s'use.
+Si un amortisseur frappe le boîtier, un bras se bloque, ou le mécanisme atteint une butée physique avant la fin de la commande, le servo continue à pousser. À ce moment, le courant augmente, le moteur chauffe, la boîte de vitesses s'utilise.
 
 C'est particulièrement critique pour les amortisseurs et les loquets.
 
@@ -197,7 +197,7 @@ Avant le montage dans le boîtier :
 - l'alimentation ne s'affaisse pas après le mouvement ;
 - le contrôleur ne redémarre pas.
 
-Testez la mécanique sans charge et sous charge réelle. Un amortisseur qui se déplace facilement à la main peut se bloquer après le montage dans le boîtier.
+Testez la mécanique sans charge et sous charge réelle. Un amortisseur qui se déplace facilement vers la main peut se bloquer après le montage dans le boîtier.
 
 ## Erreurs courantes
 

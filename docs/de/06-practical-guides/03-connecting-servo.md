@@ -1,8 +1,8 @@
 # Servo anschließen
 
-Ein Servo ist ein kleiner Motor mit Getriebe und Steuerelektronik. Du kannst ihm sagen, in welche Position sich die Welle drehen soll.
+Ein Servo ist ein kleiner Motor mit Getriebe und Steuerelektronik. Du kannst ihm sagen, in welcher Position sich die Welle drehen soll.
 
-In Geräten wie iDryer kann ein Servo eine Klappe öffnen, einen kleinen Riegel bewegen, einen mechanischen Schalter betätigen oder den Luftstrom umleiten.
+Bei Geräten wie iDryer kann ein Servo eine Klappe öffnen, einen kleinen Riegel bewegen, einen mechanischen Schalter betätigen oder den Luftstrom umleiten.
 
 Der Hauptfehler bei Servos: Die Annahme, dass es eine „kleine Sache" ist und du sie von einem beliebigen 5V-Pin des Controllers versorgen kannst. Ein Servo kann besonders beim Start, bei plötzlichen Bewegungen oder wenn der Mechanismus festsitzt erheblichen Strom ziehen.
 
@@ -80,7 +80,7 @@ Typisches Signal:
 - etwa `1.5 ms` - Mitte;
 - etwa `2 ms` - andere Extreme des Bereichs.
 
-Dies ist nicht typisches PWM für LED-Helligkeit oder Lüfterdrehzahl. Hier ist die Pulsbreite in Mikrosekunden wichtig.
+Dies ist kein typisches PWM für LED-Helligkeit oder Lüfterdrehzahl. Hier ist die Pulsbreite in Mikrosekunden wichtig.
 
 Die tatsächlichen Grenzen eines bestimmten Servos können unterschiedlich sein. Einige arbeiten sicher nicht von 0 bis 180 Grad, sondern weniger. Daher erfordern Extrempositionen sorgfältige Tests.
 
@@ -98,7 +98,7 @@ Vor dem Dauerbetrieб überprüfe:
 - keine Fehlausrichtung;
 - keine Bindung von Gelenken;
 - das Servo brummt nicht in der Endposition;
-- extreme Winkel in der Firmware erzwingen den Mechanismus nicht in einen Stopp;
+- extremer Winkel in der Firmware erzwingt den Mechanismus nicht in einem Stopp;
 - bei ausgeschalteter Stromversorgung bleibt das Gerät sicher oder kehrt über Feder zurück, wie beabsichtigt.
 
 Wenn ein Servo im Ruhezustand brummt, signalisiert dies oft Last, einen Stopp oder falsche Hebelgeometrie.
@@ -209,7 +209,7 @@ Teste die Mechanik unbelastet und unter echten Bedingungen. Eine Klappe, die von
 - zu dünne Drähte verwenden;
 - Start- und Blockierstrom nicht berücksichtigen;
 - Servo gegen mechanischen Stopp zwingen;
-- Winkel `0` oder `180` verwenden, wenn der echte Mechanismus sicher nur in kleinerem Bereich läuft;
+- Winkel `180` oder `180` verwenden, wenn der echte Mechanismus sicher nur in kleinerem Bereich läuft;
 - Servo in der Nähe von Wärme montieren, ohne Betriebstemperatur zu überprüfen;
 - kontinuierliches Rotations-Servo als reguläres Positions-Servo behandeln.
 

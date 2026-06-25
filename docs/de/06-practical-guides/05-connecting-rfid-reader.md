@@ -2,9 +2,9 @@
 
 Ein RFID/NFC-Lesegerät ermöglicht es dir, eine Karte, einen Tag oder eine Fernbedienung ohne drahtlose Verbindung zu lesen.
 
-In Geräten wie iDryer kann dies für die Spulenidentifikation, Materialprofilauswahl, Servicezugang oder Experiments zur Verfolgung von Verbrauchsmaterialien nützlich sein.
+In Geräten wie iDryer kann dies für die Spulenidentifikation, Materialprofilauswahl, Servicezugang oder Experimente zur Verfolgung von Verbrauchsmaterialien nützlich sein.
 
-Hauptfehler: Kaufe ein „RFID-Modul" und gehe davon aus, dass jede Karte aus jeder Entfernung auf jedem Controller gelesen wird. In Wirklichkeit musst du Frequenz, Tag-Typ, Schnittstelle, Stromversorgung, Logikpegel und Antennenplatzierung überprüfen.
+Hauptfehler: Kaufe ein „RFID-Modul“ und gehe davon aus, dass jede Karte aus jeder Entfernung auf jedem Controller gelesen wird. Tatsächlich müssen Sie Frequenz, Tag-Typ, Schnittstelle, Stromversorgung, Logikpegel und Antennenplatzierung überprüfen.
 
 ## Beliebte Module
 
@@ -96,7 +96,7 @@ Ein Modul kann physisch nur Tags lesen, die von seinem Chip und der Bibliothek u
 - musst du nur UID lesen oder auch Daten lesen/schreiben;
 - unterstützt die gewählte Bibliothek die erforderliche Operation.
 
-Für einfache Materialprofilauswahl reicht oft das Lesen der Tag-UID und das Speichern der UID -> Material-Zuordnung in Firmware oder Host.
+Für eine einfache Materialprofilauswahl reicht oft das Lesen der Tag-UID und das Speichern der UID -> Material-Zuordnung in Firmware oder Host.
 
 ## Leseentfernung
 
@@ -113,7 +113,7 @@ Ergebnisse hängen ab von:
 - Störungen;
 - Modul-Stromversorgung.
 
-Metall in der Nähe der Antenne kann das Lesen drastisch verschlechtern. Falls das Lesegerät in einem Trockner, einer Kammer oder einem Spulenhalter montiert ist, teste die Entfernung in der echten Baugruppe, nicht nur auf der Werkbank.
+Metall in der Nähe der Antenne kann das Lesen wesentlich verschlechtern. Falls das Lesegerät in einem Trockner, einer Kammer oder einem Spulenhalter montiert ist, testen Sie die Entfernung in der echten Baugruppe, nicht nur auf der Werkbank.
 
 ## Wo wird das Lesegerät platziert?
 
@@ -141,7 +141,7 @@ Vor der Integration:
 5. Überprüfe, dass nicht unterstützte Karten die Logik nicht beschädigen.
 6. Montiere das Modul im Gehäuse und teste erneut.
 
-In diesem Stadium baue nicht sofort komplexe Profilsysteme. Erreiche zunächst stabiles UID-Lesen.
+In diesem Stadion baue nicht sofort komplexe Profilsysteme. Erreiche zunächst stabiles UID-Lesen.
 
 ## Beispielgeräte-Logik
 
@@ -183,7 +183,7 @@ RFID sollte nicht die einzige Kontrolrmethode sein. Du brauchst ein manuelles Ba
 - Antennenplatzierung direkt neben Metall;
 - Test der Leseentfernung auf der Werkbank, aber nicht im Gehäuse;
 - RFID als einzige Profilwahlmethode einsetzen;
-- wichtige Logik nur in UID speichern ohne Lesefehlerüberprüfung.
+- Wichtige Logik nur in UID speichern ohne Lesefehlerüberprüfung.
 
 ## Wichtigste Punkte
 

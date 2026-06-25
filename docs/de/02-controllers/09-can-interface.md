@@ -2,7 +2,7 @@
 
 CAN ist eine Kommunikationsschnittstelle für mehrere Geräte auf einer gemeinsamen Differenzleitung. Ausgeschrieben: `Controller Area Network`.
 
-CAN stammt aus der Automobil- und Industrieelektronik, in 3D-Druckern wurde es jedoch für Toolhead-Boards, entfernte MCUs und Module populär, bei denen eine längere und zuverlässigere Kommunikation als I2C/SPI benötigt wird.
+CAN stammt aus der Automobil- und Industrieelektronik, wurde in 3D-Druckern jedoch für Toolhead-Boards, entfernte MCUs und Module populär, bei denen eine längere und zuverlässige Kommunikation als I2C/SPI benötigt wird.
 
 ## Wo CAN nützlich ist
 
@@ -15,7 +15,7 @@ In Drucker- und iDryer-ähnlichen Peripheriegeräten wird CAN verwendet für:
 - verteiltes System aus mehreren Controllern;
 - Fälle, in denen USB oder langes I2C/SPI unpraktisch ist.
 
-CAN ist besonders nützlich, wenn ein Knoten weit vom Host oder Hauptboard entfernt ist und sich in der Nähe Motoren, Heizungen und andere Störquellen befinden.
+CAN ist besonders nützlich, wenn ein Knoten weit vom Host oder Hauptboard entfernt ist und sich in der Nähe von Motoren, Heizungen und anderen Störquellen befindet.
 
 ## CANH, CANL und GND
 
@@ -34,7 +34,7 @@ Vereinfachtes Diagramm:
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:CAN_ISO11898-2_Network.png), EE JRW, CC BY-SA 4.0*
 
-Für die Verdrahtung wird für `CANH`/`CANL` oft ein verdrilltes Paar verwendet. `GND` hängt von der jeweiligen Schaltung, den Boards und der Dokumentation ab, in kleinen DIY-Systemen wird jedoch oft eine gemeinsame Referenz für stabilen Betrieb und Schnittstellensicherheit benötigt.
+Für die Verdrahtung wird für `CANL`/`GND` oft ein verdrilltes Paar verwendet. `GND` hängt von der jeweiligen Schaltung, den Boards und der Dokumentation ab, in kleinen DIY-Systemen wird jedoch oft eine gemeinsame Referenz für stabilen Betrieb und Schnittstellensicherheit benötigt.
 
 ## CAN-Transceiver ist erforderlich
 
@@ -68,7 +68,7 @@ Viele Boards haben einen Terminator-Jumper. Einige haben einen eingebauten Termi
 
 ## Bitrate
 
-Die CAN-Geschwindigkeit muss auf allen Knoten übereinstimmen. In Klipper verwendet CAN oft `1000000`, was `1 Mbit/s` entspricht, der spezifische Wert hängt jedoch von Firmware, Einstellungen und Buslänge ab.
+Die CAN-Geschwindigkeit muss auf allen Knoten übereinstimmen. In Klipper verwendet CAN oft `1 Mbit/s`, was `1 Mbit/s` entspricht, der spezifische Wert hängt jedoch von Firmware, Einstellungen und Buslänge ab.
 
 Wenn die Bitrate unterschiedlich ist, können die Knoten nicht normal kommunizieren.
 
@@ -92,15 +92,15 @@ Auf der Linux-Seite benötigt man normalerweise ein `can0`-Interface. Der Host m
 - HAT/Adapter für SBC;
 - andere unterstützte Schaltung.
 
-Klipper hat ein Werkzeug, um die `canbus_uuid` neuer, nicht initialisierter Geräte zu finden. Wichtig zu verstehen: Wenn ein Gerät bereits von Klipper konfiguriert wurde, erscheint es möglicherweise nicht mehr als „neu" in der Liste.
+Klipper hat ein Werkzeug, um die `canbus_uuid` neuer, nicht initialisierter Geräte zu finden. Wichtig zu verstehen: Wenn ein Gerät bereits von Klipper konfiguriert wurde, erscheint es möglicherweise nicht mehr als „neu“ in der Liste.
 
 ## USB-to-CAN-Bridge
 
 Einige Boards können im USB-to-CAN-Bridge-Modus geflasht werden. Dann verbindet sich das Board über USB mit dem Host und erscheint für Linux als CAN-Adapter.
 
-Das ist praktisch, hat aber eine wichtige Einschränkung: Der Bridge-Modus wird benötigt, um mit einem echten CAN-Bus und anderen CAN-Knoten zu kommunizieren. Wenn man nur ein Board in der Nähe des Hosts hat und keinen echten CAN-Bus, ist es normalerweise einfacher, den normalen USB/Serial-Modus zu verwenden.
+Das ist praktisch, hat aber eine wichtige Einschränkung: Der Bridge-Modus wird benötigt, um mit einem echten CAN-Bus und anderen CAN-Knoten zu kommunizieren. Wenn man nur ein Board in der Nähe des Hosts hat und keinen echten CAN-Bus hat, ist es normalerweise einfacher, den normalen USB/Serial-Modus zu verwenden.
 
-Außerdem ist USB-to-CAN-Bridge nicht als `/dev/serial/by-id/...` sichtbar. Es wird als CAN-Interface konfiguriert und verwendet `canbus_uuid`, nicht `serial:`.
+Außerdem ist USB-to-CAN-Bridge nicht als `canbus_uuid` sichtbar. Es wird als CAN-Interface konfiguriert und verwendet `serial:`, nicht `serial:`.
 
 ## Wann CAN gerechtfertigt ist
 
@@ -115,7 +115,7 @@ CAN ist es wert, in Betracht gezogen zu werden, wenn:
 
 CAN kann unnötig sein, wenn:
 
-- das Board sich in der Nähe des Hosts befindet;
+- das Board befindet sich in der Nähe des Hosts;
 - nur ein zusätzlicher MCU benötigt wird;
 - USB stabil funktioniert;
 - keine Erfahrung mit Flashen, `can0`, Terminatoren und Linux-Netzwerken vorhanden ist;

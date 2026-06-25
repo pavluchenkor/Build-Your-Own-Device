@@ -14,7 +14,7 @@ RP2040 es bueno para:
 - conexión de OLED vía I2C;
 - conexión de RFID/NFC vía SPI o UART;
 - control de servos con señal PWM;
-- placa autónoma simple sin Wi-Fi;
+- placa autónoma sencilla sin Wi-Fi;
 - banco de pruebas para sensores e interfaces.
 
 Si necesitas conectividad de red desde el principio, es más fácil mirar ESP32 o Pico W. Si necesitas un MCU adicional cableado para Klipper, RP2040 suele ser más conveniente.
@@ -158,7 +158,7 @@ Si planeas un MCU para Klipper, verifica de antemano las instrucciones existente
 - comprar Pico 2 esperando el comportamiento exacto de RP2040;
 - medir `12V`/`24V` en ADC sin divisor;
 - conectar un calefactor directamente a un pin;
-- elegir RP2040 para una tarea Wi-Fi cuando un Pico normal no tiene Wi-Fi;
+- elija RP2040 para una tarea Wi-Fi cuando un Pico normal no tiene Wi-Fi;
 - no verificar el pinout de un clon específico.
 
 ## Puntos clave

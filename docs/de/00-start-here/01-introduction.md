@@ -1,5 +1,5 @@
 ---
-title: "Einstieg in den Bau eines Filamenttrockners"
+Titel: „Einstieg in den Bau eines Filamenttrockners“
 description: "Ein klarer Einstieg für das erste Projekt: Filamenttrockner planen, Elektronik, Heizung, Luftstrom und Gehäuse auswählen und Sicherheitslücken vermeiden."
 ---
 
@@ -48,7 +48,7 @@ Was dieser Abschnitt nicht tut:
 
 Wie man liest:
 
-- wenn das Thema neu ist — gehen Sie in Ordnung vor;
+- wenn das Thema neu ist – gehen Sie in Ordnung vor;
 - wenn Sie bereits Geräte gebaut haben — öffnen Sie den benötigten Abschnitt als Referenz;
 - wenn das Gerät nicht funktioniert — schauen Sie zuerst unter `08-common-mistakes`;
 - wenn Sie mit `110-230V AC` arbeiten — lesen Sie zuerst alles über Sicherheit, SSR, Drähte, Anschlüsse und Schutzleiter.

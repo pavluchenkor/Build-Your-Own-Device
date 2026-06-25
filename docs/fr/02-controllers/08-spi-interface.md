@@ -61,11 +61,11 @@ Le plus souvent, `CS` est actif à l'état bas : au repos la ligne est à `HIGH`
 
 Dans les anciens schémas très répandus, les noms sont :
 
-- `MOSI` — Master Out Slave In ;
-- `MISO` — Master In Slave Out ;
+- `MOSI` — Sortie maître Entrée esclave ;
+- `MISO` — Entrée maître Sortie esclave ;
 - `SS` — Slave Select.
 
-Dans la documentation plus récente, on peut trouver des noms neutres :
+Dans la documentation la plus récente, on peut trouver des noms neutres :
 
 - `PICO` — Peripheral In Controller Out, équivalent à MOSI ;
 - `POCI` — Peripheral Out Controller In, équivalent à MISO ;

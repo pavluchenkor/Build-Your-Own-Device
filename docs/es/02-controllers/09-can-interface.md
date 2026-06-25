@@ -100,7 +100,7 @@ Algunas placas pueden flashearse en modo puente USB-to-CAN. Entonces la placa se
 
 Esto es conveniente, pero tiene una limitación importante: el modo puente es necesario para comunicarse con un bus CAN real y otros nodos CAN. Si solo tienes una placa cerca del host y no hay un bus CAN real, normalmente es más sencillo usar el modo USB/serial normal.
 
-Además, el puente USB-to-CAN no será visible como `/dev/serial/by-id/...`. Se configura como interfaz CAN y usa `canbus_uuid`, no `serial:`.
+Además, el puente USB-to-CAN no será visible como `canbus_uuid`. Se configura como interfaz CAN y usa `serial:`, no `serial:`.
 
 ## Cuándo está justificado CAN
 
@@ -121,7 +121,7 @@ CAN puede ser innecesario si:
 - no tienes experiencia con flasheo, `can0`, terminadores y redes de Linux;
 - la placa elegida está poco documentada.
 
-Para un primer controlador adicional simple, USB suele ser más rápido y claro. CAN tiene sentido cuando resuelve un problema real de cableado o distribución de placas.
+Para un primer controlador adicional simple, el USB suele ser más rápido y claro. CAN tiene sentido cuando resuelve un problema real de cableado o distribución de placas.
 
 ## CAN no alimenta cargas
 

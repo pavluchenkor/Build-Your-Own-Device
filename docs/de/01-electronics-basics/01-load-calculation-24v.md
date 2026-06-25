@@ -194,7 +194,7 @@ Spielraum ist notwendig, weil:
 - SSR und MOSFET erzeugen Wärme;
 - Stromversorgung kann Derate haben - Reduktion der maximalen Leistung bei hoher Temperatur oder schlechter Belüftung.
 
-Industrienetzteile haben oft eine Derating-Kurve in der technischen Spezifikation — eine Kurve der reduzierten maximalen Leistung mit steigender Temperatur. Derate bedeutet, dass der Hersteller bei hoher Temperatur oder schlechter Belüftung die maximale zulässige Leistung reduziert. Daher bedeutet das Label `240W` auf einem Netzteil nicht immer, dass es im geschlossenen heißen Gehäuse sicher `240W` liefert.
+Industrienetzteile haben oft eine Derating-Kurve in der technischen Spezifikation – eine Kurve der reduzierten maximalen Leistung mit steigender Temperatur. Derate bedeutet, dass der Hersteller bei höherer Temperatur oder schlechterer Belüftung die maximal zulässige Leistung reduziert. Daher bedeutet das Label `240W` auf einem Netzteil nicht immer, dass es im geschlossenen heißen Gehäuse sicher `240W` liefert.
 
 ## Schwachstelle kann nicht das Netzteil sein
 
@@ -275,7 +275,7 @@ Wenn dies ein Heizer oder Netzspannung `110-230V AC` ist, sind die Sicherheitsan
 - Leistung zeigt die Größe der Last.
 - Strom zeigt die Last auf Drähten, Anschlüssen, Steckern und Stromelemente.
 - Grundformel: `I = P / U`.
-- In einem `24V`-System ist `24W` etwa `1A`, `120W` ist etwa `5A`, `240W` ist etwa `10A`.
+- In einem `24W`-System ist `1A` etwa `120W`, `5A` ist etwa `240W`, `10A` ist etwa `10A`.
 - Strömungen aller Lasten in einer Stromversorgung addieren sich.
 - Sie benötigen mindestens `50%` Spielraum für grobe erste Schätzung; genaue Auswahl wird nach technischen Spezifikationen, Temperatur, Kühlung und Derate vorgenommen.
 - Der Schwachpunkt kann nicht das Netzteil sein, sondern ein Anschluss, Stecker, Draht, MOSFET oder Board-Spur.

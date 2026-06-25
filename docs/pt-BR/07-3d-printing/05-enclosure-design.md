@@ -5,7 +5,7 @@ description: "Como projetar uma caixa para secador de filamento ou câmara aquec
 
 # Caixa do secador de filamento e câmara aquecida ativa
 
-A caixa define a estabilidade da temperatura, a segurança do aquecedor e da eletrónica e a facilidade de manutenção. Esta página descreve princípios de projeto para secadores de filamento, câmaras ativas e módulos aquecidos semelhantes.
+A caixa define a estabilidade da temperatura, a segurança do aquecedor e da electrónica e a facilidade de manutenção. Esta página descreve princípios de projeto para secadores de filamento, câmaras ativas e módulos aquecidos semelhantes.
 
 Um invólucro de dispositivo não é apenas uma caixa em torno de componentes.
 
@@ -65,9 +65,9 @@ A zona quente é o aquecedor, fluxo de ar quente, sensor de temperatura e peças
 
 A zona de eletrônica é o controlador, visor, sensores de baixa tensão, fios de lógica.
 
-A zona de fiação de energia é a fonte de alimentação, SSR, MOSFET, terminais, fusíveis, entrada de rede se presente.
+A zona de energia de energia é a fonte de alimentação, SSR, MOSFET, terminais, fusíveis, entrada de rede se presente.
 
-A zona do usuário é tudo tocado pelas mãos: botões, puxadores, coberturas, visor, localização do leitor RFID.
+A zona do usuário é tudo tocado pelas mãos: botões, puxadores, coberturas, viseira, localização do leitor RFID.
 
 Estas zonas não devem intersectar aleatoriamente.
 

@@ -1,113 +1,113 @@
 # Verificação de um Termistor
 
-A thermistor is a temperature sensor that changes resistance when heated or cooled.
+Um termistor é um sensor de temperatura que altera a resistência quando aquecido ou arrefecido.
 
-In 3D printers, dryers, and chamber heaters, the most common type is an NTC thermistor rated at `100K`. NTC means that resistance decreases as temperature increases.
+Em impressoras 3D, secadores e aquecedores de câmara, o tipo mais comum é um termistor NTC classificado em `100K`. NTC significa que a resistência diminui à medida que a temperatura aumenta.
 
-You need to check a thermistor if:
+Precisa verificar um termistor se:
 
-- temperature readings are unrealistic;
-- temperature jumps around;
-- the heater enters an error state;
-- firmware reports `MINTEMP`, `MAXTEMP`, `Thermal runaway`, or similar;
-- the thermistor was replaced, moved, or re-crimped;
-- the device was assembled for the first time.
+- as leituras de temperatura são irrealistas;
+- a temperatura salta constantemente;
+- o aquecedor entra num estado de erro;
+- o firmware relata `MINTEMP`, `MAXTEMP`, `Thermal runaway`, ou similar;
+- o termistor foi substituído, movido ou recrimp;
+- o dispositivo foi montado pela primeira vez.
 
-## First, turn off power
+## Em primeiro lugar, desligue a alimentação
 
-Resistance is measured only on de-energized circuits.
+A resistência é medida apenas em circuitos desenergizados.
 
-Before checking:
+Antes de verificar:
 
-1. Turn off the device.
-2. Disconnect power from the mains or power supply.
-3. Wait for the heater to cool down.
-4. Disconnect the thermistor from the board if you need to measure the sensor itself.
+1. Desligue o dispositivo.
+2. Desconecte a alimentação da rede ou fonte de alimentação.
+3. Aguarde que o aquecedor arrefeça.
+4. Desconecte o termistor da placa se precisar medir o sensor propriamente dito.
 
-If you measure resistance while the thermistor is connected to the board, readings may be distorted by other circuit components. If you measure resistance with power on, you can damage the multimeter or board.
+Se medir a resistência enquanto o termistor está conectado à placa, as leituras podem ser distorcidas por outros componentes do circuito. Se medir a resistência com a alimentação ligada, pode danificar o multímetro ou a placa.
 
-## What an NTC 100K should have
+## O que um NTC 100K deve ter
 
-A typical NTC `100K` has a resistance of about `100 kOhm` at `25°C`.
+Um NTC típico `100K` tem uma resistência de cerca de `100 kOhm` a `25°C`.
 
-This does not mean the multimeter will always show exactly `100.0 kOhm`.
+Isto não significa que o multímetro mostre sempre exactamente `100.0 kOhm`.
 
-It is normal for the reading to differ slightly at room temperature:
+É normal que a leitura difira aumentando à temperatura ambiente:
 
-- in a cool room resistance will be higher;
-- in a warm room resistance will be lower;
-- different thermistor types have different tables;
-- long wires and poor contacts can affect measurement.
+- numa sala fresca a resistência será superior;
+- numa sala quente a resistência será menor;
+- diferentes tipos de termistores têm tabelas diferentes;
+- fios longos e maus contactos podem afectar a medição.
 
-The main check is simple: a 100K NTC at room temperature should read tens or around a hundred kilohms, not `0 Ohm` or `OL`.
+A verificação principal é simples: um NTC 100K à temperatura ambiente deve ler bolsas ou cerca de cem quilohms, não `OL` ou `OL`.
 
-## Measuring with a multimeter
+## Medição com um multímetro
 
-Set your multimeter to resistance mode `Ohm`.
+Coloque seu multímetro no modo de resistência `Ohm`.
 
-If your multimeter is not autoranging, select a range above `100 kOhm`, such as `200 kOhm` or `2 MOhm`.
+Se seu multímetro não tiver auto-alcance, seleccione um intervalo acima de `100 kOhm`, como `200 kOhm` ou `2 MOhm`.
 
-Then:
+Depois:
 
-1. Disconnect the thermistor from the board.
-2. Touch the multimeter probes to the two thermistor wires.
-3. Do not hold the metal ends of the probes and wires simultaneously: your body can add parallel resistance.
-4. Wait for the reading to stabilize.
-5. Record the value.
+1. Desconecte o termistor da placa.
+2. Toque as sondas do multímetro aos dois fios do termistor.
+3. Não segure os fins de metal das sondas e fios simultaneamente: seu corpo pode adicionar resistência em paralelo.
+4. Aguarde que a leitura se estabilize.
+5. Registe o valor.
 
 ![Digital multimeter for measuring thermistor resistance](../../img/05-tools/02-digital-multimeter.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 
-## Quick heat test with your finger
+## Teste rápido de aquecimento com o dedo
 
-After measuring at room temperature, you can carefully warm the sensor with your fingers.
+Após medir à temperatura ambiente, pode aquecer cuidadosamente o sensor com seus dedos.
 
-For an NTC thermistor, resistance should start to decrease.
+Para um termistor NTC, a resistência deve começar a diminuir.
 
-For example:
+Por exemplo:
 
-- was around `100 kOhm` at room temperature;
-- became lower after finger heating.
+- era cerca de `100 kOhm` à temperatura ambiente;
+- tornou-se menor após aquecimento com dedo.
 
-Exact numbers do not matter here. The direction of change matters.
+Os números exactos não importam aqui. A direcção da mudança é importante.
 
-If resistance does not change at all, jumps randomly, or disappears when the wire moves, the problem may be in the sensor, wire, crimp, or connector.
+Se a resistência não mudar em absoluto, salta aleatoriamente ou desaparece quando o fio se move, o problema pode estar no sensor, fio, crimp ou conector.
 
-## Breakage and short circuit
+## Ruptura e curto-circuito
 
-A multimeter helps quickly distinguish a normal sensor from an obvious failure.
+Um multímetro ajuda a distinguir rapidamente um sensor normal de uma falha óbvia.
 
-Typical signs:
+Sinais típicos:
 
-- `OL`, `over limit`, `1` on the left of the display, or infinite resistance - open circuit;
-- nearly `0 Ohm` - short circuit;
-- value jumps significantly when the wire moves - poor contact or broken conductor;
-- value around `100 kOhm` at room temperature and decreases with heating - looks like a healthy NTC 100K.
+- `OL`, `over limit`, `1` no lado esquerdo do ecrã, ou resistência infinita - circuito aberto;
+- quase `0 Ohm` - curto-circuito;
+- valor salta significativamente quando o fio se move - mau contacto ou condutor quebrado;
+- valor cerca de `100 kOhm` à temperatura ambiente e diminui com o aquecimento - parece um NTC 100K saudável.
 
-Different multimeters use different designations for open circuit. Usually it is `OL` or a value beyond the selected range.
+Diferentes multímetros usam designações diferentes para circuito aberto. Normalmente é `OL` ou um valor além do intervalo seleccionado.
 
-## Checking the wiring
+## Verificação da fiação
 
-The thermistor may be fine while the problem is in the wiring.
+O termistor pode estar bem enquanto o problema está na fiação.
 
-Check:
+Verifique:
 
-- the connector is fully inserted;
-- pins have not come out of the connector housing;
-- wires are not frayed;
-- no insulation damage near the heater;
-- no wire tension when axes or cover move;
-- the cable does not run right next to heater power wires without reason;
-- the crimp location is secure.
+- o conector está completamente inserido;
+- os pinos não saíram do alojamento do conector;
+- os fios não estão desfibrados;
+- nenhum dano de isolamento perto do aquecedor;
+- nenhuma tensão do fio quando os eixos ou cobertura se movem;
+- o cabo não corre imediatamente adjacente aos fios de alimentação do aquecedor sem motivo;
+- a localização do crimp é segura.
 
-If readings change when you move the wire, this is not a "sensor feature". This is a contact problem that must be fixed before turning on the heater.
+Se as leituras mudarem quando move o fio, isto não é uma "característica do sensor". Este é um problema de contacto que deve ser corrigido antes de ligar o aquecedor.
 
-## Checking in Klipper
+## Verificação em Klipper
 
-In Klipper the sensor type is set in the configuration.
+Em Klipper o tipo de sensor é definido na configuração.
 
-Example for a typical chamber temperature sensor:
+Exemplo para um sensor típico de temperatura de câmara:
 
 ```ini
 [temperature_sensor chamber]
@@ -117,7 +117,7 @@ min_temp: 0
 max_temp: 100
 ```
 
-Example for a chamber heater:
+Exemplo para um aquecedor de câmara:
 
 ```ini
 [heater_generic chamber_heater]
@@ -130,99 +130,99 @@ min_temp: 0
 max_temp: 90
 ```
 
-Pin names here are typical. In a real device, check your board's pinout.
+Os nomes de pinos aqui são típicos. Num dispositivo real, verifique o esquema de pinos da sua placa.
 
-Important: `sensor_type` must match the real sensor. Two thermistors may look identical but have different tables. If you choose the wrong type, temperature can be noticeably inaccurate, especially in the working heating range.
+Importante: `sensor_type` deve corresponder ao sensor real. Dois termistores podem parecer idênticos mas ter tabelas diferentes. Se escolher o tipo errado, a temperatura pode ser notavelmente imprecisa, especialmente no intervalo de aquecimento de trabalho.
 
-## What to watch in the interface
+## O que observar na interface
 
-After connecting, check the temperature in the Klipper interface, Mainsail, Fluidd, or other UI.
+Após a ligação, verifique a temperatura na interface Klipper, Mainsail, Fluidd ou outra IU.
 
-At room temperature, the reading should be close to the actual room temperature.
+À temperatura ambiente, a leitura deve estar próxima da temperatura real da sala.
 
-Suspicious signs:
+Sinais suspeitos:
 
-- reads significantly lower than reality;
-- reads significantly higher than reality;
-- temperature jumps by tens of degrees;
-- temperature changes when you move the wire;
-- temperature does not rise when heating is on;
-- temperature rises very slowly;
-- temperature rises even though the heater is off.
+- lê significativamente inferior à realidade;
+- lê significativamente superior à realidade;
+- a temperatura salta dezenas de graus;
+- a temperatura muda quando move o fio;
+- a temperatura não aumenta quando o aquecimento está ligado;
+- a temperatura aumenta muito lentamente;
+- a temperatura aumenta mesmo que o aquecedor esteja desligado.
 
-If the sensor is on the heater, do not start extended heating until readings look reasonable.
+Se o sensor estiver no aquecedor, não inicie aquecimento prolongado até que as leituras pareçam razoáveis.
 
-## Firmware errors
+## Erros de firmware
 
-In 3D printer firmware, temperature errors are not a minor issue but part of safety.
+No firmware da impressora 3D, os erros de temperatura não são um problema menor mas parte da segurança.
 
-For a typical circuit with an NTC and on-board pull-up:
+Para um circuito típico com um NTC e pull-up a bordo:
 
-- sensor breakage often looks like too low temperature or `MINTEMP`;
-- short circuit often looks like too high temperature or `MAXTEMP`;
-- poor thermal contact may cause `Heating failed` or `Thermal runaway`;
-- strong cooling of the heating block may cause an error because temperature rises too slowly or does not hold.
+- a ruptura do sensor frequentemente se parece com temperatura demasiado baixa ou `MINTEMP`;
+- curto-circuito frequentemente se parece com temperatura demasiado alta ou `MAXTEMP`;
+- mau contacto térmico pode causar `Heating failed` ou `Thermal runaway`;
+- arrefecimento forte do bloco de aquecimento pode causar um erro porque a temperatura sobe muito lentamente ou não se mantém.
 
-Error names depend on the firmware, but the meaning is the same: the controller no longer trusts the temperature or sees that heating is not working as expected.
+Os nomes de erros dependem do firmware, mas o significado é o mesmo: o controlador já não confia na temperatura ou vê que o aquecimento não está funcionando conforme esperado.
 
-Do not disable thermal protection just to "check". If protection trips, first look for the cause in the sensor, wiring, mounting, heater, PID settings, and cooling.
+Não desactive a protecção térmica apenas para "verificar". Se a protecção dispara, primeiro procure a causa no sensor, fiação, montagem, aquecedor, configurações PID e arrefecimento.
 
-## Thermal contact
+## Contacto térmico
 
-An electrically working thermistor does not guarantee correct temperature.
+Um termistor funcionando electricamente não garante temperatura correcta.
 
-The sensor must transfer heat well from the part it is measuring.
+O sensor deve transferir bem o calor da parte que está a medir.
 
-Check:
+Verifique:
 
-- the sensor sits fully in the sleeve or hole;
-- there is normal clamping;
-- no gap between sensor and surface;
-- thermal paste has not dried or flaked out if used;
-- fasteners are not loose;
-- the sensor has not come out of its seat;
-- wires are not pulling the sensor out.
+- o sensor se senta completamente na manga ou furo;
+- há abertura normal;
+- nenhuma lacuna entre sensor e superfície;
+- a pasta térmica não secou ou descascou se foi utilizada;
+- os fixadores não estão soltos;
+- o sensor não saiu do seu assento;
+- os fios não estão a puxar o sensor para fora.
 
-Poor contact is dangerous because the sensor reads temperature lower than reality. The controller continues heating while the real part may already be overheated.
+Mau contacto é perigoso porque o sensor lê temperatura inferior à realidade. O controlador continua a aquecer enquanto a parte real pode já estar sobraquecida.
 
 ## Mini-checklist
 
-Before first heating:
+Antes do primeiro aquecimento:
 
-- thermistor resistance looks as expected;
-- NTC resistance decreases with finger heating;
-- no open circuit or short circuit;
-- wires do not react with jumps when moved;
-- connector is inserted correctly;
-- correct `sensor_type` is chosen in firmware;
-- temperature in interface looks like room temperature;
-- sensor is securely mounted in the right location;
-- `min_temp` and `max_temp` are set reasonably for the device.
+- a resistência do termistor se parece conforme esperado;
+- a resistência NTC diminui com o aquecimento dos dedos;
+- nenhum circuito aberto ou curto-circuito;
+- os fios não reagem com saltos quando se movem;
+- o conector está inserido correctamente;
+- o `sensor_type` correcto é escolhido no firmware;
+- a temperatura na interface se parece com a temperatura da sala;
+- o sensor está seguramente montado no local correcto;
+- `min_temp` e `max_temp` estão definidos razoavelmente para o dispositivo.
 
-## Common mistakes
+## Erros comuns
 
-- measuring resistance with the board powered;
-- not disconnecting the sensor from the board and getting strange values;
-- confusing a `100K` thermistor with another sensor type;
-- choosing the wrong `sensor_type`;
-- seeing `OL` and thinking it means "100K";
-- assuming any 100K NTC is identical;
-- leaving the thermistor loose next to the heater;
-- overtightening a glass thermistor with a screw;
-- pulling the wire so the sensor comes out of the sleeve;
-- disabling thermal protection instead of fixing the error cause.
+- medir a resistência com a placa alimentada;
+- não desconectar o sensor da placa e obter valores estranhos;
+- confundir um termistor `100K` com outro tipo de sensor;
+- escolher o `sensor_type` errado;
+- ver `OL` e pensar que significa "100K";
+- assumir que qualquer NTC 100K é idêntico;
+- deixar o termistor solto próximo ao aquecedor;
+- apertar demasiado um termistor de vidro com um parafuso;
+- puxar o fio para que o sensor saia da manga;
+- desactivar a protecção térmica em vez de corrigir a causa do erro.
 
-## Key points
+## Pontos-chave
 
-- Resistance is measured only on de-energized circuits.
-- A typical NTC 100K is about `100 kOhm` at `25°C`.
-- When heated, NTC resistance decreases.
-- `OL` usually means open circuit, nearly `0 Ohm` means short circuit.
-- Firmware must have the correct sensor type selected.
-- Good thermal contact is as important as working wiring.
-- Do not start the heater if temperature readings look wrong.
+- A resistência é medida apenas em circuitos desenergizados.
+- Um NTC 100K típico é cerca de `100 kOhm` a `25°C`.
+- Quando aquecido, a resistência NTC diminui.
+- `OL` normalmente significa circuito aberto, quase `0 Ohm` significa curto-circuito.
+- O firmware deve ter o tipo de sensor correcto seleccionado.
+- Bom contacto térmico é tão importante quanto fiação funcionante.
+- Não inicie o aquecedor se as leituras de temperatura parecerem incorrectas.
 
-## Related reading
+## Leitura relacionada
 
 - [Klipper Configuration Reference: Temperature sensors](https://www.klipper3d.org/Config_Reference.html#temperature-sensors) - official `sensor_type`, `sensor_pin`, `pullup_resistor` parameters and list of common thermistors.
 - [Marlin Configuration: Temperature Ranges and Thermal Protection](https://marlinfw.org/docs/configuration/configuration.html#temperature-ranges) - explanation of `MINTEMP`, `MAXTEMP`, and thermal runaway protection.

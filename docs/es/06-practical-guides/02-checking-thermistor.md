@@ -32,14 +32,14 @@ Una NTC típica `100K` tiene una resistencia de aproximadamente `100 kOhm` a `25
 
 Esto no significa que el multímetro siempre mostrará exactamente `100.0 kOhm`.
 
-Es normal que la lectura difiera ligeramente a temperatura ambiente:
+Es normal que la lectura difiera ligeramente a la temperatura ambiente:
 
 - en una habitación fría, la resistencia será más alta;
 - en una habitación cálida, la resistencia será más baja;
 - diferentes tipos de termistancias tienen diferentes tablas;
 - los cables largos y los malos contactos pueden afectar la medición.
 
-La verificación principal es simple: una NTC 100K a temperatura ambiente debe leer decenas o alrededor de cien kilohms, no `0 Ohm` u `OL`.
+La verificación principal es simple: una NTC 100K a temperatura ambiente debe leer decenas o alrededor de cien kiloohmios, no `OL` u `OL`.
 
 ## Medición con un multímetro
 
@@ -176,7 +176,7 @@ El sensor debe transferir bien el calor de la parte que está midiendo.
 Verificar:
 
 - el sensor se asienta completamente en la manga o agujero;
-- hay sujeción normal;
+- sujeción normal del heno;
 - sin espacio entre sensor y superficie;
 - la pasta térmica no se ha secado ni descamado si se usa;
 - los sujetadores no están sueltos;

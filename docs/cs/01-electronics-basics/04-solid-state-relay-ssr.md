@@ -65,11 +65,11 @@ To znamená:
 - výstup přepíná AC zátěž v uvedeném rozsahu;
 - nepotřebujete napájet zátěž ze vstupní strany přes SSR.
 
-Před nákupem zkontrolujte řádky `Input`, `Output`, `Load voltage`, `Load current` a schéma zapojení výrobce.
+Před nákupem nejvyšší řádky `Input`, `Output`, `Load voltage`, `Load current` a schéma zapojení výrobce.
 
 ## Typické schéma zapojení
 
-SSR se obvykle umisťuje do rozříznuté линии napájení zátěže. Řídící prvek se připojuje pouze na vstup SSR, zatímco síť prochází výstupem SSR.
+SSR se obvykle umisťuje do rozříznuté linky napájení zátěže. Řídící prvek se připojuje pouze na vstup SSR, zatímco síť prochází výstupem SSR.
 
 ![Vnitřní struktura polovodičového relé SSR](../../img/01-electronics-basics/04-ssr-internal-structure.png)
 
@@ -146,7 +146,7 @@ Důležitý režim selhání: SSR se může porouchat a zůstat zapnutý. Proto 
 
 ## Jaké zátěže jsou vhodné
 
-SSR je nejsnáze použitelné s odporovými zátěžemi CA:
+SSR je nejsnáze použitelné s odporovými zátěžemi AC:
 
 - topidlo;
 - silikónové topné polštáře;
@@ -156,7 +156,7 @@ SSR je nejsnáze použitelné s odporovými zátěžemi CA:
 Buďte opatrní s:
 
 - motory;
-- ventilátory CA;
+- ventilátory AC;
 - transformátory;
 - solenoidy;
 - zdroji napětí;

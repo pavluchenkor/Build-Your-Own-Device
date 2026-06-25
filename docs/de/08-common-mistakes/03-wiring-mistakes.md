@@ -16,7 +16,7 @@ Typische Zeichen von Verdrahtungsproblemen:
 - USB fällt ab;
 - Anschluss wird heiß;
 - Draht wird dunkel oder riecht;
-- Modul funktioniert auf Arbeitstisch aber nicht in Fall;
+- Modul funktioniert auf dem Arbeitstisch, aber nicht im Herbst;
 - nach Schließung des Deckels funktioniert Gerät nicht.
 
 Wenn ein Symptom sich ändert wenn der Draht bewegt wird, überprüfen Sie zuerst die Verdrahtung.
@@ -25,7 +25,7 @@ Wenn ein Symptom sich ändert wenn der Draht bewegt wird, überprüfen Sie zuers
 
 Polarität kann nicht "nach Farbe" überprüft werden.
 
-Roter Draht ist oft plus, schwarzer Draht oft minus, aber das ist keine Garantie. In einem DIY-Gerät könnte der vorherige Erbauer oder Sie selbst die Farben verwechselt haben.
+Roter Draht ist oft Plus, schwarzer Draht oft Minus, aber das ist keine Garantie. In einem DIY-Gerät könnte der vorherige Erbauer oder Sie selbst die Farben verwechselt haben.
 
 Bevor Sie verbinden:
 
@@ -126,7 +126,7 @@ RFID RC522 verwirrt oft Leute: Pin `SDA` auf dem Board könnte `SS/CS` für SPI 
 
 ## Netz- und Signaldrähte
 
-110-230V AC Drähte, Gleichstrom-Stromlast und schwache Signale dürfen nicht zufällig in einer Bündel liegen.
+110–230 V Wechselstrom, Gleichstrom-Stromlast und schwache Signale dürfen nicht zufällig in einem Bündel liegen.
 
 Probleme:
 
@@ -179,7 +179,7 @@ Sie können nicht:
 - geflochtenen Draht klemmen so dass manche Litzen herausstehen;
 - Stromdrähte ohne richtiger Verbindung verdrehen;
 - heiße Anschluss ignorieren;
-- "manchmal funktioniert" als normal ansehen.
+- „manchmal funktioniert“ als normal ansehen.
 
 ## Wichtige Punkte
 

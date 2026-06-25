@@ -2,7 +2,7 @@
 
 Material für Kammer, Trockner, Filter, Gehäuse oder Luftkanal kann nicht nur nach Preis, Dicke und Schneideleichtigkeit ausgewählt werden.
 
-In einem beheizten Gerät muss Material nicht nur den normalen Betrieb aushalten, sondern auch angemessene Ausfälle: Lüfterstopp, Sensorfehler, festsitzender Schalter, schlechter Kontakt, überhitztes Terminal oder lokalisierter heißer Strom.
+In einem beheizten Gerät muss Material nicht nur den normalen Betrieb aushalten, sondern auch angemessene Ausfälle: Lüfterstopp, Sensorfehler, festsitzender Schalter, schlechter Kontakt, überhitztes Terminal oder neuer heißer Strom.
 
 ## Was "zum Heizen geeignet" bedeutet
 
@@ -21,7 +21,7 @@ Die Schmelztemperatur allein ist fast nutzlos. Kunststoff kann lange vor dem Sch
 
 ## Betriebstemperatur und Sicherheitsspielraum
 
-Zunächst müssen Sie verstehen, was die Temperatur nicht "im Durchschnitt in der Kammer" sein wird, sondern an bestimmten Orten:
+Zunächst müssen Sie verstehen, was die Temperatur nicht „im Durchschnitt in der Kammer“ sein wird, sondern an bestimmten Orten:
 
 - neben dem Heizer;
 - am heißen Luftauslass;
@@ -32,7 +32,7 @@ Zunächst müssen Sie verstehen, was die Temperatur nicht "im Durchschnitt in de
 - unter Isolierung;
 - auf Außenfläche.
 
-Wenn die Kammer `45°C` hält, bedeutet das nicht, dass alle Teile innen auch `45°C` sind. Neben dem Heizer oder in der Luftleitung kann es viel heißer sein.
+Wenn die Kammer `45°C` hält, bedeutet das nicht, dass alle Teile im Inneren auch `45°C` sind. Neben dem Heizer oder in der Luftleitung kann es viel heißer sein.
 
 Praktische Regel: Material muss einen Sicherheitsspielraum für die Dauerbetriegstemperatur genau am Ort haben, an dem es sich befindet. Für Zone neben Heizer muss der Spielraum größer sein als für äußeres dekoratives Panel.
 
@@ -43,13 +43,13 @@ Die Dokumentation kann verschiedene Klassifizierungssysteme enthalten.
 Für Kunststoffe wird oft UL 94 angegeben:
 
 - `HB` - Horizontalmuster brennt langsamer als angegebenes Limit;
-- `V-2`, `V-1`, `V-0` - Vertikalmuster muss sich selbst in angegebener Zeit selbstlöschend;
+- `V-1`, `V-0`, `V-0` - Vertikalmuster muss sich selbst in angegebener Zeit selbstlöschend;
 - `5VB`, `5VA` - strengere Tests für bestimmte Anwendungen;
 - `HBF`, `HF-1`, `HF-2` - Klassen für Schäummaterialien.
 
 Wichtig: UL 94 ist ein Kleinformat-Labortest an Proben. Es hilft, Materialien zu vergleichen, beweist aber nicht, dass eine selbstgebaute Kammer unter jedem Ausfall sicher ist.
 
-In russischsprachiger Dokumentation für Baumaterialien können Sie treffen:
+In der russischsprachigen Dokumentation für Baumaterialien finden Sie:
 
 - `НГ` - nicht brennbar;
 - `Г1-Г4` - Entflammbarkeitsstufen;
@@ -77,7 +77,7 @@ Für XPS im technischen Datenblatt des Herstellers wird oft eine maximale Betrie
 
 Für EPS werden Empfehlungen gefunden, Betriebstemperaturen um `75°C` zu halten; darüber kann das Material die Abmessungsstabilität verlieren. Wieder muss der genaue Wert aus der spezifischen Produktdokumentation entnommen werden.
 
-PIR/Polyiso kann in einzelnen Produkten einen höheren zulässigen Bereich haben, beseitigt aber nicht die Überprüfung von Brandeigenschaften, Belag, Klebstoff, Rauch und Herstellerempfehlungen.
+PIR/Polyiso kann in einzelnen Produkten einen höheren zulässigen Bereich haben, Beseitigung aber nicht die Überprüfung von Brandeigenschaften, Belag, Klebstoff, Rauch und Herstellerempfehlungen.
 
 ## Sichere Material-"Stack"
 
@@ -87,17 +87,17 @@ Für eine geheizte Kammer ist es oft besser, nicht von "Wandmaterial" sondern vo
 
 Beispiel für solidere Logik:
 
-- innen in heißer Zone - Metall, Keramik, Glas oder anderes Material, das Temperatur aushält und nicht von lokaler Überhitzung Feuer fängt;
+- innen in heißer Zone - Metall, Keramik, Glas oder anderes Material, das die Temperatur hält und nicht von lokaler Überhitzung Feuer fängt;
 - weiter - Luftspalt oder Isolierung, wenn sie wirklich nötig ist;
 - außen - Gehäuse, das nicht zu gefährlicher Temperatur heizt;
-- Drähte und Terminals berühren nicht die Isolierung und sind nicht in Zonen verborgen, wo Überhitzung unbemerkt bleibt;
+- Drähte und Anschlüsse berühren nicht die Isolierung und sind nicht in verborgenen Zonen, wo Überhitzung unbemerkt bleibt;
 - es gibt unabhängigen Überhitzungsschutz, wenn Regelausfall zu gefährlichem Heizen führen könnte.
 
 Isolierung sollte nicht das erste Material sein, das den Heizer sieht.
 
 ## 3D-gedruckte Teile in der Nähe von Wärme
 
-Gedruckter Kunststoff ist bequem für Halterungen, Abdeckungen, Sensorhalter und Luftkanäle. Aber in einer beheizten Kammer kann es sich schlechter verhalten als es aus der Spule erscheint.
+Gedruckter Kunststoff ist bequem für Halterungen, Abdeckungen, Sensorhalter und Luftkanäle. Aber in einer beheizten Kammer kann es zu schlechterem Verhalten kommen, wenn es aus der Spule erscheint.
 
 Typische Risiken:
 
@@ -121,9 +121,9 @@ Suchen Sie nach technischen Dokumenten, nicht Marketing:
 - Einschränkungen des Kontakts mit Wärmequellen;
 - Anforderungen an Abdeckung mit Belag, Metall, Trockenmauer oder anderer Schicht.
 
-Wenn Material nur als "Isolierungsblatt" ohne ordentliches Datenblatt verkauft wird, sollte es nicht in einem selbstgebauten beheizten Gerät verwendet werden.
+Wenn das Material nur als „Isolierungsblatt“ ohne ordentliches Datenblatt verkauft wird, sollte es nicht in einem selbstgebauten beheizten Gerät verwendet werden.
 
-## Was ist definitiv nicht normal
+## War definitiv nicht normal
 
 Schlechte Lösungen:
 
@@ -140,7 +140,7 @@ Schlechte Lösungen:
 
 Materialsicherheit ist nicht ein Parameter. Sie müssen Betriebstemperatur, Entflammbarkeit, Rauch, Toxizität von Verbrennungsprodukten, Klebstoffe, Belege und echte Fehlerszenarien betrachten.
 
-Wenn Material keine klare Dokumentation hat, kann es nicht als primärer Schutz in der Nähe des Heizers platziert werden. Wenn Material entflammbar ist, muss es aus der heißen Zone entfernt, mit geeigneter Schicht abgedeckt und durch Messung im echten Betriebsmodus verifiziert werden.
+Wenn das Material keine klare Dokumentation hat, kann es nicht als primärer Schutz in der Nähe des Heizers platziert werden. Wenn Material entflammbar ist, muss es aus der heißen Zone entfernt, mit geeigneter Schicht abgedeckt und durch Messung im echten Betriebsmodus verifiziert werden.
 
 ## Materialien zu diesem Thema
 

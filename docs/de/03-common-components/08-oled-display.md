@@ -1,118 +1,205 @@
 # OLED-Bildschirm
 
-Ein OLED-Bildschirm ist ein kleines hochkontrast Display, das über eine digitale Schnittstelle wie I2C oder SPI gesteuert wird.
+Ein OLED-Bildschirm ist ein kleines Display zur Anzeige von Text, Zahlen, einfachen Symbolen und Gerätestatus. Im Gegensatz zu normalem LCD leuchtet OLED selbst und benötigt keine separate Hintergrundbeleuchtung. Kleine OLED-Module sind lesbar, benötigen wenig Platz und sind praktisch für einfache DIY-Geräte.
 
-Typische Größen: 128x64 oder 128x32 Pixel. Sie sind energieeffizient, haben keine Hintergrundbeleuchtung-Rauschen und funktionieren bei verschiedenen Winkeln.
+In einem iDryer-ähnlichen Gerät kann ein OLED-Display Temperatur, Luftfeuchtigkeit, Betriebsmodus, Fehler, Wi-Fi-Status, verbleibender Filament oder aktuelle Trocknungsphase anzeigen.
 
-## Wo es verwendet wird
+## Wann ist OLED sinnvoll
 
-In iDryern und ähnlichen Geräten:
+Ein OLED ist sinnvoll zu installieren, wenn Benutzer den Gerätestatus direkt auf dem Gehäuse sehen müssen:
 
-- Anzeige des Status (Temperatur, Zeit, Feuchte);
-- Menüsystem für Benutzereinstellungen;
-- Fehlermedl dungen;
-- Echtzeit-Daten wie Gewicht oder Luftstrom;
-- einfache Visualisierung des Prozess.
+- aktuelle Kammertemperatur;
+- Luftfeuchtigkeit;
+- Zieltemperatur;
+- Betriebsmodus;
+- Schaltuhren;
+- Sensorfehler;
+- Lüfter- oder Heizerstatus;
+- Verbindungsstatus;
+- einfaches Menü ohne großen Bildschirm.
 
-Nicht ideal für sehr heiße Bereiche direkt neben Heizern.
+Wenn das Gerät immer über Klipper, Web-Interface oder Mobile App verwaltet wird, ist ein separates OLED möglicherweise nicht notwendig. Es erhöht die Verdrahtung, benötigt Platz im Gehäuse, erfordert Code und ist ein weiterer Fehlerpunkt.
 
-## I2C oder SPI
+## Typische Größen und Controller
 
-OLED-Bildschirme verwenden normalerweise eine dieser Schnittstellen:
+Die am häufigsten verwendeten kleinen OLED-Module:
 
-**I2C:**
+- `128x32` Pixel;
+- `128x64` Pixel;
+- Diagonale ca. `0,91"` oder `0,96"`;
+- monochrom: weiß, blau, gelb-blau;
+- mit Controller `SSD1306` oder ähnlich `SH1106`.
 
-- meist 4 Pins: GND, VCC, SCL, SDA;
-- einfach zu implementieren;
-- langsamere Datenrate als SPI;
-- möglich, mehrere Geräte am selben Bus zu haben;
-- I2C-Adresse: normalerweise `0x3C` oder `0x3D`.
+`SSD1306` und `SH1106` sehen ähnlich aus, sind aber nicht immer vollständig code-kompatibel. Wenn eine Bibliothek für `SSD1306` eingestellt ist, das Modul aber tatsächlich `SH1106` ist, kann der Bildschirm ein verschobenes Bild, Müll oder gar nichts anzeigen.
 
-**SPI:**
+Vor dem Kauf ist es wichtig, nicht nur die Bildschirmgröße, sondern auch den Controller, die Schnittstelle und die Versorgungsspannung zu prüfen.
 
-- normalerweise 5-7 Pins: GND, VCC, CLK, MOSI, CS, und optional RESET;
-- höhere Datenrate;
-- weniger Interferenz;
-- jedes Gerät braucht eigenes Chip-Select.
+## I2C und SPI
 
-Für einfache Anwendungen ist I2C praktisch. Für hohe Datenrate oder wenn Sie SPI für andere Geräte benötigen, kann SPI besser sein.
+Kleine OLED-Module verbinden sich normalerweise über I2C oder SPI.
 
-## Spannungsversorgung
+Ein I2C-Modul hat normalerweise 4 Kontakte:
 
-Die meisten OLED-Bildschirme arbeiten mit `3.3V` oder `5V`.
+- `VCC`;
+- `GND`;
+- `SDA`;
+- `SCL`.
 
-Überprüfen Sie:
+Ein SPI-Modul benötigt mehr Leitungen:
 
-- Betriebsspannung;
-- Stromverbrauch (normalerweise `20-50 mA`);
-- ob der Display ein Regler hat oder externe Stromversorgung braucht;
-- Logikpegel (3.3V oder 5V).
+- `VCC`;
+- `GND`;
+- `SCK`/`CLK`;
+- `MOSI`/`DIN`;
+- `CS`;
+- `DC`;
+- manchmal `RST`.
 
-Bei 3.3V-Displays von 5V-Systemen können Level-Shifter nötig sein.
+I2C ist einfacher zu verdrahten und reicht normalerweise für Status, Temperatur und einfaches Menü aus. SPI ist schneller und besser, wenn der Bildschirm häufig aktualisiert wird, aber bei einem kleinen Statusdisplay ist dies selten entscheidend.
 
-## Display-Größe und Auflösung
+![Anschluss eines I2C-OLED-Displays an den Controller](../../img/03-common-components/08-oled-i2c-wiring.jpg)
 
-Typische OLED-Bildschirme:
+*Quelle: [Adafruit Learning System](https://learn.adafruit.com/adafruit-128x64-oled-featherwing/), CC BY-SA 3.0*
 
-- 128x64 - für detaillierte Informationen;
-- 128x32 - für einfache Anzeige;
-- andere Größen sind seltener.
+## Spannungsversorgung und Logikpegel
 
-Kleinere Bildschirme brauchen weniger Speicher und Verarbeitungsleistung.
+Ein OLED-Modul kann für `3,3V`, `5V` oder ein Spannungsreguliermodul mit Pegelverschiebung auf der Platine ausgelegt sein. Äußerlich können solche Module fast identisch aussehen.
 
-## Montage und Sichtlinie
+Vor dem Anschluss prüfen:
 
-OLED-Bildschirme brauchen:
+- welche Stromversorgung im Modul oder auf der Produktseite aufgelistet ist;
+- ob `SDA`/`SCL`-Leitungen mit der Controller-Logik kompatibel sind;
+- ob das Modul I2C Pull-ups hat;
+- ob Pull-ups nicht mit der Controller-Spannung in Konflikt geraten.
 
-- klare Sichtlinie zum Benutzer;
-- Winkel von etwa 0-60° für gute Sichtbarkeit;
-- Schutz vor Staub und Feuchtigkeit, wenn im Freien;
-- Schutz vor direkter Sonneneinstrahlung (kann ausgewaschen aussehen).
+Für ESP32 und die meisten modernen Mikrocontroller ist es sicherer, von `3,3V` Logik auszugehen. Wenn ein OLED-Modul I2C auf `5V` zieht, kann dies für einen 3,3V-Controller problematisch sein.
 
-Eine leichte Neigung oder ein Fenster zum Schutz kann helfen.
+Viele beliebte I2C-OLED-Module funktionieren von `3,3V` und verbinden sich direkt mit ESP32, aber du musst das spezifische Modul überprüfen.
 
-## Firmware-Unterstützung
+## I2C-Adresse
 
-Die Steuerung eines OLED erfordert Bibliotheken und Firmware:
+I2C-OLED hat oft Adressen:
 
-- Arduino: `Adafruit_SSD1306` oder ähnliche;
-- Klipper: spezielle Module für Display;
-- ESP32: verschiedene OLED-Bibliotheken verfügbar.
+- `0x3C`;
+- `0x3D`.
 
-Die häufigste ist der SSD1306-Controller für I2C OLED-Bildschirme.
+Wenn der Bildschirm nicht antwortet, ist die Adresse das erste, das man nach Stromversorgung und Drähten überprüfen sollte. Einige Module ermöglichen es dir, die Adresse über einen Jumper oder durch Löten eines kleinen Jumpers auf der Platine zu ändern.
+
+Zeichen für falsche Adresse:
+
+- Skizze oder Firmware startet, aber Bildschirm ist leer;
+- I2C-Scanner sieht Gerät unter anderer Adresse;
+- Bibliothek initialisiert Display ohne sichtbares Ergebnis;
+- Änderung von `0x3C` zu `0x3D` macht es funktionieren.
+
+## Was auf einem kleinen Bildschirm angezeigt werden sollte
+
+Ein `128x32`- oder `128x64`-OLED hat sehr wenig Platz. Versuche nicht, ein vollständiges Smartphone-Interface darauf zu machen.
+
+Gute Einstellung für einen Trockner oder Heizer:
+
+- große aktuelle Temperatur;
+- Zieltemperatur;
+- Luftfeuchtigkeit, falls ein Sensor vorhanden ist;
+- Modus: `HEAT`, `DRY`, `IDLE`, `ERROR`;
+- kleines Lüfter-/Heizer-Symbol;
+- Fehlercode oder kurze Meldung.
+
+Schlechte Einstellung:
+
+- lange Sätze;
+- winzige Tabellen;
+- viele Menüpunkte auf einem Bildschirm;
+- ständig rollender Text;
+- dekorative Animation statt nützlichem Status.
+
+Bei einem Gerät mit Heizer ist es wichtiger, einen Fehler schnell zu erkennen als einen hübschen Splash-Screen zu haben.
+
+## Einbrennen und Helligkeit
+
+OLED-Pixel altern durch das Glühen. Wenn du an einer Stelle über lange Zeit denselben hellen Text anzeigst, kann sich schließlich eine Spur abzeichnen.
+
+Für ein DIY-Gerät ist dies nicht immer kritisch, aber es ist besser zu:
+
+- Helligkeit nicht ständig auf Maximum halten, wenn nicht nötig;
+- Bildschirm nach Leerlaufzeit ausschalten;
+- statische Elemente gelegentlich verschieben;
+- nicht ständig weiße Fläche anzeigen;
+- kurze Updates statt zusätzliche Animation verwenden.
+
+In einer warmen Kammer oder in der Nähe eines Heizers hat OLED auch eine kürzere Lebensdauer. Es ist besser, die Elektronik in einer Zone mit kontrollierter Temperatur im zulässigen Modulbereich zu halten.
+
+## Drahtlänge und Interferenz
+
+I2C mag lange Drähte nicht, insbesondere in der Nähe von Motoren, Heizern und Stromversorgungsleitungen. Wenn sich OLED auf einer Tür oder abnehmbarem Bedienfeld befindet, kann ein langes flexibles Kabel zu einer Störquelle werden.
+
+Praktische Regeln:
+
+- `SDA` und `SCL` kurz halten;
+- sie von Heizer-Stromversorgungsleitungen fernhalten;
+- gemeinsame `GND` verwenden;
+- keinen Stecker machen, der rückwärts eingeht;
+- für eine abnehmbare Abdeckung einen richtigen Stecker und Zugentlastung verwenden;
+- wenn I2C instabil ist, erst Drähte kürzen und Pull-ups überprüfen.
+
+SPI toleriert normalerweise höhere Aktualisierungsgeschwindigkeit besser, hat aber mehr Drähte und Verbindungsfehler sind häufiger.
+
+## OLED oder Touchscreen
+
+OLED ist gut zur Statusanzeige. Ohne Tasten, Encoder oder andere Steuerung wird das Eingabeproblem nicht gelöst.
+
+Wenn Benutzer häufig Einstellungen direkt auf dem Gerät ändern müssen, könnte Folgendes nötig sein:
+
+- Encoder + OLED;
+- mehrere Tasten + OLED;
+- TFT-Display;
+- Touchscreen;
+- Web-Interface oder App.
+
+Installiere keinen Touchscreen nur, weil das OLED klein wirkt. Für einfache Geräte ist manchmal ein kleines OLED mit einer Schaltfläche zuverlässiger und klarer.
 
 ## Was vor dem Kauf zu überprüfen ist
 
-Vor dem Kauf überprüfen Sie:
+Vor dem Kauf eines OLED-Moduls überprüfen:
 
-- Auflösung (128x64 oder 128x32);
-- Schnittstelle (I2C oder SPI);
-- Betriebsspannung;
-- Größe und Form;
-- Farbe (weiss, blau, gelb);
-- Controller-Chip (meist SSD1306);
-- I2C-Adresse oder SPI-Pin-Layout;
-- Verfügbarkeit von Datenblatt und Beispielcode;
-- Betriebstemperaturbereich.
+- Größe: `128x32`, `128x64` oder andere;
+- Controller: `SSD1306`, `SH1106`, `SH1107`;
+- Schnittstelle: I2C oder SPI;
+- Stromversorgung: `3,3V`, `5V` oder Bereich;
+- Logikpegel;
+- I2C-Adresse, falls aufgelistet;
+- Unterstützung des Reset-Pins;
+- Unterstützung in ausgewählter Firmware oder Bibliothek;
+- physikalische Platinendimensionen und Montagelöcher;
+- Steckerposition;
+- Betriebstemperatur;
+- Farbe und Lesbarkeit unter dem Winkel, den du benötigst.
 
-Für ein einfaches Projekt: ein `128x64` I2C OLED mit SSD1306.
+Für ein ESP32-Gerät ist normalerweise ein I2C-OLED `SSD1306` auf `0x3C` mit Adresse `0x3C` am bequemsten. Für eine Klipper-Platine überprüfe, ob die spezifische Platine deinen gewählten Bus unterstützt und wie das Display in der Konfiguration beschrieben wird.
 
 ## Typische Fehler
 
-- falsche Spannungsversorgung (3.3V statt 5V oder umgekehrt);
-- I2C-Adresse falsch in Firmware eingestellt;
-- Daten- und Taktsignale vertauscht;
-- Fehlender Pull-Up-Widerstand (manchmal erforderlich);
-- OLED zu nah an Heizer/Heiße Luft;
-- Display-Firmware nicht unterstützt;
-- Speicher für Grafikpuffer zu groß auf kleinen Controllern.
+- `SDA` und `SCL` verwechselt;
+- Stromversorgung an falsche Spannung angeschlossen;
+- I2C-Adresse nicht überprüft;
+- `SSD1306` im Code ausgewählt, aber Modul ist `SH1106`;
+- I2C-Drähte zu lang gemacht;
+- gemeinsame `GND` vergessen;
+- 5V Pull-up Modul an 3,3V Controller ohne Überprüfung angeschlossen;
+- SPI-Modul ausgewählt mit Erwartung von 4 Pins wie I2C;
+- Bildschirm in heißer Zone platziert;
+- Display installiert, ohne zu verstehen, welches Problem es für Benutzer löst.
 
 ## Hauptpunkt
 
-Ein OLED-Bildschirm ist praktisch für Status und einfache Benutzerinteraktion. I2C ist für die meisten Anwendungen ausreichend. Überprüfen Sie Spannungsversorgung, I2C-Adresse und Firmware-Unterstützung.
+Ein OLED-Display ist gut für kurze Statusinformationen und einfaches lokales Interface. Bei den meisten DIY-Geräten reicht ein I2C-OLED `128x64`, wenn es stromversorgungstechnisch kompatibel und von der gewählten Firmware unterstützt wird.
+
+Vor dem Anschluss prüfe den Display-Controller, die Schnittstelle, die Stromversorgung, die I2C-Adresse und die Drahtlänge. Wenn das Gerät bereits über Web-Interface praktisch ist, ist OLED möglicherweise nicht nötig.
 
 ## Referenzmaterialien
 
-- [Adafruit: SSD1306 OLED Display](https://learn.adafruit.com/adafruit-oled-displays-for-arduino) - Datasheet, Anschlussmöglichkeiten, Arduino-Code.
-- [Klipper Configuration Reference: Displays](https://www.klipper3d.org/Config_Reference.html#display) - Klipper-Unterstützung für SSD1306 und andere Bildschirme.
-- [SSD1306 Datasheet](https://en.wikipedia.org/wiki/File:SSD1306.pdf) - offizielle Spezifikationen des Controllers.
+- [Adafruit: Monochrome OLED Breakouts](https://learn.adafruit.com/monochrome-oled-breakouts) - praktisches Handbuch für kleine SSD1306-OLED, I2C/SPI-Verbindung, Größen und Beispiele.
+- [SparkFun: Qwiic Micro OLED Hookup Guide](https://learn.sparkfun.com/tutorials/qwiic-micro-oled-hookup-guide) - Beispiel eines I2C-OLED-Moduls, Bibliothek und Text-/Grafikausgabe.
+- [ESPHome: SSD1306 OLED Display](https://esphome.io/components/display/ssd1306) - Dokumentation zu `ssd1306_i2c`, `ssd1306_spi`, Adressen, SSD1306/SH1106-Modellen und Konfiguration.
+- [Klipper Configuration Reference: display](https://www.klipper3d.org/Config_Reference.html#display) - Display-Unterstützung in Klipper, einschließlich `ssd1306` und `sh1106`.
+- [SSD1306 Datasheet: Solomon Systech](https://www.radiolocman.com/datasheet/pdf.html?di=168297) - technische Beschreibung des SSD1306-Controllers: Auflösung, I2C/SPI/Parallel-Schnittstellen und Befehle.

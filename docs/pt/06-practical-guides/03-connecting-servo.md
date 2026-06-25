@@ -1,144 +1,144 @@
 # Ligação de um Servomotor
 
-A servo is a small motor with a gearbox and control electronics. You can tell it what position to rotate the shaft to.
+Um servomotor é um pequeno motor com caixa de velocidades e electrónica de controlo. Pode dizer-lhe para que posição rodar o veio.
 
-In iDryer-like devices, a servo can open a damper, move a small latch, press a mechanical switch, or redirect airflow.
+Em dispositivos semelhantes ao iDryer, um servomotor pode abrir um amortecedor, mover um pequeno trinco, pressionar um comutador mecânico ou redirecionar o fluxo de ar.
 
-The main mistake with servos: thinking it is a "small thing" and you can power it from any 5V pin on the controller. A servo can draw significant current, especially at startup, sudden movement, or when the mechanism binds.
+O erro principal com servomotores: pensar que é uma "coisa pequena" e pode alimentá-la a partir de qualquer pino 5V do controlador. Um servomotor pode desenhar corrente significativa, especialmente no arranque, movimento repentino ou quando o mecanismo se prende.
 
-## Three wires
+## Três fios
 
-A typical hobby servo has three wires:
+Um servomotor hobby típico tem três fios:
 
-- power: usually `5V` or `6V`;
-- ground: `GND`;
-- signal: control pulses from the controller.
+- alimentação: geralmente `5V` ou `6V`;
+- massa: `GND`;
+- sinal: pulsos de controlo do controlador.
 
-Common colors:
+Cores comuns:
 
-- red - power;
-- black or brown - ground;
-- yellow, orange, or white - signal.
+- vermelho - alimentação;
+- preto ou castanho - massa;
+- amarelo, laranja ou branco - sinal.
 
-But you cannot blindly trust colors. Different manufacturers may use different color schemes. Before connecting, check the marking, product page, or datasheet.
+Mas não pode confiar cegamente nas cores. Diferentes fabricantes podem usar esquemas de cores diferentes. Antes de ligar, verifique a marcação, página de produto ou ficha técnica.
 
-## Power separate, signal separate
+## Alimentação separada, sinal separado
 
-The signal wire does not power the servo. It only tells the servo where to turn.
+O fio de sinal não alimenta o servomotor. Apenas diz ao servomotor para onde rodar.
 
-The servo draws energy from the power wire.
+O servomotor desenha energia do fio de alimentação.
 
-The correct logic is:
+A lógica correta é:
 
-- the controller provides only the control signal;
-- the servo is powered by a 5V/6V source that can handle its current;
-- the controller ground and servo power ground are connected together.
+- o controlador fornece apenas o sinal de controlo;
+- o servomotor é alimentado por uma fonte de 5V/6V que possa lidar com a sua corrente;
+- a massa do controlador e a massa de alimentação do servomotor estão ligadas em conjunto.
 
 ![Servo wire color code](../../img/03-common-components/06-servo-color-code.jpg)
 
 *Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/all), CC BY-SA 4.0*
 
-## Why you cannot power from weak 5V
+## Porque não pode alimentar a partir de 5V fraco
 
-Many boards have a 5V pin. This does not mean a servo can be safely powered from it.
+Muitas placas têm um pino 5V. Isto não significa que um servomotor possa ser alimentado com segurança a partir dele.
 
-When moving, a servo may draw much more current than its size suggests. If power is insufficient, typical symptoms appear:
+Ao mover, um servomotor pode desenhar muito mais atual do que seu tamanho sugere. Se a alimentação for insuficiente, aparecem sintomas típicos:
 
-- controller reboots;
-- screen flickers;
-- USB connection drops;
-- servo jerks;
-- Wi-Fi on ESP32 drops;
-- servo hums but does not move;
-- power sags at movement start.
+- controlador reinicia;
+- ecrã cintila;
+- ligação USB cai;
+- servomotor se move aos solavancos;
+- Wi-Fi em ESP32 cai;
+- servomotor zumbe mas não se move;
+- alimentação diminui no início do movimento.
 
-For one small servo, board-supplied power sometimes works if the board and source are explicitly rated for that current. But for a real device with a damper, latch, or mechanism, it is better to use a separate 5V/6V DC-DC or power supply with a margin.
+Para um pequeno servomotor, a alimentação fornecida pela placa por vezes funciona se a placa e a fonte forem explicitamente classificadas para essa corrente. Mas para um dispositivo real com um amortecedor, trinco ou mecanismo, é melhor usar uma fonte de alimentação DC-DC ou fonte de alimentação separada de 5V/6V com margem.
 
-## Common ground
+## Massa comum
 
-If the servo is powered by a separate source, a common ground is needed.
+Se o servomotor for alimentado por uma fonte separada, é necessária uma massa comum.
 
-Without a common ground, the controller and servo have no common signal level. The servo may not respond, may jerk, or may behave randomly.
+Sem uma massa comum, o controlador e o servomotor não têm um nível de sinal comum. O servomotor pode não responder, pode se mover aos solavancos ou pode comportar-se aleatoriamente.
 
-Simple connection:
+Ligação simples:
 
-1. `+5V` or `+6V` from the power source goes to the servo power.
-2. `GND` from the power source goes to the servo ground.
-3. The controller's `GND` is connected to the same ground.
-4. The controller PWM/GPIO pin goes to the servo signal wire.
+1. `+5V` ou `+6V` da fonte de alimentação vai para a alimentação do servomotor.
+2. `GND` da fonte de alimentação vai para a massa do servomotor.
+3. A `GND` do controlador está ligada à mesma massa.
+4. O pino PWM/GPIO do controlador vai para o fio de sinal do servomotor.
 
-Servo power and controller power may be different, but the ground must be common.
+A alimentação do servomotor e a alimentação do controlador podem ser diferentes, mas a massa deve ser comum.
 
-## What signal is needed
+## Que sinal é necessário
 
-A typical positional hobby servo is controlled by pulses.
+Um servomotor hobby posicional típico é controlado por pulsos.
 
-Typical signal:
+Sinal típico:
 
-- pulse roughly every `20 ms`;
-- about `1 ms` - one extreme of the range;
-- about `1.5 ms` - middle;
-- about `2 ms` - other extreme of the range.
+- pulso aproximadamente a cada `20 ms`;
+- cerca de `1 ms` - um extremo do intervalo;
+- cerca de `1.5 ms` - meio;
+- cerca de `2 ms` - outro extremo do intervalo.
 
-This is not typical PWM for LED brightness or fan speed. Here, pulse width in microseconds matters.
+Isto não é PWM típico para brilho LED ou velocidade de ventilador. Aqui, a largura do pulso em microsegundos é importante.
 
-The actual limits of a specific servo may differ. Some safely operate not from 0 to 180 degrees but less. So extreme positions need careful testing.
+Os limites reais de um servomotor específico podem diferir. Alguns funcionam com segurança não de 0 a 180 graus mas menos. Portanto, posições extremas precisam de teste cuidadoso.
 
-## Do not jam a servo against the mechanism
+## Não prenda um servomotor contra o mecanismo
 
-A servo tries to hold the commanded position.
+Um servomotor tenta manter a posição ordenada.
 
-If a damper hits the housing, an arm binds, or the mechanism reaches a physical stop before the command ends, the servo keeps pushing. At that point, current rises, the motor heats, the gearbox wears out.
+Se um amortecedor bate no alojamento, um braço se prende ou o mecanismo atinge uma paragem física antes do comando terminar, o servomotor continua a empurrar. Nesse ponto, a corrente sobe, o motor aquece, a caixa de velocidades se desgasta.
 
-This is especially critical for dampers and latches.
+Isto é especialmente crítico para amortecedores e trincos.
 
-Before permanent operation, verify:
+Antes de operação permanente, verifique:
 
-- the mechanism moves freely across the entire range;
-- no misalignment;
-- no binding of linkages;
-- the servo does not hum in the end position;
-- extreme angles in firmware do not force the mechanism into a stop;
-- with power off, the device stays safe or returns via spring, as intended.
+- o mecanismo se move livremente em todo o intervalo;
+- nenhum desalinhamento;
+- nenhuma vinculação de ligações;
+- o servomotor não zumbe na posição final;
+- ângulos extremos no firmware não forçam o mecanismo contra uma paragem;
+- com a alimentação desligada, o dispositivo permanece seguro ou volta via mola, conforme pretendido.
 
-If a servo hums at rest, it often signals load, a stop, or wrong lever geometry.
+Se um servomotor zumbe em repouso, frequentemente sinaliza carga, uma paragem ou geometria de alavanca errada.
 
-## Starting and stall current
+## Corrente de arranque e travamento
 
-A servo has normal running current and current when the shaft is blocked. The latter is often called stall current.
+Um servomotor tem corrente de funcionamento normal e corrente quando o came está bloqueado. A última é frequentemente chamada de corrente de trabalho.
 
-Stall current appears when the servo tries to move but the shaft is blocked or the mechanism is too heavy.
+Uma corrente de travamento aparece quando o servomotor tenta se mover, mas o eixo está bloqueado ou o mecanismo é muito pesado.
 
-This mode often causes:
+Este modo frequentemente causa:
 
-- power sag;
-- controller reboot;
-- wire heating;
-- DC-DC overheating;
-- gearbox breakage.
+- diminuição de alimentação;
+- reinicialização do controlador;
+- aquecimento do fio;
+- sobraquecimento do DC-DC;
+- ruptura da caixa de velocidades.
 
-If the datasheet lists stall current, choose the power source accounting for this value and safety margin. If there is no datasheet, you cannot assume a servo is safe to run "by sight".
+Se a ficha técnica lista a corrente de travamento, escolha a fonte de alimentação contabilizando este valor e margem de segurança. Se não houver ficha técnica, não pode assumir que um servomotor é seguro para executar "à vista".
 
-## Capacitor next to the servo
+## Condensador junto ao servomotor
 
-Sometimes an electrolytic capacitor between `+5V` and `GND` next to the servo helps.
+Às vezes um condensador electrolítico entre `+5V` e `GND` junto ao servomotor ajuda.
 
-It does not replace a proper power supply, but can smooth a brief sag at movement start.
+Não substitui uma fonte de alimentação adequada, mas pode suavizar uma breve queda no início do movimento.
 
-For a small servo: hundreds of microfarads, like `470 uF` or more, with voltage rating above the supply voltage.
+Para um pequeno servomotor: centenas de microfarads, como `470 uF` ou mais, com classificação de tensão acima da tensão de alimentação.
 
-Electrolytic capacitor polarity matters:
+A polaridade do condensador eletrolítico é importante:
 
-- capacitor plus to `+5V`;
-- capacitor minus to `GND`.
+- positivo do condensador para `+5V`;
+- negativo do condensador para `GND`.
 
-If the device needs to be reliable, first choose proper power and wiring, then use a capacitor as an extra measure.
+Se o dispositivo precisar ser confiável, primeiro escolha a alimentação e as fibras condutoras, depois use um condensador como medida adicional.
 
-## Example Klipper configuration
+## Exemplo de configuração Klipper
 
-In Klipper, a servo is described with a `[servo]` section.
+Em Klipper, um servomotor é descrito com uma secção `[servo]`.
 
-Example:
+Exemplo:
 
 ```ini
 [servo chamber_damper]
@@ -149,7 +149,7 @@ maximum_pulse_width: 0.002
 initial_angle: 90
 ```
 
-Commands:
+Comandos:
 
 ```gcode
 SET_SERVO SERVO=chamber_damper ANGLE=0
@@ -157,13 +157,13 @@ SET_SERVO SERVO=chamber_damper ANGLE=90
 SET_SERVO SERVO=chamber_damper ANGLE=180
 ```
 
-Pin names here are typical. In a real device, check your board's pinout.
+Os nomes de pinos aqui são típicos. Num dispositivo real, verifique o esquema de pinos da sua placa.
 
-For mechanics, do not start with `0` and `180` right away. First test a safe range like `60`, `90`, `120`, then expand the angles.
+Para mecânica, não comece com `0` e `180` logo. Primeiro teste um intervalo seguro como `60`, `90`, `120`, depois expanda os ângulos.
 
-## Example Arduino/ESP32 logic
+## Exemplo de lógica Arduino/ESP32
 
-Arduino approach typically uses the Servo library:
+A abordagem do Arduino normalmente usa a biblioteca Servo:
 
 ```cpp
 #include <Servo.h>
@@ -179,51 +179,51 @@ void loop() {
 }
 ```
 
-This is just an example of signal logic. Servo power still needs to be designed separately. Even if the signal wire is connected to Arduino or ESP32, the servo motor must not overload the controller power.
+Este é apenas um exemplo da lógica do sinal. A alimentação do servomotor ainda precisa ser concebida separadamente. Mesmo que o fio de sinal esteja ligado ao Arduino ou ESP32, o motor do servomotor não deve sobrecarregar a alimentação do controlador.
 
-## What to check after connecting
+## O que verificar após a ligação
 
-Before mounting in the housing:
+Antes de montar no alojamento:
 
-- servo receives the correct voltage;
-- power source can handle servo current;
-- controller ground and servo ground are common;
-- signal wire is connected to the right pin;
-- servo moves in the right direction;
-- extreme angles do not break the mechanism;
-- mechanism does not bind;
-- servo does not hum continuously;
-- wires do not catch on the lever or gears;
-- power does not sag after movement;
-- controller does not reboot.
+- servomotor recebe a tensão correcta;
+- fonte de alimentação pode lidar com corrente do servomotor;
+- massa do controlador e massa do servomotor são comuns;
+- fio de sinal está ligado ao pino correcto;
+- servomotor se move na direcção correcta;
+- ângulos extremos não quebram o mecanismo;
+- mecanismo não se prende;
+- servomotor não zumbe continuamente;
+- fios não pegam na alavanca ou engrenagens;
+- alimentação não diminui após movimento;
+- controlador não reinicia.
 
-Test mechanics unloaded and under real load. A damper that moves easily by hand may bind after mounting in the housing.
+Teste mecânica descarregada e sob carga real. Um amortecedor que se move facilmente à mão pode se prender após montagem no alojamento.
 
-## Common mistakes
+## Erros comuns
 
-- powering servo from GPIO;
-- powering servo from a weak 5V board pin;
-- forgetting common ground;
-- trusting wire colors without checking;
-- connecting power backwards;
-- using too-thin wires;
-- not accounting for starting and stalling current;
-- forcing servo to push against a mechanical stop;
-- using angle `0` or `180` when the real mechanism safely runs only in a smaller range;
-- mounting servo near heat without checking operating temperature;
-- treating a continuous rotation servo as a regular positional servo.
+- alimentar servomotor a partir de GPIO;
+- alimentar servomotor a partir de um pino fraco 5V da placa;
+- esquecer massa comum;
+- confiar nas cores do fio sem verificar;
+- ligar alimentação ao contrário;
+- usar fios demasiado finos;
+- não contabilizar corrente de arranque e travamento;
+- forçar servomotor a empurrar contra uma paragem mecânica;
+- usar ângulo `0` ou `180` quando o mecanismo real funciona com segurança apenas num intervalo menor;
+- montar servomotor perto de calor sem verificar temperatura de funcionamento;
+- tratar um servomotor de rotação contínua como um servomotor posicional regular.
 
-## Key points
+## Pontos-chave
 
-- A servo has three lines: power, ground, and signal.
-- Signal does not power the servo.
-- Real devices often need a separate 5V/6V power source.
-- Servo ground and controller ground must be common.
-- The most dangerous load is jamming or mechanical binding.
-- Extreme angles need careful selection, not immediate `0` and `180`.
-- If the controller reboots when the servo moves, first check power and common ground.
+- Um servomotor tem três linhas: alimentação, massa e sinal.
+- O sinal não alimenta o servomotor.
+- Dispositivos reais frequentemente precisam de uma fonte de alimentação separada de 5V/6V.
+- Massa do servomotor e massa do controlador devem ser comuns.
+- A carga mais perigosa é travamento ou vinculação mecânica.
+- Ângulos extremos precisam de selecção cuidadosa, não `0` e `180` imediatos.
+- Se o controlador reinicia quando o servomotor se move, primeiro verifique a alimentação e a massa comum.
 
-## Related reading
+## Leitura relacionada
 
 - [Klipper Configuration Reference: Servo](https://www.klipper3d.org/Config_Reference.html#servo) - official `[servo]` section, `SET_SERVO`, angles, and pulse width.
 - [SparkFun: Hobby Servo Tutorial](https://learn.sparkfun.com/tutorials/hobby-servo-tutorial/introduction) - basic explanation of hobby servo, three wires, and pulse control.

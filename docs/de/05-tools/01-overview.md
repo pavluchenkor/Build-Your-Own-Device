@@ -48,7 +48,7 @@ Also die Reihenfolge ist:
 4. Sensoren und Signale überprüfen.
 5. Nur dann komplexe Probleme suchen.
 
-## Was wird in diesem Abschnitt sein
+## Was wird in diesem Abschnitt sein?
 
 - `02-multimeter.md` - Messung von DC-Spannung, Kontinuität, Widerstand, Sicherungen und warum Strommessung gefährlicher ist.
 - `03-usb-ttl-adapter.md` - USB-UART-Adapter, TX/RX/GND, 3,3V/5V-Logikpegel, Flashen und Protokolle.

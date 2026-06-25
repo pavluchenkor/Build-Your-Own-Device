@@ -30,7 +30,7 @@ Por ejemplo:
 230V 300W -> about 1.3A
 ```
 
-A `24V` se necesitan cables gruesos, fuente de alimentación potente, MOSFET fuerte, terminales adecuados y refrigeración. A `230V AC` la corriente es menor, pero hay tensión de red peligrosa y todos los requisitos de seguridad eléctrica.
+A `230V AC` se necesitan cables gruesos, fuente de alimentación potente, MOSFET fuerte, terminales adecuados y refrigeración. A `230V AC` la corriente es menor, pero hay tensión de red peligrosa y todos los requisitos de seguridad eléctrica.
 
 El enfoque TRIAC no es "mejor" ni "más simple". Es un compromiso diferente: menos corriente en el circuito de potencia, pero requisitos mucho mayores para el aislamiento, la carcasa, el fusible, las distancias y las calificaciones.
 
@@ -59,7 +59,7 @@ El aislamiento galvánico reduce el riesgo de que la tensión de red llegue al c
 
 Los TRIAC optoacopladores vienen con cruce por cero y sin él.
 
-Un TRIAC optoacoplador con cruce por cero activa la carga cerca del cruce por cero de la tensión de red. Esto es conveniente para el encendido/apagado simple de un calentador u otra carga resistiva: menos ruido y conmutación más suave.
+Un optoacoplador TRIAC con cruce por cero activa la carga cerca del cruce por cero de la tensión de red. Esto es conveniente para el encendido/apagado simple de un calentador u otra carga resistiva: menos ruido y conmutación más suave.
 
 Un TRIAC optoacoplador sin cruce por cero se usa donde se necesita el control de fase de la potencia, por ejemplo un dimmer. Este circuito es más complejo: hay que detectar el cruce por cero, contar el retardo y tener en cuenta el ruido.
 
@@ -83,7 +83,7 @@ Usar con precaución con:
 - controladores electrónicos;
 - cargas con alta corriente de irrupción.
 
-La carga inductiva desplaza la fase de la corriente con respecto a la tensión y puede interferir con el apagado normal del TRIAC. Puede requerir otros tipos de TRIAC, circuito snubber, varistor o un método de conmutación diferente.
+La carga inductiva desplaza la fase de la corriente con respecto a la tensión y puede interferir con el apagado normal del TRIAC. Puede requerir otros tipos de TRIAC, circuito amortiguador, varistor o un método de conmutación diferente.
 
 Una fuente de alimentación o un controlador electrónico no debe considerarse una carga resistiva normal. Si tiene su propia electrónica interna, el control TRIAC puede funcionar de forma deficiente o peligrosa.
 

@@ -2,7 +2,7 @@
 
 Dieser Abschnitt dient nicht dazu Sie zu kritisieren.
 
-Er ist da um Ihnen zu helfen häufige Fehler in einem DIY-Gerät schnell zu identifizieren: durchhängende Stromversorgung, lockerer Draht, Sensor zeigt Müll, Controller startet neu, Heizer verhält sich seltsam.
+Er ist da um Ihnen zu helfen, häufige Fehler in einem DIY-Gerät schnell zu identifizieren: durchhängende Stromversorgung, lockerer Draht, Sensor zeigt Müll, Controller startet neu, Heizer verhält sich seltsam.
 
 Das Abschnittformat ist unkompliziert:
 
@@ -26,7 +26,7 @@ Zuerst überprüfen Sie die Grundlagen:
 6. Stromschalter;
 7. Firmware und Konfiguration.
 
-Die meisten Probleme in einfachen Geräten stellen sich nicht als "komplexe Elektronik" heraus sondern als Stromversorgung, Verdrahtung oder falsche Verbindungen.
+Die meisten Probleme bei einfachen Geräten stellen sich nicht als „komplexe Elektronik“ heraus, sondern als Stromversorgung, Verdrahtung oder falsche Verbindungen.
 
 ## Wann stoppen
 
@@ -37,7 +37,7 @@ Schalten Sie sofort die Stromversorgung aus wenn:
 - Anschluss wird heiß;
 - Stecker wird dunkel;
 - Gehäuse wurde an einer unerwarteten Stelle heiß;
-- Heizer will nicht ausschalten;
+- Heizer lässt sich nicht ausschalten;
 - Schutzschalter oder Sicherung fliegt;
 - Temperatursensor zeigt Müll;
 - Gerät funktioniert nur wenn Sie den Draht bewegen.
@@ -72,7 +72,7 @@ Bis die Stromversorgung mit einem Multimeter unter Last überprüft wird, ist es
 
 ## Warum Verdrahtung wichtiger ist als es scheint
 
-Eine schlechte Verbindung kann "fast normal" funktionieren.
+Eine schlechte Verbindung kann „fast normal“ funktionieren.
 
 Das ist genau was gefährlich ist:
 

@@ -73,7 +73,7 @@ Du côté du contrôleur, vous avez généralement besoin de quatre lignes :
 
 Pour de nombreux modules HX711, l'alimentation peut être `3.3V` ou `5V`, mais vérifiez le module spécifique. Si le contrôleur fonctionne à 3.3V, c'est pratique d'utiliser un module et une alimentation compatibles avec logique 3.3V.
 
-Les broches `DT` et `SCK` peuvent généralement se connecter à GPIO régulier. Ce n'est pas I2C ou SPI dans le sens habituel, mais une interface HX711 simple à deux fils.
+Les broches `SCK` et `SCK` peuvent généralement se connecter à GPIO régulièrement. Ce n'est pas I2C ou SPI dans le sens habituel, mais une interface HX711 simple à deux fils.
 
 ## La mécanique importe plus que le circuit
 

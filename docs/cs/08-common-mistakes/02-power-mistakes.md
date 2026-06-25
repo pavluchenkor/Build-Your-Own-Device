@@ -179,8 +179,8 @@ Pokud se něco zahřívá, nejdříve vypněte napájení a zjistěte příčinu
 
 ## Reference
 
-- [SparkFun: Jak napájet projekt](https://learn.sparkfun.com/tutorials/how-to-power-a-project/voltagecurrent-considerations) - základní úvahy o napětí, proudu a výkonu pro projekty s mikrokontroléry.
-- [SparkFun: Tipy pro řešení problémů](https://learn.sparkfun.com/tutorials/sparkfun-troubleshooting-tips/hardware-checks) - kontrola zdroje napájení, připojení a zahřívání při řešení problémů.
-- [ProdataKey: Jak výměna drátů ovlivňuje ztrátu linky?](https://support.pdk.io/hc/en-us/articles/360047588514-How-does-wire-gauge-affect-line-loss) - proč délka, průřez a proud ovlivňují úbytek napětí a ztráty.
-- [WiringCalcs: Úbytek napětí vysvětlen](https://wiringcalcs.com/guides/voltage-drop-explained-guide/) - praktické vysvětlení úbytku napětí, odporu drátů a vlivu proudu.
-- [Průvodce měřičem napájení SparkFun Qwiic](https://docs.sparkfun.com/SparkFun_Qwiic_Power_Meter_ACS37800/hardware_assembly/) - příklad společného `GND` při měření/řízení externí zátěže.
+- [SparkFun: How to Power a Project](https://learn.sparkfun.com/tutorials/how-to-power-a-project/voltagecurrent-considerations) - základní úvahy o napětí, proudu a výkonu pro projekty s mikrokontroléry.
+- [SparkFun: Troubleshooting Tips](https://learn.sparkfun.com/tutorials/sparkfun-troubleshooting-tips/hardware-checks) - kontrola zdroje napájení, připojení a zahřívání při řešení problémů.
+- [ProdataKey: How does wire gauge affect line loss?](https://support.pdk.io/hc/en-us/articles/360047588514-How-does-wire-gauge-affect-line-loss) - proč délka, průřez a proud ovlivňují úbytek napětí a ztráty.
+- [WiringCalcs: Voltage Drop Explained](https://wiringcalcs.com/guides/voltage-drop-explained-guide/) - praktické vysvětlení úbytku napětí, odporu drátů a vlivu proudu.
+- [SparkFun Qwiic Power Meter guide](https://docs.sparkfun.com/SparkFun_Qwiic_Power_Meter_ACS37800/hardware_assembly/) - příklad společného `GND` při měření/řízení externí zátěže.

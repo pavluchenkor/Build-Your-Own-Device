@@ -1,78 +1,78 @@
 # Rozhraní UART
 
-UART is a simple serial data transmission interface between two devices. Expansion: `Universal Asynchronous Receiver/Transmitter`.
+UART je jednoduché sériové rozhraní na přenos dat mezi dvěma zařízeními. Rozšíření: `Universal Asynchronous Receiver/Transmitter`.
 
-In practical projects, you typically hear "UART", "serial", "TX/RX", or "UART port". For beginners, the key point is: UART transmits data on the `TX` line, receives on the `RX` line, and both devices need a common `GND` for proper operation.
+V praktických projektech obvykle slyšíte "UART", "sériový", "TX/RX" či "UART port". Pro začátečníka klíčový bod je: UART vysílá data na linku `TX`, přijímá na `RX` a obě zařízení potřebují společnou `GND` na správný provoz.
 
-## Where UART is used
+## Kde se UART používá
 
-UART is found almost everywhere:
+UART se najde skoro všude:
 
-- debug logs from microcontrollers;
-- flashing boards via USB-UART adapter;
-- host-to-MCU communication in some Klipper scenarios;
-- GPS, RFID, fingerprint, and sensor modules;
-- TMC stepper driver configuration;
-- communication between two microcontrollers;
-- service port on the board.
+- logy ladění z mikrokontroleérů;
+- nahrávání desek přes USB-UART adaptér;
+- komunikace host-MCU v některých scénářích Klipperu;
+- GPS, RFID, biometrické a modulové sensory;
+- konfigurace TMC stepper driveru;
+- komunikace mezi dvěma mikrokontroleéry;
+- servisní port na desce.
 
-UART is convenient because it requires few wires and works well for simple text, command, and diagnostic exchange.
+UART je vhodný, protože vyžaduje málo vodičů a funguje dobře na jednoduchý text, příkazy a diagnostickou výměnu.
 
-## TX, RX, and GND
+## TX, RX a GND
 
-Minimal connection:
+Minimální připojení:
 
-- `TX` - transmission;
-- `RX` - reception;
-- `GND` - common ground.
+- `TX` - vysílání;
+- `RX` - přijímání;
+- `GND` - společná zem.
 
-TX of one device connects to RX of the other:
+TX jednoho zařízení se spojuje s RX druhého:
 
-![Cross-connected TX/RX and common GND in UART connection](../../img/02-controllers/06-uart-tx-rx-crossover.png)
+![Křížem spojené TX/RX a společná GND v UART spojení](../../img/02-controllers/06-uart-tx-rx-crossover.png)
 
-*Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
+*Zdroj: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/serial-communication/all), CC BY-SA 4.0*
 
-Rule:
+Pravidlo:
 
 ```text
-Device A TX -> Device B RX
-Device A RX <- Device B TX
-Device A GND -> Device B GND
+Zařízení A TX -> Zařízení B RX
+Zařízení A RX <- Zařízení B TX
+Zařízení A GND -> Zařízení B GND
 ```
 
-The most common mistake is connecting `TX` to `TX` and `RX` to `RX`. Sometimes module markings are confusing, so if there is no connection, first double-check the pinout and documentation rather than randomly changing all wires.
+Nejčastější chyba je připojení `TX` s `TX` a `RX` s `RX`. Někdy jsou označení modulů matoucí, takže pokud není spojení, nejprve ověřte rozložení pinů a dokumentaci místo náhodné změny všech vodičů.
 
-## UART, USB, and USB-UART
+## UART, USB a USB-UART
 
-UART is not USB.
+UART není USB.
 
-A computer typically does not have bare UART pins. That's why a USB-UART adapter is needed: it connects to the computer's USB on one side and provides `TX`, `RX`, `GND`, and sometimes `VCC`, `DTR`, `CTS` lines on the other.
+Počítač typicky nemá prosté piny UART. Proto je potřeba USB-UART adaptér: na jedné straně se připojuje na USB počítače a na druhé poskytuje `TX`, `RX`, `GND` a někdy `VCC`, `DTR`, `CTS` linky.
 
-Examples:
+Příklady:
 
-- computer reading logs from a board via USB-UART;
-- USB-UART flashing a board without built-in USB;
-- host connecting to MCU over serial;
-- adapter helping recover a board after failed flashing.
+- počítač čte logy z desky přes USB-UART;
+- USB-UART nahraje desku bez vestavěného USB;
+- host se spojuje s MCU po sériové lince;
+- adaptér pomáhá obnovit desku po selhání nahrávání.
 
-Do not confuse a USB connector on a board with UART pins on the header. On some boards USB is already connected to a built-in USB-UART chip, while on others USB goes directly to the microcontroller.
+Neplešte si USB konektor na desce s UART piny na hlavici. Na některých deskách je USB už spojeno s vestavěným USB-UART čipem, na druhých jde USB přímo do mikrokontroléru.
 
-## Logic levels: 3.3V, 5V, RS-232
+## Logické úrovně: 3.3V, 5V, RS-232
 
-UART describes the data transmission method, but does not guarantee safe voltage levels.
+UART popisuje metodu přenosu dat, ale nezaručuje bezpečné napěťové úrovně.
 
-In DIY electronics, TTL/CMOS UART is most common:
+V DIY elektronice je TTL/CMOS UART nejčastější:
 
-- `3.3V` UART - ESP32, RP2040, STM32, and many modern boards;
-- `5V` UART - Arduino Uno/Nano and some older modules.
+- `3.3V` UART - ESP32, RP2040, STM32 a mnoho moderních desek;
+- `5V` UART - Arduino Uno/Nano a některé starší moduly.
 
-Applying a `5V` signal to a `3.3V` microcontroller input can damage the board. For incompatible levels, a level converter or other matching circuit is required.
+Aplikace signálu `5V` na vstup mikrokontroléru `3.3V` může poškodit desku. Na nekompatibilní úrovně je potřeba měnič úrovně či jiný obvod na sladění.
 
-There is also RS-232, which is separate. This is not "just UART on a DB9 connector". RS-232 has different voltage levels and different electrical logic. You cannot connect a true RS-232 port directly to a microcontroller GPIO. A level converter is needed, such as a MAX232-like circuit or ready-made adapter.
+Existuje také RS-232, což je odděleno. To není "jen UART na DB9 konektoru". RS-232 má různé napěťové úrovně a jinou elektrickou logiku. Nemůžete připojit skutečný port RS-232 přímo na GPIO mikrokontroléru. Potřebuje měnič úrovně, jako MAX232-ový obvod či hotový adaptér.
 
-## Speed and format
+## Rychlost a formát
 
-UART speed must match. Common values:
+Rychlost UART si musí odpovídat. Běžné hodnoty:
 
 ```text
 9600
@@ -82,83 +82,83 @@ UART speed must match. Common values:
 1000000
 ```
 
-If the speed does not match, the terminal will show garbage or silence.
+Pokud se rychlost neshoduje, terminál bude ukazovat nesmysly nebo ticho.
 
-There is also transmission format. `8N1` is often used:
+Existuje také formát přenosu. Často se používá `8N1`:
 
-- `8` - 8 data bits;
-- `N` - no parity;
-- `1` - one stop bit.
+- `8` - 8 datových bitů;
+- `N` - bez parity;
+- `1` - jeden stop bit.
 
-For most simple tasks, setting the same speed and standard `8N1` is sufficient, unless the module documentation requires otherwise.
+Na most jednoduché úlohy je nastavení stejné rychlosti a standardního `8N1` dostatečné, pokud dokumentace modulu nevyžaduje jinak.
 
-## UART in 3D printers
+## UART v 3D tiskárnách
 
-In 3D printers, UART often serves three different roles.
+V 3D tiskárnách UART často slouží třem různým rolím.
 
-**Host and board communication**
+**Komunikace hostu a desky**
 
-Some boards can communicate with the host via serial/UART. In Klipper, this is described in the `[mcu]` section via `serial`.
+Některé desky se mohou komunikovat s hostitelem přes sériový/UART. V Klipperu se to popisuje v sekci `serial` přes `serial`.
 
-**TMC driver configuration**
+**Konfigurace TMC driveru**
 
-Some stepper drivers use UART to configure current, stealthChop/spreadCycle, diagnostics, and status reading. The motor itself is usually controlled not by UART, but by `STEP` and `DIR` signals.
+Některé stepper drivery používají UART na konfiguraci proudu, stealthChop/spreadCycle, diagnostiku a čtení stavu. Motor sám je obvykle řízen ne UART, ale signály `STEP` a `DIR`.
 
-**Debug and flashing**
+**Ladění a nahrávání**
 
-UART can be used for logs, bootloader mode, and board recovery via USB-UART adapter.
+UART lze používat na logy, režim bootloaderu a obnovu desky přes USB-UART adaptér.
 
-## One UART - usually two active devices
+## Jeden UART - obvykle dvě aktivní zařízení
 
-Classic UART is a connection between two devices. You cannot blindly connect multiple transmitters to one `RX` line.
+Klasický UART je spojení mezi dvěma zařízeními. Nemůžete slepě spojovat více vysílačů na jednu `RX` linku.
 
-Problems:
+Problémy:
 
-- two devices simultaneously pull the `TX` line;
-- data gets mixed;
-- one module receives commands intended for another;
-- possible electrical conflict.
+- dvě zařízení současně tahají `TX` linku;
+- data se smíchají;
+- jeden modul přijme příkazy určené pro druhého;
+- možný elektrický konflikt.
 
-Sometimes one `TX` can be listened to by multiple receivers, but this is a conscious decision and not suitable as a universal rule. For beginners, it's safer to assume: one UART port - one pair of devices.
+Někdy jeden `TX` mohou poslouchat více přijímačů, ale to je vědomé rozhodnutí a ne vhodné jako univerzální pravidlo. Pro začátečníky je bezpečnější předpokládat: jeden UART port - jedna dvojice zařízení.
 
-## What to check before connecting
+## Co zkontrolovat před připojením
 
-Before connecting UART, verify:
+Před připojením UART ověřte:
 
-- where are `TX` and `RX`;
-- is a common `GND` needed;
-- logic level: `3.3V` or `5V`;
-- is this TTL UART or RS-232;
-- transmission speed;
-- format, if specified;
-- is this UART not occupied by USB logs or flashing;
-- is there another transmitter connected to this line;
-- do power or only `TX`/`RX`/`GND` need to be connected.
+- kde jsou `TX` a `RX`;
+- potřebuje se společná `GND`;
+- logická úroveň: `3.3V` nebo `5V`;
+- je to TTL UART nebo RS-232;
+- rychlost přenosu;
+- formát, pokud je specifikován;
+- není UART obsazen USB logy nebo nahráváním;
+- není tu jiný vysílač připojený na tuto linku;
+- potřebuje se připojit napájení nebo jen `TX`/`RX`/`GND`.
 
-Power from the USB-UART adapter is only connected if it is clear the board should be powered from it. Often for diagnostics, only `TX`, `RX`, and `GND` are needed.
+Napájení z USB-UART adaptéru se připojuje jen, je-li jasné, že by měla být deska napájena z něj. Často pro diagnostiku stačí jen `TX`, `RX` a `GND`.
 
-## Typical mistakes
+## Typické chyby
 
-- connecting `TX` with `TX`, `RX` with `RX`;
-- forgetting the common `GND`;
-- applying `5V` UART to a `3.3V` input;
-- confusing TTL UART and RS-232;
-- selecting the wrong baud rate;
-- connecting power from a USB-UART adapter to an already-powered board;
-- using UART pins occupied by USB logs or bootloader;
-- connecting multiple transmitters to one line;
-- thinking UART can drive a powerful load directly.
+- připojení `TX` s `TX`, `RX` s `RX`;
+- zapomenutí společné `GND`;
+- aplikace `5V` UART na `3.3V` vstup;
+- zmatení TTL UART a RS-232;
+- výběr špatné rychlosti;
+- připojení napájení z USB-UART adaptéru na již napajenou desku;
+- používání UART pinů obsazených USB logy nebo bootloaderem;
+- připojení více vysílačů na jednu linku;
+- myšlenka, že UART může přímo řídit výkonnou zátěž.
 
-## Key takeaway
+## Klíčové pozorování
 
-UART is a simple interface for data exchange between two devices. You need cross-connected `TX`/`RX`, common `GND`, matching speed, and compatible logic levels.
+UART je jednoduché rozhraní na výměnu dat mezi dvěma zařízeními. Potřebujete křížem propojené `TX`/`RX`, společnou `GND`, shodnou rychlost a kompatibilní logické úrovně.
 
-UART is not a power supply and does not work as a power output. It transmits data, not spin motors or activate heaters directly.
+UART není zdroj napájení a nejedná se o silový výstup. Přenáší data, ne spin motorů nebo aktivaci topidel přímo.
 
-## Related materials
+## Související materiály
 
-- [SparkFun: Serial Communication](https://learn.sparkfun.com/tutorials/serial-communication/all) - good practical explanation of UART, TX/RX, baud rate, TTL serial, RS-232, and common mistakes.
-- [SparkFun: Serial Communication - UARTs](https://learn.sparkfun.com/tutorials/serial-communication/uarts) - what UART does inside a microcontroller and why TX/RX are needed.
-- [Adafruit: Serial UART on FT232H](https://learn.adafruit.com/adafruit-ft232h-breakout/serial-uart) - example of a USB-UART adapter and connecting TX/RX/GND to a serial device.
-- [SparkFun: Serial Basic CH340C Hookup Guide](https://learn.sparkfun.com/tutorials/sparkfun-serial-basic-ch340c-hookup-guide) - example of a USB-UART adapter, RX/TX/VCC/GND pins, and loopback test.
-- [Klipper: Configuration reference - `[mcu]`](https://www.klipper3d.org/Config_Reference.html#mcu) - how serial MCU connection is described in Klipper configuration.
+- [SparkFun: Serial Communication](https://learn.sparkfun.com/tutorials/serial-communication/all) - dobrý praktický výklad UART, TX/RX, baudrate, TTL sériový, RS-232 a běžné chyby.
+- [SparkFun: Serial Communication - UARTs](https://learn.sparkfun.com/tutorials/serial-communication/uarts) - co dělá UART uvnitř mikrokontroléru a proč jsou TX/RX potřeba.
+- [Adafruit: Serial UART on FT232H](https://learn.adafruit.com/adafruit-ft232h-breakout/serial-uart) - příklad USB-UART adaptéru a připojení TX/RX/GND k sériovému zařízení.
+- [SparkFun: Serial Basic CH340C Hookup Guide](https://learn.sparkfun.com/tutorials/sparkfun-serial-basic-ch340c-hookup-guide) - příklad USB-UART adaptéru, RX/TX/VCC/GND pinů a loopback testu.
+- [Klipper: Configuration reference - `[mcu]`](https://www.klipper3d.org/Config_Reference.html#mcu) - jak se sériové spojení MCU popisuje v konfiguraci Klipperu.

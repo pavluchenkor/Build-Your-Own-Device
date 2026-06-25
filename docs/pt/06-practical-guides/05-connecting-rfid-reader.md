@@ -1,201 +1,201 @@
 # Ligação de um Leitor RFID
 
-An RFID/NFC reader lets you read a card, tag, or fob without wired contact.
+Um leitor RFID/NFC permite-lhe ler um cartão, etiqueta ou fob sem contacto com fio.
 
-In iDryer-like devices, this can be useful for spool identification, material profile selection, service access, or consumable tracking experiments.
+Em dispositivos semelhantes ao iDryer, isto pode ser útil para identificação de bobine, selecção de perfil de material, acesso de serviço ou experimentos de rastreamento de consumíveis.
 
-Main mistake: buy an "RFID module" and assume any card will read from any distance on any controller. In reality, you need to verify frequency, tag type, interface, power, logic levels, and antenna placement.
+Erro principal: comprar um "módulo RFID" e assumir que qualquer cartão lerá de qualquer distância em qualquer controlador. Na realidade, precisa verificar frequência, tipo de etiqueta, interface, alimentação, níveis de lógica e colocação de antena.
 
-## Popular modules
+## Módulos populares
 
-Common ones include:
+Os comuns incluem:
 
 - RC522 / MFRC522;
 - PN532;
-- ready-made USB/UART RFID readers;
-- NFC modules with I2C, SPI, or UART.
+- leitores RFID USB/UART prontos;
+- módulos NFC com I2C, SPI ou UART.
 
-For simple 3D printer projects, 13.56 MHz modules and tags are most common: cards, fobs, NTAG/MIFARE-compatible tags.
+Para projectos simples de impressora 3D, módulos e etiquetas de 13.56 MHz são mais comuns: cartões, fobs, etiquetas compatíveis com NTAG/MIFARE.
 
-## What to check before connecting
+## O que verificar antes da ligação
 
-Before connecting, find:
+Antes de ligar, procure:
 
-- module frequency;
-- supported card and tag types;
-- interface: SPI, I2C, or UART;
-- supply voltage;
-- logic levels;
-- board pinout;
-- interface selection via jumpers or solder bridges;
-- read distance;
-- antenna and placement requirements.
+- frequência do módulo;
+- tipos de cartão e etiqueta suportados;
+- interface: SPI, I2C ou UART;
+- tensão de alimentação;
+- níveis de lógica;
+- esquema de pinos da placa;
+- selecção de interface via jumpers ou pontes de soldadura;
+- distância de leitura;
+- requisitos de antena e colocação.
 
-If the module is rated for `3.3V`, you cannot just hook it to `5V` logic without checking. Some boards have voltage regulators but lack level shifting on signal lines.
+Se o módulo para classificação para `5V`, não pode simplesmente ligá-lo à lógica `5V` sem verificar. Algumas placas possuem reguladores de tensão, mas não alteram o nível nas linhas de sinal.
 
-## RC522: typical SPI connection
+## RC522: ligação SPI típica
 
-Cheap RC522 modules usually run on `3.3V` and most commonly connect via SPI.
+Módulos RC522 baratos normalmente funcionam a `3.3V` e ligam-se mais frequentemente por SPI.
 
-Typical lines:
+Linhas típicas:
 
-- `VCC` - `3.3V` power;
-- `GND` - ground;
-- `SCK` - SPI clock signal;
-- `MOSI` - data from controller to module;
-- `MISO` - data from module to controller;
-- `SDA`, `SS`, or `CS` - SPI chip select;
+- `VCC` - alimentação `3.3V`;
+- `GND` - massa;
+- `SCK` - sinal de clock SPI;
+- `MOSI` - dados do controlador para o módulo;
+- `MISO` - dados do módulo para o controlador;
+- `SDA`, `SS` ou `CS` - selecção de chip SPI;
 - `RST` - reset;
-- `IRQ` - interrupt, often unused in simple projects.
+- `IRQ` - interrupção, muitas vezes não usada em projectos simples.
 
 ![RFID RC522 (MFRC522) module for reading 13.56 MHz cards](../../img/06-practical-guides/05-rfid-rc522-module.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:RFID-RC522_photo.jpg), Giacomo Alessandroni, CC BY-SA 4.0*
 
-Pin names can differ. For example, on RC522, pin `SDA` often means `SS`/`CS` for SPI, not the I2C `SDA` line. This is a common source of confusion.
+Os nomes dos pinos podem variar. Por exemplo, no RC522, o pino `SDA` muitas vezes significa `SS`/`CS` para SPI, não a linha `SDA` de I2C. Isto é uma fonte comum de confusão.
 
-## PN532: SPI, I2C, or UART
+## PN532: SPI, I2C, ou UART
 
-PN532 is a more flexible module. Depending on the board, it can work via:
+PN532 é um módulo mais flexível. Dependendo da placa, pode funcionar via:
 
 - SPI;
 - I2C;
 - UART.
 
-But you cannot just connect any pins. On many PN532 boards, the interface is selected by jumpers, DIP switches, or solder bridges.
+Mas não pode simplesmente ligar qualquer pino. Em muitas placas PN532, a interface é seleccionada por jumpers, comutadores DIP ou pontes de soldadura.
 
-Before connecting, check:
+Antes de ligar, verifique:
 
-- which interface is physically selected on the board;
-- which pins match the selected interface;
-- whether pull-up resistors are needed for I2C;
-- whether pull-up or reset pin is needed;
-- whether logic levels are compatible with the controller.
+- qual interface é fisicamente seleccionada na placa;
+- quais pinos correspondem à interface seleccionada;
+- se são necessários resistores pull-up para I2C;
+- se é necessário pino pull-up ou reposição;
+- se os níveis de lógica são compatíveis com o controlador.
 
-If the board says "3.3V logic", do not connect it directly to 5V GPIO.
+Se a placa diz "lógica 3.3V", não a ligue directamente a GPIO 5V.
 
-## Common ground
+## Massa comum
 
-Like other modules, common ground is needed.
+Como outros módulos, é necessária uma massa comum.
 
-If the RFID module is powered from one source and the controller from another, their `GND` must be connected.
+Se o módulo RFID para alimentação de uma fonte e o driver de outra, seus `GND` devem estar conectados.
 
-Without common ground, SPI/I2C/UART may not work or work unstably.
+Sem massa comum, SPI/I2C/UART pode não funcionar ou funcionar instàvelmente.
 
-## Tag must match the reader
+## Etiqueta deve corresponder ao leitor
 
-RFID/NFC is not a single universal standard.
+RFID/NFC não é um padrão universal único.
 
-A module can physically only read tags supported by its chip and library.
+Um módulo pode fisicamente apenas ler etiquetas suportadas por seu chip e biblioteca.
 
-Check:
+Verifique:
 
-- tag frequency;
-- card or fob type;
-- does the module support MIFARE, NTAG, ISO14443A, or the needed type;
-- do you only need to read UID or also read/write data;
-- does the chosen library support the needed operation.
+- frequência da etiqueta;
+- tipo de cartão ou fob;
+- o módulo suporta MIFARE, NTAG, ISO14443A, ou o tipo necessário;
+- precisa apenas ler UID ou também ler/escrever dados;
+- a biblioteca escolhida suporta a operação necessária.
 
-For simple material profile selection, often reading just the tag UID and storing UID -> material mapping in firmware or host is enough.
+Para selecção simples de perfil de material, frequentemente apenas ler o UID da etiqueta e armazenar mapeamento UID -> material no firmware ou anfitrião é suficiente.
 
-## Read distance
+## Distância de leitura
 
-Read distance for small RFID/NFC modules is usually short.
+A distância de leitura para pequenos módulos RFID/NFC é geralmente curta.
 
-Results depend on:
+Os resultados dependem de:
 
-- antenna size;
-- tag type;
-- tag orientation;
-- distance;
-- housing plastic;
-- nearby metal;
-- interference;
-- module power.
+- tamanho da antena;
+- tipo de etiqueta;
+- orientação da etiqueta;
+- distância;
+- plástico do alojamento;
+- metal próximo;
+- interferência;
+- potência do módulo.
 
-Metal near the antenna can drastically worsen reading. If the reader is mounted in a dryer, chamber, or spool holder, test distance in the actual assembly, not just on the bench.
+Metal perto da antena pode piorar significativamente a leitura. Se o leitor para montado numa secadora, câmara ou suporte de bobina, teste a distância na montagem real, não apenas na bancada.
 
-## Where to place the reader
+## Onde colocar o leitor
 
-For a filament spool, it is best to place the RFID/NFC reader where the user intentionally brings the tag.
+Para uma bobine de filamento, é melhor colocar o leitor RFID/NFC onde o utilizador intencionalmente traz a etiqueta.
 
-Do not design logic assuming the tag will always read automatically.
+Não conceba lógica assumindo que a etiqueta lerá sempre automaticamente.
 
-Practical options:
+Opções práticas:
 
-- "bring tag here" zone on the housing;
-- location near the spool holder;
-- service zone for access card;
-- separate panel with short read distance.
+- zona "traga etiqueta aqui" no alojamento;
+- localização perto do suporte de bobine;
+- zona de serviço para cartão de acesso;
+- painel separado com distância curta de leitura.
 
-If the tag is on the spool, test with different spools, different tag orientation, different plastic, and metal proximity.
+Se a etiqueta está na bobine, teste com diferentes bobines, diferentes orientações de etiqueta, diferentes plásticos e proximidade de metal.
 
-## First startup
+## Primeiro arranque
 
-Before integration:
+Antes da integração:
 
-1. Connect module on the bench.
-2. Run an example from the library for your module.
-3. Verify the card or tag reads stably.
-4. Record UID of several tags.
-5. Check that unsupported cards do not break the logic.
-6. Mount module in housing and retest.
+1. Ligue o módulo na bancada.
+2. Execute um exemplo da biblioteca para seu módulo.
+3. Verifique se o cartão ou etiqueta lê estàvelmente.
+4. Registre UID de várias etiquetas.
+5. Verifique se cartões não suportados não quebram a lógica.
+6. Monte o módulo no alojamento e reteste.
 
-At this stage, do not build complex profile systems right away. First, achieve stable UID reading.
+Nesta fase, não construa sistemas de perfil complexos logo. Primeiro, alcance leitura UID estável.
 
-## Example device logic
+## Exemplo de lógica de dispositivo
 
-For material profile, simple logic can be:
+Para perfil de material, a lógica simples pode ser:
 
-1. User brings tag.
-2. Device reads UID.
-3. UID is looked up in a table.
-4. If UID is known, material profile is selected.
-5. If UID is unknown, device asks for manual profile selection.
+1. Utilizador traz etiqueta.
+2. Dispositivo lê UID.
+3. UID é procurado numa tabela.
+4. Se UID é conhecido, perfil de material é seleccionado.
+5. Se UID é desconhecido, dispositivo pede selecção manual de perfil.
 
-RFID should not be the only control method. You need a manual backup: profile in menu, button, screen, or interface setting.
+RFID não deve ser o único método de controlo. Precisa de uma cópia de segurança manual: perfil em menu, botão, ecrã ou configuração de interface.
 
-## What to check after assembly
+## O que verificar após montagem
 
-Verify:
+Verifique:
 
-- module receives correct voltage;
-- logic levels are compatible with controller;
-- correct interface is selected;
-- `MOSI`, `MISO`, `SCK`, `CS` are not swapped for SPI;
-- `SDA`, `SCL` are not swapped for I2C;
-- `TX` and `RX` are correctly crossed for UART;
-- common ground exists;
-- reset/IRQ are connected as the library requires;
-- tags of the right type read;
-- read distance is normal in the housing;
-- metal and wires do not block the antenna;
-- device works normally if tag is not read.
+- módulo recebe tensão correcta;
+- níveis de lógica são compatíveis com controlador;
+- interface correcta é seleccionada;
+- `MOSI`, `MISO`, `SCK`, `CS` não estão trocados para SPI;
+- `SDA`, `SCL` não estão trocados para I2C;
+- `TX` e `RX` estão correctamente cruzados para UART;
+- massa comum existe;
+- reset/IRQ estão ligados conforme a biblioteca requer;
+- etiquetas do tipo correcto leem;
+- a distância de leitura é normal no alojamento;
+- metal e fios não bloqueiam a antena;
+- dispositivo funciona normalmente se etiqueta não lê.
 
-## Common mistakes
+## Erros comuns
 
-- connecting 3.3V RC522 to 5V power or 5V logic;
-- confusing RC522 `SDA` with I2C `SDA`;
-- forgetting `CS`/`SS` on SPI;
-- swapping `MOSI` and `MISO`;
-- selecting one interface on PN532 with jumpers but wiring another;
-- using unsupported card type;
-- placing antenna right next to metal;
-- testing read distance on bench but not in housing;
-- making RFID the only profile selection method;
-- storing important logic only in UID without read error checking.
+- ligar RC522 3.3V a alimentação 5V ou lógica 5V;
+- confundir RC522 `SDA` com I2C `SDA`;
+- esquecer `CS`/`SS` em SPI;
+- trocar `MOSI` e `MISO`;
+- seleccionar uma interface em PN532 com jumpers mas fiação outra;
+- usar tipo de cartão não suportado;
+- colocar antena imediatamente próxima ao metal;
+- teste a distância de leitura na bancada mas não no alojamento;
+- fazer RFID o único método de selecção de perfil;
+- armazenar lógica importante apenas em UID sem verificação de erro de leitura.
 
-## Key points
+## Pontos-chave
 
-- RFID/NFC module must be chosen for specific tags and interface.
-- RC522 usually needs `3.3V` and SPI.
-- PN532 can work via SPI, I2C, or UART, but interface must be selected on the board.
-- Common ground is required.
-- Metal near antenna can greatly worsen reading.
-- For material profiles, tag UID is often enough, but manual backup selection is needed.
-- Test in the actual housing, not just on the bench.
+- O módulo RFID/NFC deve ser escolhido para etiquetas e interface específicas.
+- RC522 normalmente precisa de `3.3V` e SPI.
+- PN532 pode funcionar via SPI, I2C ou UART, mas a interface deve ser seleccionada na placa.
+- Massa comum é necessária.
+- Metal perto da antena pode muito piorar a leitura.
+- Para perfis de material, UID da etiqueta é frequentemente suficiente, mas selecção de cópia de segurança manual é necessária.
+- Teste no alojamento real, não apenas na bancada.
 
-## Related reading
+## Leitura relacionada
 
 - [Adafruit: PN532 RFID/NFC Breakout Wiring](https://learn.adafruit.com/adafruit-pn532-rfid-nfc/breakout-wiring) - PN532 connection, SPI/I2C/UART selection, and 3.3V logic warnings.
 - [Adafruit: PN532 RFID/NFC guide, single page](https://learn.adafruit.com/adafruit-pn532-rfid-nfc?view=all) - full PN532 guide, wiring, CircuitPython, Raspberry Pi, and interface selection.

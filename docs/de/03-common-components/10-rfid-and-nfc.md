@@ -134,7 +134,7 @@ Für ein einfaches Projekt: PN532 I2C-Modul mit NFC-Tags.
 
 ## Hauptpunkt
 
-RFID/NFC-Tags können Material-Identifikation und Konfiguration automatisieren. PN532 ist praktisch für NFC-Anwendungen, RC522 für RFID. Überprüfen Sie Schnittstelle, Spannungspegel und Bibliotheks-Unterstützung. Für Filament: simple Tag-Daten und Speicherung ausreichend.
+RFID/NFC-Tags können Material-Identifikation und Konfiguration automatisieren. PN532 ist praktisch für NFC-Anwendungen, RC522 für RFID. Überprüfen Sie Schnittstelle, Spannungspegel und Bibliotheks-Unterstützung. Für Filament: einfache Tag-Daten und Speicherung ausreichend.
 
 ## Referenzmaterialien
 

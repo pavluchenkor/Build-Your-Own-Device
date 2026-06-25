@@ -11,50 +11,50 @@ Un ventilador es un motor con un impulsor que mueve aire. En dispositivos alrede
 
 Los ventiladores del mismo tamaño pueden funcionar de manera muy diferente. Uno empuja aire bien en espacio abierto, otro empuja aire mejor a través de un filtro o conducto, un tercero es más silencioso pero más débil bajo resistencia.
 
-## Dónde It's Used
+## Dónde se usa
 
-In iDryer-like projects, fans are used for:
+En proyectos tipo iDryer, los ventiladores se utilizan para:
 
-- air circulation inside the dryer;
-- transferring heat from the heater to the chamber;
-- exhausting air from the printer chamber;
+- circulación de aire dentro de la secadora;
+- transferir calor desde el calentador a la cámara;
+- extraer aire de la cámara de la impresora;
 - filtering through HEPA/carbon filter;
 - cooling electronics;
 - cooling a radiator;
-- leveling temperature inside the enclosure.
+- Temperatura de nivelación dentro del recinto.
 
-For chamber heating, a fan is especially important. The heater releases heat, and the airflow removes that heat from the element and carries it further. Without proper airflow, the heater can locally overheat while the chamber heats poorly.
+Para calentar la cámara es especialmente importante un ventilador. El calentador libera calor y el flujo de aire elimina ese calor del elemento y lo transporta más lejos. Sin un flujo de aire adecuado, el calentador puede sobrecalentarse localmente mientras que la cámara no calienta bien.
 
-## Airflow and Static Pressure
+## Flujo de aire y presión estática
 
-In a fan's technical description, you usually see two important parameters:
+En la descripción técnica de un ventilador se suelen ver dos parámetros importantes:
 
-- airflow - often in `CFM` or `m3/h`;
-- static pressure - often in `mmH2O`, `Pa` or `inch H2O`.
+- flujo de aire, a menudo en `m3/h` o `m3/h`;
+- presión estática, a menudo en `Pa`, `inch H2O` o `inch H2O`.
 
-Airflow shows how much air a fan can pump under ideal conditions with little resistance.
+El flujo de aire muestra cuánto aire puede bombear un ventilador en condiciones ideales con poca resistencia.
 
-Static pressure shows how well a fan can push air through resistance: a filter, grill, radiator, narrow duct or long air tube.
+La presión estática muestra qué tan bien un ventilador puede empujar el aire a través de una resistencia: un filtro, una parrilla, un radiador, un conducto estrecho o un tubo de aire largo.
 
 Practical rule:
 
-- for open circulation, airflow matters more;
-- for filters, radiators, dense grills and ducts, static pressure matters more;
-- for a real enclosure, the operating point matters, not just the maximum number in the spec.
+- para la circulación abierta, el flujo de aire es más importante;
+- para filtros, radiadores, rejillas densas y conductos, la presión estática importa más;
+- para un gabinete real, el punto de operación importa, no solo el número máximo en la especificación.
 
-If you put a quiet case fan on a dense filter, it might barely push air, even though the airflow seems strong in open space.
+Si coloca un ventilador de caja silencioso sobre un filtro denso, es posible que apenas impulse el aire, aunque el flujo de aire parezca fuerte en un espacio abierto.
 
-## Axial and Radial Fans
+## Ventiladores axiales y radiales
 
-An axial fan pushes air along the axis of rotation. These are typical square fans `40x40`, `60x60`, `80x80`, `120x120 mm`.
+Un ventilador axial empuja el aire a lo largo del eje de rotación. Estos son los típicos ventiladores cuadrados `60x60`, `80x80`, `120x120 mm`, `120x120 mm`.
 
-A radial fan takes air from the side and blows it out through a narrow exit. It often works better for ducts, nozzles, filters and places where you need pressure.
+Un ventilador radial toma aire desde un lateral y lo expulsa a través de una salida estrecha. A menudo funciona mejor para conductos, boquillas, filtros y lugares donde se necesita presión.
 
-For free circulation inside a chamber, an axial fan is usually convenient. For a compact duct, filter or directed flow, a radial fan is sometimes better.
+Para la libre circulación dentro de una cámara, suele ser conveniente un ventilador axial. Para un conducto compacto, filtro o flujo dirigido, a veces es mejor un ventilador radial.
 
-## 2-pin, 3-pin and 4-pin
+## 2 pines, 3 pines y 4 pines
 
-Fans often differ in the number of wires.
+Los fanáticos a menudo difieren en la cantidad de cables.
 
 ![3-pin connector on a computer fan](../../img/03-common-components/03-fan-3pin-connector.jpg)
 
@@ -65,7 +65,7 @@ Fans often differ in the number of wires.
 - `+V`;
 - `GND`.
 
-Such a fan simply gets power. You can control speed by changing supply voltage or PWM on the power line if the board and fan support it.
+Un ventilador así simplemente obtiene poder. Puede controlar la velocidad cambiando el voltaje de suministro o PWM en la línea eléctrica si la placa y el ventilador lo admiten.
 
 3-pin:
 
@@ -73,7 +73,7 @@ Such a fan simply gets power. You can control speed by changing supply voltage o
 - `GND`;
 - tachometric signal (`tach`/`sense`).
 
-The third wire usually outputs a speed signal. It doesn't control speed by itself.
+El tercer cable suele emitir una señal de velocidad. No controla la velocidad por sí solo.
 
 4-pin PWM:
 
@@ -82,26 +82,26 @@ The third wire usually outputs a speed signal. It doesn't control speed by itsel
 - tachometric signal (`tach`/`sense`);
 - PWM control signal.
 
-On a 4-pin PWM fan, power is usually supplied constantly, and speed is set by a separate PWM line. This is not the same as rapidly switching the fan power on and off.
+En un ventilador PWM de 4 pines, la energía generalmente se suministra constantemente y la velocidad se establece mediante una línea PWM separada. Esto no es lo mismo que encender y apagar rápidamente el ventilador.
 
-## PWM and Tachometer
+## PWM y tacómetro
 
-PWM is a control signal that sets the desired speed. Computer 4-pin PWM fans typically have a frequency around `25 kHz`, and power stays constant.
+PWM es una señal de control que establece la velocidad deseada. Los ventiladores PWM de 4 pines de las computadoras suelen tener una frecuencia cercana a `25 kHz` y la potencia se mantiene constante.
 
-If the PWM wire is not connected, many 4-pin fans run at full speed.
+Si el cable PWM no está conectado, muchos ventiladores de 4 pines funcionan a máxima velocidad.
 
-The tachometric signal shows RPM. It's needed if the device should understand:
+La señal taquimétrica muestra RPM. Es necesario si el dispositivo debe comprender:
 
-- whether the fan is spinning or stopped;
-- whether speed matches the command;
+- si el ventilador está girando o parado;
+- si la velocidad coincide con el comando;
 - whether a filter or duct creates too much resistance;
-- whether the fan is jammed.
+- si el ventilador está atascado.
 
-Tachometer doesn't replace temperature control. In a device with a heater, you need to monitor both temperature and airflow status if fan failure is dangerous.
+El tacómetro no reemplaza el control de temperatura. En un dispositivo con calentador, es necesario controlar tanto la temperatura como el estado del flujo de aire si la falla del ventilador es peligrosa.
 
-## Voltage and Current
+## Voltaje y corriente
 
-Before connecting, check:
+Antes de conectar, verifique:
 
 - fan voltage: `5V`, `12V`, `24V`;
 - operating current;
@@ -113,15 +113,15 @@ Before connecting, check:
 - operating temperature;
 - airflow direction;
 - noise level;
-- lifetime and bearing type.
+- vida útil y tipo de rodamiento.
 
-You cannot power a fan from the controller's GPIO. GPIO is a signal, not a power output. Fan current must come from the power supply, a board power output, or a MOSFET module.
+No se puede alimentar un ventilador desde el GPIO del controlador. GPIO es una señal, no una salida de energía. La corriente del ventilador debe provenir de la fuente de alimentación, una salida de alimentación de la placa o un módulo MOSFET.
 
-On startup, a fan may briefly draw more current than in normal operation. If multiple fans are connected to one output, their currents add up.
+Al arrancar, un ventilador puede consumir brevemente más corriente que en funcionamiento normal. Si se conectan varios ventiladores a una salida, sus corrientes se suman.
 
-## Noise, Vibration and Bearing
+## Ruido, vibración y rodamiento
 
-Noise depends on more than just RPM.
+El ruido depende de algo más que las RPM.
 
 Sound is affected by:
 
@@ -135,45 +135,45 @@ Sound is affected by:
 - enclosure resonance;
 - multiple fans nearby.
 
-Technical descriptions list noise in `dB(A)`, but in a real enclosure the fan may sound different. A grill with poor geometry, a nearby wall, or stiff mounting to a thin panel can make a good fan noisy.
+Las descripciones técnicas enumeran el ruido en `dB(A)`, pero en un recinto real el ventilador puede sonar diferente. Una parrilla con una geometría deficiente, una pared cercana o un montaje rígido en un panel delgado pueden hacer que un buen ventilador sea ruidoso.
 
-For a device that runs for hours, it's better to choose a fan not just by price and size, but by lifetime, bearing and temperature.
+Para un dispositivo que funciona durante horas, es mejor elegir un ventilador no sólo por el precio y el tamaño, sino también por la vida útil, el rodamiento y la temperatura.
 
-## Temperature and Installation Location
+## Temperatura y ubicación de instalación
 
-A fan that works well on a bench may degrade quickly in a hot chamber.
+Un ventilador que funciona bien en un banco puede degradarse rápidamente en una cámara caliente.
 
-Check:
+Comprobar:
 
 - fan operating temperature;
-- air temperature near the heater;
-- distance from the heating element;
-- whether hot flow hits the motor directly;
-- whether the mounting softens;
+- temperatura del aire cerca del calentador;
+- distancia del elemento calefactor;
+- si el flujo caliente llega directamente al motor;
+- si el montaje se ablanda;
 - whether wires dry out;
-- whether the fan gets clogged with dust or fibers.
+- si el ventilador se obstruye con polvo o fibras.
 
-If the fan is responsible for heater airflow, its failure should be considered in safety logic. You can't design a heater so that a stopped fan immediately creates a dangerous temperature without emergency shutdown.
+Si el ventilador es responsable del flujo de aire del calentador, su falla debe considerarse en la lógica de seguridad. No se puede diseñar un calentador de modo que un ventilador detenido genere inmediatamente una temperatura peligrosa sin un apagado de emergencia.
 
-## Filters and Ducts
+## Filtros y Conductos
 
-A filter, grill and duct can significantly reduce useful airflow.
+Un filtro, una rejilla y un conducto pueden reducir significativamente el flujo de aire útil.
 
-Typical signs:
+Signos típicos:
 
-- fan is loud but airflow is weak;
+- el ventilador hace ruido pero el flujo de aire es débil;
 - filter barely gets any air through;
-- air bypasses the filter through gaps;
-- temperature near the heater rises faster than chamber temperature;
-- after mounting the cover, airflow is worse than on the bench.
+- el aire pasa por alto el filtro a través de los huecos;
+- la temperatura cerca del calentador aumenta más rápido que la temperatura de la cámara;
+- Después de montar la cubierta, el flujo de aire es peor que en el banco.
 
-To filter a chamber effectively, you need to not just put a fan, but ensure an air path through the filter. If air finds it easier to go through a gap, it will.
+Para filtrar una cámara de manera efectiva, no solo es necesario colocar un ventilador, sino también asegurar un paso de aire a través del filtro. Si al aire le resulta más fácil pasar por un hueco, lo hará.
 
-## Qué to Check Before Buying
+## Qué comprobar antes de comprar
 
-Before buying a fan, check:
+Antes de comprar un ventilador, revisa:
 
-- size and thickness;
+- tamaño y espesor;
 - voltage;
 - current;
 - type: axial or radial;
@@ -186,32 +186,32 @@ Before buying a fan, check:
 - operating temperature;
 - lifetime;
 - airflow direction;
-- connector and pinout;
+- conector y distribución de pines;
 - whether it suits a filter, duct or free circulation.
 
-For a filter and narrow duct, don't choose a fan only by CFM. Look at static pressure and test in real assembly.
+Para un filtro y un conducto estrecho, no elija un ventilador sólo por CFM. Mire la presión estática y pruebe en un montaje real.
 
 ## Típicos Errors
 
 - connected 12V fan to 24V;
-- connected 24V fan to 12V and thought it was broken;
-- powering fan from GPIO;
-- didn't establish common ground for external MOSFET/PWM;
-- didn't account for startup current;
-- connected multiple fans to a weak output;
-- selected fan by size only;
-- installed a free-flow fan on a dense filter;
-- think tach wire is a control wire;
-- think 4-pin PWM is the same as 2-pin;
-- control 4-pin PWM fan by switching power on/off;
-- installed fan in hot zone without temperature check;
-- didn't check airflow after installing cover, filter and duct.
+- conecté el ventilador de 24 V a 12 V y pensé que estaba roto;
+- ventilador de alimentación de GPIO;
+- no estableció puntos en común para MOSFET/PWM externos;
+- no tuvo en cuenta la corriente de inicio;
+- conectó varios ventiladores a una salida débil;
+- ventilador seleccionado solo por tamaño;
+- instaló un ventilador de flujo libre en un filtro denso;
+- piense que el cable del tacómetro es un cable de control;
+- piense que el PWM de 4 pines es lo mismo que el de 2 pines;
+- controle el ventilador PWM de 4 pines encendiendo/apagando la alimentación;
+- ventilador instalado en zona caliente sin control de temperatura;
+- No revisé el flujo de aire después de instalar la cubierta, el filtro y el conducto.
 
 ## Principal Point
 
-A fan is chosen for the task: free circulation, filter, duct, radiator, heater or electronics cooling. For open space, airflow matters; for filters and ducts, pressure matters.
+Se elige un ventilador para la tarea: libre circulación, filtro, conducto, radiador, calentador o refrigeración de componentes electrónicos. Para espacios abiertos, el flujo de aire es importante; Para filtros y conductos, la presión importa.
 
-Check voltage, current, wire type, PWM/tachometer, operating temperature and real system resistance. In a device with a heater, the fan should be part of a safe thermal system, not a decorative component.
+Verifique el voltaje, la corriente, el tipo de cable, el PWM/tacómetro, la temperatura de funcionamiento y la resistencia real del sistema. En un dispositivo con calentador, el ventilador debe ser parte de un sistema térmico seguro, no un componente decorativo.
 
 ## Referencia Materials
 

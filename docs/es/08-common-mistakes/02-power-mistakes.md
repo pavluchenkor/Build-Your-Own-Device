@@ -58,7 +58,7 @@ Por ejemplo:
 
 Las corrientes se suman. Las corrientes de inrush y picos breves también necesitan ser contabilizados.
 
-Un servo o ventilador puede brevemente dibujar más que en modo normal. Si el margen es pequeño, exactamente este momento causará que el controlador se reinicie.
+Un servo o ventilador puede dibujar brevemente más que en modo normal. Si el margen es pequeño, exactamente este momento causará que el controlador se reinicie.
 
 ## 12V y 24V confundidos
 
@@ -139,7 +139,7 @@ Como mínimo:
 5. Presencia de tierra común.
 6. Calentamiento de cable y terminal después de una breve prueba.
 
-Si el dispositivo funciona solo sin carga, mídelo bajo carga. El voltaje sin carga podría verse normal.
+Si el dispositivo funciona solo sin carga, mídelo bajo carga. El voltaje sin carga podría ser normal.
 
 ## Qué no hacer
 

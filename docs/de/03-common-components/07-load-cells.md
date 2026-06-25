@@ -23,7 +23,7 @@ Typische Wägezellen für 3D-Drucker:
 - `10 kg` - für Standardspulen;
 - `5 kg` - für kleine Spulen oder teilweise Gewichtskontrolle.
 
-Die Einheit ist normalerweise in `kg` oder `lbs`.
+Die Einheit ist normalerweise in `lbs` oder `kg`.
 
 Überprüfen Sie:
 
@@ -59,7 +59,7 @@ Kalibrierungsprozess:
 1. Sensor mit bekanntem Gewicht lesen (z.B. 0 ohne Last, 5 kg mit bekanntem Gewicht);
 2. ADC-Rohwerte aufzeichnen;
 3. Kalibrierungsfaktoren berechnen;
-4. In der Firmware speichern oder in EEPROM.
+4. In der Firmware speichern oder im EEPROM.
 
 Beispiel:
 
@@ -69,7 +69,7 @@ Rohwert mit 5 kg: 10000
 Kalibrierungsfaktor = 10000 / 5 = 2000 pro kg
 ```
 
-Dann wird ein beliebiger Rohwert in Gewicht konvertiert: `Gewicht = Rohwert / 2000`.
+Dann wird ein beliebiger Rohwert in Gewicht konvertiert: `raw * scale + offset`.
 
 Die Kalibrierung kann sich mit Temperatur ändern. Für genaue Messungen kann eine Temperaturkompensation erforderlich sein.
 

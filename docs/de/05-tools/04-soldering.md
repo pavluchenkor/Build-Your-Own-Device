@@ -53,7 +53,7 @@ Verfahren:
 5. Etwas Lot auf das geheizte Bereich auftragen.
 6. Lot über die Strände fließen lassen.
 
-Verwandeln Sie nicht das Drahtende in einen dicken steifen Blob. Verzinnen sollte ordentlich und dünn sein.
+Verwandeln Sie nicht das Drahtende in einen dicken steifen Blob. Der Behälter sollte ordentlich und dünn sein.
 
 ## Draht auf Pad löten
 
@@ -72,7 +72,7 @@ Eine gute Lotverbindung sieht glatt und glänzend oder gleichmäßig matt aus, j
 
 ## Kalte Lotverbindungen
 
-Eine kalte Lotverbindung ist, wenn das Lot sich nicht ordentlich heizte und nicht normal floss.
+Eine kalte Lotverbindung liegt vor, wenn das Lot sich nicht ordentlich beheizt und keine normale Zahnseide verwendet wird.
 
 Zeichen:
 
@@ -82,7 +82,7 @@ Zeichen:
 - Kontakt kommt und geht;
 - Verbindung bricht bei leichter Bewegung.
 
-Kalte Lotverbindungen sind gefährlich, weil sie manchmal funktionieren. In einem beheizten oder vibrierenden Gerät wird solch ein Kontakt sich verschlechtern.
+Kalte Lotverbindungen sind gefährlich, weil sie manchmal funktionieren. In einem beheizten oder vibrierenden Gerät kann sich dadurch ein Kontakt verschlechtern.
 
 Normalerweise wird eine kalte Verbindung durch erneutes Heizen mit Flussmittel bis das Lot ordentlich fließt, behoben.
 

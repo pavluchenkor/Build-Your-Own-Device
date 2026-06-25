@@ -10,7 +10,7 @@ Un buen crimping proporciona:
 - repetibilidad;
 - ensamblaje y mantenimiento convenientes.
 
-Un crimping pobre puede calentarse, desmoronarse, causar errores aleatorios y verse casi normal.
+Un prensado pobre puede calentarse, desmoronarse, causar errores aleatorios y casi normales.
 
 ## Por Qué el Crimping a Menudo es Mejor que Soldar
 

@@ -1,6 +1,6 @@
 ---
 title: "Lüfter und Luftstrom im Filamenttrockner"
-description: "Warum Luftstrom im Filamenttrockner und in der beheizten Kammer wichtig ist: Lüfterwahl, Luftstrom, statischer Druck, Geräusch und gleichmäßige Erwärmung."
+Beschreibung: „Warum Luftstrom im Filamenttrockner und in der beheizten Kammer wichtig ist: Lüfterwahl, Luftstrom, statischer Druck, Geräusch und gleichmäßige Erwärmung.“
 ---
 
 # Lüfter und Luftstrom im Filamenttrockner
@@ -29,8 +29,8 @@ Für die Kammerwärmung ist ein Lüfter besonders wichtig. Der Heizer gibt Wärm
 
 In der technischen Beschreibung eines Lüfters sehen Sie normalerweise zwei wichtige Parameter:
 
-- Luftstrom - oft in `CFM` oder `m3/h`;
-- Gegendruck - oft in `mmH2O`, `Pa` oder `Zoll H2O`.
+- Luftstrom - oft in `m3/h` oder `m3/h`;
+- Gegendruck - oft in `Pa`, `Zoll H2O` oder `inch H2O`.
 
 Der Luftstrom zeigt, wie viel Luft ein Lüfter unter idealen Bedingungen mit wenig Widerstand pumpen kann.
 
@@ -40,7 +40,7 @@ Praktische Regel:
 
 - für offene Zirkulation ist Luftstrom wichtiger;
 - für Filter, Radiatoren, dichte Grills und Kanäle ist Gegendruck wichtiger;
-- für ein echtes Gehäuse ist der Betriebspunkt wichtig, nicht nur die maximale Zahl in den Spezifikationen.
+- Für ein echtes Gehäuse ist der Betriebspunkt wichtig, nicht nur die maximale Zahl in den Spezifikationen.
 
 Wenn Sie einen leisen Gehäuselüfter auf einen dichten Filter setzen, kann er kaum Luft drücken, obwohl der Luftstrom im offenen Raum stark zu sein scheint.
 
@@ -50,11 +50,11 @@ Ein Axiallüfter drückt Luft entlang der Rotationsachse. Dies sind typische qua
 
 Ein Radiallüfter nimmt Luft von der Seite und bläst sie durch einen engen Ausgang. Es funktioniert oft besser für Kanäle, Düsen, Filter und Orte, wo Sie Druck benötigen.
 
-Für freie Zirkulation in einer Kammer ist ein Axiallüfter normalerweise bequem. Für einen kompakten Kanal, Filter oder gerichteten Fluss ist ein Radiallüfter manchmal besser.
+Für die Zirkulation in einer Kammer ist ein Axiallüfter normalerweise bequem. Für einen kompakten Kanal, Filter oder gerichteten Fluss ist ein Radiallüfter manchmal besser.
 
 ## 2-polig, 3-polig und 4-polig
 
-Lüfter unterscheiden sich oft in der Anzahl der Drähte.
+Sie unterscheiden sich häufig in der Anzahl der Lüfter.
 
 ![3-poliger Stecker auf einem Computerlüfter](../../img/03-common-components/03-fan-3pin-connector.jpg)
 
@@ -97,7 +97,7 @@ Das tachometrische Signal zeigt RPM. Es ist nötig, wenn das Gerät verstehen so
 - ob ein Filter oder Kanal zu viel Widerstand erzeugt;
 - ob der Lüfter blockiert ist.
 
-Ein Drehzahlmesser ersetzt nicht die Temperaturkontrolle. In einem Gerät mit einem Heizer müssen Sie sowohl Temperatur als auch Luftstromstatus überwachen, wenn der Lüfterausfall gefährlich ist.
+Ein Drehzahlmesser ersetzt nicht die Temperaturkontrolle. In einem Gerät mit einem Heizer müssen Sie sowohl die Temperatur als auch den Luftstromstatus überwachen, wenn der Lüfterausfall gefährlich ist.
 
 ## Spannung und Strom
 
@@ -135,7 +135,7 @@ Der Sound wird beeinflusst durch:
 - Gehäuseresonanz;
 - mehrere Lüfter in der Nähe.
 
-Technische Beschreibungen listen Geräusche in `dB(A)` auf, aber in einem echten Gehäuse kann der Lüfter anders klingen. Ein Grill mit schlechter Geometrie, eine nahe Wand oder starre Befestigung an einem dünnen Panel können einen guten Lüfter laut machen.
+Technische Beschreibungen hören Geräusche in `dB(A)` auf, aber in einem echten Gehäuse kann der Lüfter anders klingen. Ein Grill mit schlechter Geometrie, einer nahen Wand oder starren Befestigung an einem dünnen Panel kann einen guten Lüfter laut machen.
 
 Für ein Gerät, das stundenlang läuft, ist es besser, einen Lüfter nicht nur nach Preis und Größe, sondern auch nach Lebensdauer, Lager und Temperatur zu wählen.
 
@@ -189,7 +189,7 @@ Um eine Kammer effektiv zu filtern, müssen Sie nicht nur einen Lüfter anbringe
 - Stecker und Pinbelegung;
 - ob es zu einem Filter, Kanal oder freier Zirkulation passt.
 
-Für einen Filter und engen Kanal wählen Sie einen Lüfter nicht nur nach CFM. Schauen Sie sich den Gegendruck an und testen Sie in echter Zusammensetzung.
+Für einen Filter und einen Kanal wählen Sie einen Lüfter nicht nur nach CFM. Schauen Sie sich den Gegendruck an und testen Sie ihn in echter Zusammensetzung.
 
 ## Typische Fehler
 
@@ -211,7 +211,7 @@ Für einen Filter und engen Kanal wählen Sie einen Lüfter nicht nur nach CFM. 
 
 Ein Lüfter wird für die Aufgabe ausgewählt: freie Zirkulation, Filter, Kanal, Radiator, Heizer oder Elektronik-Kühlung. Für offenen Raum ist Luftstrom wichtig; für Filter und Kanäle ist Druck wichtig.
 
-Überprüfen Sie Spannung, Strom, Drahttyp, PWM/Drehzahlmesser, Betriebstemperatur und echten Systemwiderstand. In einem Gerät mit einem Heizer sollte der Lüfter Teil eines sicheren thermischen Systems sein, nicht ein dekoratives Element.
+Überprüfen Sie Spannung, Strom, Drahttyp, PWM/Drehzahlmesser, Betriebstemperatur und echten Systemwiderstand. In einem Gerät mit einem Heizer sollte der Lüfter Teil eines sicheren thermischen Systems sein, kein dekoratives Element.
 
 ## Referenzmaterialien
 

@@ -1,113 +1,113 @@
 # Kontrola termistoru
 
-A thermistor is a temperature sensor that changes resistance when heated or cooled.
+Termistor je teplotní senzor, který mění odpor při ohřátí nebo ochlazení.
 
-In 3D printers, dryers, and chamber heaters, the most common type is an NTC thermistor rated at `100K`. NTC means that resistance decreases as temperature increases.
+V 3D tiskárnách, sušičkách a komornch s topidlem je nejběžnějším typem NTC termistor s hodnocením `100K`. NTC znamená, že odpor se snižuje s rostoucí teplotou.
 
-You need to check a thermistor if:
+Musíte zkontrolovat termistor, pokud:
 
-- temperature readings are unrealistic;
-- temperature jumps around;
-- the heater enters an error state;
-- firmware reports `MINTEMP`, `MAXTEMP`, `Thermal runaway`, or similar;
-- the thermistor was replaced, moved, or re-crimped;
-- the device was assembled for the first time.
+- teplotní údaje jsou nerealistické;
+- teplota se skáče kolem;
+- topidlo vstoupí do chybového stavu;
+- firmware hlásí `MINTEMP`, `MAXTEMP`, `Thermal runaway` nebo podobné;
+- termistor byl vyměněn, přemístěn nebo znovu usazený;
+- zařízení bylo poprvé složeno.
 
-## First, turn off power
+## Nejdřív vypněte napájení
 
-Resistance is measured only on de-energized circuits.
+Odpor se měří pouze na de-energizované obvody.
 
-Before checking:
+Před kontrolou:
 
-1. Turn off the device.
-2. Disconnect power from the mains or power supply.
-3. Wait for the heater to cool down.
-4. Disconnect the thermistor from the board if you need to measure the sensor itself.
+1. Vypněte zařízení.
+2. Odpojte napájení od sítě nebo zdroje napájení.
+3. Čekejte, až topidlo vychladne.
+4. Odpojte termistor z desky, pokud potřebujete měřit senzor sám.
 
-If you measure resistance while the thermistor is connected to the board, readings may be distorted by other circuit components. If you measure resistance with power on, you can damage the multimeter or board.
+Pokud měříte odpor, když je termistor připojen k desce, mohou být údaje zkresleny ostatními součástmi obvodu. Pokud měříte odpor s zapnutým napájením, můžete poškodit multimetr nebo desku.
 
-## What an NTC 100K should have
+## Co by měl mít NTC 100K
 
-A typical NTC `100K` has a resistance of about `100 kOhm` at `25°C`.
+Typický NTC `100K` má odpor přibližně `100 kOhm` při `25°C`.
 
-This does not mean the multimeter will always show exactly `100.0 kOhm`.
+To neznamená, že multimetr bude vždy ukazovat přesně `100.0 kOhm`.
 
-It is normal for the reading to differ slightly at room temperature:
+Je normální, aby se údaj při pokojové teplotě mírně lišil:
 
-- in a cool room resistance will be higher;
-- in a warm room resistance will be lower;
-- different thermistor types have different tables;
-- long wires and poor contacts can affect measurement.
+- v chladné místnosti bude odpor vyšší;
+- v teplé místnosti bude odpor nižší;
+- různé typy termistorů mají různé tabulky;
+- dlouhé vodiče a špatné kontakty mohou ovlivnit měření.
 
-The main check is simple: a 100K NTC at room temperature should read tens or around a hundred kilohms, not `0 Ohm` or `OL`.
+Hlavní kontrola je jednoduchá: 100K NTC při pokojové teplotě by měla ukazovat desítky nebo kolem sta kiloomů, ne `0 Ohm` nebo `OL`.
 
-## Measuring with a multimeter
+## Měření s multimetrem
 
-Set your multimeter to resistance mode `Ohm`.
+Nastavte multimetr do režimu odporu `Ohm`.
 
-If your multimeter is not autoranging, select a range above `100 kOhm`, such as `200 kOhm` or `2 MOhm`.
+Pokud váš multimetr není automaticky měřítko, vyberte rozsah nad `100 kOhm`, například `200 kOhm` nebo `2 MOhm`.
 
-Then:
+Pak:
 
-1. Disconnect the thermistor from the board.
-2. Touch the multimeter probes to the two thermistor wires.
-3. Do not hold the metal ends of the probes and wires simultaneously: your body can add parallel resistance.
-4. Wait for the reading to stabilize.
-5. Record the value.
+1. Odpojte termistor z desky.
+2. Dotčete se měřicích hrotů multimetru na dva termistor vodiče.
+3. Nepodržujte současně kovové konce hrotů a vodičů: vaše tělo může přidat paralelní odpor.
+4. Čekejte, až se údaj stabilizuje.
+5. Zaznamenejte hodnotu.
 
-![Digital multimeter for measuring thermistor resistance](../../img/05-tools/02-digital-multimeter.jpg)
+![Digitální multimetr pro měření odporu termistoru](../../img/05-tools/02-digital-multimeter.jpg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Aneng_AN870_multimeter_02.jpg), Retired electrician, CC0 Public Domain*
 
-## Quick heat test with your finger
+## Rychlý test tepla s prstem
 
-After measuring at room temperature, you can carefully warm the sensor with your fingers.
+Po měření při pokojové teplotě můžete senzor opatrně ohřát prsty.
 
-For an NTC thermistor, resistance should start to decrease.
+U NTC termistoru by měl odpor začít klesat.
 
-For example:
+Například:
 
-- was around `100 kOhm` at room temperature;
-- became lower after finger heating.
+- byl kolem `100 kOhm` při pokojové teplotě;
+- po ohřátí prstem se snížil.
 
-Exact numbers do not matter here. The direction of change matters.
+Přesná čísla zde nezáleží. Záleží na směru změny.
 
-If resistance does not change at all, jumps randomly, or disappears when the wire moves, the problem may be in the sensor, wire, crimp, or connector.
+Pokud se odpor vůbec nemění, skáče náhodně nebo zmizí, když se vodič pohne, problém může být v senzoru, vodiči, usazení nebo konektoru.
 
-## Breakage and short circuit
+## Rozbitum a zkrat
 
-A multimeter helps quickly distinguish a normal sensor from an obvious failure.
+Multimetr pomáhá rychle rozlišit normální senzor od zřejmého selhání.
 
-Typical signs:
+Typické znaky:
 
-- `OL`, `over limit`, `1` on the left of the display, or infinite resistance - open circuit;
-- nearly `0 Ohm` - short circuit;
-- value jumps significantly when the wire moves - poor contact or broken conductor;
-- value around `100 kOhm` at room temperature and decreases with heating - looks like a healthy NTC 100K.
+- `OL`, `over limit`, `1` na levé straně displeje nebo nekonečný odpor - otevřený obvod;
+- téměř `0 Ohm` - zkrat;
+- hodnota se výrazně změní, když se vodič pohne - špatný kontakt nebo přerušený vodič;
+- hodnota kolem `100 kOhm` při pokojové teplotě a snižuje se při ohřátí - vypadá jako zdravý NTC 100K.
 
-Different multimeters use different designations for open circuit. Usually it is `OL` or a value beyond the selected range.
+Různé multimetry používají různá označení pro otevřený obvod. Obvykle je to `OL` nebo hodnota mimo vybraný rozsah.
 
-## Checking the wiring
+## Kontrola vodičů
 
-The thermistor may be fine while the problem is in the wiring.
+Termistor může být v pořádku, zatímco problém je v vodičích.
 
-Check:
+Zkontrolujte:
 
-- the connector is fully inserted;
-- pins have not come out of the connector housing;
-- wires are not frayed;
-- no insulation damage near the heater;
-- no wire tension when axes or cover move;
-- the cable does not run right next to heater power wires without reason;
-- the crimp location is secure.
+- konektor je plně vsunut;
+- piny nevyšly z pouzdra konektoru;
+- vodiče nejsou rozevlátané;
+- bez poškození izolace blízko topidla;
+- bez napětí vodiče, když se osy nebo kryt pohybují;
+- kabel neběží přímo vedle napájecích vodičů topidla bez důvodu;
+- umístění usazení je bezpečné.
 
-If readings change when you move the wire, this is not a "sensor feature". This is a contact problem that must be fixed before turning on the heater.
+Pokud se údaje změní, když se vodič pohne, toto není "vlastnost senzoru". To je kontaktní problém, který musí být opraven dříve, než zapnete topidlo.
 
-## Checking in Klipper
+## Kontrola v Klipperu
 
-In Klipper the sensor type is set in the configuration.
+V Klipperu je typ senzoru nastaven v konfiguraci.
 
-Example for a typical chamber temperature sensor:
+Příklad pro typický senzor teploty komory:
 
 ```ini
 [temperature_sensor chamber]
@@ -117,7 +117,7 @@ min_temp: 0
 max_temp: 100
 ```
 
-Example for a chamber heater:
+Příklad pro topidlo v komoře:
 
 ```ini
 [heater_generic chamber_heater]
@@ -130,102 +130,102 @@ min_temp: 0
 max_temp: 90
 ```
 
-Pin names here are typical. In a real device, check your board's pinout.
+Názvy pinů jsou zde typické. V reálném zařízení zkontrolujte rozpis pinů vaší desky.
 
-Important: `sensor_type` must match the real sensor. Two thermistors may look identical but have different tables. If you choose the wrong type, temperature can be noticeably inaccurate, especially in the working heating range.
+Důležitě: `sensor_type` musí odpovídat skutečnému senzoru. Dva termistory mohou vypadat shodně, ale mají různé tabulky. Pokud zvolíte nesprávný typ, teplota může být notně nepřesná, zejména v pracovním rozsahu vytápění.
 
-## What to watch in the interface
+## Co sledovat v rozhraní
 
-After connecting, check the temperature in the Klipper interface, Mainsail, Fluidd, or other UI.
+Po připojení zkontrolujte teplotu v rozhraní Klipperu, Mainsail, Fluidd nebo jiném uživatelském rozhraní.
 
-At room temperature, the reading should be close to the actual room temperature.
+Při pokojové teplotě by měl údaj být blízko skutečné pokojové teploty.
 
-Suspicious signs:
+Podezřelé znaky:
 
-- reads significantly lower than reality;
-- reads significantly higher than reality;
-- temperature jumps by tens of degrees;
-- temperature changes when you move the wire;
-- temperature does not rise when heating is on;
-- temperature rises very slowly;
-- temperature rises even though the heater is off.
+- čte výrazně nižší, než je skutečnost;
+- čte výrazně vyšší, než je skutečnost;
+- teplota skáče o desítky stupňů;
+- teplota se změní, když pohybujete vodičem;
+- teplota nestoupá, když je topidlo zapnuto;
+- teplota roste velmi pomalu;
+- teplota stoupá, i když je topidlo vypnuté.
 
-If the sensor is on the heater, do not start extended heating until readings look reasonable.
+Pokud je senzor na topidlu, nezačínejte dlouhé vytápění, dokud údaje nevypadají rozumně.
 
-## Firmware errors
+## Chyby firmwaru
 
-In 3D printer firmware, temperature errors are not a minor issue but part of safety.
+Ve firmwaru 3D tiskárny nejsou teplotní chyby malou záležitostí, ale součást bezpečnosti.
 
-For a typical circuit with an NTC and on-board pull-up:
+Pro typický obvod s NTC a palubní pull-up:
 
-- sensor breakage often looks like too low temperature or `MINTEMP`;
-- short circuit often looks like too high temperature or `MAXTEMP`;
-- poor thermal contact may cause `Heating failed` or `Thermal runaway`;
-- strong cooling of the heating block may cause an error because temperature rises too slowly or does not hold.
+- selhání senzoru se často jeví jako příliš nízká teplota nebo `MINTEMP`;
+- zkrat se často jeví jako příliš vysoká teplota nebo `MAXTEMP`;
+- špatný tepelný kontakt může způsobit `Heating failed` nebo `Thermal runaway`;
+- silné chladícího topného bloku může způsobit chybu, protože teplota roste příliš pomalu nebo se nedrží.
 
-Error names depend on the firmware, but the meaning is the same: the controller no longer trusts the temperature or sees that heating is not working as expected.
+Názvy chyb závisí na firmwaru, ale smysl je stejný: kontrolér už důvěřuje teplotě nebo vidí, že topidlo nefunguje podle očekávání.
 
-Do not disable thermal protection just to "check". If protection trips, first look for the cause in the sensor, wiring, mounting, heater, PID settings, and cooling.
+Nezakazujte tepelnou ochranu jen proto, abyste "zkontrolovali". Pokud se ochrana aktivuje, nejdřív hledejte příčinu v senzoru, vodičích, montáži, topidlu, nastavení PID a chladění.
 
-## Thermal contact
+## Tepelný kontakt
 
-An electrically working thermistor does not guarantee correct temperature.
+Elektricky fungující termistor negarantuje správnou teplotu.
 
-The sensor must transfer heat well from the part it is measuring.
+Senzor musí dobře přenášet teplo z části, kterou měří.
 
-Check:
+Zkontrolujte:
 
-- the sensor sits fully in the sleeve or hole;
-- there is normal clamping;
-- no gap between sensor and surface;
-- thermal paste has not dried or flaked out if used;
-- fasteners are not loose;
-- the sensor has not come out of its seat;
-- wires are not pulling the sensor out.
+- senzor je plně v pouzdře nebo otvoru;
+- je normální svěrka;
+- bez mezery mezi senzorem a povrchem;
+- tepelná pasta se nevysušila ani neodsypala, je-li použita;
+- upevnění není volné;
+- senzor nevyšel z místa;
+- vodiče netahají senzor ven.
 
-Poor contact is dangerous because the sensor reads temperature lower than reality. The controller continues heating while the real part may already be overheated.
+Špatný kontakt je nebezpečný, protože senzor čte teplotu nižší, než je skutečnost. Kontrolér pokračuje v topidla, zatímco skutečná součást už může být přehřátá.
 
 ## Mini-checklist
 
-Before first heating:
+Před prvním topidlem:
 
-- thermistor resistance looks as expected;
-- NTC resistance decreases with finger heating;
-- no open circuit or short circuit;
-- wires do not react with jumps when moved;
-- connector is inserted correctly;
-- correct `sensor_type` is chosen in firmware;
-- temperature in interface looks like room temperature;
-- sensor is securely mounted in the right location;
-- `min_temp` and `max_temp` are set reasonably for the device.
+- odpor termistoru vypadá podle očekávání;
+- odpor NTC klesá s ohřátím prstem;
+- bez otevřeného obvodu nebo zkratu;
+- vodiče nereagují skoky na pohyb;
+- konektor je správně vsunut;
+- správný `sensor_type` je zvolen ve firmwaru;
+- teplota v rozhraní vypadá na pokojovou teplotu;
+- senzor je bezpečně namontován na správné místo;
+- `min_temp` a `max_temp` jsou nastaveny rozumně pro zařízení.
 
-## Common mistakes
+## Běžné chyby
 
-- measuring resistance with the board powered;
-- not disconnecting the sensor from the board and getting strange values;
-- confusing a `100K` thermistor with another sensor type;
-- choosing the wrong `sensor_type`;
-- seeing `OL` and thinking it means "100K";
-- assuming any 100K NTC is identical;
-- leaving the thermistor loose next to the heater;
-- overtightening a glass thermistor with a screw;
-- pulling the wire so the sensor comes out of the sleeve;
-- disabling thermal protection instead of fixing the error cause.
+- měření odporu se zapnutou deskou;
+- neodpojení senzoru z desky a získání zvláštních hodnot;
+- záměna `100K` termistoru s jiným typem senzoru;
+- výběr nesprávného `sensor_type`;
+- vidění `OL` a myšlení, že to znamená "100K";
+- předpoklad, že jakýkoli 100K NTC je stejný;
+- opuštění termistoru volně vedle topidla;
+- přetažení skleněného termistoru skrutkou;
+- natažení vodiče, aby senzor vyšel z pouzdra;
+- zakázání tepelné ochrany místo opravy příčiny chyby.
 
-## Key points
+## Klíčové body
 
-- Resistance is measured only on de-energized circuits.
-- A typical NTC 100K is about `100 kOhm` at `25°C`.
-- When heated, NTC resistance decreases.
-- `OL` usually means open circuit, nearly `0 Ohm` means short circuit.
-- Firmware must have the correct sensor type selected.
-- Good thermal contact is as important as working wiring.
-- Do not start the heater if temperature readings look wrong.
+- Odpor se měří pouze na de-energizované obvody.
+- Typický NTC 100K je přibližně `100 kOhm` při `25°C`.
+- Když je ohřátý, NTC odpor klesá.
+- `OL` obvykle znamená otevřený obvod, téměř `0 Ohm` znamená zkrat.
+- Firmware musí mít zvolen správný typ senzoru.
+- Dobrý tepelný kontakt je stejně důležitý jako funkční vodičů.
+- Nezačínejte topidlo, pokud teplotní údaje vypadají špatně.
 
-## Related reading
+## Související čtení
 
-- [Klipper Configuration Reference: Temperature sensors](https://www.klipper3d.org/Config_Reference.html#temperature-sensors) - official `sensor_type`, `sensor_pin`, `pullup_resistor` parameters and list of common thermistors.
-- [Marlin Configuration: Temperature Ranges and Thermal Protection](https://marlinfw.org/docs/configuration/configuration.html#temperature-ranges) - explanation of `MINTEMP`, `MAXTEMP`, and thermal runaway protection.
-- [Marlin Troubleshooting: Heating Failed](https://marlinfw.org/docs/basics/troubleshooting.html#heating-failed) - typical heating error causes: thermistor, slow temperature rise, thermal runaway.
-- [RepRap Wiki: Thermistor](https://reprap.org/wiki/Thermistor) - basic description of NTC/PTC thermistors and room-temperature resistance checking.
-- [Fluke: How to Measure Resistance with a Digital Multimeter](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-measure-resistance) - safe procedure for measuring resistance with a digital multimeter.
+- [Odkaz na konfiguraci Klipperu: Teplotní senzory](https://www.klipper3d.org/Config_Reference.html#temperature-sensors) - oficiální `sensor_type`, `sensor_pin`, `pullup_resistor` parametry a seznam běžných termistorů.
+- [Konfigurace Marlinu: Rozsahy teplot a tepelná ochrana](https://marlinfw.org/docs/configuration/configuration.html#temperature-ranges) - vysvětlení `MINTEMP`, `MAXTEMP` a ochrany před tepelným únikem.
+- [Poradce při potížích s Marlinem: Topidlo selhalo](https://marlinfw.org/docs/basics/troubleshooting.html#heating-failed) - typické příčiny chyb topidla: termistor, pomalý nárůst teploty, tepelný únik.
+- [RepRap Wiki: Termistor](https://reprap.org/wiki/Thermistor) - základní popis NTC/PTC termistorů a kontroly odporu v pokojové teplotě.
+- [Fluke: Jak měřit odpor s digitálním multimetrem](https://www.fluke.com/en-us/learn/best-practices/test-tools-basics/digital-multimeters/how-to-measure-resistance) - bezpečný postup pro měření odporu s digitálním multimetrem.

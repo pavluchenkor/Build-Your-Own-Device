@@ -140,7 +140,7 @@ Pour le thermisteur :
 - pas de « MAXTEMP » ;
 - les lectures ne sautent pas ;
 - la résistance comme attendue ;
-- quand chauffé par la main, les lectures changent correctement.
+- Quand chauffée par la main, les lectures changent correctement.
 
 Pour les autres capteurs :
 

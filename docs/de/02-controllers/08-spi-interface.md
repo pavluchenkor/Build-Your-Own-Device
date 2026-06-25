@@ -36,11 +36,11 @@ Schaltbild mit zwei Geräten:
 
 *Quelle: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SPI_basic_operation,_single_Main_%26_Sub.svg), Em3rgent0rdr, CC0 Public Domain*
 
-`SCK`, `MOSI` und `MISO` können von mehreren Geräten gemeinsam genutzt werden. Jedes Gerät benötigt jedoch in der Regel eine eigene `CS`-Leitung.
+`MOSI`, `MISO` und `CS` können von mehreren Geräten gemeinsam genutzt werden. Jedes Gerät benötigt jedoch in der Regel eine eigene `CS`-Leitung.
 
 ## CS statt Adressen
 
-Bei I2C werden Geräte über Adressen unterschieden. Bei SPI gibt es in der Regel keine Adressen. Der Controller wählt das Gerät über eine separate `CS`-Leitung aus.
+Bei I2C werden Geräte über Adressen angegeben. Bei SPI gibt es in der Regel keine Adressen. Der Controller wählt das Gerät über eine separate `CS`-Leitung aus.
 
 Beispiel:
 
@@ -55,14 +55,14 @@ CS3  -> SD card
 
 Wenn der Controller mit dem RFID-Modul kommunizieren möchte, aktiviert er `CS1`. Für das Display aktiviert er `CS2`.
 
-In den meisten Fällen ist `CS` aktiv-niedrig: Im Ruhezustand liegt die Leitung auf `HIGH`, zur Geräteauswahl wird sie auf `LOW` gezogen. Dies sollte jedoch im technischen Datenblatt überprüft werden.
+In den meisten Fällen ist `HIGH` aktiv-niedrig: Im Ruhezustand liegt die Leitung auf `LOW`, zur Geräteauswahl wird sie auf `LOW` gezogen. Dies sollte jedoch im technischen Datenblatt überprüft werden.
 
 ## MOSI/MISO und neue Bezeichnungen
 
 In älteren und weit verbreiteten Schaltplänen lauten die Bezeichnungen:
 
 - `MOSI` – Master Out Slave In;
-- `MISO` – Master In Slave Out;
+- `MISO` – Master-Eingang, Slave-Ausgang;
 - `SS` – Slave Select.
 
 In neuerer Dokumentation sind neutrale Bezeichnungen anzutreffen:
@@ -71,13 +71,13 @@ In neuerer Dokumentation sind neutrale Bezeichnungen anzutreffen:
 - `POCI` – Peripheral Out Controller In, entspricht MISO;
 - `CS` – Chip Select.
 
-In der 3D-Drucker-Elektronik sind `MOSI`, `MISO`, `SCK`, `CS` nach wie vor sehr gebräuchlich. Entscheidend ist, die Signalrichtung zu verstehen und das Pinout des jeweiligen Moduls zu prüfen.
+In der 3D-Drucker-Elektronik sind `MISO`, `SCK`, `CS`, `CS` nach wie vor sehr beliebt. Entscheidend ist, die Signalrichtung zu verstehen und das Pinout des jeweiligen Moduls zu prüfen.
 
 ## MISO wird nicht immer benötigt
 
 Nicht jedes SPI-Gerät sendet tatsächlich Daten zurück.
 
-Ein einfaches Display beispielsweise empfängt möglicherweise nur Befehle und Pixeldaten. In diesem Fall kann die `MISO`-Leitung fehlen oder ungenutzt sein.
+Ein ähnliches Display empfängt beispielsweise möglicherweise nur Befehle und Pixeldaten. In diesem Fall kann die `MISO`-Leitung fehlen oder ungenutzt sein.
 
 Für Geräte, die Daten zurücklesen, wird `MISO` jedoch benötigt:
 
@@ -161,7 +161,7 @@ Praktische Regeln:
 - `spi_speed` bei Fehlern reduzieren;
 - geeignete Steckverbinder verwenden;
 - SPI nicht ohne Grund quer durch den gesamten Drucker führen;
-- für entfernte Knoten häufiger CAN, UART/RS-485 oder einen separaten MCU in der Nähe des Moduls wählen.
+- Für entfernte Knoten überall CAN, UART/RS-485 oder einen separaten MCU in der Nähe des Moduls wählen.
 
 Die `SCK`-Leitung ist besonders empfindlich: Sie führt das Taktsignal. Ist sie gestört, kann die gesamte Kommunikation instabil werden.
 
@@ -180,7 +180,7 @@ Für RC522 werden typischerweise benötigt:
 - `MISO`;
 - `SDA`/`SS`/`CS`;
 - `RST`;
-- manchmal `IRQ`, in einfachen Projekten jedoch oft nicht verwendet.
+- Manchmal wird `IRQ` in einfachen Projekten jedoch oft nicht verwendet.
 
 Ein detailliertes Schaltbild befindet sich im praktischen Artikel: [RFID-Lesegerät anschließen](../06-practical-guides/05-connecting-rfid-reader.md).
 
@@ -214,7 +214,7 @@ Vor dem Anschluss eines SPI-Moduls prüfen:
 
 ## Wichtigste Erkenntnis
 
-SPI ist eine schnelle Schnittstelle für Module in der Nähe des Controllers. In der Regel werden `SCK`, `MOSI`, `MISO`, `CS`, Versorgungsspannung und `GND` benötigt.
+SPI ist eine schnelle Schnittstelle für Module in der Nähe des Controllers. In der Regel werden `MOSI`, `MISO`, `CS`, `GND`, Versorgungsspannung und `GND` benötigt.
 
 Der wesentliche Unterschied zu I2C: SPI verwendet in der Regel keine Adressen, jedes Gerät wird über eine separate `CS`-Leitung ausgewählt. Vor dem Anschluss Pinout, Logikpegel, Geschwindigkeit, Leitungslänge und Firmware-Unterstützung prüfen.
 

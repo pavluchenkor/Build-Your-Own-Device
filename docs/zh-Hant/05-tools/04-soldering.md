@@ -4,195 +4,195 @@
 
 但焊接不應該替代電線會拉動、振動或發熱的地方的適當的連接器、端子或機械緊固。
 
-## When soldering is appropriate
+## 何時適合焊接
 
 Soldering is good for:
 
-- soldering wires to a board;
+- 將電線焊接到板上；
 - installing a pin header;
 - repairing a broken wire;
 - connecting a small module;
 - soldering a thermistor or signal wire;
 - prototype assembly.
 
-Soldering is not the best choice for:
+對於以下情況，焊接不是最佳選擇：
 
 - frequently disassembled connections;
-- power terminals without strain relief;
-- wires that will move;
-- connections inside hot zones without protection;
-- mains 110-230V AC parts without proper terminals and enclosure.
+- 電源端子無應力消除裝置；
+- 會移動的電線；
+- 熱區內的連接無保護；
+- 電源 110-230V 交流電部件沒有適當的端子和外殼。
 
 ## Minimal kit
 
-For proper soldering you need:
+為了正確焊接，您需要：
 
-- a soldering iron with temperature control;
+- 帶溫度控制的烙鐵；
 - solder;
 - flux;
 - soldering iron stand;
-- sponge or brass wire for cleaning the tip;
+- 用於清潔尖端的海綿或銅絲；
 - wire cutters;
 - wire stripper;
 - tweezers or third hand;
 - heat shrink tubing;
-- isopropyl alcohol for cleaning if needed.
+- 如有需要，可使用異丙醇進行清潔。
 
-A soldering iron without a stand is a bad idea. A hot tip easily burns your hand, wire, enclosure or table.
+沒有支架的烙鐵是個壞主意。熱尖很容易燒傷您的手、電線、外殼或桌子。
 
 ## Tin a wire
 
-Tinning a wire means coating the exposed strands with a thin layer of solder.
+將電線鍍錫意味著在裸露的電線上塗上一層薄薄的焊料。
 
 Procedure:
 
-1. Strip a bit of insulation.
-2. Twist the strands together if the wire is multi-strand.
-3. Apply flux if solder doesn't flow well.
-4. Heat the wire with the soldering iron.
-5. Apply some solder to the heated area.
-6. Let the solder flow across the strands.
+1. 剝去一點絕緣層。
+2. 如果電線是多股線，請將股線絞在一起。
+3. 如果焊料流動性不好，請塗抹助焊劑。
+4. 用烙鐵加熱電線。
+5. 在加熱區域塗抹一些焊料。
+6. 讓焊料流過絞線。
 
-Don't turn the wire end into a thick stiff blob. Tinning should be neat and thin.
+不要將電線末端變成厚厚的硬塊。鍍錫應整齊、薄。
 
 ## Solder a wire to a pad
 
 Procedure:
 
-1. Secure the board and wire.
-2. Tin the pad.
-3. Tin the wire.
-4. Apply the wire to the pad.
-5. Heat both the wire and pad simultaneously.
-6. Let the solder melt and join the parts.
-7. Remove the solder, then the iron.
-8. Don't move the joint while the solder cools.
+1. 固定電路板和電線。
+2. 給墊子上錫。
+3. 給電線鍍錫。
+4. 將電線連接到焊盤上。
+5. 同時加熱電線和墊。
+6. 讓焊錫熔化並連接零件。
+7. 除去焊料，然後除去烙鐵。
+8. 焊料冷卻時請勿移動接頭。
 
-A good solder joint looks smooth and shiny or evenly dull, depending on the solder. It should not be a blob sitting on top that didn't wet the pad.
+良好的焊點看起來光滑、有光澤或均勻暗淡，具體取決於焊料。它不應該是位於頂部的未弄濕墊的斑點。
 
 ## Cold solder joints
 
-A cold solder joint is where the solder didn't heat up properly and didn't flow normally.
+冷焊點是指焊料未正常加熱且未正常流動的地方。
 
 Signs:
 
 - rough surface;
 - solder in a lump;
 - wire moves;
-- contact comes and goes;
-- joint breaks with slight movement.
+- 接觸來來去去；
+- 輕微活動時關節就會斷裂。
 
-Cold solder joints are dangerous because they may work sometimes. In a heated or vibrating device, such a contact will degrade.
+冷焊點很危險，因為它們有時可能會起作用。在加熱或振動的設備中，這種接觸會退化。
 
-Usually a cold joint is fixed by reheating with flux until the solder flows properly.
+通常，透過用助焊劑重新加熱直至焊料適當流動來固定冷接點。
 
 ## Overheated pad
 
-If you heat a pad too long, it can lift off the board.
+如果加熱墊時間過長，它可能會從電路板上脫離。
 
-This especially affects:
+這尤其影響：
 
 - cheap modules;
 - small pads;
 - thin traces;
 - multiple rework attempts;
-- wires pulling on the pad.
+- 電線拉動焊盤。
 
-If solder doesn't flow, you don't always need to heat longer. Often adding flux, cleaning the tip, using the right temperature or a larger tip helps.
+如果焊料不流動，您並不總是需要加熱更長時間。通常添加助焊劑、清潔烙鐵頭、使用合適的溫度或更大的烙鐵頭會有所幫助。
 
 ## Flux
 
-Flux helps solder wet the metal.
+助焊劑有助於焊錫潤濕金屬。
 
-Without flux, solder often balls up and doesn't join parts well.
+如果沒有助焊劑，焊料通常會成球並且無法很好地連接零件。
 
-After soldering, some flux needs washing off. This depends on flux type:
+焊接後，需要清洗掉一些助焊劑。這取決於助焊劑類型：
 
 - no-clean can often be left;
-- water-soluble must be removed;
-- active flux should not be left on the board.
+- 水溶性的必須除去；
+- 活性助焊劑不應留在板上。
 
-If you don't know the flux type, use electronics-grade flux and read its description.
+如果您不知道助焊劑類型，請使用電子級助焊劑並閱讀其說明。
 
-## Heat shrink and insulation
+## 熱縮和絕緣
 
-A soldered joint must be insulated.
+焊點必須絕緣。
 
-For wires, heat shrink tubing is usually used.
+對於電線，通常使用熱縮管。
 
 Procedure:
 
-1. Slide heat shrink over the wire before soldering.
-2. Solder the wires.
-3. Check the joint.
-4. Slide the heat shrink into place.
+1. 焊接前將熱縮管滑過電線。
+2. 焊接電線。
+3. 檢查接頭。
+4. 將熱縮管滑入到位。
 5. Heat it gently.
 
-Don't leave soldered joints exposed where they might touch the enclosure, another wire, a terminal or a fan.
+請勿將焊接接頭暴露在可能接觸到外殼、其他電線、端子或風扇的地方。
 
 ## Strain relief
 
 Solder doesn't like mechanical stress.
 
-If a wire will pull, vibrate or move, you need strain relief:
+如果電線會拉動、振動或移動，則需要消除應力：
 
 - cable tie;
 - clamp;
 - strain relief connector;
-- a silicone blob in a safe place;
-- wire fastened to the enclosure;
-- a connector instead of direct soldering.
+- 將矽膠塊放在安全的地方；
+- 固定在外殼上的電線；
+- 連接器而不是直接焊接。
 
-Bad practice: the wire is held only by the solder pad. Over time it can tear the pad loose.
+不好的做法：電線僅由焊盤固定。隨著時間的推移，它可能會將墊子撕松。
 
 ## Power wires
 
-Power wires must be soldered extra carefully.
+電源線的焊接必須格外小心。
 
 Verify:
 
-- wire has the correct gauge;
-- the joint is fully heated;
+- 電線規格正確；
+- 接頭已充分加熱；
 - no cold solder joints;
 - no exposed strands;
-- insulation is present;
-- mechanical fastening is present;
-- the joint is not next to a hot zone without protection.
+- 存在絕緣；
+- 存在機械緊固；
+- 接頭不在沒有保護的情況下靠近熱區。
 
-For power lines, a proper terminal or connector is often better than soldering wires permanently.
+對於電源線，合適的端子或連接器通常比永久焊接電線更好。
 
-## What to check after soldering
+## 焊接後要檢查什麼
 
-After soldering:
+焊接後：
 
-- inspect the joint;
-- check that neighboring contacts are not shorted;
-- use the multimeter to check the needed connection;
-- verify no short between `+` and `GND`;
-- gently pull the wire;
-- confirm heat shrink covers the metal;
-- check that the wire doesn't pull the pad.
+- 檢查接頭；
+- 檢查相鄰觸點是否短路；
+- 使用萬用電表檢查所需的連接；
+- 驗證`GND`和`GND`之間沒有短路；
+- 輕輕拉動電線；
+- 確認熱收縮覆蓋金屬；
+- 檢查電線是否不會拉動墊子。
 
-## Common errors
+## 常見錯誤
 
-- soldering with a dirty tip;
-- not using flux;
-- heating only the solder, not the pad and wire;
+- 用骯髒的烙鐵頭進行焊接；
+- 不使用助焊劑；
+- 僅加熱焊料，不加熱焊盤和導線；
 - making a solder blob;
-- moving the wire while solder cools;
-- overheating the pad;
-- leaving an open joint without heat shrink;
-- wire held only by solder;
-- soldering power wire too thin with weak iron;
-- using acid flux not meant for electronics.
+- 在焊料冷卻時移動焊絲；
+- 墊子過熱；
+- 留下未熱縮的開放接縫；
+- 僅用焊錫固定電線；
+- 用弱鐵焊接電源線太細；
+- 使用不適合電子產品的酸性焊劑。
 
-## The essentials
+## 重點
 
-- Good soldering requires heating both parts, not just dripping solder.
+- 良好的焊接需要加熱兩個部件，而不僅僅是滴焊料。
 - Flux often solves poor wetting problems.
-- Cold solder joints may work sometimes, so they are dangerous.
-- A soldered joint must be insulated and mechanically relieved.
-- For frequently disassembled and power connections, a connector or terminal is often better than soldering.
+- 冷焊點有時可能會起作用，因此很危險。
+- 焊點必須絕緣並進行機械釋放。
+- 對於經常拆卸和電源連接，連接器或端子通常比焊接更好。
 
 ## Reference materials
 

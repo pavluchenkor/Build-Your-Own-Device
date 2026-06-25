@@ -7,216 +7,216 @@ description: "Proč je proudění vzduchu důležité v sušičce filamentu a vy
 
 Ventilátor nejen pohybuje vzduchem: rozvádí teplo, omezuje lokální horká místa a pomáhá sušit filament rovnoměrně. Tato stránka pomáhá vybrat ventilátor a pochopit vliv proudění na skříň, topení a teplotní senzor.
 
-A fan is a motor with an impeller that moves air. In devices around a 3D printer, you need it not just "to blow", but to push air through the right zone: a heater, spool, filter, radiator, chamber or electronics compartment.
+Ventilátor je motor se spirálou, který pohybuje vzduchem. V zařízeních kolem 3D tiskárny jej potřebujete ne jen "aby foukal", ale aby tlačil vzduch do správné zóny: topného tělesa, cívky, filtru, chladiče, komory nebo elektronického prostoru.
 
-Fans of the same size can work very differently. One pushes air well in open space, another pushes air better through a filter or duct, a third is quieter but weaker under resistance.
+Ventilátory stejné velikosti mohou fungovat velmi odlišně. Jeden dobře tlačí vzduch v otevřeném prostoru, druhý lépe tlačí vzduch přes filtr nebo potrubí, třetí je tichý, ale slabší při odporu.
 
-## Where It's Used
+## Kde se používá
 
-In iDryer-like projects, fans are used for:
+V projektech podobných iDryer se ventilátory používají pro:
 
-- air circulation inside the dryer;
-- transferring heat from the heater to the chamber;
-- exhausting air from the printer chamber;
-- filtering through HEPA/carbon filter;
-- cooling electronics;
-- cooling a radiator;
-- leveling temperature inside the enclosure.
+- oběh vzduchu uvnitř sušičky;
+- přenos tepla z topného tělesa do komory;
+- vyfukování vzduchu z komory tiskárny;
+- filtrování přes HEPA/uhlíkový filtr;
+- chlazení elektroniky;
+- chlazení chladiče;
+- vyrovnávání teploty v krytu.
 
-For chamber heating, a fan is especially important. The heater releases heat, and the airflow removes that heat from the element and carries it further. Without proper airflow, the heater can locally overheat while the chamber heats poorly.
+Pro ohřev komory je ventilátor obzvlášť důležitý. Topné těleso uvolňuje teplo a proud vzduchu odstraňuje toto teplo z prvku a odnáší jej dál. Bez správného proudění vzduchu se topné těleso může místně přehřát, zatímco se komora ohřívá špatně.
 
-## Airflow and Static Pressure
+## Průtok vzduchu a statický tlak
 
-In a fan's technical description, you usually see two important parameters:
+V technickém popisu ventilátoru obvykle vidíte dva důležité parametry:
 
-- airflow - often in `CFM` or `m3/h`;
-- static pressure - often in `mmH2O`, `Pa` or `inch H2O`.
+- průtok vzduchu - často v `CFM` nebo `m3/h`;
+- statický tlak - často v `mmH2O`, `Pa` nebo `inch H2O`.
 
-Airflow shows how much air a fan can pump under ideal conditions with little resistance.
+Průtok vzduchu ukazuje, kolik vzduchu ventilátor může čerpat za ideálních podmínek s malým odporem.
 
-Static pressure shows how well a fan can push air through resistance: a filter, grill, radiator, narrow duct or long air tube.
+Statický tlak ukazuje, jak dobře ventilátor může tlačit vzduch přes odpor: filtr, mřížku, chladič, úzké potrubí nebo dlouhou vzduchovou trubici.
 
-Practical rule:
+Praktické pravidlo:
 
-- for open circulation, airflow matters more;
-- for filters, radiators, dense grills and ducts, static pressure matters more;
-- for a real enclosure, the operating point matters, not just the maximum number in the spec.
+- pro otevřenou oběh je důležitější průtok vzduchu;
+- pro filtry, chladiče, husté mřížky a potrubí je důležitější statický tlak;
+- pro skutečný kryt, důležitý je pracovní bod, ne jen maximální číslo ve specifikaci.
 
-If you put a quiet case fan on a dense filter, it might barely push air, even though the airflow seems strong in open space.
+Pokud umístíte tichý ventilátor krytu na hustý filtr, může sotva tlačit vzduch, i když se zdá průtok vzduchu silný v otevřeném prostoru.
 
-## Axial and Radial Fans
+## Axiální a radiální ventilátory
 
-An axial fan pushes air along the axis of rotation. These are typical square fans `40x40`, `60x60`, `80x80`, `120x120 mm`.
+Axiální ventilátor tlačí vzduch podél osy rotace. To jsou typické čtvercové ventilátory `40x40`, `60x60`, `80x80`, `120x120 mm`.
 
-A radial fan takes air from the side and blows it out through a narrow exit. It often works better for ducts, nozzles, filters and places where you need pressure.
+Radiální ventilátor nasává vzduch ze strany a vyfukuje jej přes úzký výstup. Často funguje lépe pro potrubí, trysky, filtry a místa, kde potřebujete tlak.
 
-For free circulation inside a chamber, an axial fan is usually convenient. For a compact duct, filter or directed flow, a radial fan is sometimes better.
+Pro volnou oběh uvnitř komory je axiální ventilátor obvykle vhodný. Pro kompaktní potrubí, filtr nebo řízený průtok je někdy lepší radiální ventilátor.
 
-## 2-pin, 3-pin and 4-pin
+## 2-pin, 3-pin a 4-pin
 
-Fans often differ in the number of wires.
+Ventilátory se často liší počtem vodičů.
 
-![3-pin connector on a computer fan](../../img/03-common-components/03-fan-3pin-connector.jpg)
+![3-pin konektor na ventilátoru počítače](../../img/03-common-components/03-fan-3pin-connector.jpg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Three-pin_connector_on_a_computer_fan.jpg), Dsimic, CC BY-SA 4.0*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Three-pin_connector_on_a_computer_fan.jpg), Dsimic, CC BY-SA 4.0*
 
 2-pin:
 
 - `+V`;
 - `GND`.
 
-Such a fan simply gets power. You can control speed by changing supply voltage or PWM on the power line if the board and fan support it.
+Takový ventilátor jednoduše dostane napájení. Můžete řídit rychlost změnou napájecího napětí nebo PWM na přívodu napájení, pokud je to deska a ventilátor podporují.
 
 3-pin:
 
 - `+V`;
 - `GND`;
-- tachometric signal (`tach`/`sense`).
+- signál tachometru (`tach`/`sense`).
 
-The third wire usually outputs a speed signal. It doesn't control speed by itself.
+Třetí vodič obvykle vyvádí signál rychlosti. Sám o sobě neřídí rychlost.
 
 4-pin PWM:
 
 - `GND`;
 - `+V`;
-- tachometric signal (`tach`/`sense`);
-- PWM control signal.
+- signál tachometru (`tach`/`sense`);
+- signál řízení PWM.
 
-On a 4-pin PWM fan, power is usually supplied constantly, and speed is set by a separate PWM line. This is not the same as rapidly switching the fan power on and off.
+U 4-pin PWM ventilátoru je napájení obvykle dodáváno neustále a rychlost je nastavena na samostatné PWM řádce. To není totéž jako rychlé přepínání napájení ventilátoru zapnuto a vypnuto.
 
-## PWM and Tachometer
+## PWM a tachometr
 
-PWM is a control signal that sets the desired speed. Computer 4-pin PWM fans typically have a frequency around `25 kHz`, and power stays constant.
+PWM je řídicí signál, který nastavuje požadovanou rychlost. Počítačové 4-pin PWM ventilátory mají typicky frekvenci kolem `25 kHz` a napájení zůstává konstantní.
 
-If the PWM wire is not connected, many 4-pin fans run at full speed.
+Pokud je vodič PWM nepřipojen, mnohé 4-pin ventilátory běží plnou rychlostí.
 
-The tachometric signal shows RPM. It's needed if the device should understand:
+Signál tachometru ukazuje otáčky za minutu. Je potřeba, pokud by zařízení mělo pochopit:
 
-- whether the fan is spinning or stopped;
-- whether speed matches the command;
-- whether a filter or duct creates too much resistance;
-- whether the fan is jammed.
+- zda se ventilátor otáčí nebo je zastaven;
+- zda se rychlost shoduje s příkazem;
+- zda filtr nebo potrubí vytváří příliš velký odpor;
+- zda je ventilátor zaseknutý.
 
-Tachometer doesn't replace temperature control. In a device with a heater, you need to monitor both temperature and airflow status if fan failure is dangerous.
+Tachometr nenahrazuje kontrolu teploty. V zařízení s topným tělesem musíte sledovat jak teplotu, tak stav proudění vzduchu, pokud je selhání ventilátoru nebezpečné.
 
-## Voltage and Current
+## Napětí a proud
 
-Before connecting, check:
+Před připojením zkontrolujte:
 
-- fan voltage: `5V`, `12V`, `24V`;
-- operating current;
-- startup current;
-- connector type;
-- pinout;
-- whether it has PWM;
-- whether it has a tachometer;
-- operating temperature;
-- airflow direction;
-- noise level;
-- lifetime and bearing type.
+- napětí ventilátoru: `5V`, `12V`, `24V`;
+- provozní proud;
+- startovací proud;
+- typ konektoru;
+- rozložení pinů;
+- zda má PWM;
+- zda má tachometr;
+- provozní teplota;
+- směr průtoku vzduchu;
+- úroveň hluku;
+- životnost a typ ložiska.
 
-You cannot power a fan from the controller's GPIO. GPIO is a signal, not a power output. Fan current must come from the power supply, a board power output, or a MOSFET module.
+Nemůžete napájet ventilátor z GPIO regulátoru. GPIO je signál, ne výstup napájení. Proud ventilátoru musí pocházet ze zdroje napájení, výstupu napájení desky nebo modulu MOSFET.
 
-On startup, a fan may briefly draw more current than in normal operation. If multiple fans are connected to one output, their currents add up.
+Při spuštění může ventilátor krátce odebrat více proudu než během normálního provozu. Pokud je ke jednomu výstupu připojeno více ventilátorů, jejich proudy se sčítají.
 
-## Noise, Vibration and Bearing
+## Hluk, vibrace a ložisko
 
-Noise depends on more than just RPM.
+Hluk závisí na více než jen otáčkách.
 
-Sound is affected by:
+Zvuk je ovlivněn:
 
-- blade shape;
-- balancing;
-- bearing type;
-- mounting;
-- grill;
-- duct;
-- filter;
-- enclosure resonance;
-- multiple fans nearby.
+- tvar lopatky;
+- vyvažování;
+- typ ložiska;
+- montáž;
+- mřížka;
+- potrubí;
+- filtr;
+- rezonance krytu;
+- více ventilátorů blízko sebe.
 
-Technical descriptions list noise in `dB(A)`, but in a real enclosure the fan may sound different. A grill with poor geometry, a nearby wall, or stiff mounting to a thin panel can make a good fan noisy.
+Technické popisy uvádějí hluk v `dB(A)`, ale v skutečném krytu může ventilátor znít jinak. Mřížka s špatnou geometrií, blízká stěna nebo tuhá montáž na tenký panel mohou udělat dobrý ventilátor hlučný.
 
-For a device that runs for hours, it's better to choose a fan not just by price and size, but by lifetime, bearing and temperature.
+Pro zařízení, které běží hodiny, je lepší vybrat si ventilátor ne jen podle ceny a velikosti, ale podle životnosti, ložiska a teploty.
 
-## Temperature and Installation Location
+## Teplota a místo instalace
 
-A fan that works well on a bench may degrade quickly in a hot chamber.
+Ventilátor, který dobře funguje na pracovní ploše, se může rychle zhoršit v horké komoře.
 
-Check:
+Zkontrolujte:
 
-- fan operating temperature;
-- air temperature near the heater;
-- distance from the heating element;
-- whether hot flow hits the motor directly;
-- whether the mounting softens;
-- whether wires dry out;
-- whether the fan gets clogged with dust or fibers.
+- provozní teplota ventilátoru;
+- teplota vzduchu blízko topného tělesa;
+- vzdálenost od topného prvku;
+- zda horký proud přímo zasahuje motor;
+- zda se montáž změkčuje;
+- zda se vodiče vysušují;
+- zda se ventilátor ucpává prachem nebo vlákny.
 
-If the fan is responsible for heater airflow, its failure should be considered in safety logic. You can't design a heater so that a stopped fan immediately creates a dangerous temperature without emergency shutdown.
+Pokud je ventilátor zodpovědný za průtok vzduchu topného tělesa, mělo by být selhání do bezpečné logiky zahrnuto. Nemůžete navrhnout topné těleso tak, aby zastavený ventilátor okamžitě vytvořil nebezpečnou teplotu bez nouzového vypnutí.
 
-## Filters and Ducts
+## Filtry a potrubí
 
-A filter, grill and duct can significantly reduce useful airflow.
+Filtr, mřížka a potrubí mohou výrazně snížit užitečný průtok vzduchu.
 
-Typical signs:
+Typické příznaky:
 
-- fan is loud but airflow is weak;
-- filter barely gets any air through;
-- air bypasses the filter through gaps;
-- temperature near the heater rises faster than chamber temperature;
-- after mounting the cover, airflow is worse than on the bench.
+- ventilátor je hlučný, ale průtok vzduchu je slabý;
+- filtr sotva propouští vzduch;
+- vzduch obchází filtr přes mezery;
+- teplota blízko topného tělesa stoupá rychleji než teplota komory;
+- po namontování krytu je průtok vzduchu horší než na pracovní ploše.
 
-To filter a chamber effectively, you need to not just put a fan, but ensure an air path through the filter. If air finds it easier to go through a gap, it will.
+Aby se efektivně filtrovala komora, nemusíte jen umístit ventilátor, musíte zajistit cestu vzduchu přes filtr. Pokud si vzduch najde cestu přes mezeru, půjde jí.
 
-## What to Check Before Buying
+## Co zkontrolovat před nákupem
 
-Before buying a fan, check:
+Před nákupem ventilátoru zkontrolujte:
 
-- size and thickness;
-- voltage;
-- current;
-- type: axial or radial;
-- airflow;
-- static pressure;
-- noise;
-- RPM;
-- bearing type;
+- velikost a tloušťku;
+- napětí;
+- proud;
+- typ: axiální nebo radiální;
+- průtok vzduchu;
+- statický tlak;
+- hluk;
+- otáčky;
+- typ ložiska;
 - 2-pin/3-pin/4-pin;
-- operating temperature;
-- lifetime;
-- airflow direction;
-- connector and pinout;
-- whether it suits a filter, duct or free circulation.
+- provozní teplota;
+- životnost;
+- směr průtoku vzduchu;
+- konektor a rozložení pinů;
+- zda se hodí pro filtr, potrubí nebo volnou oběh.
 
-For a filter and narrow duct, don't choose a fan only by CFM. Look at static pressure and test in real assembly.
+Pro filtr a úzké potrubí si nevybírejte ventilátor pouze podle CFM. Podívejte se na statický tlak a testujte v reálné montáži.
 
-## Typical Errors
+## Typické chyby
 
-- connected 12V fan to 24V;
-- connected 24V fan to 12V and thought it was broken;
-- powering fan from GPIO;
-- didn't establish common ground for external MOSFET/PWM;
-- didn't account for startup current;
-- connected multiple fans to a weak output;
-- selected fan by size only;
-- installed a free-flow fan on a dense filter;
-- think tach wire is a control wire;
-- think 4-pin PWM is the same as 2-pin;
-- control 4-pin PWM fan by switching power on/off;
-- installed fan in hot zone without temperature check;
-- didn't check airflow after installing cover, filter and duct.
+- připojení 12V ventilátoru k 24V;
+- připojení 24V ventilátoru na 12V a myšlenka, že je rozbitý;
+- napájení ventilátoru z GPIO;
+- nezřízením společného uzemnění pro externí MOSFET/PWM;
+- nezapočítaný startovací proud;
+- připojení více ventilátorů k slabému výstupu;
+- výběr ventilátoru pouze podle velikosti;
+- instalace ventilátoru s volným průtokem na hustý filtr;
+- myšlení, že drát tach je řídící drát;
+- myšlení, že 4-pin PWM je totéž jako 2-pin;
+- řízení 4-pin PWM ventilátoru přepínáním napájení zapnuto/vypnuto;
+- instalace ventilátoru v horké zóně bez kontroly teploty;
+- nekontrolování průtoku vzduchu po instalaci krytu, filtru a potrubí.
 
-## Main Point
+## Hlavní bod
 
-A fan is chosen for the task: free circulation, filter, duct, radiator, heater or electronics cooling. For open space, airflow matters; for filters and ducts, pressure matters.
+Ventilátor se vybírá pro úkol: volná oběh, filtr, potrubí, chladič, chlazení topného tělesa nebo elektroniky. Pro otevřený prostor je důležitý průtok; pro filtry a potrubí je důležitý tlak.
 
-Check voltage, current, wire type, PWM/tachometer, operating temperature and real system resistance. In a device with a heater, the fan should be part of a safe thermal system, not a decorative component.
+Zkontrolujte napětí, proud, typ vodiče, PWM/tachometr, provozní teplotu a skutečný odpor systému. V zařízení s topným tělesem by měl být ventilátor součástí bezpečného tepelného systému, ne dekorativní součásti.
 
-## Reference Materials
+## Referenční materiály
 
-- [Noctua: Microcontroller guide for PWM and RPM monitoring](https://www.noctua.at/en/support/faqs/microcontroller-guide-pwm-setup-and-rpm-monitoring) - practical explanation of 4-pin PWM, tachometer, power and PWM frequency around 25 kHz.
-- [Noctua: Fan pin configuration](https://www.noctua.at/faq-redirects/en/support/solutions/articles/101000081757-what-pin-configuration-do-noctua-fans-use-) - standard 4-pin fan pinout and behavior when only power is connected.
-- [SANYO DENKI: Fan Airflow and Static Pressure](https://techcompass.sanyodenki.com/en/training/cooling/fan_basic/004/index.html) - explanation of airflow, static pressure, operating point and system resistance.
-- [DigiKey: Selecting A Fan](https://www.digikey.ca/en/articles/selecting-a-fan) - fan type selection, fan curve, system resistance and difference between axial and radial fans.
-- [Klipper Configuration Reference: Fans](https://www.klipper3d.org/Config_Reference.html#fans) - official Klipper sections for fans: `fan`, `heater_fan`, `temperature_fan`, `controller_fan` and `fan_generic`.
+- [Noctua: Microcontroller guide for PWM and RPM monitoring](https://www.noctua.at/en/support/faqs/microcontroller-guide-pwm-setup-and-rpm-monitoring) - praktické vysvětlení 4-pin PWM, tachometru, napájení a PWM frekvence kolem 25 kHz.
+- [Noctua: Fan pin configuration](https://www.noctua.at/faq-redirects/en/support/solutions/articles/101000081757-what-pin-configuration-do-noctua-fans-use-) - standardní rozložení 4-pin fanouška a chování při připojení pouze napájení.
+- [SANYO DENKI: Fan Airflow and Static Pressure](https://techcompass.sanyodenki.com/en/training/cooling/fan_basic/004/index.html) - vysvětlení průtoku vzduchu, statického tlaku, pracovního bodu a odporu systému.
+- [DigiKey: Selecting A Fan](https://www.digikey.ca/en/articles/selecting-a-fan) - výběr typu ventilátoru, křivka ventilátoru, odpor systému a rozdíl mezi axiálními a radiálními ventilátory.
+- [Klipper Configuration Reference: Fans](https://www.klipper3d.org/Config_Reference.html#fans) - oficiální sekce Klipper pro ventilátory: `fan`, `heater_fan`, `temperature_fan`, `controller_fan` a `fan_generic`.

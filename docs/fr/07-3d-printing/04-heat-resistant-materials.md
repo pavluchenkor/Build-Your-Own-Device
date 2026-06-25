@@ -35,7 +35,7 @@ Si une pièce se trouve dans une telle zone, le matériau est choisi avec une ma
 
 La fusion est déjà un stade avancé du problème.
 
-Pour une pièce imprimée, ce qui est plus important :
+Pour une pièce imprimée, ce qui est le plus important :
 
 - à quelle température elle perd la rigidité ;
 - s'il y a une charge ;
@@ -116,7 +116,7 @@ Inconvénients :
 - difficile à imprimer ;
 - nécessite une surface correcte et des conditions appropriées.
 
-Le nylon humide s'imprime mal : des bulles, un sifflement, une mauvaise surface et une faible résistance en résultent. Pour un simple capot de boîtier, le nylon est généralement excessif.
+Le nylon humide s'imprime mal : des bulles, un sifflement, une mauvaise surface et une faible résistance en résultant. Pour un simple capot de boîtier, le nylon est généralement excessif.
 
 ## PC / Polycarbonate
 
@@ -154,7 +154,7 @@ Mais ils ne rendent pas le plastique de base magiquement non inflammable ou enti
 
 Important :
 
-- la charge de carbone use les buses en laiton ;
+- la charge de carbone utilise les bus en laiton ;
 - une buse durcie ou appropriée est nécessaire ;
 - le composite peut être plus fragile ;
 - les propriétés dépendent du matériau spécifique, pas juste des lettres « CF » dans le nom.

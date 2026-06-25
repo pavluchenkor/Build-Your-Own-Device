@@ -32,7 +32,7 @@ Ein häufiger Fehler: Nach Strommessung vergessen Sie, die Sonde von `A` zurück
 
 ## DC-Spannung messen
 
-DC ist direkte (konstante) Spannung. In unseren Geräten ist dies normalerweise:
+DC ist direkte (konstante) Spannung. In unseren Geräten ist das normalerweise:
 
 - `3.3V`;
 - `5V`;
@@ -42,7 +42,7 @@ DC ist direkte (konstante) Spannung. In unseren Geräten ist dies normalerweise:
 Verfahren:
 
 1. Schwarze Sonde in `COM`.
-2. Rote Sonde in die `V`-Buchse.
+2. Rote Sonde in der `V`-Buchse.
 3. DC-Spannungsmodus wählen: normalerweise `V` mit gerader Linie.
 4. Schwarze Sonde auf negativ oder `GND`.
 5. Rote Sonde auf positiv.
@@ -116,7 +116,7 @@ Kontinuitätsprüfung wird an einer stromfreien Schaltung durchgeführt.
 
 ## Widerstand
 
-Widerstand wird in Ohm gemessen.
+Der Widerstand wird in Ohm gemessen.
 
 Für unsere Aufgaben ist dies nötig um:
 
@@ -151,7 +151,7 @@ Spannung wird parallel gemessen: Sonden berühren zwei Punkte.
 
 Strom wird in Serie gemessen: Sie müssen den Stromkreis unterbrechen und das Multimeter inline verbinden, damit Strom durch das Gerät fließt.
 
-Fehler - Multimeter in Strommodus stellen und die Sonden an Plus und Minus der Stromversorgung berühren. Das ist fast ein Kurzschluss durch das Multimeter.
+Fehler - Multimeter im Strommodus stellen und die Sonden an Plus und Minus der Stromversorgung berühren. Das ist schnell ein Kurzschluss durch das Multimeter.
 
 Für einen Anfänger ist es besser zu:
 

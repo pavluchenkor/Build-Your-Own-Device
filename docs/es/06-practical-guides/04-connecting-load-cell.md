@@ -73,7 +73,7 @@ En el lado del controlador, generalmente necesita cuatro líneas:
 
 Para muchos módulos HX711, la potencia puede ser `3.3V` o `5V`, pero verifique el módulo específico. Si el controlador funciona a 3.3V, es conveniente usar un módulo y potencia compatibles con lógica 3.3V.
 
-Los pines `DT` y `SCK` generalmente pueden conectarse a GPIO regular. Esta no es I2C o SPI en el sentido usual, pero una interfaz HX711 simple de dos cables.
+Los pines `SCK` y `SCK` generalmente pueden conectarse a GPIO regular. Esta no es I2C o SPI en el sentido habitual, pero una interfaz HX711 simple de dos cables.
 
 ## La Mecánica Importa Más Que el Circuito
 
@@ -166,7 +166,7 @@ Medidas prácticas:
 - mantenga HX711 cerca de célula de carga;
 - no ejecute cables de señal junto a cables de potencia del calentador;
 - asegure cables para que no tiren del sensor;
-- use promediación de medición;
+- utilice la mediación de medición;
 - calibre después de montaje en alojamiento;
 - tara después del calentamiento del dispositivo si la temperatura notablemente afecta las lecturas.
 

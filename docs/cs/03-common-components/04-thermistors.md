@@ -1,178 +1,178 @@
 # Termistory
 
-A thermistor is a temperature sensor whose resistance changes when heated or cooled. In 3D printers, dryers and small heating devices, it's often used as feedback to control the heater.
+Termistore je teplotní senzor, jehož odpor se mění při zahřátí nebo ochlazení. V 3D tiskárnách, sušičkách a malých topných zařízeních se často používá jako zpětná vazba pro řízení topného tělesa.
 
-The most common option in the 3D printing community is NTC thermistor `100K`. NTC means that as temperature rises, resistance decreases. `100K` usually means about `100 kOhm` at `25°C`.
+Nejčastěji používaná možnost v komunita 3D tisku je NTC termistore `100K`. NTC znamená, že se zvyšující se teplotou se odpor snižuje. `100K` obvykle znamená přibližně `100 kOhm` při `25°C`.
 
-## Where It's Used
+## Kde se používá
 
-Thermistors are used to measure temperature of:
+Termistory se používají k měření teploty:
 
 - hotend;
 - heated bed;
 - printer chamber;
 - filament dryer;
 - air duct;
-- heating module;
-- electronics area, if simple overheat protection is needed.
+- topný modul;
+- oblast elektroniky, pokud je potřeba jednoduchá ochrana proti přehřátí.
 
-In a device with a heater, a thermistor is not a decorative sensor. It determines when the controller reduces power, disables heating or stops with an error.
+V zařízení s ohřívačem není termistor dekorativním senzorem. Určuje, kdy regulátor sníží výkon, zakáže topení nebo se zastaví s chybou.
 
-## NTC 100K, Beta and Lookup Tables
+## NTC 100K, beta a vyhledávací tabulky
 
-Different thermistors may look the same but have different characteristics.
+Různé termistory mohou vypadat stejně, ale mají různé vlastnosti.
 
-Important parameters:
+Důležité parametry:
 
-- resistance at `25°C`, for example `100 kOhm`;
+- odpor na `25°C`, například `100 kOhm`;
 - type: NTC or PTC;
-- Beta, for example `3950K`;
-- resistance/temperature lookup table;
-- operating temperature range;
+- Beta, například `3950K`;
+- vyhledávací tabulka odporu/teploty;
+- rozsah provozních teplot;
 - accuracy;
-- package: glass bead, cartridge, screw sensor, sheath;
-- wire insulation.
+- balení: skleněná kulička, kartuše, šroubový senzor, pouzdro;
+- izolace drátu.
 
-If the firmware selects the wrong sensor type, temperature will be displayed incorrectly. The error can be small at room temperature and dangerous at operating temperature.
+Pokud firmware vybere špatný typ čidla, teplota se zobrazí nesprávně. Chyba může být malá při pokojové teplotě a nebezpečná při provozní teplotě.
 
-So the phrase "100K thermistor" is not always enough. For the firmware, a specific model or at least the right Beta/table matters.
+Takže fráze "100K termistor" není vždy dostačující. U firmwaru záleží na konkrétním modelu nebo alespoň na správné beta/tabulce.
 
-## How the Controller Measures Temperature
+## Jak regulátor měří teplotu
 
-A thermistor is usually connected to an analog input through a voltage divider with a pull-up resistor. The controller measures voltage, converts it to resistance, then uses a lookup table or formula to get temperature.
+Termistor je obvykle připojen k analogovému vstupu přes napěťový dělič s pull-up rezistorem. Ovladač měří napětí, převádí ho na odpor a poté používá vyhledávací tabulku nebo vzorec k získání teploty.
 
 ![Voltage divider with thermistor for temperature measurement](../../img/03-common-components/04-thermistor-voltage-divider.svg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Thermistor_potential_divider.svg), Sjlegg, Public Domain*
 
-In Klipper, this is set through `sensor_type`, `sensor_pin`, sometimes `pullup_resistor` or a custom `[thermistor]` section.
+V Klipperu se to nastavuje pomocí `sensor_pin`, `pullup_resistor`, někdy `[thermistor]` nebo vlastní sekce `[thermistor]`.
 
-In Marlin, the thermistor type is selected through sensor configuration parameters and temperature limits.
+V Marlin se typ termistoru volí pomocí konfiguračních parametrů snímače a teplotních limitů.
 
-For the user, the key takeaway is simple: the firmware must know exactly the sensor type that's installed in the device.
+Pro uživatele je klíč jednoduchý: firmware musí přesně znát typ senzoru, který je v zařízení nainstalován.
 
-## Open Circuit and Short Circuit
+## Otevřený obvod a zkrat
 
-A thermistor and its wiring can fail.
+Termistor a jeho kabeláž mohou selhat.
 
-Typical symptoms:
+Typické příznaky:
 
-- broken wire;
+- zlomený drát;
 - poor connector contact;
-- wires short together;
+- dráty jsou krátké;
 - damaged insulation;
-- sensor slipped out of sheath;
-- wire abraded in a moving part;
-- sensor shows room temperature even though heating is happening.
+- senzor vyklouzl z pouzdra;
+- drát odřený v pohyblivé části;
+- čidlo ukazuje pokojovou teplotu, i když probíhá topení.
 
-Firmware usually has protections like `MINTEMP`, `MAXTEMP`, heating verification and thermal runaway protection. But these protections only work if the sensor and firmware are set up correctly, and the power part can actually be switched off.
+Firmware má obvykle ochrany jako `MINTEMP`, `MAXTEMP`, ověření zahřívání a ochrana proti tepelnému úniku. Tyto ochrany ale fungují pouze v případě, že senzor a firmware jsou správně nastaveny a výkonovou část lze skutečně vypnout.
 
-If a sensor falls off the heater but stays electrically connected, this is especially dangerous: the firmware may see "low temperature" and keep heating.
+Pokud senzor spadne z ohřívače, ale zůstane elektricky připojen, je to obzvláště nebezpečné: firmware může vidět „nízkou teplotu“ a nadále topit.
 
 ## Thermal Contact
 
-Thermistor mounting is often more important than it seems.
+Montáž termistoru je často důležitější, než se zdá.
 
-The sensor should measure the temperature of the place you actually need to control. For a hotend, it's the heating block. For a bed, it's the surface or a place related to the actual bed temperature. For an air heater, it's a point chosen by safety and control logic.
+Senzor by měl měřit teplotu místa, které skutečně potřebujete ovládat. U hotendu je to topný blok. U postele je to povrch nebo místo související s potřebou postele. U ohřívače vzduchu je to bod zvolený bezpečnostní a řídicí logikou.
 
-Thermal contact is affected by:
+Tepelný kontakt je ovlivněn:
 
-- sensor pressure;
+- tlak snímače;
 - thermal paste;
 - mounting hole;
 - sheath;
 - screw mounting;
 - gap;
-- material around the sensor;
-- wire condition;
+- materiál kolem senzoru;
+- stav drátu;
 - contamination or dried paste;
-- vibration and loose mounting.
+- vibrace a volné upevnění.
 
-If a thermistor just touches a part sideways, it may respond slowly and show the wrong temperature. The PID controller then gets delayed information, and temperature may overshoot or exceed the target.
+Pokud se termistor jen dotkne části ze strany, může reagovat pomalu a ukazovat špatnou teplotu. PID regulátor pak dostane zpožděnou informaci a teplota může překročit nebo překročit cíl.
 
-## Sensor Package
+## Balíček senzorů
 
-Thermistors come in different packages.
+Termistory se dodávají v různých baleních.
 
 Glass bead:
 
 - cheap;
 - tiny;
 - requires careful mounting;
-- easy to damage wire or insulation.
+- snadno poškodit drát nebo izolaci.
 
 Cartridge thermistor:
 
-- easier to insert into the heating block hole;
-- usually mechanically more stable;
-- important to match diameter and length.
+- snadnější vložení do otvoru topného bloku;
+- obvykle mechanicky stabilnější;
+- Důležité je sladit průměr a délku.
 
 Screw thermistor:
 
-- easily mounts to a metal surface;
-- can give good contact if installed properly;
-- must not overtighten or damage the wire.
+- snadno se montuje na kovový povrch;
+- může poskytnout dobrý kontakt, pokud je správně nainstalován;
+- nesmí drát příliš utáhnout nebo poškodit.
 
-Sensor in sheath:
+Senzor v plášti:
 
-- convenient for air, liquid or enclosure;
-- responds slower if the sheath is massive;
-- proper installation point is important.
+- vhodné pro vzduch, kapalinu nebo uzavřený prostor;
+- reaguje pomaleji, pokud je pouzdro masivní;
+- správný bod instalace je důležitý.
 
-Package choice depends on what is being measured and how the sensor will be serviced.
+Volba balení závisí na tom, co se měří a jak bude senzor servisován.
 
-## Multimetr Check
+## Kontrola multimetru
 
-Basic checking can be done with a multimeter in resistance mode. Detailed procedure is in the practical article: [Checking a thermistor](../06-practical-guides/02-checking-thermistor.md).
+Základní kontrolu lze provést multimetrem v odporovém režimu. Podrobný postup je v praktickém článku: [Kontrola termistoru](../06-practical-guides/02-checking-thermistor.md).
 
-For a typical NTC `100K` at room temperature around `25°C`, you expect about `100 kOhm`. The exact value depends on temperature and tolerance.
+Pro typický NTC `100K` při pokojové teplotě kolem `25°C` očekáváte přibližně `100 kOhm`. Přesná hodnota závisí na teplotě a toleranci.
 
-When heated with fingers, NTC resistance should decrease. If the multimeter shows open circuit, short circuit, or the value jumps when you move the wire, first check the connector and wiring.
+Při zahřátí prsty by se měl odpor NTC snížit. Pokud multimetr ukazuje přerušený obvod, zkrat nebo hodnota při pohybu vodiče vyskočí, nejprve zkontrolujte konektor a kabeláž.
 
-Multimeter checking doesn't replace calibration and doesn't prove accuracy at `200°C`, but it quickly shows an obvious open, short or wrong sensor type.
+Kontrola multimetru nenahrazuje kalibraci a neprokazuje přesnost na `200°C`, ale rychle ukazuje zjevný otevřený, krátký nebo nesprávný typ senzoru.
 
-## What to Check Before Buying
+## Co zkontrolovat před nákupem
 
-Before buying a thermistor, check:
+Před nákupem termistoru zkontrolujte:
 
 - resistance at `25°C`;
 - Beta or exact model;
-- compatibility with firmware;
-- operating temperature range;
-- sensor package;
-- wire length and material;
+- kompatibilita s firmwarem;
+- rozsah provozních teplot;
+- senzorový balíček;
+- délka a materiál drátu;
 - connector type;
 - mounting method;
 - whether you need a cartridge, screw, sheath or glass bead;
-- whether the sensor fits your heating block or installation location;
-- availability of technical description or clear information.
+- zda se čidlo hodí k vašemu topnému bloku nebo místu instalace;
+- dostupnost technického popisu nebo jasných informací.
 
-For a hotend, it's better to get a sensor that mechanically fits the specific block. For a chamber or dryer, the installation location, wire protection and measurement stability in airflow matter more.
+Pro hotend je lepší pořídit snímač, který mechanicky pasuje na konkrétní blok. U komory nebo sušičky záleží více na místě instalace, ochraně vodičů a stabilitě měření v proudění vzduchu.
 
-## Typical Errors
+## Typické chyby
 
-- wrong `sensor_type` selected;
-- thinking any `100K` thermistor is the same;
-- sensor is poorly pressed;
+- špatně vybrán `sensor_type`;
+- myslet si, že jakýkoli `100K` termistor je stejný;
+- snímač je špatně stlačen;
 - no proper thermal contact;
-- sensor slipped out of sheath;
-- wire rubbed or broke at the sensor body;
-- connector contact is poor;
-- wiring next to power lines unnecessarily;
-- thermistor measures air but controller thinks it measures the heater;
-- firmware set without reasonable `min_temp` and `max_temp`;
-- heater on without independent hardware protection.
+- senzor vyklouzl z pouzdra;
+- drát odřený nebo zlomený na těle snímače;
+- kontakt konektoru je špatný;
+- vedení vedle elektrického vedení zbytečně;
+- termistor měří vzduch, ale regulátor si myslí, že měří ohřívač;
+- firmware nastavený bez rozumných `min_temp` a `max_temp`;
+- ohřívač zapnutý bez nezávislé hardwarové ochrany.
 
-## Main Point
+## Hlavní bod
 
-A thermistor is feedback for a heater. It's important not just to buy "100K NTC", but to select the right type in firmware, mount the sensor in the right place and check the wiring.
+Termistor je zpětná vazba pro ohřívač. Je důležité nejen koupit "100K NTC", ale vybrat správný typ ve firmwaru, namontovat snímač na správné místo a zkontrolovat kabeláž.
 
-Poor thermal contact or wrong `sensor_type` can be more dangerous than a completely dead sensor, because the system keeps working but makes decisions on wrong temperature.
+Špatný tepelný kontakt nebo nesprávný `sensor_type` může být nebezpečnější než zcela mrtvý senzor, protože systém stále funguje, ale rozhoduje o nesprávné teplotě.
 
 ## Reference Materials
 
-- [Klipper Configuration Reference: Temperature sensors](https://www.klipper3d.org/Config_Reference.html#temperature-sensors) - official `sensor_type`, `pullup_resistor`, custom `[thermistor]` and temperature sensors in Klipper.
-- [Marlin Configuration: Temperature Ranges and Thermal Protection](https://marlinfw.org/docs/configuration/configuration.html#temperature-ranges) - temperature limits, `MINTEMP`, `MAXTEMP` and thermal protection.
-- [Vishay: NTC Thermistors](https://www.vishay.com/en/thermistors/ntc/) - NTC thermistor parameters: resistance at `25°C`, Beta, tolerance and operating range.
-- [RepRap Europe: Thermistor NTC100K](https://www.reprap-3d-printer.com/product/335-thermistor-ntc100k) - example of typical 3D printer NTC `100K` with Beta `3950` and `100 kOhm` at `25°C`.
-- [RepRap Europe: Thermistor Cartridge 100k HT-NTC B3950](https://reprap.eu/produto/?id=1245&nome=Thermistor+Cartridge+100k+HT-NTC+B3950) - example of cartridge thermistor for heating block and mechanical mounting.
+- [Klipper Configuration Reference: Temperature sensors](https://www.klipper3d.org/Config_Reference.html#temperature-sensors) - oficiální `sensor_type`, `pullup_resistor`, vlastní `[thermistor]` a teplotní senzory v Klipperu.
+- [Marlin Configuration: Temperature Ranges and Thermal Protection](https://marlinfw.org/docs/configuration/configuration.html#temperature-ranges) - teplotní limity, `MINTEMP`, `MAXTEMP` a tepelná ochrana.
+- [Vishay: NTC Thermistors](https://www.vishay.com/en/thermistors/ntc/) - Parametry NTC termistoru: odpor při `25°C`, Beta, tolerance a provozní rozsah.
+- [RepRap Europe: Thermistor NTC100K](https://www.reprap-3d-printer.com/product/335-thermistor-ntc100k) - příklad typické 3D tiskárny NTC `100K` s Beta `3950` a `100 kOhm` na `25°C`.
+- [RepRap Europe: Thermistor Cartridge 100k HT-NTC B3950](https://reprap.eu/produto/?id=1245&nome=Thermistor+Cartridge+100k+HT-NTC+B3950) - příklad kartušového termistoru pro topný blok a mechanickou montáž.

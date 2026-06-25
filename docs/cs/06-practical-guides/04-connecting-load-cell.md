@@ -1,217 +1,217 @@
 # Připojení tenzometru
 
-A load cell measures force or weight through tiny deformation of a metal beam, button, or platform.
+Tenzometr měří sílu nebo váhu skrz nepatrné deformace kovového nosníku, tlačítka nebo platformy.
 
-In iDryer-like devices, a load cell can estimate spool weight, remaining filament, or mechanism load.
+V zařízeních podobných iDryer-u může tenzometr odhadnout váhu cívky, zbývající filament nebo zátěž mechanismu.
 
-Main point: a load cell is almost never connected directly to a controller. Its signal is too small. Usually, an HX711 module or similar amplifier/ADC is placed between the sensor and controller.
+Hlavní bod: tenzometr se téměř nikdy nepřipojuje přímo ke kontroléru. Jeho signál je příliš malý. Obvykle je mezi senzor a kontrolér umístěn modul HX711 nebo podobný zesilovač/ADC.
 
-## What you need
+## Co potřebujete
 
-Minimum set:
+Minimální souprava:
 
-- load cell of the needed weight range;
-- HX711 module;
-- controller: Arduino, ESP32, RP2040, STM32, or other board;
-- rigid mechanical mounting;
-- known mass for calibration;
-- short, neat wires.
+- tenzometr potřebného rozsahu váhy;
+- modul HX711;
+- kontrolér: Arduino, ESP32, RP2040, STM32 nebo jiná deska;
+- tuhá mechanická montáž;
+- známá hmota pro kalibraci;
+- krátké, úhledné vodiče.
 
-If mechanics are poor, the circuit will not help. A load cell can be wired perfectly but give meaningless readings due to misalignment, play, or load applied at the wrong point.
+Pokud je mechanika špatná, obvod jí nepomůže. Tenzometr lze správně zapojit, ale dává nesmyslné údaje kvůli chybném zarovnání, vůli nebo zátěži aplikované na špatném místě.
 
-## How the connection is arranged
+## Jak je připojení uspořádáno
 
-Load cell connects to HX711 with analog wires.
+Tenzometr se připojuje k HX711 s analogovými vodiči.
 
-HX711 connects to the controller with digital wires.
+HX711 se připojuje k kontroléru s digitálními vodiči.
 
-Typical chain:
+Typický řetězec:
 
 ```text
-load cell -> HX711 -> controller
+tenzometr -> HX711 -> kontrolér
 ```
 
-The HX711 usually has two sides:
+HX711 obvykle má dvě strany:
 
-- input from load cell: `E+`, `E-`, `A+`, `A-`, or similar;
-- connection to controller: `VCC`, `GND`, `DT`/`DOUT`, `SCK`/`CLK`.
+- vstup z tenzometru: `E+`, `E-`, `A+`, `A-` nebo podobné;
+- připojení k kontroléru: `VCC`, `GND`, `DT`/`DOUT`, `SCK`/`CLK`.
 
-![HX711 and load cell connection diagram](../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
+![Schéma připojení HX711 a tenzometru](../../img/06-practical-guides/04-hx711-load-cell-fritzing.jpg)
 
-*Source: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/load-cell-amplifier-hx711-breakout-hookup-guide/all), CC BY-SA 4.0*
+*Zdroj: [SparkFun Electronics](https://learn.sparkfun.com/tutorials/load-cell-amplifier-hx711-breakout-hookup-guide/all), CC BY-SA 4.0*
 
-## Load cell wires
+## Vodiče tenzometru
 
-A common four-wire load cell typically has:
+Typický čtyřvodičový tenzometr obvykle má:
 
-- `E+` - bridge supply plus;
-- `E-` - bridge supply minus;
-- `S+`, `A+`, or `O+` - positive measurement signal;
-- `S-`, `A-`, or `O-` - negative measurement signal.
+- `E+` - napájení mostu plus;
+- `E-` - napájení mostu minus;
+- `S+`, `A+` nebo `O+` - pozitivní měřicí signál;
+- `S-`, `A-` nebo `O-` - negativní měřicí signál.
 
-Common color scheme:
+Běžné barevné schéma:
 
-- red - `E+`;
-- black - `E-`;
-- green or blue - `A+`;
-- white - `A-`.
+- červená - `E+`;
+- černá - `E-`;
+- zelená nebo modrá - `A+`;
+- bílá - `A-`.
 
-But colors are not law. Different sensors may differ. If there is a datasheet for the specific load cell, follow it.
+Ale barvy nejsou zákon. Různé senzory se mohou lišit. Pokud existuje specifikace pro konkrétní tenzometr, řiďte se jím.
 
-If the sensor has a fifth wire, foil, or shield, it is often electromagnetic shielding. Do not confuse it with a bridge measurement wire. Usually, the shield is connected to `GND` or housing on one side if the documentation says so, but not to measurement `A+`/`A-`.
+Pokud má senzor pátý vodič, folii nebo stínění, je to často elektromagnetické stínění. Nezaměňujte si jej s mostikovým měřicím vodičem. Obvykle je stínění připojeno na `GND` nebo kryt na jedné straně, pokud to dokumentace říká, ale ne na měřicí `A+`/`A-`.
 
-If there is no wire diagram, do not connect the load cell "at random". First find the sensor datasheet or ring out the bridge per manufacturer guide: incorrect wires easily give unstable readings or overload the HX711 input.
+Pokud neexistuje schéma vodičů, nepřipojujte tenzometr "náhodně". Nejdřív najděte specifikaci tenzometru nebo změřte most podle průvodce výrobce: nesprávné vodiče snadno dávají nestabilní údaje nebo přetěžují vstup HX711.
 
-## Connecting HX711 to the controller
+## Připojení HX711 k kontroléru
 
-On the controller side, you usually need four lines:
+Na straně kontroléru obvykle potřebujete čtyři linky:
 
-- `VCC` - module power;
-- `GND` - common negative;
-- `DT`, `DOUT`, or `DATA` - data;
-- `SCK`, `CLK`, or `PD_SCK` - clock.
+- `VCC` - napájení modulu;
+- `GND` - společná záporná;
+- `DT`, `DOUT` nebo `DATA` - data;
+- `SCK`, `CLK` nebo `PD_SCK` - hodiny.
 
-For many HX711 modules, power can be `3.3V` or `5V`, but check the specific module. If the controller runs on 3.3V, it is convenient to use a module and power compatible with 3.3V logic.
+U mnoha modulů HX711 může být napájení `3.3V` nebo `5V`, ale zkontrolujte konkrétní modul. Pokud běží kontrolér na 3.3V, je vhodné použít modul a napájení kompatibilní s logikou 3.3V.
 
-Pins `DT` and `SCK` can usually connect to regular GPIO. This is not I2C or SPI in the usual sense, but a simple two-wire HX711 interface.
+Piny `DT` a `SCK` se obvykle mohou připojit na běžné GPIO. Toto není I2C nebo SPI v obvyklém smyslu, ale jednoduché dvouvodičové rozhraní HX711.
 
-## Mechanics matter more than the circuit
+## Mechanika je důležitější než obvod
 
-A load cell must deform as the manufacturer intended.
+Tenzometr se musí deformovat tak, jak výrobce zamýšlel.
 
-For a beam sensor, one side usually mounts to a fixed base, the other side bears the load. If both sides are rigidly mounted to one part, the sensor will not flex normally.
+Pro paprskový senzor se obvykle jedna strana montuje na pevný podklad a druhá strana nese zátěž. Pokud jsou obě strany tuze připevněny na jednu součást, senzor se nebude normálně ohýbat.
 
-Check:
+Zkontrolujte:
 
-- where the sensor's mounting side is;
-- where the load should be applied;
-- which direction the force should go;
-- whether spacers are needed;
-- whether the moving part clears the housing;
-- no misalignment;
-- no side loading;
-- screws are not over-tightened;
-- the spool or platform does not land past the working zone of the sensor.
+- kde je montážní strana senzoru;
+- kam by měla být aplikována zátěž;
+- kterým směrem by měla jít síla;
+- zda jsou potřebné podložky;
+- zda pohyblivá část neprolamuje kryt;
+- bez chybného zarovnání;
+- bez bočního zatížení;
+- šrouby nejsou přetaženy;
+- cívka nebo platforma nepřistane mimo pracovní zónu senzoru.
 
-For spool weight, it is especially important that all load goes through the sensor, not partly through the housing wall, axle, cable, or cosmetic cover.
+Pro váhu cívky je zvláště důležité, aby veškerá zátěž procházela senzorem, ne částečně skrz stěnu pouzdra, osu, kabel nebo ozdobný kryt.
 
-## Do not overload the sensor
+## Nepřetěžujte senzor
 
-A load cell's range is not a recommendation but a measurement limit.
+Rozsah tenzometru není doporučením, ale limitem měření.
 
-If a 1 kg sensor is placed where a spool and holder can exceed this, the sensor will work poorly or permanently deform.
+Pokud je 1 kg senzor umístěn tam, kde cívka a držák mohou překročit limit, senzor bude fungovat špatně nebo se trvale deformuje.
 
-Choose the range with margin:
+Zvolte rozsah s rezervou:
 
-- maximum spool weight;
-- holder weight;
-- possible jerks;
-- misalignment;
-- safety margin for user error.
+- maximální váha cívky;
+- váha držáku;
+- možné nárazy;
+- chybné zarovnání;
+- bezpečnostní rezerva pro chybu uživatele.
 
-But too large a range is also not always good. A 100 kg sensor will sense a small spool worse than a 5 kg or 10 kg sensor with identical mechanics and electronics.
+Ale příliš velký rozsah také není vždy dobrý. 100 kg senzor bude vnímat malou cívku hůře než 5 kg nebo 10 kg senzor se stejnou mechanikou a elektronikou.
 
-## First startup
+## První spuštění
 
-Before installing in the device, test the system on the bench:
+Před instalací v zařízení testujte systém na lavici:
 
-1. Connect load cell to HX711.
-2. Connect HX711 to controller.
-3. Run test code or a library.
-4. Ensure raw values change when you press on the sensor.
-5. Remove the load and check that the value is fairly stable.
-6. Place a known mass and check for change.
+1. Připojte tenzometr k HX711.
+2. Připojte HX711 k kontroléru.
+3. Spusťte test kódu nebo knihovnu.
+4. Ujistěte se, že se surové hodnoty mění, když stisknete senzor.
+5. Odstraňte zátěž a zkontrolujte, že je hodnota poměrně stabilní.
+6. Umístěte známou hmotu a zkontrolujte změnu.
 
-At this stage, do not demand gram accuracy. First, you need to see the sensor is alive, load direction is correct, and readings change predictably.
+V tomto stadiu neočekávejte přesnost na gram. Nejdřív musíte vidět, že senzor je živý, směr zátěže je správný a údaje se mění předvídatelně.
 
-If the value decreases as weight increases, usually just swap `A+` and `A-` or account for the sign in code.
+Pokud se hodnota snižuje se zvyšující se váhou, obvykle jen vyměňte `A+` a `A-` nebo vezměte znaménko v kódu.
 
-## Tare and calibration
+## Tárování a kalibrace
 
-A load cell without calibration does not know what grams are.
+Tenzometr bez kalibrace neví, co jsou gramy.
 
-Typical process:
+Typický proces:
 
-1. Place empty platform.
-2. Tare: this is zero accounting for platform weight.
-3. Place a known mass.
-4. Select calibration factor.
-5. Check several different weights.
+1. Umístěte prázdnou platformu.
+2. Tárujte: toto je nula s ohledem na váhu platformy.
+3. Umístěte známou hmotu.
+4. Vyberte kalibrační faktor.
+5. Zkontrolujte několik různých vah.
 
-For filament spools, decide what counts as weight:
+Pro cívky s filamentem rozhodněte, co se počítá jako váha:
 
-- entire spool with plastic;
-- only remaining plastic without empty spool weight;
-- weight change from initial value.
+- celá cívka s plastem;
+- pouze zbývající plast bez váhy prázdné cívky;
+- změna váhy od počáteční hodnoty.
 
-If empty spools from different makers weigh differently, accurate remainder calculation requires knowing the specific empty spool weight or working with rough estimates.
+Pokud různé výrobci vyrábějí prázdné cívky s různými vahami, přesný výpočet zbytku vyžaduje znalost specifické váhy prázdné cívky nebo práci s hrubými odhady.
 
-## Noise and unstable readings
+## Šum a nestabilní údaje
 
-HX711 measures a very small signal, so the system is sensitive to noise and mechanical issues.
+HX711 měří velmi malý signál, takže je systém citlivý na šum a mechanické problémy.
 
-Causes of unstable readings:
+Příčiny nestabilních údajů:
 
-- long wires from sensor to HX711;
-- poor contacts;
-- heater power wires next to signal wires;
-- fan or printer vibration;
-- soft base;
-- play in mounting;
-- temperature drift;
-- load touching the housing bypassing the sensor.
+- dlouhé vodiče z tenzometru na HX711;
+- špatné kontakty;
+- napájecí vodiče topidla vedle signálních vodičů;
+- vibrace ventilátoru nebo tiskárny;
+- měkké základny;
+- vůle v montáži;
+- teplotní drift;
+- zátěž dotýkající se pouzdra obcházením senzoru.
 
-Practical measures:
+Praktická opatření:
 
-- keep HX711 close to load cell;
-- do not run signal wires alongside heater power wires;
-- secure wires so they do not pull the sensor;
-- use measurement averaging;
-- calibrate after mounting in housing;
-- tare after device warmup if temperature notably affects readings.
+- udržujte HX711 blízko tenzometru;
+- nevedete signální vodiče vedle napájecích vodičů topidla;
+- zajistěte vodiče, aby netahaly senzor;
+- používejte průměrování měření;
+- kalibrujte po montáži do pouzdra;
+- tárujte po zahřátí zařízení, pokud teplota výrazně ovlivňuje údaje.
 
-## What to check after assembly
+## Co kontrolovat po montáži
 
-Before use:
+Před použitím:
 
-- sensor is rated for the needed weight;
-- load goes through the working part of the sensor;
-- fasteners do not block deformation;
-- HX711 receives correct power;
-- `DT` and `SCK` are connected to the right GPIO;
-- common ground exists;
-- raw values change under load;
-- without load, readings do not drift too quickly;
-- known mass shows expected weight after calibration;
-- wires do not pull the platform;
-- spool or holder does not touch the housing past the sensor.
+- senzor je hodnocen na potřebnou váhu;
+- zátěž projde pracovní částí senzoru;
+- upevnění neblokuje deformaci;
+- HX711 dostává správné napájení;
+- `DT` a `SCK` jsou připojeny na správné GPIO;
+- existuje společná zem;
+- surové hodnoty se mění pod zátěží;
+- bez zátěže se údaje neposunují příliš rychle;
+- známá hmota ukazuje očekávanou váhu po kalibraci;
+- vodiče netahají platformu;
+- cívka nebo držák se nedotýká pouzdra mimo senzor.
 
-## Common mistakes
+## Běžné chyby
 
-- connecting load cell directly to controller analog input;
-- confusing `E+`/`E-` and `A+`/`A-`;
-- trusting wire colors without datasheet;
-- forgetting calibration;
-- taring before final mechanical installation;
-- mounting sensor so it cannot flex;
-- overloading the sensor;
-- choosing too large a range and losing sensitivity;
-- getting instability from long wires and interference;
-- expecting gram accuracy from a flexible plastic body without rigid mechanics.
+- připojení tenzometru přímo na analogový vstup kontroléru;
+- zaměňování `E+`/`E-` a `A+`/`A-`;
+- důvěřování barevným kódům bez specifikace;
+- zapomenutí kalibrace;
+- tárování před konečnou mechanickou instalací;
+- montáž senzoru tak, aby se nemohl ohýbat;
+- přetížení senzoru;
+- výběr příliš velkého rozsahu a ztráta citlivosti;
+- nestabilita z dlouhých vodičů a interference;
+- očekávání přesnosti na gram od pružného plastového těla bez tuhé mechaniky.
 
-## Key points
+## Klíčové body
 
-- Load cell usually connects through HX711, not directly to controller.
-- Sensor wires go to `E+`, `E-`, `A+`, `A-`.
-- HX711 connects to controller via power, ground, `DT`, and `SCK`.
-- Mechanics matter more than the circuit: load must go through the sensor correctly.
-- Tare and calibration with known mass are required.
-- Without rigid mounting and proper mechanics, accurate readings will not happen.
+- Tenzometr se obvykle připojuje skrz HX711, ne přímo ke kontroléru.
+- Vodiče senzoru jdou na `E+`, `E-`, `A+`, `A-`.
+- HX711 se připojuje k kontroléru přes napájení, zem, `DT` a `SCK`.
+- Mechanika záleží víc než obvod: zátěž musí projít senzorem správně.
+- Tárování a kalibrace se známou hmotou jsou vyžadovány.
+- Bez tuhé montáže a správné mechaniky nebudou přesné údaje.
 
-## Related reading
+## Související čtení
 
-- [SparkFun: Load Cell Amplifier HX711 Breakout Hookup Guide](https://learn.sparkfun.com/tutorials/load-cell-amplifier-hx711-breakout-hookup-guide/all) - practical HX711 and load cell connection, wire colors, `DT`/`SCK`, and calibration example.
-- [SparkFun: Load Cell Amplifier HX711 product page](https://www.sparkfun.com/sparkfun-load-cell-amplifier-hx711.html) - HX711 module description, purpose, and microcontroller interface.
-- [DigiKey: HX711 Datasheet by Avia Semiconductor](https://www.digikey.com/en/htmldatasheets/production/1836471/0/0/1/hx711.html) - HX711 technical datasheet: 24-bit ADC, differential bridge input, gain, and digital interface.
-- [Phidgets: Load Cell Guide](https://cdn.phidgets.com/docs/Load_Cell_Guide) - practical examples of load cell mechanical installation and load application direction.
-- [SparkFun retired HX711 guide: load cell mechanical setup](https://learn.sparkfun.com/tutorials/retired---load-cell-amplifier-hx711-breakout-hookup-guide) - useful illustrations of beam, button, and platform sensor mounting options.
+- [SparkFun: Průvodce připojením zesilovače tenzometru HX711](https://learn.sparkfun.com/tutorials/load-cell-amplifier-hx711-breakout-hookup-guide/all) - praktické připojení HX711 a tenzometru, barvy vodičů, `DT`/`SCK` a příklad kalibrace.
+- [SparkFun: Stránka produktu zesilovače tenzometru HX711](https://www.sparkfun.com/sparkfun-load-cell-amplifier-hx711.html) - popis modulu HX711, účel a rozhraní mikrokontroléru.
+- [DigiKey: Specifikace HX711 od Avia Semiconductor](https://www.digikey.com/en/htmldatasheets/production/1836471/0/0/1/hx711.html) - technická specifikace HX711: 24-bit ADC, diferenciální vstup mostu, zisk a digitální rozhraní.
+- [Phidgets: Průvodce tenzometrem](https://cdn.phidgets.com/docs/Load_Cell_Guide) - praktické příklady mechanické instalace tenzometru a směr aplikace zátěže.
+- [SparkFun vyřazený průvodce HX711: mechanická nastavení tenzometru](https://learn.sparkfun.com/tutorials/retired---load-cell-amplifier-hx711-breakout-hookup-guide) - užitečné ilustrace paprskových, tlačítko a platformy montáž senzorů.

@@ -1,6 +1,6 @@
 # LED-Streifen
 
-Ein LED-Streifen ist ein Streifen mit vielen kleinen Lichtern. In einem Dryer oder iDryer-ähnlichen Gerät wird er für Sicht, Wärmestrahlung oder einfach Beleuchtung verwendet.
+Ein LED-Streifen ist ein Streifen mit vielen kleinen Lichtern. In einem Trockner oder iDryer-ähnlichen Gerät wird er für Sicht, Wärmestrahlung oder einfache Beleuchtung verwendet.
 
 Es gibt verschiedene LED-Streifen-Typen: einfache monochrome, RGB, RGBW, mit konstanter Helligkeit oder einzeln adressierbar.
 
@@ -16,7 +16,7 @@ In iDryer-ähnlichen Projekten werden LED-Streifen verwendet für:
 - Anzeige des Status;
 - einfache Visualisierung der Prozessparameter.
 
-Nicht alle LED-Streifen können Hitze in unmittelbarer Nähe eines Heizers oder Luftstroms aushalten.
+Nicht alle LED-Streifen können Hitze in unmittelbarer Nähe eines Heizgeräts oder Luftstroms aushalten.
 
 ## Spannung und Stromversorgung
 
@@ -103,8 +103,8 @@ Wenn der LED-Streifen am Ende dunkel ist oder flimmert, ist der Spannungsabfall 
 LED-Streifen mit 3M-Kleber:
 
 - kleben auf sauberen, trockenen Oberflächen;
-- halten in gemäßigten Temperaturen;
-- in heißer Umgebung oder feuchter Umgebung können sie abgelöst werden;
+- in gemäßigten Temperaturen halten;
+- in heißer Umgebung oder feuchter Umgebung können sie gelöst werden;
 - Oberflächenreinigung mit Isopropanol vor dem Kleben.
 
 Für heißere Bereiche:

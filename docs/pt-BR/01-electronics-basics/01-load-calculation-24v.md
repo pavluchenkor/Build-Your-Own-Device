@@ -1,115 +1,115 @@
 # Corrente, Tensão e Potência de Carga
 
-Before connecting a heater, fan, LED strip, servo drive, or other module, you need to understand three things:
+Antes de conectar um aquecedor, ventilador, fita LED, servo drive ou outro módulo, você precisa entender três coisas:
 
-- voltage;
-- current;
-- power.
+- tensão;
+- corrente;
+- potência.
 
-Without this, it is easy to buy the wrong power supply, overheat the wire, melt the connector, burn out a MOSFET module, or connect the load to the controller so that it works unstably.
+Sem isso, é fácil comprar uma fonte inadequada, aquecer demais o fio, derreter o conector, queimar um módulo MOSFET ou conectar a carga ao controlador de forma que funcione instabilidade.
 
-## Where to find the parameters
+## Onde encontrar os parâmetros
 
-Voltage, current and power are usually found:
+Tensão, corrente e potência são geralmente encontradas:
 
-- on the component housing;
-- on the power supply label;
-- on the product page;
-- in the technical specification;
-- in the manual;
-- in the board schematic or pinout.
+- na carcaça do componente;
+- na etiqueta da fonte de alimentação;
+- na página do produto;
+- na especificação técnica;
+- no manual;
+- no diagrama esquemático ou pinout.
 
-If the parameter is not specified, it is not a minor issue. It is a reason to stop and figure out what exactly you are connecting.
+Se o parâmetro não for especificado, não é um detalhe menor. É uma razão para parar e descobrir exatamente o que você está conectando.
 
-For components from 3D printer periphery, typical parameters look like this:
+Para componentes de periféricos de impressora 3D, os parâmetros típicos se parecem com:
 
-- fan: `24V 0.2A`;
-- heater: `24V 100W`;
-- LED strip: `24V 9.6W/m`;
-- servo drive: `5V`, current depends on load;
-- controller board: maximum current for each output is specified separately.
+- ventilador: `24V 0.2A`;
+- aquecedor: `24V 100W`;
+- fita LED: `24V 9.6W/m`;
+- servo drive: `5V`, corrente depende da carga;
+- placa do controlador: corrente máxima para cada saída é especificada separadamente.
 
-## Voltage must match
+## A tensão deve corresponder
 
-A load is designed for a specific voltage.
+Uma carga é projetada para uma tensão específica.
 
-Examples:
+Exemplos:
 
-- fan can be `5V`, `12V` or `24V`;
-- LED strip can be `5V`, `12V` or `24V`;
-- servo drive is often rated for `5V` or `6V`;
-- heater can be `12V`, `24V` or `110-230V AC`.
+- ventilador pode ser `5V`, `12V` ou `24V`;
+- fita LED pode ser `5V`, `12V` ou `24V`;
+- servo drive geralmente é classificado para `5V` ou `6V`;
+- aquecedor pode ser `12V`, `24V` ou `110-230V AC`.
 
-If you connect a `24V` fan to `12V`, it may not start or work weakly. If you connect a `12V` fan to `24V`, it can quickly fail.
+Se você conectar um ventilador `24V` a `12V`, ele pode não ligar ou funcionar fracamente. Se você conectar um ventilador `12V` a `24V`, ele pode falhar rapidamente.
 
-The main rule:
+A regra principal:
 
-**power supply voltage must match load voltage.**
+**a tensão da fonte de alimentação deve corresponder à tensão da carga.**
 
-Do not connect a device to a higher voltage just because the connector fits physically.
+Não conecte um dispositivo a uma tensão mais alta apenas porque o conector se encaixa fisicamente.
 
-## Power shows load size
+## Potência mostra tamanho da carga
 
-Power shows how much energy the load consumes or converts into work, heat, light, or motion.
+Potência mostra quanta energia a carga consome ou converte em trabalho, calor, luz ou movimento.
 
-Power is measured in watts: `W`.
+Potência é medida em watts: `W`.
 
-Examples:
+Exemplos:
 
-- `24V 5W` - small load;
-- `24V 24W` - about `1A`;
-- `24V 120W` - already about `5A`;
-- `24V 240W` - about `10A`.
+- `24V 5W` - carga pequena;
+- `24V 24W` - cerca de `1A`;
+- `24V 120W` - já cerca de `5A`;
+- `24V 240W` - cerca de `10A`.
 
-Heaters typically consume a lot of power. Fans consume less, but they can have high inrush current. LED strips can be a small load if short, or a serious load if long and bright.
+Aquecedores geralmente consomem muita potência. Ventiladores consomem menos, mas podem ter corrente de inrush alta. Fitas LED podem ser uma carga pequena se curtas, ou uma carga séria se longas e brilhantes.
 
-## Current loads wires and power elements
+## Corrente carrega fios e elementos de potência
 
-Current shows how much electricity flows through wires, terminals, connectors, and power elements.
+Corrente mostra quanta eletricidade flui através de fios, terminais, conectores e elementos de potência.
 
-Current often creates practical problems:
+Corrente frequentemente cria problemas práticos:
 
-- wires heat up;
-- terminals turn dark;
-- connectors melt;
-- MOSFET overheats;
-- power supply is not enough;
-- device reboots when load turns on;
-- fuse trips not by chance, but due to real overload or error.
+- os fios aquecem;
+- os terminais ficam escuros;
+- os conectores derretem;
+- MOSFET superaquece;
+- fonte de alimentação não é suficiente;
+- dispositivo reinicia quando a carga liga;
+- fusível dispara não por acaso, mas por sobrecarga real ou erro.
 
-Therefore, it is not enough to know only voltage. You need to calculate current.
+Portanto, não é suficiente conhecer apenas a tensão. Você precisa calcular a corrente.
 
-## Calculation formula
+## Fórmula de cálculo
 
-For most simple calculations, you need the power formula:
+Para a maioria dos cálculos simples, você precisa da fórmula de potência:
 
 ```text
 P = U * I
 ```
 
-Where:
+Onde:
 
-- `P` - power in watts `W`;
-- `U` - voltage in volts `V`;
-- `I` - current in amperes `A`.
+- `P` - potência em watts `W`;
+- `U` - tensão em volts `V`;
+- `I` - corrente em amperes `A`.
 
-To find current:
+Para encontrar corrente:
 
 ```text
 I = P / U
 ```
 
-![Ohm's Law: circuit with voltage source, current and resistance](../../img/01-electronics-basics/01-ohms-law-circuit.svg)
+![Lei de Ohm: circuito com fonte de tensão, corrente e resistência](../../img/01-electronics-basics/01-ohms-law-circuit.svg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ohm%27s_Law_with_Voltage_source_TeX.svg), GorillaWarfare, CC0 Public Domain*
+*Fonte: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Ohm%27s_Law_with_Voltage_source_TeX.svg), GorillaWarfare, CC0 Public Domain*
 
-This formula is not for an exam. It is needed to understand whether the power supply, wire, terminal, MOSFET module, relay, SSR, or board output will withstand it.
+Esta fórmula não é para um exame. É necessária para entender se a fonte de alimentação, fio, terminal, módulo MOSFET, relé, SSR ou saída da placa conseguirá suportar.
 
-## Quick table for 24V
+## Tabela rápida para 24V
 
-In 3D printers and peripherals, `24V` is common. For quick assessment, it is useful to remember:
+Em impressoras 3D e periféricos, `24V` é comum. Para avaliação rápida, é útil lembrar:
 
-| Power | Current at 24V |
+| Potência | Corrente em 24V |
 |---:|---:|
 | `12W` | `0.5A` |
 | `24W` | `1A` |
@@ -119,172 +119,172 @@ In 3D printers and peripherals, `24V` is common. For quick assessment, it is use
 | `240W` | `10A` |
 | `300W` | `12.5A` |
 
-These are approximate values, but for the first choice of power supply, wire, and power switch they are very useful.
+Estes são valores aproximados, mas para a primeira escolha de fonte de alimentação, fio e interruptor de potência são muito úteis.
 
-## Example: 24V 100W heater
+## Exemplo: aquecedor 24V 100W
 
-You have a heater:
+Você tem um aquecedor:
 
 ```text
 24V 100W
 ```
 
-Calculate the current:
+Calcule a corrente:
 
 ```text
 I = 100W / 24V = 4.17A
 ```
 
-This means the following must withstand more than `4.17A`:
+Isso significa que o seguinte deve suportar mais de `4.17A`:
 
-- power supply;
-- wire;
-- terminals;
-- connector;
-- MOSFET or SSR;
-- fuse and fuse holder;
-- board traces, if the heater is connected to the board.
+- fonte de alimentação;
+- fio;
+- terminais;
+- conector;
+- MOSFET ou SSR;
+- fusível e porta-fusível;
+- trilhas da placa, se o aquecedor estiver conectado à placa.
 
-If the power supply is rated for `24V 5A`, it formally comes close to the load, but almost without headroom. For a real device it is better to take more.
+Se a fonte de alimentação para as condições para `24V 5A`, formalmente se aproxima da carga, mas quase sem margem. Para um dispositivo real é melhor levar mais.
 
-## Example: multiple loads
+## Exemplo: múltiplas cargas
 
-Suppose a `24V` device has:
+Suponha que um dispositivo `24V` tem:
 
-- heater `100W`;
-- fan `24V 0.2A`;
-- LED strip `24V 1A`;
-- another fan `24V 0.15A`.
+- aquecedor `100W`;
+- ventilador `24V 0.2A`;
+- fita LED `24V 1A`;
+- outro ventilador `24V 0.15A`.
 
-Calculate the heater:
+Calcule o aquecedor:
 
 ```text
 100W / 24V = 4.17A
 ```
 
-Sum them up:
+Some-os:
 
 ```text
 4.17A + 0.2A + 1A + 0.15A = 5.52A
 ```
 
-A minimum power supply "tight fit" would be around `24V 6A`, but that is a poor choice for long-term operation. With `50%` headroom:
+Uma fonte de alimentação mínima "encaixe apertado" seria em torno de `24V 6A`, mas essa é uma escolha ruim para operação de longo prazo. Com `50%` de margem:
 
 ```text
 5.52A * 1.5 = 8.28A
 ```
 
-Practically you should look at a `24V 9A`, `24V 10A` or larger power supply, if the enclosure, cooling, and safety allow.
+Na prática você deve procurar uma fonte de alimentação `24V 9A`, `24V 10A` ou maior, se o gabinete, resfriamento e segurança permitirem.
 
-## Headroom is mandatory
+## Margem é obrigatória
 
-Power supply, wiring, terminals, and power modules cannot be selected exactly according to the calculated current.
+Fonte de alimentação, fiação, terminais e módulos de potência não podem ser selecionados exatamente de acordo com a corrente calculada.
 
-For this guide, a simple rule for rough first assessment:
+Para este guia, uma regra simples para avaliação inicial aproximada:
 
-**plan for at least 50% headroom**, unless the documentation of a specific component requires more. This is not a universal guarantee, but a starting estimate. Final selection is made according to technical specifications, temperature inside the enclosure, cooling, derating, and actual heating of terminals/wires.
+**planeje pelo menos 50% de margem**, a menos que a documentação de um componente específico exija mais. Esta não é uma garantia universal, mas uma estimativa inicial. A seleção final é feita de acordo com especificações técnicas, temperatura dentro do gabinete, resfriamento, derating e aquecimento real de terminais/fios.
 
-Headroom is needed because:
+Margem é necessária porque:
 
-- power supply heats up;
-- temperature inside the enclosure may be higher than room temperature;
-- fans and motors have inrush current;
-- contacts age and loosen;
-- terminals have current and temperature limits;
-- SSR and MOSFET generate heat;
-- power supply may have derating - reduction of maximum power at high temperature or poor ventilation.
+- fonte de alimentação aquece;
+- temperatura dentro do gabinete pode ser maior que a temperatura ambiente;
+- ventiladores e motores têm corrente de inrush;
+- os contatos envelhecem e afrouxam;
+- terminais têm limites de corrente e temperatura;
+- SSR e MOSFET geram calor;
+- fonte de alimentação pode ter derating - redução de potência máxima em alta temperatura ou ventilação inadequada.
 
-Industrial power supplies often have a derating curve in the technical specification — a curve of reduced maximum power as temperature rises. Derating means that at high temperature or poor ventilation, the manufacturer reduces the maximum allowable power. Therefore, the `240W` label on a power supply does not always mean that it will safely deliver `240W` in a closed hot enclosure.
+As fontes de alimentação industrial geralmente têm uma curva de derating na especificação técnica — uma curva de potência máxima reduzida conforme a temperatura sobe. Derating significa que em alta temperatura ou ventilação inadequada, o fabricante reduz a potência máxima permitida. Portanto, o rótulo `240W` em uma fonte de alimentação nem sempre significa que ela entregará com segurança `240W` em um gabinete fechado e quente.
 
-## Weak point may not be power supply
+## O ponto fraco pode não ser a fonte de alimentação
 
-Even if the power supply is powerful, the circuit may be weak elsewhere.
+Mesmo que a fonte de alimentação seja poderosa, o circuito pode ser fraco em outro lugar.
 
-You need to check the entire circuit:
+Você precisa verificar todo o circuito:
 
-- power supply output;
-- wire;
-- terminal block;
-- connector;
-- fuse;
-- MOSFET module;
-- relay or SSR;
-- board traces;
-- the load itself.
+- saída da fonte de alimentação;
+- fio;
+- bloco de terminais;
+- conector;
+- fusível;
+- módulo MOSFET;
+- relé ou SSR;
+- trilhas da placa;
+- a carga em si.
 
-For example, a power supply can withstand `10A`, but a small connector or poor screw terminal can heat up already at lower current. This is especially important for heaters and LED strips.
+Por exemplo, uma fonte de alimentação pode suportar `10A`, mas um conector pequeno ou terminal parafuso deficiente pode aquecer já em corrente menor. Isso é especialmente importante para aquecedores e fitas LED.
 
-## What is a power switch
+## O que é um interruptor de potência
 
-A power switch is a controlled switch.
+Um interruptor de potência é um interruptor controlado.
 
-The controller does not power a heavy load directly. It gives a weak control signal, and the power switch turns the load current on or off.
+O controlador não alimenta uma carga pesada diretamente. Ele fornece um sinal de controle fraco e o interruptor de potência liga ou desliga a corrente de carga.
 
-Examples:
+Exemplos:
 
-- MOSFET module for `12V`/`24V` DC loads;
-- relay;
+- módulo MOSFET para cargas DC `12V`/`24V`;
+- relé;
 - SSR;
-- ready-made load driver;
-- standard power output of the board, if it is rated for the needed load.
+- controlador de carga pronto;
+- saída de potência padrão da placa, se for para opções de carga necessárias.
 
-For heaters, fans, LED strips, and motors, the rule almost always applies:
+Para aquecedores, ventiladores, fitas LED e motores, a regra quase sempre se aplica:
 
-**GPIO of the controller does not power the load. GPIO only controls.**
+**GPIO do controlador não alimenta a carga. GPIO apenas controla.**
 
-## A bit about Ohm's law
+## Um pouco sobre a lei de Ohm
 
-Ohm's law relates voltage, current, and resistance:
+A lei de Ohm relacionada tensão, corrente e resistência:
 
 ```text
 U = I * R
 ```
 
-For this article, the simple idea is important: if you apply voltage to a load, current will flow through it. How much current flows depends on the load itself.
+Para este artigo, a ideia simples é importante: se você aplicar tensão a uma carga, a corrente fluirá através dela. Quanta corrente flui depende da carga em si.
 
-But not all loads behave the same:
+Mas nem todas as cargas se comportam da mesma forma:
 
-- heater is close to a resistive load;
-- fan and motor have inrush current;
-- servo drive sharply increases current when blocked;
-- LED strip consumes current by length and brightness;
-- electronic module may have transient current when turned on.
+- aquecedor é próximo a uma carga resistiva;
+- ventilador e motor têm corrente de inrush;
+- servo drive aumenta bruscamente a corrente quando bloqueado;
+- fita LED consome corrente por comprimento e brilho;
+- módulo eletrônico pode ter corrente transitória quando ligado.
 
-Therefore, for a real device it is better to take data from technical specifications or measure current with a multimeter / lab power supply if it is safe.
+Portanto, para um dispositivo real é melhor levar dados de especificações técnicas ou medir a corrente com um multímetro / fonte de alimentação de laboratório para ter certeza.
 
-## What to check before connecting
+## O que verificar antes de conectar
 
-Before connecting the load, answer:
+Antes de conectar a carga, responda:
 
-1. What voltage is the load rated for?
-2. Is it a DC or AC load?
-3. What power or current is specified?
-4. What current will you get from the formula `I = P / U`?
-5. What other loads are on the same power supply?
-6. Is there at least `50%` headroom?
-7. Do wires, terminals, connectors and board withstand it?
-8. What will control the load: MOSFET, relay, SSR, or standard output?
-9. Is a fuse needed?
-10. What happens if there is a short circuit, motor jam, or fan failure?
+1. Para qual tensão a carga é classificada?
+2. É uma carga DC ou AC?
+3. Qual potência ou corrente é especificada?
+4. Qual corrente você obterá da fórmula `I = P / U`?
+5. Quais outras cargas estão na mesma fonte de alimentação?
+6. Há pelo menos `50%` de margem?
+7. Fios, terminais, conectores e placa suportam?
+8. O que controlará a carga: MOSFET, relé, SSR ou saída padrão?
+9. Um fusível é necessário?
+10. O que acontece se houver um curto-circuito, travamento do motor ou falha do ventilador?
 
-If this is a heater or mains voltage `110-230V AC`, safety requirements are higher. The mains section cannot be assembled by guessing: you need a suitable enclosure, fuse, insulation, protective grounding `PE`, strain relief for wires, and verification by a qualified person.
+Se for um aquecedor ou tensão de rede `PE`, os requisitos de segurança são mais altos. A seção de rede não pode ser montada por suposição: você precisa de um gabinete adequado, fiação, isolamento, aterramento protetor `PE`, ruptura de tensão para fios e seleção por uma pessoa danificada.
 
-## The main point
+## O ponto principal
 
-- Power supply voltage must match load voltage.
-- Power shows the size of the load.
-- Current shows the load on wires, terminals, connectors, and power elements.
-- Basic formula: `I = P / U`.
-- In a `24V` system `24W` is about `1A`, `120W` is about `5A`, `240W` is about `10A`.
-- Currents of all loads on one power supply add up.
-- You need headroom of at least `50%` for rough first estimate; precise selection is made according to technical specifications, temperature, cooling, and derating.
-- The weak point may not be the power supply, but a terminal, connector, wire, MOSFET, or board trace.
-- GPIO of the controller does not power a heavy load, only controls a power switch.
+- A tensão da fonte de alimentação deve corresponder à tensão da carga.
+- Potência mostra o tamanho da carga.
+- Corrente mostra a carga em fios, terminais, conectores e elementos de potência.
+- Fórmula básica: `I = P / U`.
+- Em um sistema `24V`, `24W` é cerca de `1A`, `120W` é cerca de `5A`, `240W` é cerca de `10A`.
+- As correntes de todas as cargas em uma fonte de alimentação se somam.
+- Você precisa de margem de pelo menos `50%` para estimativa inicial aproximada; a seleção precisa é feita de acordo com especificações técnicas, temperatura, resfriamento e derating.
+- O ponto fraco pode não ser a fonte de alimentação, mas um terminal, conector, fio, MOSFET ou trilha de placa.
+- GPIO do controlador não alimenta uma carga pesada, apenas controla um interruptor de potência.
 
-## Reference materials
+## Materiais de referência
 
-- [SparkFun: Voltage, Current, Resistance, and Ohm's Law](https://learn.sparkfun.com/tutorials/voltage-current-resistance-and-ohms-law) - clear basic explanation of voltage, current, resistance and Ohm's law.
-- [DigiKey: Ohm's Law Calculator](https://www.digikey.com/en/resources/conversion-calculators/conversion-calculator-ohms) - calculator for calculating voltage, current, resistance and power relationships.
-- [Mean Well: How to read a derating curve](https://meanwellpowersupplies.com/technical-articles/faq/how-to-read-a-derating-curve/) - why the maximum power of a power supply depends on temperature, ventilation and input voltage.
-- [DigiKey: Selecting and Applying AC/DC Power Supplies](https://www.digikey.com/en/articles/selecting-and-applying-ac-dc-power-supplies) - selecting a power supply taking into account temperature, derating, cables and load type.
-- [Weidmuller: Derating curve / current-carrying capacity](https://www.weidmuller.com/en/products/connectivity/pcb_terminals_and_connectors/derating_curve.jsp) - why the maximum current of terminals and connectors depends on temperature and design.
+- [SparkFun: Voltage, Current, Resistance, and Ohm's Law](https://learn.sparkfun.com/tutorials/voltage-current-resistance-and-ohms-law) - explicação básica clara de tensão, corrente, resistência e lei de Ohm.
+- [DigiKey: Ohm's Law Calculator](https://www.digikey.com/en/resources/conversion-calculators/conversion-calculator-ohms) - calculadora para calcular relações de tensão, corrente, resistência e potência.
+- [Mean Well: How to read a derating curve](https://meanwellpowersupplies.com/technical-articles/faq/how-to-read-a-derating-curve/) - por que a potência máxima de uma fonte de alimentação depende de temperatura, ventilação e tensão de entrada.
+- [DigiKey: Selecting and Applying AC/DC Power Supplies](https://www.digikey.com/en/articles/selecting-and-applying-ac-dc-power-supplies) - seleção de fonte de alimentação levando em conta temperatura, derating, cabos e tipo de carga.
+- [Weidmuller: Derating curve / current-carrying capacity](https://www.weidmuller.com/en/products/connectivity/pcb_terminals_and_connectors/derating_curve.jsp) - por que a corrente máxima de terminais e conectores depende de temperatura e design.

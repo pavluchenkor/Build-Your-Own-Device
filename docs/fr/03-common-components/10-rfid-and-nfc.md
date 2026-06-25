@@ -89,7 +89,7 @@ Avant d'acheter des étiquettes, vérifiez :
 - si votre bibliothèque choisie supporte les opérations nécessaires ;
 - si vous pouvez placer physiquement l'étiquette sur une bobine ou un boîtier.
 
-Si la tâche consiste à sélectionner un profil de matériau, généralement simplement lire UID et stocker le profil séparément est plus simple. L'écriture de données à l'intérieur de l'étiquette complique le projet : vous devez penser au format de données, à la compatibilité, à la protection en écriture et aux erreurs d'écriture.
+Si la tâche consiste à sélectionner un profil de matériau, généralement il suffit de lire l'UID et de stocker le profil séparément est plus simple. L'écriture de données à l'intérieur de l'étiquette complique le projet : vous devez penser au format de données, à la compatibilité, à la protection en écriture et aux erreurs d'écriture.
 
 ## UID - Pas la sécurité
 
@@ -107,7 +107,7 @@ Règle pratique :
 
 ## Puissance et niveaux logiques
 
-De nombreux modules RFID/NFC sont évalués pour une logique `3,3V`. C'est particulièrement important pour les modules RC522 et PN532 breakout.
+De nombreux modules RFID/NFC sont évalués pour une logique `3.3V`. C'est particulièrement important pour les modules RC522 et PN532 breakout.
 
 Vérifiez :
 
@@ -129,7 +129,7 @@ SPI :
 - rapide et courant ;
 - nécessite `SCK`, `MOSI`, `MISO`, `CS` ;
 - sur RC522, la broche `SDA` signifie souvent réellement `CS` ;
-- important de ne pas confondre `MOSI` et `MISO`.
+- important de ne pas confondre `MISO` et `MISO`.
 
 I2C :
 

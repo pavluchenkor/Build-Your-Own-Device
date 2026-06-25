@@ -9,7 +9,7 @@ In der Praxis entstehen Probleme aus vier Dingen:
 - Mangelndes Verständnis der Unterschiede zwischen 2-Pin-, 3-Pin- und 4-Pin-Lüftern;
 - Platzierung des Lüfters, wo er aufgrund eines Filters, Gitters oder Kanals unter Druck mangelt.
 
-In iDryer-ähnlichen Geräten wird ein Lüfter normalerweise für Luftzirkulation, Lüfterkühlung, Kammerabluft, Filtration oder Elektronikkühlung benötigt.
+In iDryer-ähnlichen Geräten wird normalerweise ein Lüfter für Luftzirkulation, Lüfterkühlung, Kammerabluft, Filtration oder Elektronikkühlung benötigt.
 
 ## Was vor dem Anschluss zu prüfen ist
 
@@ -60,7 +60,7 @@ Für einfache Ein/Aus-Steuerung können Sie verwenden:
 - ein externes MOSFET-Modul für DC-Lasten;
 - einen separaten Lüfterregler.
 
-Wenn der Lüfter kontinuierlich laufen soll, kann er direkt an eine angemessene Stromversorgung über eine Sicherung oder geschützte Stromleitung angeschlossen werden. In einem Gerät mit Heizer ist es jedoch oft besser, wenn der Lüfter vom Controller als Teil der Sicherheitslogik gesteuert wird.
+Wenn der Lüfter kontinuierlich laufen soll, kann er direkt an eine entsprechende Stromversorgung über eine Sicherung oder eine geschützte Stromleitung angeschlossen werden. In einem Gerät mit Heizer ist es jedoch oft besser, wenn der Lüfter vom Controller als Teil der Sicherheitslogik gesteuert wird.
 
 ## 3-Pin-Lüfter
 
@@ -91,7 +91,7 @@ Dies ist der richtige Weg, um Computer-PWM-Lüfter zu steuern. Gehen Sie nicht d
 
 Computer-4-Pin-PWM-Lüfter haben oft einen Steuereingang, der für Open-Collector/Open-Drain-Signale mit internem Pull-up ausgelegt ist, nicht für irgendeine Spannung von GPIO. Wenden Sie nicht `12V` oder `24V` auf den PWM-Pin an. Überprüfen Sie die Lüfterdokumentation; wenn Open-Drain/Open-Collector erforderlich ist, verwenden Sie einen entsprechenden Transistorausgang oder GPIO-Modus.
 
-Bei vielen 4-Pin-PWM-Lüftern liegt die typische PWM-Frequenz bei etwa `25 kHz`. Einige Lüfter arbeiten in einem nahe gelegenen Bereich, aber bei zu niedriger oder zu hoher Frequenz können sie sich unvorhersehbar verhalten: mit voller Geschwindigkeit laufen, stoppen oder Geräusche machen.
+Bei vielen 4-Pin-PWM-Lüftern liegt die typische PWM-Frequenz bei etwa `25 kHz`. Einige Lüfter arbeiten in einem nahegelegenen Bereich, aber bei zu niedrigerer oder zu hoher Frequenz können sie sich unvorhersehbar verhalten: mit voller Geschwindigkeit laufen, stoppen oder Geräusche machen.
 
 Wenn der PWM-Draht nicht angeschlossen ist, laufen viele 4-Pin-Lüfter mit voller Geschwindigkeit.
 
@@ -114,7 +114,7 @@ Für offene Kühlung ist Luftstrom wichtig.
 
 Für einen Filter, Kühlkörper, enges Gitter, langen Kanal oder schmalen Kanal ist statischer Druck wichtiger.
 
-Also für einen Druckerkammer-Filter kann ein gewöhnlicher ruhiger Gehäuselüfter schwach sein. Es wird in freier Luft gut blasen, aber kaum Luft durch einen HEPA-Filter, eine Holzkohleschicht oder einen engen Kanal drücken.
+Auch für einen Druckerkammer-Filter kann ein gewöhnlicher ruhiger Gehäuselüfter schwach sein. Es wird in freierer Luft gut blasen, aber kaum Luft durch einen HEPA-Filter, eine Holzkohleschicht oder einen engen Kanal drücken.
 
 Richtlinien:
 
@@ -155,7 +155,7 @@ Für einen einfachen 2-Pin-Lüfter ist dies eine Standard- und klare Option, wen
 
 ## Beispiel-Klipper-Konfiguration
 
-Pin-Namen in Beispielen sind nicht universell. Vor dem Kopieren überprüfen Sie die Pinout Ihres Boards: Ein falscher `pin` kann den falschen Ausgang aktivieren.
+Pin-Namen in Beispielen sind nicht universell. Überprüfen Sie vor dem Kopieren die Pinbelegung Ihres Boards: Ein falscher `pin` kann den falschen Ausgang aktivieren.
 
 Wenn der Lüfter an einen gesteuerten Ausgang angeschlossen ist und manuell gesteuert werden soll:
 
@@ -193,13 +193,13 @@ target_temp: 45
 control: watermark
 ```
 
-Pin-Namen hier sind typisch. In einem echten Gerät überprüfen Sie die Pinout Ihres Boards.
+Pin-Namen hier sind typisch. Überprüfen Sie in einem echten Gerät die Pinbelegung Ihres Boards.
 
 ## Was nach dem Anschluss zu überprüfen ist
 
 Vor längerer Betriebsdauer überprüfen:
 
-- der Lüfter dreht sich in der richtigen Richtung;
+- der Lüfter dreht sich in die richtige Richtung;
 - Spannung stimmt mit dem Lüfter überein;
 - das MOSFET-Modul wird nicht übermäßig heiß;
 - Anschlüsse werden nicht übermäßig heiß;
@@ -209,7 +209,7 @@ Vor längerer Betriebsdauer überprüfen:
 - Luftstrom geht durch den benötigten Bereich, nicht um ihn herum;
 - das Gitter, der Filter oder das Gehäuse drosselt den Fluss nicht mehr als erwartet.
 
-Wenn der Lüfter in der Nähe eines Heizers ist, testen Sie ihn bei echter Kammertemperatur. Ein Lüfter, der auf der Werkbank einwandfrei funktioniert, kann in einem heißen Gehäuse schnell verschleißen.
+Wenn sich der Lüfter in der Nähe eines Heizgeräts befindet, testen Sie ihn bei echter Kammertemperatur. Ein Lüfter, der auf der Werkbank einwandfrei funktioniert, kann in einem heißen Gehäuse schnell verschleißen.
 
 ## Häufige Fehler
 

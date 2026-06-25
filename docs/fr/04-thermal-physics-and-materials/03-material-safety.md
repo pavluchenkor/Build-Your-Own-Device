@@ -1,68 +1,68 @@
-# Materials, Flammability, and Harmful Emissions
+# Matériaux, inflammabilité et émissions nocives
 
-Material for chamber, dryer, filter, housing, or air duct cannot be chosen only by price, thickness, and ease of cutting.
+Le matériau de la chambre, du séchoir, du filtre, du boîtier ou du conduit d'air ne peut pas être choisi uniquement en fonction du prix, de l'épaisseur et de la facilité de découpe.
 
-In a heated device, material must withstand not only normal operation, but also reasonable failures: fan stoppage, sensor error, stuck switch, poor contact, overheated terminal, or localized hot stream.
+Dans un appareil chauffant, le matériau doit résister non seulement à un fonctionnement normal, mais également à des pannes raisonnables : arrêt du ventilateur, erreur de capteur, interrupteur bloqué, mauvais contact, borne surchauffée ou jet chaud localisé.
 
-## What "Suitable for Heating" Means
+## Que signifie « adapté au chauffage »
 
-Material is suitable not because it "does not melt immediately". For a heated device, several different properties matter:
+Le matériau ne convient pas parce qu'il "ne fond pas immédiatement". Pour un appareil chauffé, plusieurs propriétés différentes comptent :
 
 - maximum continuous working temperature;
 - softening temperature or thermal deformation temperature;
 - flammability;
 - smoke generation;
-- toxicity of combustion products;
-- resistance of glue, foil, coating, or lamination;
-- behavior when in contact with hot air;
-- manufacturer requirements for assembly.
+- toxicité des produits de combustion;
+- résistance de la colle, du film, du revêtement ou du laminage ;
+- comportement au contact de l’air chaud ;
+- exigences du fabricant pour l’assemblage.
 
-Melting temperature by itself is almost useless. Plastic can lose stiffness and shape long before melting. Insulation can change dimensions. Glue can peel off. A printed part can warp under load.
+La température de fusion en elle-même est presque inutile. Le plastique peut perdre sa rigidité et sa forme bien avant de fondre. L'isolation peut changer de dimensions. La colle peut se décoller. Une pièce imprimée peut se déformer sous la charge.
 
-## Working Temperature and Safety Margin
+## Température de fonctionnement et marge de sécurité
 
-First, you need to understand what the temperature will be not "on average in the chamber", but in specific places:
+Tout d'abord, il faut comprendre quelle sera la température non pas « en moyenne dans la chambre », mais à des endroits précis :
 
-- near the heater;
+- près du radiateur ;
 - at hot air outlet;
-- near terminals and wires;
+- à proximité des bornes et des fils ;
 - on metal fasteners;
 - on inner wall;
 - on printed parts;
 - under insulation;
 - on outer surface.
 
-If the chamber holds `45°C`, it does not mean all parts inside are also `45°C`. Near the heater or in the air duct it can be significantly hotter.
+Si la chambre contient `45°C`, cela ne signifie pas que toutes les pièces à l'intérieur sont également `45°C`. À proximité du radiateur ou dans le conduit d'air, il peut faire beaucoup plus chaud.
 
-Practical rule: material must have a safety margin for continuous working temperature exactly for the place where it is located. For zone next to heater, margin must be larger than for outer decorative panel.
+Règle pratique : le matériau doit avoir une marge de sécurité pour une température de travail continue exactement pour l'endroit où il se trouve. Pour la zone adjacente au radiateur, la marge doit être plus grande que pour le panneau décoratif extérieur.
 
-## Flammability - It Is Not One Word
+## Inflammabilité - Ce n'est pas un seul mot
 
-Documentation may contain different classification systems.
+La documentation peut contenir différents systèmes de classification.
 
-For plastics, UL 94 is often indicated:
+Pour les plastiques, UL 94 est souvent indiqué :
 
 - `HB` - horizontal sample burns slower than specified limit;
-- `V-2`, `V-1`, `V-0` - vertical sample must self-extinguish within specified time, differences include dripping behavior;
-- `5VB`, `5VA` - more stringent tests for certain applications;
-- `HBF`, `HF-1`, `HF-2` - classes for foam materials.
+- `V-1`, `V-0`, `V-0` - l'échantillon vertical doit s'auto-éteindre dans un délai spécifié, les différences incluent le comportement d'égouttement ;
+- `5VA`, `5VA` - tests plus stricts pour certaines applications ;
+- `HF-1`, `HF-2`, `HF-2` - classes pour matériaux en mousse.
 
-Important: UL 94 is a small-scale laboratory test on samples. It helps compare materials, but does not prove that a homemade chamber is safe under any failure.
+Important : UL 94 est un test en laboratoire à petite échelle sur des échantillons. Cela aide à comparer les matériaux, mais ne prouve pas qu'une chambre faite maison est sûre en cas de panne.
 
-In Russian-language building material documentation, you may encounter:
+Dans la documentation sur les matériaux de construction en langue russe, vous pouvez rencontrer :
 
 - `НГ` - non-flammable material;
 - `Г1-Г4` - flammability groups;
 - `В1-В3` - ignitability;
 - `Д1-Д3` - smoke-generating ability;
-- `Т1-Т4` - toxicity of combustion products;
+- `Т1-Т4` - toxicité des produits de combustion ;
 - `РП1-РП4` - flame spread across surface.
 
-If a seller writes "self-extinguishing", this does not replace the datasheet. Material can still smoke, drip, char, deform, or release hazardous products when overheated.
+Si un vendeur écrit « auto-extinguible », cela ne remplace pas la fiche technique. Le matériau peut encore fumer, couler, se carboniser, se déformer ou libérer des produits dangereux en cas de surchauffe.
 
-## Example: XPS, EPS, and PIR
+## Exemple : XPS, EPS et PIR
 
-Building insulation materials often seem convenient for chamber or dryer: they are light, flat, cheap, cut well, and insulate well. But they must be viewed as building materials with their own limitations, not as universal parts for a heater.
+Les matériaux d’isolation des bâtiments semblent souvent pratiques pour une chambre ou un séchoir : ils sont légers, plats, bon marché, bien coupés et bien isolés. Mais ils doivent être considérés comme des matériaux de construction avec leurs propres limites, et non comme des pièces universelles pour un appareil de chauffage.
 
 | Material | Where It May Be Appropriate | Main Risks | What to Check |
 | --- | --- | --- | --- |
@@ -73,74 +73,74 @@ Building insulation materials often seem convenient for chamber or dryer: they a
 | Metal | screen, inner wall, heat spreader | thermal bridges, hot outer surface, sharp edges | grounding for mains section, temperature, wire insulation |
 | 3D-printed plastic | fasteners and shrouds outside hot zone | softening, creep under load, flammability | material, deformation temperature, actual part temperature |
 
-For XPS in manufacturer technical data, maximum service temperature around `74°C` (`165°F`) is often listed. This does not mean all XPS are the same, but shows the order of limitation: this material cannot automatically be placed next to a heater or hot air.
+Pour XPS, dans les données techniques du fabricant, la température de service maximale autour de `165°F` (`165°F`) est souvent indiquée. Cela ne signifie pas que tous les XPS sont identiques, mais montre l'ordre de limitation : ce matériau ne peut pas être automatiquement placé à côté d'un radiateur ou d'un air chaud.
 
-For EPS, recommendations to keep working temperatures around `75°C` are found; above this the material can lose dimensional stability. Again, the exact value must be taken from the specific product documentation.
+Pour l'EPS, des recommandations visant à maintenir les températures de travail autour de `75°C` sont trouvées ; au-delà, le matériau peut perdre sa stabilité dimensionnelle. Là encore, la valeur exacte doit être tirée de la documentation spécifique du produit.
 
-PIR/polyiso may have a higher permissible range in individual products, but this does not eliminate checking fire properties, facing, glue, smoke, and manufacturer recommendations.
+Le PIR/polyiso peut avoir une plage admissible plus élevée dans certains produits, mais cela n'élimine pas la vérification des propriétés au feu, du revêtement, de la colle, de la fumée et des recommandations du fabricant.
 
-## Safe Material "Stack"
+## Matériel sûr "Pile"
 
-For a heated chamber, it is often better to think not of a "wall material" but of layers.
+Pour une chambre chauffée, il est souvent préférable de ne pas penser à un « matériau de paroi » mais à des couches.
 
 ![Example of material layers next to heat](../../img/04-thermal-physics-and-materials/03-safe-material-stack.svg)
 
-Example of more sound logic:
+Exemple de logique plus solide :
 
-- inside hot zone - metal, ceramics, glass, or other material that withstands temperature and does not catch fire from local overheat;
-- further - air gap or insulation if it is really needed;
-- outside - housing that does not heat to dangerous temperature;
-- wires and terminals do not touch insulation and are not hidden in zones where overheating would go unnoticed;
-- there is independent overheat protection if control failure could lead to dangerous heating.
+- à l'intérieur de la zone chaude - métal, céramique, verre ou autre matériau qui résiste à la température et ne s'enflamme pas en raison d'une surchauffe locale ;
+- en outre - un espace d'air ou une isolation si cela est vraiment nécessaire ;
+- à l'extérieur - un logement qui ne chauffe pas à des températures dangereuses ;
+- les fils et bornes ne touchent pas l'isolant et ne sont pas cachés dans des zones où une surchauffe passerait inaperçue ;
+- il existe une protection indépendante contre la surchauffe si une défaillance du contrôle peut entraîner un échauffement dangereux.
 
-Insulation should not be the first material that sees the heater.
+L’isolation ne doit pas être le premier matériau à voir le radiateur.
 
 ## 3D-Printed Parts Near Heat
 
-Printed plastic is convenient for brackets, shrouds, sensor holders, and air ducts. But in a heated chamber it can behave worse than it seems from the spool.
+Le plastique imprimé est pratique pour les supports, les carénages, les supports de capteurs et les conduits d'air. Mais dans une chambre chauffée, il peut se comporter pire qu'il n'y paraît à partir de la bobine.
 
-Typical risks:
+Risques typiques :
 
-- PLA quickly loses stiffness when heated and under load;
-- PETG is better than PLA, but can also creep and deform;
-- ABS/ASA usually tolerate warm chamber better, but require actual temperature verification;
-- PC and engineering materials can withstand more, but require proper printing and still do not eliminate fire assessment.
+- Le PLA perd rapidement sa rigidité lorsqu'il est chauffé et sous charge ;
+- Le PETG est meilleur que le PLA, mais peut également fluer et se déformer ;
+- L'ABS/ASA tolère généralement mieux la chambre chaude, mais nécessite une vérification réelle de la température ;
+- Les matériaux PC et techniques peuvent résister à davantage, mais nécessitent une impression appropriée et n'éliminent toujours pas l'évaluation au feu.
 
-For parts near heater, you cannot rely only on plastic name. Important are filament brand, print settings, thickness, load, layer direction, ventilation, and actual part temperature.
+Pour les pièces proches du radiateur, vous ne pouvez pas vous fier uniquement au nom en plastique. La marque du filament, les paramètres d'impression, l'épaisseur, la charge, la direction de la couche, la ventilation et la température réelle de la pièce sont importants.
 
-## What to Read Before Buying
+## Que lire avant d'acheter
 
-Look for technical documents, not marketing:
+Recherchez des documents techniques, pas marketing :
 
 - technical description or product datasheet;
-- SDS/MSDS if material can heat, be cut, sanded, or burn;
-- fire classification / reaction to fire;
-- UL 94 or other flammability class for plastics;
+- FDS/MSDS si le matériau peut chauffer, être coupé, poncé ou brûler ;
+- classement au feu/réaction au feu ;
+- UL 94 ou autre classe d'inflammabilité pour les plastiques ;
 - maximum continuous working temperature;
 - assembly limitations;
-- limitations on contact with heat sources;
-- requirements for covering with facing, metal, drywall, or other layer.
+- limitations du contact avec les sources de chaleur ;
+- exigences relatives au revêtement avec un parement, du métal, des cloisons sèches ou une autre couche.
 
-If material is sold only as "insulation sheet" without proper datasheet, it should not be placed in a homemade heated device.
+Si le matériau est vendu uniquement comme « feuille isolante » sans fiche technique appropriée, il ne doit pas être placé dans un appareil chauffant fait maison.
 
-## What Is Definitely Not Normal
+## Ce qui n'est définitivement pas normal
 
 Bad solutions:
 
-- gluing foam or XPS directly next to heater;
+- coller de la mousse ou du XPS directement à côté du radiateur ;
 - directing hot stream at unknown plastic;
-- covering terminals and wires with insulation;
-- placing flammable material next to mains section `110-230V AC`;
-- relying on a single temperature sensor;
-- treating building material as safe for chamber without verification;
-- using "self-extinguishing" as replacement for independent overheat protection;
-- doing first warm-up without observation and measurements.
+- recouvrir les bornes et les fils d'isolant ;
+- placer un matériau inflammable à côté de la section secteur `110-230V AC` ;
+- s'appuyer sur un seul capteur de température ;
+- traiter les matériaux de construction comme étant sans danger pour la chambre sans vérification ;
+- utiliser « auto-extinguible » en remplacement d'une protection indépendante contre la surchauffe ;
+- faire un premier échauffement sans observation ni mesures.
 
 ## Conclusion principale
 
-Material safety is not one parameter. You need to look at working temperature, flammability, smoke, toxicity of combustion products, glues, facings, and real failure scenarios.
+La sécurité des matériaux n’est pas un seul paramètre. Vous devez examiner la température de travail, l'inflammabilité, la fumée, la toxicité des produits de combustion, les colles, les revêtements et les scénarios de défaillance réels.
 
-If material has no clear documentation, it cannot be placed near heater as primary protection. If material is flammable, it must be removed from hot zone, covered with suitable layer, and verified by measurement in real operating mode.
+Si le matériel n’a pas de documentation claire, il ne peut pas être placé à proximité du radiateur comme protection primaire. Si le matériau est inflammable, il doit être retiré de la zone chaude, recouvert d'une couche appropriée et vérifié par mesure en mode de fonctionnement réel.
 
 ## Matériaux sur le Topic
 

@@ -20,9 +20,9 @@ Dieser Abschnitt beschreibt vier Familien von Controllern: ESP32, Arduino, RP204
 
 ## Wenn Sie mit Klipper arbeiten
 
-Klipper nutzt eine "Host + MCU"-Architektur. Der Host ist ein Raspberry Pi oder ähnlicher Computer. Das MCU ist ein separater Mikrocontroller, der in Echtzeit Heizer, Lüfter und Sensoren verwaltet.
+Klipper nutzt eine „Host + MCU“-Architektur. Der Host ist ein Raspberry Pi oder ein ähnlicher Computer. Das MCU ist ein separater Mikrocontroller, der in Echtzeit Heizer, Lüfter und Sensoren verwaltet.
 
-Für ein MCU in Klipper schauen Sie sich **RP2040** oder **STM32** an: Sie werden gut unterstützt, können ohne ST-Link geflasht werden und funktionieren direkt über USB oder CAN.
+Für eine MCU in Klipper schauen Sie sich **RP2040** oder **STM32** an: Sie werden gut unterstützt, können ohne ST-Link geflasht werden und funktionieren direkt über USB oder CAN.
 
 ESP32 ist nicht die beste Wahl als MCU für Klipper — es hat keine native Klipper-Firmware-Unterstützung wie STM32 oder RP2040.
 

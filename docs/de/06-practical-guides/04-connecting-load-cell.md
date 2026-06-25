@@ -2,7 +2,7 @@
 
 Eine Wägezelle misst Kraft oder Gewicht durch winzige Verformung eines Metallträgers, einer Taste oder einer Plattform.
 
-In Geräten wie iDryer kann eine Wägezelle das Spulengewicht, die verbleibende Filamentlänge oder die Mechanismuslast schätzen.
+Bei Geräten wie iDryer kann eine Wägezelle das Spulengewicht, die verbleibende Filamentlänge oder die Mechanismuslast schätzen.
 
 Wichtig: Eine Wägezelle wird fast nie direkt mit einem Controller verbunden. Ihr Signal ist zu schwach. Normalerweise wird ein HX711-Modul oder ein ähnlicher Verstärker/ADC zwischen den Sensor und den Controller platziert.
 
@@ -79,7 +79,7 @@ Pins `DT` und `SCK` können normalerweise mit normalen GPIO verbunden werden. Di
 
 Eine Wägezelle muss sich so verformen, wie der Hersteller es beabsichtigte.
 
-Bei einem Balkensensor montiert sich normalerweise eine Seite auf einer festen Basis, die andere Seite trägt die Last. Falls beide Seiten starr an einem Teil montiert sind, biegt sich der Sensor nicht normal.
+Bei einem Balkensensor montiert sich normalerweise eine Seite auf einer festen Basis, die andere Seite trägt die letzte. Falls beide Seiten starr an einem Teil montiert sind, biegt sich der Sensor nicht normal an.
 
 Überprüfe:
 
@@ -122,7 +122,7 @@ Vor der Installation im Gerät teste das System auf der Werkbank:
 5. Entferne die Last und überprüfe, dass der Wert ziemlich stabil ist.
 6. Platziere eine bekannte Masse und überprüfe die Änderung.
 
-In diesem Stadium verlange keine Gramm-Genauigkeit. Zunächst musst du sehen, dass der Sensor aktiv ist, die Lastrichtung korrekt ist und die Werte vorhersehbar ändern.
+In diesem Stadium verlange keine Gramm-Genauigkeit. Zunächst müssen Sie darauf achten, dass der Sensor aktiv ist, die Lastrichtung korrekt ist und sich die vorhersehbaren Werte ändern.
 
 Falls der Wert sinkt, wenn das Gewicht steigt, tausche normalerweise `A+` und `A-` oder berücksichtige das Vorzeichen im Code.
 

@@ -64,7 +64,7 @@ Metall ist bequem in beheizten Geräten zu verwenden:
 - als Radiator für Leistungselektronik;
 - als nicht brennbare innere Oberfläche.
 
-Aber Metall macht ein Gerät nicht automatisch sicher. Wenn eine Metallplatte eine heiße Zone und das äußere Gehäuse berührt, kann sie Wärme nach außen leiten. Wenn Kunststoff daran geschraubt ist, kann dieser Kunststoff durch die Befestigung aufheizen. Wenn Drähte durchgehen, benötigen Sie in der Nähe der Kante Durchführungen, Schutz vor Abschürfung und Temperaturspielraum für die Isolierung.
+Aber Metall macht ein Gerät nicht automatisch sicher. Wenn eine Metallplatte eine heiße Zone und das äußere Gehäuse berührt, kann sie Wärme nach außen leiten. Wenn Kunststoff daran verschraubt ist, kann dieser Kunststoff durch die Befestigung aufheizen. Wenn Sie mit dem Gerät durchgehen, benötigen Sie in der Nähe der Kante Durchführungen, Schutz vor Abschürfung und Temperaturspielraum für die Isolierung.
 
 ## Isolierung: Weniger Verlust, Mehr Verantwortung
 
@@ -78,7 +78,7 @@ Wenn Sie eine Kammer isolieren:
 - die lokale Temperatur neben dem Heizer kann steigen;
 - Lüfterausfall oder festsitzender Schalter wird gefährlicher.
 
-Daher kann Isolierung nicht als "Verbesserung" hinzugefügt werden, ohne erneut zu testen. Nach der Isolierung müssen Sie die Temperaturen in der Kammer, am Heizer, an den Drähten, an den Terminals und auf der Außenfläche erneut messen.
+Daher kann die Isolierung nicht als „Verbesserung“ hinzugefügt werden, ohne sie erneut zu testen. Nach der Isolierung müssen Sie die Temperaturen in der Kammer, am Heizgerät, an den Drähten, an den Anschlüssen und auf der Außenfläche erneut messen.
 
 ## Luftspalt funktioniert auch
 
@@ -86,7 +86,7 @@ Statische Luft leitet Wärme schlecht. Daher können Luftspalte, Doppelwände un
 
 Aber wenn Luft anfängt zu fließen, beginnt die Konvektion. Dann wird Wärme durch den Luftstrom übertragen, nicht nur durch Wärmeleitung. Daher kann ein Spalt, durch den ein heißer Strom fließt, das Gehäuse mehr aufheizen als eine dicke Wand ohne Fluss.
 
-In der Praxis bedeutet dies:
+In der Praxis bedeutet stirbt:
 
 - lassen Sie keine versehentlichen Spalten neben dem Heizer;
 - richten Sie keinen heißen Strom direkt auf Kunststoff;
@@ -107,7 +107,7 @@ Für Material in der Nähe von Wärme ist Wärmeleitung nicht das Einzige, das w
 - Herstellerempfehlungen für die Verwendung;
 - Verfügbarkeit von SDS/Sicherheitsdatenblatt, wenn das Material heiß werden oder verarbeitet werden kann.
 
-Wenn ein Material keine klare Dokumentation hat, stellen Sie es nicht in die Nähe des Heizers und verwenden Sie es nicht als einzigen Schutz.
+Wenn ein Material keine klare Dokumentation hat, stellen Sie es nicht in die Nähe des Heizgeräts und verwenden Sie es nicht als einzigen Schutz.
 
 ## Praktische Überprüfungsreihenfolge
 
@@ -121,7 +121,7 @@ Für Gehäuse, Kammer oder Trockner ist es bequem, wie folgt vorzugehen:
 6. Überprüfen Sie den Lüfterausfallmodus, wenn der Heizer vom Luftstrom abhängt.
 7. Fügen Sie unabhängigen Überhitzungsschutz dort hinzu, wo Überhitzung gefährlich ist.
 
-Ein Temperatursensor in der Kammer zeigt nicht das gesamte thermische Bild. Sie benötigen Messungen neben dem Heizer, auf Befestigungen, auf Drähten, am Gehäuse und auf gedruckten Teilen.
+Ein Temperatursensor in der Kammer zeigt nicht das gesamte thermische Bild. Sie benötigen Messungen neben dem Heizgerät, auf Befestigungen, auf Drähten, am Gehäuse und auf gedruckten Teilen.
 
 ## Wichtigste Erkenntnis
 

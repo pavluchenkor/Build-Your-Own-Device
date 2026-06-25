@@ -1,104 +1,104 @@
 # Controlador RP2040
 
-RP2040 is a Raspberry Pi microcontroller. The most well-known board based on it is the Raspberry Pi Pico.
+RP2040 é um microcontrolador Raspberry Pi. A placa mais conhecida baseada nele é a Raspberry Pi Pico.
 
-For DIY peripherals around a 3D printer, RP2040 is one of the most practical options: it is cheap, well documented, works with `3.3V` logic, is convenient to flash over USB, and is well suited as an additional MCU for Klipper.
+Para periféricos DIY em torno de uma impressora 3D, o RP2040 é uma das opções mais práticas: é barato, bem documentado, funciona com a lógica `3.3V`, é conveniente para flash via USB e é adequado como um MCU adicional para Klipper.
 
-## Where RP2040 is useful
+## Onde o RP2040 é útil
 
 RP2040 is good for:
 
-- additional I/O board for Klipper;
+- placa de E/S adicional para Klipper;
 - fan controller via MOSFET/drivers;
-- reading thermistors and simple analog sensors;
+- leitura de termistores e sensores analógicos simples;
 - connecting OLED via I2C;
 - connecting RFID/NFC via SPI or UART;
-- controlling servo with PWM signal;
-- simple standalone board without Wi-Fi;
-- test bench for sensors and interfaces.
+- controlando servo com sinal PWM;
+- placa autônoma simples sem Wi-Fi;
+- bancada de testes para sensores e interfaces.
 
-If you need networking out of the box, it is easier to look at ESP32 or Pico W. If you need an additional wired MCU for Klipper, RP2040 is often more convenient.
+Se você precisar de rede pronta para uso, é mais fácil olhar para ESP32 ou Pico W. Se você precisar de um MCU com fio adicional para Klipper, o RP2040 geralmente é mais conveniente.
 
-## Why Raspberry Pi Pico is convenient
+## Por que Raspberry Pi Pico é conveniente
 
-Raspberry Pi Pico is a ready-made dev board based on RP2040. It already has USB, flash memory, power regulator, a `BOOTSEL` button, and exposed pins.
+Raspberry Pi Pico é uma placa de desenvolvimento pronta baseada em RP2040. Já possui USB, memória flash, regulador de energia, botão `BOOTSEL` e pinos expostos.
 
 Pico advantages:
 
 - low cost;
-- decent documentation and pinout;
-- USB for flashing and communication;
+- documentação e pinagem decentes;
+- USB para flashing e comunicação;
 - many GPIO;
 - `3.3V` logic;
 - 2 UART, 2 SPI, 2 I2C;
 - 16 PWM channels;
-- 3 ADC inputs on exposed Pico pins;
-- PIO for non-standard interfaces;
+- 3 entradas ADC em pinos Pico expostos;
+- PIO para interfaces não padronizadas;
 - convenient UF2 flashing via USB mass storage.
 
-For a first project, it is better to get a Pico or Pico H with soldered pins than a bare RP2040 chip. A bare chip requires a custom board, flash memory, power, USB, routing, and testing.
+Para um primeiro projeto, é melhor obter um Pico ou Pico H com pinos soldados do que um chip RP2040 vazio. Um chip simples requer uma placa personalizada, memória flash, energia, USB, roteamento e testes.
 
-## BOOTSEL and UF2
+## BOOTSEL e UF2
 
-One of Pico's strengths is a simple flashing process:
+Um dos pontos fortes do Pico é um processo simples de flashing:
 
-1. Hold the `BOOTSEL` button.
-2. Connect USB to your computer.
-3. The board appears as a USB drive.
-4. Copy the `.uf2` firmware file.
-5. The board reboots with the new firmware.
+1. Segure o botão `BOOTSEL`.
+2. Conecte o USB ao seu computador.
+3. A placa aparece como uma unidade USB.
+4. Copie o arquivo de firmware `.uf2`.
+5. A placa reinicia com o novo firmware.
 
-This is convenient for MicroPython, CircuitPython, C/C++ projects, and Klipper firmware. For a newcomer, this method is usually more understandable than ST-Link, DFU, or a separate USB-UART.
+Isso é conveniente para projetos MicroPython, CircuitPython, C/C++ e firmware Klipper. Para um iniciante, esse método geralmente é mais compreensível do que ST-Link, DFU ou um USB-UART separado.
 
-## RP2040 and Klipper
+## RP2040 e Klipper
 
-RP2040 is a good candidate for an additional MCU in Klipper.
+RP2040 é um bom candidato para um MCU adicional no Klipper.
 
-Typical scheme:
+Esquema típico:
 
 ![Raspberry Pi Pico with RP2040 chip](../../img/02-controllers/03-rp2040-pico-photo.jpg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Raspberry_Pi_Pico_oblique.jpg), Phiarc, CC BY-SA 4.0*
 
-The idea is:
+A ideia é:
 
-- Linux host with Klipper remains the primary controller;
-- Pico/RP2040 is flashed with Klipper MCU firmware;
-- a main or additional `[mcu]` section is added to `printer.cfg`;
-- RP2040 pins can be used for fans, sensors, PWM, and other peripherals;
-- power loads are still connected via MOSFET, driver, relay, or SSR.
+- O host Linux com Klipper continua sendo o controlador principal;
+- Pico/RP2040 é atualizado com firmware Klipper MCU;
+- uma seção `printer.cfg` principal ou adicional é adicionada a `printer.cfg`;
+- Os pinos RP2040 podem ser usados para ventiladores, sensores, PWM e outros periféricos;
+- cargas de energia ainda estão conectadas via MOSFET, driver, relé ou SSR.
 
-This is useful when you need to separate part of the peripheral into a separate block: for example fans, camera sensors, filter, backlighting, button, limit switch, or service outputs.
+Isso é útil quando você precisa separar parte do periférico em um bloco separado: por exemplo, ventiladores, sensores de câmera, filtro, luz de fundo, botão, interruptor de limite ou saídas de serviço.
 
-## GPIO and 3.3V logic
+## Lógica GPIO e 3,3V
 
-RP2040 works with `3.3V` logic. This means:
+RP2040 funciona com lógica `3.3V`. Isso significa:
 
 - do not apply `5V` to GPIO;
-- for `5V` modules you may need a level converter;
-- I2C pull-ups should be to `3.3V`;
-- GPIO should not power a load directly;
+- para módulos `5V` você pode precisar de um conversor de nível;
+- Os pull-ups I2C devem ser `3.3V`;
+- O GPIO não deve alimentar uma carga diretamente;
 - a fan, LED strip, relay, or heater needs an external switch/driver.
 
-If a module is "Arduino-compatible," it does not mean it is safe for RP2040. You need to check input levels and pull-ups.
+Se um módulo for “compatível com Arduino”, isso não significa que seja seguro para RP2040. Você precisa verificar os níveis de entrada e pull-ups.
 
 ## Power
 
-Pico is usually powered from USB or via the `VSYS` pin. The board has a regulator for powering the microcontroller.
+O Pico geralmente é alimentado por USB ou pelo pino `VSYS`. A placa possui um regulador para alimentação do microcontrolador.
 
 Practical rules:
 
-- do not power motors, servos, and relays from the `3V3` pin on Pico;
-- use separate power for loads;
-- connect common GND with low-voltage drivers;
-- check where power to `VSYS` and USB comes from;
-- account for the current of external modules, not just Pico itself.
+- não alimente motores, servos e relés do pino `3V3` no Pico;
+- usar energia separada para cargas;
+- conecte GND comum com drivers de baixa tensão;
+- verifique de onde vem a energia para `VSYS` e USB;
+- leve em conta a corrente dos módulos externos, não apenas o próprio Pico.
 
-If Pico resets when a servo or fan starts, the problem is almost always power, ground, or noise.
+Se o Pico for reiniciado quando um servo ou ventilador for iniciado, o problema quase sempre é energia, aterramento ou ruído.
 
 ## ADC on Pico
 
-Pico has ADC inputs that you can use for simple analog tasks:
+O Pico possui entradas ADC que você pode usar para tarefas analógicas simples:
 
 - thermistor via voltage divider;
 - potentiometer;
@@ -107,65 +107,65 @@ Pico has ADC inputs that you can use for simple analog tasks:
 
 Limitations:
 
-- ADC input must not exceed safe GPIO voltage;
-- to measure `12V` or `24V` you need a divider and protection;
-- a thermistor requires a correct resistor, table/model, and mechanical contact;
-- ADC does not replace a multimeter or industrial meter.
+- A entrada ADC não deve exceder a tensão GPIO segura;
+- para medir `24V` ou `24V` você precisa de divisória e proteção;
+- um termistor requer um resistor, tabela/modelo e contato mecânico corretos;
+- O ADC não substitui um multímetro ou medidor industrial.
 
-For heaters, remember: ADC only reads the sensor. Heating safety is provided by the power switch, firmware limits, fuse, and independent thermal protection.
+Para aquecedores, lembre-se: o ADC lê apenas o sensor. A segurança do aquecimento é fornecida pelo interruptor de alimentação, limites de firmware, fusível e proteção térmica independente.
 
-## PIO in simple terms
+## PIO em termos simples
 
-PIO is Programmable I/O. RP2040 has small programmable blocks that can generate or read non-standard signals without constant load on the main code.
+PIO é E/S programável. O RP2040 possui pequenos blocos programáveis ​​que podem gerar ou ler sinais não padronizados sem carga constante no código principal.
 
-A newcomer does not need to start with PIO. But this is one reason why RP2040 is popular for interfaces, timing, and non-standard peripherals.
+Um recém-chegado não precisa começar com PIO. Mas esta é uma das razões pelas quais o RP2040 é popular para interfaces, temporização e periféricos não padrão.
 
-For a simple iDryer-like device, regular GPIO, PWM, I2C, SPI, UART, and ADC are usually enough.
+Para um dispositivo simples do tipo iDryer, GPIO, PWM, I2C, SPI, UART e ADC regulares geralmente são suficientes.
 
-## Pico, Pico W, and Pico 2
+## Pico, Pico W e Pico 2
 
-It is important not to confuse the boards:
+É importante não confundir as placas:
 
-- **Pico / Pico H** — classic RP2040 board without Wi-Fi;
-- **Pico W / Pico WH** — RP2040 with Wi-Fi/Bluetooth module on board;
-- **Pico 2 / Pico 2 W** — new generation based on RP2350, this is not RP2040.
+- **Pico / Pico H** — placa RP2040 clássica sem Wi-Fi;
+- **Pico W / Pico WH** — RP2040 com módulo Wi-Fi/Bluetooth integrado;
+- **Pico 2 / Pico 2 W** — nova geração baseada em RP2350, este não é RP2040.
 
-If an article or project says RP2040, it usually means the first generation Pico or a compatible board. Pico 2 is similar in concept, but it is a different microcontroller, and firmware/pin compatibility needs to be checked separately.
+Se um artigo ou projeto diz RP2040, geralmente significa o Pico de primeira geração ou uma placa compatível. O Pico 2 é semelhante em conceito, mas é um microcontrolador diferente e a compatibilidade de firmware/pino precisa ser verificada separadamente.
 
-## What to check before buying
+## O que verificar antes de comprar
 
-Before buying an RP2040-based board, check:
+Antes de comprar uma placa baseada em RP2040, verifique:
 
-- whether it is an original Pico, Pico W, or clone;
-- whether pins are soldered;
-- whether it has the USB connector you need;
-- whether there is a proper pinout;
-- which GPIO are available;
+- seja um Pico original, Pico W ou clone;
+- se os pinos estão soldados;
+- se possui o conector USB que você precisa;
+- se existe uma pinagem adequada;
+- quais GPIO estão disponíveis;
 - whether you need Wi-Fi;
-- whether the board is suitable for Klipper firmware;
-- how the board and loads will be powered;
-- whether you have enough ADC/PWM/I2C/SPI/UART for the task;
-- whether there is room in the enclosure for mounting.
+- se a placa é adequada para firmware Klipper;
+- como será alimentada a placa e as cargas;
+- se você tem ADC/PWM/I2C/SPI/UART suficiente para a tarefa;
+- se há espaço no gabinete para montagem.
 
-If planning a Klipper MCU, check existing instructions for your specific board and flashing method in advance.
+Se estiver planejando um Klipper MCU, verifique com antecedência as instruções existentes para sua placa específica e método de flash.
 
-## Common mistakes
+## Erros comuns
 
 - applying `5V` to RP2040 GPIO;
-- powering a servo or relay from `3V3`;
-- forgetting common GND with MOSFET/driver;
-- thinking Pico W is a regular Pico and not accounting for used resources/Wi-Fi power;
+- alimentar um servo ou relé de `3V3`;
+- esquecendo o GND comum com MOSFET/driver;
+- pensar que o Pico W é um Pico normal e não contabilizar os recursos usados/energia Wi-Fi;
 - buying Pico 2 expecting exact RP2040 behavior;
-- measuring `12V`/`24V` on ADC without a divider;
-- connecting a heater directly to a pin;
-- choosing RP2040 for Wi-Fi task when a regular Pico has no Wi-Fi;
-- not checking the pinout of a specific clone.
+- medindo `24V`/`24V` em ADC sem divisor;
+- conectar um aquecedor diretamente a um pino;
+- escolha RP2040 para tarefa de Wi-Fi quando um Pico normal não tem Wi-Fi;
+- não verificar a pinagem de um clone específico.
 
-## Key points
+## Pontos principais
 
-RP2040 and Raspberry Pi Pico are a strong choice for wired DIY peripherals and additional MCU in Klipper. The board is cheap, understandable, well documented, and convenient to flash.
+RP2040 e Raspberry Pi Pico são uma escolha forte para periféricos DIY com fio e MCU adicionais no Klipper. A placa é barata, compreensível, bem documentada e fácil de atualizar.
 
-But RP2040 is a `3.3V` microcontroller, not a power controller. Loads are connected via drivers, MOSFET, relays, or SSR. For Wi-Fi tasks, you need Pico W or another networked controller.
+Mas o RP2040 é um microcontrolador `3.3V`, não um controlador de energia. As cargas são conectadas por meio de drivers, MOSFET, relés ou SSR. Para tarefas Wi-Fi, você precisa do Pico W ou outro controlador de rede.
 
 ## Related materials
 

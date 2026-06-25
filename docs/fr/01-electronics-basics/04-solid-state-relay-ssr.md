@@ -142,7 +142,7 @@ Un radiateur a besoin de couches indépendantes :
 - boîtier fait de matériau capable de supporter les températures réelles ;
 - premier test sous observation.
 
-Mode de défaillance important : SSR peut se dégrader et rester allumé. Par conséquent, la protection thermale d'urgence doit être capable de couper l'alimentation du radiateur indépendamment du contrôleur et du SSR.
+Mode de dysfonctionnement important : SSR peut se dégrader et rester allumé. Par conséquent, la protection thermique d'urgence doit être capable de couper l'alimentation du radiateur en fonction du contrôleur et du SSR.
 
 ## Quelles charges sont appropriées
 
@@ -178,7 +178,7 @@ Avant d'acheter SSR, vérifiez :
 - courant maximal avec refroidissement nécessaire ;
 - le radiateur est-il nécessaire ;
 - y a-t-il spécification technique ;
-- y a-t-il diagramme de connexion normal ;
+- y a-t-il schéma de connexion normal ;
 - terminales et distances d'isolement ;
 - qualité du fabricant ;
 - où le fusible est placé ;
@@ -206,7 +206,7 @@ S'il n'y a pas de documentation et que le SSR doit contrôler un radiateur rése
 
 SSR est pratique pour le contrôle de charge fréquente et silencieuse, en particulier radiateur réseau. Mais SSR doit être choisi pour type de charge, tension, courant, méthode d'allumage et point de fonctionnement thermique.
 
-Pour charge `110-230V AC`, SSR n'élimine pas la sécurité électrique. Vous avez besoin d'un boîtier, d'un fusible, d'un câblage normal, d'un radiateur si nécessaire et d'une protection thermale indépendante du radiateur.
+Pour charger `110-230V AC`, SSR n'élimine pas la sécurité électrique. Vous avez besoin d'un boîtier, d'un fusible, d'un câblage normal, d'un radiateur si nécessaire et d'une protection thermique indépendante du radiateur.
 
 ## Matériaux de référence
 

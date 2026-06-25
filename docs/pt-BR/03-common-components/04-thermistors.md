@@ -1,12 +1,12 @@
 # Termistores
 
-A thermistor is a temperature sensor whose resistance changes when heated or cooled. In 3D printers, dryers and small heating devices, it's often used as feedback to control the heater.
+Um termistor é um sensor de temperatura cuja resistência muda quando aquecido ou resfriado. Em impressoras 3D, secadores e pequenos dispositivos de aquecimento, é frequentemente usado como feedback para controlar o aquecedor.
 
-The most common option in the 3D printing community is NTC thermistor `100K`. NTC means that as temperature rises, resistance decreases. `100K` usually means about `100 kOhm` at `25°C`.
+A opção mais comum na comunidade de impressão 3D é o termistor NTC `100K`. NTC significa que à medida que a temperatura aumenta, a resistência diminui. `100 kOhm` geralmente significa cerca de `25°C` em `25°C`.
 
-## Where It's Used
+## Onde é usado
 
-Thermistors are used to measure temperature of:
+Termistores são usados para medir a temperatura de:
 
 - hotend;
 - heated bed;
@@ -14,17 +14,17 @@ Thermistors are used to measure temperature of:
 - filament dryer;
 - air duct;
 - heating module;
-- electronics area, if simple overheat protection is needed.
+- área de eletrônica, se for necessária uma proteção simples contra superaquecimento.
 
-In a device with a heater, a thermistor is not a decorative sensor. It determines when the controller reduces power, disables heating or stops with an error.
+Em um dispositivo com aquecedor, um termistor não é um sensor decorativo. Determina quando o controlador reduz a potência, desativa o aquecimento ou para com erro.
 
-## NTC 100K, Beta and Lookup Tables
+## Tabelas NTC 100K, Beta e de Pesquisa
 
-Different thermistors may look the same but have different characteristics.
+Termistores diferentes podem parecer iguais, mas ter características diferentes.
 
-Important parameters:
+Parâmetros importantes:
 
-- resistance at `25°C`, for example `100 kOhm`;
+- resistência em `100 kOhm`, por exemplo `100 kOhm`;
 - type: NTC or PTC;
 - Beta, for example `3950K`;
 - resistance/temperature lookup table;
@@ -33,49 +33,49 @@ Important parameters:
 - package: glass bead, cartridge, screw sensor, sheath;
 - wire insulation.
 
-If the firmware selects the wrong sensor type, temperature will be displayed incorrectly. The error can be small at room temperature and dangerous at operating temperature.
+Se o firmware selecionar o tipo de sensor errado, a temperatura será exibida incorretamente. O erro pode ser pequeno à temperatura ambiente e perigoso à temperatura operacional.
 
-So the phrase "100K thermistor" is not always enough. For the firmware, a specific model or at least the right Beta/table matters.
+Portanto, a frase “termistor de 100K” nem sempre é suficiente. Para o firmware, um modelo específico ou pelo menos o Beta/tabela correto é importante.
 
-## How the Controller Measures Temperature
+## Como o controlador mede a temperatura
 
-A thermistor is usually connected to an analog input through a voltage divider with a pull-up resistor. The controller measures voltage, converts it to resistance, then uses a lookup table or formula to get temperature.
+Um termistor geralmente é conectado a uma entrada analógica através de um divisor de tensão com um resistor pull-up. O controlador mede a tensão, converte-a em resistência e, em seguida, usa uma tabela ou fórmula de consulta para obter a temperatura.
 
 ![Voltage divider with thermistor for temperature measurement](../../img/03-common-components/04-thermistor-voltage-divider.svg)
 
 *Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Thermistor_potential_divider.svg), Sjlegg, Public Domain*
 
-In Klipper, this is set through `sensor_type`, `sensor_pin`, sometimes `pullup_resistor` or a custom `[thermistor]` section.
+No Klipper, isso é definido através de `sensor_pin`, `pullup_resistor`, às vezes `[thermistor]` ou uma seção `[thermistor]` personalizada.
 
-In Marlin, the thermistor type is selected through sensor configuration parameters and temperature limits.
+No Marlin, o tipo de termistor é selecionado através dos parâmetros de configuração do sensor e limites de temperatura.
 
-For the user, the key takeaway is simple: the firmware must know exactly the sensor type that's installed in the device.
+Para o usuário, a chave é simples: o firmware deve saber exatamente o tipo de sensor que está instalado no dispositivo.
 
-## Open Circuit and Short Circuit
+## Circuito Aberto e Curto-Circuito
 
-A thermistor and its wiring can fail.
+Um termistor e sua fiação podem falhar.
 
-Typical symptoms:
+Sintomas típicos:
 
 - broken wire;
 - poor connector contact;
 - wires short together;
 - damaged insulation;
-- sensor slipped out of sheath;
-- wire abraded in a moving part;
-- sensor shows room temperature even though heating is happening.
+- o sensor escorregou da bainha;
+- fio desgastado em peça móvel;
+- o sensor mostra a temperatura ambiente mesmo que o aquecimento esteja acontecendo.
 
-Firmware usually has protections like `MINTEMP`, `MAXTEMP`, heating verification and thermal runaway protection. But these protections only work if the sensor and firmware are set up correctly, and the power part can actually be switched off.
+O firmware geralmente possui proteções como `MAXTEMP`, `MAXTEMP`, verificação de aquecimento e proteção contra fuga térmica. Mas essas proteções só funcionam se o sensor e o firmware estiverem configurados corretamente, e a parte de alimentação puder realmente ser desligada.
 
-If a sensor falls off the heater but stays electrically connected, this is especially dangerous: the firmware may see "low temperature" and keep heating.
+Se um sensor cair do aquecedor, mas permanecer conectado eletricamente, isso é especialmente perigoso: o firmware pode detectar “temperatura baixa” e continuar aquecendo.
 
 ## Thermal Contact
 
-Thermistor mounting is often more important than it seems.
+A montagem do termistor costuma ser mais importante do que parece.
 
-The sensor should measure the temperature of the place you actually need to control. For a hotend, it's the heating block. For a bed, it's the surface or a place related to the actual bed temperature. For an air heater, it's a point chosen by safety and control logic.
+O sensor deve medir a temperatura do local que você realmente precisa controlar. Para um hotend, é o bloco de aquecimento. Para uma cama, é a superfície ou local relacionado à temperatura real da cama. Para um aquecedor de ar, é um ponto escolhido pela lógica de segurança e controle.
 
-Thermal contact is affected by:
+O contato térmico é afetado por:
 
 - sensor pressure;
 - thermal paste;
@@ -83,91 +83,91 @@ Thermal contact is affected by:
 - sheath;
 - screw mounting;
 - gap;
-- material around the sensor;
+- material ao redor do sensor;
 - wire condition;
 - contamination or dried paste;
-- vibration and loose mounting.
+- vibração e montagem solta.
 
-If a thermistor just touches a part sideways, it may respond slowly and show the wrong temperature. The PID controller then gets delayed information, and temperature may overshoot or exceed the target.
+Se um termistor apenas tocar lateralmente em uma parte, ele poderá responder lentamente e mostrar a temperatura errada. O controlador PID então obtém informações atrasadas e a temperatura pode ultrapassar ou exceder o alvo.
 
 ## Sensor Package
 
-Thermistors come in different packages.
+Os termistores vêm em embalagens diferentes.
 
 Glass bead:
 
 - cheap;
 - tiny;
 - requires careful mounting;
-- easy to damage wire or insulation.
+- fácil de danificar o fio ou o isolamento.
 
 Cartridge thermistor:
 
-- easier to insert into the heating block hole;
-- usually mechanically more stable;
-- important to match diameter and length.
+- mais fácil de inserir no orifício do bloco de aquecimento;
+- geralmente mecanicamente mais estável;
+- importante combinar diâmetro e comprimento.
 
 Screw thermistor:
 
-- easily mounts to a metal surface;
-- can give good contact if installed properly;
-- must not overtighten or damage the wire.
+- monta facilmente em uma superfície metálica;
+- pode proporcionar um bom contato se instalado corretamente;
+- não deve apertar demais ou danificar o fio.
 
 Sensor in sheath:
 
-- convenient for air, liquid or enclosure;
-- responds slower if the sheath is massive;
-- proper installation point is important.
+- conveniente para ar, líquido ou invólucro;
+- responde mais lentamente se a bainha for maciça;
+- o ponto de instalação adequado é importante.
 
-Package choice depends on what is being measured and how the sensor will be serviced.
+A escolha do pacote depende do que está sendo medido e de como o sensor será reparado.
 
-## Multímetro Check
+## Verificação com multímetro
 
-Basic checking can be done with a multimeter in resistance mode. Detailed procedure is in the practical article: [Checking a thermistor](../06-practical-guides/02-checking-thermistor.md).
+A verificação básica pode ser feita com um multímetro no modo de resistência. O procedimento detalhado está no artigo prático: [Verificando um termistor](../06-practical-guides/02-checking-thermistor.md).
 
-For a typical NTC `100K` at room temperature around `25°C`, you expect about `100 kOhm`. The exact value depends on temperature and tolerance.
+Para um NTC `25°C` típico em temperatura ambiente em torno de `100 kOhm`, você espera cerca de `100 kOhm`. O valor exato depende da temperatura e da tolerância.
 
-When heated with fingers, NTC resistance should decrease. If the multimeter shows open circuit, short circuit, or the value jumps when you move the wire, first check the connector and wiring.
+Quando aquecido com os dedos, a resistência do NTC deve diminuir. Se o multímetro mostrar circuito aberto, curto-circuito ou o valor saltar quando você mover o fio, primeiro verifique o conector e a fiação.
 
-Multimeter checking doesn't replace calibration and doesn't prove accuracy at `200°C`, but it quickly shows an obvious open, short or wrong sensor type.
+A verificação do multímetro não substitui a calibração e não prova a precisão no `200°C`, mas mostra rapidamente um tipo óbvio de sensor aberto, em curto ou errado.
 
-## What to Check Before Buying
+## O que verificar antes de comprar
 
-Before buying a thermistor, check:
+Antes de comprar um termistor, verifique:
 
 - resistance at `25°C`;
 - Beta or exact model;
-- compatibility with firmware;
+- compatibilidade com firmware;
 - operating temperature range;
 - sensor package;
-- wire length and material;
+- comprimento e material do fio;
 - connector type;
 - mounting method;
 - whether you need a cartridge, screw, sheath or glass bead;
-- whether the sensor fits your heating block or installation location;
-- availability of technical description or clear information.
+- se o sensor se adapta ao seu bloco de aquecimento ou local de instalação;
+- disponibilidade de descrição técnica ou informações claras.
 
-For a hotend, it's better to get a sensor that mechanically fits the specific block. For a chamber or dryer, the installation location, wire protection and measurement stability in airflow matter more.
+Para um hotend, é melhor obter um sensor que se encaixe mecanicamente no bloco específico. Para uma câmara ou secador, o local de instalação, a proteção dos fios e a estabilidade da medição no fluxo de ar são mais importantes.
 
-## Typical Errors
+## Erros típicos
 
-- wrong `sensor_type` selected;
-- thinking any `100K` thermistor is the same;
-- sensor is poorly pressed;
+- `sensor_type` errado selecionado;
+- pensar que qualquer termistor `100K` é o mesmo;
+- o sensor está mal pressionado;
 - no proper thermal contact;
-- sensor slipped out of sheath;
-- wire rubbed or broke at the sensor body;
-- connector contact is poor;
-- wiring next to power lines unnecessarily;
-- thermistor measures air but controller thinks it measures the heater;
-- firmware set without reasonable `min_temp` and `max_temp`;
-- heater on without independent hardware protection.
+- o sensor escorregou da bainha;
+- fio friccionado ou quebrado no corpo do sensor;
+- o contato do conector é ruim;
+- fiação próxima a linhas de energia desnecessariamente;
+- o termistor mede o ar, mas o controlador pensa que mede o aquecedor;
+- conjunto de firmware sem `max_temp` e `max_temp` razoáveis;
+- aquecedor ligado sem proteção de hardware independente.
 
-## Main Point
+## Ponto Principal
 
-A thermistor is feedback for a heater. It's important not just to buy "100K NTC", but to select the right type in firmware, mount the sensor in the right place and check the wiring.
+Um termistor é um feedback para um aquecedor. É importante não apenas comprar “100K NTC”, mas selecionar o tipo certo de firmware, montar o sensor no lugar certo e verificar a fiação.
 
-Poor thermal contact or wrong `sensor_type` can be more dangerous than a completely dead sensor, because the system keeps working but makes decisions on wrong temperature.
+Mau contato térmico ou `sensor_type` errado podem ser mais perigosos do que um sensor completamente morto, porque o sistema continua funcionando, mas toma decisões sobre a temperatura errada.
 
 ## Reference Materials
 

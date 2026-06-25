@@ -8,7 +8,7 @@ Vous en avez besoin pour :
 - lire les journaux ;
 - déboguer la communication UART ;
 - configurer des modules ;
-- récupérer une carte quand l'USB normal ne fonctionne pas ;
+- récupérer une carte lorsque l'USB normal ne fonctionne pas ;
 - se connecter à un appareil sans USB-UART intégré.
 
 Les adaptateurs courants utilisent des puces comme CH340, CP2102, FT232 et similaires.

@@ -185,7 +185,7 @@ Reglas mínimas:
 - no mida corriente como voltaje;
 - no ingrese a 110-230V AC sin comprender la seguridad;
 - comience con un rango más alto si el multímetro no es autorango;
-- use sondas que funcionen;
+- utilice sondas que funcionen;
 - no toque las puntas de metal con los dedos.
 
 ## Escenarios Prácticos
@@ -218,10 +218,10 @@ Verificar cortocircuito entre `+` y `GND`:
 
 ## Lo Esencial
 
-- Para voltaje DC, use modo `V` con una línea recta.
+- Para voltaje DC, use el modo `V` con una línea recta.
 - Resistencia y continuidad solo se realizan en circuitos desenergizados.
 - La corriente se mide en serie, no en paralelo.
-- Después de medir corriente, mueva la sonda de `A` de vuelta al puerto normal `V/Ohm`.
+- Después de medir la corriente, mueva la sonda de `V/Ohm` de vuelta al puerto normal `V/Ohm`.
 - El voltaje de red es peligroso; no mida piezas abiertas de 110-230V sin comprender la seguridad.
 - Un multímetro bajo carga a menudo revela problemas invisibles cuando está en ralentí.
 

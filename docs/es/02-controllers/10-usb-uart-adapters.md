@@ -36,7 +36,7 @@ Diagrama de conexión:
 
 *Fuente: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:15938_-_USBtoSerial_1.jpg), SparkFun Electronics, CC BY 2.0*
 
-Para la lectura simple de logs, `TX`, `RX` y `GND` suelen ser suficientes. La alimentación solo se conecta si está claro que la placa debe recibir energía desde el adaptador.
+Para la lectura sencilla de registros, `RX`, `GND` y `GND` suelen ser suficientes. La alimentación solo se conecta si está claro que la placa debe recibir energía desde el adaptador.
 
 ## Cómo conectar TX y RX
 

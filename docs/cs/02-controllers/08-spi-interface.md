@@ -1,143 +1,143 @@
 # Rozhraní SPI
 
-SPI is a fast serial communication interface between a controller and peripheral devices. Expansion: `Serial Peripheral Interface`.
+SPI je rychlé sériové komunikační rozhraní mezi kontrolérem a periferiálními zařízeními. Rozšíření: `Serial Peripheral Interface`.
 
-SPI is often used where data needs to be transmitted faster than I2C, or where the device is designed for SPI: display, SD card, RFID module, sensor, driver, or memory chip.
+SPI se často používá tam, kde je potřeba rychlejší přenos dat než I2C, nebo když je zařízení navrženo pro SPI: displej, SD karta, RFID modul, senzor, driver či čip paměti.
 
-## Where SPI is used
+## Kde se SPI používá
 
-In 3D printers and iDryer-like devices, SPI may appear in:
+V 3D tiskárnách a zařízeních podobných iDryer se SPI může vyskytovat v:
 
-- RFID/NFC modules like RC522;
-- OLED/TFT displays;
-- SD cards;
-- accelerometers for input shaper;
-- stepper drivers, for example TMC2130/TMC5160;
-- memory chips;
-- ADC/DAC and expansion boards;
-- some sensors and specialized modules.
+- RFID/NFC modulech jako RC522;
+- OLED/TFT displeji;
+- SD kartách;
+- akcelerometrech pro input shaper;
+- stepper driverech, například TMC2130/TMC5160;
+- čipech paměti;
+- ADC/DAC a expanzních deskách;
+- některých senzorech a specializovaných modulech.
 
-SPI is usually faster than I2C, but requires more wires and more careful pin selection.
+SPI je obvykle rychlejší než I2C, ale vyžaduje více vodičů a pečlivější výběr pinů.
 
-## Basic lines
+## Základní linky
 
-A typical SPI uses:
+Typický SPI používá:
 
-- `SCK` or `CLK` - clock signal;
-- `MOSI` - data from controller to device;
-- `MISO` - data from device to controller;
-- `CS`, `SS`, or `NSS` - select specific device;
-- `GND` - common ground;
-- module power.
+- `SCK` nebo `CLK` - hodinový signál;
+- `MOSI` - data od kontroléru k zařízení;
+- `MISO` - data od zařízení k kontroléru;
+- `CS`, `SS` nebo `NSS` - výběr konkrétního zařízení;
+- `GND` - společná zem;
+- napájení modulu.
 
-Diagram with two devices:
+Diagram se dvěma zařízeními:
 
-![SPI: basic exchange operation between master and slave device](../../img/02-controllers/08-spi-basic-operation.png)
+![SPI: základní výměna operace mezi master a slave zařízením](../../img/02-controllers/08-spi-basic-operation.png)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SPI_basic_operation,_single_Main_%26_Sub.svg), Em3rgent0rdr, CC0 Public Domain*
+*Zdroj: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:SPI_basic_operation,_single_Main_%26_Sub.svg), Em3rgent0rdr, CC0 Public Domain*
 
-`SCK`, `MOSI`, and `MISO` can be shared by multiple devices. But each device usually needs its own `CS`.
+`SCK`, `MOSI` a `MISO` mohou být sdíleny více zařízeními. Ale každé zařízení obvykle potřebuje vlastní `CS`.
 
-## CS instead of addresses
+## CS místo adres
 
-In I2C, devices are distinguished by addresses. In SPI, there are usually no addresses. The controller selects the device with a separate `CS` line.
+V I2C se zařízení rozlišují podle adres. V SPI obvykle nejsou adresy. Kontrolér si vybere zařízení oddělou `CS` linkou.
 
-Example:
+Příklad:
 
 ```text
-SCK  -> common to all SPI devices
-MOSI -> common
-MISO -> common
-CS1  -> RFID module
-CS2  -> display
-CS3  -> SD card
+SCK  -> běžné všem SPI zařízením
+MOSI -> běžné
+MISO -> běžné
+CS1  -> RFID modul
+CS2  -> displej
+CS3  -> SD karta
 ```
 
-When the controller wants to talk to the RFID module, it activates `CS1`. When it wants to talk to the display, it activates `CS2`.
+Když chce kontrolér mluvit s RFID modulem, aktivuje `CS1`. Když chce mluvit s displejem, aktivuje `CS2`.
 
-Most commonly, `CS` is active low: at rest the line is `HIGH`, to select a device - `LOW`. But this needs to be verified in the technical datasheet.
+Nejčastěji je `CS` aktivní nízko: v klidu je linka `HIGH`, na výběr zařízení je `LOW`. Ale to musí být ověřeno v technickém datalisty.
 
-## MOSI/MISO and new names
+## MOSI/MISO a nová jména
 
-In old and very common schemes, the names are:
+Ve starých a velmi běžných schématech jsou jména:
 
 - `MOSI` - Master Out Slave In;
 - `MISO` - Master In Slave Out;
 - `SS` - Slave Select.
 
-In newer documentation, you may see neutral names:
+V novější dokumentaci můžete vidět neutrální jména:
 
-- `PICO` - Peripheral In Controller Out, equivalent to MOSI;
-- `POCI` - Peripheral Out Controller In, equivalent to MISO;
+- `PICO` - Peripheral In Controller Out, ekvivalent MOSI;
+- `POCI` - Peripheral Out Controller In, ekvivalent MISO;
 - `CS` - Chip Select.
 
-In 3D printer electronics, `MOSI`, `MISO`, `SCK`, `CS` are still very common. The main thing is to understand signal direction and check the pinout of the specific module.
+V elektronice 3D tiskáren jsou `MOSI`, `MISO`, `SCK`, `CS` stále velmi běžné. Hlavní věc je pochopit směr signálu a zkontrolovat rozložení pinů konkrétního modulu.
 
-## MISO may not be needed
+## MISO nemusí být potřeba
 
-Not every SPI device actually sends data back.
+Ne každé SPI zařízení skutečně posílá data zpět.
 
-For example, a simple display may only receive commands and pixels. Then the `MISO` line may be missing or unused.
+Například jednoduchý displej může jen přijímat příkazy a pixely. Pak linka `MISO` může chybět nebo se nepoužívá.
 
-But for devices that read data, `MISO` is needed:
+Ale na zařízení, která čtou data, je `MISO` potřeba:
 
-- RFID module;
-- SD card;
-- sensor;
-- driver with diagnostics;
-- memory chip.
+- RFID modul;
+- SD karta;
+- senzor;
+- driver s diagnostikou;
+- čip paměti.
 
-If the module is supposed to respond and `MISO` is not connected or mixed up, initialization may fail.
+Pokud má modul reagovat a `MISO` není připojena či je prohozena, inicializace může selhat.
 
-## SPI speed and mode
+## Rychlost SPI a režim
 
-SPI has a speed. It can be much higher than I2C, but that does not mean you need to set maximum immediately.
+SPI má rychlost. Může být mnohem vyšší než I2C, ale to neznamená, že musíte nastavit maximum hned.
 
-Work is affected by:
+Práce je ovlivňena:
 
-- wire length;
-- ground quality;
-- module and its datasheet;
-- noise level;
-- controller frequency;
-- chosen SPI mode.
+- délkou vodiče;
+- kvalitou zem;
+- modulem a jeho datalistem;
+- úrovní šumu;
+- frekvencí kontroléru;
+- zvoleným SPI režimem.
 
-SPI mode is set by clock polarity and clock phase parameters: `CPOL` and `CPHA`. Mode 0 is often used, but not always. If the mode is wrong, the device may not respond or return incorrect data.
+SPI režim je nastaven parametry polarity a fáze hodinky: `CPOL` a `CPHA`. Režim 0 se často používá, ale ne vždy. Pokud je režim špatný, zařízení nemusí reagovat či vrátit špatná data.
 
-In most ready-made libraries, the mode is already set. But if you are connecting an unusual module or writing low-level configuration, you need to check the datasheet.
+Ve větši hotových knihoven je režim už nastaven. Ale pokud připojujete neobvyklý modul či píšete nízkoúrovňovou konfiguraci, musíte zkontrolovat datalist.
 
-## 3.3V and 5V
+## 3.3V a 5V
 
-Like other interfaces, SPI does not guarantee safe voltage levels.
+Stejně jako ostatní rozhraní SPI nezaručuje bezpečné napěťové úrovně.
 
-ESP32, RP2040, STM32, and many modern modules operate with `3.3V` logic. Arduino Uno/Nano often uses `5V`.
+ESP32, RP2040, STM32 a mnoho moderních modulů pracují s logikou `3.3V`. Arduino Uno/Nano často používá `5V`.
 
-Before connecting, verify:
+Před připojením ověřte:
 
-- module power;
-- logic level of `SCK`, `MOSI`, `MISO`, `CS`;
-- if there is level matching;
-- if the module tolerates `5V` on signal inputs;
-- if the controller input tolerates `5V`.
+- napájení modulu;
+- logickou úroveň `SCK`, `MOSI`, `MISO`, `CS`;
+- zda je sladění úrovní;
+- zda modul toleruje `5V` na vstupech signálů;
+- zda vstup kontroléru toleruje `5V`.
 
-For example, RC522 typically requires `3.3V` power and logic. Connecting it to a `5V` Arduino without level matching is a bad idea.
+Například RC522 typicky vyžaduje napájení a logiku `3.3V`. Připojení na Arduino `5V` bez sladění úrovní je špatný nápad.
 
-## SPI in Klipper
+## SPI v Klipperu
 
-In Klipper, SPI is used for various devices: TMC drivers, accelerometers, some displays, and sensors.
+V Klipperu se SPI používá na různá zařízení: TMC drivery, akcelerometry, některé displeje a sensory.
 
-Configuration may include:
+Konfigurace může obsahovat:
 
-- `cs_pin` - device select pin;
-- `spi_bus` - hardware SPI bus;
-- `spi_speed` - speed in Hz;
+- `cs_pin` - pin výběru zařízení;
+- `spi_bus` - hardwarová SPI sběrnice;
+- `spi_speed` - rychlost v Hz;
 - `spi_software_sclk_pin`;
 - `spi_software_mosi_pin`;
 - `spi_software_miso_pin`.
 
-If the device is connected to an additional MCU, the pins should belong to that MCU. As with other Klipper sections, the specific board pinout is more important than guesses.
+Pokud je zařízení připojeno na dodatečný MCU, piny by měly patřit tomu MCU. Stejně jako u ostatních sekcí Klipperu je konkrétní rozložení pinů desky důležitější než odhady.
 
-Rough idea:
+Hrubá představa:
 
 ```ini
 [some_spi_device]
@@ -147,31 +147,31 @@ spi_software_mosi_pin: chamber:gpio11
 spi_software_miso_pin: chamber:gpio12
 ```
 
-This is not a ready config for a specific device, but an illustration: all SPI pins must be on the MCU to which the module is actually connected.
+To není hotová konfigurace konkrétního zařízení, ale ilustrace: všechny SPI piny musí být na MCU, ke kterému je modul skutečně připojen.
 
-## Wire length and interference
+## Délka vodiče a interference
 
-SPI can work fast, but does not like long, sloppy wiring.
+SPI může fungovat rychle, ale nemá rád dlouhé, chaotické zapojení.
 
-Practical rules:
+Praktická pravidla:
 
-- keep `SCK`, `MOSI`, `MISO`, `CS` short;
-- route near `GND`;
-- do not route parallel to heater and motor wires;
-- reduce `spi_speed` if there are errors;
-- use proper connectors;
-- do not pull SPI across the entire printer without reason;
-- for remote nodes, more often choose CAN, UART/RS-485, or a separate MCU near the module.
+- udržujte `SCK`, `MOSI`, `MISO`, `CS` krátké;
+- vedete blízko `GND`;
+- nevedete paralelně s vodiči topidla a motoru;
+- snižte `spi_speed`, pokud jsou chyby;
+- používejte správné konektory;
+- nevedete SPI přes celou tiskárnu bez důvodu;
+- pro vzdálené uzly si spíše vyberte CAN, UART/RS-485 nebo oddělený MCU blízko modulu.
 
-The `SCK` line is especially sensitive: it is a clock signal. If it is dirty, all communication can become unstable.
+Linka `SCK` je obzvláště citlivá: je to hodinový signál. Pokud je špinavá, všechna komunikace může být nestabilní.
 
-## SPI and RC522
+## SPI a RC522
 
-RC522 is a good example of an SPI module with naming confusion.
+RC522 je dobrý příklad SPI modulu s matením v pojmenování.
 
-On many RC522 boards, the `SDA` pin is actually used as `SS`/`CS` for SPI. This is not I2C `SDA`.
+Na mnohých deskách RC522 je pin `SDA` skutečně používán jako `SS`/`CS` pro SPI. To není I2C `SDA`.
 
-For RC522, you typically need:
+Na RC522 typicky potřebujete:
 
 - `3.3V`;
 - `GND`;
@@ -180,48 +180,48 @@ For RC522, you typically need:
 - `MISO`;
 - `SDA`/`SS`/`CS`;
 - `RST`;
-- sometimes `IRQ`, but in simple projects it is often not used.
+- někdy `IRQ`, ale v jednoduchých projektech se často nepoužívá.
 
-A detailed diagram is in the practical article: [Connecting an RFID reader](../06-practical-guides/05-connecting-rfid-reader.md).
+Podrobný diagram je v praktickém článku: [Připojení RFID čtečky](../06-practical-guides/05-connecting-rfid-reader.md).
 
-## What to check before connecting
+## Co zkontrolovat před připojením
 
-Before connecting an SPI module, verify:
+Před připojením SPI modulu ověřte:
 
-- module power;
-- logic level;
-- pinout of the specific board;
-- where are `SCK`, `MOSI`, `MISO`, `CS`;
-- if `RST`, `DC`, `IRQ`, or other pins are needed;
-- which `CS` is assigned to the device;
-- if `CS` does not conflict with another module;
-- if hardware SPI or software SPI is needed;
-- what speed the documentation recommends;
-- if the firmware supports this module.
+- napájení modulu;
+- logickou úroveň;
+- rozložení pinů konkrétní desky;
+- kde jsou `SCK`, `MOSI`, `MISO`, `CS`;
+- zda se potřebují `RST`, `DC`, `IRQ` či jiné piny;
+- který `CS` je přiřazen zařízení;
+- zda se `CS` nekonfliktu s jiným modulem;
+- zda je potřeba hardwarový nebo softwarový SPI;
+- jakou rychlost dokumentace doporučuje;
+- zda firmware toto zařízení podporuje.
 
-## Typical mistakes
+## Typické chyby
 
-- mixed up `MOSI` and `MISO`;
-- forgot `CS`;
-- connected two devices to one `CS`;
-- did not connect common `GND`;
-- applied `5V` to a `3.3V` SPI module;
-- mistook `SDA` on RC522 for I2C `SDA`;
-- selected too high a speed;
-- made wires too long;
-- connected the module to one MCU, but specified pins from another;
-- think SPI is a power interface to drive load.
+- prohození `MOSI` a `MISO`;
+- zapomenutí `CS`;
+- připojení dvou zařízení na jeden `CS`;
+- nepřipojení společné `GND`;
+- aplikace `5V` na modul SPI `3.3V`;
+- plení si `SDA` na RC522 s I2C `SDA`;
+- výběr příliš vysoké rychlosti;
+- příliš dlouhé vodiče;
+- připojení modulu na jeden MCU, ale zadání pinů z druhého;
+- myšlenka, že SPI je silové rozhraní na řízení zátěže.
 
-## Key takeaway
+## Klíčové pozorování
 
-SPI is a fast interface for modules near the controller. Usually you need `SCK`, `MOSI`, `MISO`, `CS`, power, and `GND`.
+SPI je rychlé rozhraní na moduly blízko kontroléru. Obvykle potřebujete `SCK`, `MOSI`, `MISO`, `CS`, napájení a `GND`.
 
-The main difference from I2C: SPI usually has no addresses, and each device is selected by a separate `CS`. Before connecting, verify pinout, logic levels, speed, wire length, and firmware support.
+Hlavní rozdíl od I2C: SPI obvykle nemá adresy a každé zařízení se vybírá oddělou `CS`. Před připojením ověřte rozložení pinů, logickou úroveň, rychlost, délku vodiče a podporu firmwaru.
 
-## Related materials
+## související materiály
 
-- [SparkFun: Serial Peripheral Interface](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi) - practical explanation of SPI, data lines, new PICO/POCI names, and basic exchange logic.
-- [SparkFun: SPI Chip Select](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi/chip-select-cs) - why `CS` is needed and how to connect multiple SPI devices.
-- [Adafruit: SPI Devices](https://learn.adafruit.com/circuitpython-basics-i2c-and-spi/spi-devices) - SPI vs I2C comparison, separate `CS`, speed, polarity/phase, and limitations.
-- [DigiKey: SPI Simplifies Device Communication](https://www.digikey.com/en/articles/why-how-to-use-serial-peripheral-interface-simplify-connections-between-multiple-devices) - options for connecting multiple SPI devices and role of `CS`.
-- [Klipper Configuration Reference: Common SPI settings](https://www.klipper3d.org/Config_Reference.html) - `spi_speed`, `spi_bus`, software SPI, and `cs_pin` parameters in Klipper.
+- [SparkFun: Serial Peripheral Interface](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi) - praktický výklad SPI, datových linek, nových jmen PICO/POCI a logiky základní výměny.
+- [SparkFun: SPI Chip Select](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi/chip-select-cs) - proč je `CS` potřeba a jak připojit více SPI zařízení.
+- [Adafruit: SPI Devices](https://learn.adafruit.com/circuitpython-basics-i2c-and-spi/spi-devices) - srovnání SPI vs I2C, oddělená `CS`, rychlost, polarita/fáze a omezení.
+- [DigiKey: SPI Simplifies Device Communication](https://www.digikey.com/en/articles/why-how-to-use-serial-peripheral-interface-simplify-connections-between-multiple-devices) - možnosti připojení více SPI zařízení a role `CS`.
+- [Klipper Configuration Reference: Common SPI settings](https://www.klipper3d.org/Config_Reference.html) - `spi_speed`, `spi_bus`, softwarový SPI a parametry `cs_pin` v Klipperu.

@@ -1,6 +1,6 @@
 # Wärmebeständige Materialien
 
-Für Teile in der Nähe von Wärme ist wichtig nicht die Bezeichnung „wärmebeständig" sondern das echte Material-Verhalten in deinem spezifischen Design.
+Für Teile in der Nähe von Wärme ist nicht die Bezeichnung „wärmebeständig“ wichtig, sondern das echte Material-Verhalten in Ihrem spezifischen Design.
 
 Ein Teil kann nicht schmelzen, aber es kann bereits:
 
@@ -19,7 +19,7 @@ Daher ist „Schmelztemperatur" fast nie der Hauptparameter für ein Gehäuse, e
 
 Eine heiße Zone ist nicht nur wo der Heizer sitzt.
 
-In einem selbstgebauten Gerät können heiße Bereiche beinhalten:
+In einem selbstgebauten Gerät können heiße Bereiche enthalten:
 
 - Luftstrom nach dem Heizer;
 - Wand in der Nähe des Heizers;
@@ -29,7 +29,7 @@ In einem selbstgebauten Gerät können heiße Bereiche beinhalten:
 - Stelle neben einer SSR oder MOSFET mit Wärmeleitung;
 - geschlossene Kammer, die sich völlig erwärmt.
 
-Falls ein Teil in einer solchen Zone ist, wird Material mit Sicherheitsspanne gewählt und in echtem Zusammenbau getestet.
+Falls ein Teil in einer solchen Zone ist, wird Material mit Sicherheitsspanne ausgewählt und in echtem Zusammenbau getestet.
 
 ## Betriebstemperatur, nicht Schmelzen
 
@@ -63,7 +63,7 @@ Dies ist keine „besser-schlechter" Ranking. Es ist eine Liste von Optionen mit
 
 ## PETG
 
-PETG funktioniert für viele Teile in einer moderaten Temperaturzone:
+PETG funktioniert für viele Teile in einer gemäßigten Temperaturzone:
 
 - Elektronik-Abdeckungen;
 - Lüfter-Halterungen;
@@ -75,13 +75,13 @@ Aber PETG kann unter Last erweichen und kriechen. Falls ein Teil einen Heizer, e
 
 ## ABS und ASA
 
-ABS und ASA funktionieren normalerweise besser in heißeren Zonen als PETG.
+ABS und ASA funktionieren in heißeren Zonen normalerweise besser als PETG.
 
 Sie werden in Betracht gezogen für:
 
 - Kammer-Gehäuse;
 - Luftkanäle;
-- Halterungen in warmer Umgebung;
+- Halterungen in wärmerer Umgebung;
 - technische Teile;
 - Teile, die Form länger behalten müssen.
 
@@ -120,7 +120,7 @@ Nasses Nylon druckt schlecht: Blasen, Zischen, schlechte Oberfläche und schwach
 
 ## PC / Polycarbonat
 
-Polycarbonat wird in Betracht gezogen, wenn du hohe Festigkeit und Temperaturbeständigkeit brauchst.
+Polycarbonat wird in Betracht gezogen, wenn hohe Festigkeit und Temperaturbeständigkeit erforderlich sind.
 
 Vorteile:
 
@@ -137,7 +137,7 @@ Nachteile:
 - benötigt stabile warme Umgebung;
 - nicht jeder Drucker ist geeignet.
 
-PC ist kein „Anfänger" Material. Falls das Drucken instabil ist, kann ein Teil normal aussehen, aber schlechte Schichthaftung haben.
+PC ist kein „Anfänger“-Material. Falls das Drucken instabil ist, kann ein Teil normal aussehen, aber schlechte Schichthaftung haben.
 
 ## Composites
 
@@ -207,7 +207,7 @@ Falls die Ausfalls-Konsequenz ernsthaft ist, möchtest du nicht „den bequemste
 - PETG ist grundlegend Option für moderate Zone, nicht universeller Wärmeschutz.
 - ABS/ASA handhaben Wärme besser, benötigen aber Druckbedingungen und Belüftung.
 - Nylon und PC sind technische Materialien für erfahrene Benutzer und geeignete Ausrüstung.
-- In hot and load-bearing locations, metal or a ready-made heat-resistant bracket is often better.
+- An heißen und belastbaren Standorten ist oft Metall oder eine vorgefertigte hitzebeständige Halterung besser.
 
 ## References
 

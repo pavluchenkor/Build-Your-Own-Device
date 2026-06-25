@@ -4,7 +4,7 @@ La conductividad térmica muestra qué tan fácilmente un material transfiere ca
 
 Para una secadora casera, cámara, filtro, conducto de aire o carcasa, esto no es física abstracta. La conductividad térmica determina si el calor escapará hacia afuera, si aparecerá un punto caliente cerca del calentador, cuánto se calentará la pared exterior y si una pieza impresa se ablandará.
 
-## Idea Simple
+## idea sencilla
 
 El calor siempre tiende a escapar de una zona más caliente a una más fría. Cuanto mayor sea la conductividad térmica de un material, más fácilmente pasa el calor a través de él.
 

@@ -15,7 +15,7 @@ Sie müssen einen Thermistor überprüfen, wenn:
 
 ## Zuerst Stromversorgung ausschalten
 
-Der Widerstand wird nur in De-energisierten Schaltkreisen gemessen.
+Der Widerstand wird nur in stromlosen Schaltkreisen gemessen.
 
 Vor der Überprüfung:
 
@@ -105,7 +105,7 @@ Wenn sich die Messwerte ändern, wenn Sie den Draht bewegen, ist dies keine "Sen
 
 ## Überprüfung in Klipper
 
-In Klipper wird der Sensortyp in der Konfiguration festgelegt.
+Im Klipper wird der Sensortyp in der Konfiguration festgelegt.
 
 Beispiel für einen typischen Kammertemperatursensor:
 
@@ -130,13 +130,13 @@ min_temp: 0
 max_temp: 90
 ```
 
-Pin-Namen hier sind typisch. In einem echten Gerät überprüfen Sie die Pinout Ihres Boards.
+Pin-Namen hier sind typisch. Überprüfen Sie in einem echten Gerät die Pinbelegung Ihres Boards.
 
 Wichtig: `sensor_type` muss mit dem realen Sensor übereinstimmen. Zwei Thermistoren können identisch aussehen, haben aber unterschiedliche Tabellen. Wenn Sie den falschen Typ wählen, kann die Temperatur besonders im Arbeitsheizbreich erheblich ungenau sein.
 
 ## Was in der Benutzeroberfläche zu überwachen ist
 
-Nach der Verbindung überprüfen Sie die Temperatur in der Klipper-Oberfläche, Mainsail, Fluidd oder anderer Benutzeroberfläche.
+Überprüfen Sie nach der Verbindung die Temperatur in der Klipper-Oberfläche, dem Großsegel, der Flüssigkeit oder einer anderen Benutzeroberfläche.
 
 Bei Raumtemperatur sollte die Ablesung nahe der tatsächlichen Raumtemperatur liegen.
 
@@ -154,7 +154,7 @@ Wenn der Sensor am Heizer sitzt, starten Sie nicht mit ausgedehntem Heizen, bis 
 
 ## Firmware-Fehler
 
-In 3D-Drucker-Firmware sind Temperaturfehler kein geringes Problem, sondern Teil der Sicherheit.
+In der 3D-Drucker-Firmware sind Temperaturfehler kein geringes Problem, sondern Teil der Sicherheit.
 
 Für eine typische Schaltung mit einem NTC und dem Onboard-Pull-up:
 
@@ -195,7 +195,7 @@ Vor dem ersten Heizen:
 - Drähte reagieren nicht mit Sprüngen, wenn sie bewegt werden;
 - Stecker ist korrekt eingesetzt;
 - korrekter `sensor_type` ist in der Firmware gewählt;
-- Temperatur in der Benutzeroberfläche sieht wie Raumtemperatur aus;
+- Temperatur in der Benutzeroberfläche sieht aus wie Raumtemperatur;
 - Sensor ist sicher an der richtigen Stelle montiert;
 - `min_temp` und `max_temp` sind vernünftig für das Gerät eingestellt.
 
@@ -214,7 +214,7 @@ Vor dem ersten Heizen:
 
 ## Wichtigste Punkte
 
-- Der Widerstand wird nur in De-energisierten Schaltkreisen gemessen.
+- Der Widerstand wird nur in stromlosen Schaltkreisen gemessen.
 - Ein typisches NTC 100K ist bei `25°C` etwa `100 kOhm`.
 - Wenn geheizt, sinkt der NTC-Widerstand.
 - `OL` bedeutet meist offenen Stromkreis, fast `0 Ohm` bedeutet Kurzschluss.

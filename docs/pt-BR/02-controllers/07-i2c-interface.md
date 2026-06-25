@@ -1,196 +1,196 @@
 # Interface I2C
 
-I2C is a communication interface for small microchips and modules near the controller. Expansion: `Inter-Integrated Circuit`. In documentation you often see `I2C bus`.
+I2C é uma interface de comunicação para pequenos microchips e módulos próximos do controlador. Expansão: `Inter-Integrated Circuit`. Na documentação, frequentemente vê-se `barramento I2C`.
 
-Main idea: multiple devices can be connected to the same two signal lines `SDA` and `SCL` if they have different addresses.
+Ideia principal: vários dispositivos podem ser conectados às mesmas duas linhas de sinal `SDA` e `SCL` se tiverem endereços diferentes.
 
-## Where I2C is used
+## Onde I2C é utilizado
 
-In simple devices around a 3D printer, I2C is often used for:
+Em dispositivos simples ao redor de uma impressora 3D, I2C é frequentemente utilizado para:
 
-- OLED displays;
-- temperature, humidity, pressure, and light sensors;
-- real-time clocks;
-- GPIO expanders;
-- some encoders and button modules;
-- I2C multiplexers;
-- some RFID/NFC modules;
-- small auxiliary boards.
+- displays OLED;
+- sensores de temperatura, humidade, pressão e luz;
+- relógios em tempo real;
+- expansores GPIO;
+- alguns módulos de codificador e botões;
+- multiplicadores I2C;
+- alguns módulos RFID/NFC;
+- pequenas placas auxiliares.
 
-I2C works well for short connections within one enclosure. For long wires across the entire printer or near power lines, it becomes more risky.
+I2C funciona bem para conexões curtas dentro de um enclosure. Para fios longos em toda a impressora ou perto de linhas de potência, torna-se mais arriscado.
 
-## SDA, SCL, power, and GND
+## SDA, SCL, potência e GND
 
-An I2C module typically has 4 contacts:
+Um módulo I2C normalmente tem 4 contactos:
 
-- `VCC` or `VIN` - power;
-- `GND` - common ground;
-- `SDA` - data;
-- `SCL` - clock signal.
+- `VCC` ou `VIN` - potência;
+- `GND` - terra comum;
+- `SDA` - dados;
+- `SCL` - sinal de relógio.
 
-A circuit with multiple devices looks like this:
+Um circuito com vários dispositivos fica assim:
 
-![I2C bus: one master and three devices on common SDA/SCL](../../img/02-controllers/07-i2c-bus-topology.svg)
+![Barramento I2C: um mestre e três dispositivos em SDA/SCL comum](../../img/02-controllers/07-i2c-bus-topology.svg)
 
-*Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:I2C.svg), Cburnett, CC BY-SA 3.0*
+*Fonte: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:I2C.svg), Cburnett, CC BY-SA 3.0*
 
-All devices on the same I2C bus connect to the same `SDA`, `SCL`, and `GND`. Power can be common, but its voltage and logic levels must be verified for each module.
+Todos os dispositivos no mesmo barramento I2C conectam-se aos mesmos `SDA`, `SCL` e `GND`. A potência pode ser comum, mas sua tensão e níveis lógicos devem ser verificados para cada módulo.
 
-## Device addresses
+## Endereços de dispositivos
 
-Each I2C device has an address. For example, small OLEDs often use `0x3C`, some sensors use `0x76`, `0x77`, `0x68`, `0x69`, and so on.
+Cada dispositivo I2C tem um endereço. Por exemplo, pequenos OLEDs frequentemente utilizam `0x3C`, alguns sensores utilizam `0x76`, `0x77`, `0x68`, `0x69` e assim por diante.
 
-If two devices on the same bus have the same address, the controller cannot properly address them individually.
+Se dois dispositivos no mesmo barramento têm o mesmo endereço, o controlador não consegue endereçá-los individualmente corretamente.
 
-What to do with address conflicts:
+O que fazer com conflitos de endereço:
 
-- change the address via jumper or solder bridge, if the module supports it;
-- select a different module variant;
-- use an I2C multiplexer;
-- split devices across different I2C buses, if the controller and firmware allow it.
+- alterar o endereço através de jumper ou ponte de soldagem, se o módulo o suportar;
+- selecionar uma variante de módulo diferente;
+- utilizar um multiplicador I2C;
+- dividir dispositivos em diferentes barramentos I2C, se o controlador e firmware o permitirem.
 
-Address is often given in hexadecimal format (`hex`): `0x3C`. But some firmware or configs may require decimal format (`decimal`). For example, `0x3C` in decimal is `60`. You need to check the documentation of the specific system.
+O endereço é frequentemente dado em formato hexadecimal (`hex`): `0x3C`. Mas alguns firmware ou configurações podem exigir formato decimal (`decimal`). Por exemplo, `0x3C` em decimal é `60`. Precisa de verificar a documentação do sistema específico.
 
-## Pull-up resistors
+## Resistores de pull-up
 
-I2C lines work through pull-up resistors. Devices on the bus can typically pull `SDA` or `SCL` low, and the high level comes from pull-up to the logic supply.
+As linhas I2C funcionam através de resistores de pull-up. Os dispositivos no barramento podem normalmente puxar `SDA` ou `SCL` para baixo, e o nível alto vem de pull-up para a alimentação lógica.
 
-Without pull-ups, the bus may not work. But too many modules with their own pull-ups on one bus can also be a problem: the total resistance becomes too small, the lines are loaded harder, signal edges and levels may degrade.
+Sem pull-ups, o barramento pode não funcionar. Mas muitos módulos com seus próprios pull-ups num barramento também pode ser um problema: a resistência total fica demasiado pequena, as linhas ficam carregadas mais pesadamente, as margens de sinal e níveis podem degradar-se.
 
-Practically:
+Praticamente:
 
-- many OLEDs and sensor boards already have pull-up resistors;
-- on a short simple bus this usually works immediately;
-- if there are many devices, you need to check the module schematics and total pull-ups;
-- if the bus is unstable, one of the first checks is pull-up resistors.
+- muitos OLEDs e placas de sensor já têm resistores de pull-up;
+- num barramento simples curto isto normalmente funciona imediatamente;
+- se há muitos dispositivos, precisa verificar os esquemas do módulo e pull-ups totais;
+- se o barramento é instável, uma das primeiras verificações é dos resistores de pull-up.
 
-A common starting resistance for a separate bus is around `4.7 kOhm`, but pull-ups in ready-made modules may be different.
+Uma resistência inicial comum para um barramento separado é por volta de `4.7 kOhm`, mas pull-ups em módulos prontos podem ser diferentes.
 
-## 3.3V and 5V
+## 3.3V e 5V
 
-I2C is especially sensitive to voltage levels, because `SDA` and `SCL` are usually pulled to some supply voltage.
+I2C é especialmente sensível a níveis de tensão, porque `SDA` e `SCL` são normalmente puxados para alguma tensão de alimentação.
 
-ESP32, RP2040, and STM32 typically operate with `3.3V` logic. Arduino Uno/Nano often operates with `5V` logic.
+ESP32, RP2040 e STM32 normalmente operam com lógica `3.3V`. Arduino Uno/Nano frequentemente opera com lógica `5V`.
 
-Dangerous situation:
+Situação perigosa:
 
-- `3.3V` controller;
-- I2C module powered from `5V`;
-- pull-up resistors on the module pull `SDA` and `SCL` to `5V`.
+- controlador `3.3V`;
+- módulo I2C alimentado a partir de `5V`;
+- resistores de pull-up no módulo puxam `SDA` e `SCL` para `5V`.
 
-In this case, `5V` may appear on the controller's GPIO. This can damage the microcontroller.
+Neste caso, `5V` pode aparecer no GPIO do controlador. Isto pode danificar o microcontrolador.
 
-Before connecting, verify:
+Antes de conectar, verifique:
 
-- what voltage the module is powered from;
-- what `SDA` and `SCL` are pulled to;
-- if there is a level converter on the module;
-- if the module is compatible with a `3.3V` controller.
+- de que tensão o módulo é alimentado;
+- para onde `SDA` e `SCL` são puxados;
+- se há conversor de nível no módulo;
+- se o módulo é compatível com um controlador `3.3V`.
 
-If in doubt, use `3.3V` power for I2C modules or a level converter.
+Se tiver dúvidas, utilize potência `3.3V` para módulos I2C ou um conversor de nível.
 
-## Speed
+## Velocidade
 
-Typical I2C speeds:
+Velocidades I2C típicas:
 
 ```text
-100000   # standard mode, 100 kHz
-400000   # fast mode, 400 kHz
+100000   # modo padrão, 100 kHz
+400000   # modo rápido, 400 kHz
 ```
 
-For short wires and normal modules, `400 kHz` often works. But for long wires, weak pull-ups, many devices, or noisy environment, it's better to start with `100 kHz`.
+Para fios curtos e módulos normais, `400 kHz` frequentemente funciona. Mas para fios longos, pull-ups fracos, muitos dispositivos ou ambiente ruidoso, é melhor começar com `100 kHz`.
 
-In Klipper, the `i2c_speed` parameter is not equally supported across all MCUs. The documentation states that many microcontrollers use `100000`, while some platforms support `400000`. So you cannot just write a high speed and assume it is actually applied.
+Em Klipper, o parâmetro `i2c_speed` não é igualmente suportado em todos os MCUs. A documentação afirma que muitos microcontroladores utilizam `100000`, enquanto algumas plataformas suportam `400000`. Portanto, não pode simplesmente escrever uma velocidade alta e assumir que é realmente aplicada.
 
-## I2C scanner
+## Scanner I2C
 
-An I2C scanner is a small program or command that iterates through addresses and shows which devices respond on the bus.
+Um scanner I2C é um pequeno programa ou comando que itera através de endereços e mostra quais dispositivos respondem no barramento.
 
-It helps understand:
+Ajuda a compreender:
 
-- does the controller see the module;
-- what is the device address;
-- are `SDA` and `SCL` mixed up;
-- is there power and common `GND`;
-- is there an address conflict.
+- o controlador vê o módulo;
+- qual é o endereço do dispositivo;
+- `SDA` e `SCL` estão misturados;
+- há potência e `GND` comum;
+- há conflito de endereço.
 
-But the scanner does not prove the device fully works. It only shows that someone responds at that address.
+Mas o scanner não prova que o dispositivo funciona completamente. Apenas mostra que alguém responde nesse endereço.
 
-## I2C in Klipper
+## I2C em Klipper
 
-In Klipper, an I2C device is connected to a specific MCU.
+Em Klipper, um dispositivo I2C é conectado a um MCU específico.
 
-Configuration may include parameters:
+A configuração pode incluir parâmetros:
 
-- `i2c_mcu` - which MCU the device is connected to;
-- `i2c_bus` - hardware I2C bus, if there are multiple;
-- `i2c_software_scl_pin` and `i2c_software_sda_pin` - software I2C on selected pins;
-- `i2c_address` - device address;
-- `i2c_speed` - speed, if supported.
+- `i2c_mcu` - para qual MCU o dispositivo está conectado;
+- `i2c_bus` - barramento I2C de hardware, se há múltiplos;
+- `i2c_software_scl_pin` e `i2c_software_sda_pin` - I2C de software em pinos selecionados;
+- `i2c_address` - endereço do dispositivo;
+- `i2c_speed` - velocidade, se suportada.
 
-Important: `i2c_address` in Klipper is often specified as a decimal number, not hex format. If the datasheet says `0x3C`, the config may require `60`.
+Importante: `i2c_address` em Klipper é frequentemente especificada como um número decimal, não formato hex. Se a datasheet diz `0x3C`, a configuração pode exigir `60`.
 
-If the device is connected to an additional MCU, that must also be specified. Otherwise Klipper will look for it on the main board.
+Se o dispositivo está conectado a um MCU adicional, isto também deve ser especificado. Caso contrário, Klipper irá procurá-lo na placa principal.
 
-## Wire length and interference
+## Comprimento de fio e interferência
 
-I2C is designed for short connections. Inside a small enclosure or on one board, it is convenient. In a 3D printer, conditions are worse:
+I2C é projectado para conexões curtas. Dentro de um pequeno enclosure ou numa placa, é conveniente. Numa impressora 3D, as condições são piores:
 
-- motors nearby;
-- heaters nearby;
-- long wires;
-- connectors on doors;
-- power lines of fans and heaters;
-- electromagnetic interference.
+- motores próximos;
+- aquecedores próximos;
+- fios longos;
+- conectores em portas;
+- linhas de potência de ventoinhaes e aquecedores;
+- interferência electromagnética.
 
-Practical rules:
+Regras práticas:
 
-- keep `SDA` and `SCL` short;
-- route them near `GND`;
-- do not route parallel to heater power wires;
-- do not make long ribbon cables to moving parts without reason;
-- reduce speed to `100 kHz` if there are errors;
-- use proper connectors and strain relief;
-- for long connections, choose another interface: UART, CAN, RS-485, or local MCU near the sensor.
+- manter `SDA` e `SCL` curtos;
+- encaminhar perto de `GND`;
+- não encaminhar paralelo a fios de potência de aquecedor;
+- não fazer cabos de fita longos para peças móveis sem motivo;
+- reduzir velocidade para `100 kHz` se há erros;
+- utilizar conectores adequados e alívio de tensão;
+- para conexões longas, escolha outra interface: UART, CAN, RS-485 ou MCU local perto do sensor.
 
-## What to check before connecting
+## O que verificar antes de conectar
 
-Before connecting an I2C module, verify:
+Antes de conectar um módulo I2C, verifique:
 
-- module power;
-- logic level;
-- what `SDA` and `SCL` are pulled to;
-- device address;
-- if the address can be changed;
-- if there is a conflict with other devices;
-- wire length;
-- if there is firmware support;
-- which MCU and bus the device connects to;
-- if hardware I2C or software I2C is needed.
+- potência do módulo;
+- nível lógico;
+- para onde `SDA` e `SCL` são puxados;
+- endereço do dispositivo;
+- se o endereço pode ser alterado;
+- se há conflito com outros dispositivos;
+- comprimento do fio;
+- se há suporte de firmware;
+- qual MCU e barramento o dispositivo conecta;
+- se é necessário I2C de hardware ou I2C de software.
 
-## Typical mistakes
+## Erros típicos
 
-- mixed up `SDA` and `SCL`;
-- forgot common `GND`;
-- applied `5V` pull-ups to a `3.3V` controller;
-- two devices have the same address;
-- specified hex address where decimal was needed;
-- used too long wires;
-- connected many modules with pull-up resistors;
-- chose a module not supported by firmware;
-- connected device to an additional MCU but did not specify `i2c_mcu`;
-- confuse I2C and I2S.
+- `SDA` e `SCL` misturados;
+- esqueceu `GND` comum;
+- aplicou pull-ups `5V` a um controlador `3.3V`;
+- dois dispositivos têm o mesmo endereço;
+- especificou endereço hex onde decimal era necessário;
+- utilizou fios demasiado longos;
+- conectou muitos módulos com resistores de pull-up;
+- escolheu um módulo não suportado por firmware;
+- conectou dispositivo a um MCU adicional mas não especificou `i2c_mcu`;
+- confundir I2C e I2S.
 
-## Key takeaway
+## Ponto-chave
 
-I2C is convenient for small displays, sensors, and auxiliary modules near the controller. It requires `SDA`, `SCL`, power, and common `GND`.
+I2C é conveniente para pequenos displays, sensores e módulos auxiliares próximos do controlador. Requer `SDA`, `SCL`, potência e `GND` comum.
 
-Main checks before connecting: address, `3.3V/5V` levels, pull-up resistors, wire length, and firmware support. In the noisy printer environment, keep I2C short.
+Verificações principais antes de conectar: endereço, níveis `3.3V/5V`, resistores de pull-up, comprimento de fio e suporte de firmware. No ambiente ruidoso da impressora, manter I2C curto.
 
-## Related materials
+## Materiais relacionados
 
-- [SparkFun: I2C at the Hardware Level](https://learn.sparkfun.com/tutorials/i2c/i2c-at-the-hardware-level) - practical explanation of `SDA`, `SCL`, open-drain lines, and pull-up resistors.
-- [SparkFun: I2C tutorial](https://learn.sparkfun.com/tutorials/i2c/all) - general I2C guide, addresses, multiple devices on a bus, and hardware features.
-- [Adafruit: STEMMA QT technical specs](https://learn.adafruit.com/introducing-adafruit-stemma-qt/technical-specs) - example of a standardized I2C connector, pinout, power, and `GND`.
-- [Adafruit: PCA9548 I2C multiplexer](https://learn.adafruit.com/adafruit-pca9548-8-channel-stemma-qt-qwiic-i2c-multiplexer/pinouts) - example of resolving duplicate I2C address conflicts via multiplexer.
-- [Klipper Configuration Reference: common I2C settings](https://www.klipper3d.org/Config_Reference.html) - `i2c_address`, `i2c_mcu`, `i2c_bus`, software I2C, and `i2c_speed` parameters.
+- [SparkFun: I2C at the Hardware Level](https://learn.sparkfun.com/tutorials/i2c/i2c-at-the-hardware-level) - explicação prática de `SDA`, `SCL`, linhas open-drain e resistores de pull-up.
+- [SparkFun: I2C tutorial](https://learn.sparkfun.com/tutorials/i2c/all) - guia I2C geral, endereços, múltiplos dispositivos num barramento e características de hardware.
+- [Adafruit: STEMMA QT technical specs](https://learn.adafruit.com/introducing-adafruit-stemma-qt/technical-specs) - exemplo de conector I2C padronizado, pinout, potência e `GND`.
+- [Adafruit: PCA9548 I2C multiplexer](https://learn.adafruit.com/adafruit-pca9548-8-channel-stemma-qt-qwiic-i2c-multiplexer/pinouts) - exemplo de resolução de conflitos de endereço I2C duplicados através de multiplicador.
+- [Klipper Configuration Reference: common I2C settings](https://www.klipper3d.org/Config_Reference.html) - parâmetros `i2c_address`, `i2c_mcu`, `i2c_bus`, I2C de software e `i2c_speed`.

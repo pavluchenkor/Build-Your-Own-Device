@@ -1,159 +1,159 @@
 # Erros de Fiação
 
-Wiring often breaks the device more than the electronics themselves.
+A fiação geralmente quebra mais o dispositivo do que os próprios componentes eletrônicos.
 
-Poor contact, reversed polarity, or weak terminal can look like a firmware, sensor, or controller error.
+Mau contato, polaridade invertida ou terminal fraco podem parecer um erro de firmware, sensor ou controlador.
 
 ## Symptoms
 
-Typical signs of wiring problems:
+Sinais típicos de problemas de fiação:
 
-- device works sometimes, then does not;
-- board detected only when cable is moved;
+- o dispositivo funciona às vezes e depois não;
+- placa detectada somente quando o cabo é movido;
 - sensors show garbage;
 - temperature jumps;
 - fan starts intermittently;
 - USB drops off;
 - terminal heats up;
 - wire darkens or smells;
-- module works on the bench but does not work in the case;
-- after closing the cover device stops working.
+- módulo funciona na bancada mas não funciona no case;
+- depois de fechar a tampa o dispositivo para de funcionar.
 
-If a symptom changes when the wire is moved, first check the wiring.
+Se um sintoma mudar quando o fio for movido, verifique primeiro a fiação.
 
-## Reversed Plus and Minus
+## Mais e menos invertidos
 
-Polarity cannot be checked "by color".
+A polaridade não pode ser verificada “por cor”.
 
-Red wire is often plus, black wire often minus, but this is not a guarantee. In a DIY device, the previous builder or you yourself may have mixed up the colors.
+O fio vermelho geralmente é positivo, o fio preto geralmente é negativo, mas isso não é uma garantia. Em um dispositivo DIY, o construtor anterior ou você mesmo pode ter misturado as cores.
 
-Before connecting:
+Antes de conectar:
 
 - check board markings;
 - check module pinout;
-- measure voltage with multimeter;
-- verify where `+` and where `GND`;
-- do not connect module if pinout is unclear.
+- medir a tensão com multímetro;
+- verifique onde `GND` e onde `GND`;
+- não conecte o módulo se a pinagem não estiver clara.
 
 Reversed polarity can instantly destroy a board, sensor, fan, or DC-DC.
 
 ## No Common Ground
 
-Common ground is needed when one module is powered separately, and the signal comes from the controller.
+O aterramento comum é necessário quando um módulo é alimentado separadamente e o sinal vem do controlador.
 
-Examples:
+Exemplos:
 
-- servo with separate 5V power;
+- servo com alimentação separada de 5V;
 - MOSFET module for fan;
 - 4-pin PWM fan;
 - HX711;
 - RFID module;
 - external sensor.
 
-Without common `GND` the signal may not make sense. Device may not respond, jerk, or work unstably.
+Sem o `GND` comum o sinal pode não fazer sentido. O dispositivo pode não responder, sacudir ou funcionar de forma instável.
 
-## Poor Contact in Terminal
+## Mau contato no terminal
 
-Terminal may look clamped, but hold the wire poorly.
+O terminal pode parecer preso, mas segura mal o fio.
 
 Reasons:
 
-- wire not inserted all the way;
-- insulation clamped instead of conductor;
+- fio não inserido completamente;
+- isolamento preso em vez de condutor;
 - stranded wire frayed;
 - screw loosened;
-- terminal not rated for current;
-- wire too thin or too thick for terminal;
-- no ferrule where needed.
+- terminal não classificado para corrente;
+- fio muito fino ou muito grosso para terminal;
+- sem ponteira onde necessário.
 
-Poor contact causes heating. Heating worsens the contact. This is a dangerous cycle.
+Mau contato causa aquecimento. O aquecimento piora o contato. Este é um ciclo perigoso.
 
-After a brief test under load, check if terminals and connectors are heating.
+Após um breve teste sob carga, verifique se os terminais e conectores estão aquecendo.
 
-## Dupont Not for Power Load
+## Dupont não para carga de energia
 
-Dupont wires are convenient for breadboards and weak signals.
+Os fios Dupont são convenientes para placas de ensaio e sinais fracos.
 
-But they cannot be considered normal power wiring for:
+Mas eles não podem ser considerados cabos de alimentação normais para:
 
 - heaters;
 - powerful fans;
 - LED strips;
-- servos with large current;
+- servos com grande corrente;
 - device power;
 - 110-230V AC.
 
-Dupont may hold poorly, have small contact area, and heat up at currents it is not designed for.
+O Dupont pode ter uma má aderência, ter uma pequena área de contato e aquecer em correntes para as quais não foi projetado.
 
-For the power part you need proper terminals, connectors, wire cross-section, and strain relief.
+Para a parte de alimentação, você precisa de terminais, conectores, seção transversal de fio e alívio de tensão adequados.
 
-## TX and RX
+## TX e RX
 
-For UART often cross-wiring is needed:
+Para UART, muitas vezes é necessária fiação cruzada:
 
-- `TX` of one device to `RX` of another;
-- `RX` of one device to `TX` of another;
+- `RX` de um dispositivo para `RX` de outro;
+- `TX` de um dispositivo para `TX` de outro;
 - common `GND`.
 
-Typical mistakes:
+Erros típicos:
 
 - connected `TX` to `TX`;
 - connected `RX` to `RX`;
 - forgot `GND`;
-- chose wrong speed;
-- logic levels do not match: 5V and 3.3V.
+- escolheu a velocidade errada;
+- os níveis lógicos não coincidem: 5V e 3,3V.
 
-If UART does not work, first check `TX/RX/GND`, then speed and settings.
+Se o UART não funcionar, primeiro verifique `TX/RX/GND`, depois a velocidade e as configurações.
 
-## I2C and SPI
+## I2C e SPI
 
-For I2C:
+Para I2C:
 
-- `SDA` must go to `SDA`;
-- `SCL` must go to `SCL`;
+- `SDA` deve ir para `SDA`;
+- `SCL` deve ir para `SCL`;
 - need common `GND`;
-- device address must not conflict;
-- wires must be short.
+- o endereço do dispositivo não deve entrar em conflito;
+- os fios devem ser curtos.
 
-For SPI:
+Para SPI:
 
-- `MOSI`, `MISO`, `SCK`, `CS` must match the pinout;
+- `MISO`, `SCK`, `CS`, `CS` devem corresponder à pinagem;
 - each device has its own `CS`;
 - need common `GND`;
-- long wires can break the connection.
+- fios longos podem interromper a conexão.
 
-RFID RC522 often confuses people: pin `SDA` on the board may mean `SS/CS` for SPI, not I2C `SDA`.
+RFID RC522 muitas vezes confunde as pessoas: o pino `SS/CS` na placa pode significar `SDA` para SPI, não I2C `SDA`.
 
-## Mains and Signal Wires
+## Fios principais e de sinal
 
-110-230V AC wires, power DC load, and weak signals must not be laid randomly in one bundle.
+Fios de 110-230 V CA, carga de alimentação CC e sinais fracos não devem ser colocados aleatoriamente em um pacote.
 
 Problems:
 
 - interference;
 - heating;
 - insulation damage;
-- risk of touching mains part;
+- risco de tocar na parte da rede elétrica;
 - difficult diagnostics;
 - user danger.
 
-Mains part must be separated physically. Low-voltage sensors, UART/I2C/SPI, and thermistor wires are better run separately from heater power wires.
+A parte principal deve ser separada fisicamente. Sensores de baixa tensão, UART/I2C/SPI e fios de termistor funcionam melhor separadamente dos fios de alimentação do aquecedor.
 
 ## Exposed Strands
 
-An exposed wire outside a terminal is a bad sign.
+Um fio exposto fora de um terminal é um mau sinal.
 
-It can:
+Pode:
 
 - touch a neighboring terminal;
-- short the case;
-- get under the cover;
-- hit the fan;
+- encurte o caso;
+- fique sob a capa;
+- bata no ventilador;
 - create a danger during maintenance.
 
-After clamping in the terminal no long bare strands should stick out.
+Após a fixação no terminal, nenhum fio longo e desencapado deverá sobressair.
 
-## What to Check
+## O que verificar
 
 Mini-checklist:
 
@@ -161,34 +161,34 @@ Mini-checklist:
 2. Common `GND`.
 3. Pinout correspondence.
 4. Terminal quality.
-5. No insulation clamped instead of conductor.
+5. Nenhum isolamento fixado em vez de condutor.
 6. No exposed strands.
 7. Wires not taut.
-8. Cover does not pinch cable.
-9. Power and signal wires separated.
-10. Connector rated for current.
-11. Device does not change behavior when wire is moved.
+8. A tampa não comprime o cabo.
+9. Fios de alimentação e sinal separados.
+10. Conector classificado para corrente.
+11. O dispositivo não altera o comportamento quando o fio é movido.
 
-## What Not to Do
+## O que não fazer
 
-You cannot:
+Você não pode:
 
 - change wires under power;
-- hold open mains part on the bench;
-- use Dupont for heater;
+- segure a parte aberta da rede elétrica na bancada;
+- use Dupont como aquecedor;
 - clamp stranded wire so some strands stick out;
-- twist power wires without proper connection;
+- torcer os fios de alimentação sem conexão adequada;
 - ignore a heating terminal;
-- consider "sometimes works" normal.
+- considere "às vezes funciona" normal.
 
 ## Key Points
 
-- If device responds to wire movement, this is a wiring problem.
-- Polarity is checked with multimeter, not by color.
-- Common `GND` is needed for most external modules with separate power.
-- Dupont is suitable for breadboards and signals, but not for power load.
-- Mains and low-voltage wires must be separated.
-- Heating terminal is reason to stop, not continue the test.
+- Se o dispositivo responder ao movimento do fio, isso é um problema de fiação.
+- A polaridade é verificada com multímetro, não por cor.
+- O `GND` comum é necessário para a maioria dos módulos externos com alimentação separada.
+- Dupont é adequado para protoboards e sinais, mas não para carga de energia.
+- Os fios da rede elétrica e de baixa tensão devem ser separados.
+- O terminal de aquecimento é motivo para parar e não continuar o teste.
 
 ## References
 

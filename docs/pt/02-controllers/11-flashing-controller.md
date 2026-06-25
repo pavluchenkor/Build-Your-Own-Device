@@ -12,7 +12,7 @@ Três conceitos diferentes:
 - **bootloader** - pequeno programa que ajuda a gravar o firmware principal;
 - **configuração** - definições do dispositivo, por exemplo `printer.cfg` no Klipper.
 
-O bootloader é executado primeiro e pode aceitar novo firmware via USB, UART, DFU, cartão SD, CAN ou outro mecanismo. Se o bootloader for acidentalmente apagado, a gravação da placa pode tornar-se difícil: por vezes é necessário ST-LINK/SWD, USB-UART ou outro programador.
+O bootloader é executado primeiro e pode aceitar novo firmware via USB, UART, DFU, cartão SD, CAN ou outro mecanismo. Se o bootloader for acidentalmente desligado, a gravação da placa pode tornar-se difícil: por vezes é necessário ST-LINK/SWD, USB-UART ou outro programador.
 
 ## Procedimento geral
 
@@ -62,7 +62,7 @@ Normalmente:
 4. Copie ficheiro `.uf2`.
 5. Disco desaparece, placa reinicia.
 
-O BOOTSEL do Pico está na ROM do microcontrolador, portanto não pode ser acidentalmente apagado por gravação normal. Isto torna o RP2040 conveniente para principiantes.
+O BOOTSEL do Pico está na ROM do microcontrolador, portanto não pode ser apagado acidentalmente por gravação normal. Isto torna o RP2040 conveniente para iniciantes.
 
 ## STM32: DFU, ST-LINK, cartão SD
 
@@ -79,7 +79,7 @@ Opções possíveis:
 
 Para STM32, o deslocamento do bootloader é frequentemente importante. Por exemplo, se o bootloader ocupa o primeiro `8 KiB`, o Klipper deve ser compilado com o deslocamento correcto. Se escolhido incorrectamente, a placa pode não iniciar após a gravação.
 
-ST-LINK/SWD é útil como uma opção de nível mais baixo: frequentemente pode recuperar uma placa se o bootloader normal não funcionar. Mas isto requer pinos SWD, programador e compreensão da ligação.
+ST-LINK/SWD é útil como uma opção de nível mais baixo: frequentemente pode recuperar uma placa se o bootloader normal não funcionar. Mas isso requer pinos SWD, programador e compreensão da ligação.
 
 ## Klipper: make menuconfig
 

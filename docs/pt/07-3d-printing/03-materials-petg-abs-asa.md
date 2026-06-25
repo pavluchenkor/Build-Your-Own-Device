@@ -2,7 +2,7 @@
 
 PETG, ABS e ASA são frequentemente considerados os materiais seguintes após PLA, quando uma peça deve ser não apenas bonita mas funcional.
 
-Em dispositivos em torno de um secador, câmara de impressora ou aquecedor, a escolha do material afecta a segurança. Uma peça pode parecer normal após impressão, mas após uma hora num invólucro morno pode começar a amolecer, deformar o conduto de ar, soltar fixadores ou deslocar um sensor.
+Em dispositivos em torno de uma secadora, câmara de impressora ou aquecedor, a escolha do material afeta a segurança. Uma peça pode parecer normal após a impressão, mas após uma hora num invólucro morno pode começar a amolecer, deformar o conduto de ar, soltar fixadores ou deslocar um sensor.
 
 ## PETG
 
@@ -87,7 +87,7 @@ Um guia bruto:
 
 Isto não é uma tabela de permissão. É apenas lógica inicial.
 
-A solução real depende da temperatura, distância ao aquecedor, fluxo de ar, carga, tempo de execução e consequências de falha.
+A verdadeira solução depende da temperatura, distância ao aquecedor, fluxo de ar, carga, tempo de execução e consequências de falha.
 
 ## A temperatura de fusão não é o parâmetro principal
 

@@ -125,7 +125,7 @@ Lignes directrices :
 
 ## Courant de démarrage et marge
 
-Quand un ventilateur démarre, il peut brièvement tirer plus de courant que pendant le fonctionnement normal.
+Quand un ventilateur démarre, il peut tirer plus de courant que pendant le fonctionnement normal.
 
 Si plusieurs ventilateurs sont connectés à une sortie, leurs courants s'ajoutent.
 
@@ -151,7 +151,7 @@ Circuit typique pour un ventilateur 12V ou 24V :
 
 C'est ce qu'on appelle la commutation bas-côté : le MOSFET casse le négatif de la charge.
 
-Pour un ventilateur 2 broches simple, c'est une option standard et claire si le module MOSFET est évalué pour la tension et le courant nécessaires. Pour un ventilateur 3 broches/4 broches avec tachymètre ou entrée PWM séparate, « couper le négatif » n'est pas toujours bon : la surveillance RPM et le contrôle PWM natif nécessitent généralement un `GND` commun constant.
+Pour un ventilateur 2 broches simple, c'est une option standard et claire si le module MOSFET est courant évalué pour la tension et le nécessaire. Pour un ventilateur 3 broches/4 broches avec tachymètre ou entrée PWM séparée, « couper le négatif » n'est pas toujours bon : la surveillance RPM et le contrôle PWM natif généralement un `GND` commun constant.
 
 ## Exemple de configuration Klipper
 

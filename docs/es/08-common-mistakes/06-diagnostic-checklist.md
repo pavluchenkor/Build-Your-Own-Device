@@ -2,7 +2,7 @@
 
 Esta lista de verificación es necesaria cuando el dispositivo no funciona o se comporta extrañamente.
 
-La idea es simple: primero elimina el peligro, luego verifica potencia y cableado y solo después muévete a firmware, sensores y cargas.
+La idea es simple: primero eliminar el peligro, luego verificar potencia y cableado y solo después muévete a firmware, sensores y cargas.
 
 ## 1. Detén y apaga el poder
 
@@ -83,7 +83,7 @@ Esto es importante para:
 - sensores externos;
 - DC-DC separado.
 
-Si las señales van entre dispositivos, deben tener un nivel de referencia común, a menos que el circuito use aislamiento especial.
+Si las señales de entre dispositivos, deben tener un nivel de referencia común, a menos que el circuito utilice aislamiento especial.
 
 ## 6. Verifica terminales y conectores
 

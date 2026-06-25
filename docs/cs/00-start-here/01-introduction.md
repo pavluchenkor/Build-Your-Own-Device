@@ -50,7 +50,7 @@ Jak číst:
 
 - pokud je téma nové — jděte v pořadí;
 - pokud jste již stavěli zařízení — otevřete potřebnou sekci jako referenci;
-- pokud zařízení nefunguje — nejdřív se podívejte na `08-common-mistakes`;
+- pokud zařízení nefunguje — nejprve se podívejte na `08-common-mistakes`;
 - pokud pracujete s `110-230V AC` — nejdřív přečtěte vše týkající se bezpečnosti, SSR, vodičů, svorek a ochranného uzemnění.
 
 ## Referenční materiály

@@ -126,7 +126,7 @@ Você precisa verificar:
 
 O rótulo `25A` ou `40A` não significa que o SSR suportará essa corrente sem dissipador num invólucro fechado e quente ao lado de um aquecedor. Os fabricantes geralmente especificam corrente sob condições específicas de resfriamento.
 
-Regra prática para um projeto simples: não escolha SSR exatamente para a corrente de carga. Planeje uma reserva, use um dissipador, leia a especificação técnica e verifique a temperatura no invólucro real. `50%` de margem é o limite inferior para estimativa inicial, não uma garantia para qualquer instalação.
+Recomendação prática para um projeto simples: não escolha SSR exatamente para corrente de carga. Planeje uma reserva, use um dissipador, leia a especificação técnica e verifique a temperatura no invólucro real. `50%` de margem é o limite inferior para estimativa inicial, não é uma garantia para qualquer instalação.
 
 ## SSR não protege o aquecedor
 
@@ -206,7 +206,7 @@ Se não há documentação e o SSR deve controlar um aquecedor da rede, é uma m
 
 SSR é conveniente para controle frequente silencioso de carga, especialmente aquecedor resistivo da rede. Mas SSR deve ser escolhido para tipo de carga, tensão, corrente, método de ligação e ponto operacional térmico.
 
-Para carga `110-230V AC`, SSR não elimina segurança elétrica. Você precisa de invólucro, fusível, fiação normal, dissipador se necessário e proteção térmica de aquecedor independente.
+Para carregar `110-230V AC`, SSR não elimina segurança elétrica. Você precisa de invólucro, composição, fibras normais, dissipador se necessário e proteção térmica de aquecimento independente.
 
 ## Materiais de referência
 
