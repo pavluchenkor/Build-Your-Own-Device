@@ -1,0 +1,55 @@
+- id: root
+  type: submenu
+  title: { ru: "MY DEVICE", en: "MY DEVICE" }
+  children:
+
+    - id: target_temp
+      type: value
+      role: storage.target_temperature
+      title: { ru: "ТЕМПЕРАТУРА", en: "TARGET TEMP" }
+      unit:  { ru: "°C", en: "°C" }
+      vtype: uint16
+      min: 30
+      max: 50
+      step: 1
+      bind: target_temp
+      persist: true
+      scope: global
+      default: 45
+
+    - id: hysteresis
+      type: value
+      title: { ru: "ГИСТЕРЕЗИС", en: "HYSTERESIS" }
+      unit:  { ru: "°C", en: "°C" }
+      vtype: uint8
+      min: 1
+      max: 5
+      step: 1
+      bind: hysteresis
+      persist: true
+      scope: global
+      default: 2
+
+    - id: units_count
+      type: value
+      title: { ru: "КОЛ-ВО ЮНИТОВ", en: "UNITS" }
+      vtype: uint8
+      min: 1
+      max: 1
+      step: 1
+      bind: units_count
+      persist: true
+      scope: global
+      default: 1
+
+    - id: language
+      type: value
+      title: { ru: "ЯЗЫК", en: "LANGUAGE" }
+      vtype: uint8
+      min: 0
+      max: 1
+      step: 1
+      bind: language
+      persist: true
+      scope: global
+      default: 1
