@@ -1,9 +1,85 @@
-<!-- i18n-placeholder: true -->
+---
+title: "自制加热柜的组装和启动前检查"
+description: "ESP32 柜的最终组装：在外壳中安装、首次升温、温度校准和启动前安全检查清单。"
+---
 
-# Translation wanted
+# 组装和检查
 
-This page is not available in this language yet.
+在本页中，你将设备组装到外壳中，进行首次受控升温，并检查柜的安全工作。按顺序进行检查，不要在首次启动时无人看管设备。
 
-You can help the iDryer project by translating this article. Please use the English or Russian version as the source, check the meaning carefully, and submit your translation as a pull request to the documentation repository.
+## 安装顺序
 
-Thank you for helping make the documentation available to more makers.
+1. 在外壳中固定 ESP32 和电源部分，使低功率和电源区分开。
+2. 在柜内远离加热器直接气流的地方放置 SHT31 传感器 — 否则它会显示气流温度，而不是体积中的空气温度。
+3. 将温度计固定在与加热器的热接触中。
+4. 检查导线不接触加热器且不进入风扇。
+5. 在版本 B（`220V`）中，确保网络导线在端子中固定，绝缘完好，外壳接地。
+
+外壳要求和节点放置 — [外壳设计](../07-3d-printing/05-enclosure-design.md)。
+
+!!! warning "打印部件靠近加热"
+    PLA 在接近加热器的温度附近软化。靠近热量的部件应从耐热材料打印。见[耐热材料](../07-3d-printing/04-heat-resistant-materials.md)和[为什么 PLA 有风险](../07-3d-printing/06-why-pla-is-risky.md)。
+
+## 通电前检查
+
+首次启动前用万用表检查：
+
+- 电源和地之间没有短路；
+- 传感器电源为 `3.3V`，而不是 `5V`；
+- 控制器和电源块的公共地；
+- 温度计和分压器正确组装；
+- 在版本 B 中 — 外壳接地和保险丝到位。
+
+如何使用万用表 — [万用表](../05-tools/02-multimeter.md)。
+
+## 首次启动
+
+1. 仅向控制器和传感器供电（暂不连接负载，如果可能的话）。
+2. 确保设备在门户网站上处于在线状态并显示温度和湿度。
+3. 连接加热器和风扇。
+4. 从门户网站启动热维护模式并观察。
+
+!!! danger "不要在首次升温时无人看管"
+    首次启动时监视设备。确保加热器在达到目标时以及通过温度计保护关闭，而不是连续加热。
+
+在前几分钟观察：
+
+- 空气温度上升并稳定在目标附近；
+- 加热器温度不超过指定限制；
+- 加热在达到目标时关闭，冷却磁滞量后再打开；
+- 风扇工作且不卡导线；
+- 加载打开时控制器不重启。
+
+## 校准
+
+首次升温后，用柜内的单独温度计检查读数：
+
+- 如果柜内空气温度与目标不同 — 检查 SHT31 放置（它不应该在气流或墙壁附近）；
+- 如果加热器温度看起来不可信 — 检查温度计类型和分压器电阻额定值；
+- 如需，调整[菜单](06-menu.md)中的目标温度和磁滞。
+
+## 如果出现问题
+
+| 症状 | 检查位置 |
+|---------|---------------|
+| 加负载时控制器重启 | [电源错误](../08-common-mistakes/02-power-mistakes.md) |
+| 传感器显示垃圾数据 | [接线错误](../08-common-mistakes/03-wiring-mistakes.md)、[检查温度计](../06-practical-guides/02-checking-thermistor.md) |
+| 设备不连接 Wi-Fi | [控制器错误](../08-common-mistakes/04-controller-mistakes.md) |
+| 加热器/SSR 过热 | [加热器和 SSR 错误](../08-common-mistakes/05-heater-ssr-mistakes.md) |
+
+诊断"传感器显示垃圾"的常见序列 — [诊断检查清单](../08-common-mistakes/06-diagnostic-checklist.md)。
+
+## 启动前检查清单
+
+- [ ] 设备保持目标温度且不连续加热。
+- [ ] 加热器通过温度计保护工作。
+- [ ] 导线不接触加热器和风扇。
+- [ ] 靠近热量的打印部件 — 耐热。
+- [ ] 在版本 B 中：外壳接地、保险丝安装、绝缘完好。
+- [ ] 门户网站上的数据与柜内实际温度相符。
+
+## 总结
+
+你在 ESP32 和 `idryer-core` 上组装了一个加热的灯丝存储柜：设备读取气候和加热器温度、保持指定温度、保护加热器免受过热并从门户网站管理。这是一个完成的基础，你可以在其上构建自己的生态系统模块。
+
+进一步的组件 — LED 背光、秤、RFID — 核心也支持；可以按相同方案添加：传感器或外围 → 遥测或命令 → 门户网站显示。

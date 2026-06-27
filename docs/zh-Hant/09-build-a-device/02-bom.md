@@ -1,9 +1,89 @@
-<!-- i18n-placeholder: true -->
+---
+title: "加熱儲存櫃系統組成：元件和兩個電源版本"
+description: "自製加熱儲存櫃的元件清單（ESP32上）：SHT31感應器、溫敏電阻、低壓（24V）和交流（220V）版本的加熱器和風扇。"
+---
 
-# Translation wanted
+# 系統組成
 
-This page is not available in this language yet.
+本頁列出了設備的元件和兩個電源版本。弱電部分（控制器和感應器）在兩個版本中相同。只有加熱器和風扇的通訊方式不同。
 
-You can help the iDryer project by translating this article. Please use the English or Russian version as the source, check the meaning carefully, and submit your translation as a pull request to the documentation repository.
+## 弱電部分（兩個版本通用）
 
-Thank you for helping make the documentation available to more makers.
+| 單元 | 用途 | 備註 |
+|------|------|------|
+| ESP32-C3或ESP32-S3 | 控制器：邏輯、Wi-Fi、門戶 | DevKit或Super Mini都合適 |
+| SHT31感應器 | 櫃內空氣溫度和濕度 | I2C介面 |
+| NTC 100K溫敏電阻 | 加熱器溫度控制 | 例如通用3950 |
+| 溫敏電阻拉高電阻 | ADC的分壓 | 通常`4.7 kΩ` |
+| 電源 | 控制器和低壓外設供電 | 電壓取決於所選版本 |
+
+選擇ESP32是因為它具有Wi-Fi、所需的介面（SHT31的I2C、溫敏電阻的ADC、負載管理的PWM）以及`idryer-core`的直接支援。詳見[ESP32控制器](../02-controllers/01-esp32-controller.md)。
+
+!!! warning "ESP32邏輯是3.3V"
+    ESP32以`3.3V`工作。不要將`5V`加到其引腳上。這適用於感應器、模組和轉接器。詳見[控制器錯誤](../08-common-mistakes/04-controller-mistakes.md)。
+
+## 感應器
+
+**SHT31**測量櫃內空氣的溫度和濕度。這是主要的反饋：透過它你可以看到所需的氣候是否保持。透過I2C連接（兩條線：`SDA`、`SCL`）。詳見[溫敏電阻和氣候感應器](../03-common-components/04-thermistors.md)。
+
+**溫敏電阻**測量加熱器本身的溫度，而不是空氣。這是必要的，以防止加熱器過熱：空氣加熱緩慢，而加熱器快速。溫敏電阻作為ADC引腳上的分壓器連接。[溫敏電阻檢查](../06-practical-guides/02-checking-thermistor.md)。
+
+!!! note "為什麼需要兩個熱感應器"
+    SHT31說「櫃子裡的溫度是多少」，溫敏電阻說「加熱器是否過熱」。第一個設定目標，第二個防止事故。
+
+## 電源部分：選擇版本
+
+加熱器和風扇是由控制器控制的負載。ESP32無法直接通訊此類負載：其引腳輸出弱`3.3V`信號。控制器和負載之間需要開關。
+
+有兩個本質不同的版本。根據你使用的加熱器和風扇類型選擇一個。
+
+### 版本A——低壓（24V或12V）
+
+加熱器和風扇由`24V`（或`12V`）直流供電。這是自主組裝的更簡單和更安全的方式。
+
+| 單元 | 元件 |
+|------|------|
+| 加熱器 | `12V`或`24V`加熱元件（PTC加熱器） |
+| 風扇 | `24V`或`12V`風扇（2針或4針） |
+| 加熱器開關 | MOSFET模組 |
+| 風扇開關 | MOSFET模組（或4針PWM直接） |
+| 電源 | `24V DC`，有功率餘量 |
+
+控制器透過ESP32引腳的信號控制MOSFET模組。該模組通訊低壓負載。這與現成控制器中的邏輯相同。詳見[MOSFET模組](../01-electronics-basics/02-mosfet-module.md)。
+
+電源功率根據總負載加餘量計算——詳見[24V負載電流計算](../01-electronics-basics/01-load-calculation-24v.md)。
+
+!!! note "對於第一個設備建議使用此版本"
+    如果你第一次組裝設備，請從版本A開始。這裡沒有負載上的交流電壓，安裝錯誤危害較小。
+
+### 版本B——交流（110-230V AC）
+
+加熱器和風扇由`110-230V`交流供電。當需要強大的交流加熱器時（例如為櫃子預製的加熱器和風扇）這樣做。這裡不使用MOSFET模組，而使用交流通訊模組。
+
+| 單元 | 元件 |
+|------|------|
+| 加熱器 | `110-230V AC`交流加熱器 |
+| 風扇 | `110-230V AC`交流風扇 |
+| 加熱器開關 | 交流固態繼電器（SSR） |
+| 風扇開關 | SSR或交流普通繼電器 |
+| 電源 | 控制器和感應器的單獨`24V`/`5V DC` |
+| 保護 | 保險絲、機殼保護接地 |
+
+!!! danger "交流電壓對生命有危險"
+    版本B使用`110-230V`電壓。安裝錯誤可能導致觸電或火災。在組裝前務必閱讀安全材料：[三端雙向可控矽](../01-electronics-basics/03-triac.md)、[固態繼電器（SSR）](../01-electronics-basics/04-solid-state-relay-ssr.md)、[加熱器和SSR錯誤](../08-common-mistakes/05-heater-ssr-mistakes.md)。如果你沒有交流電壓使用經驗，請選擇版本A。
+
+版本B中的控制器和感應器仍由單獨的低壓源供電（`5V`/`24V`）。交流部分和弱電部分應物理和電氣隔離。
+
+## 可選模組
+
+這些單元對於櫃子非必需，但由核心支援，可以稍後新增：
+
+- 尋址LED照明（`hasLed`）；
+- 絲材消耗稱重感應器（`hasWeight`）；
+- 線軸RFID標籤（`hasRfid`）。
+
+基本櫃子不使用它們——從最小值開始。
+
+## 下一步
+
+選擇完元件後，轉到[接線圖](03-wiring.md)：ESP32的哪個引腳負責什麼，以及如何隔離弱電和電源部分。

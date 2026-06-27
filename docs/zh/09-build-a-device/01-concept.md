@@ -1,9 +1,76 @@
-<!-- i18n-placeholder: true -->
+---
+title: "在 iDryer 核心库基础上组建自己的设备：概念"
+description: "端到端示例：如何从零开始在 ESP32 和 idryer-core 库上构建一个加热的灯丝存储柜，并连接到 iDryer 门户网站。"
+---
 
-# Translation wanted
+# 组建自己的设备：概念
 
-This page is not available in this language yet.
+本章节是一个端到端的示例。前面的章节解释了各个独立部分：电源、控制器、传感器、加热器、安全性。在这里，你将把这些部分组合成一个完整的设备，并使其与 [iDryer 门户网站](https://portal.idryer.org/)连接并正常工作。
 
-You can help the iDryer project by translating this article. Please use the English or Russian version as the source, check the meaning carefully, and submit your translation as a pull request to the documentation repository.
+该示例建立在 `idryer-core` 库之上。库负责处理所有网络部分：连接到 Wi-Fi、绑定到账户、安全的 MQTT 会话、定期发布遥测数据。你只需要编写特定于设备的部分：读取传感器、控制加热器和风扇、维持温度的逻辑。
 
-Thank you for helping make the documentation available to more makers.
+## 我们要构建什么
+
+我们要构建一个**加热的灯丝存储柜**。这是一个密闭的柜子，可容纳 10-40 卷灯丝，其中温度保持在约 `40-45 °C`。
+
+从一开始就明确任务的边界很重要。
+
+!!! note "这不是高温干燥机"
+    我们没有打算进行快速的高温干燥。该设备的目标是在柜子中保持温暖，以在存储过程中保持灯丝干燥。
+
+`40-45 °C` 的温度足以在干燥状态下存储大多数无特殊要求的塑料——从 PLA 到 ABS。对于活性干燥要求苛刻的材料（尼龙、聚碳酸酯、PA-CF），需要更高的温度和不同的构造——这样的干燥机单独组装，按照其他章节的原则。
+
+## 为什么要自己做
+
+现成的 iDryer 控制器已经能够做下面所有描述的事情。这个例子的存在不是为了替代它，而是为了展示**设备内部的工作原理**，并为你自己的模块提供基础。
+
+自己组装是有意义的，当：
+
+- 你需要一个非标准大小或形状的柜子；
+- 你想了解控制器如何管理加热和与门户网站通信；
+- 你计划制作自己的生态系统模块，并以这个例子作为起点。
+
+## 与 V2 控制器的区别
+
+系列 iDryer V2 控制器是双处理器的：主要逻辑在单独的微控制器上执行，而 ESP32 模块仅作为 Wi-Fi 和门户网站的桥梁。这对于带有屏幕、体重计、RFID 和多个摄像头的系列产品是合理的。
+
+对于自制柜子，这种复杂性是不必要的。我们将架构简化为**单个 ESP32**，它自己做所有事情：
+
+- 读取传感器；
+- 管理加热器和风扇；
+- 通过 `idryer-core` 连接到 Wi-Fi 和门户网站。
+
+在功能上，我们重复 V2 控制器一个室的行为（气候传感器、带有温度计反馈的加热器、风扇），但以真正的 DIY 实现方式在单个板上。
+
+!!! note "伺服驱动器未使用"
+    在 V2 控制器中，伺服驱动器控制室的气流挡板。对于具有均匀温暖加热的存储柜，挡板是不必要的，因此此示例中没有伺服驱动器。
+
+## 连接到核心的好处
+
+当设备建立在 `idryer-core` 上并绑定到账户时，你无需额外代码即可获得：
+
+- 通过[门户网站](https://portal.idryer.org/)和移动应用程序进行管理和监控；
+- 柜内温度和湿度的图表；
+- 远程启动和停止热维护模式；
+- 通过设备菜单调整参数（目标温度、磁滞）。
+
+## 本章节的组成
+
+接下来是从空板到运行柜子的分步路径：
+
+1. [系统组成](02-bom.md) — 我们取哪些组件，以及两个版本的电源部分（低压和交流电）。
+2. [接线图](03-wiring.md) — ESP32 引脚映射、低功率和电源部分的隔离、安全性。
+3. [在核心上启动固件](04-firmware-start.md) — PlatformIO 项目、首次启动、绑定到门户网站。
+4. [传感器](05-sensors.md) — 连接 SHT31 和温度计，从它们获取数据。
+5. [YAML 菜单](06-menu.md) — 描述设备设置，它们进入 NVS 和门户网站。
+6. [加热控制](07-heating-control.md) — 温度维护逻辑、风扇、门户网站命令。
+7. [组装和检查](08-assembly-and-check.md) — 最终组装、首次升温、安全检查清单。
+
+!!! tip "完整示例"
+    如果想立即看到结果——完整的项目位于存储库的 `example/09-cabinet/` 文件夹中，通过 `pio run -e cabinet` 命令构建。下面的章节逐步分解这个相同的代码。
+
+## 另见
+
+- [开始阅读](../00-start-here/01-introduction.md) — 本章节的总体阅读顺序。
+- [ESP32 控制器](../02-controllers/01-esp32-controller.md) — 为什么 ESP32 方便用于带有 Wi-Fi 的设备。
+- [常见组件](../03-common-components/01-overview.md) — 设备部分的映射。

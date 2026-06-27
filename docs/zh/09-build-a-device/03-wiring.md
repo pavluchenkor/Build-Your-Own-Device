@@ -1,9 +1,101 @@
-<!-- i18n-placeholder: true -->
+---
+title: "ESP32 加热存储柜接线图"
+description: "ESP32 引脚映射以实现自制柜子：SHT31 通过 I2C、温度计通过 ADC、通过开关的加热器和风扇。低功率和电源部分的隔离。"
+---
 
-# Translation wanted
+# 接线图
 
-This page is not available in this language yet.
+本页说明如何围绕 ESP32 连接组件。首先是引脚的总体映射，然后是每个节点的连接和电源部分的接线规则。
 
-You can help the iDryer project by translating this article. Please use the English or Russian version as the source, check the meaning carefully, and submit your translation as a pull request to the documentation repository.
+!!! warning "首先检查你的板的引脚配置"
+    下面的引脚号是示例。不同的 ESP32-C3 和 ESP32-S3 板的编号和引脚位置不同。接线前，请查看你的特定板的引脚配置。并非所有引脚都可以自由使用：某些引脚用于引导、闪存或 USB。
 
-Thank you for helping make the documentation available to more makers.
+## 引脚映射（示例）
+
+| 节点 | 线 | ESP32 引脚（示例） |
+|------|-------|----------------------|
+| SHT31 | `SDA` | GPIO8 |
+| SHT31 | `SCL` | GPIO9 |
+| 温度计 | ADC 信号 | GPIO2 |
+| 加热器（开关） | 控制 | GPIO4 |
+| 风扇（开关/PWM） | 控制 | GPIO5 |
+
+传感器的电源是板上的 `3.3V` 和 `GND`。电源部分单独供电。
+
+## 通过 I2C 的 SHT31
+
+SHT31 通过四条线连接：
+
+1. 传感器的 `VCC` — 到板的 `3.3V`。
+2. 传感器的 `GND` — 到板的 `GND`。
+3. 传感器的 `SDA` — 到 `SDA` 引脚（示例：GPIO8）。
+4. 传感器的 `SCL` — 到 `SCL` 引脚（示例：GPIO9）。
+
+I2C 线很短。如果传感器距板很远，将导线尽可能短且扭在一起。大多数 SHT31 模块已经在模块板上有上拉电阻。
+
+!!! note "SHT31 地址"
+    SHT31 通常具有地址 `0x44`（有时 `0x45`）。如果传感器无响应，检查地址和 `SDA`/`SCL` 线。
+
+## ADC 上的温度计
+
+温度计与上拉电阻一起包含在分压器中：
+
+1. 温度计的一个引脚 — 到 `3.3V`。
+2. 温度计的另一个引脚 — 到与 `4.7 kΩ` 电阻的连接点和 ADC 引脚（示例：GPIO2）。
+3. `4.7 kΩ` 电阻的另一个引脚 — 到 `GND`。
+
+控制器测量分压器中点的电压，根据它计算温度计的电阻，然后是温度。温度计类型在固件中指定（见[加热控制](07-heating-control.md)）。
+
+有关检查和安装的详细信息——[检查温度计](../06-practical-guides/02-checking-thermistor.md)。
+
+## 通过开关的加热器和风扇
+
+ESP32 不是直接管理负载，而是通过开关。哪个开关——取决于[系统组成](02-bom.md)中的版本。
+
+### 版本 A（24V/12V）— MOSFET 模块
+
+1. 模块的信号输入（`PWM`/`SIG`）— 到 ESP32 的控制引脚（示例：GPIO4 用于加热器，GPIO5 用于风扇）。
+2. 模块的 `GND` — 到与 ESP32 的公共 `GND`。
+3. 模块的电源输入和负载 — 到 `24V` 电源。
+
+!!! warning "公共地"
+    控制器的 `GND` 和电源块的 `GND` 必须连接。没有公共地，管理信号没有参考电平，开关工作不稳定。
+
+风扇的管理连接详见[连接风扇](../06-practical-guides/01-connecting-fan.md)。开关逻辑——[MOSFET 模块](../01-electronics-basics/02-mosfet-module.md)。
+
+### 版本 B（220V）— SSR/继电器
+
+!!! danger "在安装网络部分之前"
+    所有与网络的连接都应在设备完全断电时进行。带有网络部分的外壳应该有保护性接地和保险丝。使用足够截面的网络导线，并在端子中牢固固定。
+
+SSR 有两边。**控制** — 低压输入，由控制器命令。**电源** — 通过其负载网络电压的输出。边是通过 SSR 内的光耦隔离的，因此你可以使用弱 `3.3V` 信号管理网络。
+
+1. 控制输入通常标记为 `DC+` 和 `DC-`（有时 `+` 和 `-`）并设计为 `3-32V` 直流。将 `DC+` 连接到 ESP32 的控制引脚（示例：GPIO4），将 `DC-` 连接到控制器的 `GND`。ESP32 引脚的 `3.3V` 足以打开 SSR。
+2. 电源输出（通常标记为网络/`AC` 和负载/`LOAD`）包含在加热器的一根网络导线的间隙中——与开关在导线中的方式相同。
+3. 风扇通过单独的 SSR 或继电器以相同方式切换。
+
+!!! note "为什么 SSR 需要散热片"
+    当 SSR 切换时它会稍微加热，负载电流越大，加热越多。因此 SSR 被螺钉固定到散热片（用于散热的金属板），SSR 本身选择电流容量更大——显著高于负载电流。你的电流需要多少余量和散热片——[固态继电器（SSR）](../01-electronics-basics/04-solid-state-relay-ssr.md)。
+
+## 接线：低功率和电源部分
+
+- 将信号导线（传感器、管理）与电源导线分开。
+- 不要在加热器的电源导线旁边路由温度计和 I2C 导线——这是干扰的来源。
+- 在版本 B 中，在外壳内物理上分离网络和低压区域。
+- 将所有低压部分的地汇聚到一个点。
+
+风扇的干扰和糟糕的地——"浮动"读数和重启的常见原因。见[接线错误](../08-common-mistakes/03-wiring-mistakes.md)。
+
+## 在通电前检查什么
+
+- 传感器电源为 `3.3V`，而不是 `5V`。
+- 温度计和分压器电阻正确组装，ADC 引脚在中点。
+- 控制器和电源块的公共地。
+- 在版本 B 中——外壳接地、保险丝、可靠端子、绝缘。
+- 电源和地之间没有短路（用万用表测）。
+
+万用表检查——[万用表](../05-tools/02-multimeter.md)。
+
+## 接下来
+
+硬件部分已组装。转到[在核心上启动固件](04-firmware-start.md)：创建项目并使设备在门户网站上达到在线状态。

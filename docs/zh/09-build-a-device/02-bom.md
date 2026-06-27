@@ -1,9 +1,89 @@
-<!-- i18n-placeholder: true -->
+---
+title: "加热存储柜的系统组成：组件和两个电源版本"
+description: "自制加热柜的零件列表，基于 ESP32：SHT31 传感器、温度计、加热器和风扇的低压 (24V) 和交流电 (220V) 版本。"
+---
 
-# Translation wanted
+# 系统组成
 
-This page is not available in this language yet.
+此页面列出了设备的组件和两个版本的电源部分。低功率部分（控制器和传感器）在两个版本中都相同。只有加热器和风扇的接线方式不同。
 
-You can help the iDryer project by translating this article. Please use the English or Russian version as the source, check the meaning carefully, and submit your translation as a pull request to the documentation repository.
+## 低功率部分（两个版本通用）
 
-Thank you for helping make the documentation available to more makers.
+| 节点 | 用途 | 注释 |
+|------|------------|------------|
+| ESP32-C3 或 ESP32-S3 | 控制器：逻辑、Wi-Fi、门户网站 | DevKit 或 Super Mini 都可以 |
+| SHT31 传感器 | 柜内空气温度和湿度 | I2C 接口 |
+| NTC 100K 温度计 | 加热器温度控制 | 例如通用 3950 |
+| 温度计拉伸电阻 | ADC 分压器 | 通常 `4.7 kΩ` |
+| 电源 | 为控制器和低压外围设备供电 | 电压取决于选择的版本 |
+
+选择 ESP32 是因为它具有 Wi-Fi、所需的接口（用于 SHT31 的 I2C、用于温度计的 ADC、用于负载控制的 PWM）并且 `idryer-core` 直接支持它。详见 [ESP32 控制器](../02-controllers/01-esp32-controller.md)。
+
+!!! warning "ESP32 逻辑为 3.3V"
+    ESP32 工作在 `3.3V`。不要在其引脚上施加 `5V`。这适用于传感器、模块和适配器。详见 [控制器错误](../08-common-mistakes/04-controller-mistakes.md)。
+
+## 传感器
+
+**SHT31** 测量柜内空气的温度和湿度。这是主要的反馈：你可以看到指定的气候是否被维持。通过 I2C 连接（两条线：`SDA`、`SCL`）。详见 [温度计和气候传感器](../03-common-components/04-thermistors.md)。
+
+**温度计** 测量加热器本身的温度，而不是空气。它的作用是防止加热器过热：空气加热缓慢，而加热器很快。温度计连接为 ADC 引脚上的分压器。[检查温度计](../06-practical-guides/02-checking-thermistor.md)。
+
+!!! note "为什么需要两个热传感器"
+    SHT31 显示"柜内什么温度"，温度计显示"加热器是否过热"。第一个设定目标，第二个防止紧急情况。
+
+## 电源部分：选择版本
+
+加热器和风扇是由控制器管理的负载。ESP32 不能直接开关这样的负载：其引脚输出弱 `3.3V` 信号。控制器和负载之间需要一个开关。
+
+有两个基本不同的版本。根据你使用的加热器和风扇选择一个。
+
+### 版本 A — 低压（24V 或 12V）
+
+加热器和风扇由 `24V`（或 `12V`）直流电供电。这是自己组装的更简单、更安全的方法。
+
+| 节点 | 组件 |
+|------|-----------|
+| 加热器 | `12V` 或 `24V` 加热元件（PTC 加热器） |
+| 风扇 | `24V` 或 `12V` 风扇（2 针或 4 针） |
+| 加热器开关 | MOSFET 模块 |
+| 风扇开关 | MOSFET 模块（或 4 针 PWM 直接） |
+| 电源 | `24V DC`，功率有余量 |
+
+控制器通过 ESP32 引脚的信号管理 MOSFET 模块。模块开关低压负载。这与现成控制器中的逻辑相同。详见 [MOSFET 模块](../01-electronics-basics/02-mosfet-module.md)。
+
+电源功率根据总负载计算，有余量——见 [24V 负载电流计算](../01-electronics-basics/01-load-calculation-24v.md)。
+
+!!! note "对于首个设备的推荐版本"
+    如果你是第一次组装设备，从版本 A 开始。这里负载上没有交流电，接线错误的危险性较小。
+
+### 版本 B — 交流电（110-230V AC）
+
+加热器和风扇由 `110-230V` 交流电供电。当你需要强大的交流加热器时会这样做——例如，柜子的现成加热器和风扇组件。这里使用交流模块而不是 MOSFET 模块。
+
+| 节点 | 组件 |
+|------|-----------|
+| 加热器 | `110-230V AC` 网络加热器 |
+| 风扇 | `110-230V AC` 网络风扇 |
+| 加热器开关 | 固态继电器（SSR） AC |
+| 风扇开关 | SSR 或普通 AC 继电器 |
+| 电源 | 单独的 `24V`/`5V DC` 用于控制器和传感器 |
+| 保护 | 保险丝、保护性接地外壳 |
+
+!!! danger "网络电压对生命危险"
+    版本 B 适用于 `110-230V` 电压。接线错误可能导致电击或火灾。在组装前，一定要阅读安全材料：[三角晶体管](../01-electronics-basics/03-triac.md)、[固态继电器（SSR）](../01-electronics-basics/04-solid-state-relay-ssr.md)、[加热器和 SSR 错误](../08-common-mistakes/05-heater-ssr-mistakes.md)。如果你没有与网络电压打交道的经验，选择版本 A。
+
+在版本 B 中，控制器和传感器仍然由单独的低压源（`5V`/`24V`）供电。网络部分和低功率部分必须在物理上和电气上分离。
+
+## 可选模块
+
+这些节点对于柜子来说不是必需的，但由核心支持，可以稍后添加：
+
+- 可寻址 LED 背光（`hasLed`）；
+- 灯丝消耗重量传感器（`hasWeight`）；
+- 线轴 RFID 标签（`hasRfid`）。
+
+基本柜子不使用它们——从最少开始。
+
+## 接下来
+
+选定组件后，转到[接线图](03-wiring.md)：哪个 ESP32 引脚负责什么，以及如何分离低功率和电源部分。

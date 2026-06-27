@@ -1,9 +1,101 @@
-<!-- i18n-placeholder: true -->
+---
+title: "ESP32加熱儲存櫃的接線圖"
+description: "ESP32引腳分配用於自製櫃子：SHT31 on I2C、ADC上的溫敏電阻、透過開關控制加熱器和風扇。弱電和電源部分隔離。"
+---
 
-# Translation wanted
+# 接線圖
 
-This page is not available in this language yet.
+本頁說明如何將元件連接到ESP32周圍。首先是一般的引腳分配，然後是每個單元的連接和電源部分走線規則。
 
-You can help the iDryer project by translating this article. Please use the English or Russian version as the source, check the meaning carefully, and submit your translation as a pull request to the documentation repository.
+!!! warning "首先檢查你的板子的引腳分配"
+    下面的引腳號是示例。不同的ESP32-C3和ESP32-S3板的編號和位置不同。組裝前，請參考你的板的引腳分配。並非所有引腳都可自由使用：其中一些被引導、快閃記憶體或USB佔用。
 
-Thank you for helping make the documentation available to more makers.
+## 引腳分配（示例）
+
+| 單元 | 線路 | ESP32引腳（示例） |
+|------|------|------------------|
+| SHT31 | `SDA` | GPIO8 |
+| SHT31 | `SCL` | GPIO9 |
+| 溫敏電阻 | ADC信號 | GPIO2 |
+| 加熱器（開關） | 控制 | GPIO4 |
+| 風扇（開關/PWM） | 控制 | GPIO5 |
+
+感應器供電來自板上的`3.3V`和`GND`。電源部分單獨供電。
+
+## SHT31 on I2C
+
+SHT31透過四根線連接：
+
+1. 感應器`VCC`——連到板上的`3.3V`。
+2. 感應器`GND`——連到板上的`GND`。
+3. 感應器`SDA`——連到`SDA`引腳（示例：GPIO8）。
+4. 感應器`SCL`——連到`SCL`引腳（示例：GPIO9）。
+
+I2C線路較短。如果感應器距離板較遠，請保持電線盡可能短且絞合。大多數SHT31模組的拉高電阻已經在模組板上。
+
+!!! note "SHT31地址"
+    SHT31通常位址為`0x44`（有時`0x45`）。如果感應器不回應，檢查地址和`SDA`/`SCL`線路。
+
+## ADC上的溫敏電阻
+
+溫敏電阻與拉高電阻組成分壓器：
+
+1. 溫敏電阻的一端——連到`3.3V`。
+2. 溫敏電阻的另一端——連接到與`4.7 kΩ`電阻和ADC引腳的連接點（示例：GPIO2）。
+3. `4.7 kΩ`電阻的另一端——連到`GND`。
+
+控制器測量分壓器中點的電壓，並據此計算溫敏電阻的電阻，然後是溫度。溫敏電阻類型在韌體中指定（見[加熱控制](07-heating-control.md)）。
+
+有關檢查和組裝的詳細資訊——[溫敏電阻檢查](../06-practical-guides/02-checking-thermistor.md)。
+
+## 透過開關控制加熱器和風扇
+
+ESP32不直接控制負載，而是透過開關。開關類型取決於[系統組成](02-bom.md)中的版本。
+
+### 版本A（24V/12V）——MOSFET模組
+
+1. 模組信號輸入（`PWM`/`SIG`）——連到ESP32控制引腳（示例：GPIO4用於加熱器，GPIO5用於風扇）。
+2. 模組`GND`——連到ESP32的公共`GND`。
+3. 模組電源輸入和負載——連到`24V`電源。
+
+!!! warning "公共接地"
+    控制器的`GND`和電源塊的`GND`應連接。沒有公共接地，控制信號沒有參考電平，開關工作不可預測。
+
+風扇連接和管理詳細討論在[連接風扇](../06-practical-guides/01-connecting-fan.md)中。開關邏輯——[MOSFET模組](../01-electronics-basics/02-mosfet-module.md)。
+
+### 版本B（220V）——SSR/繼電器
+
+!!! danger "在安裝交流部分之前"
+    所有與電網的連接都應在設備完全斷電的情況下進行。帶有交流部分的外殼應具有保護接地和保險絲。交流電線應有充分的截面積，並牢固固定在終端中。
+
+SSR有兩側。**控制**——低壓輸入，由控制器命令。**電源**——輸出，負載的交流電壓通過。兩側透過SSR內的光耦隔離，所以可以用弱`3.3V`信號控制交流電。
+
+1. 控制輸入通常標記為`DC+`和`DC-`（有時`+`和`-`），額定為`3-32V`直流。將`DC+`連接到ESP32控制引腳（示例：GPIO4），`DC-`連接到控制器`GND`。ESP32引腳的`3.3V`足以打開SSR。
+2. 電源輸出（通常標記為網路/`AC`和負載/`LOAD`）連接到加熱器交流線中的一根——就像電路中的開關。
+3. 風扇由單獨的SSR或繼電器以相同方式通訊。
+
+!!! note "為什麼SSR需要散熱片"
+    SSR通訊時略微升溫，負載電流越大，升溫越多。因此SSR擰到散熱片（用於散熱的金屬板），SSR的額定電流遠高於負載電流。根據你的電流需要多少餘量和散熱片——[固態繼電器（SSR）](../01-electronics-basics/04-solid-state-relay-ssr.md)。
+
+## 走線：弱電和電源部分
+
+- 將信號線（感應器、控制）與電源線分開。
+- 不要沿著加熱器電源線走溫敏電阻和I2C線——這是干擾的來源。
+- 版本B在機殼內物理隔離交流和低壓區域。
+- 將所有弱電接地點連接到一個點。
+
+風扇的干擾和接地不良是「漂浮」讀數和重啟的常見原因。見[接線錯誤](../08-common-mistakes/03-wiring-mistakes.md)。
+
+## 供電前檢查清單
+
+- 感應器供電`3.3V`而非`5V`。
+- 溫敏電阻和分壓電阻組裝正確，ADC引腳在中點。
+- 控制器和電源塊的公共接地。
+- 版本B——機殼接地、保險絲、牢固的終端、隔離。
+- 電源和接地之間沒有短路（用萬用表檢測）。
+
+萬用表檢查——[萬用表](../05-tools/02-multimeter.md)。
+
+## 下一步
+
+硬體部分已組裝。轉到[核心韌體啟動](04-firmware-start.md)：建立項目並將設備帶到門戶上的線上狀態。

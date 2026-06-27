@@ -1,9 +1,85 @@
-<!-- i18n-placeholder: true -->
+---
+title: "加熱儲存櫃的組裝和啟動前檢查"
+description: "自製櫃的最終組裝（ESP32上）：安裝到外殼、首次加熱、溫度校準和啟動前安全檢查清單。"
+---
 
-# Translation wanted
+# 組裝和檢查
 
-This page is not available in this language yet.
+本頁你將設備組裝到外殼中，進行首次受控加熱，驗證櫃運行安全。按順序進行檢查，首次啟動時不要讓設備無人值守。
 
-You can help the iDryer project by translating this article. Please use the English or Russian version as the source, check the meaning carefully, and submit your translation as a pull request to the documentation repository.
+## 安裝順序
 
-Thank you for helping make the documentation available to more makers.
+1. 在外殼中固定ESP32和電源部分，使弱電和電源區域分離。
+2. 在遠離加熱器直接氣流的地方放置SHT31感應器——否則它會測量噴流溫度，而不是體積中的空氣。
+3. 將溫敏電阻固定在與加熱器的熱接觸中。
+4. 檢查電線不接觸加熱器，不進入風扇。
+5. 在版本B（`220V`）中，確保交流線在終端中固定，隔離完好，外殼接地。
+
+外殼和部件放置的要求——[外殼設計](../07-3d-printing/05-enclosure-design.md)。
+
+!!! warning "列印件靠近加熱"
+    PLA在容易在加熱器附近找到的溫度下變軟。靠近熱的部件應用熱耐受材料列印。見[熱耐受材料](../07-3d-printing/04-heat-resistant-materials.md)和[為什麼PLA是風險選擇](../07-3d-printing/06-why-pla-is-risky.md)。
+
+## 供電前檢查
+
+在首次啟動前用萬用表檢測：
+
+- 電源和接地之間沒有短路；
+- 感應器供電`3.3V`而非`5V`；
+- 控制器和電源塊公共接地；
+- 溫敏電阻和分壓電阻組裝正確；
+- 版本B — 外殼接地和保險絲到位。
+
+如何使用萬用表——[萬用表](../05-tools/02-multimeter.md)。
+
+## 首次啟動
+
+1. 僅對控制器和感應器供電（暫時不連接負載，如果可能）。
+2. 確認設備在門戶上線並顯示溫度和濕度。
+3. 連接加熱器和風扇。
+4. 從門戶啟動保溫模式並觀察。
+
+!!! danger "不要在首次加熱時無人值守"
+    首次啟動時監控設備。確認加熱器在達到目標和透過溫敏電阻保護時關閉，而不是連續加熱。
+
+首分鐘內觀察什麼：
+
+- 空氣溫度上升並穩定在目標附近；
+- 加熱器溫度不超過設定上限；
+- 達到目標時加熱關閉，冷卻到滯後量後重啟；
+- 風扇工作，不碰觸電線；
+- 控制器在負載啟動時不重啟。
+
+## 校準
+
+首次加熱後，用櫃中單獨的溫度計檢查讀數：
+
+- 如果櫃中的空氣溫度與目標不同——檢查SHT31位置（它不應在噴流或牆邊）；
+- 如果加熱器溫度看起來不現實——檢查溫敏電阻類型和分壓電阻值；
+- 如需要，在[菜單](06-menu.md)中調整目標溫度和滯後。
+
+## 如果有問題
+
+| 症狀 | 檢查位置 |
+|------|---------|
+| 負載時控制器重啟 | [電源錯誤](../08-common-mistakes/02-power-mistakes.md) |
+| 感應器顯示垃圾 | [接線錯誤](../08-common-mistakes/03-wiring-mistakes.md)、[溫敏電阻檢查](../06-practical-guides/02-checking-thermistor.md) |
+| 設備不連接Wi-Fi | [控制器錯誤](../08-common-mistakes/04-controller-mistakes.md) |
+| 加熱器/SSR加熱很多 | [加熱器和SSR錯誤](../08-common-mistakes/05-heater-ssr-mistakes.md) |
+
+一般診斷序列——[診斷檢查清單](../08-common-mistakes/06-diagnostic-checklist.md)。
+
+## 持續工作前檢查清單
+
+- [ ] 設備維持目標溫度，不連續加熱。
+- [ ] 加熱器溫敏電阻保護有效。
+- [ ] 電線不接觸加熱器和風扇。
+- [ ] 靠近熱的列印件是熱耐受的。
+- [ ] 版本B：外殼接地、保險絲安裝、隔離完好。
+- [ ] 門戶資料與櫃中實際溫度相符。
+
+## 總結
+
+你組裝了一個ESP32加熱儲存櫃`idryer-core`：設備讀取氣候和加熱器溫度，維持設定溫度，保護加熱器免過熱，並由門戶控制。這是構建自己的生態系統模組的堅實基礎。
+
+進一步的元件——照明、秤、RFID——核心也支援；它們可按相同方案新增：感應器或外設 → 遙測或命令 → 門戶顯示。

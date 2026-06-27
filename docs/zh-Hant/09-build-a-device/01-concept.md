@@ -1,9 +1,76 @@
-<!-- i18n-placeholder: true -->
+---
+title: "自己組裝iDryer核心設備：概念"
+description: "端到端範例：如何從零開始在ESP32上組裝一個加熱的絲材儲存櫃，並使用idryer-core函式庫連接到iDryer門戶。"
+---
 
-# Translation wanted
+# 自己組裝設備：概念
 
-This page is not available in this language yet.
+本章節是一個端到端的範例。前面的章節解釋了各個獨立的元件：電源、控制器、感應器、加熱器、安全保護。在這裡，你將使用這些元件組裝出一個完整的設備，並使其與[iDryer門戶](https://portal.idryer.org/)連接。
 
-You can help the iDryer project by translating this article. Please use the English or Russian version as the source, check the meaning carefully, and submit your translation as a pull request to the documentation repository.
+此範例基於`idryer-core`函式庫構建。該函式庫負責所有網路部分：Wi-Fi連接、帳戶綁定、安全MQTT會話、定期遙測發佈。你只需編寫特定於你的設備的程式碼：讀取感應器、管理加熱器和風扇、控制溫度邏輯。
 
-Thank you for helping make the documentation available to more makers.
+## 我們要組裝什麼
+
+我們組裝一個**加熱的絲材儲存櫃**。這是一個密閉的櫃子，可容納10-40卷絲材，內部溫度保持在約`40-45 °C`。
+
+從一開始就明確界定任務範圍很重要。
+
+!!! note "這不是高溫乾燥機"
+    我們不追求快速高溫乾燥。該設備的目標是在櫃子內提供溫和的熱，以便在儲存時保持絲材乾燥。
+
+溫度`40-45 °C`足以將大多數不挑剔的塑料（從PLA到ABS）在儲存時保持乾燥。對於活性乾燥要求較高的材料（尼龍、聚碳酸酯、PA-CF），需要更高溫度和不同的設計——這類乾燥機應根據其他章節的原理單獨組裝。
+
+## 為什麼要自己做
+
+現成的iDryer控制器已經能做下面所有的事。此範例的目的不是取代它，而是展示**設備內部如何工作**，並為自訂模組提供基礎。
+
+自主組裝在以下情況下有意義：
+
+- 你需要非標準尺寸或形狀的櫃子；
+- 你想瞭解控制器如何管理加熱和與門戶通訊；
+- 你計畫製作自己的生態系統模組，並將此範例作為起點。
+
+## 與V2控制器的區別
+
+標準iDryer V2控制器是雙處理器的：主要邏輯在單獨的微控制器上執行，而ESP32模組只充當Wi-Fi和門戶的橋接。這對於帶有屏幕、秤、RFID和多個攝像頭的商業產品是合理的。
+
+對於自製櫃子，這種複雜性不需要。我們將架構簡化為**單個ESP32**，它自己做所有事情：
+
+- 讀取感應器；
+- 控制加熱器和風扇；
+- 透過`idryer-core`連接到Wi-Fi和門戶。
+
+功能上，我們重複V2控制器的一個攝像機的行為（氣候感應器、帶溫敏電阻反饋的加熱器、風扇），但以誠實的DIY實現方式在單一板上。
+
+!!! note "不使用伺服馬達"
+    在V2控制器中，伺服馬達控制攝像機的空氣擋板。對於帶有均勻溫和加熱的儲存櫃，不需要擋板，因此此範例中沒有伺服馬達。
+
+## 連接到核心的好處
+
+當設備基於`idryer-core`構建並綁定到帳戶時，你無需額外程式碼即可獲得：
+
+- 透過[門戶](https://portal.idryer.org/)和行動應用程式進行管理和監控；
+- 櫃子內溫度和濕度的圖表；
+- 遠端啟動和停止保溫模式；
+- 透過設備功能表配置參數（目標溫度、滯後）。
+
+## 本章節的組成
+
+接下來是從空白板到可工作的櫃子的循序漸進的路線：
+
+1. [系統組成](02-bom.md)——選擇哪些元件以及兩個電源版本（低壓和交流）。
+2. [接線圖](03-wiring.md)——ESP32引腳分配、弱電和電源部分的隔離、安全。
+3. [核心上的韌體啟動](04-firmware-start.md)——PlatformIO項目、首次啟動、與門戶綁定。
+4. [感應器](05-sensors.md)——連接SHT31和溫敏電阻，獲取資料。
+5. [YAML菜單](06-menu.md)——描述設備設定，它們進入NVS和門戶。
+6. [加熱控制](07-heating-control.md)——溫度控制邏輯、風扇、門戶命令。
+7. [組裝和檢查](08-assembly-and-check.md)——最終組裝、首次加熱、安全檢查清單。
+
+!!! tip "完成的範例"
+    如果想立即看到結果——完成的項目位於儲存庫的`example/09-cabinet/`資料夾中，並透過`pio run -e cabinet`命令構建。下面的章節逐步講解相同的程式碼。
+
+## 另見
+
+- [開始使用](../00-start-here/01-introduction.md)——本章節的整體閱讀順序。
+- [ESP32控制器](../02-controllers/01-esp32-controller.md)——為什麼ESP32適合帶有Wi-Fi的設備。
+- [常見元件](../03-common-components/01-overview.md)——設備元件映射。
