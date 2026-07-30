@@ -93,7 +93,7 @@ static void applyHeater() {
 
 ## ファン
 
-ファンはシャフル周辺の熱を分散させます。最も単純なロジックは、ヒートと同時にそれを有効にすることです：
+ファンはシャフト周辺の熱を分散させます。最も単純なロジックは、ヒートと同時にそれを有効にすることです：
 
 ```cpp
 static void applyFan() {
@@ -162,6 +162,71 @@ s_link.onCommand("invoke", [](JsonObjectConst data) {
 ## この章の後の完全な`src/main.cpp`
 
 これは最終的で完全なデバイスファイルです。前の章に対する新しい行は`// ← 章7`でマークされています。同じファイルはリポジトリの`example/09-cabinet/`フォルダーに完成した例として存在し、`pio run -e cabinet`コマンドで構築されます。
+
+??? note "前回 — 第6章後の`src/main.cpp`"
+
+    ```cpp
+    #include <iDryer.h>
+    #include <Wire.h>
+    #include <math.h>
+    #include "Sht31ClimateSensor.h"
+    #include <menu_state.h>
+
+    static const iDryer::Config CFG = {
+        .deviceType        = iDryer::DeviceType::Dryer,
+        .unitsCount        = 1,
+        .hasHeater         = true,
+        .hasFan            = true,
+        .hasAirTemp        = true,
+        .hasAirHumidity    = true,
+        .hasHeaterTemp     = true,
+        .telemetryPeriodMs = 5000,
+        .statusPeriodMs    = 10000,
+        .hardwareVersion   = "1.0",
+        .firmwareVersion   = "0.1.0",
+        .model             = "DIY Storage Cabinet",
+    };
+    static iDryer::Link s_link(CFG);
+
+    static Sht31ClimateSensor s_climate(&Wire);
+    static bool               s_climateOk = false;
+
+    static const int   THERM_PIN  = 2;
+    static const float SERIES_R   = 4700.0f;
+    static const float NOMINAL_R  = 100000.0f;
+    static const float NOMINAL_T  = 25.0f;
+    static const float BETA       = 3950.0f;
+
+    static float readHeaterTempC() {
+        int   raw = analogRead(THERM_PIN);
+        float v   = (float)raw / 4095.0f;
+        float r   = SERIES_R * (1.0f - v) / v;
+        float tK  = 1.0f / (1.0f / (NOMINAL_T + 273.15f) + logf(r / NOMINAL_R) / BETA);
+        return tK - 273.15f;
+    }
+
+    void setup() {
+        Serial.begin(115200);
+        Wire.begin(8, 9);
+        s_climateOk = s_climate.begin();
+        menu.initDefaults();
+        s_link.begin();
+    }
+
+    void loop() {
+        s_link.loop();
+
+        if (s_climateOk) {
+            s_climate.tick(millis());
+            SensorReading r = s_climate.get();
+            if (r.ok) {
+                s_link.telemetry.airTempC[0]       = r.temperature;
+                s_link.telemetry.airHumidityPct[0] = r.humidity;
+            }
+        }
+        s_link.telemetry.heaterTempC[0] = readHeaterTempC();
+    }
+    ```
 
 ```cpp
 #include <Wire.h>

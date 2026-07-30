@@ -153,11 +153,200 @@ s_link.onCommand("invoke", [](JsonObjectConst data) {
 
 - `storage.start` / `storage.stop` — 與你在[菜單](06-menu.md)中設定的相同角色；門戶根據它們繪製按鈕。
 - `iDryer::UnitMode::Storage` — 溫和保溫模式。這是櫃的主要模式。
-- `s_link.status.mode[0]`和`targetTempC[0]`在門戶上顯示攝像機的當前狀態。
+- `s_link.status.mode[0]`和`targetTempC[0]`在門戶上顯示腔室的當前狀態。
 - `publishStatusNow()`在每次狀態改變後呼叫，以便門戶立即看到它，不用等待計時器。
 
 !!! warning "處理器中無delay()"
     `onCommand`處理器從網路回調呼叫。其中的任何阻塞都會中斷MQTT會話。改變旗標和狀態，而在`loop()`中做實際工作。
+
+## 本章後的完整`src/main.cpp`
+
+這是最終完整的設備檔案。相對於上一章的新行標記為`// ← 第7章`。同一個檔案作為現成範例位於儲存庫的`example/09-cabinet/`資料夾中，並透過`pio run -e cabinet`命令構建。
+
+??? note "第6章結束後的`src/main.cpp`"
+
+    ```cpp
+    #include <iDryer.h>
+    #include <Wire.h>
+    #include <math.h>
+    #include "Sht31ClimateSensor.h"
+    #include <menu_state.h>
+
+    static const iDryer::Config CFG = {
+        .deviceType        = iDryer::DeviceType::Dryer,
+        .unitsCount        = 1,
+        .hasHeater         = true,
+        .hasFan            = true,
+        .hasAirTemp        = true,
+        .hasAirHumidity    = true,
+        .hasHeaterTemp     = true,
+        .telemetryPeriodMs = 5000,
+        .statusPeriodMs    = 10000,
+        .hardwareVersion   = "1.0",
+        .firmwareVersion   = "0.1.0",
+        .model             = "DIY Storage Cabinet",
+    };
+    static iDryer::Link s_link(CFG);
+
+    static Sht31ClimateSensor s_climate(&Wire);
+    static bool               s_climateOk = false;
+
+    static const int   THERM_PIN  = 2;
+    static const float SERIES_R   = 4700.0f;
+    static const float NOMINAL_R  = 100000.0f;
+    static const float NOMINAL_T  = 25.0f;
+    static const float BETA       = 3950.0f;
+
+    static float readHeaterTempC() {
+        int   raw = analogRead(THERM_PIN);
+        float v   = (float)raw / 4095.0f;
+        float r   = SERIES_R * (1.0f - v) / v;
+        float tK  = 1.0f / (1.0f / (NOMINAL_T + 273.15f) + logf(r / NOMINAL_R) / BETA);
+        return tK - 273.15f;
+    }
+
+    void setup() {
+        Serial.begin(115200);
+        Wire.begin(8, 9);
+        s_climateOk = s_climate.begin();
+        menu.initDefaults();
+        s_link.begin();
+    }
+
+    void loop() {
+        s_link.loop();
+
+        if (s_climateOk) {
+            s_climate.tick(millis());
+            SensorReading r = s_climate.get();
+            if (r.ok) {
+                s_link.telemetry.airTempC[0]       = r.temperature;
+                s_link.telemetry.airHumidityPct[0] = r.humidity;
+            }
+        }
+        s_link.telemetry.heaterTempC[0] = readHeaterTempC();
+    }
+    ```
+
+```cpp
+#include <Wire.h>
+#include <ArduinoJson.h>          // ← 第7章（onCommand：JsonObjectConst）
+#include <string.h>              // ← 第7章（strcmp）
+#include <math.h>
+#include <iDryer.h>
+#include "Sht31ClimateSensor.h"
+#include <menu_state.h>
+
+static const iDryer::Config CFG = {
+    .deviceType        = iDryer::DeviceType::Dryer,
+    .unitsCount        = 1,
+    .hasHeater         = true,
+    .hasFan            = true,
+    .hasAirTemp        = true,
+    .hasAirHumidity    = true,
+    .hasHeaterTemp     = true,
+    .telemetryPeriodMs = 5000,
+    .statusPeriodMs    = 10000,
+    .hardwareVersion   = "1.0",
+    .firmwareVersion   = "0.1.0",
+    .model             = "DIY Storage Cabinet",
+};
+static iDryer::Link s_link(CFG);
+
+static Sht31ClimateSensor s_climate(&Wire);
+static bool               s_climateOk = false;
+
+static const int   THERM_PIN  = 2;
+static const float SERIES_R   = 4700.0f;
+static const float NOMINAL_R  = 100000.0f;
+static const float NOMINAL_T  = 25.0f;
+static const float BETA       = 3950.0f;
+
+static float readHeaterTempC() {
+    int   raw = analogRead(THERM_PIN);
+    float v   = (float)raw / 4095.0f;
+    float r   = SERIES_R * (1.0f - v) / v;
+    float tK  = 1.0f / (1.0f / (NOMINAL_T + 273.15f) + logf(r / NOMINAL_R) / BETA);
+    return tK - 273.15f;
+}
+
+// ← 第7章：加熱器和風扇開關
+struct GpioOutput {
+    int pin;
+    void begin() { pinMode(pin, OUTPUT); digitalWrite(pin, LOW); }
+    void on()    { digitalWrite(pin, HIGH); }
+    void off()   { digitalWrite(pin, LOW); }
+};
+static GpioOutput myHeater{4};
+static GpioOutput myFan{5};
+
+// ← 第7章：溫度維持邏輯
+static bool        s_heating    = false;
+static const float HEATER_MAX_C = 80.0f;
+
+static void controlLoop() {
+    float air    = s_link.telemetry.airTempC[0];
+    float target = (float)menu.target_temp;
+    float hyst   = (float)menu.hysteresis;
+    if (air < target - hyst)  s_heating = true;
+    else if (air >= target)   s_heating = false;
+}
+
+static void applyHeater() {
+    float heaterTemp = s_link.telemetry.heaterTempC[0];
+    bool  allow = s_heating && heaterTemp < HEATER_MAX_C;
+    if (allow) myHeater.on(); else myHeater.off();
+    s_link.telemetry.heaterPower01[0] = allow ? 1.0f : 0.0f;
+}
+
+static void applyFan() {
+    if (s_heating) myFan.on(); else myFan.off();
+    s_link.telemetry.fanOn[0] = s_heating;
+}
+
+void setup() {
+    Serial.begin(115200);
+    Wire.begin(8, 9);
+    s_climateOk = s_climate.begin();
+    myHeater.begin();              // ← 第7章
+    myFan.begin();                 // ← 第7章
+    menu.initDefaults();
+    s_link.begin();
+
+    s_link.onCommand("invoke", [](JsonObjectConst data) {   // ← 第7章
+        const char* action = data["action"] | "";
+        if (strcmp(action, "storage.start") == 0) {
+            s_heating = true;
+            s_link.status.mode[0]        = iDryer::UnitMode::Storage;
+            s_link.status.targetTempC[0] = (float)menu.target_temp;
+            s_link.publishStatusNow();
+        } else if (strcmp(action, "storage.stop") == 0) {
+            s_heating = false;
+            myHeater.off();
+            s_link.status.mode[0] = iDryer::UnitMode::Idle;
+            s_link.publishStatusNow();
+        }
+    });
+}
+
+void loop() {
+    s_link.loop();
+
+    if (s_climateOk) {
+        s_climate.tick(millis());
+        SensorReading r = s_climate.get();
+        if (r.ok) {
+            s_link.telemetry.airTempC[0]       = r.temperature;
+            s_link.telemetry.airHumidityPct[0] = r.humidity;
+        }
+    }
+    s_link.telemetry.heaterTempC[0] = readHeaterTempC();
+
+    controlLoop();   // ← 第7章
+    applyHeater();   // ← 第7章
+    applyFan();      // ← 第7章
+}
+```
 
 ## 驗證結果
 

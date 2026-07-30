@@ -13,9 +13,9 @@ description: "在idryer-core函式庫上建立PlatformIO項目：platformio.ini�
 
 你需要：
 
-- VS Code with PlatformIO extension;
-- USB cable;
-- `2.4 GHz` Wi-Fi network (ESP32不支援僅`5 GHz`的網路)。
+- VS Code及PlatformIO擴充功能；
+- USB連接線；
+- `2.4 GHz` Wi-Fi網路（ESP32不支援僅`5 GHz`的網路）。
 
 什麼是控制器韌體以及它如何進入板——[控制器韌體](../02-controllers/11-flashing-controller.md)。
 

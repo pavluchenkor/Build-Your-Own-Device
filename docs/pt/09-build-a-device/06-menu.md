@@ -144,7 +144,7 @@ Se a compilação caiu com mensagem sobre `role:` desconhecida - significa que o
 
 Para usar o código do menu, conecte em `src/main.cpp` duas coisas:
 
-1. Cabeho do menu gerado:
+1. Cabeçalho do menu gerado:
 
     ```cpp
     #include <menu_state.h>      // objecto menu com todos os parâmetros
@@ -168,7 +168,7 @@ Estes valores usa na lógica de aquecimento no próximo passo. Quando o utilizad
 
 Relativamente ao capítulo anterior foram adicionadas apenas duas linhas (marcadas `// ← capítulo 6`): inclusão do menu e `menu.initDefaults()`.
 
-??? nota «O que era - `src/main.cpp` após capítulo 5»
+??? note "O que era — `src/main.cpp` após o capítulo 5"
 
     ```cpp
     #include <iDryer.h>

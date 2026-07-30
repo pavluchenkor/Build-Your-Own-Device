@@ -168,7 +168,7 @@ uint16_t target = menu.target_temp;   // 直接存取值
 
 相對於上一章只新增了兩行（標記為`// ← 第6章`）：菜單連接和`menu.initDefaults()`。
 
-??? note "什麼是——`src/main.cpp`在第5章後"
+??? note "第5章結束後的`src/main.cpp`"
 
     ```cpp
     #include <iDryer.h>

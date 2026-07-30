@@ -54,6 +54,9 @@ Cuando el dispositivo se construye en `idryer-core` y se vincula a la cuenta, ob
 - inicio y parada remota del modo de mantenimiento de calor;
 - configuración de parámetros (temperatura objetivo, histéresis) a través del menú del dispositivo.
 
+!!! note "Sensores y controles propios en la tarjeta"
+    La tarjeta del dispositivo no está limitada a las capacidades del vocabulario (`has*`). A través de un card-manifest, el firmware puede declarar cualquier sensor y control personalizados: aparecerán automáticamente en el portal y en la aplicación. Cómo se hace esto se muestra en el ejemplo integral ["Filtro de aire inteligente"](../10-build-a-filter/01-concept.md), especialmente en [el capítulo sobre la tarjeta](../10-build-a-filter/06-card.md).
+
 ## De qué consta esta sección
 
 A continuación va un camino paso a paso desde una placa vacía hasta un armario funcional:

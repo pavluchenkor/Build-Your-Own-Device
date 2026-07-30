@@ -207,7 +207,7 @@ void loop() {
 }
 ```
 
-## Verification of result
+## Checking the result
 
 After this step, three values should be displayed on the portal:
 

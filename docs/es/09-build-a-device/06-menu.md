@@ -9,7 +9,7 @@ El menú es un conjunto de parámetros del dispositivo: temperatura objetivo, hi
 
 Este es uno de los componentes clave del núcleo. No escribe código de almacenamiento de parámetros ni inventa un formato para el portal — solo enumera los parámetros en YAML.
 
-## Por qué necesita el menú
+## Por qué el menú
 
 Después de los pasos anteriores, el dispositivo lee sensores, pero todos los umbrales están «codificados» en el código. El menú resuelve tres problemas a la vez:
 
@@ -164,11 +164,11 @@ uint16_t target = menu.target_temp;   // acceso directo al valor
 
 Estos valores se usan en la lógica de calentamiento en el siguiente paso. Cuando el usuario cambia un parámetro en el portal, el núcleo aplica automáticamente el nuevo valor y lo guarda en NVS.
 
-## Completo `src/main.cpp` después de este capítulo
+## `src/main.cpp` completo después de este capítulo
 
 Comparado con el capítulo anterior, solo se agregaron dos líneas (marcadas con `// ← capítulo 6`): la inclusión del menú y `menu.initDefaults()`.
 
-??? note "Lo que fue — `src/main.cpp` después del capítulo 5"
+??? note "Versión anterior — `src/main.cpp` después del capítulo 5"
 
     ```cpp
     #include <iDryer.h>

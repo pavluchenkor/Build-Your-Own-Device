@@ -68,7 +68,7 @@ Fan connection with control is detailed in [Connecting Fan](../06-practical-guid
 !!! danger "Before assembly of the mains section"
     All connections to the mains must be made with the device completely de-energized. The case with the mains section must have protective grounding and a fuse. Use mains wires of sufficient cross-section and secure them in the terminals reliably.
 
-SSR has two sides. **Control** — a low-voltage input controlled by the controller. **Power** — terminals through which the mains voltage of the load passes. The sides are isolated from each other by an optocoupler inside the SSR, so the network can be controlled with a weak `3.3V` signal.
+SSR has two sides. **Control** — a low-voltage input controlled by the controller. **Power** — terminals through which the mains voltage of the load passes. The sides are isolated from each other by an optocoupler inside the SSR, so the mains can be controlled with a weak `3.3V` signal.
 
 1. The control input is usually marked `DC+` and `DC-` (sometimes `+` and `-`) and is rated for `3–32V` DC. Connect `DC+` to the ESP32 control pin (example: GPIO4), and `DC-` to the controller `GND`. The `3.3V` voltage from the ESP32 pin is sufficient to open the SSR.
 2. The power pins (often marked as mains/`AC` and load/`LOAD`) are inserted in the break of one of the heater mains wires — just like a switch in the wire.

@@ -76,7 +76,7 @@ La estructura `SensorReading` (campos `ok`, `temperature`, `humidity`) se declar
 
 ## Paso 2. Termistor: temperatura del calefactor
 
-No tengo una clase lista de termistor para ESP32, así que leemos escribimos en `src/main.cpp` directamente. El termistor está conectado al pin de ADC a través de un convertidor de voltaje (véase [Esquema de conexión](03-wiring.md)): el controlador mide el voltaje en el punto intermedio, se calcula la resistencia del termistor y luego — la temperatura.
+No tengo una clase lista de termistor para ESP32, así que lo escribimos directamente en `src/main.cpp`. El termistor está conectado al pin de ADC a través de un convertidor de voltaje (véase [Esquema de conexión](03-wiring.md)): el controlador mide el voltaje en el punto intermedio, se calcula la resistencia del termistor y luego — la temperatura.
 
 ```cpp
 #include <math.h>
@@ -113,7 +113,7 @@ Diagnóstico del termistor con multímetro — [Verificación del termistor](../
 
 A continuación — el archivo completo. Las nuevas líneas con respecto al capítulo anterior se marcan con `// ← capítulo 5`; el resto no cambió.
 
-??? nota «Antes — `src/main.cpp` después del capítulo 4»
+??? note "Antes — `src/main.cpp` después del capítulo 4"
 
     ```cpp
     #include <iDryer.h>

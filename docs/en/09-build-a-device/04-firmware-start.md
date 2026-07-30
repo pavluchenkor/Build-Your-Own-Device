@@ -90,7 +90,7 @@ Next, everything happens in one file — `src/main.cpp`. Open it and write the c
 
 `iDryer::Config` is the device's passport. The `has*` flags tell the portal what the device has and determine which telemetry fields are published.
 
-Add to the beginning of `src/main.cpp`:
+For a heated cabinet, add to the beginning of `src/main.cpp`:
 
 ```cpp
 #include <iDryer.h>
@@ -171,7 +171,7 @@ void loop() {
 }
 ```
 
-Previous chapters show **what to add** and **the complete `src/main.cpp` after changes**, so you always see the full picture rather than scattered pieces.
+Each chapter shows **what to add** and **the complete `src/main.cpp` after changes**, so you always see the full picture rather than scattered pieces.
 
 ## 7. Flash the firmware
 

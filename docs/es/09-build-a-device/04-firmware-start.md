@@ -90,7 +90,7 @@ Desde aquí todo ocurre en un archivo — `src/main.cpp`. Ábralo e ingrese el c
 
 `iDryer::Config` es el pasaporte del dispositivo. Los flags `has*` indican al portal qué tiene el dispositivo y determinan qué campos de telemetría se publican.
 
-Para un gabinete calefaccionado, al inicio de `src/main.cpp`
+Para un gabinete calefaccionado, añada al inicio de `src/main.cpp`:
 
 ```cpp
 #include <iDryer.h>
@@ -171,7 +171,7 @@ void loop() {
 }
 ```
 
-El capítulo anterior muestra **qué agregar** y el **completo `src/main.cpp` después de los cambios**, para que siempre vea el cuadro completo, no fragmentos dispersos.
+Cada capítulo muestra **qué agregar** y el **completo `src/main.cpp` después de los cambios**, para que siempre vea el cuadro completo, no fragmentos dispersos.
 
 ## 7. Flashee
 

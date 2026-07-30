@@ -21,7 +21,7 @@ description: "idryer-coreライブラリでPlatformIOプロジェクトを作成
 
 ## 2. プロジェクトを作成する
 
-PlatformIOのプロジェクトは固定構造の資料です。プロジェクトフォルダを作成（例`my-cabinet`）し、VS Codeで開きます。内部には次のファイルが必要です：
+PlatformIOのプロジェクトは固定構造を持つフォルダーです。プロジェクトフォルダを作成（例`my-cabinet`）し、VS Codeで開きます。内部には次のファイルが必要です：
 
 ```text
 my-cabinet/

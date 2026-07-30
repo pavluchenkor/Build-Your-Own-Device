@@ -28,7 +28,7 @@ Anforderungen an Gehäuse und Anordnung der Baugruppen – [Gehäusedesign](../0
 - Sensorversorgung `3.3V`, nicht `5V`;
 - gemeinsame Masse von Regler und Stromversorgungseinheit;
 - Thermistor und Spannungsteiler-Widerstand sind richtig zusammengebaut;
-- in Version B – Gehäusegertung und Sicherung vorhanden.
+- in Version B – Gehäuseerdung und Sicherung vorhanden.
 
 Zur Verwendung eines Multimeters – [Multimeter](../05-tools/02-multimeter.md).
 

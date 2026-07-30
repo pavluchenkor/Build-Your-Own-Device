@@ -33,7 +33,7 @@ ESP32 foi escolhido porque tem Wi-Fi, as interfaces necessárias (I2C para SHT31
 
 ## Secção de potência: escolha uma versão
 
-O aquecedor e ventoinha são a carga que o controlador controla. ESP32 não pode comutador tal carga directamente: o seu pino fornece um sinal fraco `3,3V`. Há uma chave entre o controlador e a carga.
+O aquecedor e ventoinha são a carga que o controlador controla. ESP32 não pode comutar tal carga directamente: o seu pino fornece um sinal fraco `3,3V`. Há uma chave entre o controlador e a carga.
 
 Existem duas versões fundamentalmente diferentes. Escolha uma dependendo de qual aquecedor e ventoinha está a usar.
 

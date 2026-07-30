@@ -113,7 +113,7 @@ Verificação de termistor com multímetro — [Verificação de termistor](../0
 
 Abaixo — o arquivo inteiro. Novas linhas em relação ao capítulo anterior são marcadas `// ← capítulo 5`; o resto não mudou.
 
-??? nota «O que foi — `src/main.cpp` após capítulo 4»
+??? note "O que foi — `src/main.cpp` após o capítulo 4"
 
     ```cpp
     #include <iDryer.h>

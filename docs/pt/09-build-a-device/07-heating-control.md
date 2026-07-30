@@ -130,9 +130,9 @@ Os campos de telemetria (`heaterPower01`, `fanOn`) são publicados pela fachada 
 
 ## Comandos do portal
 
-Arranque e paragem de manutenção de calor o portal envia como comandos. O manipulador é registado pelo método `s_link.onCommand(nome, colbak)` - **depois** de `s_link.begin()`. Comandos de acção chegam com nome `invoke` e campo `action` (papel do menu, por exemplo `storage.start` / `storage.stop`).
+Arranque e paragem de manutenção de calor o portal envia como comandos. O manipulador é registado pelo método `s_link.onCommand(nome, callback)` - **depois** de `s_link.begin()`. Comandos de acção chegam com nome `invoke` e campo `action` (papel do menu, por exemplo `storage.start` / `storage.stop`).
 
-Para análise JSON são necessários cabehos `<ArduinoJson.h>` e `<string.h>` (para `strcmp`) - adicione-os ao resto de `#include` no início do ficheiro. O próprio manipulador é colocado em `setup()`:
+Para análise JSON são necessários os cabeçalhos `<ArduinoJson.h>` e `<string.h>` (para `strcmp`) - adicione-os ao resto de `#include` no início do ficheiro. O próprio manipulador é colocado em `setup()`:
 
 ```cpp
 s_link.onCommand("invoke", [](JsonObjectConst data) {
@@ -157,13 +157,13 @@ s_link.onCommand("invoke", [](JsonObjectConst data) {
 - `publishStatusNow()` chame após cada mudança de estatuto para que o portal veja-o imediatamente, não esperando pelo temporizador.
 
 !!! warning "Sem delay() no manipulador"
-    O manipulador `onCommand` é chamado de um colbak de rede. Qualquer bloqueio dentro dele quebra a sessão MQTT. Mude as bandeiras e estatuto, e faça o trabalho em `loop()`.
+    O manipulador `onCommand` é chamado de um callback de rede. Qualquer bloqueio dentro dele quebra a sessão MQTT. Mude as bandeiras e estatuto, e faça o trabalho em `loop()`.
 
 ## Completo `src/main.cpp` após este capítulo
 
 Este é o ficheiro final e completo do dispositivo. Novas linhas relativas ao capítulo anterior são marcadas `// ← capítulo 7`. Este mesmo ficheiro está como exemplo pronto na pasta `example/09-cabinet/` do repositório e é compilado com `pio run -e cabinet`.
 
-??? nota «O que era - `src/main.cpp` após capítulo 6»
+??? note "O que era — `src/main.cpp` após o capítulo 6"
 
     ```cpp
     #include <iDryer.h>

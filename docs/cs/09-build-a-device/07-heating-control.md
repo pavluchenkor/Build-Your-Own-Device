@@ -103,7 +103,7 @@ static void applyFan() {
 }
 ```
 
-V sériovém řadiči je ventilátor řízený teplotou se samostatnými prahy zapnutí a vypnutí (například zapnutí při `55 °C`, vypnutí při `35 °C`), aby se nedvíhal na hranici. Pro skříň lze aplikovat stejný přístup, vázáním prahů na parametry menu.
+V sériovém řadiči je ventilátor řízený teplotou se samostatnými prahy zapnutí a vypnutí (například zapnutí při `55 °C`, vypnutí při `35 °C`), aby nevybíhal na hranici. Pro skříň lze aplikovat stejný přístup, vázáním prahů na parametry menu.
 
 ## Montáž v loop()
 
@@ -163,7 +163,7 @@ s_link.onCommand("invoke", [](JsonObjectConst data) {
 
 Toto je finální, hotový soubor zařízení. Nové řádky oproti předchozí kapitole jsou označeny `// ← kapitola 7`. Stejný soubor leží jako hotový příklad ve složce `example/09-cabinet/` repozitáře a sestavuje se příkazem `pio run -e cabinet`.
 
-??? poznámka "Co bylo — `src/main.cpp` po kapitole 6"
+??? note "Co bylo — `src/main.cpp` po kapitole 6"
 
     ```cpp
     #include <iDryer.h>

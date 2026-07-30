@@ -51,8 +51,11 @@ Quando o dispositivo é construído em `idryer-core` e vinculado à sua conta, o
 
 - gestão e monitorização através do [portal](https://portal.idryer.org/) e aplicação móvel;
 - gráfico de temperatura e humidade no armário;
-- início e parada remota do modo de manutenção de calor;
+- início e paragem remota do modo de manutenção de calor;
 - configuração de parâmetros (temperatura-alvo, histerese) através do menu do dispositivo.
+
+!!! note "Os seus próprios sensores e botões no cartão"
+    O cartão do dispositivo não se limita às capacidades declaradas em `has*`. Através do card-manifest, o firmware pode declarar qualquer sensor ou controlo próprio — eles aparecem automaticamente no portal e na aplicação. Como fazê-lo — exemplo completo [«Filtro de ar inteligente»](../10-build-a-filter/01-concept.md), em especial [o capítulo sobre o cartão](../10-build-a-filter/06-card.md).
 
 ## Que partes tem esta secção
 

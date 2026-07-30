@@ -113,7 +113,7 @@ s_link.telemetry.heaterTempC[0] = readHeaterTempC();
 
 下面是整个文件。相对于上一章的新行标记为 `// ← 第 5 章`；其余的没有改变。
 
-??? 注解「什么是 — 第 4 章后的 `src/main.cpp`」
+??? note "第 4 章结束后的 `src/main.cpp`"
 
     ```cpp
     #include <iDryer.h>
@@ -143,6 +143,69 @@ s_link.telemetry.heaterTempC[0] = readHeaterTempC();
         s_link.loop();
     }
     ```
+
+```cpp
+#include <iDryer.h>
+#include <Wire.h>                  // ← 第 5 章
+#include <math.h>                  // ← 第 5 章
+#include "Sht31ClimateSensor.h"    // ← 第 5 章
+
+static const iDryer::Config CFG = {
+    .deviceType        = iDryer::DeviceType::Dryer,
+    .unitsCount        = 1,
+    .hasHeater         = true,
+    .hasFan            = true,
+    .hasAirTemp        = true,
+    .hasAirHumidity    = true,
+    .hasHeaterTemp     = true,
+    .telemetryPeriodMs = 5000,
+    .statusPeriodMs    = 10000,
+    .hardwareVersion   = "1.0",
+    .firmwareVersion   = "0.1.0",
+    .model             = "DIY Storage Cabinet",
+};
+static iDryer::Link s_link(CFG);
+
+// ← 第 5 章: SHT31 气候传感器
+static Sht31ClimateSensor s_climate(&Wire);
+static bool               s_climateOk = false;
+
+// ← 第 5 章: 加热器温度计
+static const int   THERM_PIN  = 2;
+static const float SERIES_R   = 4700.0f;
+static const float NOMINAL_R  = 100000.0f;
+static const float NOMINAL_T  = 25.0f;
+static const float BETA       = 3950.0f;
+
+static float readHeaterTempC() {
+    int   raw = analogRead(THERM_PIN);
+    float v   = (float)raw / 4095.0f;
+    float r   = SERIES_R * (1.0f - v) / v;
+    float tK  = 1.0f / (1.0f / (NOMINAL_T + 273.15f) + logf(r / NOMINAL_R) / BETA);
+    return tK - 273.15f;
+}
+
+void setup() {
+    Serial.begin(115200);
+    Wire.begin(8, 9);                 // ← 第 5 章（SDA、SCL — 你的板的引脚）
+    s_climateOk = s_climate.begin();  // ← 第 5 章
+    s_link.begin();
+}
+
+void loop() {
+    s_link.loop();
+
+    if (s_climateOk) {                                       // ← 第 5 章
+        s_climate.tick(millis());
+        SensorReading r = s_climate.get();
+        if (r.ok) {
+            s_link.telemetry.airTempC[0]       = r.temperature;
+            s_link.telemetry.airHumidityPct[0] = r.humidity;
+        }
+    }
+    s_link.telemetry.heaterTempC[0] = readHeaterTempC();     // ← 第 5 章
+}
+```
 
 ## 检查结果
 

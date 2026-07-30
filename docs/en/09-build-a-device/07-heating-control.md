@@ -105,7 +105,7 @@ static void applyFan() {
 
 In the production controller, the fan is controlled by temperature with separate on and off thresholds (for example, turn on at `55 °C`, turn off at `35 °C`) to prevent chatter at the boundary. For a cabinet, the same approach can be applied by linking thresholds to menu parameters.
 
-## Assemble in loop()
+## Putting it together in loop()
 
 ```cpp
 void loop() {
@@ -163,7 +163,7 @@ s_link.onCommand("invoke", [](JsonObjectConst data) {
 
 This is the final, complete file for the device. Lines new relative to the previous chapter are marked `// ← chapter 7`. This same file is available as a ready example in the `example/09-cabinet/` folder of the repository and builds with the command `pio run -e cabinet`.
 
-??? note "`src/main.cpp` before — after chapter 6"
+??? note "What it was — `src/main.cpp` after chapter 6"
 
     ```cpp
     #include <iDryer.h>
@@ -348,7 +348,7 @@ void loop() {
 }
 ```
 
-## Verification of results
+## Checking the result
 
 After this step:
 

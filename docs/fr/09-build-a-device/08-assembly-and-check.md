@@ -55,7 +55,7 @@ Ce qu'il faut observer dans les premières minutes :
 Après le premier préchauffage, comparez les lectures avec un thermomètre séparé dans le boîtier :
 
 - si la température de l'air dans le boîtier diffère de l'objectif — vérifiez le placement de SHT31 (il ne doit pas être dans le flux ou près d'une paroi) ;
-- si la température du radiateur semble invraisemblable — vérifiez le type de thermistance et la valeur du résistance de division ;
+- si la température du radiateur semble invraisemblable — vérifiez le type de thermistance et la valeur de la résistance du diviseur ;
 - si nécessaire, ajustez la température objectif et l'hystérésis dans le [menu](06-menu.md).
 
 ## Si quelque chose ne fonctionne pas

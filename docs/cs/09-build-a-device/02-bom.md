@@ -1,13 +1,13 @@
 ---
 title: "Složení systému vyhřívaného skříně: součástky a dvě verze silové části"
-description: "Seznam součástek pro vlastnoručně vyrobený vyhřívací skrín na ESP32: senzor SHT31, termistor, topný prvek a ventilátor v nízkonapěťové (24V) a síťové (220V) verzi."
+description: "Seznam součástek pro vlastnoručně vyrobený vyhřívací skříň na ESP32: senzor SHT31, termistor, topný prvek a ventilátor v nízkonapěťové (24V) a síťové (220V) verzi."
 ---
 
 # Složení systému
 
-Na této stránce je seznam součástek zařízení a dvě varianty silové části. Nízkonapěťová část (kontrolér a senzory) je v obou verzích stejná. Liší se pouze to, jak se spínají topný prvek a ventilátor.
+Na této stránce je seznam součástek zařízení a dvě varianty silové části. Slaboproudá část (kontrolér a senzory) je v obou verzích stejná. Liší se pouze to, jak se spínají topný prvek a ventilátor.
 
-## Nízkonapěťová část (stejná pro obě verze)
+## Slaboproudá část (stejná pro obě verze)
 
 | Uzel | Účel | Poznámka |
 |------|------|---------|
@@ -39,7 +39,7 @@ Existují dvě zásadně odlišné verze. Zvolte jednu v závislosti na tom, jak
 
 ### Verze A - nízkonapěťová (24V nebo 12V)
 
-Topný prvek a ventilátor jsou napájeny z `24V` (nebo `12V`) stejnosměrného proudu. Toto je jednodušší a bezpečnější cestu pro vlastnoruční montáž.
+Topný prvek a ventilátor jsou napájeny z `24V` (nebo `12V`) stejnosměrného proudu. Toto je jednodušší a bezpečnější cesta pro vlastnoruční montáž.
 
 | Uzel | Součástka |
 |------|-----------|
@@ -58,7 +58,7 @@ Výkon zdroje se vypočítá pro celkovou zátěž s rezervou - viz [Výpočet p
 
 ### Verze B - síťová (110-230V AC)
 
-Topný prvek a ventilátor jsou napájeny ze sítě `110-230V`. To se dělá, když je potřebný silný síťový topný prvek - například připravený topný prvek s ventilátorem pro skrín. Zde se místo MOSFET modulu používají AC spínací moduly.
+Topný prvek a ventilátor jsou napájeny ze sítě `110-230V`. To se dělá, když je potřebný silný síťový topný prvek - například připravený topný prvek s ventilátorem pro skříň. Zde se místo MOSFET modulu používají AC spínací moduly.
 
 | Uzel | Součástka |
 |------|-----------|
@@ -70,19 +70,19 @@ Topný prvek a ventilátor jsou napájeny ze sítě `110-230V`. To se dělá, kd
 | Ochrana | Pojistka, ochranné uzemnění skříně |
 
 !!! danger "Síťové napětí je nebezpečné pro život"
-    Verze B pracuje s napětím `110-230V`. Chyba montáže může vést k úrazu elektrickým proudem nebo požáru. Před montáží si obязательně přečtěte materiály o bezpečnosti: [Triák](../01-electronics-basics/03-triac.md), [Solid-state relé (SSR)](../01-electronics-basics/04-solid-state-relay-ssr.md), [Chyby topných prvků a SSR](../08-common-mistakes/05-heater-ssr-mistakes.md). Pokud nemáte zkušenosti se síťovým napětím, zvolte verzi A.
+    Verze B pracuje s napětím `110-230V`. Chyba montáže může vést k úrazu elektrickým proudem nebo požáru. Před montáží si bezpodmínečně přečtěte materiály o bezpečnosti: [Triák](../01-electronics-basics/03-triac.md), [Solid-state relé (SSR)](../01-electronics-basics/04-solid-state-relay-ssr.md), [Chyby topných prvků a SSR](../08-common-mistakes/05-heater-ssr-mistakes.md). Pokud nemáte zkušenosti se síťovým napětím, zvolte verzi A.
 
-Kontrolér a senzory jsou ve verzi B stejně napájeny ze samostatného nízkonapěťového zdroje (`5V`/`24V`). Síťová část a nízkonapěťová část musí být fyzicky a elektricky odděleny.
+Kontrolér a senzory jsou ve verzi B stejně napájeny ze samostatného nízkonapěťového zdroje (`5V`/`24V`). Síťová část a slaboproudá část musí být fyzicky a elektricky odděleny.
 
 ## Volitelné moduly
 
-Tyto uzly nejsou pro skrín povinné, ale jsou podporovány jádrem a mohou být přidány později:
+Tyto uzly nejsou pro skříň povinné, ale jsou podporovány jádrem a mohou být přidány později:
 
 - adresovatelné LED osvětlení (`hasLed`);
 - váhový senzor spotřeby filamentu (`hasWeight`);
 - RFID tag cívky (`hasRfid`).
 
-Základní skrín je nepoužívá - začínáme s minimem.
+Základní skříň je nepoužívá - začínáme s minimem.
 
 ## Co dál
 

@@ -82,4 +82,4 @@ La secuencia de diagnóstico general — [Lista de verificación de diagnóstico
 
 Usted ha montado un armario de almacenamiento climatizado en ESP32 e `idryer-core`: el dispositivo lee el clima y la temperatura del calentador, mantiene la temperatura establecida, protege el calentador del sobrecalentamiento y se controla desde el portal. Esta es una base completa sobre la cual puede construir sus propios módulos del ecosistema.
 
-Los componentes posteriores — iluminación, escalas, RFID — también son compatibles con el núcleo; se pueden agregar siguiendo el mismo esquema: sensor o periférico → telemetría o comando → visualización en el portal.
+Los componentes posteriores — iluminación, básculas, RFID — también son compatibles con el núcleo; se pueden agregar siguiendo el mismo esquema: sensor o periférico → telemetría o comando → visualización en el portal.

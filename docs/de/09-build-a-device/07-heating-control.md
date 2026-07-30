@@ -126,7 +126,7 @@ void loop() {
 }
 ```
 
-Die Telemetrie-Felder (`heaterPower01`, `fanOn`) veröffentlicht die Fassade selbst – im Portal ist sichtbar, ob das Gerät gerade heißt und ob der Lüfter läuft.
+Die Telemetrie-Felder (`heaterPower01`, `fanOn`) veröffentlicht die Fassade selbst – im Portal ist sichtbar, ob das Gerät gerade heizt und ob der Lüfter läuft.
 
 ## Befehle vom Portal
 

@@ -54,6 +54,9 @@ Wenn das Gerät auf `idryer-core` gebaut und an ein Konto gebunden ist, erhalten
 - Fernstart und -stop des Heizmodus;
 - Parametereinstellung (Zieltemperatur, Hysterese) über das Geräte-Menü.
 
+!!! note "Eigene Sensoren und Steuerelemente auf der Gerätekarte"
+    Die Gerätekarte ist nicht auf die Wörterbuchfähigkeiten (`has*`) beschränkt. Über das Card-Manifest kann die Firmware beliebige eigene Sensoren und Steuerelemente deklarieren — sie erscheinen automatisch im Portal und in der App. Wie das funktioniert, zeigt das Durchgangsbeispiel [„Intelligenter Luftfilter"](../10-build-a-filter/01-concept.md), insbesondere [das Kapitel über die Karte](../10-build-a-filter/06-card.md).
+
 ## Was ist in diesem Abschnitt enthalten
 
 Im Folgenden geht der Pfad Schritt für Schritt von der leeren Platine zum funktionsfähigen Schrank:

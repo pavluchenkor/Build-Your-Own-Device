@@ -168,7 +168,7 @@ Vous utilisez ces valeurs dans la logique de chauffage à l'étape suivante. Lor
 
 Par rapport au chapitre précédent, seules deux lignes ont été ajoutées (marquées `// ← chapitre 6`) : la connexion du menu et `menu.initDefaults()`.
 
-??? примечание «Avant — `src/main.cpp` après le chapitre 5»
+??? note "Avant — `src/main.cpp` après le chapitre 5"
 
     ```cpp
     #include <iDryer.h>

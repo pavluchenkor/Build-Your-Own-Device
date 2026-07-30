@@ -79,7 +79,7 @@ The controller and sensors in version B are still powered by a separate low-volt
 These nodes are not required for the cabinet, but are supported by the core and can be added later:
 
 - addressable LED lighting (`hasLed`);
-- filament load weight sensor (`hasWeight`);
+- filament consumption weight sensor (`hasWeight`);
 - spool RFID tag (`hasRfid`).
 
 The basic cabinet does not use them — we start with the minimum.

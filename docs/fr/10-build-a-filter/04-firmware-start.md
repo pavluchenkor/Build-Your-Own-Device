@@ -1,0 +1,66 @@
+---
+title: "Filtre d'air intelligent : démarrage du firmware et attachement au portail"
+description: "Charpente du firmware du filtre sur idryer-core : Config pour type d'appareil non-standard, premier démarrage, attachement au compte par PIN."
+---
+
+# Démarrage du firmware
+
+La charpente du projet répète complètement [le chapitre de l'exemple avec l'armoire](../09-build-a-device/04-firmware-start.md) : PlatformIO, `secrets.h`, `idryer-core` dans `lib/`, même `platformio.ini` (changez juste le nom de l'environnement en `filter`). Ici — juste ce qui diffère.
+
+## Config : appareil de type non-standard
+
+Le filtre n'a ni radiateur ni capteur climatique du dictionnaire de l'écosystème. Du vocabulaire de l'écosystème, il n'a que le ventilateur. Dans `src/main.cpp` :
+
+```cpp
+#include <iDryer.h>
+
+static const iDryer::Config CFG = {
+    .deviceType        = iDryer::DeviceType::Unknown, // appareil non-standard
+    .unitsCount        = 1,
+    // Périphérie : du dictionnaire de l'écosystème nous avons juste le ventilateur.
+    .hasFan            = true,
+    // Périodes de publication automatique :
+    .telemetryPeriodMs = 5000,
+    .statusPeriodMs    = 10000,
+    // Identification sur le portail :
+    .hardwareVersion   = "1.0",
+    .firmwareVersion   = "0.1.0",
+    .model             = "DIY Air Filter",
+};
+
+static iDryer::Link s_link(CFG);
+
+void setup() {
+    Serial.begin(115200);
+    s_link.begin();
+}
+
+void loop() {
+    s_link.loop();
+}
+```
+
+!!! note "DeviceType::Unknown — c'est normal"
+    Le type `Unknown` signifie « le portail ne connaît pas ce produit ». Autrefois, c'était un problème : le portail n'avait pas de fiche pour les types inconnus. Maintenant c'est la voie standard : l'interface de l'appareil est entièrement décrite par le manifeste card ([chapitre 6](06-card.md)), et le portail construit la fiche d'après celui-ci. Le type est nécessaire seulement pour les produits « propres » iDryer qui ont des fiches de marque.
+
+Le drapeau `hasFan = true` nous donne gratuitement : le champ `fanStatus` en télémétrie, la cellule « Ventilateur » sur la fiche et une entité dans le manifeste — tout du dictionnaire de l'écosystème.
+
+## Capteur VOC : pas dans Config — et c'est normal
+
+Remarquez : il n'y a pas de drapeau « hasVoc » dans `Config`. Le dictionnaire `has*` décrit la périphérie connue de l'écosystème. Votre capteur personnalisé vous l'ajouterez non pas via le dictionnaire, mais par deux autres mécanismes : en ajoutant ses lectures à la télémétrie via votre propre champ et en le déclarant dans le card-manifeste — ce sont les deux prochains chapitres. C'est ça l'idée : le dictionnaire n'a pas besoin d'être étendu pour chaque nouvel appareil.
+
+## Premier démarrage et attachement
+
+La procédure ne diffère pas de l'exemple avec l'armoire :
+
+1. Flashez la carte, ouvrez Serial Monitor.
+2. L'appareil activera le Wi-Fi (données de `secrets.h`), s'enregistrera et affichera un PIN :
+   ```text
+   [CLOUD] PIN: 1234567 (expires in 600s)
+   ```
+3. Sur le [portail](https://portal.idryer.org/) — « Ajouter un appareil » → saisissez le PIN.
+4. Après l'attachement, le log affichera `Device claimed!`, l'appareil passera en `Online`.
+
+Explication détaillée de l'attachement, erreurs Wi-Fi et réattachement — dans [le chapitre de l'exemple avec l'armoire](../09-build-a-device/04-firmware-start.md).
+
+Sur le portail, l'appareil est déjà visible, mais la fiche est presque vide — il n'y a pas de données encore. Allons connecter le capteur.

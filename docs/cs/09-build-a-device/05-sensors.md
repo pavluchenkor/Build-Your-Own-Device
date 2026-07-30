@@ -105,7 +105,7 @@ s_link.telemetry.heaterTempC[0] = readHeaterTempC();
 ```
 
 !!! warning "Toto je zjednodušené čtení — upravte parametry pro váš termistor"
-    Konstanty `NOMINAL_R` a `BETA` závisí na konkrétním termistoru — vezměte je z jeho technické dokumentace (běžný domácí termistor je Generic 3950, `100 kΩ`). Vzorec děliče odpovídá schématu z [Schématu zapojení](03-wiring.md): termistor na `3.3V`, rezistor na `GND`. Při jiném rozloženíí se vzorec změní. ADC na ESP32 je nelineární, takže pro přesná měření se čtení kalibrují — v sériových kontrolérech iDryer se k tomu používá tabulka termistoru (knihovna `Thermistor`).
+    Konstanty `NOMINAL_R` a `BETA` závisí na konkrétním termistoru — vezměte je z jeho technické dokumentace (běžný domácí termistor je Generic 3950, `100 kΩ`). Vzorec děliče odpovídá schématu z [Schématu zapojení](03-wiring.md): termistor na `3.3V`, rezistor na `GND`. Při jiném rozložení se vzorec změní. ADC na ESP32 je nelineární, takže pro přesná měření se čtení kalibrují — v sériových kontrolérech iDryer se k tomu používá tabulka termistoru (knihovna `Thermistor`).
 
 Ověření termistoru multimetrem — [Ověření termistoru](../06-practical-guides/02-checking-thermistor.md).
 
@@ -113,7 +113,7 @@ Ověření termistoru multimetrem — [Ověření termistoru](../06-practical-gu
 
 Níže je celý soubor dohromady. Nové řádky ve srovnání s předchozí kapitolou jsou označeny `// ← kapitola 5`; zbytek se nezměnil.
 
-??? poznámka «Co bylo — `src/main.cpp` po kapitole 4»
+??? note "Co bylo — `src/main.cpp` po kapitole 4"
 
     ```cpp
     #include <iDryer.h>

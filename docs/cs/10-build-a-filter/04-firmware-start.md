@@ -1,0 +1,66 @@
+---
+title: "Chytrý filtr: start programu a připojení k portálu"
+description: "Kostra programu filtru na idryer-core: Config nestandardního typu zařízení, první spuštění, připojení k účtu přes PIN."
+---
+
+# Start programu
+
+Kostra projektu je totožná s [kapitolou z příkladu se skříní](../09-build-a-device/04-firmware-start.md): PlatformIO, `secrets.h`, `idryer-core` v `lib/`, stejný `platformio.ini` (změňte pouze název prostředí na `filter`). Zde — jen to, co se liší.
+
+## Config: zařízení nestandardního typu
+
+Filtr nemá ani ohřívač, ani klimatický senzor ze slovníku ekosystému. Ze „slovníkových" schopností má pouze ventilátor. V `src/main.cpp`:
+
+```cpp
+#include <iDryer.h>
+
+static const iDryer::Config CFG = {
+    .deviceType        = iDryer::DeviceType::Unknown, // nestandardní zařízení
+    .unitsCount        = 1,
+    // Periférie: ze slovníku ekosystému máme jen ventilátor.
+    .hasFan            = true,
+    // Období automatického zveřejňování:
+    .telemetryPeriodMs = 5000,
+    .statusPeriodMs    = 10000,
+    // Identifikace v portálu:
+    .hardwareVersion   = "1.0",
+    .firmwareVersion   = "0.1.0",
+    .model             = "DIY Air Filter",
+};
+
+static iDryer::Link s_link(CFG);
+
+void setup() {
+    Serial.begin(115200);
+    s_link.begin();
+}
+
+void loop() {
+    s_link.loop();
+}
+```
+
+!!! note "DeviceType::Unknown — to je v pořádku"
+    Typ `Unknown` znamená „portál takový výrobek nezná". Dříve to byl problém: portál neměl kartu pro neznámý typ. Dnes je to standardní cesta: rozhraní zařízení popíše manifest karty ([kapitola 6](06-card.md)) a portál si kartu sestaví podle něj. Typ je potřebný jen pro vlastní výrobky iDryer, které mají firemní karty.
+
+Příznak `hasFan = true` přináší zdarma: pole `fanStatus` v telemetrii, dlaždici „Ventilátor" na kartě a entitu v manifestu — vše ze slovníku ekosystému.
+
+## VOC senzor v Config není — a být nemá
+
+Všimněte si: v `Config` žádný příznak „hasVoc" není. Slovník `has*` popisuje periferie, které ekosystém zná. Vlastní senzor nepřidáte přes slovník, ale dvěma jinými mechanismy: jeho hodnotu dopíšete do telemetrie vlastním polem a deklarujete ho v manifestu karty — to jsou následující dvě kapitoly. V tom spočívá smysl tohoto přístupu: slovník není potřeba rozšiřovat pro každé nové zařízení.
+
+## První spuštění a spárování
+
+Postup se neliší od příkladu se skříní:
+
+1. Nahrajte firmware do desky, otevřete Serial Monitor.
+2. Zařízení se připojí k Wi-Fi (přihlašovací údaje z `secrets.h`), zaregistruje se a vypíše PIN:
+   ```text
+   [CLOUD] PIN: 1234567 (expires in 600s)
+   ```
+3. V [portálu](https://portal.idryer.org/) — „Přidat zařízení" → zadejte PIN.
+4. Po spárování se v logu objeví `Device claimed!`, zařízení přejde do stavu `Online`.
+
+Podrobný rozbor spárování, chyb Wi-Fi a opakovaného párování — v [kapitole příkladu se skříní](../09-build-a-device/04-firmware-start.md).
+
+V portálu je zařízení vidět, ale karta je zatím téměř prázdná — data ještě nejsou. Jdeme připojit senzor.

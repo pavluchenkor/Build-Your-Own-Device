@@ -5,7 +5,7 @@ description: "Auslesen des SHT31-Klimasensors und des Thermistorsensors des Heiz
 
 # Sensoren
 
-Auf dieser Seite verbinden Sie zwei Sensoren und geben ihre Daten auf dem Portal aus. Zunächst SHT31 (Schrank-Klima), dann Thermistor (Heizer-Temperatur). Dies ist der Schritt „Daten erhalten" vor dem Hinzufügen der Steuerlogi.
+Auf dieser Seite verbinden Sie zwei Sensoren und geben ihre Daten auf dem Portal aus. Zunächst SHT31 (Schrank-Klima), dann Thermistor (Heizer-Temperatur). Dies ist der Schritt „Daten erhalten" vor dem Hinzufügen der Steuerlogik.
 
 Das Prinzip der Arbeit mit dem Kern ist einfach: Ihr Code in `loop()` schreibt frische Messwerte in die Felder `s_link.telemetry.*`, und die Fassade veröffentlicht sie automatisch jeden `telemetryPeriodMs` aus `Config` in die Cloud. Ein manueller Aufruf der Veröffentlichung ist nicht erforderlich.
 
@@ -113,7 +113,7 @@ s_link.telemetry.heaterTempC[0] = readHeaterTempC();
 
 Unten ist die gesamte Datei. Neue Zeilen relativ zum letzten Kapitel sind mit `// ← Kapitel 5` gekennzeichnet; der Rest hat sich nicht geändert.
 
-??? примечание «Was war — `src/main.cpp` nach Kapitel 4»
+??? note "Was bisher da war — `src/main.cpp` nach Kapitel 4"
 
     ```cpp
     #include <iDryer.h>

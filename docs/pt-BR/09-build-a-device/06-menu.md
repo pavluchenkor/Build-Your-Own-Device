@@ -168,7 +168,7 @@ Esses valores você usa na lógica de aquecimento no próximo passo. Quando o us
 
 Comparado ao capítulo anterior, apenas duas linhas foram adicionadas (marcadas `// ← capítulo 6`): conexão do menu e `menu.initDefaults()`.
 
-??? nota «O que foi — `src/main.cpp` após capítulo 5»
+??? note "O que foi — `src/main.cpp` após o capítulo 5"
 
     ```cpp
     #include <iDryer.h>

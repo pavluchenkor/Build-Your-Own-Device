@@ -1,5 +1,5 @@
 ---
-title: "Schéma zapojení vyhřívaného skříňové na ESP32"
+title: "Schéma zapojení vyhřívané skříně na ESP32"
 description: "Mapování pinů ESP32 pro domácí skříň: SHT31 přes I2C, termistor na ADC, ohřívač a ventilátor přes spínač. Oddělení slaboproudé a silnoproudé části."
 ---
 
@@ -31,7 +31,7 @@ SHT31 se připojuje čtyřmi vodiči:
 3. `SDA` snímače — na pin `SDA` (příklad: GPIO8).
 4. `SCL` snímače — na pin `SCL` (příklad: GPIO9).
 
-Vedení I2C jsou krátká. Pokud je snímač daleko od desky, držte vodiče co nejkratší a zkroucené. Většina modulů SHT31 má tahací rezistory již osazeny na desce modulu.
+Vedení I2C jsou krátká. Pokud je snímač daleko od desky, držte vodiče co nejkratší a zkroucené. Většina modulů SHT31 má přitahovací rezistory již osazeny na desce modulu.
 
 !!! note "Adresa SHT31"
     SHT31 má obvykle adresu `0x44` (někdy `0x45`). Pokud snímač neodpovídá, zkontrolujte adresu a vedení `SDA`/`SCL`.
@@ -66,7 +66,7 @@ Připojení ventilátoru s řízením je podrobně vysvětleno v [Připojení ve
 ### Verze B (220V) — SSR/relé
 
 !!! danger "Před montáží části sítě"
-    Všechna připojení k síti proveďte s zcela odpojením zařízení. Skříň se síťovou částí musí mít ochranné uzemění a pojistku. Síťové vodiče používejte dostatečného průřezu a bezpečně je upevněte v svorkách.
+    Všechna připojení k síti proveďte se zcela odpojeným zařízením. Skříň se síťovou částí musí mít ochranné uzemění a pojistku. Síťové vodiče používejte dostatečného průřezu a bezpečně je upevněte v svorkách.
 
 SSR má dvě strany. **Řídící** — nízkonapěťový vstup, kterým řídí řadič. **Silnoproudá** — vývody, kterými prochází síťové napětí zátěže. Strany jsou navzájem izolovány optočlenem uvnitř SSR, takže je možné síť řídit slabým signálem `3.3V`.
 
@@ -77,21 +77,21 @@ SSR má dvě strany. **Řídící** — nízkonapěťový vstup, kterým řídí
 !!! note "Proč SSR chladič"
     Při spínání SSR se mírně zahřívá a čím větší proud zátěže, tím větší ohřev. Proto se SSR přišroubuje na chladič (kovový plát na odvod tepla) a SSR se volí s rezervou proudu — výrazně vyšší než proud zátěže. Jakou rezervu a chladič potřebujete pro váš proud — [Polovodičové relé (SSR)](../01-electronics-basics/04-solid-state-relay-ssr.md).
 
-## Vedení: slaboproudá a silnoproudá část
+## Vedení: slaboproudá a silová část
 
 - Udržujte signálové vodiče (snímače, řízení) oddělené od silnoproudých.
 - Nepouštějte vodiče termistoru a I2C podél silnoproudých vodičů ohřívače — je to zdroj rušení.
-- V Verzi B fyzicky oddělte zónu sítě a nízkonapětí uvnitř skříně.
+- Ve verzi B fyzicky oddělte zónu sítě a nízkonapětí uvnitř skříně.
 - Všechny masy slaboproudé části sveďte do jednoho bodu.
 
-Rušení od ventilátoru a špatná masa — čestá příčina „plovoucích" hodnot a restartů. Viz [Chyby vedení](../08-common-mistakes/03-wiring-mistakes.md).
+Rušení od ventilátoru a špatná masa — častá příčina „plovoucích" hodnot a restartů. Viz [Chyby vedení](../08-common-mistakes/03-wiring-mistakes.md).
 
 ## Co zkontrolovat před připojením napájení
 
 - Napájení snímačů `3.3V`, ne `5V`.
 - Termistor a rezistor děliče jsou správně zapojeny, ADC pin je ve středním bodě.
 - Společná masa řadiče a silnoproudého zdroje napájení.
-- V Verzi B — uzemění skříně, pojistka, bezpečné svorky, izolace.
+- Ve verzi B — uzemění skříně, pojistka, bezpečné svorky, izolace.
 - Žádné zkraty mezi napájením a zemí (zkontrolujte multimetrem).
 
 Kontrola multimetrem — [Multimetr](../05-tools/02-multimeter.md).

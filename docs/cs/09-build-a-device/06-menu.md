@@ -28,7 +28,7 @@ menu.yaml → (pio run) → C++-soubory v src/menu/ + NVS + JSON pro portál
 Položka s polem `role:` je viditelná portálu a zobrazuje se jako widget. Položka bez `role:` — je soukromá, pouze pro interní logiku zařízení.
 
 !!! warning "Neupravujte vygenerované soubory"
-    Soubory `menu_state.*`, `menu_bindings.*`, `menu_ids.h` a další vytváří generátor. Upravujte pouze `menu.yaml` a znovu sbíhejte — jinak budou vaše změny přepsány.
+    Soubory `menu_state.*`, `menu_bindings.*`, `menu_ids.h` a další vytváří generátor. Upravujte pouze `menu.yaml` a znovu sestavte — jinak budou vaše změny přepsány.
 
 ## Krok 1. Zkopírujte šablonu
 
@@ -119,7 +119,7 @@ Omezení, která nesmíte porušit:
 !!! warning "Zkontrolujte položku ignore_external_cmd ze šablony"
     V šabloně je položka `ignore_external_cmd` a její `bind` — 19 znaků, což překračuje limit 15. Pokud to ponecháte tak, jak to je, generování selhá: `bind 'ignore_external_cmd' ... má 19 znaků, limit je 15`. Buď odstraňte tuto položku, nebo zkraťte `bind` na `ign_ext_cmd` (jako v reálných produktech). Pro základní skříň jej můžete jednoduše odstranit.
 
-## Krok 4. Sbíhejte projekt a zkontrolujte generování
+## Krok 4. Sestavte projekt a zkontrolujte generování
 
 ```bash
 pio run -e cabinet
@@ -138,7 +138,7 @@ src/menu/
 └── menu_meta.h        # a další
 ```
 
-Pokud se sestavení selhalo se zprávou o neznámé `role:` — znamená to, že role není ze seznamu `canonical_roles`. Opravte ji a znovu sbíhejte. Soubory označené autogen neupravujte ručně.
+Pokud sestavení selhalo se zprávou o neznámé `role:` — znamená to, že role není ze seznamu `canonical_roles`. Opravte ji a znovu sestavte. Soubory označené autogen neupravujte ručně.
 
 ## Krok 5. Připojte nabídku do hlavního souboru
 
@@ -168,7 +168,7 @@ Tyto hodnoty používáte v logice topení v dalším kroku. Když uživatel zm�
 
 Relativně k předchozí kapitole byly přidány pouze dva řádky (označeny `// ← kapitola 6`): připojení nabídky a `menu.initDefaults()`.
 
-??? poznámka „Co bylo — `src/main.cpp` po kapitole 5"
+??? note "Co bylo — `src/main.cpp` po kapitole 5"
 
     ```cpp
     #include <iDryer.h>

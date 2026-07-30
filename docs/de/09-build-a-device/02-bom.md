@@ -17,7 +17,7 @@ Auf dieser Seite finden Sie die Komponentenliste des Geräts und zwei Varianten 
 | Pullup-Widerstand für Thermistor | Spannungsteiler für ADC | Typischerweise `4,7 kΩ` |
 | Stromversorgung | Stromversorgung für Regler und Niedrigspannungsperipherie | Spannung gemäß gewählter Version |
 
-ESP32 wurde ausgewählt, weil er Wi-Fi enthält, über die erforderlichen Schnittstellen verfügt (I2C für SHT31, ADC für Thermistor, PWM zur Laststenerung) und direkt von `idryer-core` unterstützt wird. Weitere Details — [ESP32-Regler](../02-controllers/01-esp32-controller.md).
+ESP32 wurde ausgewählt, weil er Wi-Fi enthält, über die erforderlichen Schnittstellen verfügt (I2C für SHT31, ADC für Thermistor, PWM zur Laststeuerung) und direkt von `idryer-core` unterstützt wird. Weitere Details — [ESP32-Regler](../02-controllers/01-esp32-controller.md).
 
 !!! warning "ESP32-Logik — 3.3V"
     ESP32 arbeitet mit `3.3V`. Geben Sie nicht `5V` auf seine Anschlüsse. Dies gilt für Sensoren, Module und Adapter. Weitere Details — [Regelfehler](../08-common-mistakes/04-controller-mistakes.md).

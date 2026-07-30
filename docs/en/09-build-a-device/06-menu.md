@@ -168,7 +168,7 @@ You use these values in the heating logic in the next step. When the user change
 
 Compared to the previous chapter, only two lines were added (marked `// ← chapter 6`): menu inclusion and `menu.initDefaults()`.
 
-??? note "Previous version: `src/main.cpp` after chapter 5"
+??? note "What it looked like — `src/main.cpp` after chapter 5"
 
     ```cpp
     #include <iDryer.h>

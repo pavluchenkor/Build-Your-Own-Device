@@ -54,6 +54,9 @@ Quand l'appareil est assemblé sur `idryer-core` et lié au compte, vous obtenez
 - démarrage et arrêt du mode maintien de chaleur à distance ;
 - configuration des paramètres (température cible, hystérésis) via le menu de l'appareil.
 
+!!! note "Capteurs et contrôles personnalisés sur la fiche de l'appareil"
+    La fiche de l'appareil n'est pas limitée aux capacités du dictionnaire (`has*`). Via le card-manifest, le firmware peut déclarer n'importe quels capteurs et commandes personnalisés — ils apparaîtront automatiquement sur le portail et dans l'application. Comment faire — l'exemple transversal [« Filtre à air intelligent »](../10-build-a-filter/01-concept.md), notamment [le chapitre sur la fiche](../10-build-a-filter/06-card.md).
+
 ## De quoi se compose cette section
 
 Ensuite vient le chemin étape par étape d'une carte vierge à une armoire qui fonctionne :

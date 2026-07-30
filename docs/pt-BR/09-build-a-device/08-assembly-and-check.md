@@ -1,85 +1,85 @@
 ---
-title: "Montagem do gabinete aquecido e verificacao antes do lancamento"
-description: "Montagem final do gabinete caseiro em ESP32: instalacao no gabinete, primeiro aquecimento, calibracao de temperatura e lista de verificacao de seguranca antes do funcionamento permanente."
+title: "Montagem do gabinete aquecido e verificação antes do lançamento"
+description: "Montagem final do gabinete caseiro em ESP32: instalação no gabinete, primeiro aquecimento, calibração de temperatura e lista de verificação de segurança antes do funcionamento permanente."
 ---
 
-# Montagem e verificacao
+# Montagem e verificação
 
-Nesta pagina voce monta o dispositivo no gabinete, faz o primeiro aquecimento controlado e verifica que o gabinete funciona com seguranca. Faca as verificacoes em ordem e nao deixe o dispositivo sem supervisao no primeiro lancamento.
+Nesta página você monta o dispositivo no gabinete, faz o primeiro aquecimento controlado e verifica que o gabinete funciona com segurança. Faça as verificações em ordem e não deixe o dispositivo sem supervisão no primeiro lançamento.
 
 ## Ordem de montagem
 
-1. Fixe o ESP32 e a parte de potencia no gabinete de forma que as zonas de sinal fraco e de potencia estejam separadas.
-2. Coloque o sensor SHT31 no gabinete longe do fluxo direto do aquecedor — senao ele mostrara a temperatura do jato, nao do ar no volume.
-3. Fixe o termistor em contato termico com o aquecedor.
-4. Verifique que os fios nao tocam o aquecedor e nao caem no ventilador.
-5. Na versao B (`220V`) certifique-se que os fios de rede sao fixos nos terminais, a isolacao esta intacta, o gabinete e aterrado.
+1. Fixe o ESP32 e a parte de potência no gabinete de forma que as zonas de sinal fraco e de potência estejam separadas.
+2. Coloque o sensor SHT31 no gabinete longe do fluxo direto do aquecedor — senão ele mostrará a temperatura do jato, não do ar no volume.
+3. Fixe o termistor em contato térmico com o aquecedor.
+4. Verifique que os fios não tocam o aquecedor e não caem no ventilador.
+5. Na versão B (`220V`) certifique-se que os fios de rede são fixos nos terminais, a isolação está intacta, o gabinete é aterrado.
 
-Requisitos para o gabinete e colocacao dos nos — [Projeto de gabinete](../07-3d-printing/05-enclosure-design.md).
+Requisitos para o gabinete e colocação dos nós — [Projeto de gabinete](../07-3d-printing/05-enclosure-design.md).
 
-!!! warning "Pecas plasticas perto do aquecimento"
-    PLA amolece na temperatura que facilmente se encontra perto do aquecedor. Pecas perto do calor imprima em material termoresistente. Veja [Materiais termoresistentes](../07-3d-printing/04-heat-resistant-materials.md) e [Por que PLA e uma escolha arriscada](../07-3d-printing/06-why-pla-is-risky.md).
+!!! warning "Peças plásticas perto do aquecimento"
+    PLA amolece na temperatura que facilmente se encontra perto do aquecedor. Peças perto do calor imprima em material termoresistente. Veja [Materiais termoresistentes](../07-3d-printing/04-heat-resistant-materials.md) e [Por que PLA é uma escolha arriscada](../07-3d-printing/06-why-pla-is-risky.md).
 
-## Verificacao antes de energizar
+## Verificação antes de energizar
 
-Teste com multimetro antes do primeiro lancamento:
+Teste com multímetro antes do primeiro lançamento:
 
-- sem curtos entre alimentacao e terra;
-- alimentacao de sensores `3.3V`, nao `5V`;
-- terra comum do controlador e bloco de potencia;
+- sem curtos entre alimentação e terra;
+- alimentação de sensores `3.3V`, não `5V`;
+- terra comum do controlador e bloco de potência;
 - termistor e resistor divisor montados corretamente;
-- na versao B — aterramento do gabinete e fusivel em lugar.
+- na versão B — aterramento do gabinete e fusível em lugar.
 
-Como usar multimetro — [Multimetro](../05-tools/02-multimeter.md).
+Como usar multímetro — [Multímetro](../05-tools/02-multimeter.md).
 
-## Primeiro lancamento
+## Primeiro lançamento
 
-1. Forne energia apenas ao controlador e sensores (nao conecte a carga ainda, se possivel).
-2. Certifique-se que o dispositivo esta Online no portal e mostra temperatura e umidade.
+1. Forneça energia apenas ao controlador e sensores (não conecte a carga ainda, se possível).
+2. Certifique-se que o dispositivo está Online no portal e mostra temperatura e umidade.
 3. Conecte o aquecedor e ventilador.
-4. Inicie o modo de manutencao de calor no portal e observe.
+4. Inicie o modo de manutenção de calor no portal e observe.
 
-!!! danger "Nao deixe o primeiro aquecimento sem supervisao"
-    No primeiro lancamento, supervise o dispositivo. Certifique-se que o aquecedor desliga ao atingir a meta e pela protecao do termistor, nao aquece continuamente.
+!!! danger "Não deixe o primeiro aquecimento sem supervisão"
+    No primeiro lançamento, supervise o dispositivo. Certifique-se que o aquecedor desliga ao atingir a meta e pela proteção do termistor, não aquece continuamente.
 
 O que observar nos primeiros minutos:
 
 - temperatura do ar sobe e estabiliza perto da meta;
-- temperatura do aquecedor nao excede o limite definido;
-- o aquecimento desliga ao atingir a meta e liga novamente apos esfriar na quantidade de histerese;
-- o ventilador funciona e nao pega os fios;
-- o controlador nao se reinicializa quando a carga liga.
+- temperatura do aquecedor não excede o limite definido;
+- o aquecimento desliga ao atingir a meta e liga novamente após esfriar na quantidade de histerese;
+- o ventilador funciona e não pega nos fios;
+- o controlador não se reinicializa quando a carga liga.
 
-## Calibracao
+## Calibração
 
-Apos o primeiro aquecimento, compare as leituras com um termometro separado no gabinete:
+Após o primeiro aquecimento, compare as leituras com um termômetro separado no gabinete:
 
-- se a temperatura do ar no gabinete difere da meta — verifique a colocacao do SHT31 (nao deve estar no jato ou na parede);
-- se a temperatura do aquecedor parece improvavel — verifique o tipo de termistor e valor de resistor do divisor;
-- se necessario, corrija a temperatura-alvo e histerese no [menu](06-menu.md).
+- se a temperatura do ar no gabinete difere da meta — verifique a colocação do SHT31 (não deve estar no jato ou na parede);
+- se a temperatura do aquecedor parece improvável — verifique o tipo de termistor e valor do resistor divisor;
+- se necessário, corrija a temperatura-alvo e histerese no [menu](06-menu.md).
 
-## Se algo nao funciona
+## Se algo não funciona
 
 | Sintoma | Onde procurar |
 |---------|---------------|
-| Controlador se reinicializa na carga | [Erros de potencia](../08-common-mistakes/02-power-mistakes.md) |
-| Sensor mostra bobagem | [Erros de fiacao](../08-common-mistakes/03-wiring-mistakes.md), [Verificacao de termistor](../06-practical-guides/02-checking-thermistor.md) |
-| Dispositivo nao conecta ao Wi-Fi | [Erros de controlador](../08-common-mistakes/04-controller-mistakes.md) |
+| Controlador se reinicializa na carga | [Erros de potência](../08-common-mistakes/02-power-mistakes.md) |
+| Sensor mostra bobagem | [Erros de fiação](../08-common-mistakes/03-wiring-mistakes.md), [Verificação de termistor](../06-practical-guides/02-checking-thermistor.md) |
+| Dispositivo não conecta ao Wi-Fi | [Erros de controlador](../08-common-mistakes/04-controller-mistakes.md) |
 | Aquecedor/SSR aquece muito | [Erros de aquecedor e SSR](../08-common-mistakes/05-heater-ssr-mistakes.md) |
 
-Sequencia geral de diagnostico — [Lista de verificacao de diagnostico](../08-common-mistakes/06-diagnostic-checklist.md).
+Sequência geral de diagnóstico — [Lista de verificação de diagnóstico](../08-common-mistakes/06-diagnostic-checklist.md).
 
-## Lista de verificacao antes de funcionamento permanente
+## Lista de verificação antes de funcionamento permanente
 
-- [ ] Dispositivo mantem temperatura-alvo e nao aquece continuamente.
-- [ ] Protecao do aquecedor por termistor funciona.
-- [ ] Fios nao tocam o aquecedor e ventilador.
-- [ ] Pecas plasticas perto do calor sao termoresistentes.
-- [ ] Na versao B: gabinete e aterrado, fusivel instalado, isolacao intacta.
-- [ ] Dados no portal correspondem a temperatura real no gabinete.
+- [ ] Dispositivo mantém temperatura-alvo e não aquece continuamente.
+- [ ] Proteção do aquecedor por termistor funciona.
+- [ ] Fios não tocam o aquecedor e ventilador.
+- [ ] Peças plásticas perto do calor são termoresistentes.
+- [ ] Na versão B: gabinete é aterrado, fusível instalado, isolação intacta.
+- [ ] Dados no portal correspondem à temperatura real no gabinete.
 
 ## Resultado
 
-Voce montou um gabinete aquecido de armazenamento de filamento em ESP32 e `idryer-core`: o dispositivo le o clima e temperatura do aquecedor, mantem temperatura especificada, protege o aquecedor de superaquecimento e e controlado do portal. E uma base completa sobre a qual voce pode construir seus proprios modulos de ecossistema.
+Você montou um gabinete aquecido de armazenamento de filamento em ESP32 e `idryer-core`: o dispositivo lê o clima e temperatura do aquecedor, mantém temperatura especificada, protege o aquecedor de superaquecimento e é controlado do portal. É uma base completa sobre a qual você pode construir seus próprios módulos de ecossistema.
 
-Componentes posteriores — iluminacao, balanca, RFID — o nucleo tambem suporta; eles podem ser adicionados pelo mesmo esquema: sensor ou periferia → telemetria ou comando → exibicao no portal.
+Componentes posteriores — iluminação, balança, RFID — o núcleo também suporta; eles podem ser adicionados pelo mesmo esquema: sensor ou periférico → telemetria ou comando → exibição no portal.

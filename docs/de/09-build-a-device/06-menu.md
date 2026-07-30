@@ -1,17 +1,17 @@
 ---
-title: "Gerätemenu aus YAML: Einstellungen in NVS und auf dem Portal"
-description: "Wie man ein Gerätemenu auf idryer-core in menu.yaml beschreibt: Zieltemperatur und Hysterese werden in NVS gespeichert und durch Widgets auf dem iDryer-Portal angezeigt."
+title: "Gerätemenü aus YAML: Einstellungen in NVS und auf dem Portal"
+description: "Wie man ein Gerätemenü auf idryer-core in menu.yaml beschreibt: Zieltemperatur und Hysterese werden in NVS gespeichert und durch Widgets auf dem iDryer-Portal angezeigt."
 ---
 
-# Menu aus YAML
+# Menü aus YAML
 
-Das Menu ist ein Satz von Geräteeinstellungen: Zieltemperatur, Hysterese, Ventilator-Schwellwerte. Auf `idryer-core` wird das Menu in einer einzigen Datei `menu.yaml` beschrieben, und alles Übrige – C++-Strukturen, Speicherung im nichtflüchtigen Speicher (NVS) und Veröffentlichung auf dem Portal – wird automatisch generiert.
+Das Menü ist ein Satz von Geräteeinstellungen: Zieltemperatur, Hysterese, Ventilator-Schwellwerte. Auf `idryer-core` wird das Menü in einer einzigen Datei `menu.yaml` beschrieben, und alles Übrige – C++-Strukturen, Speicherung im nichtflüchtigen Speicher (NVS) und Veröffentlichung auf dem Portal – wird automatisch generiert.
 
-Dies ist einer der Schlüsselbausteine des Kernels. Sie schreiben keinen Code zur Speicherung von Einstellungen und erfinden keine Formate für das Portal – Sie zählen nur die Parameter in YAML auf.
+Dies ist einer der Schlüsselbausteine des Kerns. Sie schreiben keinen Code zur Speicherung von Einstellungen und erfinden keine Formate für das Portal – Sie zählen nur die Parameter in YAML auf.
 
-## Warum ein Menu
+## Warum ein Menü
 
-Nach den vorherigen Schritten liest das Gerät Sensoren, aber alle Schwellwerte sind im Code hartcodiert. Das Menu löst drei Aufgaben gleichzeitig:
+Nach den vorherigen Schritten liest das Gerät Sensoren, aber alle Schwellwerte sind im Code hartcodiert. Das Menü löst drei Aufgaben gleichzeitig:
 
 - **Speicherung**: Werte überstehen einen Neustart (NVS);
 - **Fernverwaltung vom Portal**: jeder Parameter wird zu einem Widget (Schieberegler, Schalter);
@@ -32,7 +32,7 @@ Ein Punkt mit dem Feld `role:` ist für das Portal sichtbar und wird als Widget 
 
 ## Schritt 1. Kopieren Sie die Vorlage
 
-Es gibt eine Menu-Vorlage in der Bibliothek. Kopieren Sie sie in Ihr Projekt:
+Es gibt eine Menü-Vorlage in der Bibliothek. Kopieren Sie sie in Ihr Projekt:
 
 ```bash
 mkdir -p src/menu
@@ -140,11 +140,11 @@ src/menu/
 
 Wenn der Build mit einer Nachricht über eine unbekannte `role:` fehlschlägt – bedeutet das, dass die Rolle nicht aus der Liste `canonical_roles` stammt. Korrigieren Sie sie und bauen Sie neu auf. Bearbeiten Sie Dateien mit der Kennzeichnung autogen nicht von Hand.
 
-## Schritt 5. Verbinden Sie das Menu mit dem Hauptprogramm
+## Schritt 5. Verbinden Sie das Menü mit dem Hauptprogramm
 
-Um den Menu-Code zu verwenden, verbinden Sie zwei Dinge in `src/main.cpp`:
+Um den Menü-Code zu verwenden, verbinden Sie zwei Dinge in `src/main.cpp`:
 
-1. Der Header des generierten Menus:
+1. Der Header des generierten Menüs:
 
     ```cpp
     #include <menu_state.h>      // Menü-Objekt mit allen Parametern
@@ -164,9 +164,9 @@ uint16_t target = menu.target_temp;   // direkter Zugriff auf den Wert
 
 Sie verwenden diese Werte in der Heizlogik im nächsten Schritt. Wenn der Benutzer den Parameter im Portal ändert, wendet der Kern automatisch den neuen Wert an und speichert ihn in NVS.
 
-## Kompletter `src/main.cpp` nach dieser Kapitel
+## Vollständiger `src/main.cpp` nach diesem Kapitel
 
-Im Vergleich zur vorherigen Kapitel wurden nur zwei Zeilen hinzugefügt (markiert mit `// ← Kapitel 6`): Menu-Include und `menu.initDefaults()`.
+Im Vergleich zum vorherigen Kapitel wurden nur zwei Zeilen hinzugefügt (markiert mit `// ← Kapitel 6`): Menü-Include und `menu.initDefaults()`.
 
 ??? note "Was war – `src/main.cpp` nach Kapitel 5"
 

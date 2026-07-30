@@ -54,6 +54,9 @@ When a device is built on `idryer-core` and bound to an account, you get without
 - remote start and stop of heat maintenance mode;
 - parameter configuration (target temperature, hysteresis) via device menu.
 
+!!! note "Custom sensors and controls on the card"
+    The device card is not limited to vocabulary capabilities (`has*`). Through a card manifest, the firmware can declare any custom sensors and controls — they will automatically appear on the portal and in the app. How to do this is shown in the end-to-end example ["Smart Air Filter"](../10-build-a-filter/01-concept.md), especially in [the card chapter](../10-build-a-filter/06-card.md).
+
 ## What This Section Includes
 
 Below is a step-by-step path from an empty board to a working cabinet:

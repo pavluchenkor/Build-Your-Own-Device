@@ -113,6 +113,37 @@ s_link.telemetry.heaterTempC[0] = readHeaterTempC();
 
 以下は完全なファイルです。前の章に対する新しい行は`// ← 章5`でマークされています。残りは変わりませんでした。
 
+??? note "前回 — 第4章後の`src/main.cpp`"
+
+    ```cpp
+    #include <iDryer.h>
+
+    static const iDryer::Config CFG = {
+        .deviceType        = iDryer::DeviceType::Dryer,
+        .unitsCount        = 1,
+        .hasHeater         = true,
+        .hasFan            = true,
+        .hasAirTemp        = true,
+        .hasAirHumidity    = true,
+        .hasHeaterTemp     = true,
+        .telemetryPeriodMs = 5000,
+        .statusPeriodMs    = 10000,
+        .hardwareVersion   = "1.0",
+        .firmwareVersion   = "0.1.0",
+        .model             = "DIY Storage Cabinet",
+    };
+    static iDryer::Link s_link(CFG);
+
+    void setup() {
+        Serial.begin(115200);
+        s_link.begin();
+    }
+
+    void loop() {
+        s_link.loop();
+    }
+    ```
+
 ```cpp
 #include <iDryer.h>
 #include <Wire.h>                  // ← 章5

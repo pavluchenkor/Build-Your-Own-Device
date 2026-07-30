@@ -39,7 +39,7 @@ Jak používat multimetr — [Multimetr](../05-tools/02-multimeter.md).
 3. Připojte topidlo a ventilátor.
 4. Spusťte režim udržování tepla z portálu a sledujte.
 
-!!! danger "Nechávejte první zahřívání bez dozoru"
+!!! danger "Nenechávejte první zahřívání bez dozoru"
     Při prvním zapnutí sledujte zařízení. Ověřte, že se topidlo vypíná po dosažení cíle a ochranou termistoru, nikoli aby topilo nepřetržitě.
 
 Co sledovat v prvních minutách:

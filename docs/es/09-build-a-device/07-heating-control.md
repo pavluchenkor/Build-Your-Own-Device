@@ -7,7 +7,7 @@ description: "Lógica del gabinete calefaccionado en idryer-core: mantenimiento 
 
 En esta página conecta los sensores, configuraciones y la parte de potencia en una lógica operativa. El dispositivo mantiene una temperatura establecida dentro del gabinete, protege el calentador del sobrecalentamiento y responde a comandos desde el portal.
 
-La lógica se ejecuta en `loop()` junto con la mantención de la red. Todos los temporizadores y umbrales son no bloqueantes, sin `delay()`.
+La lógica se ejecuta en `loop()` junto con el mantenimiento de la red. Todos los temporizadores y umbrales son no bloqueantes, sin `delay()`.
 
 ## Qué debe suceder
 
@@ -105,7 +105,7 @@ static void applyFan() {
 
 En el controlador de serie, el ventilador se controla por temperatura con umbrales separados de encendido y apagado (por ejemplo, encendido a `55 °C`, apagado a `35 °C`), para que no fluctúe en el límite. Para el gabinete puede aplicar el mismo enfoque, vinculando los umbrales a parámetros del menú.
 
-## Reunir en loop()
+## Ensamblando en loop()
 
 ```cpp
 void loop() {
@@ -163,7 +163,7 @@ s_link.onCommand("invoke", [](JsonObjectConst data) {
 
 Este es el archivo final y completo del dispositivo. Las nuevas líneas respecto al capítulo anterior se marcan con `// ← capítulo 7`. Este mismo archivo se encuentra como ejemplo listo en la carpeta `example/09-cabinet/` del repositorio y se compila con el comando `pio run -e cabinet`.
 
-??? note "Qué fue — `src/main.cpp` después del capítulo 6"
+??? note "Cómo quedó — `src/main.cpp` tras el capítulo 6"
 
     ```cpp
     #include <iDryer.h>

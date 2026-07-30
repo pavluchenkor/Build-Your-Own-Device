@@ -70,7 +70,7 @@ A ligação da ventoinha com controlo é discutida detalhadamente em [Ligação 
 
 Um SSR tem dois lados. **Controlo** - entrada de baixa tensão, que o controlador comanda. **Potência** - terminais pelos quais passa a voltagem de rede da carga. Os lados são isolados um do outro por opto-acoplador dentro do SSR, portanto pode controlar a rede com um sinal fraco de `3,3V`.
 
-1. A entrada de controlo é normalmente marcada como `DC+` e `DC-` (às vezes `+` e `-`) e é projectable para `3-32V` DC. Ligue `DC+` ao pino de controlo de ESP32 (exemplo: GPIO4) e `DC-` a `GND` do controlador. A tensão de `3,3V` do pino de ESP32 é suficiente para abrir o SSR.
+1. A entrada de controlo é normalmente marcada como `DC+` e `DC-` (às vezes `+` e `-`) e está especificada para `3-32V` DC. Ligue `DC+` ao pino de controlo de ESP32 (exemplo: GPIO4) e `DC-` a `GND` do controlador. A tensão de `3,3V` do pino de ESP32 é suficiente para abrir o SSR.
 2. Os terminais de potência (frequentemente marcados como rede/`AC` e carga/`LOAD`) estão incluídos na abertura de um dos fios de rede do aquecedor - como um interruptor no fio.
 3. A ventoinha é comutada por um SSR ou relé separado da mesma forma.
 

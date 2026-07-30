@@ -5,7 +5,7 @@ description: "Komplexní příklad: jak od nuly postavit vytápěnou skříň pr
 
 # Stavíme své zařízení: koncepce
 
-Tato kapitola je komplexní příklad. Předchozí kapitoly vysvětlovaly jednotlivé součásti: napájení, řadiče, senzory, ohřívače, bezpečnost. Zde z těchto součástí stavíte jednoho hotového zařízení a přivádíte jej do pracovního stavu s připojením k [portálu iDryer](https://portal.idryer.org/).
+Tato kapitola je komplexní příklad. Předchozí kapitoly vysvětlovaly jednotlivé součásti: napájení, řadiče, senzory, ohřívače, bezpečnost. Zde z těchto součástí stavíte jedno hotové zařízení a přivádíte jej do pracovního stavu s připojením k [portálu iDryer](https://portal.idryer.org/).
 
 Příklad je postaven na knihovně `idryer-core`. Knihovna si vezme veškerou síťovou práci: připojení k Wi-Fi, vazbu na účet, zabezpečenou MQTT-relaci, periodické zveřejňování telemetrie. Vy píšete pouze to, co je specifické pro vaše zařízení: čtení senzorů, řízení ohřívače a ventilátoru, logiku udržování teploty.
 
@@ -32,7 +32,7 @@ Vlastní stavba má smysl, když:
 
 ## Jak se to liší od regulátoru V2
 
-Sériový regulátor iDryer V2 je dvouprocesory: hlavní logika běží na samostatném mikrokontroléru, zatímco modul ESP32 funguje pouze jako most k Wi-Fi a portálu. To má smysl pro sériový výrobek s displejem, váhami, RFID a několika kamerami.
+Sériový regulátor iDryer V2 má dvouprocesorovou architekturu: hlavní logika běží na samostatném mikrokontroléru, zatímco modul ESP32 funguje pouze jako most k Wi-Fi a portálu. To má smysl pro sériový výrobek s displejem, váhami, RFID a několika kamerami.
 
 Pro vlastní skříň není taková složitost potřebná. Zjednodušujeme architekturu na **jeden ESP32**, který dělá všechno sám:
 
@@ -43,7 +43,7 @@ Pro vlastní skříň není taková složitost potřebná. Zjednodušujeme archi
 Funkčně opakujeme chování jedné kamery regulátoru V2 (senzor klimatu, ohřívač se zpětnou vazbou z termistoru, ventilátor), ale v čestné DIY-realizaci na jedné desce.
 
 !!! note "Servo není použito"
-    V regulátoru V2 servo řídí vzduchový klapka kamery. Pro skladovací skříň s rovnoměrným jemným ohřevem klapka není potřebná, takže v tomto příkladu servo není.
+    V regulátoru V2 servo řídí vzduchovou klapku komory. Pro skladovací skříň s rovnoměrným jemným ohřevem klapka není potřebná, takže v tomto příkladu servo není.
 
 ## Co přináší připojení k jádru
 
@@ -53,6 +53,9 @@ Když je zařízení postaveno na `idryer-core` a vázáno na účet, získáte 
 - graf teploty a vlhkosti ve skříni;
 - spuštění a zastavení režimu udržování tepla na dálku;
 - konfiguraci parametrů (cílová teplota, hystereze) přes menu zařízení.
+
+!!! note "Vlastní senzory a tlačítka na kartě zařízení"
+    Karta zařízení není omezena na slovníkové schopnosti (`has*`). Prostřednictvím card-manifestu může firmware deklarovat libovolné vlastní senzory a ovládací prvky — automaticky se zobrazí na portálu i v aplikaci. Jak to udělat ukazuje průřezový příklad [„Chytrý vzduchový filtr"](../10-build-a-filter/01-concept.md), zejména [kapitola o kartě](../10-build-a-filter/06-card.md).
 
 ## Co tato kapitola obsahuje
 

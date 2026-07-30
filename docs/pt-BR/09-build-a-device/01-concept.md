@@ -32,7 +32,7 @@ A montagem independente faz sentido quando:
 
 ## Como isso difere do controlador V2
 
-O controlador serial iDryer V2 é de dois processadores: a lógica principal é executada em um microcontrolador separado, e o módulo ESP32 atua apenas como um bridge para Wi-Fi e portal. Isto é justificado para um produto pronto com tela, balança, RFID e várias câmeras.
+O controlador de série iDryer V2 é de dois processadores: a lógica principal é executada em um microcontrolador separado, e o módulo ESP32 atua apenas como um bridge para Wi-Fi e portal. Isto é justificado para um produto pronto com tela, balança, RFID e várias câmeras.
 
 Para um gabinete caseiro, essa complexidade não é necessária. Simplificamos a arquitetura para um **único ESP32**, que faz tudo sozinho:
 
@@ -53,6 +53,9 @@ Quando o dispositivo é montado em `idryer-core` e vinculado à conta, você obt
 - gráfico de temperatura e umidade no gabinete;
 - iniciar e parar o modo de manutenção de calor remotamente;
 - configurar parâmetros (temperatura-alvo, histerese) por meio do menu do dispositivo.
+
+!!! note "Os seus próprios sensores e botões no cartão"
+    O cartão do dispositivo não se limita às capacidades declaradas em `has*`. Através do card-manifest, o firmware pode declarar qualquer sensor ou controle próprio — eles aparecem automaticamente no portal e no aplicativo. Como fazer isso — exemplo completo [«Filtro de ar inteligente»](../10-build-a-filter/01-concept.md), em especial [o capítulo sobre o cartão](../10-build-a-filter/06-card.md).
 
 ## Do que consiste esta seção
 
